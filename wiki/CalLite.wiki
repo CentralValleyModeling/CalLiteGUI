@@ -12,4 +12,4 @@ Wiki for CalLite GUI Development
 
 == Details ==
 
-  *[Schedule]
+  * [Schedule]
