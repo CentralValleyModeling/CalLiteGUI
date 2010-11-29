@@ -1,10 +1,16 @@
-#summary One-sentence summary of this page.
+#summary Wiki Main Page
 
 = Introduction =
 
 Wiki for CalLite GUI Development
 
-= Details =
+== Development Environment ==
+
+  * IDE: Eclipse Helios SR1 IDE for Java Developers [http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/heliossr1 [link]]
+  * Java SE Runtime Environment (JRE) 6
+  * SwiX^ml^,,1.5,, GUI generation engine [http://swixml.org/ [link]] 
+
+== Details ==
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
