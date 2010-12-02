@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.invivosoft.swixeditor"
+   name="SwixEditor"
+   version="3.2.25"
+   provider-name="Invivo Software Private Limited"
+   class="com.invivosoft.swixeditor.SwixEditorPlugin">
+
+   <runtime>
+      <library name="SwixEditor.jar">
+         <export name="com.invivosoft.swixeditor.*"/>
+         <export name="com.invivosoft.swixeditor.actions.*"/>
+         <export name="com.invivosoft.swixeditor.commands.*"/>
+         <export name="com.invivosoft.swixeditor.dialogs.*"/>
+         <export name="com.invivosoft.swixeditor.edit.*"/>
+         <export name="com.invivosoft.swixeditor.edit.policies.*"/>
+         <export name="com.invivosoft.swixeditor.editors.*"/>
+         <export name="com.invivosoft.swixeditor.figure.*"/>
+         <export name="com.invivosoft.swixeditor.model.*"/>
+         <export name="com.invivosoft.swixeditor.proxyutils.*"/>
+         <export name="com.invivosoft.swixeditor.visuals.*"/>
+         <export name="com.invivosoft.swixeditor.wizards.*"/>
+      </library>
+      <library name="lib/swixEngine.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/jdom.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/internals.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/infoutil.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/SwixUtils.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/jdic.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <requires import_order="org.eclipse.pde.internal.ui.model.plugin.PluginImportNode@da173c">
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.draw2d"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.emf"/>
+      <import plugin="org.eclipse.emf.common.ui"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.jem"/>
+      <import plugin="org.eclipse.jem.proxy"/>
+      <import plugin="org.eclipse.ve.cde"/>
+      <import plugin="org.eclipse.ve.propertysheet"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.xsd"/>
+      <import plugin="org.eclipse.ve.jfc"/>
+      <import plugin="com.invivosoft.swixeditor.model"/>
+   </requires>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.invivosoft.swixeditor.editors.SwixFormEditor"
+            contributorClass="com.invivosoft.swixeditor.editors.SwixFormEditorContributor"
+            extensions="swx"
+            icon="icons/WindowColors.gif"
+            id="com.invivosoft.swixeditor.editors.SwixFormEditor"
+            name="Swix Form Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="SwiX Editor"
+            id="com.invivosoft.swixeditor">
+      </category>
+      <wizard
+            name="Frame"
+            icon="icons/window_plain.gif"
+            category="com.invivosoft.swixeditor"
+            class="com.invivosoft.swixeditor.wizards.SwixNewFormWizard"
+            id="swixeditor.wizards.SampleNewWizard">
+      </wizard>
+      <wizard
+            category="com.invivosoft.swixeditor"
+            class="com.invivosoft.swixeditor.wizards.SwixNewDialogWizard"
+            icon="icons/dialog.gif"
+            id="com.invivosoft.swixeditor.wizards.SwixmlNewDlgWizard"
+            name="Dialog"/>
+      <wizard
+            category="com.invivosoft.swixeditor"
+            class="com.invivosoft.swixeditor.wizards.NewPanelWizard"
+            icon="icons/panel_obj.gif"
+            id="com.invivosoft.swixeditor.wizards.SwixmlNewPnlWizard"
+            name="Panel"/>
+<!--  <wizard
+            category="com.invivosoft.swixeditor"
+            class="com.invivosoft.swixeditor.wizards.SwixNewFormWizard"
+            icon="icons/internalframe_obj.gif"
+            id="com.invivosoft.swixeditor.wizards.SwixInternalFrameWizard"
+            name="javax.swing.JInternalFrame"/>-->
+   </extension>
+   <extension
+         id="com.invivosoft.swixeditor.popups"
+         name="SwixEditor Popup menus"
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.invivosoft.swixeditor.showNextTab"
+            objectClass="com.invivosoft.swixeditor.edit.TabEditPart">
+         <action
+               class="com.invivosoft.swixeditor.actions.ShowNextTabAction"
+               icon="icons/WindowColors.gif"
+               id="com.invivosoft.swixeditor.actions.showNextTabAction"
+               label="Show Next Tab"/>
+      </objectContribution>
+      <viewerContribution
+            id="com.invivosoft.swixeditor.navigator.convertFormat"
+            targetID="org.eclipse.ui.views.ResourceNavigator">
+         <action
+               class="com.invivosoft.swixeditor.actions.ConvertToSwxAction"
+               icon="icons/write3.gif"
+               id="com.invivosoft.swixeditor.convertFormat"
+               label="Convert to Swix Editor"
+               menubarPath="additions"
+               state="false"
+               style="push"/>
+      </viewerContribution>
+      <viewerContribution
+            id="com.invivosoft.swixeditor.packageExplorer.convertFormat"
+            targetID="org.eclipse.jdt.ui.PackageExplorer">
+         <action
+               class="com.invivosoft.swixeditor.actions.ConvertToSwxAction"
+               icon="icons/write3.gif"
+               id="com.invivosoft.swixeditor.PackageExplorer.convertFormat"
+               label="Convert to Swix Editor"
+               menubarPath="additions"
+               state="false"
+               style="push"/>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page        
+            name="Invivo SwixEditor"
+            id="com.invivosoft.swixeditor"
+            class="com.invivosoft.swixeditor.preferences.SwixEditorPreferencePage"/>
+      <page 
+            name="FormLayout Preferences"
+            id="com.invivosoft.swixeditor.preferences.FormLayoutPreferencePage"
+            class="com.invivosoft.swixeditor.preferences.FormLayoutPreferencePage"
+            category="com.invivosoft.swixeditor"/>
+<!--      <page 
+            name="License Details"
+            id="com.invivosoft.swixeditor.preferences.License.LicPreferencePage"
+            class="com.invivosoft.swixeditor.preferences.license.LicPreferencePage"
+            category="com.invivosoft.swixeditor"/> -->
+      <page
+      		name="Registration"
+      		id="com.invivosoft.swixeditor.preferences.LicencePage"
+            class="com.invivosoft.swixeditor.preferences.LicencePage"
+            category="com.invivosoft.swixeditor"/>  
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.invivosoft.swixeditor.preferences.PreferenceInitializer"/>
+   </extension>  
+   
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.invivosoft.swixeditor.editors.actionSet1"
+            label="SwixEditor Action Set"
+            visible="true">
+         <menu
+               id="SwixEditor.menu1"
+               label="Tools">
+            <separator name="SwixEditorSeperator1"/>
+            <separator name="SwixEditorSeperator2"/>
+         </menu>
+         <action
+               class="com.invivosoft.swixeditor.editors.customcontrols.menuActions"
+               id="com.invivosoft.swixeditor.editors.menuActions"
+               label="Custom Controls"
+               menubarPath="SwixEditor.menu1/SwixEditorSeperator1"
+               icon = "icons/customcontrol_obj.gif"/>
+               
+        <action
+               class="com.invivosoft.swixeditor.editors.customcontrols.NonUImenuActions"
+               id="com.invivosoft.swixeditor.editors.NonUImenuActions"
+               label="Custom Elements"
+               menubarPath="SwixEditor.menu1/SwixEditorSeperator1"
+               icon = "icons/customcontrol_obj.gif"/>      
+                
+        <action
+               class="com.invivosoft.swixeditor.conversion.menuActions"
+               id="com.invivosoft.swixeditor.menuActions"
+               label="Java To Swixml"
+               menubarPath="SwixEditor.menu1/SwixEditorSeperator2"
+               icon = "icons/editorpane_obj.gif"/>
+      </actionSet>
+   </extension>
+
+</plugin>

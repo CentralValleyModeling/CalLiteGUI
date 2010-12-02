@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
+-->
+
+<plugin
+    name = "SwixModel"
+    id = "com.invivosoft.swixeditor.model"
+    version = "3.2.25"
+    provider-name = "Invivo Software Private Limited"
+    class = "com.invivosoft.swixmodel.SwixInvivoModelPlugin$Implementation">
+
+  <requires>
+    <import plugin="org.eclipse.core.runtime" />
+    <import plugin="org.eclipse.emf.ecore" export="true"/>
+    <import plugin="org.eclipse.draw2d"/>
+    <import plugin="org.eclipse.emf.ecore.xmi"/>
+    <import plugin="org.eclipse.xsd"/>
+    <import plugin="org.eclipse.jem.proxy"/>
+  </requires>
+
+  <runtime>
+     <library name="schemas/">
+        <export name="*"/>
+     </library>
+     <library name="palette/">
+        <export name="*"/>
+     </library>
+     <library name="swixmlModel.jar">
+        <export name="*"/>
+     </library>
+  </runtime>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://" 
+       class = "com.invivosoft.swixeditor.model.Package" />
+  </extension>
+
+</plugin>
+
