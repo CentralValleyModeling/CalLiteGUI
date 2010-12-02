@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="com.instantiations.designer.swing.databinding.DatabindingsProvider">
+		<item value="3" key="Main_Sash.y"/>
+		<item value="1" key="Observes_Sash.y"/>
+		<item value="1" key="Observes_Sash.x"/>
+		<item value="250" key="ModelColumn"/>
+		<item value="250" key="TargetColumn"/>
+		<item value="170" key="StrategyColumn"/>
+		<item value="1" key="Main_Sash.x"/>
+		<item value="250" key="VariableBindingColumn"/>
+	</section>
+</section>

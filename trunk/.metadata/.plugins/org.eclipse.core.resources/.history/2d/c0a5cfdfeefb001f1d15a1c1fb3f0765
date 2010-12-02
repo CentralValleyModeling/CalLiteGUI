@@ -1,0 +1,157 @@
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import org.swixml.*;
+
+public class MainMenu implements ActionListener, ItemListener {
+	//Declare public buttons
+	JRadioButton rdbD1;
+	JRadioButton rdbD2;
+	JRadioButton rdbD3;
+	JRadioButton rdbD4;
+	JRadioButton rdbD5;
+	JRadioButton rdbD6;
+	JRadioButton rdbD7;
+	JRadioButton rdbD8;
+	JRadioButton rdbD9;
+	JRadioButton rdbD10;
+	JRadioButton rdbB1;
+	JRadioButton rdbB2;
+	JRadioButton rdbB3;
+	JRadioButton rdbB4;
+	JRadioButton rdbB5;
+	JRadioButton rdbB6;
+	JRadioButton rdbB7;
+	JRadioButton rdbB8;
+	JRadioButton rdbB9;
+	JRadioButton rdbB10;
+	JRadioButton rdbU1;
+	JRadioButton rdbU2;
+	JRadioButton rdbU3;
+	JRadioButton rdbU4;
+	JRadioButton rdbU5;
+	JRadioButton rdbU6;
+	JRadioButton rdbU7;
+	JRadioButton rdbU8;
+	JRadioButton rdbU9;
+	JRadioButton rdbU10;
+	
+	JButton btnU1;
+	JButton btnU2;
+	JButton btnU3;
+	JButton btnU4;
+	JButton btnU5;
+	JButton btnU6;
+	JButton btnU7;
+	JButton btnU8;
+	JButton btnU9;
+	JButton btnU10;
+
+	JCheckBox ckb1;
+	JCheckBox ckb2;
+	JCheckBox ckb3;
+	JCheckBox ckb4;
+	JCheckBox ckb5;
+	JCheckBox ckb6;
+	JCheckBox ckb7;
+	JCheckBox ckb8;
+	JCheckBox ckb9;
+	JCheckBox ckb10;
+
+	
+    private SwingEngine swix;
+    
+    
+    public MainMenu() throws Exception {
+        
+        new SwingEngine(this).render("MainMenu.xml")
+                .setVisible(true);
+
+    }
+    
+    public static void main(String [] args) throws Exception {
+        new MainMenu();
+        
+        
+    }
+	//React to check box selections.
+	public void itemStateChanged(ItemEvent e) {
+	    //int index = 0;
+	    //char c = '-';
+	    Object source = e.getItemSelectable();
+
+	    if (source == ckb1) {
+	      rdb1.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit1.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	    } else if (source == ckb2) {
+	  	  rdb2.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+		  //btnEdit2.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	    } else if (source == ckb3) {
+	  	  rdb3.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	  	  rdb4.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	  	  rdb5.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+		  //btnEdit3.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	    } else if (source == ckb4) {
+	      rdb6.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb7.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb8.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit4.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	    } else if (source == ckb5) {
+	      rdb9.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb10.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb11.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit5.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == ckb6) {
+	      rdb12.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb13.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb14.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	  	  //btnEdit6.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == ckb7) {
+	      rdb15.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb16.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb17.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit7.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == ckb8) {
+	      rdb18.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb19.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      rdb20.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit8.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == ckb9) {
+	      rdb21.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit9.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == ckb10) {
+	      rdb22.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      //btnEdit10.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      
+	      } else if (source == rdb1) {
+	      btnEdit1.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb2) {
+	          btnEdit2.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb3) {
+	          btnEdit3.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb6) {
+	          btnEdit4.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb9) {
+	          btnEdit5.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb12) {
+	          btnEdit6.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb15) {
+	          btnEdit7.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb18) {
+	          btnEdit8.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb21) {
+	          btnEdit9.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	      } else if (source == rdb22) {
+	          btnEdit10.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
+	    }
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:package="com.invivosoft.swixeditor.model" targetNamespace="http://">
+<xsd:include schemaLocation="base.xsd"/>
+<xsd:complexType name="CustomPanel">
+<xsd:annotation>
+<xsd:appinfo ecore:key="VisualClass" source="SwixElement">Acs.CustomPanel</xsd:appinfo>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="CustomComponent">
+<xsd:attribute name="UIClassID" type="xsd:string"/>
+<xsd:attribute name="alignmentX" type="xsd:float"/>
+<xsd:attribute name="alignmentY" type="xsd:float"/>
+<xsd:attribute name="autoscrolls" type="xsd:boolean"/>
+<xsd:attribute name="componentCount" type="xsd:int"/>
+<xsd:attribute name="debugGraphicsOptions" type="xsd:int"/>
+<xsd:attribute name="doubleBuffered" type="xsd:boolean"/>
+<xsd:attribute name="focusCycleRoot" type="xsd:boolean"/>
+<xsd:attribute name="focusTraversalPolicyProvider" type="xsd:boolean"/>
+<xsd:attribute name="focusTraversalPolicySet" type="xsd:boolean"/>
+<xsd:attribute name="focusable" type="xsd:boolean"/>
+<xsd:attribute name="height" type="xsd:int"/>
+<xsd:attribute name="inheritsPopupMenu" type="xsd:boolean"/>
+<xsd:attribute name="managingFocus" type="xsd:boolean"/>
+<xsd:attribute name="maximumSize" type="Dimension"/>
+<xsd:attribute name="minimumSize" type="Dimension"/>
+<xsd:attribute name="opaque" type="xsd:boolean"/>
+<xsd:attribute name="optimizedDrawingEnabled" type="xsd:boolean"/>
+<xsd:attribute name="paintingTile" type="xsd:boolean"/>
+<xsd:attribute name="preferredSize" type="Dimension"/>
+<xsd:attribute name="requestFocusEnabled" type="xsd:boolean"/>
+<xsd:attribute name="validateRoot" type="xsd:boolean"/>
+<xsd:attribute name="verifyInputWhenFocusTarget" type="xsd:boolean"/>
+<xsd:attribute name="visibleRect" type="Rectangle"/>
+<xsd:attribute name="width" type="xsd:int"/>
+<xsd:attribute name="x" type="xsd:int"/>
+<xsd:attribute name="y" type="xsd:int"/>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:element name="custompanel" substitutionGroup="component" type="CustomPanel"/>
+</xsd:schema>
