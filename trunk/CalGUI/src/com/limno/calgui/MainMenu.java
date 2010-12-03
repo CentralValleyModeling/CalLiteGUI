@@ -1,25 +1,25 @@
 package com.limno.calgui;
 
 import java.awt.Component;
-import java.awt.event.*;
-import java.beans.PropertyVetoException;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Vector;
 import java.io.*;
-import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Enumeration;
+import java.util.Vector;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
 
-import org.swixml.*;
-import org.swixml.ConverterLibrary;
 import org.swixml.SwingEngine;
+
 
 public class MainMenu implements ActionListener, ItemListener {
 	private SwingEngine swix;
@@ -28,16 +28,20 @@ public class MainMenu implements ActionListener, ItemListener {
 	JPanel mainmenu;
 	JPanel regulations;
 	DataFileTable dtable;
+	
 	//ExcelAdapter myAd;
 	JTable table;
 	JMenuBar menu;
 
 	public MainMenu() throws Exception {
-		swix = new SwingEngine( this );
-		swix.getTaglib().registerTag("mycheckbox", MyCheckBox.class);
-		swix.render( "MainMenu.xml" ).setVisible(true);
-		//new SwingEngine(this).render("MainMenu.xml")
-		//.setVisible(true);
+		
+      ReadGUILinks rg = new ReadGUILinks();
+      rg.ReadIn("Lookups");
+
+		String currentDir =  System.getProperty("user.dir");
+		System.out.println(currentDir);
+		swix = new SwingEngine();
+		swix.render( new File("MainMenu.xml") ).setVisible(true);
 
 
 		JRadioButton r;
@@ -51,7 +55,9 @@ public class MainMenu implements ActionListener, ItemListener {
 		r = (JRadioButton)swix.find("rdbU8"); r.addItemListener(this);
 		r = (JRadioButton)swix.find("rdbU9"); r.addItemListener(this);
 		r = (JRadioButton)swix.find("rdbU10"); r.addItemListener(this);
+		
 		JCheckBox ckb;
+		
 		ckb = (JCheckBox) swix.find("ckb1"); ckb.addItemListener(this);
 		ckb = (JCheckBox) swix.find("ckb2"); ckb.addItemListener(this);
 		ckb = (JCheckBox) swix.find("ckb3"); ckb.addItemListener(this);
@@ -80,6 +86,8 @@ public class MainMenu implements ActionListener, ItemListener {
 
 	}
 	//React to check box selections.
+	
+	
 	public void itemStateChanged(ItemEvent e) {
 		JComponent component = (JComponent) e.getItem();
 		//was "e.getItemSelected"
