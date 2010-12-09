@@ -1,25 +1,19 @@
 package com.limno.calgui;
 
 import java.awt.Component;
-import java.io.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.Dialog;
+import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Enumeration;
-import java.util.Vector;
+import java.io.*;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
+import javax.swing.*;
 
-import org.swixml.SwingEngine;
-
+import org.swixml.*;
 
 public class MainMenu implements ActionListener, ItemListener {
 	private SwingEngine swix;
@@ -27,67 +21,61 @@ public class MainMenu implements ActionListener, ItemListener {
 	//Declare public Objects
 	JPanel mainmenu;
 	JPanel regulations;
-	DataFileTable dtable;
-	
-	//ExcelAdapter myAd;
-	JTable table;
+	GUILinks gl;
+
 	JMenuBar menu;
 
 	public MainMenu() throws Exception {
-		
-      ReadGUILinks rg = new ReadGUILinks();
-      rg.ReadIn("Lookups");
-
-		String currentDir =  System.getProperty("user.dir");
-		System.out.println(currentDir);
-		swix = new SwingEngine();
-		swix.render( new File("MainMenu.xml") ).setVisible(true);
 
 
-		JRadioButton r;
-		r = (JRadioButton)swix.find("rdbU1"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU2"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU3"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU4"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU5"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU6"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU7"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU8"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU9"); r.addItemListener(this);
-		r = (JRadioButton)swix.find("rdbU10"); r.addItemListener(this);
-		
-		JCheckBox ckb;
-		
-		ckb = (JCheckBox) swix.find("ckb1"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb2"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb3"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb4"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb5"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb6"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb7"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb8"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb9"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb10"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb11"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb12"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb13"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb14"); ckb.addItemListener(this);
-		ckb = (JCheckBox) swix.find("ckb15"); ckb.addItemListener(this);
+		// Read GUI configuration
 
+		swix = new SwingEngine( this );
+		swix.render( new File("Config_and_Lookup\\Config\\MainMenu.xml") ).setVisible(true);
+
+
+		//Set ActionListeners (Regulations Page)
 
 		swix.setActionListener( menu, this );
-		swix.setActionListener( regulations, this );
+		swix.setActionListener( regulations, this );		
+
+
+		//Set ItemListeners (Regulations Page)
+
+		Component[] components = regulations.getComponents( );
+		for (int i = 0; i < components.length; i++) {
+			if (components[i] instanceof JRadioButton) {
+				JRadioButton r = (JRadioButton) components[i]; 
+				r.addItemListener(this);
+			}
+			else if (components[i] instanceof JCheckBox) {
+				JCheckBox ckb = (JCheckBox) components[i];
+				ckb.addItemListener(this);
+			}
+		}
+
+
+		// Set current directory (Run Settings Page)
+
+		String currentDir =  System.getProperty("user.dir");
+		JTextField tb = (JTextField) swix.find("tbRSdir");
+//		tb.setText(currentDir);
+
+
+		// Read switch lookup
+
+		gl = new GUILinks();
+		gl.readIn("Config_and_Lookup\\Config\\GUI_Links.table");
 
 	}
 
 	public static void main(String [] args) throws Exception {
+
 		new MainMenu();
 
-
 	}
-	//React to check box selections.
-	
-	
+
+	//Respond to selection of a check box or radiobox.
 	public void itemStateChanged(ItemEvent e) {
 		JComponent component = (JComponent) e.getItem();
 		//was "e.getItemSelected"
@@ -115,106 +103,108 @@ public class MainMenu implements ActionListener, ItemListener {
 
 	//React to menu selections.
 	public void actionPerformed(ActionEvent e) {
-		if ("UD_Table".equals(e.getActionCommand())) { 
-			createDTableFrame("UD_Table.txt", "User Defined Values");
-		} else if ("AC_RUN".equals(e.getActionCommand()))  {
-/*
- * 
- */
-			int cbct=0;
-			Vector regIDs = new Vector();
-			Component[] components = regulations.getComponents( );
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					MyCheckBox cb = (MyCheckBox) components[i];
-					//regIDs.addElement(cb.returnSID());
-					cbct=cbct+1;
-					System.out.println(cb.switchID);
-				}
-			}
-		}
+		if (e.getActionCommand().startsWith("UD_Table")) { 
+
+			// Figure out calling button and look up table
+			String cID = e.getActionCommand().substring(8);
+			createDTableFrame(cID);
+			
+			//System.out.println(cID);
+			//System.out.println(gl.tableNameForCtrl(cID));
 
 			
-/*
-			// Dump current status to console
-			ArrayList<Integer> statuses = new ArrayList<Integer>();
-			ArrayList<String> names = new ArrayList<String>();
-			//Iterator<JComponent> allComponents = (Iterator<JComponent>) swix.getIdComponentItertor();
-			Component[] allComponents = regulations.getComponents( );
-			for (int n = 0; n < allComponents.length; n++) {
-			//while (allComponents.hasNext()) {
-				//JComponent c = (JComponent) allComponents.next();
-				JComponent c = (JComponent)allComponents[n];
-				if (c.getName() != null) {
-					if (c.getName().startsWith("ckb")){
-						String cID = c.getName().substring(3);
-						int i = Integer.parseInt(cID); // Correct to put in right order
-						String name= c.getName();
-						int status = i;
-						JCheckBox ckb = (JCheckBox) c;
-						if (!ckb.isSelected()) {
-							status = 0;
-						} 
-						else {
-							JRadioButton rb = (JRadioButton) swix.find("rdbD"+cID);
-							if (rb == null || !rb.isVisible()) {
-								status = 1; // No radiobuttons -> just a checkbox
-							}
-							else if (rb.isSelected()) {
-								status = 1; // D1641 is selected
-							}
-							else {
-								rb = (JRadioButton) swix.find("rdbU" + cID);
-								if (rb.isSelected() || !rb.isEnabled()) {
-									status = 2;
-								}
-								else {
-									rb = (JRadioButton) swix.find("rdbB" + cID);
-									if (rb.isSelected()) {
-										status = 3;
-									}
-									else {
-										status = 1;
-									}
-								}
-							}
+		} else if ("AC_RUN".equals(e.getActionCommand()))  {
+			/*
+			 *
+			 * 
+			 */
+
+			// Write DLTREGULATION file
+
+			OutputStream outputStream;
+			try {
+				outputStream = new FileOutputStream("Config_and_Lookup\\Lookup\\DLTREGULATION.table");
+			}
+			catch (FileNotFoundException e2) {
+				System.out.println("Cannot open DLTRegulation file");
+				return;
+			} 
+
+			try {
+
+				PrintStream output = new PrintStream(outputStream);
+
+				output.println("gui_DLTREGULATION");
+				output.println("SWITCHID OPTION");
+
+				for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
+					String switchID = Integer.toString(switchIdx);
+					String cID = gl.ctrlForSwitch(switchID);
+					int option = 0;
+					JCheckBox cb = (JCheckBox) swix.find("ckb"+cID);
+					if (cb == null) {
+						option = 0;
+					} else if (!cb.isSelected()) {
+						option = 0;
+					} else {
+						JRadioButton rb = (JRadioButton) swix.find("rdbU"+cID);
+						JButton b = (JButton) swix.find("btnU"+cID);
+						if (b == null) {
+							option = 1; 
+						} else if (!b.isVisible()) {
+							option = 1;
+						} else if (rb.isSelected()) {
+							option = 2;
+						} else {
+							option = 1;
 						}
-						names.add(name);
-						statuses.add(status);
+					}
+
+					output.println(switchID + " " + option);
+
+					//  Output table if needed
+					if ((option == 2) || 
+							((option == 1) && (swix.find("btnU"+cID)).isVisible())) {
+
+						System.out.println("Output to " + gl.tableNameForCtrl(cID));
+						int tID = Integer.parseInt(cID);
+						if (dTableModels[tID] == null) {
+							System.out.println("Table not initialized");
+						}
+						else {
+							dTableModels[tID].writeToFile(gl.tableNameForCtrl(cID));
+						}
 					}
 				}
+
+				output.close();
+				outputStream.close();
 			}
-			 
-//			for (int i = 0; i < statuses.size(); i++)
-	
-				
-//				System.out.println(Integer.toString(i)+ " " + names.get(i) + " " + Integer.toString(statuses.get(i)));
-//		}
+			catch (IOException ioe) {
+				System.out.println("IOException");
+			}
 
-		
-		OutputStream outputStream = null;
-		try 
-		{
-			outputStream = new FileOutputStream("gui_dltregulation.table");
-		}
-		catch (FileNotFoundException e1) {
-			System.out.println("Cannot open input file " + "gui_dltregulation.table");
-		} 
-		PrintStream output = new PrintStream(outputStream);
-		output.println("SWITCHID     OPTION");
-		for (int i = 0; i < statuses.size(); i++){
-			output.println(Integer.toString(i)+ "               " + Integer.toString(statuses.get(i)));
-		}
-	output.close();
-	try {
-		outputStream.close();
-	} catch (IOException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
+			// "Run" model 
+
+			try
+			{            
+				Runtime rt = Runtime.getRuntime();
+				Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite.BAT");
+				int exitVal = proc.waitFor();
+				System.out.println("Process exitValue: " + exitVal);
+			} catch (Throwable t)
+			{
+				t.printStackTrace();
+			}
+			/*			try {
+				Runtime.getRuntime().exec("cmd /c start " + System.getProperty("user.dir") + "\\	CalLite.BAT");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}		
+			 */
 		}
 
-	*/
 
 	}
 
@@ -230,28 +220,38 @@ public class MainMenu implements ActionListener, ItemListener {
 		return null;
 	}
 
-	protected void createDTableFrame(String filestr, String titlestr) {
-		MyInternalFrame frame = new MyInternalFrame(titlestr);
+	private DataFileTableModel[] dTableModels;
 
+	protected void createDTableFrame(String cID) {
+
+		String fileName = gl.tableNameForCtrl(cID);
+
+
+		int tID = Integer.parseInt(cID);
+		if (dTableModels == null) {
+			dTableModels = new DataFileTableModel[20];
+		}
+		if (dTableModels[tID] == null){
+			dTableModels[tID] = new DataFileTableModel("Config_and_Lookup\\Lookup\\"+fileName+".table");
+		}
+
+		/*JFrame frame = new JFrame(fileName);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 		frame.setVisible(true); //necessary as of 1.3
-
 		frame.setResizable(true);
-		frame.setBounds(0, 0, 0, 0);
-		frame.setClosable(true);
-		frame.setSize(50,50);
+		frame.setSize(512,768);
 
-		DataFileTable dtable = new DataFileTable(filestr);
-		frame.getContentPane().add(dtable);
+		//DataFileTable dTable = new DataFileTable(dTableModels[tID]);
 
+		frame.getContentPane().add(dTable);
+
+		frame.pack();
 		frame.setVisible(true);
-		mainmenu.add(frame);
-		mainmenu.setComponentZOrder(frame, 0);
 
-
-		try {
-			frame.setSelected(true);
-		} catch (java.beans.PropertyVetoException e) {}
-
+		 */
+		TableDialog td = new TableDialog(fileName,dTableModels[tID]);
+		td.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+		td.setVisible(true);
 	}
 
 
