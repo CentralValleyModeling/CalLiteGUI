@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GUI/src&amp;lt;{NewGUI.java[NewGUI&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=CalGUI/src&amp;lt;com.limno.calgui{MainMenu.java[MainMenu&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=TestDSS/src&amp;lt;testDSS{DSSTest.java[DSSTest&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=WRIMS/src&amp;lt;calsim.gui{CalsimGui.java[CalsimGui&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=stripped/src&amp;lt;calsim.gui{CalsimGui.java[CalsimGui&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GUI/src&amp;lt;{Testing.java[Testing&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GUI/src&amp;lt;tjacobs.ui{JFileChooserEx.java[JFileChooserEx&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="271" key="DIALOG_Y_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="428" key="DIALOG_X_ORIGIN"/>
+			<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
 	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
 		<item value="267" key="SashWeightDetails"/>
 		<item value="732" key="SashWeightTree"/>
-		<item value="194" key="HEIGHT"/>
-		<item value="614" key="WIDTH"/>
+		<item value="162" key="HEIGHT"/>
+		<item value="506" key="WIDTH"/>
 	</section>
 </section>

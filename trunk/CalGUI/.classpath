@@ -2,8 +2,23 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
-	<classpathentry kind="lib" path="jdom.jar"/>
-	<classpathentry kind="lib" path="swixml.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/crimson.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/dsm2-input-model.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/forms-1.3.0.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/hec.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/hecData.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/heclib.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/iText.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/itext-hyph-xml.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/jfreechart.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/jpy.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/pdf-renderer.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/rma.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/swixml.jar"/>
+	<classpathentry kind="lib" path="D:/CALGUI/workspace/CalGUI/lib/vista.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

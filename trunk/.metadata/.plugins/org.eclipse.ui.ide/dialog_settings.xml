@@ -24,8 +24,9 @@
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="com.android.ide.eclipse.adt.project.NewProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="com.android.ide.eclipse.wizards.category"/>
 			<item value="org.eclipse.jdt.ui.java"/>
 			<item value="com.instantiations.designer"/>
 			<item value="com.instantiations.designer/com.instantiations.designer.gwt"/>
@@ -34,9 +35,11 @@
 	</section>
 	<section name="CleanDialogSettings">
 		<item value="411" key="DIALOG_WIDTH"/>
+		<item value="true" key="BUILD_NOW"/>
+		<item value="false" key="BUILD_ALL"/>
 		<item value="365" key="DIALOG_Y_ORIGIN"/>
 		<item value="755" key="DIALOG_X_ORIGIN"/>
-		<item value="353" key="DIALOG_HEIGHT"/>
-		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="416" key="DIALOG_HEIGHT"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
 	</section>
 </section>

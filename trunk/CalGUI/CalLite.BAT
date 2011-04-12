@@ -9,6 +9,8 @@ REM --
 REM ----------------------------------------------------------
 REM
 
+PROMPT "CalLite will run here - press any key to continue"
+
 PAUSE
 
 EXIT

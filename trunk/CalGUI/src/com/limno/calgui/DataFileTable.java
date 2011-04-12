@@ -3,9 +3,6 @@ package com.limno.calgui;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.beans.PropertyVetoException;
-import java.io.*;
-import java.util.*;
 
 public class DataFileTable extends JPanel {
   

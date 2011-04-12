@@ -1,5 +1,8 @@
 package com.limno.calgui;
 
+import javax.swing.event.EventListenerList;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 import java.io.*;
 import java.util.*;
@@ -9,6 +12,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected Vector<String> data;
 	protected Vector<String> columnNames ;  
 	protected String datafile;
+	protected EventListenerList listenerList = new EventListenerList();
 
 
 	public DataFileTableModel(String f){
@@ -63,7 +67,7 @@ public class DataFileTableModel extends AbstractTableModel {
 					}
 				}
 
-				else {
+				else { 
 
 					// CASE 2: THREE COLUMNS (year type, month, value) 
 					
@@ -145,17 +149,53 @@ public class DataFileTableModel extends AbstractTableModel {
 		return (String)data.elementAt
 		( (rowIndex * getColumnCount()) + columnIndex);
 	}
+	
+    public void addTableModelListener(TableModelListener l) {
+     listenerList.add(TableModelListener.class, l);
+    }
+    
+    public void removeTableModelListener(TableModelListener l) {
+    	listenerList.remove(TableModelListener.class, l);
+    }
 
+    public TableModelListener[] getTableModelListeners() {
+    	return (TableModelListener[])listenerList.getListeners(
+    			TableModelListener.class);
+    }
+
+	
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		data.setElementAt((String) aValue, ( (rowIndex * getColumnCount()) + columnIndex));        
+		fireTableCellUpdated(rowIndex, columnIndex);
 		//return;
 	}
+	
+	public void fireTableDataChanged() {
+		fireTableChanged(new TableModelEvent(this));
+	}
+	public void fireTableCellUpdated(int row, int column) {
+		fireTableChanged(new TableModelEvent(this, row, row, column));
+	}
+
+	public void fireTableChanged(TableModelEvent e) {
+		// Guaranteed to return a non-null array
+		Object  [] listeners = listenerList.getListenerList();
+		// Process the listeners last to first, notifying
+		// those that are interested in this event
+		for (int i = listeners.length-2; i>=0; i-=2) {
+			if (listeners[i]==TableModelListener.class) {
+				((TableModelListener)listeners[i+1]).tableChanged(e);
+			}
+		}
+	}
+
 
 	public void writeToFile(String outputFileName) {
 
 		OutputStream outputStream;
 		try {
-			outputStream = new FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
+			//outputStream = new FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
+			outputStream = new FileOutputStream(outputFileName);
 		}
 		catch (FileNotFoundException e2) {
 			System.out.println("Cannot open output file");
@@ -189,5 +229,10 @@ public class DataFileTableModel extends AbstractTableModel {
 		}
 
 	}
+
+	
+	
 }
+
+
 
