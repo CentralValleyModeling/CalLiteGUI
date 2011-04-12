@@ -3,6 +3,8 @@ package com.limno.calgui;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
 public class TableDialog extends JDialog {
@@ -39,7 +41,12 @@ public class TableDialog extends JDialog {
 	void jbInit(DataFileTableModel model) throws Exception	{
 		table = new JTable(){
 			public Component prepareRenderer(TableCellRenderer renderer, int rowIndex, int vColIndex) {
+				DefaultTableCellRenderer drenderer =  
+	                (DefaultTableCellRenderer)table.getDefaultRenderer(String.class);  
+				drenderer.setHorizontalAlignment(JLabel.RIGHT); 
+
 				Component c = super.prepareRenderer(renderer, rowIndex, vColIndex);
+				
 				if (vColIndex == 0 && !isCellSelected(rowIndex, vColIndex)) {
 					c.setBackground(Color.lightGray);
 				} else {
