@@ -12,15 +12,147 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected Vector<String> data;
 	protected Vector<String> columnNames ;  
 	protected String datafile;
+	protected String[] datafiles;
 	protected EventListenerList listenerList = new EventListenerList();
 
 
 	public DataFileTableModel(String f){
-		datafile = f;
-		initVectors();  
+		//check if multiple file names included
+		datafiles = f.split("[|]");
+		int size = datafiles.length;
+		
+		if (size == 1) {
+			// CASE 1: 1 file specified
+			datafile = f;
+			initVectors();  
+		} else if (size == 2) {
+			// CASE 2: 2 files specified
+			initVectors2();  
+		}
+
 	}
 
+	public void initVectors2() {
 
+		String aLine ;
+		data = new Vector<String>();
+		columnNames = new Vector<String>();	
+		String firstColumnName="";
+		String secondColumnName="";
+		ArrayList<String> allValues = new ArrayList<String>();
+		ArrayList<String> allValues1 = new ArrayList<String>();
+
+		for (int i = 0; i < datafiles.length; i++)
+		{
+
+			try {
+
+				FileInputStream fin =  new FileInputStream(datafiles[i]);
+				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+			
+				// Read until first non-comment line
+
+				aLine = br.readLine();
+				while (aLine.startsWith("!") && aLine != null ) {
+					aLine = br.readLine(); 
+				}
+
+				aLine = br.readLine();// Skip title line;
+
+				if (aLine != null){
+
+					// Extract column names from second line
+
+					StringTokenizer st1 = new StringTokenizer(aLine, "\t| ");
+					if (st1.countTokens() < 3) {
+						while(st1.hasMoreTokens()){
+							columnNames.addElement(st1.nextToken());}
+					} else{
+						firstColumnName = (String) st1.nextToken();
+						secondColumnName = (String) st1.nextToken();
+						st1.nextToken();
+						
+					}
+					// Extract data - first pass. Assumes we are reading in column-major order
+
+
+					aLine = br.readLine();
+					st1 = 	new StringTokenizer(aLine, "\t| ");
+					if (st1.countTokens() < 3) {
+
+						// CASE 1: TWO COLUMNS (month, value)
+
+						while (aLine != null) {  
+							StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+							
+							
+							//data.addElement(st2.nextToken());
+							//data.addElement(st2.nextToken());
+							allValues1.add(st2.nextToken());
+							allValues1.add(st2.nextToken());
+							aLine = br.readLine();
+						}
+						
+					}
+
+					else { 
+
+						// CASE 2: THREE COLUMNS (year type, month, value) 
+						//colct=columnNames.size();
+						//String firstColumnName = (String) columnNames.get(colct-3);
+						//String secondColumnName = (String) columnNames.get(colct-2);
+						
+						//columnNames.clear();
+						
+						//columnNames.addElement(firstColumnName);
+
+						String lastColID = "-1";
+						int rowCount = 0;
+
+						while (aLine != null) {
+
+							StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+							if (st2.countTokens() >= 3) {
+
+								st2.nextToken();
+								String aColID = st2.nextToken();
+								String aValue = st2.nextToken();
+								//System.out.println(Boolean.toString(lastColID == aColID)+" " + lastColID + ":" + aColID + ":" + aRowID + " " + aValue+ " " + Integer.toString(rowCount)+ " " + Integer.toString(columnNames.size()));
+								if (Integer.parseInt(lastColID) != Integer.parseInt(aColID)) {
+									columnNames.addElement(secondColumnName + aColID);
+									lastColID = aColID;
+									rowCount = 0;
+								}
+
+								rowCount++;
+								allValues.add(aValue);
+							}
+							aLine = br.readLine();
+						}
+						for (int r = 0; r < rowCount; r ++) {
+							data.addElement(allValues1.get(r*2));
+							data.addElement(allValues1.get(r*2+1));
+							//data.addElement(Integer.toString(r+1));
+							for (int c = 0; c < columnNames.size() - 2 ; c++) {
+								//System.out.println(Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount)+"="+Integer.toString(allValues.size()));
+
+								data.addElement(allValues.get(c*rowCount+r));
+							}}
+
+					}
+
+					br.close();  
+
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	
+	
 	public void initVectors() {
 
 		String aLine ;
@@ -43,7 +175,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			aLine = br.readLine();// Skip title line;
 
 			if (aLine != null){
-				
+
 				// Extract column names from second line
 
 				StringTokenizer st1 = new StringTokenizer(aLine, "\t| ");
@@ -58,7 +190,7 @@ public class DataFileTableModel extends AbstractTableModel {
 				if (st1.countTokens() < 3) {
 
 					// CASE 1: TWO COLUMNS (month, value)
-					
+
 					while (aLine != null) {  
 						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
 						data.addElement(st2.nextToken());
@@ -70,7 +202,7 @@ public class DataFileTableModel extends AbstractTableModel {
 				else { 
 
 					// CASE 2: THREE COLUMNS (year type, month, value) 
-					
+
 					String firstColumnName = (String) columnNames.get(0);
 					String secondColumnName = (String) columnNames.get(1);
 					columnNames.clear();
@@ -149,27 +281,27 @@ public class DataFileTableModel extends AbstractTableModel {
 		return (String)data.elementAt
 		( (rowIndex * getColumnCount()) + columnIndex);
 	}
-	
-    public void addTableModelListener(TableModelListener l) {
-     listenerList.add(TableModelListener.class, l);
-    }
-    
-    public void removeTableModelListener(TableModelListener l) {
-    	listenerList.remove(TableModelListener.class, l);
-    }
 
-    public TableModelListener[] getTableModelListeners() {
-    	return (TableModelListener[])listenerList.getListeners(
-    			TableModelListener.class);
-    }
+	public void addTableModelListener(TableModelListener l) {
+		listenerList.add(TableModelListener.class, l);
+	}
 
-	
+	public void removeTableModelListener(TableModelListener l) {
+		listenerList.remove(TableModelListener.class, l);
+	}
+
+	public TableModelListener[] getTableModelListeners() {
+		return (TableModelListener[])listenerList.getListeners(
+				TableModelListener.class);
+	}
+
+
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		data.setElementAt((String) aValue, ( (rowIndex * getColumnCount()) + columnIndex));        
 		fireTableCellUpdated(rowIndex, columnIndex);
 		//return;
 	}
-	
+
 	public void fireTableDataChanged() {
 		fireTableChanged(new TableModelEvent(this));
 	}
@@ -230,8 +362,50 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	}
 
-	
-	
+	public void writeToFile2(String outputFileName1, String outputFileName2) {
+
+		OutputStream outputStream1;
+		OutputStream outputStream2;
+		try {
+			//outputStream = new FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
+			outputStream1 = new FileOutputStream(outputFileName1);
+			outputStream2 = new FileOutputStream(outputFileName2);
+		}
+		catch (FileNotFoundException e2) {
+			System.out.println("Cannot open output file");
+			return;
+		} 
+
+		try {
+
+			PrintStream output1 = new PrintStream(outputStream1);
+			PrintStream output2 = new PrintStream(outputStream2);
+
+			output1.println(outputFileName1);
+			output2.println(outputFileName2);
+
+				output1.println(columnNames.elementAt(0)+" "+columnNames.elementAt(1));
+				for (int i = 1; i <= data.size() / 7; i++) {
+					output1.println(data.elementAt(i*7-7)+ " " + data.elementAt(i*7-6));
+				}
+
+				output2.println("year_type month day");
+				for (int i = 2; i <= 6; i++) 
+					for (int j = 0; j < data.size()/7; j++){
+						output2.println(Integer.toString(i-1) + " " + Integer.toString(j+1)+ " " + data.elementAt(j*7+i));
+					}
+
+				output1.close();
+				outputStream1.close();
+				output2.close();
+				outputStream2.close();
+		}
+		catch (IOException ioe) {
+			System.out.println("IOException");
+		}
+
+	}
+
 }
 
 
