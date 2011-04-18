@@ -12,6 +12,10 @@ import java.awt.Cursor;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +25,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -39,10 +44,12 @@ import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -51,17 +58,21 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -72,6 +83,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
@@ -81,7 +94,7 @@ import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener,
-		TableModelListener {
+		TableModelListener, MenuListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -89,15 +102,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 	JPanel runsettings;
 	JPanel mainmenu;
 	JPanel demands;
+	JPanel schematics;
 	JPanel hydroclimate;
-	JPanel Regulations;
-	JPanel Presets;
+	JPanel regulations;
+	JPanel Reporting;
 	JPanel reportdialog;
 	JPanel facilities;
 	JPanel operations;
 	JPanel Display;
 	JPanel controls2;
 	JPanel controls3;
+	JPanel presets;
 	JPanel hyd_CCOpt;
 	JPanel hyd_CC;
 	JPanel hyd_CC1;
@@ -133,25 +148,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		// Set ActionListeners (Regulations Page)
 
 		swix.setActionListener(menu, this);
-		swix.setActionListener(Regulations, this);
-		swix.setActionListener(Presets, this);
+		swix.setActionListener(regulations, this);
+		swix.setActionListener(Reporting, this);
 		swix.setActionListener(hydroclimate, this);
 		swix.setActionListener(demands, this);
 		swix.setActionListener(operations, this);
 		swix.setActionListener(facilities, this);
 		swix.setActionListener(runsettings, this);
+		swix.setActionListener(schematics, this);
 
 		// Set ItemListeners
-		GUI_Utils.SetCheckBoxItemListener(Regulations,this);
+		GUI_Utils.SetCheckBoxItemListener(regulations,this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(operations, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_SWP, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_CVP, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(hydroclimate, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(facilities, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Display, this);
-		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Presets, this);
-		GUI_Utils.SetMouseListener(Presets, this);
-
+		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
+		GUI_Utils.SetMouseListener(presets, this);
+		GUI_Utils.SetMenuListener(menu, this);
 
 		
 		
@@ -160,10 +176,42 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		// Set Up Run Settings Page
 
 		JLabel label = (JLabel) swix.find("map");
-		java.net.URL imgURL = getClass().getResource("/images/map.jpg");
+		java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta.jpg");
 		if (imgURL != null) {
-			ImageIcon image = new ImageIcon(imgURL, null);
+
+			BufferedImage img;
+			img = ImageIO.read(imgURL);
+			ImageIcon image = new ImageIcon(img, null);
 			label.setIcon(image);
+
+			//ImageIcon image = new ImageIcon(imgURL, null);
+			//label.setIcon(image);
+		}
+		
+		imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
+		if (imgURL != null) {
+			//ImageIcon image = new ImageIcon(imgURL, null);
+			//System.out.println(image.getIconHeight());
+
+			BufferedImage img;
+			img = ImageIO.read(imgURL);
+			Font defaultFont = new Font("Serif", Font.PLAIN, 20);
+			SymbolCanvas symbols = new SymbolCanvas(defaultFont, 0x2500, 207, img);
+			symbols.paint(img.getGraphics());
+
+			ImageIcon image = new ImageIcon(img, null);
+
+			ScrollablePicture picture = new ScrollablePicture(image,100);
+			picture.setName("schem_map");
+			JScrollPane scrollpane = (JScrollPane) swix.find("schem_scr");
+			scrollpane.add(picture);
+			scrollpane.setViewportView(picture);
+			scrollpane.setPreferredSize(new Dimension(800,700));
+			scrollpane.setOpaque(true);
+			scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+			
+			GUI_Utils.SetMouseListener(scrollpane, this);
+
 		}
 
 		JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
@@ -228,7 +276,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		gl = new GUILinks();
 		gl.readIn("Config\\GUI_Links.table");
 
-		// Setup for Presets page
+		// Setup for Reporting page
 
 		// Set up scenario list
 
@@ -289,7 +337,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		String cName = component.getName();
 		if (cName != null) {
 			if (cName.startsWith("ckbp")) {
-				// CheckBox in Presets panel changed
+				// CheckBox in presets panel changed
 				// String cID = cName.substring(3);
 			}
 
@@ -379,7 +427,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 				}
 			} else if (cName.startsWith("Repckb")) {
-				// Checkbox in Presets page changed
+				// Checkbox in Reporting page changed
 				if (cName.startsWith("RepckbExceedancePlot")) {
 					GUI_Utils.ToggleEnComponentAndChildren(controls2,e.getStateChange() == ItemEvent.SELECTED);
 				} else if (cName.startsWith("RepckbSummaryTable")) {
@@ -456,7 +504,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					
 					StringBuffer sb = new StringBuffer();
 					sb =  GUI_Utils.GetControlValues(runsettings, sb);
-					sb =  GUI_Utils.GetControlValues(Regulations, sb);
+					sb =  GUI_Utils.GetControlValues(regulations, sb);
 					sb =  GUI_Utils.GetControlValues(hydroclimate, sb);
 					sb =  GUI_Utils.GetControlValues(demands, sb);
 					sb =  GUI_Utils.GetControlValues(operations, sb);
@@ -518,40 +566,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 				// Copy 2005/2030 lookup tables
 				//pMon.setNote("Copying lookup tables...");
             	//pMon.setProgress(30);
-				File fsLOD;
-				if (LODFlag == 0)
-					fsLOD = new File(System.getProperty("user.dir")
-							+ "\\Default\\Lookup\\Table2005");
-				else
-					fsLOD = new File(System.getProperty("user.dir")
-							+ "\\Default\\Lookup\\Table2030");
-				File fsLODDest = new File(System.getProperty("user.dir")
-						+ "\\Run\\Lookup");
-				try {
-					GUI_Utils.copyDirectory(fsLOD, fsLODDest);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				File fsDem;
+				rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
+				if (rdb.isSelected()) {
+					fsDem = new File(System.getProperty("user.dir")
+							+ "\\Run\\Lookup\\FutureDemand");
+				} else {
+					fsDem = new File(System.getProperty("user.dir")
+							+ "\\Run\\Lookup\\VariableDemand");	
 				}
-				
-				
-				// Write "scenarioname.txt"
-				//pMon.setNote("Writing 'scenario.txt' file...");
-            	//pMon.setProgress(45);
-				/*
-				tf = (JTextField) swix.find("run_txfoDSS");
-				String oDSS = tf.getText().trim();
-				JTextArea ta = (JTextArea) swix.find("run_txaScenDesc");
-				String scendesc = ta.getText();
-				String[] newtext = new String[2];
-				Utils.CreateNewFile(System.getProperty("user.dir")
-						+ "\\Scenarios\\" + scen + ".txt");
-				newtext[0] = oDSS;
-				newtext[1] = scendesc;
-				Utils.WriteNewLinesInFile(System.getProperty("user.dir")
-						+ "\\Scenarios\\" + scen + ".txt", newtext);
-				*/
-			
+				GUI_Utils.deleteDir(fsDem);
+						
 				
                 
 				// Write study.sty
@@ -707,6 +732,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir")
 						+ "\\Run\\study.sty", LineNum, newtext);
+				
+				/*
+				//Sea Level Selections
+				File fsAnnO = new File(System.getProperty("user.dir")+ "\\Model\\Ann.dll");
+				File fsAnnS;
+				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
+				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
+				if (rdbSLR45.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir")+ "\\Default\\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+				} else if (rdbSLR15.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir")+ "\\Default\\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+				} else {
+					fsAnnS = new File(System.getProperty("user.dir")+ "\\Default\\\External\\Ann7inp_BST_noSLR_111709.dll");
+				}
+				try {
+					GUI_Utils.copyDirectory(fsAnnS, fsAnnO);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				*/
 
 				// Write SOD_demand_definitions.table
 				//pMon.setNote("Writing 'SOD_demand_definitions.table' file...");
@@ -745,7 +791,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 						+ String.format("%-10s", ntf5.getText())
 						+ String.format("%-10s", ntf6.getText());
 				GUI_Utils.ReplaceLineInFile(System.getProperty("user.dir")
-						+ "\\Run\\Lookup\\SOD_demand_definitions.table", 3, dem);
+						+ "\\Run\\Lookup\\SOD_demand_options.table", 3, dem);
 
 				// Write DLTREGULATION file
 				OutputStream outputStream;
@@ -788,17 +834,41 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 						// .isVisible())) {
 						if ((option == 2) || (option == 1)) {
 
-							System.out.println("Output to "
-									+ gl.tableNameForCtrl(cID));
-							String fo = System.getProperty("user.dir")
-									+ "\\Run\\Lookup\\"
-									+ gl.tableNameForCtrl(cID) + ".table";
-							int tID = Integer.parseInt(cID);
-							if (dTableModels[tID] == null) {
-								System.out.println("Table not initialized");
-							} else {
-								dTableModels[tID].writeToFile(fo);
+							String fileName = gl.tableNameForCtrl(cID);
+							
+							String[] files = fileName.split("[|]");
+							int size = files.length;							
+							if (size == 1) {
+								// CASE 1: 1 file specified
+								System.out.println("Output to "
+										+ fileName);
+								String fo = System.getProperty("user.dir")
+										+ "\\Run\\Lookup\\"+ fileName + ".table";
+								
+								int tID = Integer.parseInt(cID);
+								if (dTableModels[tID] == null) {
+									System.out.println("Table not initialized");
+								} else {
+									dTableModels[tID].writeToFile(fo);
+								}
+							} else if (size == 2) {
+								// CASE 2: 2 files specified
+								System.out.println("Output to "
+										+ files[0]);
+								String fo1=System.getProperty("user.dir")
+								+ "\\Run\\Lookup\\"+ files[0] + ".table";
+								String fo2=System.getProperty("user.dir")
+								+ "\\Run\\Lookup\\"+ files[1] + ".table";
+
+								int tID = Integer.parseInt(cID);
+								if (dTableModels[tID] == null) {
+									System.out.println("Table not initialized");
+								} else {
+									dTableModels[tID].writeToFile2(fo1, fo2);
+								}
+
 							}
+
 						}
 					}
 
@@ -846,7 +916,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 				
 				StringBuffer sb = new StringBuffer();
 				sb =  GUI_Utils.GetControlValues(runsettings, sb);
-				sb =  GUI_Utils.GetControlValues(Regulations, sb);
+				sb =  GUI_Utils.GetControlValues(regulations, sb);
 				sb =  GUI_Utils.GetControlValues(hydroclimate, sb);
 				sb =  GUI_Utils.GetControlValues(demands, sb);
 				sb =  GUI_Utils.GetControlValues(operations, sb);
@@ -892,7 +962,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 			
             }
                 
-
+            
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
 
 			JTable table = (JTable) swix.find("tblRegValues");
@@ -1015,7 +1085,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					c.setSelected(false);
 				}
 			}
-
 		} else if (e.getActionCommand().startsWith("AC_Report")) {
 			try {
 				dialog.setVisible(true);
@@ -1150,8 +1219,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		}
 
 		else if (e.getActionCommand().startsWith("Rep_AddList")) {
-			String cAdd;
-			cAdd = "Comp;";
 
 			// Store previous list items
 			JList lstReports = (JList) swix.find("lstReports");
@@ -1171,7 +1238,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 			for (int i = 0; i < n; i++) {
 				lstArray1[i] = lstArray[i];
 			}
+			
+			String cAdd;
+			cAdd = "";
+			// Comparison and Difference
+			JCheckBox ckb = (JCheckBox) swix.find("ckbp001");
+			if (ckb.isSelected()) {
+				cAdd = cAdd+ "Comp";
+			}
+			ckb = (JCheckBox) swix.find("ckbp002");
+			if (ckb.isSelected()) {
+				cAdd = cAdd+";Diff";
+			}
+			// Units
+			JRadioButton rdb = (JRadioButton) swix.find("rdbCFS");
+			if (rdb.isSelected()) {
+				cAdd = cAdd+";CFS";
+			} else {
+				cAdd = cAdd+";CFS";
+			}
 
+			
 			// Date
 			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
 			JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
@@ -1181,13 +1268,20 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					+ spnSY.getValue().toString();
 			cDate = cDate + "-" + spnEM.getValue().toString()
 					+ spnEY.getValue().toString();
-			cAdd = cAdd + cDate;
+			cAdd = cAdd + ";" + cDate;
 
-			Component[] components = controls3.getComponents();
-			JCheckBox ckb = (JCheckBox) swix.find("chbSummaryTable");
+			// Time Series
+			ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
+			if (ckb.isSelected()) {
+				cAdd = cAdd+";TS";
+			}
+			
+			//Exceedence Plot
+			Component[] components = controls2.getComponents();
+			ckb = (JCheckBox) swix.find("RepckbExceedancePlot");
 			if (ckb.isSelected()) {
 				String cST;
-				cST = ",ST-";
+				cST = ";EX-";
 				for (int i = 0; i < components.length; i++) {
 					if (components[i] instanceof JCheckBox) {
 						JCheckBox c = (JCheckBox) components[i];
@@ -1195,7 +1289,33 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 						if (b == true) {
 							String cName = c.getText();
 							// TODO Need different naming convention.
-							cST = cST + cName;
+							cST = cST + ","+ cName;
+						}
+					}
+				}
+				cAdd = cAdd + cST;
+			}			
+			
+			// Monthly Table
+			ckb = (JCheckBox) swix.find("RepckbMonthlyTable");
+			if (ckb.isSelected()) {
+				cAdd = cAdd+";Monthly";
+			}
+			
+			//Summary Table
+			components = controls3.getComponents();
+			ckb = (JCheckBox) swix.find("RepckbSummaryTable");
+			if (ckb.isSelected()) {
+				String cST;
+				cST = ";ST-";
+				for (int i = 0; i < components.length; i++) {
+					if (components[i] instanceof JCheckBox) {
+						JCheckBox c = (JCheckBox) components[i];
+						boolean b = c.isSelected();
+						if (b == true) {
+							String cName = c.getText();
+							// TODO Need different naming convention.
+							cST = cST + ","+ cName;
 						}
 					}
 				}
@@ -1203,8 +1323,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 			}
 
 			String cSTOR;
-			cSTOR = "";
-			components = Presets.getComponents();
+			cSTOR = ";";
+			components = presets.getComponents();
 			for (int i = 0; i < components.length; i++) {
 				if (components[i] instanceof JCheckBox) {
 					JCheckBox c = (JCheckBox) components[i];
@@ -1212,7 +1332,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					if (cName.startsWith("ckbp")) {
 						boolean b = c.isSelected();
 						if (b == true) {
-							cSTOR = cSTOR + "," + c.getText();
+							cSTOR = cSTOR + ";" + c.getText().trim();
 						}
 					}
 				}
@@ -1225,7 +1345,28 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 			lstReports.setListData(lstArray1);
 
 		}
+		
 
+		else if (e.getActionCommand().startsWith("Sch_Load")) {
+
+			JFileChooser fc = new JFileChooser();
+			fc.setFileFilter(new DSSFileFilter());
+			fc.setCurrentDirectory(new File(".//Scenarios"));
+			
+			String dirname = ".//Scenarios"; 
+
+            int retval = fc.showOpenDialog(mainmenu);
+            if (retval == JFileChooser.APPROVE_OPTION) {
+                //... The user selected a file, get it, use it.
+                File file = fc.getSelectedFile();
+                
+                JTextField tf = (JTextField) swix.find("schem_tfload");
+                tf.setText(file.toString());
+			
+            }
+
+		}
+		
 		else if (e.getActionCommand().startsWith("Rep_ClearList")) {
 
 			JList lstReports = (JList) swix.find("lstReports");
@@ -1268,9 +1409,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 
 		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
 
+			//Delete existing reportlist
+			File f = new File(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+			GUI_Utils.deleteDir(f);
+			GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+			
 			OutputStream outputStream;
 			try {
-				outputStream = new FileOutputStream("\\Config\\reportlist.cgr");
+				outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
 			} catch (FileNotFoundException e2) {
 				System.out.println("Cannot open reportlist.cgr");
 				return;
@@ -1327,7 +1473,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-
+		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
+			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+		    JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+		    verticalScrollBar.setValue(verticalScrollBar.getMinimum());
+			
+		} else if (e.getActionCommand().startsWith("Sch_Delta")) {
+			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+		    JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+		    verticalScrollBar.setValue((int) ((verticalScrollBar.getMaximum()-verticalScrollBar.getMinimum())*0.25));
+			
+		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
+			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+		    JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+		    verticalScrollBar.setValue(verticalScrollBar.getMaximum());
+			
 		} else {
 			JComponent component = (JComponent) e.getSource();
 			String cName = component.getName();
@@ -1396,8 +1556,30 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 			JComponent container) {
 
 		String fileName = gl.tableNameForCtrl(cID);
-		File f = new File("Default\\Lookup\\" + fileName + ".table");
-		boolean exists = f.exists();
+		
+		String[] files = fileName.split("[|]");
+		int size = files.length;
+		boolean exists = false;
+		
+		if (size == 1) {
+			// CASE 1: 1 file specified
+			fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" + fileName + ".table";
+			File f = new File(fileName);
+			exists = f.exists();
+		} else if (size == 2) {
+			// CASE 2: 2 files specified
+			fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[0]+ ".table";
+			File f = new File(fileName);
+			exists = f.exists();
+			if (exists) {
+				fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[1]+ ".table";
+				f = new File(fileName);
+				exists = f.exists();
+				fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[0]+ ".table" + "|" + System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[1]+ ".table";
+			}
+		}
+		//File f = new File("Default\\Lookup\\" + fileName + ".table");
+		//boolean exists = f.exists();
 		if (!exists) {
 			container.setVisible(false);
 		} else {
@@ -1407,8 +1589,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 				dTableModels = new DataFileTableModel[20];
 			}
 			if (dTableModels[tID] == null) {
-				dTableModels[tID] = new DataFileTableModel("Default\\Lookup\\"
-						+ fileName + ".table");
+				dTableModels[tID] = new DataFileTableModel(fileName);
 			}
 			// dTableModels[tID].addTableModelListener(this);
 
@@ -1474,6 +1655,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 	public void mousePressed(MouseEvent e) {
 		// Double Click
 		Integer iClickCount = e.getClickCount();
+		
 		if (iClickCount == 2) {
 			JComponent component = (JComponent) e.getComponent();
 
@@ -1526,11 +1708,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 
 						SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
 					    tabbedpane.insertTab("Summary", null, stp	, null, 0);
+					    
+					    MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
+					    tabbedpane.insertTab("Monthly", null, mtp , null, 0);
 
-						MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
-					    tabbedpane.insertTab("Monthly", null, mtp	, null, 0);
 
-					    // Show the frame
+						// Show the frame
 						JFrame frame = new JFrame();
 						
 						Container container = frame.getContentPane();
@@ -1539,13 +1722,25 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 						frame.setTitle("CalLite Results - " + chk.getText());
 						frame.setVisible(true);	
 
-//						DoAChart dc = new DoAChart();
-//						dc.main(primary_Results[0]);
+						//DoAChart dc = new DoAChart();
+						//dc.main(primary_Results[0]);
 
 
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
 					}
+				} else if (cName.startsWith("schem_map")) {
+					JFrame frame = new JFrame("Test");
+
+					Point b = e.getPoint();
+					int x = (int) b.getX();
+					int y = (int) b.getY();
+					
+					// show a joptionpane dialog using showMessageDialog
+					JOptionPane.showMessageDialog(frame,
+							"X = " + x + "; Y = " + y);
+					
+						
 				}
 			}
 		}
@@ -1564,6 +1759,38 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 
 	}
 
+	@Override
+	public void menuCanceled(MenuEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void menuDeselected(MenuEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void menuSelected(MenuEvent e) {
+		String cName = ((JMenu) e.getSource()).getName();
+		if (cName != null) {
+			if (cName.startsWith("menuR")) {
+				JPanel p = (JPanel) swix.find("settings"); 
+				p.setVisible(false);
+
+				p = (JPanel) swix.find("results"); 
+				p.setVisible(true);
+
+			} else if (cName.startsWith("menuS")) {
+				JPanel p = (JPanel) swix.find("results"); 
+				p.setVisible(false);
+
+				p = (JPanel) swix.find("settings"); 
+				p.setVisible(true);
+			}
+		}
+		//System.out.print("Clicked! " + ((JMenu) e.getSource()).getText()); //action depending on text/name ...
+	}
 	
 }
