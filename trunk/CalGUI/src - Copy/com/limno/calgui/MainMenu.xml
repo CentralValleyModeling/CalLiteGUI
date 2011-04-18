@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<frame size="300,100">
-    <label constraints="BorderLayout.CENTER" text="Hello World"/>
-    <button id="quit" constraints="BorderLayout.SOUTH" text="Quit"/>
-</frame>
