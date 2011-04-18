@@ -1,6 +1,6 @@
 ! Switches related to CVP and SWP SOD demands, user-defined demands, and adjustment percent for interruptible deliveries.  
 ! These values will be written out by the GUI.
-! User-defined demands cannot exceed Full Table A amounts (for SWP) and Full contract amounts (for CVP). 
+1         1         1911.5    1189.4    1032.1    1         1963.1    147.65    281.06    
 !	SWP MWD max is 1911.5 
 !	SWP Other MI max is 1189.4 (1226.5 total - 37.1 NOD) 
 !	SWP Ag max is 1032.1
