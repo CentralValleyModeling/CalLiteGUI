@@ -550,15 +550,40 @@ public class GUI_Utils {
     			String[] tokens = textinLine.split(delims);
     			String cID=tokens[0];
     			
-    			String fileName = gl.tableNameForCtrl(cID);
+    			String fileName = gl.tableNameForCtrl(cID);   			
+    			if (fileName != null) {
+
+    				String[] files = fileName.split("[|]");
+    				int size = files.length;
+
+    				if (size == 1) {
+    					// CASE 1: 1 file specified
+    					fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" + fileName + ".table";
+    					File fn = new File(fileName);
+    					Boolean exists = fn.exists();
+    				} else if (size == 2) {
+    					// CASE 2: 2 files specified
+    					fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[0]+ ".table";
+    					File fn = new File(fileName);
+    					Boolean  exists = fn.exists();
+    					if (exists) {
+    						fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[1]+ ".table";
+    						fn = new File(fileName);
+    						exists = fn.exists();
+    						fileName=System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[0]+ ".table" + "|" + System.getProperty("user.dir") + "\\Default\\Lookup\\" +  files[1]+ ".table";
+    					}
+    				}
+
+    			}
+
+    			
     			int tID = Integer.parseInt(cID);
 
     			if (dTableModels == null) {
     				dTableModels = new DataFileTableModel[20];
     			}
     			if (dTableModels[tID] == null) {
-    				dTableModels[tID] = new DataFileTableModel("Default\\Lookup\\"
-    						+ fileName + ".table");
+    				dTableModels[tID] = new DataFileTableModel(fileName);
     			}
 
         		dTableModels[tID].setVectors(tokens[1]);
