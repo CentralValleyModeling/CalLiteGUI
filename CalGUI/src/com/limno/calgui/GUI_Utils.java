@@ -25,9 +25,12 @@ import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuListener;
 import javax.swing.text.JTextComponent;
 
@@ -293,6 +296,18 @@ public class GUI_Utils {
         	SetMenuListener(child,obj);
         }
     }
+    
+    public static void SetChangeListener(Component component, Object obj) {
+		
+    	if (component instanceof JTabbedPane) {
+    		JTabbedPane tp = (JTabbedPane) component;
+    		tp.addChangeListener((ChangeListener) obj);
+    	}
+        for (Component child : ((Container) component).getComponents()) {
+        	SetChangeListener(child,obj);
+        }
+    }
+        
     
     public static void SetCheckBoxItemListener(Component component, Object obj) {
 		
@@ -588,9 +603,9 @@ public class GUI_Utils {
 
         		dTableModels[tID].setVectors(tokens[1]);
         		
-    			JTable table = (JTable) swix.find("tblRegValues");
-    			table.setModel(dTableModels[tID]);
-    			table.createDefaultColumnsFromModel();
+    			//JTable table = (JTable) swix.find("tblRegValues");
+    			//table.setModel(dTableModels[tID]);
+    			//table.createDefaultColumnsFromModel();
 
     		}
 
