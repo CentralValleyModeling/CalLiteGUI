@@ -1040,7 +1040,7 @@
 				</panel>
 				<panel id="regulations" name="Regulations" constraints="BorderLayout.LEFT"
 					layout="GridBagLayout">
-					<tabbedpane constraints="Borderlayout.CENTER" id="reg_tabbedPane">
+					<tabbedpane name="reg_tabbedPane"  constraints="Borderlayout.CENTER" id="reg_tabbedPane">
 						<panel name="D-1641" resizeable="false" border="TitledBorder()"
 							minimumsize="450,380" layout="GridBagLayout">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
@@ -1236,27 +1236,39 @@
 					<panel id="reg_panTab" border="TitledBorder(Values)"
 						resizeable="false" minimumsize="600,450" layout="GridBagLayout">
 						<gridbagconstraints insets="0,5,0,5" gridx="1"
-							gridy="0" gridheight="30" gridwidth="5"
+							gridy="0" gridheight="30" gridwidth="6"
 							anchor="GridBagConstraints.NORTHWEST" />
 						<button enabled="true" text="Copy" minimumsize="100,20"
 							ActionCommand="Reg_Copy">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="1" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button enabled="true" text="Paste" minimumsize="100,20"
 							ActionCommand="Reg_Paste">
 							<gridbagconstraints insets="0,0,5,5" gridx="1"
-								gridy="1" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button id="btnRegDef" text="Default" minimumsize="100,20"
-							ActionCommand="Reg_Default" enabled="false">
+							ActionCommand="Reg_Default" enabled="false" visible="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
-								gridy="1" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
+						<buttongroup>
+							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641"
+									text="D-1641">
+									<gridbagconstraints insets="0,0,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1"/>
+								</radiobutton>
+								<radiobutton id="reg_rdbUD" name="reg_rdbUD"
+									text="User defined" selected="false">
+									<gridbagconstraints insets="10,0,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="2"/>
+								</radiobutton>
+						</buttongroup>
 						<scrollpane id="scrRegValues" layout="BorderLayout"
 							preferredsize="550,450" resizeable="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="2" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="3" gridwidth="6" anchor="GridBagConstraints.NORTHWEST" />
 							<table id="tblRegValues" name="tblRegValues" resizeable="false" >
 							</table>
 						</scrollpane>

@@ -150,7 +150,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 		swix.setActionListener(schematics, this);
 
 		// Set ItemListeners
-		GUI_Utils.SetCheckBoxItemListener(regulations,this);
+		GUI_Utils.SetCheckBoxorRadioButtonItemListener(regulations,this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(operations, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_SWP, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_CVP, this);
@@ -387,6 +387,29 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 					component.setEnabled(false);
 					table.setVisible(false);
 
+					} 
+			}else if (cName.startsWith("reg_rdbD1641")) {
+				// do not allow user edits to tables
+				JTable table = (JTable) swix.find("tblRegValues");
+				JRadioButton rdb = (JRadioButton) e.getItem();
+				
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					DataFileTableModel tm = (DataFileTableModel) table.getModel();
+					int size = tm.datafiles.length;
+					if (size == 1) {
+						tm.initVectors();  
+					} else if (size == 2) {
+						tm.initVectors2();  
+					}
+					table.repaint();
+					
+					table.setCellSelectionEnabled(false);
+					table.setEnabled(false);
+					if(table.isEditing())
+					{table.getCellEditor().stopCellEditing();}
+				} else {
+					table.setCellSelectionEnabled(true);
+					table.setEnabled(true);
 				}
 
 			} else if (cName.startsWith("fac_ckb")) {
