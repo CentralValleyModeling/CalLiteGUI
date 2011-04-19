@@ -15,6 +15,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected String[] datafiles;
 	protected EventListenerList listenerList = new EventListenerList();
 
+	String wyts[] = {"Wet","Above Normal","Below Normal","Dry","Critical"};
 
 	public DataFileTableModel(String f){
 		//check if multiple file names included
@@ -33,6 +34,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	}
 
 	public void initVectors2() {
+
 
 		String aLine ;
 		data = new Vector<String>();
@@ -119,7 +121,10 @@ public class DataFileTableModel extends AbstractTableModel {
 								String aValue = st2.nextToken();
 								//System.out.println(Boolean.toString(lastColID == aColID)+" " + lastColID + ":" + aColID + ":" + aRowID + " " + aValue+ " " + Integer.toString(rowCount)+ " " + Integer.toString(columnNames.size()));
 								if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
-									columnNames.addElement(secondColumnName + aColID);
+									if (secondColumnName.toLowerCase().startsWith("wyt"))
+										columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
+									else
+										columnNames.addElement(secondColumnName + aColID);
 									lastColID = aColID;
 									rowCount = 0;
 								}
@@ -222,7 +227,10 @@ public class DataFileTableModel extends AbstractTableModel {
 							String aValue = st2.nextToken();
 							//System.out.println(Boolean.toString(lastColID == aColID)+" " + lastColID + ":" + aColID + ":" + aRowID + " " + aValue+ " " + Integer.toString(rowCount)+ " " + Integer.toString(columnNames.size()));
 							if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
-								columnNames.addElement(secondColumnName + aColID);
+								if (secondColumnName.toLowerCase().startsWith("wyt"))
+									columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
+								else
+									columnNames.addElement(secondColumnName + aColID);
 								lastColID = aColID;
 								rowCount = 0;
 							}
