@@ -1249,7 +1249,7 @@
 								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button id="btnRegDef" text="Default" minimumsize="100,20"
-							ActionCommand="Reg_Default" enabled="false" visible="false">
+							ActionCommand="Reg_Default" visible="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
@@ -1274,9 +1274,8 @@
 						</scrollpane>
 					</panel>
 				</panel>
-				<panel name="Operations" layout="FlowLayout(FlowLayout.LEFT)">
-					<panel id="operations" border="TitledBorder()" font="Tahoma-Bold-12"
-						layout="GridBagLayout">
+				<panel id="operations" name="Operations" layout="GridBagLayout">
+
 						<panel border="TitledBorder(CVP/SVP Allocation Methods)"
 							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
@@ -1398,8 +1397,8 @@
 						<panel border="TitledBorder(CVP Operations and Facilities)"
 							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="50"
-								gridwidth="2" />
+								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
+								gridwidth="1" />
 							<checkbox text="Cross Valley Canal Wheeling" id="op_rdb6"
 								name="op_rdb6">
 								<gridbagconstraints insets="0,0,5,5"
@@ -1415,6 +1414,35 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
 							</checkbox>
 						</panel>
+
+					
+					<panel id="op_panTab" border="TitledBorder(Values)"
+						resizeable="false" minimumsize="400,450" layout="GridBagLayout">
+						<gridbagconstraints insets="0,5,0,5" gridx="1"
+							gridy="0" gridheight="2" gridwidth="1"
+							anchor="GridBagConstraints.NORTHWEST" />
+						<button enabled="true" text="Copy" minimumsize="100,20"
+							ActionCommand="Op_Copy">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
+						</button>
+						<button enabled="true" text="Paste" minimumsize="100,20"
+							ActionCommand="Op_Paste">
+							<gridbagconstraints insets="0,0,5,5" gridx="1"
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
+						</button>
+						<button id="btnOPDef" text="Default" minimumsize="100,20"
+							ActionCommand="Reg_Default" visible="false">
+							<gridbagconstraints insets="0,0,5,5" gridx="2"
+								gridy="1" gridheight ="2" anchor="GridBagConstraints.NORTHWEST" />
+						</button>
+						<scrollpane id="scrOpValues" layout="BorderLayout"
+							preferredsize="350,450" resizeable="false">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="3" gridwidth="6" anchor="GridBagConstraints.NORTHWEST" />
+							<table id="tblOpValues" name="tblOpValues" resizeable="false" >
+							</table>
+						</scrollpane>
 					</panel>
 
 				</panel>
