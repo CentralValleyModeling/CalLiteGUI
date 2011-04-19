@@ -81,6 +81,7 @@ import javax.swing.event.TableModelListener;
 
 import org.swixml.SwingEngine;
 
+import com.limno.calgui.GetDSSFilename.CheckListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
 
@@ -1709,8 +1710,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener,
 						chk.setFont(new Font("Tahoma", Font.ITALIC, 12));
 						chk.repaint();
 
-						JLabel label = (JLabel) swix.find("lblBase");
-						dss_Grabber.setBase(label.getToolTipText());
+						for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
+							CheckListItem item = (CheckListItem) lstScenarios.getModel().getElementAt(i);
+							if (item.isSelected())
+							dss_Grabber.setBase(item.toString());
+							}
+							 
 
 						dss_Grabber.setLocation(cName);
 						// TODO: Set location based on sender

@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,9 +19,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
-import sun.security.util.Debug;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
 
 class FileListModel extends DefaultListModel {
 
@@ -40,31 +43,62 @@ public class GetDSSFilename implements ActionListener {
 	String theFileExt = null;
 
 	public GetDSSFilename(JList aList, JLabel aLabel) {
-		lmScenNames = new DefaultListModel();
-		fc.setFileFilter(new DSSFileFilter());
-		fc.setCurrentDirectory(new File(".//Scenarios"));
-		theList = aList;
 		theLabel = aLabel;
 		theTextField = null;
+		Setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField) {
-		lmScenNames = new DefaultListModel();
-		fc.setFileFilter(new DSSFileFilter());
-		fc.setCurrentDirectory(new File(".//Scenarios"));
-		theList = aList;
 		theLabel = null;
 		theTextField = aTextField;
+		Setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField, String aFileExt) {
-		lmScenNames = new DefaultListModel();
-		fc.setFileFilter(new SimpleFileFilter(aFileExt));
-		fc.setCurrentDirectory(new File(".//Scenarios"));
-		theList = aList;
 		theLabel = null;
 		theTextField = aTextField;
 		theFileExt = aFileExt;
+		Setup(aList);
+	}
+
+	private void Setup(JList aList) {
+
+		lmScenNames = new DefaultListModel();
+		fc.setFileFilter(new DSSFileFilter());
+		fc.setCurrentDirectory(new File(".//Scenarios"));
+
+		theList = aList;
+		theList.setCellRenderer(new CheckListRenderer());
+		theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		// Add a mouse listener to handle changing selection
+
+		theList.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent event) {
+				JList list = (JList) event.getSource();
+
+				// Get index of item clicked
+
+				int index = list.locationToIndex(event.getPoint());
+				CheckListItem item = (CheckListItem) list.getModel().getElementAt(index);
+
+				// Toggle selected state
+
+				if (!item.isSelected()) {
+
+					for (int i = 0; i < list.getModel().getSize(); i++) {
+						if (i != index)
+							((CheckListItem) list.getModel().getElementAt(i)).setSelected(false);
+					}
+					item.setSelected(true);
+				}
+
+				// Repaint cell
+
+				list.repaint(list.getCellBounds(index, index));
+			}
+		});
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -77,11 +111,12 @@ public class GetDSSFilename implements ActionListener {
 		File file;
 		if (rc == 0) {
 			file = fc.getSelectedFile();
-			lmScenNames.addElement(file.getPath());
+			lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
 			if (theList == null || lmScenNames.getSize() == 1) {
+				((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
 				if (theLabel != null) {
-					theLabel.setText(file.getName());
-					theLabel.setToolTipText(file.getPath());
+					// theLabel.setText(file.getName());
+					// theLabel.setToolTipText(file.getPath());
 				} else {
 					theTextField.setText(file.getName());
 					theTextField.setToolTipText(file.getPath());
@@ -95,8 +130,8 @@ public class GetDSSFilename implements ActionListener {
 
 	class FileNameRenderer extends DefaultListCellRenderer {
 		/**
-		 * 
-		 */
+* 
+*/
 		private static final long serialVersionUID = -3040003845509293885L;
 
 		private JFileChooser2 theOwner;
@@ -113,10 +148,10 @@ public class GetDSSFilename implements ActionListener {
 			if (!theOwner.ToolTipFlag) {
 				theToolTips.clear();
 				File folder = new File(System.getProperty("user.dir") + "\\Scenarios"); // change
-																						// to
-																						// read
-																						// current
-																						// directory
+				// to
+				// read
+				// current
+				// directory
 				File[] listOfFiles = folder.listFiles();
 
 				for (int i = 0; i < listOfFiles.length; i++) {
@@ -136,7 +171,7 @@ public class GetDSSFilename implements ActionListener {
 						}
 					}
 					theOwner.ToolTipFlag = true;// need to flag when dierctory
-												// changes
+					// changes
 				}
 			}
 			File file = new File(String.valueOf(value));
@@ -153,8 +188,8 @@ public class GetDSSFilename implements ActionListener {
 
 	class JFileChooser2 extends javax.swing.JFileChooser {
 		/**
-		 * 
-		 */
+* 
+*/
 		private static final long serialVersionUID = -150877374751505363L;
 
 		public boolean ToolTipFlag = false;
@@ -197,4 +232,46 @@ public class GetDSSFilename implements ActionListener {
 		}
 	}
 
+	class CheckListItem {
+		private String label;
+		private String fullname;
+		private boolean isSelected = false;
+
+		public CheckListItem(String label, String label2) {
+			this.label = label2;
+			this.fullname = label;
+		}
+
+		public boolean isSelected() {
+			return isSelected;
+		}
+
+		public void setSelected(boolean isSelected) {
+			this.isSelected = isSelected;
+		}
+
+		public String toString() {
+			return fullname;
+		}
+
+		public String toString2() {
+			return label;
+		}
+	}
+
+	// Handles rendering cells in the list using a check box
+
+	class CheckListRenderer extends JRadioButton implements ListCellRenderer {
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+				boolean hasFocus) {
+			setEnabled(list.isEnabled());
+			setSelected(((CheckListItem) value).isSelected());
+			setFont(list.getFont());
+			setBackground(list.getBackground());
+			setForeground(list.getForeground());
+			setText(((CheckListItem) value).toString2());
+			this.setToolTipText(value.toString());
+			return this;
+		}
+	}
 }
