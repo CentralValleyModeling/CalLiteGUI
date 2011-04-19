@@ -63,42 +63,44 @@ public class GetDSSFilename implements ActionListener {
 
 	private void Setup(JList aList) {
 
-		lmScenNames = new DefaultListModel();
 		fc.setFileFilter(new DSSFileFilter());
 		fc.setCurrentDirectory(new File(".//Scenarios"));
 
-		theList = aList;
-		theList.setCellRenderer(new CheckListRenderer());
-		theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		if (aList != null) {
+			lmScenNames = new DefaultListModel();
 
-		// Add a mouse listener to handle changing selection
+			theList = aList;
+			theList.setCellRenderer(new CheckListRenderer());
+			theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		theList.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent event) {
-				JList list = (JList) event.getSource();
+			// Add a mouse listener to handle changing selection
 
-				// Get index of item clicked
+			theList.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent event) {
+					JList list = (JList) event.getSource();
 
-				int index = list.locationToIndex(event.getPoint());
-				CheckListItem item = (CheckListItem) list.getModel().getElementAt(index);
+					// Get index of item clicked
 
-				// Toggle selected state
+					int index = list.locationToIndex(event.getPoint());
+					CheckListItem item = (CheckListItem) list.getModel().getElementAt(index);
 
-				if (!item.isSelected()) {
+					// Toggle selected state
 
-					for (int i = 0; i < list.getModel().getSize(); i++) {
-						if (i != index)
-							((CheckListItem) list.getModel().getElementAt(i)).setSelected(false);
+					if (!item.isSelected()) {
+
+						for (int i = 0; i < list.getModel().getSize(); i++) {
+							if (i != index)
+								((CheckListItem) list.getModel().getElementAt(i)).setSelected(false);
+						}
+						item.setSelected(true);
 					}
-					item.setSelected(true);
+
+					// Repaint cell
+
+					list.repaint(list.getCellBounds(index, index));
 				}
-
-				// Repaint cell
-
-				list.repaint(list.getCellBounds(index, index));
-			}
-		});
-
+			});
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -111,9 +113,11 @@ public class GetDSSFilename implements ActionListener {
 		File file;
 		if (rc == 0) {
 			file = fc.getSelectedFile();
-			lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
+			if (theList != null)
+				lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
 			if (theList == null || lmScenNames.getSize() == 1) {
-				((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
+				if (theList != null)
+					((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
 				if (theLabel != null) {
 					// theLabel.setText(file.getName());
 					// theLabel.setToolTipText(file.getPath());
