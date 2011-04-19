@@ -203,8 +203,8 @@ public class DataFileTableModel extends AbstractTableModel {
 
 					// CASE 2: THREE COLUMNS (year type, month, value) 
 
-					String firstColumnName = (String) columnNames.get(1);
-					String secondColumnName = (String) columnNames.get(0);
+					String firstColumnName = (String) columnNames.get(0);
+					String secondColumnName = (String) columnNames.get(1);
 					columnNames.clear();
 					columnNames.addElement(firstColumnName);
 
@@ -217,8 +217,8 @@ public class DataFileTableModel extends AbstractTableModel {
 						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
 						if (st2.countTokens() >= 3) {
 							
-							String aColID = st2.nextToken();
 							st2.nextToken();
+							String aColID = st2.nextToken();
 							String aValue = st2.nextToken();
 							//System.out.println(Boolean.toString(lastColID == aColID)+" " + lastColID + ":" + aColID + ":" + aRowID + " " + aValue+ " " + Integer.toString(rowCount)+ " " + Integer.toString(columnNames.size()));
 							if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
