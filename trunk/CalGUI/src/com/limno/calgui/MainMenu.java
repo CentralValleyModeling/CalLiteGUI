@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			BufferedImage img;
 			img = ImageIO.read(imgURL);
 			ImageIcon image = new ImageIcon(img, null);
-			label.setIcon(image);
+		//	label.setIcon(image);
 
 			// ImageIcon image = new ImageIcon(imgURL, null);
 			// label.setIcon(image);
