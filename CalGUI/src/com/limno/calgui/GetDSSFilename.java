@@ -23,6 +23,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
+import javax.swing.JButton;
 
 class FileListModel extends DefaultListModel {
 
@@ -104,30 +105,49 @@ public class GetDSSFilename implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		int rc;
-		if (theFileExt == null)
-			rc = fc.showOpenDialog(null);
-		else
-			rc = fc.showDialog(null, "Save");
+		Object obj = e.getSource();
+		System.out.print(((JButton) obj).getName());
+		if (((JButton) obj).getName().equals("btnDelScenario")) {
+			if ((theList != null) && lmScenNames.getSize() > 0) {
+				System.out.print(((JButton) obj).getName());
+				int todel = -1;
+				for (int i = 0; i < lmScenNames.getSize(); i++)
+					if (((CheckListItem) lmScenNames.getElementAt(i)).isSelected())
+						todel = i;
+				if (todel > 0)
+					((CheckListItem) lmScenNames.getElementAt(todel - 1)).setSelected(true);
+				else if (todel < lmScenNames.getSize() - 1)
+					((CheckListItem) lmScenNames.getElementAt(todel + 1)).setSelected(true);
+				lmScenNames.remove(todel);
 
-		File file;
-		if (rc == 0) {
-			file = fc.getSelectedFile();
-			if (theList != null)
-				lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
-			if (theList == null || lmScenNames.getSize() == 1) {
-				if (theList != null)
-					((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
-				if (theLabel != null) {
-					// theLabel.setText(file.getName());
-					// theLabel.setToolTipText(file.getPath());
-				} else {
-					theTextField.setText(file.getName());
-					theTextField.setToolTipText(file.getPath());
-				}
 			}
-			if (theList != null)
-				theList.repaint();
+		} else {
+			System.out.print(((JButton) obj).getName());
+			int rc;
+			if (theFileExt == null)
+				rc = fc.showOpenDialog(null);
+			else
+				rc = fc.showDialog(null, "Save");
+
+			File file;
+			if (rc == 0) {
+				file = fc.getSelectedFile();
+				if (theList != null)
+					lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
+				if (theList == null || lmScenNames.getSize() == 1) {
+					if (theList != null)
+						((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
+					if (theLabel != null) {
+						// theLabel.setText(file.getName());
+						// theLabel.setToolTipText(file.getPath());
+					} else {
+						theTextField.setText(file.getName());
+						theTextField.setToolTipText(file.getPath());
+					}
+				}
+				if (theList != null)
+					theList.repaint();
+			}
 		}
 		return;
 	}
