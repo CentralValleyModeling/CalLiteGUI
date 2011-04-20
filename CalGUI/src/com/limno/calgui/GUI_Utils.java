@@ -11,11 +11,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
@@ -274,7 +278,82 @@ public class GUI_Utils {
     	}catch (Exception e){
     		System.err.println("Error: " + e.getMessage());
     	}
-    }   
+    } 
+    
+    
+    public static void WriteGUITables(ArrayList arr, SwingEngine swix) throws IOException {
+    	String filename="";
+    	File f=null;
+    	BufferedWriter outobj =null;
+		String line="", outstring="";
+		String cName="", tableName="", descr="", value="", option="";
+		Boolean val;
+		int index;
+		
+    	final String NL = System.getProperty("line.separator"); 
+    	
+		for (int i = 0; i<arr.size();i++) {
+			line = arr.get(i).toString();
+			String[] parts = line.split("[\t]+");
+			cName = parts[0].trim();
+			tableName=parts[1].trim();
+			index=Integer.parseInt(parts[2].trim());
+			option=parts[3].trim();
+			descr= "!"+ parts[4].trim();
+
+			if (tableName.equals(filename)) {
+			
+			} else{
+				if (outobj!=null) {outobj.close();}	//close existing file
+				
+				filename=tableName;
+				f=new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + filename);
+				GUI_Utils.deleteDir(f);
+	    		FileWriter fstream = new FileWriter(f);
+	    		outobj = new BufferedWriter(fstream);
+	    		
+	    		outstring =filename.substring(0,filename.length()-6) + NL;
+	    		outobj.write(outstring);
+	    		outstring ="Index" + "\t" + "Option" + NL;
+	    		outobj.write(outstring);
+			}
+			
+    		Component c = (Component) swix.find(cName);
+    		
+            if (c instanceof JTextField || c instanceof NumericTextField || c instanceof JTextArea) {
+    			value=((JTextComponent) c).getText();
+    			option=value;
+        		outstring = (index + "\t" + option + "\t" + descr + NL); 
+        		outobj.write(outstring);
+    		}else if (c instanceof JCheckBox) {
+    			val=((AbstractButton) c).isSelected();
+    			value=val.toString();
+    			if (value.startsWith("true")) {
+    				option="1";
+            		outstring = (index + "\t" + option + "\t" + descr + NL); 
+            		outobj.write(outstring);
+    			} else {
+    				option="0";
+            		outstring = (index + "\t" + option + "\t" + descr + NL); 
+            		outobj.write(outstring);
+            	}
+    		}else if (c instanceof JRadioButton) {
+    			val=((AbstractButton) c).isSelected();
+    			value=val.toString();
+    			
+    			if (value.startsWith("true")) {
+            		outstring = (index + "\t" + option + "\t" + descr + NL); 
+            		outobj.write(outstring);
+            	}
+    		}else if (c == null) {      //control not found    			
+        		outstring = (index + "\t" + option + "\t" + descr + NL); 
+        		outobj.write(outstring);
+    		}    
+           	
+		}
+ 	    outobj.close();   	
+
+    }
     
     public static void SetMouseListener(Component component, Object obj) {
 		
@@ -457,7 +536,7 @@ public class GUI_Utils {
         }
 		return sb;
     }
-    
+      
     public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, GUILinks gl, StringBuffer sb) {
     	final String NL = System.getProperty("line.separator"); 
     	
@@ -619,11 +698,79 @@ public class GUI_Utils {
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
-		
-    	
-
-
 
 	}
+	
+    public static ArrayList GetGUILinks (String filename) {
+    	ArrayList GUILinks = new ArrayList();
+
+		Scanner input;
+		try 
+		{
+			input = new Scanner(new FileReader(filename));
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Cannot open input file " + filename);
+			return null;
+		}
+		
+	    int lineCount = 0;
+	    int rowid=0;
+	    int colid=0;
+		while (input.hasNextLine()) {
+			String line = input.nextLine();
+			lineCount++;
+			if (lineCount > 1) {
+				StringTokenizer st1 = new StringTokenizer(line, "\t| ");
+				if (st1.countTokens()>0) {
+					GUILinks.add(line);
+				}			
+			}
+		}
+
+		input.close();
+
+		return GUILinks;
+    }
+	
+    public static String GetControls(Component component, String str) {
+        //System.out.println(component.getName());
+		String comp="";
+		String type="";
+		String value="";
+		Boolean val;
+
+		final String NL = System.getProperty("line.separator"); 
+		
+        if (component instanceof JTextField || component instanceof NumericTextField || component instanceof JTextArea) {
+			comp=component.getName();
+			type="Text";
+			value=((JTextComponent) component).getText();
+		} else if (component instanceof JSpinner) {
+				comp=component.getName();	
+				type="Spinner";
+				value= ((JSpinner) component).getValue().toString();
+		}else if (component instanceof JCheckBox) {
+			comp=component.getName();
+			type="Checkbox";
+			val=((AbstractButton) component).isSelected();
+			value=val.toString();
+		}else if (component instanceof JRadioButton) {
+			comp=component.getName();
+			type="Radiobutton";
+			val=((AbstractButton) component).isSelected();
+			value=val.toString();
+		}    
+        if (comp != null) {str = str+ (comp + "|" + type + "|" + value + NL);}
+        
+        if (component instanceof JSpinner) {
+        
+        } else {
+	        for (Component child : ((Container) component).getComponents()) {
+	        	GetControls(child, str);
+	        }
+        }
+		return str;
+    }
 	
 }
