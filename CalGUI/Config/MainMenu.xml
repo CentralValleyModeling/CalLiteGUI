@@ -179,7 +179,7 @@
 					<panel preferredsize="603,619">
 						<gridbagconstraints insets="0,0,5,5"
 							anchor="GridBagConstraints.NORTHEAST" gridx="1" gridy="0" />
-						<label id="map"></label>
+						<label id="map" icon="images/CA_map_and_Delta.jpg"></label>
 					</panel>
 				</panel>
 				<panel id="hydroclimate" name="Hydroclimate" layout="FlowLayout(FlowLayout.LEFT)">
