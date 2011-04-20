@@ -34,6 +34,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
@@ -75,6 +76,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
@@ -85,7 +88,10 @@ import org.swixml.SwingEngine;
 import com.limno.calgui.GetDSSFilename.CheckListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
-public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener {
+
+
+public class MainMenu implements ActionListener, ItemListener, MouseListener,
+TableModelListener, MenuListener, ChangeListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -162,6 +168,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
 		GUI_Utils.SetMouseListener(presets, this);
 		GUI_Utils.SetMenuListener(menu, this);
+		GUI_Utils.SetChangeListener(regulations, this);
 
 		// Set current directory (Run Settings Page)
 
@@ -510,13 +517,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			String scen = tf.getText();
 			if (!scen.equals("")) {
 
-				/*
-				 * StatusBar statusBar = new StatusBar(); desktop.add(statusBar,
-				 * java.awt.BorderLayout.SOUTH);
-				 * statusBar.setMessage("Initializing...");
-				 * statusBar.revalidate();
-				 */
-
 				// Ask if User wants to save scenario file
 				Boolean scensave = false;
 				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario information?",
@@ -553,15 +553,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 				}
 
-				// menu.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				/*
-				 * statusBar.setMessage("Copying default run files...");
-				 * statusBar.revalidate();
-				 */
 				// Copy Run directory
-
-				menu.setCursor(hourglassCursor);
-
 				File fs = new File(System.getProperty("user.dir") + "\\Default");
 				File ft = new File(System.getProperty("user.dir") + "\\Run");
 
@@ -575,9 +567,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 
+				// Get GUI Link Array
+				ArrayList GUILinks = new ArrayList();
+				GUILinks=GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+
+				//Write GUI Tables
+				try {
+					GUI_Utils.WriteGUITables(GUILinks, swix);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+
+
 				// Write options.table
-				// pMon.setNote("Writing 'options.table' file...");
-				// pMon.setProgress(20);
 				Integer LODFlag = 0;
 				JRadioButton rdb = (JRadioButton) swix.find("hyd_rdb2005");
 				if (rdb.isSelected()) {
@@ -586,10 +590,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					LODFlag = 1;
 				}
 
+				/*
 				GUI_Utils
 						.ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\options.table", 13,
 								"9       " + LODFlag
 										+ "   !Level of Development, LOD_Future = 1 for future and 0 for existing");
+				 */
 
 				// Copy 2005/2030 lookup tables
 				// pMon.setNote("Copying lookup tables...");
@@ -604,8 +610,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				GUI_Utils.deleteDir(fsDem);
 
 				// Write study.sty
-				// pMon.setNote("Writing 'study.sty' file...");
-				// pMon.setProgress(30);
 				Calendar cal = Calendar.getInstance();
 
 				JSpinner spn = (JSpinner) swix.find("spnRunStartMonth");
@@ -766,9 +770,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				 * e1.printStackTrace(); }
 				 */
 
+				/*
 				// Write SOD_demand_definitions.table
-				// pMon.setNote("Writing 'SOD_demand_definitions.table' file...");
-				// pMon.setProgress(80);
 				Integer SWPFlag = 0;
 				Integer CVPFlag = 0;
 				JRadioButton rdb1 = (JRadioButton) swix.find("dem_rdbCurSWP");
@@ -800,11 +803,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						+ String.format("%-10s", ntf6.getText());
 				GUI_Utils.ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\SOD_demand_options.table",
 						3, dem);
+				 */
+
+
 
 				// Write DLTREGULATION file
 				OutputStream outputStream;
-				// pMon.setNote("Writing 'DLTREGULATION.table' file...");
-				// pMon.setProgress(90);
 				try {
 					outputStream = new FileOutputStream(System.getProperty("user.dir")
 							+ "\\Run\\Lookup\\DLTREGULATION.table");
@@ -880,12 +884,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					System.out.println("IOException");
 				}
 
-				// menu.setCursor(Cursor.getDefaultCursor());
 
 				// "Run" model
-				// pMon.setNote("Running CalLite...");
-				// pMon.setProgress(100);
-				// timer.stop();
 				menu.setCursor(normalCursor);
 
 				try {
@@ -898,12 +898,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					t.printStackTrace();
 				}
 
-				/*
-				 * try { Runtime.getRuntime().exec("cmd /c start " +
-				 * System.getProperty("user.dir") + "\\	CalLite.BAT"); } catch
-				 * (IOException e1) { // TODO Auto-generated catch block
-				 * e1.printStackTrace(); }
-				 */
 			} else {
 				JFrame frame = new JFrame("Error");
 
@@ -990,12 +984,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				System.out.println("String is:" + trstring);
 				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
 				for (int i = 0; st1.hasMoreTokens(); i++)
-				// for(int i=0; i < RowCt; i++)
+					// for(int i=0; i < RowCt; i++)
 				{
 					String rowstring = st1.nextToken();
 					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
 					for (int j = 0; st2.hasMoreTokens(); j++)
-					// for(int j=0;j < ColCt;j++)
+						// for(int j=0;j < ColCt;j++)
 					{
 						String value = (String) st2.nextToken();
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
@@ -1020,11 +1014,37 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			JTable table = (JTable) swix.find("tblRegValues");
 			DataFileTableModel tm = (DataFileTableModel) table.getModel();
-			tm.initVectors();
+			int size = tm.datafiles.length;
+			if (size == 1) {
+				tm.initVectors();  
+			} else if (size == 2) {
+				tm.initVectors2();  
+			}
 			table.repaint();
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
+
+		} else if (e.getActionCommand().startsWith("Op_SWPEdit")) {
+			// CheckBox in Regulations panel changed
+			JPanel pan = (JPanel) swix.find("op_panTab");
+			TitledBorder title;
+			JComponent component = (JComponent) swix.find("scrOpValues");
+			JTable table = (JTable) swix.find("tblOpValues");
+
+
+			component.setVisible(true);
+			component.setEnabled(true);
+			//String cID = cName.substring(6);
+			//populateDTable(cID, table, component);
+
+			//pan.setBorder(title);
+			component.setEnabled(true);
+			table.setVisible(true);
+
+			JButton btn = (JButton) swix.find("btnRegDef");
+			btn.setEnabled(false);
+
 
 		} else if (e.getActionCommand().startsWith("HYD_Clear")) {
 			Component[] components = hyd_CC1.getComponents();
@@ -1137,12 +1157,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					theText = theText + "NAME2\t" + ((JTextField) swix2.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix2.find("tfReportFILE3")).getToolTipText()
-							+ "\n";
+					+ "\n";
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix2.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix2.find("taReportASSUMPTIONS")).getText()
-							+ "\"\n";
+					+ "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix2.find("tfReportMODELER")).getText() + "\"\n";
 					System.out.println(theText);
@@ -1444,7 +1464,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar
-					.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+			.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1537,7 +1557,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					f = new File(fileName);
 					exists = f.exists();
 					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-							+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+					+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
 				}
 			}
 
@@ -1754,6 +1774,32 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		}
 		// System.out.print("Clicked! " + ((JMenu) e.getSource()).getText());
 		// //action depending on text/name ...
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent changeEvent) {
+		JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent
+		.getSource();
+		int index = sourceTabbedPane.getSelectedIndex();
+		String cName = sourceTabbedPane.getTitleAt(index);
+		if (cName.startsWith("D-1641")) {
+			JButton btn = (JButton) swix.find("btnRegDef");
+			btn.setVisible(false);
+			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+			rdb.setVisible(true);
+			rdb = (JRadioButton) swix.find("reg_rdbUD");
+			rdb.setVisible(true);
+		}
+		else {
+			JButton btn = (JButton) swix.find("btnRegDef");
+			btn.setVisible(true);
+			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+			rdb.setVisible(false);
+			rdb = (JRadioButton) swix.find("reg_rdbUD");
+			rdb.setVisible(false);
+
+		}
+
 	}
 
 }
