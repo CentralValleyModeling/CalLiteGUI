@@ -275,6 +275,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JButton btnScenario = (JButton) swix.find("btnAddScenario");
 		btnScenario.addActionListener((ActionListener) getDSSFilename);
 
+		JButton btnScenarioDel = (JButton) swix.find("btnDelScenario");
+		btnScenarioDel.addActionListener((ActionListener) getDSSFilename);
+
 		JButton btnClearAll = (JButton) swix.find("btnClearScenario");
 		btnClearAll.addActionListener(this);
 
