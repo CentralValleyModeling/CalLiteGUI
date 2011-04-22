@@ -288,70 +288,75 @@ public class GUI_Utils {
 		String line="", outstring="";
 		String cName="", tableName="", descr="", value="", option="";
 		Boolean val;
-		int index;
+		int index=0;
 		
     	final String NL = System.getProperty("line.separator"); 
     	
-		for (int i = 0; i<arr.size();i++) {
-			line = arr.get(i).toString();
-			String[] parts = line.split("[\t]+");
-			cName = parts[0].trim();
-			tableName=parts[1].trim();
-			index=Integer.parseInt(parts[2].trim());
-			option=parts[3].trim();
-			descr= "!"+ parts[4].trim();
+    	for (int i = 0; i<arr.size();i++) {
+    		line = arr.get(i).toString();
+    		String[] parts = line.split("[\t]+");
+    		cName = parts[0].trim();
+    		tableName=parts[1].trim();
+    		if(tableName.equals("n/a")){
 
-			if (tableName.equals(filename)) {
-			
-			} else{
-				if (outobj!=null) {outobj.close();}	//close existing file
-				
-				filename=tableName;
-				f=new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + filename);
-				GUI_Utils.deleteDir(f);
-	    		FileWriter fstream = new FileWriter(f);
-	    		outobj = new BufferedWriter(fstream);
-	    		
-	    		outstring =filename.substring(0,filename.length()-6) + NL;
-	    		outobj.write(outstring);
-	    		outstring ="Index" + "\t" + "Option" + NL;
-	    		outobj.write(outstring);
-			}
-			
-    		Component c = (Component) swix.find(cName);
-    		
-            if (c instanceof JTextField || c instanceof NumericTextField || c instanceof JTextArea) {
-    			value=((JTextComponent) c).getText();
-    			option=value;
-        		outstring = (index + "\t" + option + "\t" + descr + NL); 
-        		outobj.write(outstring);
-    		}else if (c instanceof JCheckBox) {
-    			val=((AbstractButton) c).isSelected();
-    			value=val.toString();
-    			if (value.startsWith("true")) {
-    				option="1";
-            		outstring = (index + "\t" + option + "\t" + descr + NL); 
-            		outobj.write(outstring);
-    			} else {
-    				option="0";
-            		outstring = (index + "\t" + option + "\t" + descr + NL); 
-            		outobj.write(outstring);
-            	}
-    		}else if (c instanceof JRadioButton) {
-    			val=((AbstractButton) c).isSelected();
-    			value=val.toString();
-    			
-    			if (value.startsWith("true")) {
-            		outstring = (index + "\t" + option + "\t" + descr + NL); 
-            		outobj.write(outstring);
-            	}
-    		}else if (c == null) {      //control not found    			
-        		outstring = (index + "\t" + option + "\t" + descr + NL); 
-        		outobj.write(outstring);
-    		}    
-           	
-		}
- 	    outobj.close();   	
+    		} else{
+    			index=Integer.parseInt(parts[2].trim());
+
+    			option=parts[3].trim();
+    			descr= "!"+ parts[4].trim();
+
+    			if (tableName.equals(filename)) {
+
+    			} else{
+    				if (outobj!=null) {outobj.close();}	//close existing file
+
+    				filename=tableName;
+    				f=new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + filename);
+    				GUI_Utils.deleteDir(f);
+    				FileWriter fstream = new FileWriter(f);
+    				outobj = new BufferedWriter(fstream);
+
+    				outstring =filename.substring(0,filename.length()-6) + NL;
+    				outobj.write(outstring);
+    				outstring ="Index" + "\t" + "Option" + NL;
+    				outobj.write(outstring);
+    			}
+
+    			Component c = (Component) swix.find(cName);
+
+    			if (c instanceof JTextField || c instanceof NumericTextField || c instanceof JTextArea) {
+    				value=((JTextComponent) c).getText();
+    				option=value;
+    				outstring = (index + "\t" + option + "\t" + descr + NL); 
+    				outobj.write(outstring);
+    			}else if (c instanceof JCheckBox) {
+    				val=((AbstractButton) c).isSelected();
+    				value=val.toString();
+    				if (value.startsWith("true")) {
+    					option="1";
+    					outstring = (index + "\t" + option + "\t" + descr + NL); 
+    					outobj.write(outstring);
+    				} else {
+    					option="0";
+    					outstring = (index + "\t" + option + "\t" + descr + NL); 
+    					outobj.write(outstring);
+    				}
+    			}else if (c instanceof JRadioButton) {
+    				val=((AbstractButton) c).isSelected();
+    				value=val.toString();
+
+    				if (value.startsWith("true")) {
+    					outstring = (index + "\t" + option + "\t" + descr + NL); 
+    					outobj.write(outstring);
+    				}
+    			}else if (c == null) {      //control not found    			
+    				outstring = (index + "\t" + option + "\t" + descr + NL); 
+    				outobj.write(outstring);
+    			}    
+
+    		}
+    	}
+    	outobj.close();   	
 
     }
     
@@ -781,6 +786,7 @@ public class GUI_Utils {
 		String line="";
 		String switchID="", TID="", datatable="";
 		Boolean val;
+		String board1="";
 		int index;
 		
 		ArrayList arr1 = new ArrayList();
@@ -789,13 +795,17 @@ public class GUI_Utils {
 			line = arr.get(i).toString();
 			String[] parts = line.split("[\t]+");
 			
+			
 			if (parts.length > 6) {
 				cName = parts[0].trim();
 				datatable=parts[6].trim();
 				switchID=parts[7].trim();
 				TID=parts[8].trim();
 				
-				arr1.add(cName + "|" + datatable + "|" + switchID + "|" + TID);
+				board1 = parts[5].trim();
+				if (board1.equals(board)) {
+					arr1.add(cName + "|" + datatable + "|" + switchID + "|" + TID);
+				}
 		    }
 
 		}
