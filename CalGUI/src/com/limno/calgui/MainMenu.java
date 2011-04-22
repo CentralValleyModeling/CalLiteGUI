@@ -1368,7 +1368,7 @@ TableModelListener, MenuListener, ChangeListener {
 
 			try {
 
-				FileInputStream fin = new FileInputStream("\\Config\\reportlist.cgr");
+				FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
 				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
 				// Read until first non-comment line

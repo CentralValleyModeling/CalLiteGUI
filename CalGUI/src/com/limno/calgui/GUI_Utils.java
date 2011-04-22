@@ -419,6 +419,7 @@ public class GUI_Utils {
 		}    	
 
         for (Component child : ((Container) component).getComponents()) {
+        	
         	SetCheckBoxorRadioButtonItemListener(child,obj);
         }
     }
