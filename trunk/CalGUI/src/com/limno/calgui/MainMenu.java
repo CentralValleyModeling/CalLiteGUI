@@ -750,23 +750,24 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
-				/*
-				 * //Sea Level Selections File fsAnnO = new
-				 * File(System.getProperty("user.dir")+ "\\Model\\Ann.dll");
-				 * File fsAnnS; JRadioButton rdbSLR45 = (JRadioButton)
-				 * swix.find("hyd_rdb1"); JRadioButton rdbSLR15 = (JRadioButton)
-				 * swix.find("hyd_rdb2"); if (rdbSLR45.isSelected()) { fsAnnS =
-				 * new File(System.getProperty("user.dir")+
-				 * "\\Default\\\External\\Ann7inp_BDCP_LLT_45cm.dll"); } else if
-				 * (rdbSLR15.isSelected()) { fsAnnS = new
-				 * File(System.getProperty("user.dir")+
-				 * "\\Default\\\External\\Ann7inp_BDCP_ELT_15cm.dll"); } else {
-				 * fsAnnS = new File(System.getProperty("user.dir")+
-				 * "\\Default\\\External\\Ann7inp_BST_noSLR_111709.dll"); } try
-				 * { GUI_Utils.copyDirectory(fsAnnS, fsAnnO); } catch
-				 * (IOException e1) { // TODO Auto-generated catch block
-				 * e1.printStackTrace(); }
-				 */
+				// Sea Level Selections
+				File fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.");
+				File fsAnnS;
+				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
+				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
+				if (rdbSLR45.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+				} else if (rdbSLR15.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+				} else {
+					fsAnnS = new File(System.getProperty("user.dir")
+							+ "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+				}
+				try {
+					GUI_Utils.copyDirectory(fsAnnS, fsAnnO);
+				} catch (IOException e1) { // TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				/*
 				 * // Write SOD_demand_definitions.table Integer SWPFlag = 0;
