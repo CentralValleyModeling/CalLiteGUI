@@ -1,46 +1,47 @@
-GUI id	Table name	Index	Option	Description	Data tables
-hyd_rdb2005	GUI_HydroClimate.table	1	0	"Level of Development, LOD_Future = 1 for future and 0 for existing"	
-hyd_rdb2030	GUI_HydroClimate.table	1	1	"Level of Development, LOD_Future = 1 for future and 0 for existing"	
-hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	
-hyd_rdb2	GUI_HydroClimate.table	2	2	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	
-hyd_rdb3	GUI_HydroClimate.table	2	1	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	
-hyd_rdb4	GUI_HydroClimate.table	2	0	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	
-hyd_rdbHis	GUI_HydroClimate.table	3	0	Climate projection period; Historical Hydrology = 0 and others 1  2. 	
-hyd_rdbMid	GUI_HydroClimate.table	3	1	Climate projection period; Historical Hydrology = 0 and others 1  2. 	
-hyd_rdbEnd	GUI_HydroClimate.table	3	2	Climate projection period; Historical Hydrology = 0 and others 1  2. 	
-dem_rdbCurSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	
-dem_rdbFutSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	
-dem_rdbUD1	GUI_SODdemand.table	0	2	SWP demand type  1=non-user-defined demands  2=user-defined demands	
-demtxt1	GUI_SODdemand.table	1	-1	SWP MWD user-defined demands	
-demtxt2	GUI_SODdemand.table	2	-1	SWP Other MI user-defined demands	
-demtxt3	GUI_SODdemand.table	3	-1	SWP Ag user-defined demands	
-demtxt3a	GUI_SODdemand.table	4	-1	User-defined ratio for interruptible deliveries	
-dem_rdbFullCVP	GUI_SODdemand.table	5	1	CVP demand type  1=non-user-defined demands  2=user-defined demands	
-dem_rdbUD2	GUI_SODdemand.table	5	2	CVP demand type  1=non-user-defined demands  2=user-defined demands	
-demtxt4	GUI_SODdemand.table	6	-1	CVP Ag user-defined demands	
-demtxt5	GUI_SODdemand.table	7	-1	CVP MI user-defined demands	
-demtxt6	GUI_SODdemand.table	8	-1	CVP Refuge user-defined demands	
-ckbReg3	GUI_D1641Regs.table	1	-2	DCC_DLTSW -  Delta Cross Channel	gui_xchanneldays
-ckbReg8	GUI_D1641Regs.table	2	-2	EI_DLTSW -  Export-Inflow Ratio	gui_EIRatio
-ckbReg6	GUI_D1641Regs.table	3	-2	NDO_DLTSW -  Minimum Net Delta Outflow	GUI_NDO_Flow
-ckbReg4	GUI_D1641Regs.table	4	-2	RV_DLTSW -  Sacramento River at Rio Vista Minimum Flow	gui_RioVista
-ckbReg7	GUI_D1641Regs.table	5	-2	X2_DLTSW -  X2 Requirements	gui_x2active|gui_x2km
-ckbReg15	GUI_D1641Regs.table	6	-1	X2ROE_DLTSW -  Roe Trigger	
-ckbReg9	GUI_D1641Regs.table	7	-1	VAMP_DLTSW -  Vernalis	
-ckbReg11	GUI_D1641Regs.table	8	-1	EM_DLTSW -  Emmaton	
-ckbReg12	GUI_D1641Regs.table	9	-1	JP_DLTSW -  Jersey Point	
-ckbReg13	GUI_D1641Regs.table	10	-1	RS_DLTSW -  Rock Slough	
-ckbReg14	GUI_D1641Regs.table	11	-1	CO_DLTSW -  Collinsville	
-ckbRegbo1	GUI_D1641RPAsOtherRegs.table	1	-1	FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;	
-ckbRegbo2	GUI_D1641RPAsOtherRegs.table	2	-1	NMFS BO Action 4.1.2: No action: value=0; Action: value =1;	
-ckbRegbo3	GUI_D1641RPAsOtherRegs.table	3	-1	NMFS BO Action 4.2.1: No action: value=0; Action: value =1;	
-ckbRegbo4	GUI_D1641RPAsOtherRegs.table	4	-1	FWS BO Action: No action: value=0; Action: value =1;	
-ckbRegbo5	GUI_D1641RPAsOtherRegs.table	5	-1	NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1; 	
-n/a	GUI_D1641RPAsOtherRegs.table	6	-1	"CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1"	
-n/a	GUI_D1641RPAsOtherRegs.table	7	-1	"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "	
-ckbReg1	GUI_D1641RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	gui_qomr
-ckbReg2	GUI_D1641RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	gui_qwest
-ckbReg10	GUI_D1641RPAsOtherRegs.table	10	-2	   EISJR_DLTSW; user defined  2	gui_EIsjr
-op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	
-op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	
-op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	
+GUI id	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID
+hyd_rdb2005	GUI_HydroClimate.table	1	0	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate			
+hyd_rdb2030	GUI_HydroClimate.table	1	1	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate			
+hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate			
+hyd_rdb2	GUI_HydroClimate.table	2	2	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate			
+hyd_rdb3	GUI_HydroClimate.table	2	1	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate			
+hyd_rdb4	GUI_HydroClimate.table	2	0	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate			
+hyd_rdbHis	GUI_HydroClimate.table	3	0	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate			
+hyd_rdbMid	GUI_HydroClimate.table	3	1	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate			
+hyd_rdbEnd	GUI_HydroClimate.table	3	2	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate			
+dem_rdbCurSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands			
+dem_rdbFutSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands			
+dem_rdbUD1	GUI_SODdemand.table	0	2	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands			
+demtxt1	GUI_SODdemand.table	1	-1	SWP MWD user-defined demands	Demands			
+demtxt2	GUI_SODdemand.table	2	-1	SWP Other MI user-defined demands	Demands			
+demtxt3	GUI_SODdemand.table	3	-1	SWP Ag user-defined demands	Demands			
+demtxt3a	GUI_SODdemand.table	4	-1	User-defined ratio for interruptible deliveries	Demands			
+dem_rdbFullCVP	GUI_SODdemand.table	5	1	CVP demand type  1=non-user-defined demands  2=user-defined demands	Demands			
+dem_rdbUD2	GUI_SODdemand.table	5	2	CVP demand type  1=non-user-defined demands  2=user-defined demands	Demands			
+demtxt4	GUI_SODdemand.table	6	-1	CVP Ag user-defined demands	Demands			
+demtxt5	GUI_SODdemand.table	7	-1	CVP MI user-defined demands	Demands			
+demtxt6	GUI_SODdemand.table	8	-1	CVP Refuge user-defined demands	Demands			
+ckbReg3	GUI_D1641Regs.table	1	-2	DCC_DLTSW -  Delta Cross Channel	Regulations	gui_xchanneldays	3	1
+ckbReg8	GUI_D1641Regs.table	2	-2	EI_DLTSW -  Export-Inflow Ratio	Regulations	gui_EIRatio	8	2
+ckbReg6	GUI_D1641Regs.table	3	-2	NDO_DLTSW -  Minimum Net Delta Outflow	Regulations	GUI_NDO_Flow	6	3
+ckbReg4	GUI_D1641Regs.table	4	-2	RV_DLTSW -  Sacramento River at Rio Vista Minimum Flow	Regulations	gui_RioVista	4	4
+ckbReg7	GUI_D1641Regs.table	5	-2	X2_DLTSW -  X2 Requirements	Regulations	gui_x2active|gui_x2km	7	5
+ckbReg15	GUI_D1641Regs.table	6	-1	X2ROE_DLTSW -  Roe Trigger	Regulations			
+ckbReg9	GUI_D1641Regs.table	7	-1	VAMP_DLTSW -  Vernalis	Regulations			
+ckbReg11	GUI_D1641Regs.table	8	-1	EM_DLTSW -  Emmaton	Regulations			
+ckbReg12	GUI_D1641Regs.table	9	-1	JP_DLTSW -  Jersey Point	Regulations			
+ckbReg13	GUI_D1641Regs.table	10	-1	RS_DLTSW -  Rock Slough	Regulations			
+ckbReg14	GUI_D1641Regs.table	11	-1	CO_DLTSW -  Collinsville	Regulations			
+ckbRegbo1	GUI_D1641RPAsOtherRegs.table	1	-1	FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;	Regulations			
+ckbRegbo2	GUI_D1641RPAsOtherRegs.table	2	-1	NMFS BO Action 4.1.2: No action: value=0; Action: value =1;	Regulations			
+ckbRegbo3	GUI_D1641RPAsOtherRegs.table	3	-1	NMFS BO Action 4.2.1: No action: value=0; Action: value =1;	Regulations			
+ckbRegbo4	GUI_D1641RPAsOtherRegs.table	4	-1	FWS BO Action: No action: value=0; Action: value =1;	Regulations			
+ckbRegbo5	GUI_D1641RPAsOtherRegs.table	5	-1	NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1; 	Regulations			
+n/a	GUI_D1641RPAsOtherRegs.table	6	-1	"CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1"	Regulations			
+n/a	GUI_D1641RPAsOtherRegs.table	7	-1	"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "	Regulations			
+ckbReg1	GUI_D1641RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	Regulations	gui_qomr	2	6
+ckbReg2	GUI_D1641RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	Regulations	gui_qwest	1	7
+op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations			
+op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations			
+op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	Operations			
+op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	8
+op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	9

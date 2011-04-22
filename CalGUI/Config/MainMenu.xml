@@ -1248,37 +1248,39 @@
 						<button enabled="true" text="Copy" minimumsize="100,20"
 							ActionCommand="Reg_Copy">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="1" gridheight="2" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button enabled="true" text="Paste" minimumsize="100,20"
 							ActionCommand="Reg_Paste">
 							<gridbagconstraints insets="0,0,5,5" gridx="1"
-								gridy="1" gridheight="2" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button id="btnRegDef" text="Default" minimumsize="100,20"
 							ActionCommand="Reg_Default" visible="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
-								gridy="1" gridheight="2" anchor="GridBagConstraints.NORTHWEST" />
+								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<buttongroup>
 							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641"
 								text="D-1641">
 								<gridbagconstraints insets="0,0,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
+									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0" />
 							</radiobutton>
 							<radiobutton id="reg_rdbUD" name="reg_rdbUD" text="User defined"
 								selected="false">
 								<gridbagconstraints insets="10,0,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="2" />
+									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
 							</radiobutton>
 						</buttongroup>
-						<scrollpane id="scrRegValues" layout="BorderLayout"
-							preferredsize="550,450" resizeable="false">
+						<HBox preferredsize="550,350">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="3" gridwidth="6" anchor="GridBagConstraints.NORTHWEST" />
-							<table id="tblRegValues" name="tblRegValues" resizeable="false">
-							</table>
-						</scrollpane>
+								gridy="2" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
+							<scrollpane id="scrRegValues" layout="BorderLayout"
+								resizeable="false">
+								<table id="tblRegValues" name="tblRegValues" resizeable="false">
+								</table>
+							</scrollpane>
+						</HBox>
 					</panel>
 				</panel>
 				<panel id="operations" name="Operations" layout="GridBagLayout">
@@ -1308,12 +1310,12 @@
 							</radiobutton>
 						</buttongroup>
 						<button id="op_btn1" name="op_btn1" text="Edit SWP Curves"
-							enabled="true">
+							enabled="true" ActionCommand="Op_TableEdit">
 							<gridbagconstraints insets="0,20,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 						</button>
 						<button id="op_btn2" name="op_btn2" text="Edit CVP Curves"
-							enabled="true">
+							enabled="true"  ActionCommand="Op_TableEdit">
 							<gridbagconstraints insets="0,10,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
 						</button>
@@ -1447,13 +1449,14 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="1" gridheight="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<scrollpane id="scrOpValues" layout="BorderLayout"
-							preferredsize="350,450" resizeable="false">
+						<HBox preferredsize="350,450">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="3" gridwidth="6" anchor="GridBagConstraints.NORTHWEST" />
-							<table id="tblOpValues" name="tblOpValues" resizeable="false">
-							</table>
-						</scrollpane>
+								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
+							<scrollpane id="scrOpValues" layout="BorderLayout" resizeable="false">
+								<table id="tblOpValues" name="tblOpValues" resizeable="false">
+								</table>
+							</scrollpane>
+						</HBox>
 					</panel>
 
 				</panel>
