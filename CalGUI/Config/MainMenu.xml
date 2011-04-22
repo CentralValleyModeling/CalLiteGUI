@@ -26,7 +26,7 @@
 	<panel id="mainmenu" layout="GridBagLayout" resizeable="true">
 
 		<panel id="settings" name="settings" layout="BorderLayout"
-			resizeable="true" visible="false" preferredsize="1024,768">
+			resizeable="true" visible="true" preferredsize="1024,768">
 			<gridbagconstraints insets="-5,5,5,5"
 				anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 				
@@ -1286,7 +1286,7 @@
 					<panel border="TitledBorder(CVP/SVP Allocation Methods)"
 						layout="GridBagLayout">
 						<gridbagconstraints insets="0,0,5,5"
-							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
+							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
 							gridwidth="1" />
 						<buttongroup id="btgOp1">
 							<radiobutton id="op_rdb1" name="op_rdb1" selected="true"
@@ -1403,7 +1403,7 @@
 					<panel border="TitledBorder(CVP Operations and Facilities)"
 						layout="GridBagLayout">
 						<gridbagconstraints insets="0,0,5,5"
-							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
+							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
 							gridwidth="1" />
 						<checkbox text="Cross Valley Canal Wheeling" id="op_rdb6"
 							name="op_rdb6">
@@ -1455,7 +1455,7 @@
 		</panel>
 
 		<panel id="results" name="results" layout="BorderLayout"
-			resizeable="true" visible="true" preferredsize="1024,768">
+			resizeable="true" visible="false" preferredsize="1024,768">
 			<gridbagconstraints insets="-5,5,5,5"
 				anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 				
