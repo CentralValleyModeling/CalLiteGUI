@@ -751,17 +751,20 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
 				// Sea Level Selections
-				File fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.");
+				File fsAnnO;
 				File fsAnnS;
 				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
 				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
 				if (rdbSLR45.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BDCP_LLT_45cm.dll");
 				} else if (rdbSLR15.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BDCP_ELT_15cm.dll.dll");
 				} else {
 					fsAnnS = new File(System.getProperty("user.dir")
 							+ "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BST_noSLR_111709.dll");
 				}
 				try {
 					GUI_Utils.copyDirectory(fsAnnS, fsAnnO);
@@ -1218,11 +1221,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				lstArray1[i] = lstArray[i];
 			}
 
-			lstArray1[n] = QuickState();
+			String cSTOR = ";Locs-";
+			String cSTORIdx = ";Index-";
+			Component[] components = presets.getComponents();
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					String cName = c.getName();
+					if (cName.startsWith("ckbp")) {
+						boolean b = c.isSelected();
+						if (b == true) {
+							cSTOR = cSTOR + c.getText().trim() + ",";
+							cSTORIdx = cSTORIdx + cName + ",";
+						}
+					}
+				}
 
-			// String[] reportNamesEG = {cDate};
-			lstReports.setListData(lstArray1);
+				lstArray1[n] = QuickState() + cSTOR + cSTORIdx;
 
+				// String[] reportNamesEG = {cDate};
+				lstReports.setListData(lstArray1);
+			}
 		}
 
 		else if (e.getActionCommand().startsWith("Sch_Load")) {
@@ -1472,23 +1491,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			cAdd = cAdd + cST;
 		}
 
-		String cSTOR = ";Locs-";
-		String cSTORIdx = ";Index-";
-		components = presets.getComponents();
-		for (int i = 0; i < components.length; i++) {
-			if (components[i] instanceof JCheckBox) {
-				JCheckBox c = (JCheckBox) components[i];
-				String cName = c.getName();
-				if (cName.startsWith("ckbp")) {
-					boolean b = c.isSelected();
-					if (b == true) {
-						cSTOR = cSTOR + c.getText().trim() + ",";
-						cSTORIdx = cSTORIdx + cName + ",";
-					}
-				}
-			}
-		}
-		cAdd = cAdd + cSTOR + cSTORIdx;
 		return cAdd;
 	}
 
@@ -1778,7 +1780,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						chk.setFont(new Font("Tahoma", Font.ITALIC, 12));
 						chk.repaint();
 
-						DisplayFrame(QuickState());
+						DisplayFrame(QuickState() + ";Locs-"+chk.getText()+";Index-"+chk.getName());
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
 
