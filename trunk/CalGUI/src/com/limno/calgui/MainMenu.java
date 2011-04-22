@@ -41,6 +41,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
+import javax.print.DocFlavor.STRING;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -1311,7 +1312,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 				}
 			}
-			cAdd = cAdd + cSTOR + cSTORIdx;;
+			cAdd = cAdd + cSTOR + cSTORIdx;
+			;
 
 			lstArray1[n] = cAdd;
 
@@ -1481,33 +1483,106 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		boolean doSummaryTable = false;
 		String exceedMonths = "";
 		String summaryTags = "";
+		String names = "";
 		String locations = "";
 
 		String[] groupParts = displayGroup.split(";");
 
 		for (int i = 0; i < groupParts.length; i++) {
-			if (groupParts[i] == "Comp")
+			if (groupParts[i].equals("Comp"))
 				doComparison = true;
-			else if (groupParts[i] == "Diff")
+			else if (groupParts[i].equals("Diff"))
 				doComparison = true;
-			else if (groupParts[i] == "TS")
+			else if (groupParts[i].equals("TS"))
 				doComparison = true;
 			else if (groupParts[i].startsWith("EX-")) {
 				doExceedance = true;
 				exceedMonths = groupParts[i].substring(4);
-			} else if (groupParts[i] == "CFS")
+			} else if (groupParts[i].equals("CFS"))
 				isCFS = true;
-			else if (groupParts[i] == "TAF")
+			else if (groupParts[i].equals("TAF"))
 				isCFS = false;
-			else if (groupParts[i] == "Monthly")
+			else if (groupParts[i].equals("Monthly"))
 				doMonthlyTable = true;
 			else if (groupParts[i].startsWith("ST-")) {
 				doSummaryTable = true;
 				summaryTags = groupParts[i].substring(4);
-			} else if (groupParts[i].startsWith("Index-"))
+			} else if (groupParts[i].startsWith("Locs-"))
+				names = groupParts[i].substring(5);
+			else if (groupParts[i].startsWith("Index-"))
 				locations = groupParts[i].substring(7);
+			else
+				System.out.println("Unparsed display list component - " + groupParts[i]);
 		}
-		JOptionPane.showMessageDialog(null, displayGroup, "Check", JOptionPane.ERROR_MESSAGE);
+
+		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
+			CheckListItem item = (CheckListItem) lstScenarios.getModel().getElementAt(i);
+			if (item.isSelected())
+				dss_Grabber.setBase(item.toString());
+		}
+
+		String locationNames[] = locations.split(",");
+		String namesText[] = names.split(",");
+
+		for (int i = 0; i < locationNames.length - 1; i++) {
+
+			dss_Grabber.setLocation(locationNames[i]);
+			// TODO: Set location based on sender
+
+			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
+			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
+			TimeSeriesContainer[] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
+			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
+
+			JTabbedPane tabbedpane = new JTabbedPane();
+
+
+			if (doSummaryTable) {
+				SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
+				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
+			}
+
+			if (doMonthlyTable) {
+				MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
+				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
+			}
+
+			ChartPanel1 cp3;
+			if (doExceedance) {
+				cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null);
+				tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
+			}
+			
+			ChartPanel1 cp1;
+			ChartPanel1 cp2;
+			if (primary_Results.length > 1) {
+				if (doDifference) {
+					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null);
+					tabbedpane.insertTab("Difference", null, cp2, null, 0);
+				}
+				if (doComparison) {
+					cp1 = new ChartPanel1("Comparison " + dss_Grabber.primaryDSSName, primary_Results,
+							secondary_Results);
+					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
+				}
+			} else {
+				if (doTimeSeries) {
+					cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results);
+					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
+				}
+			}
+			
+			
+			// Show the frame
+			JFrame frame = new JFrame();
+
+			Container container = frame.getContentPane();
+			container.add(tabbedpane);
+			frame.pack();
+			frame.setTitle("CalLite Results - " + namesText[i]);
+			tabbedpane.setSelectedIndex(0);
+			frame.setVisible(true);
+		}
 		return;
 	}
 
