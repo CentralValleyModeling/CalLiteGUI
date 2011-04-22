@@ -546,7 +546,7 @@ public class GUI_Utils {
 		} else {
 			for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
 				String switchID = Integer.toString(switchIdx);
-				String cID = gl.ctrlForSwitch(switchID);
+				String cID = "1";//gl.ctrlForSwitch(switchID);
 
 				int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
@@ -762,7 +762,9 @@ public class GUI_Utils {
 			val=((AbstractButton) component).isSelected();
 			value=val.toString();
 		}    
-        if (comp != null) {str = str+ (comp + "|" + type + "|" + value + NL);}
+        if (comp != "") {
+        	str = str + (comp + "|" + type + "|" + value + NL);
+        }
         
         if (component instanceof JSpinner) {
         
@@ -773,5 +775,33 @@ public class GUI_Utils {
         }
 		return str;
     }
-	
+    
+    public static ArrayList GetGUITables(ArrayList arr, String board)  {
+		String cName="";
+		String line="";
+		String switchID="", TID="", datatable="";
+		Boolean val;
+		int index;
+		
+		ArrayList arr1 = new ArrayList();
+    	
+		for (int i = 0; i<arr.size();i++) {
+			line = arr.get(i).toString();
+			String[] parts = line.split("[\t]+");
+			
+			if (parts.length > 6) {
+				cName = parts[0].trim();
+				datatable=parts[6].trim();
+				switchID=parts[7].trim();
+				TID=parts[8].trim();
+				
+				arr1.add(cName + "|" + datatable + "|" + switchID + "|" + TID);
+		    }
+
+		}
+		return arr1;
+ 	
+
+    }
+    	
 }

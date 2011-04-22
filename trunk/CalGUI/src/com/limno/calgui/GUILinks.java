@@ -18,7 +18,8 @@ import java.util.HashMap;
 public class GUILinks {
 
 	private Map<String,String> mapCtrlToTable;
-	private Map<String,String> mapSwitchToCtrl;
+	private Map<String,String> mapCtrlToTID;
+	private Map<String,String> mapCtrlToswitchID;
 
 	/* 
 	 * GUILinks.tableNameForCtrl: Method to look up table name to use for a given control
@@ -30,16 +31,13 @@ public class GUILinks {
 	public String tableNameForCtrl(String ctrlID) {
 		return mapCtrlToTable.get(ctrlID);
 	}
-	
-	/* 
-	 * GUILinks.ctrlForSwitch: Method to look up control name associated with switch # (position in switch table)
-	 * 
-	 * 12/3/2010
-	 * 
-	 */
 		
-	public String ctrlForSwitch(String switchID) {
-		return mapSwitchToCtrl.get(switchID);
+	public String tableIDForCtrl(String ctrlID) {
+		return mapCtrlToTID.get(ctrlID);
+	}
+	
+	public String switchIDForCtrl(String ctrlID) {
+		return mapCtrlToswitchID.get(ctrlID);
 	}
 	
 	/* 
@@ -64,29 +62,37 @@ public class GUILinks {
 		}
 
 		mapCtrlToTable = new HashMap<String,String>();
-		mapSwitchToCtrl = new HashMap<String,String>();
-
+		mapCtrlToTID = new HashMap<String,String>();
+		mapCtrlToswitchID = new HashMap<String,String>();
+		
 		int lineCount = 0;
 		while (input.hasNextLine()) {
 			String line = input.nextLine();
 			lineCount++;
 			if (lineCount > 1) {
 				// Parse, assuming space and/or tab-delimited
-				String[] parts = line.split("[ \\t]+");
+				String[] parts = line.split("[\t]+");
 				if (parts.length > 0) {
 
-					String ctrlID = parts[0];
+					String ctrlName = parts[0];
 					String switchID  = "";
+					String TableID  = "";
 					String tableName = "";
-					if (parts.length > 1) {
-						switchID = parts[1];
-						if (parts.length > 2) {
-							tableName = parts[2];
+					if (parts.length > 6) {
+						tableName = parts[6];
+						if (parts.length > 7) {
+							switchID = parts[7];
+						}
+						if (parts.length > 8) {
+							TableID = parts[8];
 						}
 					}
-					mapCtrlToTable.put(ctrlID,tableName);
+					mapCtrlToTable.put(ctrlName,tableName);
 					if (switchID != "" ) {
-						mapSwitchToCtrl.put(switchID,ctrlID);
+						mapCtrlToswitchID.put(ctrlName,switchID);
+					}
+					if (TableID != "" ) {
+						mapCtrlToTID.put(ctrlName,TableID);
 					}
 				}
 			}
