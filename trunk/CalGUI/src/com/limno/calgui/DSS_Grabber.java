@@ -202,6 +202,7 @@ public class DSS_Grabber {
 			scenarios = lstScenarios.getModel().getSize();
 
 			TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios];
+		
 
 			// Base first
 
@@ -257,7 +258,7 @@ public class DSS_Grabber {
 						n = n + 1;
 					}
 				}
-
+				
 				results[i] = new TimeSeriesContainer();
 				results[i].times = times2;
 				results[i].values = values2;
