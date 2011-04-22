@@ -120,6 +120,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JFrame dialog;
 	GUILinks gl;
 
+	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
 	Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
 	Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 
@@ -214,7 +216,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
 		JSpinner spnEM1 = (JSpinner) swix.find("spnRunEndMonth");
-		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		SpinnerListModel monthModel = new SpinnerListModel(monthNames);
 		SpinnerListModel monthModel2 = new SpinnerListModel(monthNames);
 		spnSM1.setModel(monthModel);
@@ -1216,9 +1217,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				lstArray1[i] = lstArray[i];
 			}
 
-
 			lstArray1[n] = QuickState();
-			
+
 			// String[] reportNamesEG = {cDate};
 			lstReports.setListData(lstArray1);
 
@@ -1390,7 +1390,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	}
 
 	private String QuickState() {
-		
+
 		String cAdd;
 		cAdd = "";
 		// Comparison and Difference
@@ -1503,6 +1503,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		boolean doMonthlyTable = false;
 		boolean doSummaryTable = false;
 		String exceedMonths = "";
+		int exceedMonth = -1;
 		String summaryTags = "";
 		String names = "";
 		String locations = "";
@@ -1519,6 +1520,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			else if (groupParts[i].startsWith("EX-")) {
 				doExceedance = true;
 				exceedMonths = groupParts[i].substring(3);
+				for (int m = 0; m < 12; m++)
+					if (exceedMonths.contains(monthNames[m]))
+						exceedMonth = m + 1;
+
 			} else if (groupParts[i].equals("CFS"))
 				isCFS = true;
 			else if (groupParts[i].equals("TAF"))
@@ -1548,11 +1553,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
-			// TODO: Set location based on sender
 
 			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
 			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-			TimeSeriesContainer[] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
+
+			TimeSeriesContainer[] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results, exceedMonth);
 			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
 
 			JTabbedPane tabbedpane = new JTabbedPane();
