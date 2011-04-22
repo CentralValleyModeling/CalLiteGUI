@@ -1423,6 +1423,20 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		}
 
+		else if (e.getActionCommand().startsWith("Rep_DispAll")) {
+
+			if (lstScenarios.getModel().getSize() == 0) {
+				JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				displayCount = 0;
+				JList list = (JList) swix.find("lstReports");
+				for (int i = 0; i < list.getModel().getSize(); i++) 
+					DisplayFrame((String) (list.getModel().getElementAt(i)));
+					
+				
+			}
+		}
+			
 		else if (e.getActionCommand().startsWith("Rep_DispCur")) {
 
 			if (lstScenarios.getModel().getSize() == 0) {
@@ -1430,8 +1444,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			} else if (((JList) swix.find("lstReports")).getSelectedValue() == null) {
 				JOptionPane.showMessageDialog(null, "No display group selected", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
+				displayCount = 0;
 				DisplayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue());
 			}
+			
 		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
@@ -1472,6 +1488,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	}
 
+	public int displayCount;
+
 	public void DisplayFrame(String displayGroup) {
 
 		boolean doComparison = false;
@@ -1510,7 +1528,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			} else if (groupParts[i].startsWith("Locs-"))
 				names = groupParts[i].substring(5);
 			else if (groupParts[i].startsWith("Index-"))
-				locations = groupParts[i].substring(7);
+				locations = groupParts[i].substring(6);
 			else
 				System.out.println("Unparsed display list component - " + groupParts[i]);
 		}
@@ -1524,7 +1542,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String locationNames[] = locations.split(",");
 		String namesText[] = names.split(",");
 
-		for (int i = 0; i < locationNames.length - 1; i++) {
+		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
 			// TODO: Set location based on sender
@@ -1535,7 +1553,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
 
 			JTabbedPane tabbedpane = new JTabbedPane();
-
 
 			if (doSummaryTable) {
 				SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
@@ -1549,30 +1566,29 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null);
+				cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null, true);
 				tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 			}
-			
+
 			ChartPanel1 cp1;
 			ChartPanel1 cp2;
 			if (primary_Results.length > 1) {
 				if (doDifference) {
-					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null);
+					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null,false);
 					tabbedpane.insertTab("Difference", null, cp2, null, 0);
 				}
 				if (doComparison) {
 					cp1 = new ChartPanel1("Comparison " + dss_Grabber.primaryDSSName, primary_Results,
-							secondary_Results);
+							secondary_Results, false);
 					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 				}
 			} else {
 				if (doTimeSeries) {
-					cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results);
+					cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results, false);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 				}
 			}
-			
-			
+
 			// Show the frame
 			JFrame frame = new JFrame();
 
@@ -1582,6 +1598,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			frame.setTitle("CalLite Results - " + namesText[i]);
 			tabbedpane.setSelectedIndex(0);
 			frame.setVisible(true);
+			frame.setLocation(displayCount * 20, displayCount * 20);
+			displayCount++;
+
 		}
 		return;
 	}
@@ -1769,17 +1788,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						ChartPanel1 cp2;
 						if (primary_Results.length > 1) {
 							cp1 = new ChartPanel1("Comparison " + dss_Grabber.primaryDSSName, primary_Results,
-									secondary_Results);
+									secondary_Results, false);
 							tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-							cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null);
+							cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null, false);
 							tabbedpane.insertTab("Difference", null, cp2, null, 0);
 						} else {
-							cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results);
+							cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results, false);
 							tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 						}
 
 						ChartPanel1 cp3;
-						cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null);
+						cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null, true);
 						tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 
 						SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);

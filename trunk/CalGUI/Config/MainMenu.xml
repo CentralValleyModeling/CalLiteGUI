@@ -2127,7 +2127,7 @@
 						layout="GridBagLayout" preferredsize="510,200" minimumsize="510,200">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
 							gridx="1" gridy="2" />
-						<button text="Display List" preferredsize="100,20">
+						<button text="Display List" preferredsize="100,20" ActionCommand="Rep_DispAll">
 							<gridbagconstraints insets="0,0,2,2"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 						</button>
