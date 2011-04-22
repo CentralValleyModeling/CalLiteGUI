@@ -1,4 +1,2 @@
-Comp;CFS;Oct1921-Oct2003;TS;;Trinity
-Comp;Diff;CFS;Oct1921-Oct2003;TS;ST-;;Shasta
-Comp;Diff;CFS;Oct1921-Oct2003;TS;EX-,Sep;Monthly;ST-;;Shasta
-Comp;Diff;CFS;Oct1921-Oct2003;TS;EX-,Sep;Monthly;ST-,Median;;Shasta
+Comp;Diff;CFS;Oct1921-Oct2003;TS;EX-,Sep;Monthly;ST-,Avg;Locs-Shasta,Folsom,;Index-ckbp103,ckbp104,
+Comp;CFS;Oct1921-Oct2003;Locs-CVP NOD,;Index-ckbp105,

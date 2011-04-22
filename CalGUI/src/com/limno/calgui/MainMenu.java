@@ -1295,8 +1295,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				cAdd = cAdd + cST;
 			}
 
-			String cSTOR;
-			cSTOR = ";";
+			String cSTOR = ";Locs-";
+			String cSTORIdx = ";Index-";
 			components = presets.getComponents();
 			for (int i = 0; i < components.length; i++) {
 				if (components[i] instanceof JCheckBox) {
@@ -1305,12 +1305,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					if (cName.startsWith("ckbp")) {
 						boolean b = c.isSelected();
 						if (b == true) {
-							cSTOR = cSTOR + ";" + c.getText().trim();
+							cSTOR = cSTOR + c.getText().trim() + ",";
+							cSTORIdx = cSTORIdx + cName + ",";
 						}
 					}
 				}
 			}
-			cAdd = cAdd + cSTOR;
+			cAdd = cAdd + cSTOR + cSTORIdx;;
 
 			lstArray1[n] = cAdd;
 
@@ -1470,6 +1471,42 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	}
 
 	public void DisplayFrame(String displayGroup) {
+
+		boolean doComparison = false;
+		boolean doDifference = false;
+		boolean doTimeSeries = false;
+		boolean doExceedance = false;
+		boolean isCFS = false;
+		boolean doMonthlyTable = false;
+		boolean doSummaryTable = false;
+		String exceedMonths = "";
+		String summaryTags = "";
+		String locations = "";
+
+		String[] groupParts = displayGroup.split(";");
+
+		for (int i = 0; i < groupParts.length; i++) {
+			if (groupParts[i] == "Comp")
+				doComparison = true;
+			else if (groupParts[i] == "Diff")
+				doComparison = true;
+			else if (groupParts[i] == "TS")
+				doComparison = true;
+			else if (groupParts[i].startsWith("EX-")) {
+				doExceedance = true;
+				exceedMonths = groupParts[i].substring(4);
+			} else if (groupParts[i] == "CFS")
+				isCFS = true;
+			else if (groupParts[i] == "TAF")
+				isCFS = false;
+			else if (groupParts[i] == "Monthly")
+				doMonthlyTable = true;
+			else if (groupParts[i].startsWith("ST-")) {
+				doSummaryTable = true;
+				summaryTags = groupParts[i].substring(4);
+			} else if (groupParts[i].startsWith("Index-"))
+				locations = groupParts[i].substring(7);
+		}
 		JOptionPane.showMessageDialog(null, displayGroup, "Check", JOptionPane.ERROR_MESSAGE);
 		return;
 	}
