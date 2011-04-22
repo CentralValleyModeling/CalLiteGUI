@@ -1693,6 +1693,11 @@
 									<gridbagconstraints insets="0,5,0,5" gridx="0"
 										gridy="4" anchor="GridBagConstraints.WEST" />
 								</checkbox>
+								<checkbox id="rdbStat5" name="rdbStat5" text="Median"
+									font="Tahoma-Normal-11" enabled="false">
+									<gridbagconstraints insets="0,5,0,5" gridx="0"
+										gridy="5" anchor="GridBagConstraints.WEST" />
+								</checkbox>
 
 								<label text="Period" font="Tahoma-Bold-10">
 									<gridbagconstraints insets="0,5,0,0" gridx="3"
