@@ -790,9 +790,9 @@ ChangeListener {
 
 
 
-					for (int i = 1; i <= GUITables.size(); i++) {
+					for (int i = 1; i < GUITables.size(); i++) {
 						String line = GUITables.get(i).toString();
-						String[] parts = line.split("[\t]+");
+						String[] parts = line.split("[|]");
 						String cName = parts[0].trim();
 						String tableName=parts[1].trim();
 						String switchID = parts[2].trim();
