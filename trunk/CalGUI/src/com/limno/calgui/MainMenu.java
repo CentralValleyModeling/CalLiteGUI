@@ -88,10 +88,8 @@ import org.swixml.SwingEngine;
 import com.limno.calgui.GetDSSFilename.CheckListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
-
-
-public class MainMenu implements ActionListener, ItemListener, MouseListener,
-TableModelListener, MenuListener, ChangeListener {
+public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
+		ChangeListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -181,7 +179,7 @@ TableModelListener, MenuListener, ChangeListener {
 			BufferedImage img;
 			img = ImageIO.read(imgURL);
 			ImageIcon image = new ImageIcon(img, null);
-		//	label.setIcon(image);
+			// label.setIcon(image);
 
 			// ImageIcon image = new ImageIcon(imgURL, null);
 			// label.setIcon(image);
@@ -569,17 +567,15 @@ TableModelListener, MenuListener, ChangeListener {
 
 				// Get GUI Link Array
 				ArrayList GUILinks = new ArrayList();
-				GUILinks=GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
 
-				//Write GUI Tables
+				// Write GUI Tables
 				try {
 					GUI_Utils.WriteGUITables(GUILinks, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
-
 
 				// Write options.table
 				Integer LODFlag = 0;
@@ -591,10 +587,10 @@ TableModelListener, MenuListener, ChangeListener {
 				}
 
 				/*
-				GUI_Utils
-						.ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\options.table", 13,
-								"9       " + LODFlag
-										+ "   !Level of Development, LOD_Future = 1 for future and 0 for existing");
+				 * GUI_Utils .ReplaceLineInFile(System.getProperty("user.dir") +
+				 * "\\Run\\Lookup\\options.table", 13, "9       " + LODFlag +
+				 * "   !Level of Development, LOD_Future = 1 for future and 0 for existing"
+				 * );
 				 */
 
 				// Copy 2005/2030 lookup tables
@@ -771,41 +767,34 @@ TableModelListener, MenuListener, ChangeListener {
 				 */
 
 				/*
-				// Write SOD_demand_definitions.table
-				Integer SWPFlag = 0;
-				Integer CVPFlag = 0;
-				JRadioButton rdb1 = (JRadioButton) swix.find("dem_rdbCurSWP");
-				JRadioButton rdb2 = (JRadioButton) swix.find("dem_rdbFutSWP");
-				JRadioButton rdb3 = (JRadioButton) swix.find("dem_rdbFullCVP");
-				NumericTextField ntf1 = (NumericTextField) swix.find("demtxt1");
-				NumericTextField ntf2 = (NumericTextField) swix.find("demtxt2");
-				NumericTextField ntf3 = (NumericTextField) swix.find("demtxt3");
-				NumericTextField ntf4 = (NumericTextField) swix.find("demtxt4");
-				NumericTextField ntf5 = (NumericTextField) swix.find("demtxt5");
-				NumericTextField ntf6 = (NumericTextField) swix.find("demtxt6");
-				if (rdb1.isSelected()) {
-					SWPFlag = 1;
-				} else if (rdb2.isSelected()) {
-					SWPFlag = 2;
-				} else {
-					SWPFlag = 3;
-				}
-				if (rdb3.isSelected()) {
-					CVPFlag = 1;
-				} else {
-					CVPFlag = 2;
-				}
-				String dem;
-				dem = String.format("%-10s", "1") + String.format("%-10s", SWPFlag.toString())
-						+ String.format("%-10s", ntf1.getText()) + String.format("%-10s", ntf2.getText())
-						+ String.format("%-10s", ntf3.getText()) + String.format("%-10s", CVPFlag.toString())
-						+ String.format("%-10s", ntf4.getText()) + String.format("%-10s", ntf5.getText())
-						+ String.format("%-10s", ntf6.getText());
-				GUI_Utils.ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\SOD_demand_options.table",
-						3, dem);
+				 * // Write SOD_demand_definitions.table Integer SWPFlag = 0;
+				 * Integer CVPFlag = 0; JRadioButton rdb1 = (JRadioButton)
+				 * swix.find("dem_rdbCurSWP"); JRadioButton rdb2 =
+				 * (JRadioButton) swix.find("dem_rdbFutSWP"); JRadioButton rdb3
+				 * = (JRadioButton) swix.find("dem_rdbFullCVP");
+				 * NumericTextField ntf1 = (NumericTextField)
+				 * swix.find("demtxt1"); NumericTextField ntf2 =
+				 * (NumericTextField) swix.find("demtxt2"); NumericTextField
+				 * ntf3 = (NumericTextField) swix.find("demtxt3");
+				 * NumericTextField ntf4 = (NumericTextField)
+				 * swix.find("demtxt4"); NumericTextField ntf5 =
+				 * (NumericTextField) swix.find("demtxt5"); NumericTextField
+				 * ntf6 = (NumericTextField) swix.find("demtxt6"); if
+				 * (rdb1.isSelected()) { SWPFlag = 1; } else if
+				 * (rdb2.isSelected()) { SWPFlag = 2; } else { SWPFlag = 3; } if
+				 * (rdb3.isSelected()) { CVPFlag = 1; } else { CVPFlag = 2; }
+				 * String dem; dem = String.format("%-10s", "1") +
+				 * String.format("%-10s", SWPFlag.toString()) +
+				 * String.format("%-10s", ntf1.getText()) +
+				 * String.format("%-10s", ntf2.getText()) +
+				 * String.format("%-10s", ntf3.getText()) +
+				 * String.format("%-10s", CVPFlag.toString()) +
+				 * String.format("%-10s", ntf4.getText()) +
+				 * String.format("%-10s", ntf5.getText()) +
+				 * String.format("%-10s", ntf6.getText());
+				 * GUI_Utils.ReplaceLineInFile(System.getProperty("user.dir") +
+				 * "\\Run\\Lookup\\SOD_demand_options.table", 3, dem);
 				 */
-
-
 
 				// Write DLTREGULATION file
 				OutputStream outputStream;
@@ -883,7 +872,6 @@ TableModelListener, MenuListener, ChangeListener {
 				} catch (IOException ioe) {
 					System.out.println("IOException");
 				}
-
 
 				// "Run" model
 				menu.setCursor(normalCursor);
@@ -984,12 +972,12 @@ TableModelListener, MenuListener, ChangeListener {
 				System.out.println("String is:" + trstring);
 				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
 				for (int i = 0; st1.hasMoreTokens(); i++)
-					// for(int i=0; i < RowCt; i++)
+				// for(int i=0; i < RowCt; i++)
 				{
 					String rowstring = st1.nextToken();
 					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
 					for (int j = 0; st2.hasMoreTokens(); j++)
-						// for(int j=0;j < ColCt;j++)
+					// for(int j=0;j < ColCt;j++)
 					{
 						String value = (String) st2.nextToken();
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
@@ -1016,9 +1004,9 @@ TableModelListener, MenuListener, ChangeListener {
 			DataFileTableModel tm = (DataFileTableModel) table.getModel();
 			int size = tm.datafiles.length;
 			if (size == 1) {
-				tm.initVectors();  
+				tm.initVectors();
 			} else if (size == 2) {
-				tm.initVectors2();  
+				tm.initVectors2();
 			}
 			table.repaint();
 
@@ -1032,19 +1020,17 @@ TableModelListener, MenuListener, ChangeListener {
 			JComponent component = (JComponent) swix.find("scrOpValues");
 			JTable table = (JTable) swix.find("tblOpValues");
 
-
 			component.setVisible(true);
 			component.setEnabled(true);
-			//String cID = cName.substring(6);
-			//populateDTable(cID, table, component);
+			// String cID = cName.substring(6);
+			// populateDTable(cID, table, component);
 
-			//pan.setBorder(title);
+			// pan.setBorder(title);
 			component.setEnabled(true);
 			table.setVisible(true);
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
-
 
 		} else if (e.getActionCommand().startsWith("HYD_Clear")) {
 			Component[] components = hyd_CC1.getComponents();
@@ -1157,12 +1143,12 @@ TableModelListener, MenuListener, ChangeListener {
 					theText = theText + "NAME2\t" + ((JTextField) swix2.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix2.find("tfReportFILE3")).getToolTipText()
-					+ "\n";
+							+ "\n";
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix2.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix2.find("taReportASSUMPTIONS")).getText()
-					+ "\"\n";
+							+ "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix2.find("tfReportMODELER")).getText() + "\"\n";
 					System.out.println(theText);
@@ -1435,25 +1421,13 @@ TableModelListener, MenuListener, ChangeListener {
 		}
 
 		else if (e.getActionCommand().startsWith("Rep_DispCur")) {
-			HecDss hD;
-			// TODO Auto-generated method stub
-			try {
 
-				HecTime ht = new HecTime();
-				hD = HecDss.open("CL_2020D09E_CONV_092710_DV");
-				TimeSeriesContainer dC = (TimeSeriesContainer) hD.get(
-						"/CALSIM/S_TRNTY/STORAGE/01JAN2010/1MON/2020D09E/", true);
-
-				ht.set(dC.times[0]);
-				ht.set(dC.times[984]);
-
-				MonthlyTableModel mTM = new MonthlyTableModel(dC);
-				MonthlyTableDialog mTD = new MonthlyTableDialog("S_TRNTY/STORAGE", mTM);
-				mTD.setVisible(true);
-
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (lstScenarios.getModel().getSize() == 0) {
+				JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (((JList) swix.find("lstReports")).getSelectedValue() == null) {
+				JOptionPane.showMessageDialog(null, "No display group selected", "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				DisplayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue());
 			}
 		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1464,7 +1438,7 @@ TableModelListener, MenuListener, ChangeListener {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar
-			.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+					.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1493,6 +1467,11 @@ TableModelListener, MenuListener, ChangeListener {
 
 		}
 
+	}
+
+	public void DisplayFrame(String displayGroup) {
+		JOptionPane.showMessageDialog(null, displayGroup, "Check", JOptionPane.ERROR_MESSAGE);
+		return;
 	}
 
 	// This method returns the selected radio button in a button group
@@ -1557,7 +1536,7 @@ TableModelListener, MenuListener, ChangeListener {
 					f = new File(fileName);
 					exists = f.exists();
 					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-					+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+							+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
 				}
 			}
 
@@ -1681,22 +1660,21 @@ TableModelListener, MenuListener, ChangeListener {
 									secondary_Results);
 							tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 							cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null);
+							tabbedpane.insertTab("Difference", null, cp2, null, 0);
 						} else {
 							cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results);
+							tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 						}
-						tabbedpane.insertTab("CP2", null, cp2, null, 0);
 
 						ChartPanel1 cp3;
 						cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null);
 						tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 
 						SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
-						tabbedpane.insertTab("Summary", null, stp, null, 0);
+						tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 
 						MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
-						tabbedpane.insertTab("Monthly", null, mtp, null, 0);
-
-						menu.setCursor(normalCursor);
+						tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 
 						// Show the frame
 						JFrame frame = new JFrame();
@@ -1707,11 +1685,11 @@ TableModelListener, MenuListener, ChangeListener {
 						frame.setTitle("CalLite Results - " + chk.getText());
 						frame.setVisible(true);
 
-						// DoAChart dc = new DoAChart();
-						// dc.main(primary_Results[0]);
-
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
+
+						menu.setCursor(normalCursor);
+
 					}
 				} else if (cName.startsWith("schem_map")) {
 					JFrame frame = new JFrame("Test");
@@ -1778,8 +1756,7 @@ TableModelListener, MenuListener, ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
-		JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent
-		.getSource();
+		JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
 		int index = sourceTabbedPane.getSelectedIndex();
 		String cName = sourceTabbedPane.getTitleAt(index);
 		if (cName.startsWith("D-1641")) {
@@ -1789,8 +1766,7 @@ TableModelListener, MenuListener, ChangeListener {
 			rdb.setVisible(true);
 			rdb = (JRadioButton) swix.find("reg_rdbUD");
 			rdb.setVisible(true);
-		}
-		else {
+		} else {
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setVisible(true);
 			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");

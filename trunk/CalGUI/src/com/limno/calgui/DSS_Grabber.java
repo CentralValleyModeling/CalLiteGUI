@@ -54,6 +54,13 @@ public class DSS_Grabber {
 		baseName = string;
 	}
 
+	public String getBase() {
+
+		File file = new File(baseName);
+		int dot = file.getName().lastIndexOf(".");
+		return file.getName().substring(0, dot);
+	}
+	
 	public void setLocation(String string) {
 		String lookups[][] = {
 				{ "102", "S_TRNTY/STORAGE", "", "TAF" },
