@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -41,7 +40,6 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.imageio.ImageIO;
-import javax.print.DocFlavor.STRING;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -70,13 +68,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuEvent;
@@ -90,7 +84,7 @@ import com.limno.calgui.GetDSSFilename.CheckListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
-		ChangeListener {
+ChangeListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -169,12 +163,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
 		GUI_Utils.SetMouseListener(presets, this);
 		GUI_Utils.SetMenuListener(menu, this);
+		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
 
 		// Set current directory (Run Settings Page)
 
 		// Set Up Run Settings Page
-
 		JLabel label = (JLabel) swix.find("map");
 		java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta.jpg");
 		if (imgURL != null) {
@@ -266,12 +260,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Read switch lookup
 
 		gl = new GUILinks();
-		gl.readIn("Config\\GUI_Links.table");
+		gl.readIn("Config\\GUI_Links2.table");
 
 		// Setup for Reporting page
 
 		// Set up scenario list
-
 		lstScenarios = (JList) swix.find("SelectedList");
 		dss_Grabber = new DSS_Grabber(lstScenarios);
 		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"));
@@ -362,7 +355,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					component.setVisible(true);
 					component.setEnabled(true);
-					String cID = cName.substring(6);
+					String cID = cName;
 					populateDTable(cID, table, component);
 
 					title = BorderFactory.createTitledBorder(selcomp.getText());
@@ -373,6 +366,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(false);
+					pan.revalidate();
 
 				} else {
 					pan.setEnabled(false);
@@ -380,6 +374,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					pan.setBorder(title);
 					component.setEnabled(false);
 					table.setVisible(false);
+					pan.revalidate();
+
 
 				}
 			} else if (cName.startsWith("reg_rdbD1641")) {
@@ -772,36 +768,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 
-				/*
-				 * // Write SOD_demand_definitions.table Integer SWPFlag = 0;
-				 * Integer CVPFlag = 0; JRadioButton rdb1 = (JRadioButton)
-				 * swix.find("dem_rdbCurSWP"); JRadioButton rdb2 =
-				 * (JRadioButton) swix.find("dem_rdbFutSWP"); JRadioButton rdb3
-				 * = (JRadioButton) swix.find("dem_rdbFullCVP");
-				 * NumericTextField ntf1 = (NumericTextField)
-				 * swix.find("demtxt1"); NumericTextField ntf2 =
-				 * (NumericTextField) swix.find("demtxt2"); NumericTextField
-				 * ntf3 = (NumericTextField) swix.find("demtxt3");
-				 * NumericTextField ntf4 = (NumericTextField)
-				 * swix.find("demtxt4"); NumericTextField ntf5 =
-				 * (NumericTextField) swix.find("demtxt5"); NumericTextField
-				 * ntf6 = (NumericTextField) swix.find("demtxt6"); if
-				 * (rdb1.isSelected()) { SWPFlag = 1; } else if
-				 * (rdb2.isSelected()) { SWPFlag = 2; } else { SWPFlag = 3; } if
-				 * (rdb3.isSelected()) { CVPFlag = 1; } else { CVPFlag = 2; }
-				 * String dem; dem = String.format("%-10s", "1") +
-				 * String.format("%-10s", SWPFlag.toString()) +
-				 * String.format("%-10s", ntf1.getText()) +
-				 * String.format("%-10s", ntf2.getText()) +
-				 * String.format("%-10s", ntf3.getText()) +
-				 * String.format("%-10s", CVPFlag.toString()) +
-				 * String.format("%-10s", ntf4.getText()) +
-				 * String.format("%-10s", ntf5.getText()) +
-				 * String.format("%-10s", ntf6.getText());
-				 * GUI_Utils.ReplaceLineInFile(System.getProperty("user.dir") +
-				 * "\\Run\\Lookup\\SOD_demand_options.table", 3, dem);
-				 */
-
 				// Write DLTREGULATION file
 				OutputStream outputStream;
 				try {
@@ -819,11 +785,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					output.println("gui_DLTREGULATION");
 					output.println("SWITCHID OPTION");
 
-					for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
-						String switchID = Integer.toString(switchIdx);
-						String cID = gl.ctrlForSwitch(switchID);
+					ArrayList GUITables=new ArrayList();
+					GUITables =GUI_Utils.GetGUITables(GUILinks, "Regulations");
+
+
+
+					for (int i = 1; i <= GUITables.size(); i++) {
+						String line = GUITables.get(i).toString();
+						String[] parts = line.split("[\t]+");
+						String cName = parts[0].trim();
+						String tableName=parts[1].trim();
+						String switchID = parts[2].trim();
+						int tID=Integer.parseInt(parts[3].trim());
+
+
 						int option = 0;
-						JCheckBox cb = (JCheckBox) swix.find("ckbReg" + cID);
+						JCheckBox cb = (JCheckBox) swix.find(cName);
 						if (cb == null) {
 							option = 0;
 						} else if (!cb.isSelected()) {
@@ -834,22 +811,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 						output.println(switchID + " " + option);
 
-						// Output table if needed
-						// if ((option == 2)
-						// || ((option == 1) && (swix.find("btnU" + cID))
-						// .isVisible())) {
 						if ((option == 2) || (option == 1)) {
 
-							String fileName = gl.tableNameForCtrl(cID);
 
-							String[] files = fileName.split("[|]");
+							String[] files = tableName.split("[|]");
 							int size = files.length;
 							if (size == 1) {
 								// CASE 1: 1 file specified
-								System.out.println("Output to " + fileName);
-								String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + fileName + ".table";
+								System.out.println("Output to " + tableName);
+								String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
 
-								int tID = Integer.parseInt(cID);
 								if (dTableModels[tID] == null) {
 									System.out.println("Table not initialized");
 								} else {
@@ -861,7 +832,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								String fo1 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[0] + ".table";
 								String fo2 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[1] + ".table";
 
-								int tID = Integer.parseInt(cID);
 								if (dTableModels[tID] == null) {
 									System.out.println("Table not initialized");
 								} else {
@@ -978,12 +948,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				System.out.println("String is:" + trstring);
 				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
 				for (int i = 0; st1.hasMoreTokens(); i++)
-				// for(int i=0; i < RowCt; i++)
+					// for(int i=0; i < RowCt; i++)
 				{
 					String rowstring = st1.nextToken();
 					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
 					for (int j = 0; st2.hasMoreTokens(); j++)
-					// for(int j=0;j < ColCt;j++)
+						// for(int j=0;j < ColCt;j++)
 					{
 						String value = (String) st2.nextToken();
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
@@ -997,13 +967,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				ex.printStackTrace();
 			}
 
-			/*
-			 * JTable table =(JTable) swix.find("tblRegValues"); ActionEvent ae
-			 * = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "paste");
-			 * //table.selectAll();
-			 * table.getActionMap().get(ae.getActionCommand(
-			 * )).actionPerformed(ae); table.repaint();
-			 */
 		} else if (e.getActionCommand().startsWith("Reg_Default")) {
 
 			JTable table = (JTable) swix.find("tblRegValues");
@@ -1019,24 +982,65 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 
-		} else if (e.getActionCommand().startsWith("Op_SWPEdit")) {
+		} else if (e.getActionCommand().startsWith("Op_TableEdit")) {
+			JComponent component = (JComponent) e.getSource();
+			String cName = component.getName();
 			// CheckBox in Regulations panel changed
 			JPanel pan = (JPanel) swix.find("op_panTab");
 			TitledBorder title;
-			JComponent component = (JComponent) swix.find("scrOpValues");
+			component = (JComponent) swix.find("scrOpValues");
 			JTable table = (JTable) swix.find("tblOpValues");
 
 			component.setVisible(true);
 			component.setEnabled(true);
 			// String cID = cName.substring(6);
-			// populateDTable(cID, table, component);
+			populateDTable(cName, table, component);
 
 			// pan.setBorder(title);
 			component.setEnabled(true);
 			table.setVisible(true);
 
-			JButton btn = (JButton) swix.find("btnRegDef");
-			btn.setEnabled(false);
+		} else if (e.getActionCommand().startsWith("Op_Copy")) {
+
+			JTable table = (JTable) swix.find("tblOpValues");
+			ActionEvent ae = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "copy");
+			// table.selectAll();
+			table.getActionMap().get(ae.getActionCommand()).actionPerformed(ae);
+
+		} else if (e.getActionCommand().startsWith("Op_Paste")) {
+
+			// System.out.println("Clipboard contains:" +
+			// TextTransfer.getClipboardContents() );
+			JTable table = (JTable) swix.find("tblOpValues");
+			int startRow = (table.getSelectedRows())[0];
+			int startCol = (table.getSelectedColumns())[0];
+			// int RowCt=table.getSelectedRows().length;
+			// int ColCt=table.getSelectedColumns().length;
+			try {
+				String trstring = (String) (TextTransfer.getClipboardContents());
+				trstring = trstring.replaceAll("(?sm)\t\t", "\t \t");
+				trstring = trstring.replaceAll("(?sm)\t\n", "\t \n");
+				System.out.println("String is:" + trstring);
+				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
+				for (int i = 0; st1.hasMoreTokens(); i++)
+					// for(int i=0; i < RowCt; i++)
+				{
+					String rowstring = st1.nextToken();
+					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
+					for (int j = 0; st2.hasMoreTokens(); j++)
+						// for(int j=0;j < ColCt;j++)
+					{
+						String value = (String) st2.nextToken();
+						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
+							table.setValueAt(value, startRow + i, startCol + j);
+						table.repaint();
+						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol
+								+ j);
+					}
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 
 		} else if (e.getActionCommand().startsWith("HYD_Clear")) {
 			Component[] components = hyd_CC1.getComponents();
@@ -1149,12 +1153,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					theText = theText + "NAME2\t" + ((JTextField) swix2.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix2.find("tfReportFILE3")).getToolTipText()
-							+ "\n";
+					+ "\n";
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix2.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix2.find("taReportASSUMPTIONS")).getText()
-							+ "\"\n";
+					+ "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix2.find("tfReportMODELER")).getText() + "\"\n";
 					System.out.println(theText);
@@ -1378,7 +1382,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar
-					.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+			.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1635,22 +1639,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	protected void createDTableFrame(String cID) {
-
-		String fileName = gl.tableNameForCtrl(cID);
-
-		int tID = Integer.parseInt(cID);
-		if (dTableModels == null) {
-			dTableModels = new DataFileTableModel[20];
-		}
-		if (dTableModels[tID] == null) {
-			dTableModels[tID] = new DataFileTableModel("Default\\Lookup\\" + fileName + ".table");
-		}
-
-		TableDialog td = new TableDialog(fileName, dTableModels[tID]);
-		td.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-		td.setVisible(true);
-	}
 
 	@SuppressWarnings("unused")
 	protected void populateDTable(String cID, final JTable t, JComponent container) {
@@ -1678,7 +1666,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					f = new File(fileName);
 					exists = f.exists();
 					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-							+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+					+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
 				}
 			}
 
@@ -1690,7 +1678,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			container.setVisible(false);
 		} else {
 
-			int tID = Integer.parseInt(cID);
+			//int tID = Integer.parseInt(cID);
+			int tID= Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
 			}
@@ -1740,14 +1729,63 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseClicked(MouseEvent e) {
 
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		JComponent component = (JComponent) e.getComponent();
+		// was "e.getItemSelected"
+		String cName = component.getName();
+		if (cName != null) {
+			if (cName.startsWith("ckbp")) {
+				// CheckBox in presets panel changed
+				// String cID = cName.substring(3);
+			}
+
+			else if (cName.startsWith("ckbReg")) {
+				// CheckBox in Regulations panel changed
+				Boolean isSelect;
+				JPanel pan = (JPanel) swix.find("reg_panTab");
+				TitledBorder title;
+				component = (JComponent) swix.find("scrRegValues");
+				JTable table = (JTable) swix.find("tblRegValues");
+				JCheckBox selcomp = (JCheckBox) e.getComponent();
+				isSelect=selcomp.isSelected();
+				if (component != null)
+					component.setEnabled(isSelect);
+
+				if (isSelect) {
+					component.setVisible(true);
+					component.setEnabled(true);
+					String cID = cName;
+					populateDTable(cID, table, component);
+
+					title = BorderFactory.createTitledBorder(selcomp.getText());
+					pan.setBorder(title);
+					pan.setEnabled(true);
+					component.setEnabled(true);
+					table.setVisible(true);
+
+					JButton btn = (JButton) swix.find("btnRegDef");
+					btn.setEnabled(false);
+					pan.revalidate();
+
+				} else {
+					pan.setEnabled(false);
+					title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
+					pan.setBorder(title);
+					component.setEnabled(false);
+					table.setVisible(false);
+					pan.revalidate();
+
+
+				}
+			}
+		}
+
 
 	}
 
