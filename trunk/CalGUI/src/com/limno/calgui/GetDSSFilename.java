@@ -106,10 +106,8 @@ public class GetDSSFilename implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		System.out.print(((JButton) obj).getName());
 		if (((JButton) obj).getName().equals("btnDelScenario")) {
 			if ((theList != null) && lmScenNames.getSize() > 0) {
-				System.out.print(((JButton) obj).getName());
 				int todel = -1;
 				for (int i = 0; i < lmScenNames.getSize(); i++)
 					if (((CheckListItem) lmScenNames.getElementAt(i)).isSelected())
@@ -122,7 +120,6 @@ public class GetDSSFilename implements ActionListener {
 
 			}
 		} else {
-			System.out.print(((JButton) obj).getName());
 			int rc;
 			if (theFileExt == null)
 				rc = fc.showOpenDialog(null);
