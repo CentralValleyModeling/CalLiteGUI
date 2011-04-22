@@ -72,125 +72,172 @@ public class SummaryTablePanel extends JPanel {
 		n[i1][i2]++;
 	}
 
-	SummaryTablePanel(TimeSeriesContainer tsc) {
+	SummaryTablePanel(TimeSeriesContainer tscs[], String tagString) {
 
 		super();
 
-		n = new int[6][6];
-		x = new double[6][6];
-		xx = new double[6][6];
-		min = new double[6][6];
-		max = new double[6][6];
-		for (int i1 = 0; i1 < 6; i1++)
-			for (int i2 = 0; i2 < 6; i2++) {
-				n[i1][i2] = 0;
-				x[i1][i2] = 0;
-				xx[i1][i2] = 0;
-				min[i1][i2] = 1e20;
-				max[i1][i2] = 0;
-			}
+		// Determine target rows and columns
 
-		med = new double[6][6];
-		medx = new double[6][6][tsc.numberValues]; //TODO - adjust for subset of date
-
-		HecTime ht = new HecTime();
-
-		for (int i = 0; i < tsc.numberValues; i++) {
-
-			ht.set(tsc.times[i]);
-			int y = ht.year();
-			int m = ht.month();
-			int wy = (m < 10) ? y : y - 1;
-			int ySac403030 = (m < 2) ? y - 1 : y;
-			int ySHASTAindex = (m < 3) ? y - 1 : y;
-			int yFEATHERindex = (m < 2) ? y - 1 : y;
-			int ySJRindex = (m < 2) ? y - 1 : y;
-
-			update(0, 0, tsc.values[i]);
-			update(1, ylt[ySac403030 - 1920][1], tsc.values[i]);
-			update(2, ylt[ySHASTAindex - 1920][3], tsc.values[i]);
-			update(3, ylt[yFEATHERindex - 1920][5], tsc.values[i]);
-			update(4, ylt[ySJRindex - 1920][2], tsc.values[i]);
-			if (ylt[wy - 1920][8] != 0) {
-				update(5, ylt[wy - 1920][8], tsc.values[i]);
-				update(5, 0, tsc.values[i]);
-			}
-
-		}
-
-		avg = new double[6][6];
-		sdev = new double[6][6];
-		String[] leftPart = { "All", "Sac 40-30-30", "Shasta", "Feather", "SJR", "Dry" };
-		String[] rightPartsClimate = {"","Wet","Above","Normal","Dry","Extreme"};
-		String[] rightPartsDry = { "All dry periods", "1928-1934", "1976-1977", "1986-1992" };
-		DecimalFormat df1 = new DecimalFormat("#.#");
-		DecimalFormat df2 = new DecimalFormat("#.##");
-
-		int rows = 0;
-		Vector<String> data = new Vector<String>();
-		for (int i1 = 0; i1 < 6; i1++)
-			for (int i2 = 0; i2 < 6; i2++)
-				if (n[i1][i2] != 0) {
-
-					avg[i1][i2] = x[i1][i2] / n[i1][i2];
-					sdev[i1][i2] = Math.sqrt(Math.abs(xx[i1][i2] / n[i1][i2] - avg[i1][2] * avg[i1][2]));
-
-					int nmed = n[i1][i2];
-					double[] medx2 = new double[nmed];
-					for (int i3 = 0; i3 < nmed; i3++) medx2[i3] = medx[i1][i2][i3];
-					Arrays.sort(medx2);
-					//TODO fix logic for even sizes
-					nmed = (int) nmed / 2;
-					med[i1][i2] = medx2[nmed];
-					
-					String rightPart;
-					if (i1 == 0) {
-						rightPart = "";
-					}
-					else if (i1 == 1 || i1 == 4) {
-						rightPart = " (" + rightPartsClimate[i2] + ")";
-					}
-					else if (i1 <= 4)
-						rightPart = " " + Integer.toString(i2);
-					else
-						rightPart = " (" + rightPartsDry[i2] + ")";
-
-					System.out.print(leftPart[i1] + rightPart);
-					System.out.print("\t");
-					System.out.print(n[i1][i2]);
-					System.out.print(" ");
-					System.out.print(df1.format(avg[i1][i2]));
-					System.out.print(" ");
-					System.out.print(df2.format(sdev[i1][i2]));
-					System.out.print(" ");
-					System.out.print(df1.format(min[i1][i2]));
-					System.out.print(" ");
-					System.out.println(df1.format(max[i1][i2]));
-					
-					data.addElement(leftPart[i1] + rightPart);
-					data.addElement(Integer.toString(n[i1][i2]));
-					data.addElement(df1.format(avg[i1][i2]));
-					data.addElement(df1.format(sdev[i1][i2]));
-					data.addElement(df1.format(min[i1][i2]));
-					data.addElement(df1.format(med[i1][i2]));
-					data.addElement(df1.format(max[i1][i2]));
-					rows = rows + 1;
-				}
+		Vector<String> data[] = new Vector[tscs.length];
 		Vector<String> columns = new Vector<String>(6);
 		columns.addElement("Type");
 		columns.addElement("N");
-		columns.addElement("Average");
-		columns.addElement("Std Dev");
-		columns.addElement("Min");
-		columns.addElement("Med");
-		columns.addElement("Max");
+		int cols = 0;
+		int rows = 0;
 
-		SimpleTableModel model = new SimpleTableModel(data,columns);
+		// loop over all Primary datasets
+
+		for (int t = 0; t < tscs.length; t++) {
+
+			// Initialize accumulators
+
+			n = new int[6][6];
+			x = new double[6][6];
+			xx = new double[6][6];
+			min = new double[6][6];
+			max = new double[6][6];
+			for (int i1 = 0; i1 < 6; i1++)
+				for (int i2 = 0; i2 < 6; i2++) {
+					n[i1][i2] = 0;
+					x[i1][i2] = 0;
+					xx[i1][i2] = 0;
+					min[i1][i2] = 1e20;
+					max[i1][i2] = 0;
+				}
+
+			med = new double[6][6];
+			medx = new double[6][6][tscs[t].numberValues]; // TODO - adjust for
+															// subset of date
+
+			// Loop through timeseries
+
+			HecTime ht = new HecTime();
+
+			for (int i = 0; i < tscs[t].numberValues; i++) {
+
+				ht.set(tscs[t].times[i]);
+				int y = ht.year();
+				int m = ht.month();
+				int wy = (m < 10) ? y : y - 1;
+				int ySac403030 = (m < 2) ? y - 1 : y;
+				int ySHASTAindex = (m < 3) ? y - 1 : y;
+				int yFEATHERindex = (m < 2) ? y - 1 : y;
+				int ySJRindex = (m < 2) ? y - 1 : y;
+
+				update(0, 0, tscs[t].values[i]);
+				update(1, ylt[ySac403030 - 1920][1], tscs[t].values[i]);
+				update(2, ylt[ySHASTAindex - 1920][3], tscs[t].values[i]);
+				update(3, ylt[yFEATHERindex - 1920][5], tscs[t].values[i]);
+				update(4, ylt[ySJRindex - 1920][2], tscs[t].values[i]);
+				if (ylt[wy - 1920][8] != 0) {
+					update(5, ylt[wy - 1920][8], tscs[t].values[i]);
+					update(5, 0, tscs[t].values[i]);
+				}
+
+			}
+
+			avg = new double[6][6];
+			sdev = new double[6][6];
+			data[t] = new Vector<String>();
+			String[] leftPart = { "All", "Sac 40-30-30", "Shasta", "Feather", "SJR", "Dry" };
+			String[] rightPartsclimate = { "", "Wet", "Above", "Normal", "Dry", "Extreme" };
+			String[] rightPartsDry = { "All dry periods", "1928-1934", "1976-1977", "1986-1992" };
+			DecimalFormat df1 = new DecimalFormat("#.#");
+			DecimalFormat df2 = new DecimalFormat("#.##");
+
+			// Calculate results
+			for (int i1 = 0; i1 < 6; i1++)
+				for (int i2 = 0; i2 < 6; i2++)
+					if (n[i1][i2] != 0) {
+
+						avg[i1][i2] = x[i1][i2] / n[i1][i2];
+						sdev[i1][i2] = Math.sqrt(Math.abs(xx[i1][i2] / n[i1][i2] - avg[i1][2] * avg[i1][2]));
+
+						int nmed = n[i1][i2];
+						double[] medx2 = new double[nmed];
+						for (int i3 = 0; i3 < nmed; i3++)
+							medx2[i3] = medx[i1][i2][i3];
+						Arrays.sort(medx2);
+						// TODO fix logic for even sizes
+						nmed = (int) nmed / 2;
+						med[i1][i2] = medx2[nmed];
+
+						String rightPart;
+						if (i1 == 0) {
+							rightPart = "";
+						} else if (i1 == 1 || i1 == 4) {
+							rightPart = " (" + rightPartsclimate[i2] + ")";
+						} else if (i1 <= 4)
+							rightPart = " " + Integer.toString(i2);
+						else
+							rightPart = " (" + rightPartsDry[i2] + ")";
+
+						System.out.print(leftPart[i1] + rightPart);
+						System.out.print("\t");
+						System.out.print(n[i1][i2]);
+						System.out.print(" ");
+						System.out.print(df1.format(avg[i1][i2]));
+						System.out.print(" ");
+						System.out.print(df2.format(sdev[i1][i2]));
+						System.out.print(" ");
+						System.out.print(df1.format(min[i1][i2]));
+						System.out.print(" ");
+						System.out.println(df1.format(max[i1][i2]));
+
+						data[t].addElement(leftPart[i1] + rightPart);
+						data[t].addElement(Integer.toString(n[i1][i2]));
+						if (tagString.contains("Avg"))
+							data[t].addElement(df1.format(avg[i1][i2]));
+						if (tagString.contains("StdDev"))
+							data[t].addElement(df1.format(sdev[i1][i2]));
+						if (tagString.contains("Min"))
+							data[t].addElement(df1.format(min[i1][i2]));
+						if (tagString.contains("Median"))
+							data[t].addElement(df1.format(med[i1][i2]));
+						if (tagString.contains("Max"))
+							data[t].addElement(df1.format(max[i1][i2]));
+						rows = rows + 1;
+					}
+
+			cols = 0;
+			if (tagString.contains("Avg")) {
+				cols++;
+				columns.addElement("Average");
+			}
+			if (tagString.contains("StdDev")) {
+				cols++;
+				columns.addElement("Std Dev");
+			}
+			if (tagString.contains("Min")) {
+				cols++;
+				columns.addElement("Min");
+			}
+			if (tagString.contains("Median")) {
+				cols++;
+				columns.addElement("Med");
+			}
+			if (tagString.contains("Max")) {
+				cols++;
+				columns.addElement("Max");
+			}
+		}
+
+		Vector<String> data2 = new Vector<String>();
+		rows = data[0].size() / (cols + 2);
+		for (int r = 0; r < rows; r++) {
+			data2.add(data[0].get(r * (cols + 2)));
+			data2.add(data[0].get(r * (cols + 2) + 1));
+			for (int t = 0; t < tscs.length; t++)
+				for (int c = 0; c < cols; c++)
+					data2.add(data[t].get(r * (cols + 2) + 2 + c));
+		}
+		
+		SimpleTableModel model = new SimpleTableModel(data2, columns);
 		JTable table = new JTable(model);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		TableColumn col = table.getColumnModel().getColumn(0);
 		col.setPreferredWidth(250);
-	
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane);
 

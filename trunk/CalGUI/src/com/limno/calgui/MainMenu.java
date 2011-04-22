@@ -1216,107 +1216,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				lstArray1[i] = lstArray[i];
 			}
 
-			String cAdd;
-			cAdd = "";
-			// Comparison and Difference
-			JCheckBox ckb = (JCheckBox) swix.find("ckbp001");
-			if (ckb.isSelected()) {
-				cAdd = cAdd + "Comp";
-			}
-			ckb = (JCheckBox) swix.find("ckbp002");
-			if (ckb.isSelected()) {
-				cAdd = cAdd + ";Diff";
-			}
-			// Units
-			JRadioButton rdb = (JRadioButton) swix.find("rdbCFS");
-			if (rdb.isSelected()) {
-				cAdd = cAdd + ";CFS";
-			} else {
-				cAdd = cAdd + ";CFS";
-			}
 
-			// Date
-			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
-			JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
-			JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
-			JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
-			String cDate = spnSM.getValue().toString() + spnSY.getValue().toString();
-			cDate = cDate + "-" + spnEM.getValue().toString() + spnEY.getValue().toString();
-			cAdd = cAdd + ";" + cDate;
-
-			// Time Series
-			ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
-			if (ckb.isSelected()) {
-				cAdd = cAdd + ";TS";
-			}
-
-			// Exceedence Plot
-			Component[] components = controls2.getComponents();
-			ckb = (JCheckBox) swix.find("RepckbExceedancePlot");
-			if (ckb.isSelected()) {
-				String cST;
-				cST = ";EX-";
-				for (int i = 0; i < components.length; i++) {
-					if (components[i] instanceof JCheckBox) {
-						JCheckBox c = (JCheckBox) components[i];
-						boolean b = c.isSelected();
-						if (b == true) {
-							String cName = c.getText();
-							// TODO Need different naming convention.
-							cST = cST + "," + cName;
-						}
-					}
-				}
-				cAdd = cAdd + cST;
-			}
-
-			// Monthly Table
-			ckb = (JCheckBox) swix.find("RepckbMonthlyTable");
-			if (ckb.isSelected()) {
-				cAdd = cAdd + ";Monthly";
-			}
-
-			// Summary Table
-			components = controls3.getComponents();
-			ckb = (JCheckBox) swix.find("RepckbSummaryTable");
-			if (ckb.isSelected()) {
-				String cST;
-				cST = ";ST-";
-				for (int i = 0; i < components.length; i++) {
-					if (components[i] instanceof JCheckBox) {
-						JCheckBox c = (JCheckBox) components[i];
-						boolean b = c.isSelected();
-						if (b == true) {
-							String cName = c.getText();
-							// TODO Need different naming convention.
-							cST = cST + "," + cName;
-						}
-					}
-				}
-				cAdd = cAdd + cST;
-			}
-
-			String cSTOR = ";Locs-";
-			String cSTORIdx = ";Index-";
-			components = presets.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
-						}
-					}
-				}
-			}
-			cAdd = cAdd + cSTOR + cSTORIdx;
-			;
-
-			lstArray1[n] = cAdd;
-
+			lstArray1[n] = QuickState();
+			
 			// String[] reportNamesEG = {cDate};
 			lstReports.setListData(lstArray1);
 
@@ -1430,13 +1332,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			} else {
 				displayCount = 0;
 				JList list = (JList) swix.find("lstReports");
-				for (int i = 0; i < list.getModel().getSize(); i++) 
+				for (int i = 0; i < list.getModel().getSize(); i++)
 					DisplayFrame((String) (list.getModel().getElementAt(i)));
-					
-				
+
 			}
 		}
-			
+
 		else if (e.getActionCommand().startsWith("Rep_DispCur")) {
 
 			if (lstScenarios.getModel().getSize() == 0) {
@@ -1447,7 +1348,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				displayCount = 0;
 				DisplayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue());
 			}
-			
+
 		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
@@ -1488,6 +1389,108 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	}
 
+	private String QuickState() {
+		
+		String cAdd;
+		cAdd = "";
+		// Comparison and Difference
+		JCheckBox ckb = (JCheckBox) swix.find("ckbp001");
+		if (ckb.isSelected()) {
+			cAdd = cAdd + "Comp";
+		}
+		ckb = (JCheckBox) swix.find("ckbp002");
+		if (ckb.isSelected()) {
+			cAdd = cAdd + ";Diff";
+		}
+		// Units
+		JRadioButton rdb = (JRadioButton) swix.find("rdbCFS");
+		if (rdb.isSelected()) {
+			cAdd = cAdd + ";CFS";
+		} else {
+			cAdd = cAdd + ";CFS";
+		}
+
+		// Date
+		JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
+		JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
+		JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
+		JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
+		String cDate = spnSM.getValue().toString() + spnSY.getValue().toString();
+		cDate = cDate + "-" + spnEM.getValue().toString() + spnEY.getValue().toString();
+		cAdd = cAdd + ";" + cDate;
+
+		// Time Series
+		ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
+		if (ckb.isSelected()) {
+			cAdd = cAdd + ";TS";
+		}
+
+		// Exceedence Plot
+		Component[] components = controls2.getComponents();
+		ckb = (JCheckBox) swix.find("RepckbExceedancePlot");
+		if (ckb.isSelected()) {
+			String cST;
+			cST = ";EX-";
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					boolean b = c.isSelected();
+					if (b == true) {
+						String cName = c.getText();
+						// TODO Need different naming convention.
+						cST = cST + "," + cName;
+					}
+				}
+			}
+			cAdd = cAdd + cST;
+		}
+
+		// Monthly Table
+		ckb = (JCheckBox) swix.find("RepckbMonthlyTable");
+		if (ckb.isSelected()) {
+			cAdd = cAdd + ";Monthly";
+		}
+
+		// Summary Table
+		components = controls3.getComponents();
+		ckb = (JCheckBox) swix.find("RepckbSummaryTable");
+		if (ckb.isSelected()) {
+			String cST;
+			cST = ";ST-";
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					boolean b = c.isSelected();
+					if (b == true) {
+						String cName = c.getText();
+						// TODO Need different naming convention.
+						cST = cST + "," + cName;
+					}
+				}
+			}
+			cAdd = cAdd + cST;
+		}
+
+		String cSTOR = ";Locs-";
+		String cSTORIdx = ";Index-";
+		components = presets.getComponents();
+		for (int i = 0; i < components.length; i++) {
+			if (components[i] instanceof JCheckBox) {
+				JCheckBox c = (JCheckBox) components[i];
+				String cName = c.getName();
+				if (cName.startsWith("ckbp")) {
+					boolean b = c.isSelected();
+					if (b == true) {
+						cSTOR = cSTOR + c.getText().trim() + ",";
+						cSTORIdx = cSTORIdx + cName + ",";
+					}
+				}
+			}
+		}
+		cAdd = cAdd + cSTOR + cSTORIdx;
+		return cAdd;
+	}
+
 	public int displayCount;
 
 	public void DisplayFrame(String displayGroup) {
@@ -1512,10 +1515,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			else if (groupParts[i].equals("Diff"))
 				doComparison = true;
 			else if (groupParts[i].equals("TS"))
-				doComparison = true;
+				doTimeSeries = true;
 			else if (groupParts[i].startsWith("EX-")) {
 				doExceedance = true;
-				exceedMonths = groupParts[i].substring(4);
+				exceedMonths = groupParts[i].substring(3);
 			} else if (groupParts[i].equals("CFS"))
 				isCFS = true;
 			else if (groupParts[i].equals("TAF"))
@@ -1555,7 +1558,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JTabbedPane tabbedpane = new JTabbedPane();
 
 			if (doSummaryTable) {
-				SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
+				SummaryTablePanel stp = new SummaryTablePanel(primary_Results, summaryTags);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1574,7 +1577,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ChartPanel1 cp2;
 			if (primary_Results.length > 1) {
 				if (doDifference) {
-					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null,false);
+					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null, false);
 					tabbedpane.insertTab("Difference", null, cp2, null, 0);
 				}
 				if (doComparison) {
@@ -1769,53 +1772,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						chk.setFont(new Font("Tahoma", Font.ITALIC, 12));
 						chk.repaint();
 
-						for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-							CheckListItem item = (CheckListItem) lstScenarios.getModel().getElementAt(i);
-							if (item.isSelected())
-								dss_Grabber.setBase(item.toString());
-						}
-
-						dss_Grabber.setLocation(cName);
-						// TODO: Set location based on sender
-
-						TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
-						TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-						TimeSeriesContainer[] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
-						TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
-
-						JTabbedPane tabbedpane = new JTabbedPane();
-						ChartPanel1 cp1;
-						ChartPanel1 cp2;
-						if (primary_Results.length > 1) {
-							cp1 = new ChartPanel1("Comparison " + dss_Grabber.primaryDSSName, primary_Results,
-									secondary_Results, false);
-							tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-							cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null, false);
-							tabbedpane.insertTab("Difference", null, cp2, null, 0);
-						} else {
-							cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results, false);
-							tabbedpane.insertTab("Time Series", null, cp2, null, 0);
-						}
-
-						ChartPanel1 cp3;
-						cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null, true);
-						tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
-
-						SummaryTablePanel stp = new SummaryTablePanel(primary_Results[0]);
-						tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
-
-						MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
-						tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
-
-						// Show the frame
-						JFrame frame = new JFrame();
-
-						Container container = frame.getContentPane();
-						container.add(tabbedpane);
-						frame.pack();
-						frame.setTitle("CalLite Results - " + chk.getText());
-						frame.setVisible(true);
-
+						DisplayFrame(QuickState());
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
 
