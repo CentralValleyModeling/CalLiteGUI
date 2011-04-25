@@ -148,7 +148,17 @@ public class SummaryTablePanel extends JPanel {
 			// Calculate results
 			for (int i1 = 0; i1 < 6; i1++)
 				for (int i2 = 0; i2 < 6; i2++)
-					if (n[i1][i2] != 0) {
+
+					if ((((i1 == 0) && tagString.contains("All years"))
+							|| ((i1 == 1) && tagString.contains("40-30-30"))
+							|| ((i1 == 2) && tagString.contains("Shasta"))
+							|| ((i1 == 3) && tagString.contains("Feather"))
+							|| ((i1 == 4) && tagString.contains("SJR Index"))
+							|| ((i1 == 5) && tagString.contains("All dry"))
+							|| ((i1 == 5) && (i2 == 1) && tagString.contains("1928"))
+							|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) 
+							|| ((i1 == 5) && (i2 == 3) && tagString.contains("1986"))) 
+						&& (n[i1][i2] != 0)) {
 
 						avg[i1][i2] = x[i1][i2] / n[i1][i2];
 						sdev[i1][i2] = Math.sqrt(Math.abs(xx[i1][i2] / n[i1][i2] - avg[i1][2] * avg[i1][2]));
@@ -231,7 +241,7 @@ public class SummaryTablePanel extends JPanel {
 				for (int c = 0; c < cols; c++)
 					data2.add(data[t].get(r * (cols + 2) + 2 + c));
 		}
-		
+
 		SimpleTableModel model = new SimpleTableModel(data2, columns);
 		JTable table = new JTable(model);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
