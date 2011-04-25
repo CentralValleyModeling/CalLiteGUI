@@ -1582,7 +1582,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			if (doMonthlyTable) {
-				MonthlyTablePanel mtp = new MonthlyTablePanel(primary_Results[0]);
+				MonthlyTablePanel mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results);
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 
