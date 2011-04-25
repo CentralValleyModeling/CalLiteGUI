@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +37,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -84,7 +87,7 @@ import com.limno.calgui.GetDSSFilename.CheckListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
-ChangeListener {
+		ChangeListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -113,6 +116,8 @@ ChangeListener {
 	JPanel dem_UDCVP;
 	JFrame dialog;
 	GUILinks gl;
+
+	static public String lookups[][];
 
 	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
@@ -262,6 +267,9 @@ ChangeListener {
 		gl = new GUILinks();
 		gl.readIn("Config\\GUI_Links2.table");
 
+		readInLookups(); // Temporary access to quick reports info from
+							// gui_Links3.table
+
 		// Setup for Reporting page
 
 		// Set up scenario list
@@ -375,7 +383,6 @@ ChangeListener {
 					component.setEnabled(false);
 					table.setVisible(false);
 					pan.revalidate();
-
 
 				}
 			} else if (cName.startsWith("reg_rdbD1641")) {
@@ -785,19 +792,16 @@ ChangeListener {
 					output.println("gui_DLTREGULATION");
 					output.println("SWITCHID OPTION");
 
-					ArrayList GUITables=new ArrayList();
-					GUITables =GUI_Utils.GetGUITables(GUILinks, "Regulations");
-
-
+					ArrayList GUITables = new ArrayList();
+					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
 					for (int i = 1; i < GUITables.size(); i++) {
 						String line = GUITables.get(i).toString();
 						String[] parts = line.split("[|]");
 						String cName = parts[0].trim();
-						String tableName=parts[1].trim();
+						String tableName = parts[1].trim();
 						String switchID = parts[2].trim();
-						int tID=Integer.parseInt(parts[3].trim());
-
+						int tID = Integer.parseInt(parts[3].trim());
 
 						int option = 0;
 						JCheckBox cb = (JCheckBox) swix.find(cName);
@@ -812,7 +816,6 @@ ChangeListener {
 						output.println(switchID + " " + option);
 
 						if ((option == 2) || (option == 1)) {
-
 
 							String[] files = tableName.split("[|]");
 							int size = files.length;
@@ -948,12 +951,12 @@ ChangeListener {
 				System.out.println("String is:" + trstring);
 				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
 				for (int i = 0; st1.hasMoreTokens(); i++)
-					// for(int i=0; i < RowCt; i++)
+				// for(int i=0; i < RowCt; i++)
 				{
 					String rowstring = st1.nextToken();
 					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
 					for (int j = 0; st2.hasMoreTokens(); j++)
-						// for(int j=0;j < ColCt;j++)
+					// for(int j=0;j < ColCt;j++)
 					{
 						String value = (String) st2.nextToken();
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
@@ -1023,12 +1026,12 @@ ChangeListener {
 				System.out.println("String is:" + trstring);
 				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
 				for (int i = 0; st1.hasMoreTokens(); i++)
-					// for(int i=0; i < RowCt; i++)
+				// for(int i=0; i < RowCt; i++)
 				{
 					String rowstring = st1.nextToken();
 					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
 					for (int j = 0; st2.hasMoreTokens(); j++)
-						// for(int j=0;j < ColCt;j++)
+					// for(int j=0;j < ColCt;j++)
 					{
 						String value = (String) st2.nextToken();
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
@@ -1153,12 +1156,12 @@ ChangeListener {
 					theText = theText + "NAME2\t" + ((JTextField) swix2.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix2.find("tfReportFILE3")).getToolTipText()
-					+ "\n";
+							+ "\n";
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix2.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix2.find("taReportASSUMPTIONS")).getText()
-					+ "\"\n";
+							+ "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix2.find("tfReportMODELER")).getText() + "\"\n";
 					System.out.println(theText);
@@ -1382,7 +1385,7 @@ ChangeListener {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar
-			.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+					.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1666,7 +1669,7 @@ ChangeListener {
 					f = new File(fileName);
 					exists = f.exists();
 					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-					+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+							+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
 				}
 			}
 
@@ -1678,8 +1681,8 @@ ChangeListener {
 			container.setVisible(false);
 		} else {
 
-			//int tID = Integer.parseInt(cID);
-			int tID= Integer.parseInt(gl.tableIDForCtrl(cID));
+			// int tID = Integer.parseInt(cID);
+			int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
 			}
@@ -1753,7 +1756,7 @@ ChangeListener {
 				component = (JComponent) swix.find("scrRegValues");
 				JTable table = (JTable) swix.find("tblRegValues");
 				JCheckBox selcomp = (JCheckBox) e.getComponent();
-				isSelect=selcomp.isSelected();
+				isSelect = selcomp.isSelected();
 				if (component != null)
 					component.setEnabled(isSelect);
 
@@ -1781,11 +1784,9 @@ ChangeListener {
 					table.setVisible(false);
 					pan.revalidate();
 
-
 				}
 			}
 		}
-
 
 	}
 
@@ -1818,7 +1819,7 @@ ChangeListener {
 						chk.setFont(new Font("Tahoma", Font.ITALIC, 12));
 						chk.repaint();
 
-						DisplayFrame(QuickState() + ";Locs-"+chk.getText()+";Index-"+chk.getName());
+						DisplayFrame(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
 
@@ -1912,4 +1913,49 @@ ChangeListener {
 
 	}
 
+	private int readInLookups() {
+
+		// Open input file
+
+		Scanner input;
+		try {
+			input = new Scanner(new FileReader("Config\\GUI_Links3.table"));
+		} catch (FileNotFoundException e) {
+			System.out.println("Cannot open input file Config\\GUI_Links2.table");
+			return -1;
+		}
+
+		Vector<String> allLookups = new Vector<String>();
+
+		int lineCount = 0;
+		while (input.hasNextLine()) {
+			String line = input.nextLine();
+			allLookups.add(line);
+			lineCount++;
+		}
+		input.close();
+		lookups = new String[lineCount][5];
+		for (int i = 0; i < lineCount; i++) {
+			String[] parts = allLookups.get(i).split("[\t]+");
+			for (int j = 0; j < 5; j++) {
+				if (parts[j].equals("null"))
+					parts[j] = "";
+				lookups[i][j] = parts[j];
+			}
+			if (lookups[i][1].equals("")) {
+				JCheckBox cb = (JCheckBox) swix.find("ckbp" + lookups[i][0]);
+				cb.setEnabled(false);
+			}
+		}
+
+		return 0;
+	}
+
+	public static String getLookups(int i, int j) {
+		return lookups[i][j];
+	}
+
+	public static int getLookupsLength() {
+		return lookups.length;
+	}
 }
