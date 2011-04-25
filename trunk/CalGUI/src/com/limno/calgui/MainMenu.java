@@ -1584,7 +1584,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				cp3 = new ChartPanel1("Exceedance " + dss_Grabber.primaryDSSName, exc_Results, null, true);
+				cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance", exc_Results, null, true);
 				tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 			}
 
@@ -1592,17 +1592,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ChartPanel1 cp2;
 			if (primary_Results.length > 1) {
 				if (doDifference) {
-					cp2 = new ChartPanel1("Difference " + dss_Grabber.primaryDSSName, diff_Results, null, false);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", diff_Results, null, false);
 					tabbedpane.insertTab("Difference", null, cp2, null, 0);
 				}
 				if (doComparison) {
-					cp1 = new ChartPanel1("Comparison " + dss_Grabber.primaryDSSName, primary_Results,
+					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", primary_Results,
 							secondary_Results, false);
 					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 				}
 			} else {
 				if (doTimeSeries) {
-					cp2 = new ChartPanel1(dss_Grabber.primaryDSSName, primary_Results, secondary_Results, false);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle(), primary_Results, secondary_Results, false);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 				}
 			}
