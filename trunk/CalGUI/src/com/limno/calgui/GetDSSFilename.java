@@ -45,12 +45,14 @@ public class GetDSSFilename implements ActionListener {
 
 	public GetDSSFilename(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
+		theFileExt ="DSS";
 		theTextField = null;
 		Setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField) {
 		theLabel = null;
+		theFileExt ="DSS";
 		theTextField = aTextField;
 		Setup(aList);
 	}
@@ -64,9 +66,17 @@ public class GetDSSFilename implements ActionListener {
 
 	private void Setup(JList aList) {
 
-		fc.setFileFilter(new DSSFileFilter());
+		if (theFileExt.equals("DSS")) {
+			fc.setFileFilter(new DSSFileFilter());
 		fc.setCurrentDirectory(new File(".//Scenarios"));
-
+		}
+		else {
+			fc.setFileFilter(new GeneralFileFilter(theFileExt));
+			if (theFileExt.equals("PDF"))
+				fc.setCurrentDirectory(new File(".//Scenarios"));
+			else
+				fc.setCurrentDirectory(new File(".//Config"));
+			}
 		if (aList != null) {
 			lmScenNames = new DefaultListModel();
 
@@ -252,6 +262,24 @@ public class GetDSSFilename implements ActionListener {
 			return "DSS File (*.dss)";
 		}
 	}
+	class GeneralFileFilter extends javax.swing.filechooser.FileFilter {
+		private String extension;
+		private String description;
+		GeneralFileFilter(String extension) {
+			this.extension = "." + extension.toLowerCase();
+			this.description = extension.toUpperCase() + " File (*." + extension.toLowerCase() + ")";
+			
+		}
+		public boolean accept(File file) {
+			// Convert to lower case before checking extension
+			return (file.getName().toLowerCase().endsWith(extension) || file.isDirectory());
+		}
+
+		public String getDescription() {
+			return description;
+		}
+	}
+
 
 	class CheckListItem {
 		private String label;
