@@ -47,7 +47,7 @@ public class ChartPanel1 extends JPanel {
 			if (stscs != null) {
 				XYSeries[] sseries = new XYSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
-					sseries[i] = new XYSeries(tscs[i].fileName);
+					sseries[i] = new XYSeries("");
 					for (int j = 0; j < stscs[i].numberValues; j++) {
 						series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
 					}
