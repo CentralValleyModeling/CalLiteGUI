@@ -42,8 +42,8 @@ public class DSS_Grabber {
 	private String locationName;
 	public String primaryDSSName;
 	private String secondaryDSSName;
-	private String units;
 	private String title;
+	private String units;
 
 	private int scenarios;
 
@@ -64,17 +64,25 @@ public class DSS_Grabber {
 		return file.getName().substring(0, dot);
 	}
 
+	public String getTitle() {
+		if (title != "")
+			return title;
+			else {
+				return primaryDSSName;
+			}
+	}
+
 	public void setLocation(String string) {
 
 		locationName = string;
 		primaryDSSName = null;
 		secondaryDSSName = null;
 		for (int i = 0; i < com.limno.calgui.MainMenu.getLookupsLength(); i++) {
-			if (string.endsWith(com.limno.calgui.MainMenu.getLookups(i,0))) {
-				primaryDSSName = com.limno.calgui.MainMenu.getLookups(i,1);
-				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i,2);
-				units = com.limno.calgui.MainMenu.getLookups(i,3);
-				title = com.limno.calgui.MainMenu.getLookups(i,4);
+			if (string.endsWith(com.limno.calgui.MainMenu.getLookups(i, 0))) {
+				primaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 1);
+				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
+				units = com.limno.calgui.MainMenu.getLookups(i, 3);
+				title = com.limno.calgui.MainMenu.getLookups(i, 4);
 			}
 		}
 	}
@@ -93,15 +101,24 @@ public class DSS_Grabber {
 			System.out.println(hecFPart);
 
 			String[] dssNames = dssName.split(";");
-			result = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
 
+			boolean doTimeShift = false;
+			if (dssNames[0].endsWith("(-1)")) {
+				doTimeShift = true;
+				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
+			}
+			result = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
+			if (doTimeShift) {
+				for (int i = result.numberValues; i < result.numberValues - 1; i++)
+					result.times[i] = result.times[i + 1];
+				result.numberValues = result.numberValues - 1;
+			}
 			if (result == null) {
 
 				JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 						JOptionPane.ERROR_MESSAGE);
 
 			} else {
-
 				for (int i = 1; i < dssNames.length; i++) {
 					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[i]
 							+ "/01JAN2020/1MON/" + hecFPart, true);
@@ -120,7 +137,8 @@ public class DSS_Grabber {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		units = result.units;
+		String shortFileName = new File(dssFilename).getName();
+		result.fileName = shortFileName;
 		return result;
 	}
 
@@ -155,7 +173,6 @@ public class DSS_Grabber {
 			scenarios = lstScenarios.getModel().getSize();
 
 			TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios];
-		
 
 			// Base first
 
@@ -211,7 +228,7 @@ public class DSS_Grabber {
 						n = n + 1;
 					}
 				}
-				
+
 				results[i] = new TimeSeriesContainer();
 				results[i].times = times2;
 				results[i].values = values2;
@@ -224,4 +241,4 @@ public class DSS_Grabber {
 		}
 		return results;
 	}
-} 
+}

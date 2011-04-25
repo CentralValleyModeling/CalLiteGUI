@@ -37,7 +37,7 @@ public class ChartPanel1 extends JPanel {
 			XYSeriesCollection dataset = new XYSeriesCollection();
 			XYSeries[] series = new XYSeries[tscs.length];
 			for (int i = 0; i < tscs.length; i++) {
-				series[i] = new XYSeries("");
+				series[i] = new XYSeries(tscs[i].fileName);
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
 				}
@@ -47,7 +47,7 @@ public class ChartPanel1 extends JPanel {
 			if (stscs != null) {
 				XYSeries[] sseries = new XYSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
-					sseries[i] = new XYSeries("");
+					sseries[i] = new XYSeries(tscs[i].fileName);
 					for (int j = 0; j < stscs[i].numberValues; j++) {
 						series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
 					}
@@ -56,10 +56,10 @@ public class ChartPanel1 extends JPanel {
 			}
 
 			chart = ChartFactory.createXYLineChart(title.replace(";", "+"), // title
-					"", // x-axis label
-					"TAF", // y-axis label
+					"Time", // x-axis label
+					tscs[0].units, // y-axis label
 					dataset, // data
-					false); // create and display a frame...
+					true); // create and display a frame...
 
 		} else {
 
@@ -68,18 +68,19 @@ public class ChartPanel1 extends JPanel {
 
 			TimeSeries[] series = new TimeSeries[tscs.length];
 			for (int i = 0; i < tscs.length; i++) {
-				series[i] = new TimeSeries("");
+				series[i] = new TimeSeries(tscs[i].fileName);
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					ht.set(tscs[i].times[j]);
 					series[i].add(new Month(ht.month(), ht.year()), tscs[i].values[j]);
 				}
+	
 				dataset.addSeries(series[i]);
 			}
 
 			if (stscs != null) {
 				TimeSeries[] sseries = new TimeSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
-					sseries[i] = new TimeSeries("");
+					sseries[i] = new TimeSeries(tscs[i].fileName);
 					for (int j = 0; j < stscs[i].numberValues; j++) {
 						ht.set(stscs[i].times[j]);
 						sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
@@ -89,10 +90,10 @@ public class ChartPanel1 extends JPanel {
 			}
 
 			chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
-					"", // x-axis label
-					"TAF", // y-axis label
+					"Time", // x-axis label
+					tscs[0].units, // y-axis label
 					dataset, // data
-					false); // create and display a frame...
+					true); // create and display a frame...
 		}
 
 		ChartPanel p1 = new ChartPanel(chart);
