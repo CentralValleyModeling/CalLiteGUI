@@ -67,9 +67,9 @@ public class DSS_Grabber {
 	public String getTitle() {
 		if (title != "")
 			return title;
-			else {
-				return primaryDSSName;
-			}
+		else {
+			return primaryDSSName;
+		}
 	}
 
 	public void setLocation(String string) {
@@ -235,9 +235,11 @@ public class DSS_Grabber {
 				results[i].numberValues = n;
 
 			}
-			double[] sortArray = results[i].values;
-			Arrays.sort(sortArray);
-			results[i].values = sortArray;
+			if (results[i].values != null) {
+				double[] sortArray = results[i].values;
+				Arrays.sort(sortArray);
+				results[i].values = sortArray;
+			}
 		}
 		return results;
 	}
