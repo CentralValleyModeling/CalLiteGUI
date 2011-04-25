@@ -291,6 +291,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		JButton btnSetBase = (JButton) swix.find("btnSetBase");
 		btnSetBase.addActionListener(this);
+		
+		JButton btnReport = (JButton) swix.find("btnReport");
+		btnReport.addActionListener(this);
+		
 
 		// Set up month spinners
 		// TODO (?) - cycling spinner?
@@ -1129,9 +1133,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			 * e1.printStackTrace(); }
 			 */
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
-			if (((JTextField) swix2.find("tfReportFILE1")).getText().isEmpty()
-					|| ((JTextField) swix2.find("tfReportFILE2")).getText().isEmpty()
-					|| ((JTextField) swix2.find("tfReportFILE3")).getText().isEmpty()) {
+			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty()
+					|| ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
+					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
 				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file",
 						"Error", JOptionPane.ERROR_MESSAGE);
 			} else {
@@ -1140,30 +1144,30 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				try {
 					// Create an inputstream from template file;
 					FileInputStream fin = new FileInputStream(
-							((JTextField) swix2.find("tfTemplateFILE")).getToolTipText());
+							((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					// Open the template file
 					String theText = br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					br.readLine();
-					theText = theText + "FILE1\t" + ((JTextField) swix2.find("tfReportFILE1")).getToolTipText() + "\n";
+					theText = theText + "FILE1\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME1\t" + ((JTextField) swix2.find("tfReportNAME1")).getText() + "\n";
+					theText = theText + "NAME1\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
 					br.readLine();
-					theText = theText + "FILE2\t" + ((JTextField) swix2.find("tfReportFILE2")).getToolTipText() + "\n";
+					theText = theText + "FILE2\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME2\t" + ((JTextField) swix2.find("tfReportNAME2")).getText() + "\n";
+					theText = theText + "NAME2\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
-					theText = theText + "OUTFILE\t" + ((JTextField) swix2.find("tfReportFILE3")).getToolTipText()
+					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText()
 							+ "\n";
 					br.readLine();
-					theText = theText + "NOTE\t\"" + ((JTextArea) swix2.find("taReportNOTES")).getText() + "\"\n";
+					theText = theText + "NOTE\t\"" + ((JTextArea) swix.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
-					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix2.find("taReportASSUMPTIONS")).getText()
+					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix.find("taReportASSUMPTIONS")).getText()
 							+ "\"\n";
 					br.readLine();
-					theText = theText + "MODELER\t\"" + ((JTextField) swix2.find("tfReportMODELER")).getText() + "\"\n";
+					theText = theText + "MODELER\t\"" + ((JTextField) swix.find("tfReportMODELER")).getText() + "\"\n";
 					System.out.println(theText);
 					String aLine = br.readLine();
 					while (aLine != null) {
