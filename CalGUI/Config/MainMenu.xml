@@ -2231,6 +2231,7 @@
 						</scrollpane>
 					</panel>
 				</panel>
+				
 				<panel id="External PDF" name="External PDF" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 					<label text="Report template file">
