@@ -9,6 +9,9 @@ import hec.io.TimeSeriesContainer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -73,19 +76,21 @@ public class ChartPanel1 extends JPanel {
 					ht.set(tscs[i].times[j]);
 					series[i].add(new Month(ht.month(), ht.year()), tscs[i].values[j]);
 				}
-	
+
 				dataset.addSeries(series[i]);
 			}
 
 			if (stscs != null) {
 				TimeSeries[] sseries = new TimeSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
-					sseries[i] = new TimeSeries(tscs[i].fileName);
-					for (int j = 0; j < stscs[i].numberValues; j++) {
-						ht.set(stscs[i].times[j]);
-						sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
-					}
+					if (stscs[i].numberValues > 0) {
+						sseries[i] = new TimeSeries(tscs[i].fileName);
+						for (int j = 0; j < stscs[i].numberValues; j++) {
+							ht.set(stscs[i].times[j]);
+							sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
+						}
 					dataset.addSeries(sseries[i]);
+					}
 				}
 			}
 
@@ -94,6 +99,8 @@ public class ChartPanel1 extends JPanel {
 					tscs[0].units, // y-axis label
 					dataset, // data
 					true); // create and display a frame...
+			XYPlot plot = (XYPlot) chart.getPlot();
+
 		}
 
 		ChartPanel p1 = new ChartPanel(chart);

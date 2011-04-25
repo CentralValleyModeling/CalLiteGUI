@@ -128,19 +128,22 @@ public class SummaryTablePanel extends JPanel {
 				int y = ht.year();
 				int m = ht.month();
 				int wy = (m < 10) ? y : y - 1;
-				int ySac403030 = (m < 2) ? y - 1 : y;
-				int ySHASTAindex = (m < 3) ? y - 1 : y;
-				int yFEATHERindex = (m < 2) ? y - 1 : y;
-				int ySJRindex = (m < 2) ? y - 1 : y;
+				if (wy >= 1920) { //TODO - replace temporary filter with values based on controls
+					int ySac403030 = (m < 2) ? y - 1 : y;
+					int ySHASTAindex = (m < 3) ? y - 1 : y;
+					int yFEATHERindex = (m < 2) ? y - 1 : y;
+					int ySJRindex = (m < 2) ? y - 1 : y;
 
-				update(0, 0, tscs[t].values[i]);
-				update(1, ylt[ySac403030 - 1920][1], tscs[t].values[i]);
-				update(2, ylt[ySHASTAindex - 1920][3], tscs[t].values[i]);
-				update(3, ylt[yFEATHERindex - 1920][5], tscs[t].values[i]);
-				update(4, ylt[ySJRindex - 1920][2], tscs[t].values[i]);
-				if (ylt[wy - 1920][8] != 0) {
-					update(5, ylt[wy - 1920][8], tscs[t].values[i]);
-					update(5, 0, tscs[t].values[i]);
+					update(0, 0, tscs[t].values[i]);
+					update(1, ylt[ySac403030 - 1920][1], tscs[t].values[i]);
+					update(2, ylt[ySHASTAindex - 1920][3], tscs[t].values[i]);
+					update(3, ylt[yFEATHERindex - 1920][5], tscs[t].values[i]);
+					update(4, ylt[ySJRindex - 1920][2], tscs[t].values[i]);
+
+					if (ylt[wy - 1920][8] != 0) {
+						update(5, ylt[wy - 1920][8], tscs[t].values[i]);
+						update(5, 0, tscs[t].values[i]);
+					}
 				}
 
 			}
