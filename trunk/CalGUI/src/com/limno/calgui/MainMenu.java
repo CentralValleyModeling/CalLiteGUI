@@ -1140,7 +1140,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						"Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				Report report = null;
-				dialog.setVisible(false);
+				//dialog.setVisible(false);
 				try {
 					// Create an inputstream from template file;
 					FileInputStream fin = new FileInputStream(
