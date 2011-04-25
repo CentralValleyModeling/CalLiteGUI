@@ -526,7 +526,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				// Ask if User wants to save scenario file
 				Boolean scensave = false;
-				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario information?",
+				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information " +
+						"will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls'",
 						"CalLite Gui", JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
