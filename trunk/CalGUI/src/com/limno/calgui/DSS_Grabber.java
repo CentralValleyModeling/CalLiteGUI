@@ -233,7 +233,9 @@ public class DSS_Grabber {
 				results[i].times = times2;
 				results[i].values = values2;
 				results[i].numberValues = n;
-
+				results[i].units = primaryResults[i].units;
+				results[i].fileName = primaryResults[i].fileName;
+				
 			}
 			if (results[i].values != null) {
 				double[] sortArray = results[i].values;
