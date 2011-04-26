@@ -591,7 +591,7 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 						</panel>
-						<label icon="images/DWR_logo_small.gif">
+						<label icon="images/DWR_logo_small.gif" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
 						</label>
@@ -1227,7 +1227,7 @@
 							<checkBox name="ckbReg1" id="ckbReg1"
 								text="QWEST (San Joaquin River near Jersey Point)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="3" anchor="GridBagConstraints.CENTER" />
+									gridy="3" anchor="GridBagConstraints.WEST" />
 							</checkBox>
 							<checkbox name="ckbReg2" id="ckbReg2" text="Old and Middle River (OMR)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
@@ -2231,7 +2231,6 @@
 						</scrollpane>
 					</panel>
 				</panel>
-				
 				<panel id="External PDF" name="External PDF" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 					<label text="Report template file">
@@ -2353,7 +2352,5 @@
 				</panel>
 			</tabbedpane>
 		</panel>
-
 	</panel>
-
 </frame>
