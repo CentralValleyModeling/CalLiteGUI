@@ -991,11 +991,18 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			btn.setEnabled(false);
 
 		} else if (e.getActionCommand().startsWith("Op_TableEdit")) {
+			TitledBorder title=null;
 			JComponent component = (JComponent) e.getSource();
+			if( e.getSource() instanceof JButton ) {
+				JButton btn = (JButton)e.getSource();
+				String titlestr = btn.getText();
+				titlestr=titlestr.substring(5);
+				title = BorderFactory.createTitledBorder(titlestr);
+			}
 			String cName = component.getName();
 			// CheckBox in Regulations panel changed
 			JPanel pan = (JPanel) swix.find("op_panTab");
-			TitledBorder title;
+			pan.setBorder(title);
 			component = (JComponent) swix.find("scrOpValues");
 			JTable table = (JTable) swix.find("tblOpValues");
 
