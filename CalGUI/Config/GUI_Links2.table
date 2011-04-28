@@ -40,8 +40,9 @@ n/a	GUI_D1641RPAsOtherRegs.table	6	-1	"CVP export estimate method: pre-BO estima
 n/a	GUI_D1641RPAsOtherRegs.table	7	-1	"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "	Regulations			
 ckbReg1	GUI_D1641RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	Regulations	gui_qomr	2	6
 ckbReg2	GUI_D1641RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	Regulations	gui_qwest	1	7
+ckbReg10	GUI_D1641RPAsOtherRegs.table	10	-2	   EISJR_DLTSW; user defined  2	Regulations	gui_EIsjr	10	8
 op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations			
 op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations			
 op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	Operations			
-op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	8
-op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	9
+op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9
+op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10
