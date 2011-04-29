@@ -20,6 +20,7 @@ public class GUILinks {
 	private Map<String,String> mapCtrlToTable;
 	private Map<String,String> mapCtrlToTID;
 	private Map<String,String> mapCtrlToswitchID;
+	private Map<String,String> mapTIDToCtrl;
 
 	/* 
 	 * GUILinks.tableNameForCtrl: Method to look up table name to use for a given control
@@ -39,6 +40,11 @@ public class GUILinks {
 	public String switchIDForCtrl(String ctrlID) {
 		return mapCtrlToswitchID.get(ctrlID);
 	}
+	
+	public String CtrlFortableID(String tID) {
+		return mapTIDToCtrl.get(tID);
+	}
+	
 	
 	/* 
 	 * GUILinks.readIn: Method to look read control-to-switch, control-to-table information
@@ -64,6 +70,7 @@ public class GUILinks {
 		mapCtrlToTable = new HashMap<String,String>();
 		mapCtrlToTID = new HashMap<String,String>();
 		mapCtrlToswitchID = new HashMap<String,String>();
+		mapTIDToCtrl = new HashMap<String,String>();
 		
 		int lineCount = 0;
 		while (input.hasNextLine()) {
@@ -93,6 +100,7 @@ public class GUILinks {
 					}
 					if (TableID != "" ) {
 						mapCtrlToTID.put(ctrlName,TableID);
+						mapTIDToCtrl.put(TableID, ctrlName);
 					}
 				}
 			}

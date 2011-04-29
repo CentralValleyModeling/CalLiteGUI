@@ -13,11 +13,13 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected Vector<String> columnNames ;  
 	protected String datafile;
 	protected String[] datafiles;
+	protected int tID;
 	protected EventListenerList listenerList = new EventListenerList();
 
 	String wyts[] = {"Wet","Above Normal","Below Normal","Dry","Critical"};
 
-	public DataFileTableModel(String f){
+	public DataFileTableModel(String f, int ID){
+		tID=ID;
 		//check if multiple file names included
 		datafiles = f.split("[|]");
 		int size = datafiles.length;

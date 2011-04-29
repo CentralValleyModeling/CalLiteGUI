@@ -37,7 +37,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -115,6 +114,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JPanel dem_UDSWP;
 	JPanel dem_UDCVP;
 	JFrame dialog;
+	ButtonGroup reg_btng1;
 	GUILinks gl;
 
 	static public String lookups[][];
@@ -379,6 +379,23 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(false);
 					pan.revalidate();
+					
+					if (RegUserEdits != null) {
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int tID=tm.tID;
+						if (RegUserEdits[tID] != null) {
+							if (RegUserEdits[tID]==true){
+								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
+								rdb.setSelected(true);
+							} else {
+								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+								rdb.setSelected(true);
+							}
+						}
+					} else{
+						reg_btng1.clearSelection();
+					}
+
 
 				} else {
 					pan.setEnabled(false);
@@ -409,10 +426,45 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					if (table.isEditing()) {
 						table.getCellEditor().stopCellEditing();
 					}
-				} else {
+					int tID=tm.tID;
+					if (RegUserEdits == null) {
+						RegUserEdits = new Boolean[20];
+					}
+					RegUserEdits[tID]=false;
+					
+					String cName1=gl.CtrlFortableID(Integer.toString(tID));
+					JCheckBox ckb = (JCheckBox) swix.find(cName1);
+					String ckbtext=ckb.getText();
+					String[] ckbtext1=ckbtext.split(" - ");
+					ckbtext=ckbtext1[0];
+					ckb.setText(ckbtext + " -  Default");
+
+				}
+				
+			} else if (cName.startsWith("reg_rdbUD")) {
+				// do not allow user edits to tables
+				JTable table = (JTable) swix.find("tblRegValues");
+				JRadioButton rdb = (JRadioButton) e.getItem();
+
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+
 					table.setCellSelectionEnabled(true);
 					table.setEnabled(true);
-				}
+					
+					DataFileTableModel tm = (DataFileTableModel) table.getModel();
+					int tID=tm.tID;
+					if (RegUserEdits == null) {
+						RegUserEdits = new Boolean[20];
+					}
+					RegUserEdits[tID]=true;
+					
+					String cName1=gl.CtrlFortableID(Integer.toString(tID));
+					JCheckBox ckb = (JCheckBox) swix.find(cName1);
+					String ckbtext=ckb.getText();
+					String[] ckbtext1=ckbtext.split(" - ");
+					ckbtext=ckbtext1[0];
+					ckb.setText(ckbtext + " - User Def.");
+				}	
 
 			} else if (cName.startsWith("fac_ckb")) {
 				// checkbox in facilities panel changed
@@ -986,6 +1038,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				tm.initVectors2();
 			}
 			table.repaint();
+			int tID=tm.tID;
+			if (RegUserEdits == null) {
+				RegUserEdits = new Boolean[20];
+			}
+			RegUserEdits[tID]=false;
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
@@ -1650,6 +1707,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	}
 
 	private DataFileTableModel[] dTableModels;
+	private Boolean[] RegUserEdits;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -1694,12 +1752,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		} else {
 
 			// int tID = Integer.parseInt(cID);
-			int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
+			final int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
 			}
 			if (dTableModels[tID] == null) {
-				dTableModels[tID] = new DataFileTableModel(fileName);
+				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 			}
 			// dTableModels[tID].addTableModelListener(this);
 
@@ -1721,8 +1779,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			t.getModel().addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 
+					if (RegUserEdits == null) {
+						RegUserEdits = new Boolean[20];
+					}
+					
+					RegUserEdits[tID]=true;
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
+					
+					
 				}
 			});
 
@@ -1787,6 +1852,23 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(false);
 					pan.revalidate();
+					
+					
+					if (RegUserEdits != null) {
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int tID=tm.tID;
+						if (RegUserEdits[tID] != null) {
+							if (RegUserEdits[tID]==true){
+								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
+								rdb.setSelected(true);
+							} else {
+								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+								rdb.setSelected(true);
+							}
+						}
+					} else{
+						reg_btng1.clearSelection();
+					}
 
 				} else {
 					pan.setEnabled(false);
@@ -1795,6 +1877,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					component.setEnabled(false);
 					table.setVisible(false);
 					pan.revalidate();
+					reg_btng1.clearSelection();
 
 				}
 			}

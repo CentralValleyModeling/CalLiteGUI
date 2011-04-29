@@ -683,7 +683,7 @@ public class GUI_Utils {
     				dTableModels = new DataFileTableModel[20];
     			}
     			if (dTableModels[tID] == null) {
-    				dTableModels[tID] = new DataFileTableModel(fileName);
+    				dTableModels[tID] = new DataFileTableModel(fileName, tID);
     			}
 
         		dTableModels[tID].setVectors(tokens[1]);
