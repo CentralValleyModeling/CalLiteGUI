@@ -1260,7 +1260,7 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<buttongroup>
+						<buttongroup id="reg_btng1" name="reg_btng1">
 							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641"
 								text="D-1641">
 								<gridbagconstraints insets="0,0,5,5"
