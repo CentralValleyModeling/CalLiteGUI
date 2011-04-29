@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class DataFileTable extends JPanel {
   
-	public DataFileTable(String dataFilePath) {
+	public DataFileTable(String dataFilePath, int tID) {
     JTable table;
     DataFileTableModel model;
     Font f;
@@ -16,7 +16,7 @@ public class DataFileTable extends JPanel {
     setFont(f);
     setLayout(new BorderLayout());
 
-    model = new DataFileTableModel(dataFilePath);
+    model = new DataFileTableModel(dataFilePath, tID);
 
     table = new JTable();
     table.setModel(model);
@@ -34,11 +34,11 @@ public class DataFileTable extends JPanel {
     return new Dimension(2,2);
     }
     
- public static void main(String dataFilePath) {
+ public static void main(String dataFilePath, int tID) {
     JFrame frame = new JFrame("Data File Table");
     DataFileTable panel;
         
-    panel = new DataFileTable(dataFilePath);
+    panel = new DataFileTable(dataFilePath, tID);
 
     frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     frame.setForeground(Color.black);

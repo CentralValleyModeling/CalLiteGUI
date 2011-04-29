@@ -1,0 +1,11 @@
+GUI_SODdemand
+Index	Option
+0	1	!SWP demand type  1=non-user-defined demands  2=user-defined demands
+1	1911.5	!SWP MWD user-defined demands
+2	1189.4	!SWP Other MI user-defined demands
+3	1032.1	!SWP Ag user-defined demands
+4	0	!User-defined ratio for interruptible deliveries
+5	1	!CVP demand type  1=non-user-defined demands  2=user-defined demands
+6	1963.1	!CVP Ag user-defined demands
+7	147.65	!CVP MI user-defined demands
+8	281.06	!CVP Refuge user-defined demands
