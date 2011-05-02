@@ -43,7 +43,7 @@ public class DSS_Grabber {
 	public String primaryDSSName;
 	private String secondaryDSSName;
 	private String title;
-	private String units;
+	private String yLabel;
 
 	private int scenarios;
 
@@ -64,6 +64,12 @@ public class DSS_Grabber {
 		return file.getName().substring(0, dot);
 	}
 
+	public String getYLabel() {
+	
+		return yLabel;
+	
+	}
+
 	public String getTitle() {
 		if (title != "")
 			return title;
@@ -81,7 +87,7 @@ public class DSS_Grabber {
 			if (string.endsWith(com.limno.calgui.MainMenu.getLookups(i, 0))) {
 				primaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 1);
 				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
-				units = com.limno.calgui.MainMenu.getLookups(i, 3);
+				yLabel = com.limno.calgui.MainMenu.getLookups(i, 3);
 				title = com.limno.calgui.MainMenu.getLookups(i, 4);
 			}
 		}
