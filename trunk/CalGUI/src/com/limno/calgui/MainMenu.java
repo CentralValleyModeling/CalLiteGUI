@@ -221,7 +221,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		spnSM1.setModel(monthModel);
 		spnSM1.setValue(monthNames[9]);
 		spnEM1.setModel(monthModel2);
-		spnEM1.setValue(monthNames[9]);
+		spnEM1.setValue(monthNames[8]);
 
 		// Set up year spinners
 		// TODO - Get years from scenarios rather than fixed
