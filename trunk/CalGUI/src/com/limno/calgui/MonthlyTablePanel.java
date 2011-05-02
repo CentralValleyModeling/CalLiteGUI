@@ -2,6 +2,8 @@ package com.limno.calgui;
 
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
+
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.text.DecimalFormat;
@@ -53,7 +55,7 @@ public class MonthlyTablePanel extends JPanel {
 		for (int s = 0; s < tscs.length; s++) {
 
 			JLabel label = new JLabel();
-			label.setText(title + " - " + tscs[s].fileName);
+			label.setText(title + " (" + tscs[s].units + ") - " + tscs[s].fileName);
 			panel.add(label);
 
 			int first = 0;
@@ -89,6 +91,7 @@ public class MonthlyTablePanel extends JPanel {
 			TableColumn col = table.getColumnModel().getColumn(0);
 			col.setPreferredWidth(50);
 
+			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
 		}
 	}

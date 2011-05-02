@@ -141,7 +141,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix = new SwingEngine(this);
 
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
-		swix.render(new File(System.getProperty("user.dir")+"\\Config\\GUI.xml")).setVisible(true);
+		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
 		// swix2 = new SwingEngine(this);
 		// swix2.render(new File("Config\\ReportDialog.xml"));
@@ -292,10 +292,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		JButton btnSetBase = (JButton) swix.find("btnSetBase");
 		btnSetBase.addActionListener(this);
-		
+
 		JButton btnReport = (JButton) swix.find("btnReport");
 		btnReport.addActionListener(this);
-		
 
 		// Set up month spinners
 		// TODO (?) - cycling spinner?
@@ -386,12 +385,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(false);
 					pan.revalidate();
-					
+
 					if (RegUserEdits != null) {
 						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID=tm.tID;
+						int tID = tm.tID;
 						if (RegUserEdits[tID] != null) {
-							if (RegUserEdits[tID]==true){
+							if (RegUserEdits[tID] == true) {
 								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
 								rdb.setSelected(true);
 							} else {
@@ -399,10 +398,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								rdb.setSelected(true);
 							}
 						}
-					} else{
+					} else {
 						reg_btng1.clearSelection();
 					}
-
 
 				} else {
 					pan.setEnabled(false);
@@ -433,21 +431,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					if (table.isEditing()) {
 						table.getCellEditor().stopCellEditing();
 					}
-					int tID=tm.tID;
+					int tID = tm.tID;
 					if (RegUserEdits == null) {
 						RegUserEdits = new Boolean[20];
 					}
-					RegUserEdits[tID]=false;
-					
-					String cName1=gl.CtrlFortableID(Integer.toString(tID));
+					RegUserEdits[tID] = false;
+
+					String cName1 = gl.CtrlFortableID(Integer.toString(tID));
 					JCheckBox ckb = (JCheckBox) swix.find(cName1);
-					String ckbtext=ckb.getText();
-					String[] ckbtext1=ckbtext.split(" - ");
-					ckbtext=ckbtext1[0];
+					String ckbtext = ckb.getText();
+					String[] ckbtext1 = ckbtext.split(" - ");
+					ckbtext = ckbtext1[0];
 					ckb.setText(ckbtext + " -  Default");
 
 				}
-				
+
 			} else if (cName.startsWith("reg_rdbUD")) {
 				// do not allow user edits to tables
 				JTable table = (JTable) swix.find("tblRegValues");
@@ -457,21 +455,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					table.setCellSelectionEnabled(true);
 					table.setEnabled(true);
-					
+
 					DataFileTableModel tm = (DataFileTableModel) table.getModel();
-					int tID=tm.tID;
+					int tID = tm.tID;
 					if (RegUserEdits == null) {
 						RegUserEdits = new Boolean[20];
 					}
-					RegUserEdits[tID]=true;
-					
-					String cName1=gl.CtrlFortableID(Integer.toString(tID));
+					RegUserEdits[tID] = true;
+
+					String cName1 = gl.CtrlFortableID(Integer.toString(tID));
 					JCheckBox ckb = (JCheckBox) swix.find(cName1);
-					String ckbtext=ckb.getText();
-					String[] ckbtext1=ckbtext.split(" - ");
-					ckbtext=ckbtext1[0];
+					String ckbtext = ckb.getText();
+					String[] ckbtext1 = ckbtext.split(" - ");
+					ckbtext = ckbtext1[0];
 					ckb.setText(ckbtext + " - User Def.");
-				}	
+				}
 
 			} else if (cName.startsWith("fac_ckb")) {
 				// checkbox in facilities panel changed
@@ -585,9 +583,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				// Ask if User wants to save scenario file
 				Boolean scensave = false;
-				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information " +
-						"will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls'",
-						"CalLite Gui", JOptionPane.YES_NO_OPTION);
+				int n = JOptionPane.showConfirmDialog(mainmenu,
+						"Would you like to save the scenario definition? \nScenario information "
+								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
+								+ ".cls'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
 					// statusBar.setMessage("Saving CalLite Scenario file...");
@@ -1045,22 +1044,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				tm.initVectors2();
 			}
 			table.repaint();
-			int tID=tm.tID;
+			int tID = tm.tID;
 			if (RegUserEdits == null) {
 				RegUserEdits = new Boolean[20];
 			}
-			RegUserEdits[tID]=false;
+			RegUserEdits[tID] = false;
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 
 		} else if (e.getActionCommand().startsWith("Op_TableEdit")) {
-			TitledBorder title=null;
+			TitledBorder title = null;
 			JComponent component = (JComponent) e.getSource();
-			if( e.getSource() instanceof JButton ) {
-				JButton btn = (JButton)e.getSource();
+			if (e.getSource() instanceof JButton) {
+				JButton btn = (JButton) e.getSource();
 				String titlestr = btn.getText();
-				titlestr=titlestr.substring(5);
+				titlestr = titlestr.substring(5);
 				title = BorderFactory.createTitledBorder(titlestr);
 			}
 			String cName = component.getName();
@@ -1212,7 +1211,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						"Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				Report report = null;
-				//dialog.setVisible(false);
+				// dialog.setVisible(false);
 				try {
 					// Create an inputstream from template file;
 					FileInputStream fin = new FileInputStream(
@@ -1231,8 +1230,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					br.readLine();
 					theText = theText + "NAME2\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
-					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText()
-							+ "\n";
+					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText() + "\n";
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
@@ -1649,7 +1647,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JTabbedPane tabbedpane = new JTabbedPane();
 
 			if (doSummaryTable) {
-				SummaryTablePanel stp = new SummaryTablePanel(primary_Results, summaryTags);
+				SummaryTablePanel stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, summaryTags);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1660,7 +1658,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance", exc_Results, null, true);
+				cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance", dss_Grabber.getYLabel(), exc_Results,
+						null, true);
 				tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 			}
 
@@ -1668,17 +1667,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ChartPanel1 cp2;
 			if (primary_Results.length > 1) {
 				if (doDifference) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", diff_Results, null, false);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", dss_Grabber.getYLabel(),
+							diff_Results, null, false);
 					tabbedpane.insertTab("Difference", null, cp2, null, 0);
 				}
 				if (doComparison) {
-					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", primary_Results,
-							secondary_Results, false);
+					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(),
+							primary_Results, secondary_Results, false);
 					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 				}
 			} else {
 				if (doTimeSeries) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle(), primary_Results, secondary_Results, false);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results,
+							secondary_Results, false);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 				}
 			}
@@ -1789,12 +1790,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					if (RegUserEdits == null) {
 						RegUserEdits = new Boolean[20];
 					}
-					
-					RegUserEdits[tID]=true;
+
+					RegUserEdits[tID] = true;
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
-					
-					
+
 				}
 			});
 
@@ -1859,13 +1859,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(false);
 					pan.revalidate();
-					
-					
+
 					if (RegUserEdits != null) {
 						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID=tm.tID;
+						int tID = tm.tID;
 						if (RegUserEdits[tID] != null) {
-							if (RegUserEdits[tID]==true){
+							if (RegUserEdits[tID] == true) {
 								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
 								rdb.setSelected(true);
 							} else {
@@ -1873,7 +1872,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								rdb.setSelected(true);
 							}
 						}
-					} else{
+					} else {
 						reg_btng1.clearSelection();
 					}
 
@@ -2023,13 +2022,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		try {
 			input = new Scanner(new FileReader("Config\\GUI_Links3.table"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Cannot open input file Config\\GUI_Links2.table");
+			System.out.println("Cannot open input file Config\\GUI_Links3.table");
 			return -1;
 		}
 
 		Vector<String> allLookups = new Vector<String>();
 
 		int lineCount = 0;
+		input.nextLine(); // Skip header line
 		while (input.hasNextLine()) {
 			String line = input.nextLine();
 			allLookups.add(line);
