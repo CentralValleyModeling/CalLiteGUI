@@ -96,7 +96,7 @@ public class SummaryTablePanel extends JPanel {
 
 	Vector<String> columns;
 
-	SummaryTablePanel(TimeSeriesContainer tscs[], String tagString) {
+	SummaryTablePanel(String title, TimeSeriesContainer tscs[], String tagString) {
 
 		super();
 
@@ -309,7 +309,7 @@ public class SummaryTablePanel extends JPanel {
 			
 			
 			JLabel label = new JLabel();
-			label.setText(tscs[t].fileName + " (" + tscs[t].units + ")");
+			label.setText(title + " (" + tscs[t].units + ") - " + tscs[t].fileName);
 			panel.add(label);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
