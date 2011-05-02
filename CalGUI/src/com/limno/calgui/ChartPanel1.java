@@ -20,6 +20,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class ChartPanel1 extends JPanel {
@@ -59,7 +60,7 @@ public class ChartPanel1 extends JPanel {
 			}
 
 			chart = ChartFactory.createXYLineChart(title.replace(";", "+"), // title
-					"Time", // x-axis label
+					"Percent", // x-axis label
 					tscs[0].units, // y-axis label
 					dataset, // data
 					true); // create and display a frame...
@@ -104,6 +105,11 @@ public class ChartPanel1 extends JPanel {
 		}
 
 		ChartPanel p1 = new ChartPanel(chart);
+//		JButton clipButton = new JButton();
+//		clipButton.setText("Copy" );
+//		p1.add(clipButton);
+		
+		
 		p1.setPreferredSize(new Dimension(800, 600));
 		this.setLayout(new BorderLayout());
 		this.add(p1);

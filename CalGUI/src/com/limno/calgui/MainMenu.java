@@ -139,8 +139,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
+
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
-		swix.render(new File("Config\\MainMenu.xml")).setVisible(true);
+		swix.render(new File(System.getProperty("user.dir")+"\\Config\\GUI.xml")).setVisible(true);
 
 		// swix2 = new SwingEngine(this);
 		// swix2.render(new File("Config\\ReportDialog.xml"));
@@ -337,9 +338,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
-		new MainMenu();
+		try {
+			new MainMenu();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			e.printStackTrace();
+		}
 
 	}
 
