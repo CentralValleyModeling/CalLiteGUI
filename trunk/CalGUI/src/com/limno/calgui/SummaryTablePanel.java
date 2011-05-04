@@ -273,10 +273,10 @@ public class SummaryTablePanel extends JPanel {
 									int i3m;
 									if (i3 < 3)
 										i3m = i3 + 10;
-									else if (i3 == 12)
-										i3m = 0;
+									else if (i3 < 12)
+										i3m = i3 - 2;
 									else
-										i3m = i3 - 3;
+										i3m = 0;
 
 									switch (tag) {
 									case 0:

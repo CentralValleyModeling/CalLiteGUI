@@ -35,6 +35,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
@@ -42,6 +43,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+import javax.help.HelpSet;
+import javax.help.JHelp;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -92,6 +95,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	private SwingEngine swix;
 
 	// Declare public Objects
+	static JHelp helpViewer = null;
+
 	JFrame desktop;
 	JPanel runsettings;
 	JPanel mainmenu;
@@ -341,6 +346,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	 */
 	public static void main(String[] args) {
 
+		// Load help
+		try {
+			ClassLoader cl = MainMenu.class.getClassLoader();
+	        URL url = HelpSet.findHelpSet(null, "docs/CalLite Help/helpset.hs");
+			helpViewer = new JHelp(new HelpSet(cl, url));
+			helpViewer.setCurrentID("Introduction");
+		} catch (Exception e) {
+			System.err.println("API Help Set not found");
+			;
+		}
+JFrame test = new JFrame("Help");
+test.getContentPane().add(helpViewer);
+test.pack();
+test.setVisible(true);
+
+		// Load menu
 		try {
 			new MainMenu();
 		} catch (Exception e) {
@@ -1264,9 +1285,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						aLine = br.readLine();
 					}
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
-					//ReportWrapper rw = new ReportWrapper((InputStream) bs, desktop);
+					// ReportWrapper rw = new ReportWrapper((InputStream) bs,
+					// desktop);
 					try {
-						report = new Report(bs,desktop);
+						report = new Report(bs, desktop);
 						report.execute();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
@@ -1659,6 +1681,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String locationNames[] = locations.split(",");
 		String namesText[] = names.split(",");
 
+		JRadioButton rb = (JRadioButton) swix.find("rdbCFS");
+		dss_Grabber.setIsCFS(rb.isSelected());
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
