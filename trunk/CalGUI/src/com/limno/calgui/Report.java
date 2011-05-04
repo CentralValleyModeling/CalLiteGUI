@@ -196,11 +196,15 @@ public class Report extends SwingWorker<Void, String> {
 			logger.severe("No data available in either : " + scalars.get("FILE1") + " or " + scalars.get("FILE2"));
 			return;
 		}
+
+		publish("Generating summary table."); // SwingWorker
+
 		generateSummaryTable();
 		int dataIndex = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
 			dataIndex = dataIndex + 1;
 			logger.fine("Working on index: " + dataIndex);
+			publish("Generating plot " + dataIndex + " of " + pathnameMaps.size() +"."); //SwingWorker
 			if (pathMap.path2 == null || pathMap.path2 == "") {
 				pathMap.path2 = pathMap.path1;
 			}

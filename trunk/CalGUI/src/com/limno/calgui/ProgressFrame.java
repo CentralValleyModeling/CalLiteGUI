@@ -23,11 +23,9 @@ public class ProgressFrame extends JFrame {
 		setLayout(new BorderLayout());
 
 		setTitle(title);
-		label = new JLabel();
-		label.setText("");
-		label.setHorizontalTextPosition(JLabel.CENTER);
-		add(label,BorderLayout.CENTER);
-
+		label = new JLabel("",SwingConstants.CENTER);
+		add(label);
+		
 		pack();
 		setAlwaysOnTop(true);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -36,7 +34,7 @@ public class ProgressFrame extends JFrame {
 
 		try {
 			Robot robot = new Robot();
-			robot.mouseMove(dim.width / 2, dim.height / 2);
+			robot.mouseMove(dim.width / 2, dim.height / 2 + 40);
 		} catch (AWTException e) {
 
 		}
