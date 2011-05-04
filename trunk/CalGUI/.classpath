@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="lib" path="lib/swixml.jar"/>
 	<classpathentry kind="lib" path="lib/jh.jar"/>
+	<classpathentry kind="lib" path="docs"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

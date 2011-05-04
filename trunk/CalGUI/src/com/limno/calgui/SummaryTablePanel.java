@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -18,9 +19,12 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -28,6 +32,8 @@ import javax.swing.table.*;
 import javax.swing.plaf.basic.*;
 import javax.swing.SwingConstants;
 import java.awt.Component;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,37 +55,41 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 	double max[][][];
 	double med[][][];
 	double medx[][][][];
-	JScrollPane scrollPane;
+	JPanel panel;
+
+	final String LINE_BREAK = "\n"; 
+	final String CELL_BREAK = "\t"; 
+	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard(); 
 
 	private static int ylt[][] = { { 1920, 2, 2, 1, 1, 0, 3, 2, 0, }, { 1921, 2, 2, 1, 1, 0, 3, 2, 0, },
-			{ 1922, 2, 1, 1, 1, 0, 4, 2, 0, }, { 1923, 3, 2, 3, 1, 0, 4, 3, 0, }, { 1924, 5, 5, 4, 2, 1, 5, 6, 0, },
-			{ 1925, 4, 3, 1, 1, 0, 2, 5, 0, }, { 1926, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1927, 1, 2, 1, 1, 0, 2, 1, 0, },
-			{ 1928, 2, 3, 1, 1, 0, 3, 2, 1, }, { 1929, 5, 5, 3, 1, 0, 5, 6, 1, }, { 1930, 4, 5, 2, 1, 0, 4, 5, 1, },
-			{ 1931, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1932, 4, 2, 4, 1, 0, 4, 5, 1, }, { 1933, 5, 4, 4, 1, 0, 4, 6, 1, },
-			{ 1934, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1935, 3, 2, 1, 1, 0, 4, 3, 0, }, { 1936, 3, 2, 1, 1, 0, 3, 3, 0, },
-			{ 1937, 3, 1, 2, 1, 0, 4, 3, 0, }, { 1938, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1939, 4, 4, 3, 2, 0, 5, 5, 0, },
-			{ 1940, 2, 2, 1, 1, 0, 2, 2, 0, }, { 1941, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1942, 1, 1, 1, 1, 0, 2, 1, 0, },
-			{ 1943, 1, 1, 1, 1, 0, 3, 1, 0, }, { 1944, 4, 3, 3, 1, 0, 5, 5, 0, }, { 1945, 3, 2, 1, 1, 0, 3, 3, 0, },
-			{ 1946, 3, 2, 1, 1, 0, 2, 3, 0, }, { 1947, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1948, 3, 3, 1, 1, 0, 3, 3, 0, },
-			{ 1949, 4, 3, 2, 1, 0, 3, 5, 0, }, { 1950, 3, 3, 2, 1, 0, 4, 3, 0, }, { 1951, 2, 2, 1, 1, 0, 2, 2, 0, },
-			{ 1952, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1953, 1, 3, 1, 1, 0, 2, 1, 0, }, { 1954, 2, 3, 1, 1, 0, 2, 2, 0, },
-			{ 1955, 4, 4, 2, 1, 0, 4, 5, 0, }, { 1956, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1957, 2, 3, 1, 1, 0, 3, 2, 0, },
-			{ 1958, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1959, 3, 4, 1, 1, 0, 3, 3, 0, }, { 1960, 4, 5, 1, 1, 0, 3, 5, 0, },
-			{ 1961, 4, 5, 1, 1, 0, 3, 5, 0, }, { 1962, 3, 3, 1, 1, 0, 3, 3, 0, }, { 1963, 1, 2, 1, 1, 0, 2, 1, 0, },
-			{ 1964, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1965, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1966, 3, 3, 1, 1, 0, 3, 3, 0, },
-			{ 1967, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1968, 3, 4, 1, 1, 0, 3, 3, 0, }, { 1969, 1, 1, 1, 1, 0, 1, 1, 0, },
-			{ 1970, 1, 2, 1, 1, 0, 2, 1, 0, }, { 1971, 1, 3, 1, 1, 0, 2, 1, 0, }, { 1972, 3, 4, 1, 1, 0, 3, 3, 0, },
-			{ 1973, 2, 2, 1, 1, 0, 2, 2, 0, }, { 1974, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1975, 1, 1, 1, 1, 0, 2, 1, 0, },
-			{ 1976, 5, 5, 3, 2, 0, 4, 6, 2, }, { 1977, 5, 5, 4, 2, 1, 5, 7, 2, }, { 1978, 2, 1, 1, 1, 0, 1, 2, 0, },
-			{ 1979, 3, 2, 2, 1, 0, 4, 3, 0, }, { 1980, 2, 1, 1, 1, 0, 2, 2, 0, }, { 1981, 4, 4, 2, 2, 0, 4, 5, 0, },
-			{ 1982, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1983, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1984, 1, 2, 1, 1, 0, 2, 1, 0, },
-			{ 1985, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1986, 1, 1, 1, 1, 0, 2, 1, 3, }, { 1987, 4, 5, 3, 2, 0, 4, 5, 3, },
-			{ 1988, 5, 5, 3, 2, 1, 4, 6, 3, }, { 1989, 4, 5, 1, 1, 0, 3, 5, 3, }, { 1990, 5, 5, 3, 2, 0, 4, 6, 3, },
-			{ 1991, 5, 5, 4, 1, 1, 5, 6, 3, }, { 1992, 5, 5, 4, 2, 0, 4, 6, 3, }, { 1993, 2, 1, 1, 1, 0, 2, 2, 0, },
-			{ 1994, 5, 5, 4, 2, 0, 5, 6, 0, }, { 1995, 1, 1, 1, 1, 0, 1, 0, 0, }, { 1996, 1, 1, 1, 1, 0, 2, 0, 0, },
-			{ 1997, 1, 1, 1, 1, 0, 2, 0, 0, }, { 1998, 1, 1, 1, 1, 0, 1, 0, 0, }, { 1999, 1, 2, 1, 1, 0, 2, 0, 0, },
-			{ 2000, 2, 2, 1, 1, 0, 2, 0, 0, }, { 2001, 4, 4, 1, 2, 0, 4, 0, 0, }, { 2002, 4, 4, 1, 1, 0, 3, 0, 0, },
-			{ 2003, 2, 3, 1, 1, 0, 2, 0, 0, } };
+		{ 1922, 2, 1, 1, 1, 0, 4, 2, 0, }, { 1923, 3, 2, 3, 1, 0, 4, 3, 0, }, { 1924, 5, 5, 4, 2, 1, 5, 6, 0, },
+		{ 1925, 4, 3, 1, 1, 0, 2, 5, 0, }, { 1926, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1927, 1, 2, 1, 1, 0, 2, 1, 0, },
+		{ 1928, 2, 3, 1, 1, 0, 3, 2, 1, }, { 1929, 5, 5, 3, 1, 0, 5, 6, 1, }, { 1930, 4, 5, 2, 1, 0, 4, 5, 1, },
+		{ 1931, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1932, 4, 2, 4, 1, 0, 4, 5, 1, }, { 1933, 5, 4, 4, 1, 0, 4, 6, 1, },
+		{ 1934, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1935, 3, 2, 1, 1, 0, 4, 3, 0, }, { 1936, 3, 2, 1, 1, 0, 3, 3, 0, },
+		{ 1937, 3, 1, 2, 1, 0, 4, 3, 0, }, { 1938, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1939, 4, 4, 3, 2, 0, 5, 5, 0, },
+		{ 1940, 2, 2, 1, 1, 0, 2, 2, 0, }, { 1941, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1942, 1, 1, 1, 1, 0, 2, 1, 0, },
+		{ 1943, 1, 1, 1, 1, 0, 3, 1, 0, }, { 1944, 4, 3, 3, 1, 0, 5, 5, 0, }, { 1945, 3, 2, 1, 1, 0, 3, 3, 0, },
+		{ 1946, 3, 2, 1, 1, 0, 2, 3, 0, }, { 1947, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1948, 3, 3, 1, 1, 0, 3, 3, 0, },
+		{ 1949, 4, 3, 2, 1, 0, 3, 5, 0, }, { 1950, 3, 3, 2, 1, 0, 4, 3, 0, }, { 1951, 2, 2, 1, 1, 0, 2, 2, 0, },
+		{ 1952, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1953, 1, 3, 1, 1, 0, 2, 1, 0, }, { 1954, 2, 3, 1, 1, 0, 2, 2, 0, },
+		{ 1955, 4, 4, 2, 1, 0, 4, 5, 0, }, { 1956, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1957, 2, 3, 1, 1, 0, 3, 2, 0, },
+		{ 1958, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1959, 3, 4, 1, 1, 0, 3, 3, 0, }, { 1960, 4, 5, 1, 1, 0, 3, 5, 0, },
+		{ 1961, 4, 5, 1, 1, 0, 3, 5, 0, }, { 1962, 3, 3, 1, 1, 0, 3, 3, 0, }, { 1963, 1, 2, 1, 1, 0, 2, 1, 0, },
+		{ 1964, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1965, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1966, 3, 3, 1, 1, 0, 3, 3, 0, },
+		{ 1967, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1968, 3, 4, 1, 1, 0, 3, 3, 0, }, { 1969, 1, 1, 1, 1, 0, 1, 1, 0, },
+		{ 1970, 1, 2, 1, 1, 0, 2, 1, 0, }, { 1971, 1, 3, 1, 1, 0, 2, 1, 0, }, { 1972, 3, 4, 1, 1, 0, 3, 3, 0, },
+		{ 1973, 2, 2, 1, 1, 0, 2, 2, 0, }, { 1974, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1975, 1, 1, 1, 1, 0, 2, 1, 0, },
+		{ 1976, 5, 5, 3, 2, 0, 4, 6, 2, }, { 1977, 5, 5, 4, 2, 1, 5, 7, 2, }, { 1978, 2, 1, 1, 1, 0, 1, 2, 0, },
+		{ 1979, 3, 2, 2, 1, 0, 4, 3, 0, }, { 1980, 2, 1, 1, 1, 0, 2, 2, 0, }, { 1981, 4, 4, 2, 2, 0, 4, 5, 0, },
+		{ 1982, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1983, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1984, 1, 2, 1, 1, 0, 2, 1, 0, },
+		{ 1985, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1986, 1, 1, 1, 1, 0, 2, 1, 3, }, { 1987, 4, 5, 3, 2, 0, 4, 5, 3, },
+		{ 1988, 5, 5, 3, 2, 1, 4, 6, 3, }, { 1989, 4, 5, 1, 1, 0, 3, 5, 3, }, { 1990, 5, 5, 3, 2, 0, 4, 6, 3, },
+		{ 1991, 5, 5, 4, 1, 1, 5, 6, 3, }, { 1992, 5, 5, 4, 2, 0, 4, 6, 3, }, { 1993, 2, 1, 1, 1, 0, 2, 2, 0, },
+		{ 1994, 5, 5, 4, 2, 0, 5, 6, 0, }, { 1995, 1, 1, 1, 1, 0, 1, 0, 0, }, { 1996, 1, 1, 1, 1, 0, 2, 0, 0, },
+		{ 1997, 1, 1, 1, 1, 0, 2, 0, 0, }, { 1998, 1, 1, 1, 1, 0, 1, 0, 0, }, { 1999, 1, 2, 1, 1, 0, 2, 0, 0, },
+		{ 2000, 2, 2, 1, 1, 0, 2, 0, 0, }, { 2001, 4, 4, 1, 2, 0, 4, 0, 0, }, { 2002, 4, 4, 1, 1, 0, 3, 0, 0, },
+		{ 2003, 2, 3, 1, 1, 0, 2, 0, 0, } };
 
 	private void update(int i1, int i2, double value, int m) {
 		x[i1][i2][m] += value;
@@ -127,13 +137,13 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 		columns.addElement("Sep");
 		columns.addElement("Annual");
 
-		
+
 		// loop over all Primary datasets
-		scrollPane = new JScrollPane();
-		JPanel panel = new JPanel();
+		JScrollPane scrollPane = new JScrollPane();
+		panel = new JPanel();
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
-		
+
 
 		for (int t = 0; t < tscs.length; t++) {
 
@@ -157,9 +167,9 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 
 			med = new double[6][6][13];
 			medx = new double[6][6][13][tscs[t].numberValues]; // TODO - adjust
-																// for
-																// subset of
-																// date
+			// for
+			// subset of
+			// date
 
 			// Loop through timeseries
 
@@ -172,7 +182,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 				int m = ht.month();
 				int wy = (m < 10) ? y : y - 1;
 				if (wy >= 1920) { // TODO - replace temporary filter with values
-									// based on controls
+					// based on controls
 					int ySac403030 = (m < 2) ? y - 1 : y;
 					int ySHASTAindex = (m < 3) ? y - 1 : y;
 					int yFEATHERindex = (m < 2) ? y - 1 : y;
@@ -213,11 +223,11 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 								|| ((i1 == 5) && tagString.contains("All dry"))
 								|| ((i1 == 5) && (i2 == 1) && tagString.contains("1928"))
 								|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) || ((i1 == 5) && (i2 == 3) && tagString
-								.contains("1986"))) && (n[i1][i2][i3] != 0)) {
+										.contains("1986"))) && (n[i1][i2][i3] != 0)) {
 
 							avg[i1][i2][i3] = x[i1][i2][i3] / n[i1][i2][i3];
 							sdev[i1][i2][i3] = Math.sqrt(Math.abs(xx[i1][i2][i3] / n[i1][i2][i3] - avg[i1][2][i3]
-									* avg[i1][2][i3]));
+							                                                                                  * avg[i1][2][i3]));
 
 							int nmed = n[i1][i2][i3];
 							double[] medx2 = new double[nmed];
@@ -245,7 +255,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 									|| ((i1 == 5) && tagString.contains("All dry"))
 									|| ((i1 == 5) && (i2 == 1) && tagString.contains("1928"))
 									|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) || ((i1 == 5)
-									&& (i2 == 3) && tagString.contains("1986")))) {
+											&& (i2 == 3) && tagString.contains("1986")))) {
 
 								String rightPart;
 
@@ -273,7 +283,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 								data[t].addElement(leftPart[i1] + rightPart);
 								data[t].addElement(tagStringList[tag]);
 								for (int i3 = 0; i3 < 13; i3++) {
-									
+
 									int i3m;
 									if (i3 < 3)
 										i3m = i3 + 10;
@@ -308,23 +318,23 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 			JTable table = new JTable(model);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			for (int c = 0; c < 15; c++) 
-				{ TableColumn col = table.getColumnModel().getColumn(0);
+			{ TableColumn col = table.getColumnModel().getColumn(0);
 			col.setPreferredWidth((c==0) ? 200:75 ); }
-			
-			
+
+
 			JLabel label = new JLabel();
 			label.setText(title + " (" + tscs[t].units + ") - " + tscs[t].fileName);
 			panel.add(label);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
-			
-			
+
+
 		}
-//		JLabel label = new JLabel();
+		//		JLabel label = new JLabel();
 		//label.setText(tscs[0].fileName + " (" + tscs[0].units + ")");
 		//panel.add(label);
-		
-		
+
+
 		scrollPane.setViewportView(panel);
 		scrollPane.setMinimumSize(new Dimension(790, 550));
 		scrollPane.setPreferredSize(new Dimension(790, 550));
@@ -333,16 +343,17 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 
 		JButton copy = new JButton("Copy to Clipboard");
 		copy.setAlignmentX(LEFT_ALIGNMENT);
-		
+		copy.addActionListener((ActionListener) this);
+
 		Box box = Box.createVerticalBox(); 
 		box.add(scrollPane);
 		box.add(copy);
-		
+
 		add(box);
-		
+
 		//add(scrollPane);
-		
-		
+
+
 	}
 
 	@Override
@@ -354,65 +365,99 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 			String cName = btn.getText();
 			if (cName != null) {
 				if (cName.startsWith("Copy")) {
-					
-					Component[] components =scrollPane.getComponents();
-					
-					
-					
-					
-					
-					
-					
-					
+					StringBuffer excelStr=new StringBuffer();
+
+					Component[] components =panel.getComponents();
+
+					for (int i = 0; i < components.length; i++) {
+						if (components[i] instanceof JTable) {
+							JTable table = (JTable) components[i];
+							int numCols=table.getColumnCount();
+							int numRows=table.getRowCount();
+
+							
+							//get column headers
+							for (int k=0; k<numCols; k++) { 
+								excelStr.append(table.getColumnModel().getColumn(k).getHeaderValue());
+								if (k<numCols-1) { 
+									excelStr.append(CELL_BREAK); 
+								} 
+							} 
+							excelStr.append(LINE_BREAK);
+							
+							//get cell values
+							for (int j=0; j<numRows; j++) { 
+								for (int k=0; k<numCols; k++) { 
+									excelStr.append(escape(table.getValueAt(j, k))); 
+									if (k<numCols-1) { 
+										excelStr.append(CELL_BREAK); 
+									} 
+								} 
+								excelStr.append(LINE_BREAK); 
+							} 
+
+							StringSelection sel  = new StringSelection(excelStr.toString()); 
+							CLIPBOARD.setContents(sel, sel); 
+						} else if (components[i] instanceof JLabel) {
+							JLabel label = (JLabel) components[i];
+							excelStr.append(label.getText());
+							excelStr.append(LINE_BREAK);
+						}
+					}
 				}
 			}
 		}
 	}
-}
 
-class SimpleTableModel extends AbstractTableModel {
 
-	protected Vector<String> data;
-	protected Vector<String> columnNames;
+	private String escape(Object cell) { 
+		return cell.toString().replace(LINE_BREAK, " ").replace(CELL_BREAK, " "); 
+	} 
 
-	public SimpleTableModel(Vector<String> datain, Vector<String> columnin) {
-		data = datain;
-		columnNames = columnin;
+	class SimpleTableModel extends AbstractTableModel {
+
+		protected Vector<String> data;
+		protected Vector<String> columnNames;
+
+		public SimpleTableModel(Vector<String> datain, Vector<String> columnin) {
+			data = datain;
+			columnNames = columnin;
+		}
+
+		public int getRowCount() {
+			return data.size() / getColumnCount();
+		}
+
+		public int getColumnCount() {
+			return columnNames.size();
+		}
+
+		public String getColumnName(int columnIndex) {
+			String colName = "";
+
+			if (columnIndex <= getColumnCount())
+				colName = (String) columnNames.elementAt(columnIndex);
+
+			return colName;
+		}
+
+		public Class getColumnClass(int columnIndex) {
+			return String.class;
+		}
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+			return false;
+		}
+
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			return (String) data.elementAt((rowIndex * getColumnCount()) + columnIndex);
+		}
+
+		public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+			data.setElementAt((String) aValue, ((rowIndex * getColumnCount()) + columnIndex));
+			// return;
+
+		}
+
 	}
-
-	public int getRowCount() {
-		return data.size() / getColumnCount();
-	}
-
-	public int getColumnCount() {
-		return columnNames.size();
-	}
-
-	public String getColumnName(int columnIndex) {
-		String colName = "";
-
-		if (columnIndex <= getColumnCount())
-			colName = (String) columnNames.elementAt(columnIndex);
-
-		return colName;
-	}
-
-	public Class getColumnClass(int columnIndex) {
-		return String.class;
-	}
-
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return false;
-	}
-
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		return (String) data.elementAt((rowIndex * getColumnCount()) + columnIndex);
-	}
-
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		data.setElementAt((String) aValue, ((rowIndex * getColumnCount()) + columnIndex));
-		// return;
-
-	}
-
 }
