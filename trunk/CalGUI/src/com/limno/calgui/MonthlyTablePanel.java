@@ -12,6 +12,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
@@ -26,8 +28,9 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
-public class MonthlyTablePanel extends JPanel implements ActionListener {
+public class MonthlyTablePanel extends JPanel implements ActionListener, ComponentListener {
 	JPanel panel;
+	JScrollPane scrollPane;
 
 	final String LINE_BREAK = "\n"; 
 	final String CELL_BREAK = "\t"; 
@@ -48,7 +51,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener {
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
 
-		JScrollPane scrollPane = new JScrollPane(panel);
+		scrollPane = new JScrollPane(panel);
 		scrollPane.setPreferredSize(new Dimension(750, 600));
 
 
@@ -113,7 +116,8 @@ public class MonthlyTablePanel extends JPanel implements ActionListener {
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			TableColumn col = table.getColumnModel().getColumn(0);
 			col.setPreferredWidth(50);
-
+			
+			addComponentListener((ComponentListener) this);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
 
@@ -221,5 +225,34 @@ public class MonthlyTablePanel extends JPanel implements ActionListener {
 			data.setElementAt((String) aValue, ((rowIndex * getColumnCount()) + columnIndex));
 			// return;
 		}
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
+		Dimension dim = super.getSize();
+		int width=(int) (dim.width*0.99);
+		int height=(int) (dim.height*0.90);
+		scrollPane.setPreferredSize(new Dimension(width,height));
+		scrollPane.revalidate();
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
