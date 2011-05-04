@@ -126,9 +126,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 		columns.addElement("Sep");
 		columns.addElement("Annual");
 
-		int cols = 15;
-		int rows = 0;
-
+		
 		// loop over all Primary datasets
 		JScrollPane scrollPane = new JScrollPane();
 		JPanel panel = new JPanel();
@@ -200,7 +198,6 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 			String[] rightPartsclimate = { "", "Wet", "Above", "Normal", "Dry", "Extreme" };
 			String[] rightPartsDry = { "All dry periods", "1928-1934", "1976-1977", "1986-1992" };
 			DecimalFormat df1 = new DecimalFormat("#.#");
-			DecimalFormat df2 = new DecimalFormat("#.##");
 
 			// Calculate results
 			for (int i1 = 0; i1 < 6; i1++)
@@ -325,18 +322,23 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 //		JLabel label = new JLabel();
 		//label.setText(tscs[0].fileName + " (" + tscs[0].units + ")");
 		//panel.add(label);
-		Box box = Box.createVerticalBox(); 
-		JButton copy = new JButton("Copy to Clipboard");
-		copy.setAlignmentX(LEFT_ALIGNMENT);
-		box.add(copy);
 		
 		
 		scrollPane.setViewportView(panel);
 		scrollPane.setMinimumSize(new Dimension(790, 550));
 		scrollPane.setPreferredSize(new Dimension(790, 550));
 		scrollPane.validate();
+		scrollPane.setAlignmentX(LEFT_ALIGNMENT);
+
+		JButton copy = new JButton("Copy to Clipboard");
+		copy.setAlignmentX(LEFT_ALIGNMENT);
+		
+		Box box = Box.createVerticalBox(); 
 		box.add(scrollPane);
+		box.add(copy);
+		
 		add(box);
+		
 		//add(scrollPane);
 		
 		
