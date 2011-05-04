@@ -543,17 +543,22 @@ public class GUI_Utils {
 		return sb;
     }
       
-    public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, GUILinks gl, StringBuffer sb) {
+    public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,StringBuffer sb) {
     	final String NL = System.getProperty("line.separator"); 
     	
     	if (dTableModels == null) {
 			System.out.println("Tables not initialized");
 		} else {
-			for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
-				String switchID = Integer.toString(switchIdx);
-				String cID = "1";//gl.ctrlForSwitch(switchID);
+			//for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
+			for (int i = 0; i < GUITables.size(); i++) {
+				String line = GUITables.get(i).toString();
+				String[] parts = line.split("[|]");
+				String cName = parts[0].trim();
+				String tableName = gl.tableNameForCtrl(cName);
+				String switchID = gl.switchIDForCtrl(cName);
+				int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
-				int tID = Integer.parseInt(cID);
+				//int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
 					System.out.println("Table not initialized");
 				} else {
@@ -649,8 +654,8 @@ public class GUI_Utils {
     			
     			String[] tokens = textinLine.split(delims);
     			String cID=tokens[0];
-    			
-    			String fileName = gl.tableNameForCtrl(cID);   			
+    			String cName=gl.CtrlFortableID(cID);
+    			String fileName = gl.tableNameForCtrl(cName);   			
     			if (fileName != null) {
 
     				String[] files = fileName.split("[|]");
@@ -704,6 +709,7 @@ public class GUI_Utils {
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
+
 
 	}
 	

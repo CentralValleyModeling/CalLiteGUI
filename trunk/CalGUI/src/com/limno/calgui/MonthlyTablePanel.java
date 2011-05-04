@@ -6,6 +6,8 @@ import hec.io.TimeSeriesContainer;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
@@ -19,13 +21,14 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
-public class MonthlyTablePanel extends JPanel {
+public class MonthlyTablePanel extends JPanel implements ActionListener {
 	MonthlyTablePanel(String title, TimeSeriesContainer[] tscs) {
 		super();
 
 		Box box = Box.createVerticalBox(); 
 		JButton copy = new JButton("Copy to Clipboard");
 		copy.setAlignmentX(LEFT_ALIGNMENT);
+		copy.addActionListener((ActionListener) this);
 		box.add(copy);
 		
 		JPanel panel = new JPanel();
@@ -102,6 +105,12 @@ public class MonthlyTablePanel extends JPanel {
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
