@@ -136,6 +136,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ProgressMonitor pMon;
 	private JList lstScenarios;
 	private DSS_Grabber dss_Grabber;
+	
+	public DataFileTableModel[] dTableModels=null;
+	public Boolean[] RegUserEdits=null;
 
 	private SwingEngine swix2;
 
@@ -627,7 +630,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// get table values.
 					final String NL = System.getProperty("line.separator");
 					sb.append("DATATABLEMODELS" + NL);
-					sb = GUI_Utils.GetTableModelData(dTableModels, gl, sb);
+					ArrayList GUILinks = new ArrayList();
+					ArrayList GUITables = new ArrayList();
+					GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
 
 					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
@@ -898,13 +905,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					ArrayList GUITables = new ArrayList();
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
-					for (int i = 1; i < GUITables.size(); i++) {
+					for (int i = 0; i < GUITables.size(); i++) {
 						String line = GUITables.get(i).toString();
 						String[] parts = line.split("[|]");
 						String cName = parts[0].trim();
-						String tableName = parts[1].trim();
-						String switchID = parts[2].trim();
-						int tID = Integer.parseInt(parts[3].trim());
+						//String tableName = parts[1].trim();
+						String tableName = gl.tableNameForCtrl(cName);
+						//String switchID = parts[2].trim();
+						String switchID = gl.switchIDForCtrl(cName);
+						
+						//int tID = Integer.parseInt(parts[3].trim());
+						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
 						int option = 0;
 						JCheckBox cb = (JCheckBox) swix.find(cName);
@@ -993,7 +1004,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// get table values.
 				final String NL = System.getProperty("line.separator");
 				sb.append("DATATABLEMODELS" + NL);
-				sb = GUI_Utils.GetTableModelData(dTableModels, gl, sb);
+				ArrayList GUITables = new ArrayList();
+				ArrayList GUILinks = new ArrayList();
+				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 				sb.append("END DATATABLEMODELS" + NL);
 
 				GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
@@ -1028,6 +1043,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// ... The user selected a file, get it, use it.
 				File file = fc.getSelectedFile();
 
+				GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 				GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 
 			}
@@ -1766,8 +1782,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		return null;
 	}
 
-	private DataFileTableModel[] dTableModels;
-	private Boolean[] RegUserEdits;
+
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -1860,6 +1875,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// t.editCellAt(l, c);
 				}
 			});
+			
+			t.revalidate();
 
 			ExcelAdapter myAd = new ExcelAdapter(t);
 
