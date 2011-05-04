@@ -36,6 +36,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
@@ -45,7 +47,7 @@ import org.jfree.data.time.TimeSeriesDataItem;
 //import com.limno.calgui.table.ColumnGroup;
 //import com.limno.calgui.table.GroupableTableHeader;
 
-public class SummaryTablePanel extends JPanel  implements ActionListener {
+public class SummaryTablePanel extends JPanel  implements ActionListener, ComponentListener  {
 	int n[][][];
 	double x[][][];
 	double xx[][][];
@@ -56,6 +58,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 	double med[][][];
 	double medx[][][][];
 	JPanel panel;
+	JScrollPane scrollPane;
 
 	final String LINE_BREAK = "\n"; 
 	final String CELL_BREAK = "\t"; 
@@ -139,10 +142,11 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 
 
 		// loop over all Primary datasets
-		JScrollPane scrollPane = new JScrollPane();
+		
 		panel = new JPanel();
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
+		
 
 
 		for (int t = 0; t < tscs.length; t++) {
@@ -333,19 +337,21 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 		//		JLabel label = new JLabel();
 		//label.setText(tscs[0].fileName + " (" + tscs[0].units + ")");
 		//panel.add(label);
-
-
+		addComponentListener((ComponentListener) this);
+		scrollPane = new JScrollPane();
 		scrollPane.setViewportView(panel);
-		scrollPane.setMinimumSize(new Dimension(790, 550));
+		//scrollPane.setMinimumSize(new Dimension(790, 550));
 		scrollPane.setPreferredSize(new Dimension(790, 550));
-		scrollPane.validate();
+		scrollPane.revalidate();
 		scrollPane.setAlignmentX(LEFT_ALIGNMENT);
+
 
 		JButton copy = new JButton("Copy to Clipboard");
 		copy.setAlignmentX(LEFT_ALIGNMENT);
 		copy.addActionListener((ActionListener) this);
 
 		Box box = Box.createVerticalBox(); 
+		//box.setPreferredSize(new Dimension(790, 550));
 		box.add(scrollPane);
 		box.add(copy);
 
@@ -459,5 +465,34 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 
 		}
 
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
+		Dimension dim = super.getSize();
+		int width=(int) (dim.width*0.99);
+		int height=(int) (dim.height*0.90);
+		scrollPane.setPreferredSize(new Dimension(width,height));
+		scrollPane.revalidate();
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
