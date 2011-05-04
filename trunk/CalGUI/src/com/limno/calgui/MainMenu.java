@@ -98,6 +98,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	static JHelp helpViewer = null;
 
 	JFrame desktop;
+	static JFrame help;
 	JPanel runsettings;
 	JPanel mainmenu;
 	JPanel demands;
@@ -356,10 +357,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			System.err.println("API Help Set not found");
 			;
 		}
-JFrame test = new JFrame("Help");
-test.getContentPane().add(helpViewer);
-test.pack();
-test.setVisible(true);
+		help = new JFrame("Help");
+		help.getContentPane().add(helpViewer);
+		help.pack();
+		help.setVisible(false);
 
 		// Load menu
 		try {
@@ -1512,7 +1513,9 @@ test.setVisible(true);
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-
+			
+		}else if (e.getActionCommand().startsWith("AC_Help")) {
+			help.setVisible(true);			
 		} else {
 			JComponent component = (JComponent) e.getSource();
 			String cName = component.getName();
