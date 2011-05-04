@@ -357,7 +357,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			System.err.println("API Help Set not found");
 			;
 		}
-		help = new JFrame("Help");
+		help = new JFrame("CalLite 2.0 GUI Help");
 		help.getContentPane().add(helpViewer);
 		help.pack();
 		help.setVisible(false);
