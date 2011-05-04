@@ -34,6 +34,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
@@ -70,6 +71,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -619,7 +621,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 				}
 
+				ProgressFrame frame = new ProgressFrame("CalLite 2.0 GUI - Setting Up Run");
+
 				// Copy Run directory
+
+				frame.setText("Creating new Run directory.");
+
 				File fs = new File(System.getProperty("user.dir") + "\\Default");
 				File ft = new File(System.getProperty("user.dir") + "\\Run");
 
@@ -633,17 +640,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 
+				frame.setText("Writing GUI tables.");
+
 				// Get GUI Link Array
 				ArrayList GUILinks = new ArrayList();
 				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
 
 				// Write GUI Tables
+
 				try {
 					GUI_Utils.WriteGUITables(GUILinks, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
+				frame.setText("Copying demand tables.");
 
 				// Write options.table
 				Integer LODFlag = 0;
@@ -672,6 +684,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand");
 				}
 				GUI_Utils.deleteDir(fsDem);
+
+				frame.setText("Creating study.sty.");
 
 				// Write study.sty
 				Calendar cal = Calendar.getInstance();
@@ -816,6 +830,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
+				frame.setText("Copying DLL.");
+
 				// Sea Level Selections
 				File fsAnnO;
 				File fsAnnS;
@@ -837,6 +853,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
+				frame.setText("Writing GUI option tables.");
 
 				// Write DLTREGULATION file
 				OutputStream outputStream;
@@ -916,6 +934,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 
 				// "Run" model
+				frame.dispose();
 				menu.setCursor(normalCursor);
 
 				try {
@@ -1245,12 +1264,18 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						aLine = br.readLine();
 					}
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
-					report = new Report((InputStream) bs);
+					//ReportWrapper rw = new ReportWrapper((InputStream) bs, desktop);
+					try {
+						report = new Report(bs,desktop);
+						report.execute();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				report.getOutputFile();
 			}
 
 		} else if (e.getActionCommand().startsWith("Rep_AllMonths")) {

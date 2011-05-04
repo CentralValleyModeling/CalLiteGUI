@@ -1,9 +1,14 @@
 package com.limno.calgui;
 
 import gov.ca.dsm2.input.parser.InputTable;
+
+import javax.swing.JFrame;
+import javax.swing.SwingWorker;
+
 import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
 
+import java.awt.Cursor;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +30,7 @@ import vista.time.TimeWindow;
  * @author psandhu
  * 
  */
-public class Report {
+public class Report extends SwingWorker<Void, String> {
 	/**
 	 * Externalizes the format for output. This allows the flexibility of
 	 * defining a writer to output the report to a PDF file vs an HTML file.
@@ -45,23 +50,73 @@ public class Report {
 
 		void addTableHeader(ArrayList<String> headerRow, int[] columnSpans);
 
-		void addTableRow(List<String> rowData, int[] columnSpans, int style,
-				boolean centered);
+		void addTableRow(List<String> rowData, int[] columnSpans, int style, boolean centered);
 
 		void endTable();
 
-		void addTimeSeriesPlot(ArrayList<double[]> buildDataArray,
-				String title, String[] seriesName, String xAxisLabel,
-				String yAxisLabel);
+		void addTimeSeriesPlot(ArrayList<double[]> buildDataArray, String title, String[] seriesName,
+				String xAxisLabel, String yAxisLabel);
 
-		void addExceedancePlot(ArrayList<double[]> buildDataArray,
-				String title, String[] seriesName, String xAxisLabel,
-				String yAxisLabel);
+		void addExceedancePlot(ArrayList<double[]> buildDataArray, String title, String[] seriesName,
+				String xAxisLabel, String yAxisLabel);
 
 		public void setAuthor(String author);
 
 		void addTableSubTitle(String string);
 	}
+
+	/*
+	 ********** START SwingWorker additions
+	 */
+	
+	private InputStream inputStream;
+	private JFrame desktop;
+	private ProgressFrame frame;
+
+	@Override
+	protected Void doInBackground() throws Exception {
+
+		frame = new ProgressFrame("CalLite 2.0 GUI - Generating Report");
+		publish("Generating report in background thread.");
+		frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		desktop.setVisible(false);
+
+		logger.fine("Parsing input template");
+		publish("Parsing input template.");
+		parseTemplateFile(inputStream);
+
+		publish("Processing DSS files.");
+		doProcessing();
+		logger.fine("Done generating report");
+
+		return null;
+	}
+
+	protected void process(List<String> status) {
+
+		frame.setText(status.get(status.size()-1));
+		return;
+	}
+	
+	protected void done(){
+
+		frame.setCursor(null);
+		frame.dispose();
+
+		desktop.setVisible(true);
+		return;
+		
+	}
+
+	public Report(InputStream inputStream, JFrame desktop) throws IOException {
+
+		this.desktop = desktop;
+		this.inputStream = inputStream;
+
+	}
+	/*
+	 ********** END SwingWorker additions
+	 */
 
 	static final Logger logger = Logger.getLogger("callite.report");
 	private ArrayList<ArrayList<String>> twValues;
@@ -98,22 +153,18 @@ public class Report {
 			scalars.put(name, value);
 		}
 		// load pathname mapping into a map
-		InputTable pathnameMappingTable = tables
-				.getTableNamed("PATHNAME_MAPPING");
-		ArrayList<ArrayList<String>> pmap_values = pathnameMappingTable
-				.getValues();
+		InputTable pathnameMappingTable = tables.getTableNamed("PATHNAME_MAPPING");
+		ArrayList<ArrayList<String>> pmap_values = pathnameMappingTable.getValues();
 		int nvalues = pmap_values.size();
 		pathnameMaps = new ArrayList<PathnameMap>();
 		for (int i = 0; i < nvalues; i++) {
 			String var_name = pathnameMappingTable.getValue(i, "VARIABLE");
 			var_name = var_name.replace("\"", "");
 			PathnameMap path_map = new PathnameMap(var_name);
-			path_map.report_type = pathnameMappingTable.getValue(i,
-					"REPORT_TYPE");
+			path_map.report_type = pathnameMappingTable.getValue(i, "REPORT_TYPE");
 			path_map.path1 = pathnameMappingTable.getValue(i, "PATH1");
 			path_map.path2 = pathnameMappingTable.getValue(i, "PATH2");
-			path_map.var_category = pathnameMappingTable.getValue(i,
-					"VAR_CATEGORY");
+			path_map.var_category = pathnameMappingTable.getValue(i, "VAR_CATEGORY");
 			path_map.row_type = pathnameMappingTable.getValue(i, "ROW_TYPE");
 			if (path_map.path2 == null || path_map.path2.length() == 0) {
 				path_map.path2 = path_map.path1;
@@ -142,8 +193,7 @@ public class Report {
 		writer.startDocument(output_file);
 		writer.setAuthor(scalars.get("MODELER"));
 		if (dss_group1 == null || dss_group2 == null) {
-			logger.severe("No data available in either : "
-					+ scalars.get("FILE1") + " or " + scalars.get("FILE2"));
+			logger.severe("No data available in either : " + scalars.get("FILE1") + " or " + scalars.get("FILE2"));
 			return;
 		}
 		generateSummaryTable();
@@ -162,53 +212,41 @@ public class Report {
 			if (pathMap.report_type.equals("Exceedance_Post")) {
 				calculate_dts = true;
 			}
-			DataReference ref1 = Utils.getReference(dss_group1, pathMap.path1,
-					calculate_dts, pathnameMaps, 1);
-			DataReference ref2 = Utils.getReference(dss_group2, pathMap.path2,
-					calculate_dts, pathnameMaps, 2);
+			DataReference ref1 = Utils.getReference(dss_group1, pathMap.path1, calculate_dts, pathnameMaps, 1);
+			DataReference ref2 = Utils.getReference(dss_group2, pathMap.path2, calculate_dts, pathnameMaps, 2);
 			if (ref1 == null || ref2 == null) {
 				continue;
 			}
-			String[] series_name = new String[] { scalars.get("NAME1"),
-					scalars.get("NAME2") };
+			String[] series_name = new String[] { scalars.get("NAME1"), scalars.get("NAME2") };
 			String data_units = Utils.getUnits(ref1, ref2);
 			String data_type = Utils.getType(ref1, ref2);
 			if (pathMap.report_type.equals("Average")) {
 				generatePlot(Utils.buildDataArray(ref1, ref2, tw), dataIndex,
-						"Average " + pathMap.var_name.replace("\"", ""),
-						series_name, data_type + "(" + data_units + ")",
-						"Time", PlotType.TIME_SERIES);
+						"Average " + pathMap.var_name.replace("\"", ""), series_name, data_type + "(" + data_units
+								+ ")", "Time", PlotType.TIME_SERIES);
 			} else if (pathMap.report_type.equals("Exceedance")) {
-				generatePlot(Utils.buildExceedanceArray(ref1, ref2,
-						pathMap.var_category == "S_SEPT", tw), dataIndex, Utils
-						.getExceedancePlotTitle(pathMap), series_name,
-						data_type + "(" + data_units + ")",
+				generatePlot(Utils.buildExceedanceArray(ref1, ref2, pathMap.var_category == "S_SEPT", tw), dataIndex,
+						Utils.getExceedancePlotTitle(pathMap), series_name, data_type + "(" + data_units + ")",
 						"Percent at or above", PlotType.EXCEEDANCE);
 			} else if (pathMap.report_type.equals("Avg_Excd")) {
 				generatePlot(Utils.buildDataArray(ref1, ref2, tw), dataIndex,
-						"Average " + pathMap.var_name.replace("\"", ""),
-						series_name, data_type + "(" + data_units + ")",
-						"Time", PlotType.TIME_SERIES);
-				generatePlot(Utils.buildExceedanceArray(ref1, ref2,
-						pathMap.var_category == "S_SEPT", tw), dataIndex, Utils
-						.getExceedancePlotTitle(pathMap), series_name,
-						data_type + "(" + data_units + ")",
+						"Average " + pathMap.var_name.replace("\"", ""), series_name, data_type + "(" + data_units
+								+ ")", "Time", PlotType.TIME_SERIES);
+				generatePlot(Utils.buildExceedanceArray(ref1, ref2, pathMap.var_category == "S_SEPT", tw), dataIndex,
+						Utils.getExceedancePlotTitle(pathMap), series_name, data_type + "(" + data_units + ")",
 						"Percent at or above", PlotType.EXCEEDANCE);
 			} else if (pathMap.report_type.equals("Timeseries")) {
 				generatePlot(Utils.buildDataArray(ref1, ref2, tw), dataIndex,
-						"Average " + pathMap.var_name.replace("\"", ""),
-						series_name, data_type + "(" + data_units + ")",
-						"Time", PlotType.TIME_SERIES);
+						"Average " + pathMap.var_name.replace("\"", ""), series_name, data_type + "(" + data_units
+								+ ")", "Time", PlotType.TIME_SERIES);
 			} else if (pathMap.report_type.equals("Exceedance_Post")) {
-				generatePlot(Utils.buildExceedanceArray(ref1, ref2, true, tw),
-						dataIndex, "Exceedance "
-								+ pathMap.var_name.replace("\"", ""),
-						series_name, data_type + "(" + data_units + ")",
+				generatePlot(Utils.buildExceedanceArray(ref1, ref2, true, tw), dataIndex, "Exceedance "
+						+ pathMap.var_name.replace("\"", ""), series_name, data_type + "(" + data_units + ")",
 						"Percent at or above", PlotType.EXCEEDANCE);
 			}
 		}
 		writer.endDocument();
-		
+
 		loadPDF pdf = new loadPDF();
 		try {
 			loadPDF.main(output_file);
@@ -216,13 +254,12 @@ public class Report {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
 
 	private void generateSummaryTable() {
-		writer.addTableTitle(String.format("System Flow Comparision: %s vs %s",
-				scalars.get("NAME2"), scalars.get("NAME1")));
+		writer.addTableTitle(String.format("System Flow Comparision: %s vs %s", scalars.get("NAME2"),
+				scalars.get("NAME1")));
 		writer.addTableSubTitle(scalars.get("NOTE").replace("\"", ""));
 		Group dss_group1 = Utils.opendss(scalars.get("FILE1"));
 		Group dss_group2 = Utils.opendss(scalars.get("FILE2"));
@@ -238,8 +275,7 @@ public class Report {
 
 		for (TimeWindow tw : timewindows) {
 			headerRow.add(Utils.formatTimeWindowAsWaterYear(tw));
-			headerRow2.addAll(Arrays.asList(scalars.get("NAME2"), scalars
-					.get("NAME1"), "Diff", "% Diff"));
+			headerRow2.addAll(Arrays.asList(scalars.get("NAME2"), scalars.get("NAME1"), "Diff", "% Diff"));
 		}
 		int[] columnSpans = new int[timewindows.size() + 1];
 		columnSpans[0] = 1;
@@ -249,8 +285,7 @@ public class Report {
 		writer.addTableHeader(headerRow, columnSpans);
 		writer.addTableHeader(headerRow2, null);
 		writer.addTableHeader(new ArrayList<String>(), null);
-		List<String> categoryList = Arrays.asList("RF", "DI", "DO", "DE",
-				"SWPSOD", "CVPSOD");
+		List<String> categoryList = Arrays.asList("RF", "DI", "DO", "DE", "SWPSOD", "CVPSOD");
 		for (PathnameMap pathMap : pathnameMaps) {
 			if (!categoryList.contains(pathMap.var_category)) {
 				continue;
@@ -261,15 +296,11 @@ public class Report {
 			if (pathMap.report_type.equals("Exceedance_Post")) {
 				calculate_dts = true;
 			}
-			DataReference ref1 = Utils.getReference(dss_group1, pathMap.path1,
-					calculate_dts, pathnameMaps, 1);
-			DataReference ref2 = Utils.getReference(dss_group2, pathMap.path2,
-					calculate_dts, pathnameMaps, 2);
+			DataReference ref1 = Utils.getReference(dss_group1, pathMap.path1, calculate_dts, pathnameMaps, 1);
+			DataReference ref2 = Utils.getReference(dss_group2, pathMap.path2, calculate_dts, pathnameMaps, 2);
 			for (TimeWindow tw : timewindows) {
-				double avg1 = Utils.avg(Utils.cfs2taf((RegularTimeSeries) ref1
-						.getData()), tw);
-				double avg2 = Utils.avg(Utils.cfs2taf((RegularTimeSeries) ref2
-						.getData()), tw);
+				double avg1 = Utils.avg(Utils.cfs2taf((RegularTimeSeries) ref1.getData()), tw);
+				double avg2 = Utils.avg(Utils.cfs2taf((RegularTimeSeries) ref2.getData()), tw);
 				double diff = avg2 - avg1;
 				double pctDiff = Double.NaN;
 				if (avg1 != 0) {
@@ -282,7 +313,7 @@ public class Report {
 			}
 			if ("B".equals(pathMap.row_type)) {
 				ArrayList<String> blankRow = new ArrayList<String>();
-				for(int i=0; i < rowData.size(); i++){
+				for (int i = 0; i < rowData.size(); i++) {
 					blankRow.add(" ");
 				}
 				writer.addTableRow(blankRow, null, Writer.NORMAL, false);
@@ -298,19 +329,15 @@ public class Report {
 		return Double.isNaN(val) ? "" : String.format("%3d", Math.round(val));
 	}
 
-	public void generatePlot(ArrayList<double[]> buildDataArray, int dataIndex,
-			String title, String[] seriesName, String yAxisLabel,
-			String xAxisLabel, String plotType) {
+	public void generatePlot(ArrayList<double[]> buildDataArray, int dataIndex, String title, String[] seriesName,
+			String yAxisLabel, String xAxisLabel, String plotType) {
 		if (plotType.equals(PlotType.TIME_SERIES)) {
-			writer.addTimeSeriesPlot(buildDataArray, title, seriesName,
-					xAxisLabel, yAxisLabel);
+			writer.addTimeSeriesPlot(buildDataArray, title, seriesName, xAxisLabel, yAxisLabel);
 		} else if (plotType.equals(PlotType.EXCEEDANCE)) {
-			writer.addExceedancePlot(buildDataArray, title, seriesName,
-					xAxisLabel, yAxisLabel);
+			writer.addExceedancePlot(buildDataArray, title, seriesName, xAxisLabel, yAxisLabel);
 		} else {
-			logger.warning("Requested unknown plot type: " + plotType
-					+ " for title: " + title + " seriesName: " + seriesName[0]
-					+ ",..");
+			logger.warning("Requested unknown plot type: " + plotType + " for title: " + title + " seriesName: "
+					+ seriesName[0] + ",..");
 		}
 	}
 
@@ -337,4 +364,5 @@ public class Report {
 	public String getOutputFile() {
 		return scalars.get("OUTFILE");
 	}
+
 }
