@@ -49,6 +49,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 	double max[][][];
 	double med[][][];
 	double medx[][][][];
+	JScrollPane scrollPane;
 
 	private static int ylt[][] = { { 1920, 2, 2, 1, 1, 0, 3, 2, 0, }, { 1921, 2, 2, 1, 1, 0, 3, 2, 0, },
 			{ 1922, 2, 1, 1, 1, 0, 4, 2, 0, }, { 1923, 3, 2, 3, 1, 0, 4, 3, 0, }, { 1924, 5, 5, 4, 2, 1, 5, 6, 0, },
@@ -128,7 +129,7 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 
 		
 		// loop over all Primary datasets
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		JPanel panel = new JPanel();
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
@@ -347,7 +348,25 @@ public class SummaryTablePanel extends JPanel  implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		JComponent component = (JComponent) e.getSource();
+		if (component instanceof JButton) {
+			JButton btn= (JButton) component;
+			String cName = btn.getText();
+			if (cName != null) {
+				if (cName.startsWith("Copy")) {
+					
+					Component[] components =scrollPane.getComponents();
+					
+					
+					
+					
+					
+					
+					
+					
+				}
+			}
+		}
 	}
 }
 
