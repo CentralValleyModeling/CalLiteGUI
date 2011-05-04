@@ -424,9 +424,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 								rdb.setSelected(true);
 							}
+						} else {
+							JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+							rdb.setSelected(true);
+							}
 						}
-					} else {
-						reg_btng1.clearSelection();
+					 else {
+						//reg_btng1.clearSelection();
+						JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+						rdb.setSelected(true);
 					}
 
 				} else {
