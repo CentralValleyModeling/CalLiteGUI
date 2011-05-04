@@ -350,7 +350,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Load help
 		try {
 			ClassLoader cl = MainMenu.class.getClassLoader();
-	        URL url = HelpSet.findHelpSet(null, "docs/CalLite Help/helpset.hs");
+	        URL url = HelpSet.findHelpSet(null, "helpset.hs");
 			helpViewer = new JHelp(new HelpSet(cl, url));
 			helpViewer.setCurrentID("Introduction");
 		} catch (Exception e) {
