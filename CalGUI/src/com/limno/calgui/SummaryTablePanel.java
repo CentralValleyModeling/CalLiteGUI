@@ -15,7 +15,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,16 +26,20 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.*;
 import javax.swing.plaf.basic.*;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.TimeSeriesDataItem;
 
-import com.limno.calgui.table.ColumnGroup;
-import com.limno.calgui.table.GroupableTableHeader;
+//import com.limno.calgui.table.ColumnGroup;
+//import com.limno.calgui.table.GroupableTableHeader;
 
-public class SummaryTablePanel extends JPanel {
+public class SummaryTablePanel extends JPanel  implements ActionListener {
 	int n[][][];
 	double x[][][];
 	double xx[][][];
@@ -124,11 +130,11 @@ public class SummaryTablePanel extends JPanel {
 		int rows = 0;
 
 		// loop over all Primary datasets
-
 		JScrollPane scrollPane = new JScrollPane();
 		JPanel panel = new JPanel();
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
+		
 
 		for (int t = 0; t < tscs.length; t++) {
 
@@ -319,12 +325,26 @@ public class SummaryTablePanel extends JPanel {
 //		JLabel label = new JLabel();
 		//label.setText(tscs[0].fileName + " (" + tscs[0].units + ")");
 		//panel.add(label);
-
+		Box box = Box.createVerticalBox(); 
+		JButton copy = new JButton("Copy to Clipboard");
+		copy.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(copy);
+		
+		
 		scrollPane.setViewportView(panel);
 		scrollPane.setMinimumSize(new Dimension(790, 550));
 		scrollPane.setPreferredSize(new Dimension(790, 550));
-		add(scrollPane);
 		scrollPane.validate();
+		box.add(scrollPane);
+		add(box);
+		//add(scrollPane);
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

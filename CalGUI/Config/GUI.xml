@@ -18,7 +18,7 @@
 		<menu id="menuR" name="menuR" text="Results" mnemonic="VK_R">
 		</menu>
 		<menu text="Help" mnemonic="VK_H">
-			<menuitem text="View Help" mnemonic="VK_H" enabled="false" />
+			<menuitem text="View Help" mnemonic="VK_H" enabled="true"  ActionCommand="AC_Help"  />
 			<separator />
 			<menuitem text="About CalLite GUI" mnemonic="VK_A" enabled="false" />
 		</menu>
@@ -519,7 +519,7 @@
 								</label>
 							</panel>
 						</panel>
-						<button text="Help" id="DemandHelp">
+						<button text="Help" id="DemandHelp" ActionCommand="AC_Help" >
 							<gridbagconstraints gridx="1" gridy="99" />
 						</button>
 					</panel>

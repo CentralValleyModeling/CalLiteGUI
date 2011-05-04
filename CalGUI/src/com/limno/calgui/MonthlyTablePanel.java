@@ -9,7 +9,9 @@ import java.awt.LayoutManager;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,13 +23,19 @@ public class MonthlyTablePanel extends JPanel {
 	MonthlyTablePanel(String title, TimeSeriesContainer[] tscs) {
 		super();
 
+		Box box = Box.createVerticalBox(); 
+		JButton copy = new JButton("Copy to Clipboard");
+		copy.setAlignmentX(LEFT_ALIGNMENT);
+		box.add(copy);
+		
 		JPanel panel = new JPanel();
 		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
 
 		JScrollPane scrollPane = new JScrollPane(panel);
 		scrollPane.setPreferredSize(new Dimension(750, 600));
-		add(scrollPane);
+		box.add(scrollPane);
+		add(box);
 
 		DecimalFormat df1 = new DecimalFormat("#.#");
 		DecimalFormat df2 = new DecimalFormat("#.##");
