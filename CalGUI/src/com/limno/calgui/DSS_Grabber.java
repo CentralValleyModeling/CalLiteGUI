@@ -44,12 +44,17 @@ public class DSS_Grabber {
 	private String secondaryDSSName;
 	private String title;
 	private String yLabel;
+	private boolean isCFS;
 
 	private int scenarios;
 
 	public DSS_Grabber(JList list) {
 
 		lstScenarios = list;
+	}
+
+	public void setIsCFS(boolean isCFS) {
+		this.isCFS = isCFS;
 	}
 
 	public void setBase(String string) {
@@ -65,9 +70,9 @@ public class DSS_Grabber {
 	}
 
 	public String getYLabel() {
-	
+
 		return yLabel;
-	
+
 	}
 
 	public String getTitle() {
@@ -114,6 +119,8 @@ public class DSS_Grabber {
 				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
 			}
 			result = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
+
+			// Do time shift were indicated
 			if (doTimeShift) {
 				for (int i = result.numberValues; i < result.numberValues - 1; i++)
 					result.times[i] = result.times[i + 1];
@@ -143,6 +150,14 @@ public class DSS_Grabber {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Convert CFS to TAFY
+		if ((result.units.equals("CFS")) && !isCFS) {
+			for (int j = 0; j < result.numberValues; j++)
+				result.values[j] = result.values[j] * 0.723966942;
+			result.units = "TAFY";
+		}
+
 		String shortFileName = new File(dssFilename).getName();
 		result.fileName = shortFileName;
 		return result;
@@ -241,7 +256,7 @@ public class DSS_Grabber {
 				results[i].numberValues = n;
 				results[i].units = primaryResults[i].units;
 				results[i].fileName = primaryResults[i].fileName;
-				
+
 			}
 			if (results[i].values != null) {
 				double[] sortArray = results[i].values;
