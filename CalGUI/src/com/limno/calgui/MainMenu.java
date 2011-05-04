@@ -138,9 +138,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ProgressMonitor pMon;
 	private JList lstScenarios;
 	private DSS_Grabber dss_Grabber;
-	
-	public DataFileTableModel[] dTableModels=null;
-	public Boolean[] RegUserEdits=null;
+
+	public DataFileTableModel[] dTableModels = null;
+	public Boolean[] RegUserEdits = null;
 
 	private SwingEngine swix2;
 
@@ -355,7 +355,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Load help
 		try {
 			ClassLoader cl = MainMenu.class.getClassLoader();
-	        URL url = HelpSet.findHelpSet(null, "helpset.hs");
+			URL url = HelpSet.findHelpSet(null, "helpset.hs");
 			helpViewer = new JHelp(new HelpSet(cl, url));
 			helpViewer.setCurrentID("Introduction");
 		} catch (Exception e) {
@@ -917,12 +917,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						String line = GUITables.get(i).toString();
 						String[] parts = line.split("[|]");
 						String cName = parts[0].trim();
-						//String tableName = parts[1].trim();
+						// String tableName = parts[1].trim();
 						String tableName = gl.tableNameForCtrl(cName);
-						//String switchID = parts[2].trim();
+						// String switchID = parts[2].trim();
 						String switchID = gl.switchIDForCtrl(cName);
-						
-						//int tID = Integer.parseInt(parts[3].trim());
+
+						// int tID = Integer.parseInt(parts[3].trim());
 						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
 						int option = 0;
@@ -1537,9 +1537,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-			
-		}else if (e.getActionCommand().startsWith("AC_Help")) {
-			help.setVisible(true);			
+
+		} else if (e.getActionCommand().startsWith("AC_Help")) {
+			help.setVisible(true);
 		} else {
 			JComponent component = (JComponent) e.getSource();
 			String cName = component.getName();
@@ -1734,8 +1734,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance", dss_Grabber.getYLabel(), exc_Results,
-						null, true);
+				String exceed;
+				if (exceedMonth < 0)
+					exceed = "(All months)";
+				else
+					exceed = "(" + monthNames[exceedMonth - 1] + ")";
+				cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance " + exceed, dss_Grabber.getYLabel(),
+						exc_Results, null, true);
 				tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 			}
 
@@ -1789,8 +1794,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		}
 		return null;
 	}
-
-
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -1883,7 +1886,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// t.editCellAt(l, c);
 				}
 			});
-			
+
 			t.revalidate();
 
 			ExcelAdapter myAd = new ExcelAdapter(t);
