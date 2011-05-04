@@ -74,8 +74,8 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		if (tscs[0].units.equals("CFS")) {
-			columns.addElement("Ann");
+		if (tscs[0].units.equals("CFS")||tscs[0].units.equals("TAFY")) {
+			columns.addElement("Ann (TAFY)");
 		}
 
 		for (int s = 0; s < tscs.length; s++) {
@@ -100,7 +100,10 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				if ((i - first) % 12 == 0) {
 					if (i != first)
 						if (tscs[s].units.equals("CFS"))
-							data.addElement(df1.format(sum));
+							data.addElement(df1.format(sum*0.723966942));
+						else 
+							if (tscs[s].units.equals("TAFY"))
+								data.addElement(df1.format(sum));
 					sum = 0;
 					data.addElement(Integer.toString(wy));
 				}
