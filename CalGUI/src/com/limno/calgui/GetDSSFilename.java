@@ -139,6 +139,9 @@ public class GetDSSFilename implements ActionListener {
 			File file;
 			if (rc == 0) {
 				file = fc.getSelectedFile();
+				if (theFileExt.equals("PDF") && !file.getName().toLowerCase().endsWith(".pdf")) {
+					file = new File(file.getPath()+".pdf");
+				}
 				if (theList != null)
 					lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
 				if (theList == null || lmScenNames.getSize() == 1) {
