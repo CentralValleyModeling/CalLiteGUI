@@ -1,5 +1,6 @@
 package com.limno.calgui;
 
+import javax.swing.JOptionPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -145,7 +146,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 								data.addElement(allValues.get(c*rowCount+r));
 							}}
-
+						
 					}
 
 					br.close();  
@@ -206,7 +207,7 @@ public class DataFileTableModel extends AbstractTableModel {
 					}
 				}
 
-				else { 
+				else if (st1.countTokens() == 3) { 
 
 					// CASE 2: THREE COLUMNS (year type, month, value) 
 
@@ -250,6 +251,13 @@ public class DataFileTableModel extends AbstractTableModel {
 
 							data.addElement(allValues.get(c*rowCount+r));
 						}}
+
+				}
+				else {
+					// CASE 3: FOUR COLUMNS (year type, month, value1, value2) 
+					//EISJR Multiplier + Offset
+					JOptionPane.showMessageDialog(null, "EISJR!","",
+							JOptionPane.ERROR_MESSAGE);
 
 				}
 
