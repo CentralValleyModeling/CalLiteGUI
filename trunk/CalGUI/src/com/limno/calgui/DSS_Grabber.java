@@ -126,7 +126,7 @@ public class DSS_Grabber {
 					result.times[i] = result.times[i + 1];
 				result.numberValues = result.numberValues - 1;
 			}
-			if (result == null) {
+			if ((result == null) || (result.numberValues < 1)) {
 
 				JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 						JOptionPane.ERROR_MESSAGE);
@@ -220,48 +220,50 @@ public class DSS_Grabber {
 		return results;
 	}
 
-	public TimeSeriesContainer[] getExceedanceSeries(TimeSeriesContainer[] primaryResults, int month) {
+	public TimeSeriesContainer[][] getExceedanceSeries(TimeSeriesContainer[] primaryResults) {
 
-		TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios];
+		TimeSeriesContainer[][] results = new TimeSeriesContainer[13][scenarios];
 
-		HecTime ht = new HecTime();
-		for (int i = 0; i < scenarios; i++) {
+		for (int month = 0; month < 13; month++) {
 
-			if (month < 0) {
-				results[i] = (TimeSeriesContainer) primaryResults[i].clone();
-			} else {
-				int[] times = primaryResults[i].times;
-				double[] values = primaryResults[i].values;
-				int n = 0;
-				for (int j = 0; j < times.length; j++) {
-					ht.set(times[j]);
-					if (ht.month() == month)
-						n = n + 1;
-				}
-				int times2[] = new int[n];
-				double values2[] = new double[n];
-				n = 0;
-				for (int j = 0; j < times.length; j++) {
-					ht.set(times[j]);
-					if (ht.month() == month) {
-						times2[n] = times[j];
-						values2[n] = values[j];
-						n = n + 1;
+			HecTime ht = new HecTime();
+			for (int i = 0; i < scenarios; i++) {
+
+				if (month == 12) {
+					results[month][i] = (TimeSeriesContainer) primaryResults[i].clone();
+				} else {
+					int[] times = primaryResults[i].times;
+					double[] values = primaryResults[i].values;
+					int n = 0;
+					for (int j = 0; j < times.length; j++) {
+						ht.set(times[j]);
+						if (ht.month() == month)
+							n = n + 1;
 					}
+					int times2[] = new int[n];
+					double values2[] = new double[n];
+					n = 0;
+					for (int j = 0; j < times.length; j++) {
+						ht.set(times[j]);
+						if (ht.month() == month) {
+							times2[n] = times[j];
+							values2[n] = values[j];
+							n = n + 1;
+						}
+					}
+					results[month][i] = new TimeSeriesContainer();
+					results[month][i].times = times2;
+					results[month][i].values = values2;
+					results[month][i].numberValues = n;
+					results[month][i].units = primaryResults[i].units;
+					results[month][i].fileName = primaryResults[i].fileName;
+
 				}
-
-				results[i] = new TimeSeriesContainer();
-				results[i].times = times2;
-				results[i].values = values2;
-				results[i].numberValues = n;
-				results[i].units = primaryResults[i].units;
-				results[i].fileName = primaryResults[i].fileName;
-
-			}
-			if (results[i].values != null) {
-				double[] sortArray = results[i].values;
-				Arrays.sort(sortArray);
-				results[i].values = sortArray;
+				if (results[month][i].values != null) {
+					double[] sortArray = results[month][i].values;
+					Arrays.sort(sortArray);
+					results[month][i].values = sortArray;
+				}
 			}
 		}
 		return results;

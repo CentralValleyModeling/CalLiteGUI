@@ -253,11 +253,13 @@ public class Report extends SwingWorker<Void, String> {
 
 		loadPDF pdf = new loadPDF();
 		try {
+			publish("Loading PDF file \"" + output_file + "\".");;
 			loadPDF.main(output_file);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		getOutputFile();
 
 	}
 
@@ -290,7 +292,10 @@ public class Report extends SwingWorker<Void, String> {
 		writer.addTableHeader(headerRow2, null);
 		writer.addTableHeader(new ArrayList<String>(), null);
 		List<String> categoryList = Arrays.asList("RF", "DI", "DO", "DE", "SWPSOD", "CVPSOD");
+		int count = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
+			count++;
+			publish("Processing " + pathMap.var_name + " (" + count + " of " + pathnameMaps.size() + ").");  //Stringworker;
 			if (!categoryList.contains(pathMap.var_category)) {
 				continue;
 			}

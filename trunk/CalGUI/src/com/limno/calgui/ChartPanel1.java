@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Stroke;
+import java.util.Calendar;
+import java.util.Date;
 
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
@@ -35,7 +37,8 @@ public class ChartPanel1 extends JPanel {
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
 
-	ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed) {
+	ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
+			Date lower, Date upper) {
 
 		super();
 
@@ -103,7 +106,8 @@ public class ChartPanel1 extends JPanel {
 			}
 
 			chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
-					"Time (1MON)", // x-axis label  //TODO - Hard-coded to monthly!
+					"Time (1MON)", // x-axis label //TODO - Hard-coded to
+									// monthly!
 					yLabel + " (" + tscs[0].units + ")", // y-axis label
 					dataset, // data
 					true); // create and display a frame...
@@ -129,8 +133,16 @@ public class ChartPanel1 extends JPanel {
 				r.setSeriesStroke(primaries + t, stroke);
 			}
 		}
+
 		ValueAxis axis = plot.getDomainAxis();
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
+		if (isExceed)
+			axis.setRange(0.0, 100.0);
+		else {
+			DateAxis dateAxis = (DateAxis) axis;
+			dateAxis.setRange(upper,lower);
+		}
+			
 		axis = plot.getRangeAxis();
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
 
