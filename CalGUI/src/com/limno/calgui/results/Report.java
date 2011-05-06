@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 import com.limno.calgui.ProgressFrame;
-import com.limno.calgui.loadPDF;
+import com.limno.calgui.results.loadPDF;
 
 import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
