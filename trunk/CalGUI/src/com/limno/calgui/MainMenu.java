@@ -1,10 +1,7 @@
 package com.limno.calgui;
 
-import hec.heclib.dss.HecDss;
-import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -31,11 +28,9 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,7 +45,6 @@ import javax.help.HelpSet;
 import javax.help.JHelp;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -78,11 +72,12 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuEvent;
@@ -94,7 +89,9 @@ import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
 import com.limno.calgui.GetDSSFilename.CheckListItem;
-import com.limno.calgui.GetDSSFilename.JFileChooser2;
+import com.limno.calgui.table.ColumnGroup;
+import com.limno.calgui.table.GroupableTableHeader;
+//import com.limno.calgui.table.GroupableTableHeader;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
 		ChangeListener {
@@ -493,6 +490,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					ckb.setText(ckbtext + " -  Default");
 
 				}
+				
 
 			} else if (cName.startsWith("reg_rdbUD")) {
 				// do not allow user edits to tables
@@ -1564,14 +1562,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 			}
 			// dTableModels[tID].addTableModelListener(this);
-
+			
 			t.setModel(dTableModels[tID]);
-			t.createDefaultColumnsFromModel();
+			//t.createDefaultColumnsFromModel();
+			
+			
 
 			t.setRowHeight(20);
 			for (int col = 0; col < t.getColumnCount(); col++) {
 				t.getColumnModel().getColumn(col).setWidth(50);
 			}
+
 
 			t.setPreferredScrollableViewportSize(new Dimension(t.getColumnCount() * 60 + 60, t.getRowCount() * 20));
 
@@ -1605,6 +1606,39 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			});
 
+			//Special handling for tiered header tables (11 columns)
+			if (dTableModels[tID].getColumnCount()==11) {
+								
+				TableColumnModel cm = t.getColumnModel(); 
+				ColumnGroup g_Wet = new ColumnGroup("Wet"); 
+				g_Wet.add(cm.getColumn(1)); 
+				g_Wet.add(cm.getColumn(2)); 
+				ColumnGroup g_AN = new ColumnGroup("Above Normal"); 
+				g_AN.add(cm.getColumn(3)); 
+				g_AN.add(cm.getColumn(4));
+				ColumnGroup g_BN = new ColumnGroup("Below Normal"); 
+				g_BN.add(cm.getColumn(5)); 
+				g_BN.add(cm.getColumn(6));
+				ColumnGroup g_DRY = new ColumnGroup("Dry"); 
+				g_DRY.add(cm.getColumn(7)); 
+				g_DRY.add(cm.getColumn(8));
+				ColumnGroup g_CD = new ColumnGroup("Critical Dry"); 
+				g_CD.add(cm.getColumn(9)); 
+				g_CD.add(cm.getColumn(10));
+				
+				//GroupableTableHeader h = (GroupableTableHeader) t.getTableHeader(); 
+				GroupableTableHeader h = new GroupableTableHeader(cm);
+				h.addColumnGroup(g_Wet); 
+				h.addColumnGroup(g_AN); 
+				h.addColumnGroup(g_BN); 
+				h.addColumnGroup(g_DRY); 
+				h.addColumnGroup(g_CD); 
+
+				t.setTableHeader(h);
+				
+			}
+			
+			
 			t.revalidate();
 
 			ExcelAdapter myAd = new ExcelAdapter(t);

@@ -65,7 +65,9 @@ public class GroupableTableHeaderUI extends BasicTableHeaderUI {
 	}
 
 	private void paintCell(Graphics g, Rectangle cellRect, ColumnGroup cGroup) {
-		TableCellRenderer renderer = cGroup.getHeaderRenderer();
+		//TableCellRenderer renderer = cGroup.getHeaderRenderer();
+		TableCellRenderer renderer =
+			  header.getTable().getTableHeader().getDefaultRenderer();
 		Component component = renderer.getTableCellRendererComponent(header.getTable(), cGroup.getHeaderValue(), false,
 				false, -1, -1);
 		rendererPane.add(component);
