@@ -3,6 +3,7 @@ package com.limno.calgui.results;
 import gov.ca.dsm2.input.parser.InputTable;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
 import com.limno.calgui.ProgressFrame;
@@ -261,6 +262,7 @@ public class Report extends SwingWorker<Void, String> {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "PDF Generation Execption", JOptionPane.ERROR_MESSAGE);
 		}
 		getOutputFile();
 
