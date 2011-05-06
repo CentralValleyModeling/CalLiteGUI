@@ -128,10 +128,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ButtonGroup reg_btng1;
 	GUILinks gl;
 
-	String desktopTitle;
-	String scenFilename;
-	GetDSSFilename getScenFilename;
-
 	static public String lookups[][];
 
 	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -160,12 +156,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
-
-		desktopTitle = desktop.getTitle();
-
-		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-		desktop.setTitle(desktopTitle + " - " + scenFilename);
-		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
 		// swix2 = new SwingEngine(this);
 		// swix2.render(new File("Config\\ReportDialog.xml"));
@@ -631,8 +621,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				Boolean scensave = false;
 				int n = JOptionPane.showConfirmDialog(mainmenu,
 						"Would you like to save the scenario definition? \nScenario information "
-								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'",
-						"CalLite Gui", JOptionPane.YES_NO_OPTION);
+								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
+								+ ".cls'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
 					// statusBar.setMessage("Saving CalLite Scenario file...");
@@ -657,8 +647,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
 
-					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
+					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
 					try {
 						FileWriter fstream = new FileWriter(f);
 						BufferedWriter outobj = new BufferedWriter(fstream);
@@ -680,70 +670,46 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 		} else if (e.getActionCommand().startsWith("AC_SaveScen")) {
 
-			boolean proceed = true;
+			JTextField tf = (JTextField) swix.find("run_txfScen");
+			String scen = tf.getText();
+			if (!scen.equals("")) {
 
-			if (e.getActionCommand().equals("AC_SaveScenAs")) {
+				StringBuffer sb = new StringBuffer();
+				sb = GUI_Utils.GetControlValues(runsettings, sb);
+				sb = GUI_Utils.GetControlValues(regulations, sb);
+				sb = GUI_Utils.GetControlValues(hydroclimate, sb);
+				sb = GUI_Utils.GetControlValues(demands, sb);
+				sb = GUI_Utils.GetControlValues(operations, sb);
+				sb = GUI_Utils.GetControlValues(facilities, sb);
 
-				// Save scenario as ...
+				// get table values.
+				final String NL = System.getProperty("line.separator");
+				sb.append("DATATABLEMODELS" + NL);
+				ArrayList GUITables = new ArrayList();
+				ArrayList GUILinks = new ArrayList();
+				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
+				sb.append("END DATATABLEMODELS" + NL);
 
-				getScenFilename.actionPerformed(e);
-				if (getScenFilename.dialogRC != 0)
-					proceed = false;
-				else {
-					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-					desktop.setTitle(desktopTitle + " - " + scenFilename);
-					((JTextField) swix.find("run_txfoDSS"))
-							.setText(scenFilename.substring(0, scenFilename.length() - 3) + ".DSS");
+				GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
+				File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
+
+				try {
+					FileWriter fstream = new FileWriter(f);
+					BufferedWriter outobj = new BufferedWriter(fstream);
+					outobj.write(sb.toString());
+					outobj.close();
+
+				} catch (Exception e1) {
+					System.err.println("Error: " + e1.getMessage());
 				}
-			}
-			if (proceed) {
-				JTextField tf = (JTextField) swix.find("run_txfScen");
-				String scen = tf.getText();
-				if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
-					proceed = (JOptionPane.showConfirmDialog(mainmenu,
-							"The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-									+ "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
-							JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+			} else {
+				JFrame frame = new JFrame("Error");
 
-				if (proceed) {
+				// show a joptionpane dialog using showMessageDialog
+				JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
 
-					StringBuffer sb = new StringBuffer();
-					sb = GUI_Utils.GetControlValues(runsettings, sb);
-					sb = GUI_Utils.GetControlValues(regulations, sb);
-					sb = GUI_Utils.GetControlValues(hydroclimate, sb);
-					sb = GUI_Utils.GetControlValues(demands, sb);
-					sb = GUI_Utils.GetControlValues(operations, sb);
-					sb = GUI_Utils.GetControlValues(facilities, sb);
-
-					// get table values.
-					final String NL = System.getProperty("line.separator");
-					sb.append("DATATABLEMODELS" + NL);
-					ArrayList GUITables = new ArrayList();
-					ArrayList GUILinks = new ArrayList();
-					GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
-					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
-					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
-					sb.append("END DATATABLEMODELS" + NL);
-
-					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-
-					try {
-						FileWriter fstream = new FileWriter(f);
-						BufferedWriter outobj = new BufferedWriter(fstream);
-						outobj.write(sb.toString());
-						outobj.close();
-
-					} catch (Exception e1) {
-						System.err.println("Error: " + e1.getMessage());
-					}
-				} else {
-					JFrame frame = new JFrame("Error");
-
-					// show a joptionpane dialog using showMessageDialog
-					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
-
-				}
 			}
 
 		} else if (e.getActionCommand().startsWith("AC_LoadScen")) {
@@ -1435,27 +1401,28 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			Date lower = new Date();
 			JSpinner m = (JSpinner) swix.find("spnStartMonth");
 			JSpinner y = (JSpinner) swix.find("spnStartYear");
-			lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
+			lower.setTime((new Month(monthToInt((String) m.getValue()),(Integer) y.getValue())).getFirstMillisecond());
 
 			Date upper = new Date();
 			m = (JSpinner) swix.find("spnEndMonth");
 			y = (JSpinner) swix.find("spnEndYear");
-			upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
-
+			upper.setTime((new Month(monthToInt((String) m.getValue()),(Integer) y.getValue()).getLastMillisecond()));
+			
+			
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				boolean plottedOne = false; // Check if any monthly plots were
-											// done
+				boolean plottedOne = false; //Check if any monthly plots were done
 				for (int m1 = 0; m1 < 12; m1++)
-					if (exceedMonths.contains(monthNames[m1])) {
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
-								dss_Grabber.getYLabel(), exc_Results[m1], null, true, upper, lower);
+					if (exceedMonths.contains(monthNames[m1]))
+					{
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
+						exc_Results[m1], null, true, upper, lower);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("Annual") || !plottedOne) {
-					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)",
-							dss_Grabber.getYLabel(), exc_Results[12], null, true, upper, lower);
+					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(),
+							exc_Results[12], null, true, upper, lower);
 					tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 				}
 			}
@@ -1635,6 +1602,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				h.addColumnGroup(g_CD); 
 
 				t.setTableHeader(h);
+				
 				
 			}
 			
@@ -1896,32 +1864,32 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public int monthToInt(String EndMon) {
 		int iEMon = 0;
 
-		if (EndMon.equals("Apr")) {
-			iEMon = 4;
-		} else if (EndMon.equals("Jun")) {
-			iEMon = 6;
-		} else if (EndMon.equals("Sep")) {
-			iEMon = 9;
-		} else if (EndMon.equals("Nov")) {
-			iEMon = 11;
-		} else if (EndMon.equals("Feb")) {
-			iEMon = 2;
-		} else if (EndMon.equals("Jan")) {
-			iEMon = 1;
-		} else if (EndMon.equals("Mar")) {
-			iEMon = 3;
-		} else if (EndMon.equals("May")) {
-			iEMon = 5;
-		} else if (EndMon.equals("Jul")) {
-			iEMon = 7;
-		} else if (EndMon.equals("Aug")) {
-			iEMon = 8;
-		} else if (EndMon.equals("Oct")) {
-			iEMon = 10;
-		} else if (EndMon.equals("Dec")) {
-			iEMon = 12;
-		}
-		return iEMon;
+	if (EndMon.equals("Apr")) {
+		iEMon = 4;
+	} else if (EndMon.equals("Jun")) {
+		iEMon = 6;
+	} else if (EndMon.equals("Sep")) {
+		iEMon = 9;
+	} else if (EndMon.equals("Nov")) {
+		iEMon = 11;
+	} else if (EndMon.equals("Feb")) {
+		iEMon = 2;
+	} else if (EndMon.equals("Jan")) {
+		iEMon = 1;
+	} else if (EndMon.equals("Mar")) {
+		iEMon = 3;
+	} else if (EndMon.equals("May")) {
+		iEMon = 5;
+	} else if (EndMon.equals("Jul")) {
+		iEMon = 7;
+	} else if (EndMon.equals("Aug")) {
+		iEMon = 8;
+	} else if (EndMon.equals("Oct")) {
+		iEMon = 10;
+	} else if (EndMon.equals("Dec")) {
+		iEMon = 12;
+	}
+	return iEMon;
 	}
 
 	/*
@@ -1937,7 +1905,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			protected void done() {
 
-				if (pFrame != null) {
+				if (pFrame!=null) {
 					pFrame.setCursor(null);
 					pFrame.dispose();
 				}
