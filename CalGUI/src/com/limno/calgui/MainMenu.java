@@ -131,6 +131,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ButtonGroup reg_btng1;
 	GUILinks gl;
 
+	String desktopTitle;
+	String scenFilename;
+	GetDSSFilename getScenFilename;
+
 	static public String lookups[][];
 
 	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -160,6 +164,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
+		desktopTitle = desktop.getTitle();
+
+		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+		desktop.setTitle(desktopTitle + " - " + scenFilename);
+		getScenFilename = new GetDSSFilename(null,(JTextField) swix.find("run_txfScen"),"CLS");
+		
 		// swix2 = new SwingEngine(this);
 		// swix2.render(new File("Config\\ReportDialog.xml"));
 
@@ -624,7 +634,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				int n = JOptionPane.showConfirmDialog(mainmenu,
 						"Would you like to save the scenario definition? \nScenario information "
 								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-								+ ".cls'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
+								+ "'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
 					// statusBar.setMessage("Saving CalLite Scenario file...");
@@ -649,8 +659,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
 
-					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
-					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
+					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					try {
 						FileWriter fstream = new FileWriter(f);
 						BufferedWriter outobj = new BufferedWriter(fstream);
@@ -672,6 +682,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 		} else if (e.getActionCommand().startsWith("AC_SaveScen")) {
 
+			if (e.getActionCommand().equals("AC_SaveScenAs")) {
+				getScenFilename.actionPerformed(e);
+				//TODO - check for cancellation
+				scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+				desktop.setTitle(desktopTitle + " - " + scenFilename);
+				((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0,scenFilename.length()-3)+".DSS");
+				
+			}
 			JTextField tf = (JTextField) swix.find("run_txfScen");
 			String scen = tf.getText();
 			if (!scen.equals("")) {
@@ -694,8 +712,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 				sb.append("END DATATABLEMODELS" + NL);
 
-				GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
-				File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen + ".cls");
+				GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+				File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 
 				try {
 					FileWriter fstream = new FileWriter(f);
@@ -1403,28 +1421,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			Date lower = new Date();
 			JSpinner m = (JSpinner) swix.find("spnStartMonth");
 			JSpinner y = (JSpinner) swix.find("spnStartYear");
-			lower.setTime((new Month(monthToInt((String) m.getValue()),(Integer) y.getValue())).getFirstMillisecond());
+			lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
 
 			Date upper = new Date();
 			m = (JSpinner) swix.find("spnEndMonth");
 			y = (JSpinner) swix.find("spnEndYear");
-			upper.setTime((new Month(monthToInt((String) m.getValue()),(Integer) y.getValue()).getLastMillisecond()));
-			
-			
+			upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
+
 			ChartPanel1 cp3;
 			if (doExceedance) {
-				boolean plottedOne = false; //Check if any monthly plots were done
+				boolean plottedOne = false; // Check if any monthly plots were
+											// done
 				for (int m1 = 0; m1 < 12; m1++)
-					if (exceedMonths.contains(monthNames[m1]))
-					{
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-						exc_Results[m1], null, true, upper, lower);
+					if (exceedMonths.contains(monthNames[m1])) {
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
+								dss_Grabber.getYLabel(), exc_Results[m1], null, true, upper, lower);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("Annual") || !plottedOne) {
-					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(),
-							exc_Results[12], null, true, upper, lower);
+					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)",
+							dss_Grabber.getYLabel(), exc_Results[12], null, true, upper, lower);
 					tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 				}
 			}
@@ -1829,32 +1846,32 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public int monthToInt(String EndMon) {
 		int iEMon = 0;
 
-	if (EndMon.equals("Apr")) {
-		iEMon = 4;
-	} else if (EndMon.equals("Jun")) {
-		iEMon = 6;
-	} else if (EndMon.equals("Sep")) {
-		iEMon = 9;
-	} else if (EndMon.equals("Nov")) {
-		iEMon = 11;
-	} else if (EndMon.equals("Feb")) {
-		iEMon = 2;
-	} else if (EndMon.equals("Jan")) {
-		iEMon = 1;
-	} else if (EndMon.equals("Mar")) {
-		iEMon = 3;
-	} else if (EndMon.equals("May")) {
-		iEMon = 5;
-	} else if (EndMon.equals("Jul")) {
-		iEMon = 7;
-	} else if (EndMon.equals("Aug")) {
-		iEMon = 8;
-	} else if (EndMon.equals("Oct")) {
-		iEMon = 10;
-	} else if (EndMon.equals("Dec")) {
-		iEMon = 12;
-	}
-	return iEMon;
+		if (EndMon.equals("Apr")) {
+			iEMon = 4;
+		} else if (EndMon.equals("Jun")) {
+			iEMon = 6;
+		} else if (EndMon.equals("Sep")) {
+			iEMon = 9;
+		} else if (EndMon.equals("Nov")) {
+			iEMon = 11;
+		} else if (EndMon.equals("Feb")) {
+			iEMon = 2;
+		} else if (EndMon.equals("Jan")) {
+			iEMon = 1;
+		} else if (EndMon.equals("Mar")) {
+			iEMon = 3;
+		} else if (EndMon.equals("May")) {
+			iEMon = 5;
+		} else if (EndMon.equals("Jul")) {
+			iEMon = 7;
+		} else if (EndMon.equals("Aug")) {
+			iEMon = 8;
+		} else if (EndMon.equals("Oct")) {
+			iEMon = 10;
+		} else if (EndMon.equals("Dec")) {
+			iEMon = 12;
+		}
+		return iEMon;
 	}
 
 	/*
@@ -1870,7 +1887,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			protected void done() {
 
-				if (pFrame!=null) {
+				if (pFrame != null) {
 					pFrame.setCursor(null);
 					pFrame.dispose();
 				}

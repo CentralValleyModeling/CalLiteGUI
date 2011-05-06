@@ -72,7 +72,7 @@ public class GetDSSFilename implements ActionListener {
 		}
 		else {
 			fc.setFileFilter(new GeneralFileFilter(theFileExt));
-			if (theFileExt.equals("PDF"))
+			if (theFileExt.equals("PDF") || theFileExt.equals("CLS"))
 				fc.setCurrentDirectory(new File(".//Scenarios"));
 			else
 				fc.setCurrentDirectory(new File(".//Config"));
@@ -140,7 +140,10 @@ public class GetDSSFilename implements ActionListener {
 			if (rc == 0) {
 				file = fc.getSelectedFile();
 				if (theFileExt.equals("PDF") && !file.getName().toLowerCase().endsWith(".pdf")) {
-					file = new File(file.getPath()+".pdf");
+					file = new File(file.getPath()+".PDF");
+				}
+				if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
+					file = new File(file.getPath()+".CLS");
 				}
 				if (theList != null)
 					lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));

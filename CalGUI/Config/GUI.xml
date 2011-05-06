@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768" title="CalLite GUI 0.60"
+<frame id="desktop" size="1024,768" title="CalLite GUI 0.73"
 	defaultCloseOperation="JFrame.EXIT_ON_CLOSE">
 
 	<menubar id="menu">
@@ -37,16 +37,16 @@
 					<panel preferredsize="380,619" layout="GridBagLayout">
 						<gridbagconstraints insets="0,5,5,5"
 							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
-						<button minimumsize="240,20" enabled="false"
+						<button minimumsize="240,20" enabled="false" visible="false"
 							text="Set Scenario Directory...">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="5" />
 						</button>
-						<label text="Scenario Directory">
+						<label text="Scenario Directory" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 						</label>
-						<textfield id="run_txfDir" name="run_txfDir"
+						<textfield id="run_txfDir" name="run_txfDir" visible="false"
 							minimumsize="240,20" enabled="false" text=".\Scenarios">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
@@ -56,10 +56,15 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="12" />
 						</button>
-						<button minimumsize="240,20" enabled="true" text="Save Scenario..."
+						<button minimumsize="240,20" enabled="true" text="Save Scenario"
 							ActionCommand="AC_SaveScen">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="14" />
+						</button>
+						<button minimumsize="240,20" enabled="true" text="Save As..."
+							ActionCommand="AC_SaveScenAs" name="AC_SaveScenAs">
+							<gridbagconstraints insets="0,0,5,5"
+								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="15" />
 						</button>
 						<button minimumsize="240,20" enabled="false"
 							text="Compare Scenario Inputs...">
@@ -70,8 +75,8 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
 						</label>
-						<textfield id="run_txfScen" name="run_txfScen" text="DEFAULT"
-							minimumsize="200,20">
+						<textfield id="run_txfScen" name="run_txfScen" text="DEFAULT.cls" enabled="false"
+							minimumsize="240,20">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHEAST" gridx="1" gridy="20" />
 						</textfield>
@@ -79,8 +84,8 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="30" />
 						</label>
-						<textfield name="run_txfoDSS" id="run_txfoDSS"
-							minimumsize="240,20" enabled="true" text="CL_OUTPUT.DSS ">
+						<textfield name="run_txfoDSS" id="run_txfoDSS" enabled="false"
+							minimumsize="240,20" text="DEFAULT.DSS">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="30" />
 						</textfield>
@@ -94,7 +99,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="41"
 								gridwidth="2" />
-							<textarea id="run_txaScenDesc" name="run_txaScenDesc"
+							<textarea id="run_txaScenDesc" name="run_txaScenDesc" linewrap="true" wrapstyleword="true"
 								text=" "></textarea>
 						</scrollpane>
 						<panel border="TitledBorder(Run Period)" layout="GridBagLayout"
