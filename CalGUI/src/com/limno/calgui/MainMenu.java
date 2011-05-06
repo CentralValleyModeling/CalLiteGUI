@@ -168,8 +168,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
-		getScenFilename = new GetDSSFilename(null,(JTextField) swix.find("run_txfScen"),"CLS");
-		
+		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
+
 		// swix2 = new SwingEngine(this);
 		// swix2.render(new File("Config\\ReportDialog.xml"));
 
@@ -633,8 +633,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				Boolean scensave = false;
 				int n = JOptionPane.showConfirmDialog(mainmenu,
 						"Would you like to save the scenario definition? \nScenario information "
-								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-								+ "'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
+								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'",
+						"CalLite Gui", JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
 					// statusBar.setMessage("Saving CalLite Scenario file...");
@@ -682,54 +682,70 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 		} else if (e.getActionCommand().startsWith("AC_SaveScen")) {
 
+			boolean proceed = true;
+
 			if (e.getActionCommand().equals("AC_SaveScenAs")) {
+
+				// Save scenario as ...
+
 				getScenFilename.actionPerformed(e);
-				//TODO - check for cancellation
-				scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-				desktop.setTitle(desktopTitle + " - " + scenFilename);
-				((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0,scenFilename.length()-3)+".DSS");
-				
-			}
-			JTextField tf = (JTextField) swix.find("run_txfScen");
-			String scen = tf.getText();
-			if (!scen.equals("")) {
-
-				StringBuffer sb = new StringBuffer();
-				sb = GUI_Utils.GetControlValues(runsettings, sb);
-				sb = GUI_Utils.GetControlValues(regulations, sb);
-				sb = GUI_Utils.GetControlValues(hydroclimate, sb);
-				sb = GUI_Utils.GetControlValues(demands, sb);
-				sb = GUI_Utils.GetControlValues(operations, sb);
-				sb = GUI_Utils.GetControlValues(facilities, sb);
-
-				// get table values.
-				final String NL = System.getProperty("line.separator");
-				sb.append("DATATABLEMODELS" + NL);
-				ArrayList GUITables = new ArrayList();
-				ArrayList GUILinks = new ArrayList();
-				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
-				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
-				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
-				sb.append("END DATATABLEMODELS" + NL);
-
-				GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-				File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-
-				try {
-					FileWriter fstream = new FileWriter(f);
-					BufferedWriter outobj = new BufferedWriter(fstream);
-					outobj.write(sb.toString());
-					outobj.close();
-
-				} catch (Exception e1) {
-					System.err.println("Error: " + e1.getMessage());
+				if (getScenFilename.dialogRC != 0)
+					proceed = false;
+				else {
+					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+					desktop.setTitle(desktopTitle + " - " + scenFilename);
+					((JTextField) swix.find("run_txfoDSS"))
+							.setText(scenFilename.substring(0, scenFilename.length() - 3) + ".DSS");
 				}
-			} else {
-				JFrame frame = new JFrame("Error");
+			}
+			if (proceed) {
+				JTextField tf = (JTextField) swix.find("run_txfScen");
+				String scen = tf.getText();
+				if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
+					proceed = (JOptionPane.showConfirmDialog(mainmenu,
+							"The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
+									+ "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
+							JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
-				// show a joptionpane dialog using showMessageDialog
-				JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
+				if (proceed) {
 
+					StringBuffer sb = new StringBuffer();
+					sb = GUI_Utils.GetControlValues(runsettings, sb);
+					sb = GUI_Utils.GetControlValues(regulations, sb);
+					sb = GUI_Utils.GetControlValues(hydroclimate, sb);
+					sb = GUI_Utils.GetControlValues(demands, sb);
+					sb = GUI_Utils.GetControlValues(operations, sb);
+					sb = GUI_Utils.GetControlValues(facilities, sb);
+
+					// get table values.
+					final String NL = System.getProperty("line.separator");
+					sb.append("DATATABLEMODELS" + NL);
+					ArrayList GUITables = new ArrayList();
+					ArrayList GUILinks = new ArrayList();
+					GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
+					sb.append("END DATATABLEMODELS" + NL);
+
+					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+
+					try {
+						FileWriter fstream = new FileWriter(f);
+						BufferedWriter outobj = new BufferedWriter(fstream);
+						outobj.write(sb.toString());
+						outobj.close();
+
+					} catch (Exception e1) {
+						System.err.println("Error: " + e1.getMessage());
+					}
+				} else {
+					JFrame frame = new JFrame("Error");
+
+					// show a joptionpane dialog using showMessageDialog
+					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
+
+				}
 			}
 
 		} else if (e.getActionCommand().startsWith("AC_LoadScen")) {
