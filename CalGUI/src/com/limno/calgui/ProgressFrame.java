@@ -10,7 +10,7 @@ import javax.swing.*;
 public class ProgressFrame extends JFrame {
 	private JLabel label;
 
-	ProgressFrame(String title) {
+	public ProgressFrame(String title) {
 
 		super();
 

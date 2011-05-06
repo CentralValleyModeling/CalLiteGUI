@@ -1,8 +1,6 @@
 package com.limno.calgui;
 
-import java.io.File;
-
-import java.io.*; 
+import java.io.File; 
 public class ScenarioFileFilter extends javax.swing.filechooser.FileFilter
 {
     public boolean accept(File file)

@@ -3,7 +3,6 @@ package com.limno.calgui;
 import javax.swing.text.*;
 import javax.swing.*;
 
-import java.text.ParseException;
 import java.util.regex.Pattern;
  
 public class NumericTextField extends JTextField

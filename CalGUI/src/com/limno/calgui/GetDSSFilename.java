@@ -290,7 +290,7 @@ public class GetDSSFilename implements ActionListener {
 	}
 
 
-	class CheckListItem {
+	public class CheckListItem {
 		private String label;
 		private String fullname;
 		private boolean isSelected = false;

@@ -34,7 +34,6 @@ package com.limno.calgui;
 import java.awt.*;
 import java.awt.event.*;	
 import javax.swing.*;
-import javax.swing.border.*;
 
 /* ScrollablePicture.java is used by ScrollDemo.java. */
 

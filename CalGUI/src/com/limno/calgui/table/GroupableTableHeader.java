@@ -1,8 +1,6 @@
 package com.limno.calgui.table;
 
 import java.util.*;
-import java.awt.*;
-import javax.swing.*;
 import javax.swing.table.*;
 
  

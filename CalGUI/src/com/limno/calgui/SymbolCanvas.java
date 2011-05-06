@@ -1,9 +1,6 @@
 package com.limno.calgui;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
 
 public class SymbolCanvas extends Canvas {
     Font font;
