@@ -64,6 +64,8 @@ public class GetDSSFilename implements ActionListener {
 		Setup(aList);
 	}
 
+	public int dialogRC;
+	
 	private void Setup(JList aList) {
 
 		if (theFileExt.equals("DSS")) {
@@ -136,6 +138,7 @@ public class GetDSSFilename implements ActionListener {
 			else
 				rc = fc.showDialog(null, "Save");
 
+			dialogRC = rc;
 			File file;
 			if (rc == 0) {
 				file = fc.getSelectedFile();
