@@ -5,6 +5,10 @@ import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
+
+import com.limno.calgui.table.ColumnGroup;
+import com.limno.calgui.table.GroupableTableHeader;
+
 import java.io.*;
 import java.util.*;
 
@@ -256,9 +260,69 @@ public class DataFileTableModel extends AbstractTableModel {
 				else {
 					// CASE 3: FOUR COLUMNS (year type, month, value1, value2) 
 					//EISJR Multiplier + Offset
-					JOptionPane.showMessageDialog(null, "EISJR!","",
-							JOptionPane.ERROR_MESSAGE);
+					
+					String firstColumnName = (String) columnNames.get(0);
+					String secondColumnName = (String) columnNames.get(1);
+					String thirdColumnName = (String) columnNames.get(2);
+					String fourthColumnName = (String) columnNames.get(3);
+					
+					columnNames.clear();
+					columnNames.addElement(firstColumnName);
+					
 
+					String lastColID = "-1";
+					int rowCount = 0;
+					
+
+					ArrayList<String> allValues = new ArrayList<String>();
+					while (aLine != null) {
+
+						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+						if (st2.countTokens() > 3) {
+
+							st2.nextToken();
+							String aColID = st2.nextToken();
+							String aValue = st2.nextToken();
+							String aValue1 = st2.nextToken();
+							if (Integer.parseInt(aColID) > Integer.parseInt(lastColID)) {
+								lastColID = aColID;
+								rowCount = 0;
+								if (secondColumnName.toLowerCase().startsWith("wyt")) {
+									//columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
+									columnNames.addElement(fourthColumnName);	//Multiplier
+									columnNames.addElement(thirdColumnName);	//Offset
+								} else{
+									//columnNames.addElement(secondColumnName + aColID);
+								}
+							} else {
+								
+								
+							}
+							rowCount++;
+							allValues.add(aValue1);	//Multiplier
+							allValues.add(aValue);	//Offset
+						}
+						aLine = br.readLine();
+					}
+					/*
+					GroupableTableHeader h= new GroupableTableHeader(null);
+					for (int c = 0; c < wyts.length; c ++) {
+						h.addColumnGroup(g[c]);
+					}
+					*/
+					
+					int colct=columnNames.size()/2;
+					int idx=0;
+					for (int r = 0; r < rowCount; r ++) {
+
+						data.addElement(Integer.toString(r+1));				//month
+						for (int c = 0; c < colct ; c++) {
+							for (int c1 = 0; c1 < 2 ; c1++) {
+								idx=c*rowCount*2+r*2+c1;
+								data.addElement(allValues.get(idx));
+							}
+						}
+					}
 				}
 
 				br.close();  
