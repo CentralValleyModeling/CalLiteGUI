@@ -101,7 +101,7 @@ import com.limno.calgui.results.MonthlyTablePanel;
 import com.limno.calgui.results.Report;
 import com.limno.calgui.results.ScrollablePicture;
 import com.limno.calgui.results.SummaryTablePanel;
-import com.limno.calgui.results.SymbolCanvas;
+import com.limno.calgui.SymbolCanvas;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
 		ChangeListener {
