@@ -1,13 +1,9 @@
 package com.limno.calgui;
 
-import javax.swing.JOptionPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
-
-import com.limno.calgui.table.ColumnGroup;
-import com.limno.calgui.table.GroupableTableHeader;
 
 import java.io.*;
 import java.util.*;
@@ -304,12 +300,6 @@ public class DataFileTableModel extends AbstractTableModel {
 						}
 						aLine = br.readLine();
 					}
-					/*
-					GroupableTableHeader h= new GroupableTableHeader(null);
-					for (int c = 0; c < wyts.length; c ++) {
-						h.addColumnGroup(g[c]);
-					}
-					*/
 					
 					int colct=columnNames.size()/2;
 					int idx=0;

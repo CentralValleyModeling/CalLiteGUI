@@ -2,7 +2,6 @@ package com.limno.calgui;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Frame;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -24,22 +23,17 @@ import java.util.StringTokenizer;
 import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuListener;
 import javax.swing.text.JTextComponent;
 
 import org.swixml.SwingEngine;
-import org.swixml.XScrollPane;
 
 public class GUI_Utils {
 
