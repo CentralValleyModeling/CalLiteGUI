@@ -256,7 +256,8 @@ public class DataFileTableModel extends AbstractTableModel {
 				else {
 					// CASE 3: FOUR COLUMNS (year type, month, value1, value2) 
 					//EISJR Multiplier + Offset
-					
+					String wyts1[] = {"W-","AN-","BN-","D-","C-"};
+					String prefix;
 					String firstColumnName = (String) columnNames.get(0);
 					String secondColumnName = (String) columnNames.get(1);
 					String thirdColumnName = (String) columnNames.get(2);
@@ -284,9 +285,10 @@ public class DataFileTableModel extends AbstractTableModel {
 								lastColID = aColID;
 								rowCount = 0;
 								if (secondColumnName.toLowerCase().startsWith("wyt")) {
+									prefix=wyts1[Integer.parseInt(aColID)-1];
 									//columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
-									columnNames.addElement(fourthColumnName);	//Multiplier
-									columnNames.addElement(thirdColumnName);	//Offset
+									columnNames.addElement(prefix+fourthColumnName);	//Multiplier
+									columnNames.addElement(prefix+thirdColumnName);	//Offset
 								} else{
 									//columnNames.addElement(secondColumnName + aColID);
 								}

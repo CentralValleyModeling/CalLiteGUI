@@ -76,6 +76,7 @@ import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -131,6 +132,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JFrame dialog;
 	ButtonGroup reg_btng1;
 	GUILinks gl;
+	JTable regTable;
 
 	static public String lookups[][];
 
@@ -231,6 +233,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			GUI_Utils.SetMouseListener(scrollpane, this);
 
 		}
+		
 
 		JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
 		JSpinner spnEM1 = (JSpinner) swix.find("spnRunEndMonth");
