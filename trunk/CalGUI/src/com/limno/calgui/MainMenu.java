@@ -171,7 +171,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".126";
+		desktopTitle = desktop.getTitle() + ".130";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1726,6 +1726,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						chk.repaint();
 
 						DisplayFrame(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
+						System.out.println(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
 						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
 						chk.repaint();
 
@@ -1733,15 +1734,43 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					}
 				} else if (cName.startsWith("schem_map")) {
-					JFrame frame = new JFrame("Test");
+					if (((JTextField) swix.find("schem_tfload")).getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+						Point b = e.getPoint();
+						int x = (int) b.getX();
+						int y = (int) b.getY();
 
-					Point b = e.getPoint();
-					int x = (int) b.getX();
-					int y = (int) b.getY();
+						if ((x - 111) * (x - 111) + (y - 150) * (y - 150) < 100) {
+							JFrame mapPlotFrame = new JFrame("Example map plot");
+							dss_Grabber.setLocation("102");
 
-					// show a joptionpane dialog using showMessageDialog
-					JOptionPane.showMessageDialog(frame, "X = " + x + "; Y = " + y);
+							TimeSeriesContainer[] primary_Results = new TimeSeriesContainer[1];
+							primary_Results[0] = dss_Grabber.getOneSeries(((JTextField) swix.find("schem_tfload")).getText(),dss_Grabber.primaryDSSName);
 
+							Date lower = new Date();
+							JSpinner m = (JSpinner) swix.find("spnStartMonth");
+							JSpinner y1 = (JSpinner) swix.find("spnStartYear");
+							lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue()))
+									.getFirstMillisecond());
+
+							Date upper = new Date();
+							m = (JSpinner) swix.find("spnEndMonth");
+							y1 = (JSpinner) swix.find("spnEndYear");
+							upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue())
+									.getLastMillisecond()));
+
+							ChartPanel1 cp1 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(),
+									primary_Results, null, false, upper, lower);
+							mapPlotFrame.add(cp1);
+							mapPlotFrame.pack();
+							mapPlotFrame.setVisible(true);
+
+						}
+
+						else
+							JOptionPane.showMessageDialog(null, "X = " + x + "; Y = " + y);
+					}
 				}
 			}
 		}
