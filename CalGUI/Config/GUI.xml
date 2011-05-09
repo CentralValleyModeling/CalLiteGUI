@@ -2228,7 +2228,7 @@
 						<gridbagconstraints insets="0,0,2,2"
 							anchor="GridBagConstraints.WEST" gridx="3" gridy="0" />
 					</button>
-					<textfield name="schem_tfload" id="schem_tfload" text=" "
+					<textfield name="schem_tfload" id="schem_tfload" text=""
 						minimumsize="500,25" enabled="false">
 						<gridbagconstraints insets="0,0,2,2"
 							anchor="GridBagConstraints.WEST" gridx="4" gridy="0" />
