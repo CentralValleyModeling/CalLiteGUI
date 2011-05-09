@@ -1385,7 +1385,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			if (groupParts[i].equals("Comp"))
 				doComparison = true;
 			else if (groupParts[i].equals("Diff"))
-				doComparison = true;
+				doDifference = true;
 			else if (groupParts[i].equals("TS"))
 				doTimeSeries = true;
 			else if (groupParts[i].startsWith("EX-")) {
