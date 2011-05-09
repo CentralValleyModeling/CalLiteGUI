@@ -1,12 +1,12 @@
 package com.limno.calgui.results;
 
-//import gov.ca.dwr.callite.Report.Writer;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,13 +51,36 @@ public class ReportPDFWriter implements Writer {
 	private Font smallFont;
 	private Font subtitleFont;
 	private Font smallBoldFont;
+	private String dateStr;
+	
+	private Font tableFont;
+	private Font tableBoldFont;
 
+
+	
 	public ReportPDFWriter() {
 
 	}
 
 	public ReportPDFWriter(String filename) {
 		startDocument(filename);
+	}
+	
+	
+	public void setTableFontSize(String tableFontSize){
+		
+		int fontSize = 9;
+		try {
+	      fontSize = Integer.parseInt(tableFontSize.trim());
+	    } catch (NumberFormatException nfe){
+	      System.out.println("NumberFormatException: " + nfe.getMessage());
+	    } 
+
+		
+		tableFont = FontFactory.getFont("Arial", fontSize);
+		tableBoldFont = FontFactory.getFont("Arial", fontSize);
+		tableBoldFont.setStyle(Font.BOLD);		
+		
 	}
 
 	public void startDocument(String filename) {
@@ -70,8 +93,6 @@ public class ReportPDFWriter implements Writer {
 		document = new Document();
 		document.setPageSize(PageSize.A4.rotate());
 		document.addCreationDate();
-		footer = new HeaderFooter(new Phrase(filename), true);
-		document.setFooter(footer);
 		try {
 			writer = PdfWriter.getInstance(
 			// that listens to the document
@@ -85,9 +106,36 @@ public class ReportPDFWriter implements Writer {
 			System.err.println(ioe.getMessage());
 		}
 	}
+	
+	public void addTitlePage(String compareInfo, String author){
+		document.newPage();
+		try {
+			Paragraph title = new Paragraph("\n\n\n\n"+compareInfo, FontFactory.getFont("Arial", 24, Font.BOLD, Color.BLUE));
+			title.setAlignment(Element.ALIGN_CENTER);
+			document.add(title);
+			Paragraph pauthor = new Paragraph("\n\n"+"Author: "+author, FontFactory.getFont("Arial", 16, Font.BOLD));
+			pauthor.setAlignment(Element.ALIGN_CENTER);
+			document.add(pauthor);
+			dateStr = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
+			Paragraph pdate = new Paragraph("\n"+"Generated on "+dateStr);
+			pdate.setAlignment(Element.ALIGN_CENTER);
+			document.add(pdate);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void setAuthor(String author) {
+		/*
+		footer = new HeaderFooter(new Phrase(author), new Phrase(dateStr));
+		document.setFooter(footer);
 		document.addAuthor(author);
+		*/
+	}
+	
+	public void addNewPage(){
+		document.newPage();
 	}
 	
 	public void writeParagraph(String text) throws DocumentException {
@@ -123,6 +171,7 @@ public class ReportPDFWriter implements Writer {
 		for (int i = 0; i < cells.length; i++) {
 			if (cells[i] != null){
 				cells[i].setGrayFill(0.6f);
+				cells[i].setPaddingLeft(1);
 			}
 		}
 	}
@@ -131,8 +180,11 @@ public class ReportPDFWriter implements Writer {
 	public void addTableRow(List<String> rowData, int[] columnSpans, int style,
 			boolean centered) {
 		for (int i = 0; i < rowData.size(); i++) {
+			
 			PdfPCell cell = new PdfPCell(new Phrase(rowData.get(i),
-					style == BOLD ? smallBoldFont : smallFont));
+					style == BOLD ? tableBoldFont : tableFont));
+
+						
 			if (centered) {
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			} else {
@@ -146,9 +198,10 @@ public class ReportPDFWriter implements Writer {
 					}
 				}
 			}
+			cell.setVerticalAlignment(Element.ALIGN_CENTER);
 			if (columnSpans != null) {
 				cell.setColspan(columnSpans[i]);
-			}
+			} 
 			summaryTable.addCell(cell);
 		}
 	}
@@ -160,7 +213,7 @@ public class ReportPDFWriter implements Writer {
 			document.add(new Paragraph(title, bigFont));
 		} catch (DocumentException ex) {
 			Logger.getLogger(this.getClass().getName()).severe(ex.getMessage());
-			throw new RuntimeException(ex);
+			throw new RuntimeException("Write Error: Close the PDF report file");
 		}
 	}
 
@@ -182,22 +235,26 @@ public class ReportPDFWriter implements Writer {
 	@Override
 	public void endTable() {
 		try {
-			document.add(new Phrase("\n"));
 			PdfPCell[] cells = summaryTable.getRow(0).getCells();
 			setRightAndLeftBorders(cells);
+			setColumnBoundaries(cells, 1);
 			for (int i = 0; i < cells.length; i++) {
 				if (cells[i] != null) {
-					cells[i].setBorderWidthTop(3);
+					cells[i].setBorderWidthTop(2);
 				}
 			}
 			ArrayList rows = summaryTable.getRows();
 			for(int i=1; i < rows.size()-1; i++){
 				PdfPCell[] dataCells = ((PdfPRow)rows.get(i)).getCells();
 				setRightAndLeftBorders(dataCells);
+				setColumnBoundaries(dataCells,4);
+				setCellPadding(dataCells,3,2);
 			}
 			PdfPRow lastRow = (PdfPRow) rows.get(rows.size()-1);
 			cells = lastRow.getCells();
 			setRightAndLeftBorders(cells);
+			setColumnBoundaries(cells,4);
+			setCellPadding(cells,3,4);
 			for (int i = 0; i < cells.length; i++) {
 				if (cells[i] != null) {
 					cells[i].setBorderWidthBottom(2);
@@ -210,13 +267,34 @@ public class ReportPDFWriter implements Writer {
 		}
 	}
 	
+	private void setCellPadding(PdfPCell[] cells, int padding, int bottomPadding){
+		for(int i=0; i < cells.length; i++){
+			if (cells[i]!= null){
+				cells[i].setPadding(padding);
+				cells[i].setPaddingBottom(bottomPadding);
+			}
+		}
+	}
+	
+	private void setColumnBoundaries(PdfPCell[] cells, int span){
+		for(int i=0; i < cells.length; i++){
+			if (i%span==0 && cells[i] != null){
+				cells[i].setBorderWidthRight(2);
+			}
+		}
+	}
+	
 	private void setRightAndLeftBorders(PdfPCell[] cells){
 		if (cells==null) return;
 		if (cells[0] != null){
-			cells[0].setBorderWidthLeft(3);
+			cells[0].setBorderWidthLeft(2);
 		}
-		if (cells[cells.length-1] != null){
-			cells[cells.length-1].setBorderWidthRight(3);
+		int i=cells.length-1;
+		while (cells[i] == null && i >= 0){
+			i--;
+		}
+		if (i >=0){
+			cells[i].setBorderWidthRight(2);
 		}
 	}
 
