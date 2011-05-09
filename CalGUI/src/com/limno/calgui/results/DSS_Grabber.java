@@ -96,7 +96,7 @@ public class DSS_Grabber {
 		}
 	}
 
-	private TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
+	public TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
