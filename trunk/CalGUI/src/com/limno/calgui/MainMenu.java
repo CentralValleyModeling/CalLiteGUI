@@ -171,7 +171,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".131";
+		desktopTitle = desktop.getTitle() + ".132";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -999,17 +999,18 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					// Open the template file
+					System.out.println(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					String theText = br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					br.readLine();
-					theText = theText + "FILE1\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
+					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME1\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
+					theText = theText + "NAME_BASE\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
 					br.readLine();
-					theText = theText + "FILE2\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
+					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME2\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
+					theText = theText + "NAME_ALT\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText() + "\n";
 					br.readLine();
@@ -1019,16 +1020,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							+ "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix.find("tfReportMODELER")).getText() + "\"\n";
+
+					theText = theText + "TABLE_FONT_SIZE\t" + ((JTextField) swix.find("tfFontSize")).getText() + "\n";
+
 					System.out.println(theText);
 					String aLine = br.readLine();
 					while (aLine != null) {
 						theText = theText + aLine + "\n";
 						aLine = br.readLine();
 					}
+					theText = theText + "\n"; 
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
 					try {
-						report = new Report(bs, desktop);
+						System.out.println(theText);
+						report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText() , desktop);
 						report.execute();
+						//report = new Report(bs);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -2169,7 +2176,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
-				pFrame.setText("Copying DLL.");
+				pFrame.setText("Copying DLL.");	
 
 				// Sea Level Selections
 				File fsAnnO;

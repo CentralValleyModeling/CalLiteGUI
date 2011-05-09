@@ -1,6 +1,5 @@
 package com.limno.calgui.results;
 
-//import gov.ca.dwr.callite.Report.PathnameMap;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,7 +8,6 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import com.limno.calgui.results.Report.PathnameMap;
-
 
 import vista.db.dss.DSSUtil;
 import vista.report.TSMath;
@@ -29,8 +27,21 @@ import vista.time.Time;
 import vista.time.TimeFactory;
 import vista.time.TimeWindow;
 
-
 public class Utils {
+	static StringBuffer messages = new StringBuffer();
+
+	public static void clearMessages() {
+		messages.setLength(0);
+	}
+
+	public static void addMessage(String msg) {
+		messages.append(msg).append("\n");
+	}
+
+	public static String getMessages() {
+		return messages.toString();
+	}
+
 	/**
 	 * Retrieves the contents list for a dss file
 	 * 
@@ -89,36 +100,49 @@ public class Utils {
 			boolean calculate_dts, ArrayList<PathnameMap> pathname_maps,
 			int group_no) {
 		if (calculate_dts) {
-			// FIXME: add expression parser to enable any expression
-			String bpart = path.split("/")[2];
-			String[] vars = bpart.split("\\+");
-			DataReference ref = null;
-			for (String varname : vars) {
-				DataReference xref = null;
-				String varPath = createPathFromVarname(path, varname);
-				xref = getReference(group, varPath, false, pathname_maps,
-						group_no);
-				if (ref == null) {
-					ref = xref;
-				} else {
-					ref = ref.__add__(xref);
+			try {
+				// FIXME: add expression parser to enable any expression
+				String bpart = path.split("/")[2];
+				String[] vars = bpart.split("\\+");
+				DataReference ref = null;
+				for (String varname : vars) {
+					DataReference xref = null;
+					String varPath = createPathFromVarname(path, varname);
+					xref = getReference(group, varPath, false, pathname_maps,
+							group_no);
+					if (xref == null) {
+						throw new RuntimeException("Aborting calculation of "
+								+ path + " due to previous path missing");
+					}
+					if (ref == null) {
+						ref = xref;
+					} else {
+						ref = ref.__add__(xref);
+					}
 				}
-			}
-			return ref;
-		}
-		try {
-			DataReference[] refs = findpath(group, path, false);
-			if (refs == null) {
-				System.err.println("No data found for " + group + " and "
-						+ path);
+				return ref;
+			} catch (Exception ex) {
+				Utils.addMessage(ex.getMessage());
 				return null;
-			} else {
-				return refs[0];
 			}
-		} catch (Exception ex) {
-			System.err.println("Exception while trying to retrieve " + path
-					+ " from " + group);
-			return null;
+		} else {
+			try {
+				DataReference[] refs = findpath(group, path, false);
+				if (refs == null) {
+					String msg = "No data found for " + group + " and " + path;
+					addMessage(msg);
+					System.err.println(msg);
+					return null;
+				} else {
+					return refs[0];
+				}
+			} catch (Exception ex) {
+				String msg = "Exception while trying to retrieve " + path
+						+ " from " + group;
+				System.err.println(msg);
+				addMessage(msg);
+				return null;
+			}
 		}
 	}
 
@@ -294,6 +318,5 @@ public class Utils {
 		return formatTimeAsYearMonthDay(tw.getStartTime()) + "-"
 				+ formatTimeAsYearMonthDay(tw.getEndTime());
 	}
-	    
-    
+
 }
