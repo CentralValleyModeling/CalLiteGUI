@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768" title="CalLite GUI 0.74"
+<frame id="desktop" size="1024,768" title="CalLite GUI 0.75"
 	defaultCloseOperation="JFrame.EXIT_ON_CLOSE">
 
 	<menubar id="menu">
 		<menu text="File" mnemonic="VK_F">
-			<menuitem text="New" enabled="false" />
+			<menuitem text="New" enabled="false" visible="false"/>
 			<menuitem text="Load" mnemonic="VK_L" ActionCommand="AC_LoadScen" />
 			<menuitem text="Run" mnemonic="VK_R" ActionCommand="AC_RUN" />
 			<separator />
-			<menuitem text="Save" enabled="false" />
-			<menuitem text="Save As" enabled="false" />
+			<menuitem text="Save" mnemonic="VK_S" ActionCommand="AC_SaveScen" />
+			<menuitem text="Save As..." mnemonic="VK_A" ActionCommand="AC_SaveScenAs" />
 			<separator />
 			<menuitem text="Delete" enabled="false" />
 		</menu>
@@ -86,7 +86,7 @@
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="30" />
 						</label>
 						<textfield name="run_txfoDSS" id="run_txfoDSS" enabled="false"
-							minimumsize="240,20" text="DEFAULT.DSS">
+							minimumsize="240,20" text="DEFAULT_DV.DSS">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="30" />
 						</textfield>

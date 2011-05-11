@@ -118,7 +118,8 @@ public class GetDSSFilename implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		if (((JButton) obj).getName().equals("btnDelScenario")) {
+		
+		if ((((Component) obj).getName()!= null) && ((Component) obj).getName().equals("btnDelScenario")) {
 			if ((theList != null) && lmScenNames.getSize() > 0) {
 				int todel = -1;
 				for (int i = 0; i < lmScenNames.getSize(); i++)
