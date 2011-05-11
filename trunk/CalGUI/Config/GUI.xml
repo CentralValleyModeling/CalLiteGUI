@@ -2019,7 +2019,7 @@
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="7" gridy="4" />
 								</checkbox>
-								<checkbox name="ckbp405" id="ckbp405" text="Total SWP SOD ">
+								<checkbox name="ckbp405" id="ckbp405" text="Total SWP ">
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="7" gridy="5" />
 								</checkbox>
