@@ -702,7 +702,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 					desktop.setTitle(desktopTitle + " - " + scenFilename);
 					((JTextField) swix.find("run_txfoDSS"))
-							.setText(scenFilename.substring(0, scenFilename.length() - 3) + ".DSS");
+							.setText(scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS");
+
 				}
 			}
 			if (proceed) {
@@ -1004,11 +1005,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					theText = theText + br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					br.readLine();
-					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
+					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText()
+							+ "\n";
 					br.readLine();
 					theText = theText + "NAME_BASE\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
 					br.readLine();
-					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
+					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText()
+							+ "\n";
 					br.readLine();
 					theText = theText + "NAME_ALT\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
@@ -1029,13 +1032,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						theText = theText + aLine + "\n";
 						aLine = br.readLine();
 					}
-					theText = theText + "\n"; 
+					theText = theText + "\n";
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
 					try {
 						System.out.println(theText);
-						report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText() , desktop);
+						report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText(), desktop);
 						report.execute();
-						//report = new Report(bs);
+						// report = new Report(bs);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -1753,7 +1756,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							dss_Grabber.setLocation("102");
 
 							TimeSeriesContainer[] primary_Results = new TimeSeriesContainer[1];
-							primary_Results[0] = dss_Grabber.getOneSeries(((JTextField) swix.find("schem_tfload")).getText(),dss_Grabber.primaryDSSName);
+							primary_Results[0] = dss_Grabber.getOneSeries(
+									((JTextField) swix.find("schem_tfload")).getText(), dss_Grabber.primaryDSSName);
 
 							Date lower = new Date();
 							JSpinner m = (JSpinner) swix.find("spnStartMonth");
@@ -2031,6 +2035,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 				GUI_Utils.deleteDir(fsDem);
 
+				rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
+
+				if (rdb.isSelected()) {
+
+					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand");
+
+				} else {
+
+					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\FutureDemand");
+
+				}
+
+				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
+
+				GUI_Utils.copyDirectory(fsDem, fsLookup);
+
 				publish("Creating study.sty.");
 
 				// Write study.sty
@@ -2176,7 +2196,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
-				pFrame.setText("Copying DLL.");	
+				pFrame.setText("Copying DLL.");
 
 				// Sea Level Selections
 				File fsAnnO;
@@ -2185,14 +2205,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
 				if (rdbSLR45.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BDCP_LLT_45cm.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				} else if (rdbSLR15.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BDCP_ELT_15cm.dll.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				} else {
 					fsAnnS = new File(System.getProperty("user.dir")
 							+ "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				}
 				try {
 					GUI_Utils.copyDirectory(fsAnnS, fsAnnO);
