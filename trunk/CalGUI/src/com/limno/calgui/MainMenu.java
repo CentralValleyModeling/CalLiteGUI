@@ -50,7 +50,8 @@ import javax.help.HelpSet;
 import javax.help.JHelp;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
+
+import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -436,6 +437,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					btn.setEnabled(false);
 					pan.revalidate();
 
+					/*
 					if (RegUserEdits != null) {
 						DataFileTableModel tm = (DataFileTableModel) table.getModel();
 						int tID = tm.tID;
@@ -456,6 +458,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 						rdb.setSelected(true);
 					}
+					*/
+					
 
 				} else {
 					pan.setEnabled(false);
@@ -1622,6 +1626,54 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			});
 
+			//Special handling for tiered header tables (11 columns)
+			if (dTableModels[tID].getColumnCount()==11) {
+				
+				//JFrame frame1 = new JFrame();
+
+
+			    JTable table = new JTable();
+			    table.setColumnModel(new GroupableTableColumnModel());
+			    table.setTableHeader(new GroupableTableHeader((GroupableTableColumnModel) table.getColumnModel()));
+			    table.setModel(dTableModels[tID]);
+			    table.createDefaultColumnsFromModel();
+
+			    
+				GroupableTableColumnModel cm = (GroupableTableColumnModel)table.getColumnModel();
+			    
+				ColumnGroup g_Wet = new ColumnGroup("Wet"); 
+				g_Wet.add(cm.getColumn(1)); 
+				g_Wet.add(cm.getColumn(2)); 
+				ColumnGroup g_AN = new ColumnGroup("Above Normal"); 
+				g_AN.add(cm.getColumn(3)); 
+				g_AN.add(cm.getColumn(4));
+				ColumnGroup g_BN = new ColumnGroup("Below Normal"); 
+				g_BN.add(cm.getColumn(5)); 
+				g_BN.add(cm.getColumn(6));
+				ColumnGroup g_DRY = new ColumnGroup("Dry"); 
+				g_DRY.add(cm.getColumn(7)); 
+				g_DRY.add(cm.getColumn(8));
+				ColumnGroup g_CD = new ColumnGroup("Critical Dry"); 
+				g_CD.add(cm.getColumn(9)); 
+				g_CD.add(cm.getColumn(10));
+				
+
+				GroupableTableHeader h = (GroupableTableHeader)table.getTableHeader();
+				h.addColumnGroup(g_Wet); 
+				h.addColumnGroup(g_AN); 
+				h.addColumnGroup(g_BN); 
+				h.addColumnGroup(g_DRY); 
+				h.addColumnGroup(g_CD); 
+			    JScrollPane scroll = new JScrollPane( table );
+
+				//frame1.add(scroll);
+				//frame1.pack();
+				//frame1.setVisible(true);
+
+				
+			}
+			
+			
 			t.revalidate();
 
 			ExcelAdapter myAd = new ExcelAdapter(t);
