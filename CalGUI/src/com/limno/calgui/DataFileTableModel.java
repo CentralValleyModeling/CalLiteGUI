@@ -260,6 +260,8 @@ public class DataFileTableModel extends AbstractTableModel {
 					String secondColumnName = (String) columnNames.get(1);
 					String thirdColumnName = (String) columnNames.get(2);
 					String fourthColumnName = (String) columnNames.get(3);
+					String wyts1[] = {"W-","AN-","BN-","D-","CD-"};
+					String prefix="";
 					
 					columnNames.clear();
 					columnNames.addElement(firstColumnName);
@@ -284,8 +286,9 @@ public class DataFileTableModel extends AbstractTableModel {
 								rowCount = 0;
 								if (secondColumnName.toLowerCase().startsWith("wyt")) {
 									//columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
-									columnNames.addElement(fourthColumnName);	//Multiplier
-									columnNames.addElement(thirdColumnName);	//Offset
+									prefix=wyts1[Integer.parseInt(aColID)-1];
+									columnNames.addElement(prefix+fourthColumnName);	//Multiplier
+									columnNames.addElement(prefix+thirdColumnName);	//Offset
 								} else{
 									//columnNames.addElement(secondColumnName + aColID);
 								}
