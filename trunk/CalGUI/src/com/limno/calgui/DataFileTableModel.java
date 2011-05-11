@@ -10,7 +10,7 @@ import java.util.*;
 
 public class DataFileTableModel extends AbstractTableModel {
 
-	protected Vector<String> data;
+	protected Vector<Object> data;
 	protected Vector<String> columnNames ;  
 	protected String datafile;
 	protected String[] datafiles;
@@ -40,7 +40,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 
 		String aLine ;
-		data = new Vector<String>();
+		data = new Vector<Object>();
 		columnNames = new Vector<String>();	
 		String firstColumnName="";
 		String secondColumnName="";
@@ -138,10 +138,34 @@ public class DataFileTableModel extends AbstractTableModel {
 							aLine = br.readLine();
 						}
 						for (int r = 0; r < rowCount; r ++) {
-							data.addElement(allValues1.get(r*2));
-							data.addElement(allValues1.get(r*2+1));
+							// Special handling for "active" flag.
+							String colName = (String)columnNames.elementAt(0);
+							if(colName.trim().endsWith("active")){
+								Boolean val;
+								if(allValues1.get(r*2).trim().equals("1")){
+									val=true;
+								} else {
+									val=false;
+								}
+								data.addElement(val);
+							} else {
+								data.addElement(allValues1.get(r*2));
+							}
+							colName = (String)columnNames.elementAt(1);
+							if(colName.trim().endsWith("active")){
+								Boolean val;
+								if(allValues1.get(r*2+1).trim().equals("1")){
+									val=true;
+								} else {
+									val=false;
+								}
+								data.addElement(val);
+							} else {
+								data.addElement(allValues1.get(r*2+1));
+							}
 							//data.addElement(Integer.toString(r+1));
 							for (int c = 0; c < columnNames.size() - 2 ; c++) {
+
 								//System.out.println(Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount)+"="+Integer.toString(allValues.size()));
 
 								data.addElement(allValues.get(c*rowCount+r));
@@ -164,7 +188,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	public void initVectors() {
 
 		String aLine ;
-		data = new Vector<String>();
+		data = new Vector<Object>();
 		columnNames = new Vector<String>();	
 
 		try {
@@ -370,7 +394,8 @@ public class DataFileTableModel extends AbstractTableModel {
 	}
 
 	public Class getColumnClass(int columnIndex){
-		return String.class;
+		//return String.class;
+	    return (getValueAt(0, columnIndex).getClass());
 	}
 
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -378,7 +403,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return (String)data.elementAt
+		return data.elementAt
 		( (rowIndex * getColumnCount()) + columnIndex);
 	}
 
@@ -397,7 +422,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		data.setElementAt((String) aValue, ( (rowIndex * getColumnCount()) + columnIndex));        
+		data.setElementAt(aValue, ( (rowIndex * getColumnCount()) + columnIndex));        
 		fireTableCellUpdated(rowIndex, columnIndex);
 		//return;
 	}
@@ -483,10 +508,34 @@ public class DataFileTableModel extends AbstractTableModel {
 
 			output1.println(outputFileName1);
 			output2.println(outputFileName2);
-
+				String data1, data2;
 				output1.println(columnNames.elementAt(0)+" "+columnNames.elementAt(1));
 				for (int i = 1; i <= data.size() / 7; i++) {
-					output1.println(data.elementAt(i*7-7)+ " " + data.elementAt(i*7-6));
+					
+					String colName = (String)columnNames.elementAt(0);
+					if(colName.trim().endsWith("active")){
+						Boolean val= (Boolean) data.elementAt(i*7-7);
+						if( val == true ){
+							data1="1";
+						} else {
+							data1="0";
+						}
+					} else {
+						data1=(String) data.elementAt(i*7-7);
+					}
+					colName = (String)columnNames.elementAt(1);
+					if(colName.trim().endsWith("active")){
+						Boolean val= (Boolean) data.elementAt(i*7-6);
+						if( val == true ){
+							data2="1";
+						} else {
+							data2="0";
+						}
+					} else {
+						data2=(String) data.elementAt(i*7-7);
+					}
+					
+					output1.println(data1+ " " + data2);
 				}
 
 				output2.println("year_type month day");

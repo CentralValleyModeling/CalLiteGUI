@@ -437,28 +437,31 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					btn.setEnabled(false);
 					pan.revalidate();
 
-					/*
-					if (RegUserEdits != null) {
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID = tm.tID;
-						if (RegUserEdits[tID] != null) {
-							if (RegUserEdits[tID] == true) {
-								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
-								rdb.setSelected(true);
+					
+					JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+					if (rdb.isVisible()) {
+						if (RegUserEdits != null) {
+							DataFileTableModel tm = (DataFileTableModel) table.getModel();
+							int tID = tm.tID;
+							if (RegUserEdits[tID] != null) {
+								if (RegUserEdits[tID] == true) {
+									rdb = (JRadioButton) swix.find("reg_rdbUD");
+									rdb.setSelected(true);
+								} else {
+									rdb = (JRadioButton) swix.find("reg_rdbD1641");
+									rdb.setSelected(true);
+								}
 							} else {
-								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+								rdb = (JRadioButton) swix.find("reg_rdbD1641");
 								rdb.setSelected(true);
 							}
 						} else {
-							JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+							// reg_btng1.clearSelection();
+							rdb = (JRadioButton) swix.find("reg_rdbD1641");
 							rdb.setSelected(true);
 						}
-					} else {
-						// reg_btng1.clearSelection();
-						JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-						rdb.setSelected(true);
 					}
-					*/
+					
 					
 
 				} else {
@@ -474,34 +477,35 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// do not allow user edits to tables
 				JTable table = (JTable) swix.find("tblRegValues");
 				JRadioButton rdb = (JRadioButton) e.getItem();
-
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					DataFileTableModel tm = (DataFileTableModel) table.getModel();
-					int size = tm.datafiles.length;
-					if (size == 1) {
-						tm.initVectors();
-					} else if (size == 2) {
-						tm.initVectors2();
-					}
-					table.repaint();
+					if (dTableModels != null) {
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int size = tm.datafiles.length;
+						if (size == 1) {
+							tm.initVectors();
+						} else if (size == 2) {
+							tm.initVectors2();
+						}
+						table.repaint();
 
-					table.setCellSelectionEnabled(false);
-					table.setEnabled(false);
-					if (table.isEditing()) {
-						table.getCellEditor().stopCellEditing();
-					}
-					int tID = tm.tID;
-					if (RegUserEdits == null) {
-						RegUserEdits = new Boolean[20];
-					}
-					RegUserEdits[tID] = false;
+						table.setCellSelectionEnabled(false);
+						table.setEnabled(false);
+						if (table.isEditing()) {
+							table.getCellEditor().stopCellEditing();
+						}
+						int tID = tm.tID;
+						if (RegUserEdits == null) {
+							RegUserEdits = new Boolean[20];
+						}
+						RegUserEdits[tID] = false;
 
-					String cName1 = gl.CtrlFortableID(Integer.toString(tID));
-					JCheckBox ckb = (JCheckBox) swix.find(cName1);
-					String ckbtext = ckb.getText();
-					String[] ckbtext1 = ckbtext.split(" - ");
-					ckbtext = ckbtext1[0];
-					ckb.setText(ckbtext + " -  Default");
+						String cName1 = gl.CtrlFortableID(Integer.toString(tID));
+						JCheckBox ckb = (JCheckBox) swix.find(cName1);
+						String ckbtext = ckb.getText();
+						String[] ckbtext1 = ckbtext.split(" - ");
+						ckbtext = ckbtext1[0];
+						ckb.setText(ckbtext + " -  Default");
+					}
 
 				}
 
