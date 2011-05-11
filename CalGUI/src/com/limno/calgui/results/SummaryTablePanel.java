@@ -306,6 +306,8 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				TableColumn col = table.getColumnModel().getColumn(c);
 				col.setPreferredWidth((c == 0) ? 200 : 75);
 			}
+			table.setCellSelectionEnabled(true);
+
 
 			JLabel label = new JLabel();
 			label.setText(title + " (" + tscs[t].units + ") - " + tscs[t].fileName);
@@ -328,15 +330,16 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		JButton copy = new JButton("Copy to Clipboard");
 		copy.setAlignmentX(LEFT_ALIGNMENT);
 		copy.addActionListener((ActionListener) this);
+		copy.setAlignmentX(LEFT_ALIGNMENT);
+		copy.addActionListener((ActionListener) this);
 
-		Box box = Box.createVerticalBox();
-		// box.setPreferredSize(new Dimension(790, 550));
+		Box box = Box.createVerticalBox(); 
+
 		box.add(scrollPane);
 		box.add(copy);
 
 		add(box);
 
-		// add(scrollPane);
 
 	}
 
