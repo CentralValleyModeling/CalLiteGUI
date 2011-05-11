@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
 
@@ -32,31 +33,21 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	JPanel panel;
 	JScrollPane scrollPane;
 
-	final String LINE_BREAK = "\n"; 
-	final String CELL_BREAK = "\t"; 
-	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard(); 
+	final String LINE_BREAK = "\n";
+	final String CELL_BREAK = "\t";
+	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
 	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs) {
+
 		super();
 
-
-
-		Box box = Box.createVerticalBox(); 
-		JButton copy = new JButton("Copy to Clipboard");
-		copy.setAlignmentX(LEFT_ALIGNMENT);
-		copy.addActionListener((ActionListener) this);
-
-
 		panel = new JPanel();
-		// panel.setPreferredSize(new Dimension(70, 600));
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
 
 		scrollPane = new JScrollPane(panel);
 		scrollPane.setPreferredSize(new Dimension(750, 600));
 
-
 		DecimalFormat df1 = new DecimalFormat("#.#");
-		DecimalFormat df2 = new DecimalFormat("#.##");
 		HecTime ht = new HecTime();
 		// Count forward to right month - hardcoded to 10 for now
 		// TODO - match to input
@@ -74,7 +65,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		if (tscs[0].units.equals("CFS")||tscs[0].units.equals("TAFY")) {
+		if (tscs[0].units.equals("CFS") || tscs[0].units.equals("TAFY")) {
 			columns.addElement("Ann (TAFY)");
 		}
 
@@ -100,10 +91,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				if ((i - first) % 12 == 0) {
 					if (i != first)
 						if (tscs[s].units.equals("CFS"))
-							data.addElement(df1.format(sum*0.723966942));
-						else 
-							if (tscs[s].units.equals("TAFY"))
-								data.addElement(df1.format(sum));
+							data.addElement(df1.format(sum * 0.723966942));
+						else if (tscs[s].units.equals("TAFY"))
+							data.addElement(df1.format(sum));
 					sum = 0;
 					data.addElement(Integer.toString(wy));
 				}
@@ -119,15 +109,22 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			TableColumn col = table.getColumnModel().getColumn(0);
 			col.setPreferredWidth(50);
-			
+			table.setCellSelectionEnabled(true);
+
 			addComponentListener((ComponentListener) this);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
 			panel.add(table);
 
-			box.add(scrollPane);
-			box.add(copy);
-			add(box);
 		}
+
+		Box box = Box.createVerticalBox();
+
+		box.add(scrollPane);
+		JButton copy = new JButton("Copy to Clipboard");
+		copy.setAlignmentX(LEFT_ALIGNMENT);
+		copy.addActionListener((ActionListener) this);
+		box.add(copy);
+		add(box);
 	}
 
 	@Override
@@ -135,43 +132,42 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		// TODO Auto-generated method stub
 		JComponent component = (JComponent) e.getSource();
 		if (component instanceof JButton) {
-			JButton btn= (JButton) component;
+			JButton btn = (JButton) component;
 			String cName = btn.getText();
 			if (cName != null) {
 				if (cName.startsWith("Copy")) {
-					StringBuffer excelStr=new StringBuffer();
+					StringBuffer excelStr = new StringBuffer();
 
-					Component[] components =panel.getComponents();
+					Component[] components = panel.getComponents();
 
 					for (int i = 0; i < components.length; i++) {
 						if (components[i] instanceof JTable) {
 							JTable table = (JTable) components[i];
-							int numCols=table.getColumnCount();
-							int numRows=table.getRowCount();
+							int numCols = table.getColumnCount();
+							int numRows = table.getRowCount();
 
-
-							//get column headers
-							for (int k=0; k<numCols; k++) { 
+							// get column headers
+							for (int k = 0; k < numCols; k++) {
 								excelStr.append(table.getColumnModel().getColumn(k).getHeaderValue());
-								if (k<numCols-1) { 
-									excelStr.append(CELL_BREAK); 
-								} 
-							} 
+								if (k < numCols - 1) {
+									excelStr.append(CELL_BREAK);
+								}
+							}
 							excelStr.append(LINE_BREAK);
 
-							//get cell values
-							for (int j=0; j<numRows; j++) { 
-								for (int k=0; k<numCols; k++) { 
-									excelStr.append(escape(table.getValueAt(j, k))); 
-									if (k<numCols-1) { 
-										excelStr.append(CELL_BREAK); 
-									} 
-								} 
-								excelStr.append(LINE_BREAK); 
-							} 
+							// get cell values
+							for (int j = 0; j < numRows; j++) {
+								for (int k = 0; k < numCols; k++) {
+									excelStr.append(escape(table.getValueAt(j, k)));
+									if (k < numCols - 1) {
+										excelStr.append(CELL_BREAK);
+									}
+								}
+								excelStr.append(LINE_BREAK);
+							}
 
-							StringSelection sel  = new StringSelection(excelStr.toString()); 
-							CLIPBOARD.setContents(sel, sel); 
+							StringSelection sel = new StringSelection(excelStr.toString());
+							CLIPBOARD.setContents(sel, sel);
 						} else if (components[i] instanceof JLabel) {
 							JLabel label = (JLabel) components[i];
 							excelStr.append(label.getText());
@@ -183,10 +179,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		}
 	}
 
-
-	private String escape(Object cell) { 
-		return cell.toString().replace(LINE_BREAK, " ").replace(CELL_BREAK, " "); 
-	} 
+	private String escape(Object cell) {
+		return cell.toString().replace(LINE_BREAK, " ").replace(CELL_BREAK, " ");
+	}
 
 	class SimpleTableModel2 extends AbstractTableModel {
 		protected Vector<String> data;
@@ -233,13 +228,13 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	@Override
 	public void componentHidden(ComponentEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void componentMoved(ComponentEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -247,15 +242,15 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		// TODO Auto-generated method stub
 
 		Dimension dim = super.getSize();
-		int width=(int) (dim.width*0.99);
-		int height=(int) (dim.height*0.90);
-		scrollPane.setPreferredSize(new Dimension(width,height));
+		int width = (int) (dim.width * 0.99);
+		int height = (int) (dim.height * 0.90);
+		scrollPane.setPreferredSize(new Dimension(width, height));
 		scrollPane.revalidate();
 	}
 
 	@Override
 	public void componentShown(ComponentEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

@@ -2188,7 +2188,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 
 				Integer numMon;
-				numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon);
+				numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
 				StartMon = StartMon.toUpperCase();
 
 				JTextField tf = (JTextField) swix.find("run_txfoDSS");
