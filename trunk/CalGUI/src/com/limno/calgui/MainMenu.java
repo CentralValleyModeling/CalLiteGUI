@@ -172,7 +172,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".132";
+		desktopTitle = desktop.getTitle() + ".142";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
