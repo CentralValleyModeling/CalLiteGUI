@@ -460,6 +460,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							rdb = (JRadioButton) swix.find("reg_rdbD1641");
 							rdb.setSelected(true);
 						}
+					}else{
+						table.setCellSelectionEnabled(true);
+						table.setEnabled(true);
 					}
 					
 					
@@ -1731,20 +1734,31 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					btn.setEnabled(false);
 					pan.revalidate();
 
-					if (RegUserEdits != null) {
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID = tm.tID;
-						if (RegUserEdits[tID] != null) {
-							if (RegUserEdits[tID] == true) {
-								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbUD");
-								rdb.setSelected(true);
+					JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+					if (rdb.isVisible()) {
+						if (RegUserEdits != null) {
+							DataFileTableModel tm = (DataFileTableModel) table.getModel();
+							int tID = tm.tID;
+							if (RegUserEdits[tID] != null) {
+								if (RegUserEdits[tID] == true) {
+									rdb = (JRadioButton) swix.find("reg_rdbUD");
+									rdb.setSelected(true);
+								} else {
+									rdb = (JRadioButton) swix.find("reg_rdbD1641");
+									rdb.setSelected(true);
+								}
 							} else {
-								JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+								rdb = (JRadioButton) swix.find("reg_rdbD1641");
 								rdb.setSelected(true);
 							}
+						} else {
+							// reg_btng1.clearSelection();
+							rdb = (JRadioButton) swix.find("reg_rdbD1641");
+							rdb.setSelected(true);
 						}
-					} else {
-						reg_btng1.clearSelection();
+					}else{
+						table.setCellSelectionEnabled(true);
+						table.setEnabled(true);
 					}
 
 				} else {
