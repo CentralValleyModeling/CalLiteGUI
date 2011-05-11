@@ -1631,7 +1631,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				
 				//JFrame frame1 = new JFrame();
 
-
+				/*
 			    JTable table = new JTable();
 			    table.setColumnModel(new GroupableTableColumnModel());
 			    table.setTableHeader(new GroupableTableHeader((GroupableTableColumnModel) table.getColumnModel()));
@@ -1669,7 +1669,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				//frame1.add(scroll);
 				//frame1.pack();
 				//frame1.setVisible(true);
-
+				*/
 				
 			}
 			
