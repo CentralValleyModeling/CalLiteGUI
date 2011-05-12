@@ -172,7 +172,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".142";
+		desktopTitle = desktop.getTitle() + ".144";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -474,11 +474,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					component.setEnabled(false);
 					table.setVisible(false);
 					pan.revalidate();
-					
-					String ckbtext = selcomp.getText();
-					String[] ckbtext1 = ckbtext.split(" - ");
-					ckbtext = ckbtext1[0];
-					selcomp.setText(ckbtext);
 
 				}
 			} else if (cName.startsWith("reg_rdbD1641")) {
@@ -2318,15 +2313,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
 					for (int i = 0; i < GUITables.size(); i++) {
+						System.out.println(i);
 						String line = GUITables.get(i).toString();
 						String[] parts = line.split("[|]");
-						String cName = parts[0].trim();
-						// String tableName = parts[1].trim();
-						String tableName = gl.tableNameForCtrl(cName);
-						// String switchID = parts[2].trim();
-						String switchID = gl.switchIDForCtrl(cName);
-
-						// int tID = Integer.parseInt(parts[3].trim());
+						String cName = parts[0].trim();					// Get name of controlling checkbox;
+						String tableName = gl.tableNameForCtrl(cName);	// Find the corresponding table
+						String switchID = gl.switchIDForCtrl(cName);    // Get the switchID (index in .table file)
+						
 						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
 						int option = 0;
@@ -2340,6 +2333,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						}
 
 						output.println(switchID + " " + option);
+						System.out.println(switchID + " " + option);
 
 						if ((option == 2) || (option == 1)) {
 
@@ -2351,7 +2345,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
 
 								if (dTableModels[tID] == null) {
-									System.out.println("Table not initialized");
+									System.out.println("Table not initialized - " + tableName);
 								} else {
 									dTableModels[tID].writeToFile(fo);
 								}
@@ -2377,6 +2371,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					desktop.setVisible(false);
 
 				} catch (IOException ioe) {
+					JOptionPane.showMessageDialog(null, ioe.getMessage());
 					System.out.println("IOException");
 				}
 
@@ -2392,6 +2387,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					int exitVal = proc.waitFor();
 					System.out.println("Process exitValue: " + exitVal);
 				} catch (Throwable t) {
+					JOptionPane.showMessageDialog(null, t.getMessage());
 					t.printStackTrace();
 				}
 				return null;
