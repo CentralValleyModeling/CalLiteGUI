@@ -474,6 +474,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					component.setEnabled(false);
 					table.setVisible(false);
 					pan.revalidate();
+					
+					String ckbtext = selcomp.getText();
+					String[] ckbtext1 = ckbtext.split(" - ");
+					ckbtext = ckbtext1[0];
+					selcomp.setText(ckbtext);
 
 				}
 			} else if (cName.startsWith("reg_rdbD1641")) {
