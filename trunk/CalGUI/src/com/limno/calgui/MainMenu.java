@@ -206,6 +206,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
+		
 
 		// Set current directory (Run Settings Page)
 
@@ -352,6 +353,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		lstReports.setFixedCellWidth(400);
 		lstReports.setPreferredSize(new Dimension(600, 100));
 		lstReports.setVisible(true);
+		
+		
+		//Load Default Scenario
+		JTextField tf = (JTextField) swix.find("run_txfScen");
+		String scen = tf.getText();
+		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" +  scen);
+		GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -2292,23 +2301,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				publish("Writing GUI option tables.");
 
-				// Write DLTREGULATION file
-				OutputStream outputStream;
-				try {
-					outputStream = new FileOutputStream(System.getProperty("user.dir")
-							+ "\\Run\\Lookup\\DLTREGULATION.table");
-				} catch (FileNotFoundException e2) {
-					System.out.println("Cannot open DLTRegulation file");
-					return null;
-				}
-
-				try {
-
-					PrintStream output = new PrintStream(outputStream);
-
-					output.println("gui_DLTREGULATION");
-					output.println("SWITCHID OPTION");
-
+				// Write table files
 					ArrayList GUITables = new ArrayList();
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
@@ -2331,8 +2324,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						} else {
 							option = 1;
 						}
-
-						output.println(switchID + " " + option);
 						System.out.println(switchID + " " + option);
 
 						if ((option == 2) || (option == 1)) {
@@ -2347,7 +2338,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								if (dTableModels[tID] == null) {
 									System.out.println("Table not initialized - " + tableName);
 								} else {
-									dTableModels[tID].writeToFile(fo);
+									dTableModels[tID].writeToFile(tableName);
 								}
 							} else if (size == 2) {
 								// CASE 2: 2 files specified
@@ -2358,7 +2349,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								if (dTableModels[tID] == null) {
 									System.out.println("Table not initialized");
 								} else {
-									dTableModels[tID].writeToFile2(fo1, fo2);
+									dTableModels[tID].writeToFile2(files[0], files[1]);
 								}
 
 							}
@@ -2366,14 +2357,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						}
 					}
 
-					output.close();
-					outputStream.close();
+					
 					desktop.setVisible(false);
 
-				} catch (IOException ioe) {
-					JOptionPane.showMessageDialog(null, ioe.getMessage());
-					System.out.println("IOException");
-				}
 
 				// "Run" model
 
