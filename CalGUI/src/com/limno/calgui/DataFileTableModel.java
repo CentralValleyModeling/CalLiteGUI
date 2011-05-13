@@ -15,7 +15,10 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected Vector<String> columnNames;
 	protected String datafile;
 	protected String[] datafiles;
+	protected StringBuffer header;
+	protected StringBuffer[] headers;
 	protected int tID;
+	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
 
 	String wyts[] = { "Wet", "Above Normal", "Below Normal", "Dry", "Critical" };
@@ -28,10 +31,12 @@ public class DataFileTableModel extends AbstractTableModel {
 
 		if (size == 1) {
 			// CASE 1: 1 file specified
+			header = new StringBuffer();
 			datafile = f;
 			initVectors();
 		} else if (size == 2) {
 			// CASE 2: 2 files specified
+			headers = new StringBuffer[2];
 			initVectors2();
 		}
 
@@ -58,6 +63,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 				aLine = br.readLine();
 				while (aLine.startsWith("!") && aLine != null) {
+					headers[i].append(aLine+ NL);
 					aLine = br.readLine();
 				}
 
@@ -203,6 +209,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 			aLine = br.readLine();
 			while (aLine.startsWith("!") && aLine != null) {
+				header.append(aLine+ NL);
 				aLine = br.readLine();
 			}
 
@@ -456,7 +463,8 @@ public class DataFileTableModel extends AbstractTableModel {
 		try {
 			// outputStream = new
 			// FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
-			outputStream = new FileOutputStream(outputFileName);
+			String OFileName=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName + ".table";
+			outputStream = new FileOutputStream(OFileName);
 		} catch (FileNotFoundException e2) {
 			System.out.println("Cannot open output file");
 			return;
@@ -465,6 +473,9 @@ public class DataFileTableModel extends AbstractTableModel {
 		try {
 
 			PrintStream output = new PrintStream(outputStream);
+			
+			//write header
+			if(header!=null){output.print(header.toString());}
 
 			output.println(outputFileName);
 			if (columnNames.size() == 2) {
@@ -496,9 +507,10 @@ public class DataFileTableModel extends AbstractTableModel {
 		OutputStream outputStream2;
 		try {
 			// outputStream = new
-			// FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
-			outputStream1 = new FileOutputStream(outputFileName1);
-			outputStream2 = new FileOutputStream(outputFileName2);
+			String OFileName1=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName1 + ".table";
+			String OFileName2=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName2 + ".table";
+			outputStream1 = new FileOutputStream(OFileName1);
+			outputStream2 = new FileOutputStream(OFileName2);
 		} catch (FileNotFoundException e2) {
 			System.out.println("Cannot open output file");
 			return;
@@ -508,6 +520,11 @@ public class DataFileTableModel extends AbstractTableModel {
 
 			PrintStream output1 = new PrintStream(outputStream1);
 			PrintStream output2 = new PrintStream(outputStream2);
+			
+			
+			//write header
+			if(headers[0]!=null){output1.print(headers[0].toString());}
+			if(headers[1]!=null){output2.print(headers[1].toString());}
 
 			output1.println(outputFileName1);
 			output2.println(outputFileName2);
