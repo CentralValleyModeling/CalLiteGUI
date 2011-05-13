@@ -316,6 +316,7 @@ public class GUI_Utils {
     					header.append(aLine+ NL);
     					aLine = br.readLine();
     				}
+    				br.close();
 
     				GUI_Utils.deleteDir(f);
     				FileWriter fstream = new FileWriter(f);
