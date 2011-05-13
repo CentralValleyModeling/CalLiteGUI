@@ -306,10 +306,24 @@ public class GUI_Utils {
 
     				filename=tableName;
     				f=new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + filename);
+    				
+    				//read in existing header info
+    				FileInputStream fin = new FileInputStream(f);
+    				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+    				StringBuffer header = new StringBuffer();
+    				String aLine = br.readLine();
+    				while (aLine.startsWith("!") && aLine != null) {
+    					header.append(aLine+ NL);
+    					aLine = br.readLine();
+    				}
+
     				GUI_Utils.deleteDir(f);
     				FileWriter fstream = new FileWriter(f);
     				outobj = new BufferedWriter(fstream);
 
+    				//write header
+    				if(header!=null){outobj.write(header.toString());}
+    				
     				outstring =filename.substring(0,filename.length()-6) + NL;
     				outobj.write(outstring);
     				outstring ="Index" + "\t" + "Option" + NL;
