@@ -1241,7 +1241,7 @@
 									preferredsize="340,20" />
 							</checkbox>
 							<checkbox name="ckbRegbo5" id="ckbRegbo5"
-								text="San Joaquin River Inflow to Export Ratio (NMFS RPA Action 4.1.2)">
+								text="San Joaquin River Inflow to Export Ratio (NMFS RPA Action 4.2.1)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="10" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
