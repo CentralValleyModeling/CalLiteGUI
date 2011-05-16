@@ -359,8 +359,36 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" +  scen);
-		GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
-		GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		//Refresh checkbox labels
+		for (int i = 0; i<RegUserEdits.length; i++) {
+			if(RegUserEdits[i]!=null){
+				String cID=Integer.toString(i);
+				String cName=gl.CtrlFortableID(cID);
+				JCheckBox ckb = (JCheckBox) swix.find(cName);
+				String ckbtext = ckb.getText();
+				String[] ckbtext1 = ckbtext.split(" - ");
+				ckbtext = ckbtext1[0];
+				if (ckbtext1.length >0){
+					if(RegUserEdits[i]==true){
+						ckb.setText(ckbtext + " - User Def.");
+					}else{
+						ckb.setText(ckbtext + " -  Default");
+					}
+				} else {
+					ckb.setText(ckbtext);
+				}
+				
+			}
+		}
+		
+		
+		/*
+		String cName = gl.CtrlFortableID(tokens[0]);
+		JCheckBox comp1 = (JCheckBox) swix.find("cName");
+		comp1.setSelected(true);
+		RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		*/
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -422,90 +450,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			else if (cName.startsWith("ckbReg")) {
 				// CheckBox in Regulations panel changed
-				JPanel pan = (JPanel) swix.find("reg_panTab");
-				TitledBorder title;
-				component = (JComponent) swix.find("scrRegValues");
-				JTable table = (JTable) swix.find("tblRegValues");
-				if (component != null)
-					component.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-
-				JCheckBox selcomp = (JCheckBox) e.getItem();
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					component.setVisible(true);
-					component.setEnabled(true);
-					String cID = cName;
-					populateDTable(cID, table, component);
-
-					title = BorderFactory.createTitledBorder(selcomp.getText());
-					pan.setBorder(title);
-					pan.setEnabled(true);
-					component.setEnabled(true);
-					table.setVisible(true);
-
-					JButton btn = (JButton) swix.find("btnRegDef");
-					btn.setEnabled(false);
-					pan.revalidate();
-
-					
-					JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-					if (rdb.isVisible()) {
-						if (RegUserEdits != null) {
-							DataFileTableModel tm = (DataFileTableModel) table.getModel();
-							int tID = tm.tID;
-							if (RegUserEdits[tID] != null) {
-								if (RegUserEdits[tID] == true) {
-									rdb = (JRadioButton) swix.find("reg_rdbUD");
-									rdb.setSelected(true);
-								} else {
-									rdb = (JRadioButton) swix.find("reg_rdbD1641");
-									rdb.setSelected(true);
-								}
-							} else {
-								rdb = (JRadioButton) swix.find("reg_rdbD1641");
-								rdb.setSelected(true);
-							}
-						} else {
-							// reg_btng1.clearSelection();
-							rdb = (JRadioButton) swix.find("reg_rdbD1641");
-							rdb.setSelected(true);
-						}
-					} else {
-						if (RegUserEdits == null) {
-							RegUserEdits = new Boolean[20];							
-						}
-						String fileName = gl.tableNameForCtrl(cID);
-						if (!fileName.trim().equals("")) {
-							int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
-							RegUserEdits[tID] = true;
-						}
-
-						table.setCellSelectionEnabled(true);
-						table.setEnabled(true);
-					}
-					
-					
-
-				} else {
-					pan.setEnabled(false);
-					title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
-					pan.setBorder(title);
-					component.setEnabled(false);
-					table.setVisible(false);
-					pan.revalidate();
-					
-					JCheckBox ckb = (JCheckBox) e.getItem();
-					String ckbtext = ckb.getText();
-					String[] ckbtext1 = ckbtext.split(" - ");
-					ckbtext = ckbtext1[0];
-					ckb.setText(ckbtext);
-
-				}
+				Boolean isSelect = e.getStateChange() == ItemEvent.SELECTED;
+				SetRegCheckBoxes(cName, isSelect);
+				
+				
 			} else if (cName.startsWith("reg_rdbD1641")) {
 				// do not allow user edits to tables
 				JTable table = (JTable) swix.find("tblRegValues");
 				JRadioButton rdb = (JRadioButton) e.getItem();
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					if (dTableModels != null) {
+						
 						DataFileTableModel tm = (DataFileTableModel) table.getModel();
 						int size = tm.datafiles.length;
 						if (size == 1) {
@@ -700,6 +655,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
+					sb.append("USERDEFINEDFLAGS" + NL);
+					for (int i = 0; i<RegUserEdits.length; i++) {
+						if(RegUserEdits[i]!=null){
+							sb.append(i+"|"+ RegUserEdits[i] + NL);
+						}
+					}
+					sb.append("END USERDEFINEDFLAGS" + NL);
 
 					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -769,6 +731,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
+					sb.append("USERDEFINEDFLAGS" + NL);
+					for (int i = 0; i<RegUserEdits.length; i++) {
+						if(RegUserEdits[i]!=null){
+							sb.append(i+"|"+ RegUserEdits[i] + NL);
+						}
+					}
+					sb.append("END USERDEFINEDFLAGS" + NL);
 
 					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -803,8 +772,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// ... The user selected a file, get it, use it.
 				File file = fc.getSelectedFile();
 
-				GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
-				GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+				RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl );
+				RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 
 			}
 
@@ -1635,11 +1604,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			t.getModel().addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 
+					/*
 					if (RegUserEdits == null) {
 						RegUserEdits = new Boolean[20];
 					}
 
 					RegUserEdits[tID] = true;
+					*/
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
 
@@ -1731,70 +1702,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			else if (cName.startsWith("ckbReg")) {
-				// CheckBox in Regulations panel changed
-				Boolean isSelect;
-				JPanel pan = (JPanel) swix.find("reg_panTab");
-				TitledBorder title;
-				component = (JComponent) swix.find("scrRegValues");
-				JTable table = (JTable) swix.find("tblRegValues");
+				
 				JCheckBox selcomp = (JCheckBox) e.getComponent();
-				isSelect = selcomp.isSelected();
-				if (component != null)
-					component.setEnabled(isSelect);
-
-				if (isSelect) {
-					component.setVisible(true);
-					component.setEnabled(true);
-					String cID = cName;
-					populateDTable(cID, table, component);
-
-					title = BorderFactory.createTitledBorder(selcomp.getText());
-					pan.setBorder(title);
-					pan.setEnabled(true);
-					component.setEnabled(true);
-					table.setVisible(true);
-
-					JButton btn = (JButton) swix.find("btnRegDef");
-					btn.setEnabled(false);
-					pan.revalidate();
-
-					JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-					if (rdb.isVisible()) {
-						if (RegUserEdits != null) {
-							DataFileTableModel tm = (DataFileTableModel) table.getModel();
-							int tID = tm.tID;
-							if (RegUserEdits[tID] != null) {
-								if (RegUserEdits[tID] == true) {
-									rdb = (JRadioButton) swix.find("reg_rdbUD");
-									rdb.setSelected(true);
-								} else {
-									rdb = (JRadioButton) swix.find("reg_rdbD1641");
-									rdb.setSelected(true);
-								}
-							} else {
-								rdb = (JRadioButton) swix.find("reg_rdbD1641");
-								rdb.setSelected(true);
-							}
-						} else {
-							// reg_btng1.clearSelection();
-							rdb = (JRadioButton) swix.find("reg_rdbD1641");
-							rdb.setSelected(true);
-						}
-					}else{
-						table.setCellSelectionEnabled(true);
-						table.setEnabled(true);
-					}
-
-				} else {
-					pan.setEnabled(false);
-					title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
-					pan.setBorder(title);
-					component.setEnabled(false);
-					table.setVisible(false);
-					pan.revalidate();
-					reg_btng1.clearSelection();
-
-				}
+				Boolean isSelect = selcomp.isSelected();
+				
+				SetRegCheckBoxes(cName,isSelect);
+				
+				
 			}
 		}
 
@@ -1998,6 +1912,93 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	public static int getLookupsLength() {
 		return lookups.length;
+	}
+	
+	public void SetRegCheckBoxes(String cName, Boolean isSelect) {
+		
+		JPanel pan = (JPanel) swix.find("reg_panTab");
+		TitledBorder title;
+		JComponent scr = (JComponent) swix.find("scrRegValues");
+		JTable table = (JTable) swix.find("tblRegValues");
+		if (scr != null)
+			scr.setEnabled((isSelect));
+		
+		JCheckBox selcomp = (JCheckBox) swix.find(cName);
+		if (isSelect) {
+			scr.setVisible(true);
+			scr.setEnabled(true);
+			String cID = cName;
+			populateDTable(cID, table, scr);
+
+			title = BorderFactory.createTitledBorder(selcomp.getText());
+			pan.setBorder(title);
+			pan.setEnabled(true);
+			scr.setEnabled(true);
+			table.setVisible(true);
+
+			JButton btn = (JButton) swix.find("btnRegDef");
+			btn.setEnabled(false);
+
+
+			
+			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+			if (rdb.isVisible()) {
+				if (RegUserEdits != null) {
+					DataFileTableModel tm = (DataFileTableModel) table.getModel();
+					int tID = tm.tID;
+					if (RegUserEdits[tID] != null) {
+						reg_btng1.clearSelection();
+						if (RegUserEdits[tID] == true) {
+							rdb = (JRadioButton) swix.find("reg_rdbUD");
+							rdb.setSelected(true);
+						} else {
+							rdb = (JRadioButton) swix.find("reg_rdbD1641");
+							rdb.setSelected(true);
+						}
+					} else {
+						reg_btng1.clearSelection();
+						rdb = (JRadioButton) swix.find("reg_rdbD1641");
+						rdb.setSelected(true);
+					}
+				} else {
+					reg_btng1.clearSelection();
+					rdb = (JRadioButton) swix.find("reg_rdbD1641");
+					rdb.setSelected(true);
+				}
+			} else {
+				if (RegUserEdits == null) {
+					RegUserEdits = new Boolean[20];							
+				}
+				String fileName = gl.tableNameForCtrl(cID);
+				if (!fileName.trim().equals("")) {
+					int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
+					RegUserEdits[tID] = true;
+				}
+
+				table.setCellSelectionEnabled(true);
+				table.setEnabled(true);
+			}
+			
+			pan.revalidate();
+			
+
+		} else {
+			pan.setEnabled(false);
+			title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
+			pan.setBorder(title);
+			scr.setEnabled(false);
+			table.setVisible(false);
+			pan.revalidate();
+			
+			JCheckBox ckb = (JCheckBox) (JCheckBox) swix.find(cName);
+			String ckbtext = ckb.getText();
+			String[] ckbtext1 = ckbtext.split(" - ");
+			ckbtext = ckbtext1[0];
+			ckb.setText(ckbtext);
+
+		}
+		
+		
 	}
 
 	public int monthToInt(String EndMon) {

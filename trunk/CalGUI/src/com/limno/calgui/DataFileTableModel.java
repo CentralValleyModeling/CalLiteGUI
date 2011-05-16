@@ -390,7 +390,9 @@ public class DataFileTableModel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
+		//System.out.println(tID);
 		return data.size() / getColumnCount();
+		
 	}
 
 	public int getColumnCount() {
