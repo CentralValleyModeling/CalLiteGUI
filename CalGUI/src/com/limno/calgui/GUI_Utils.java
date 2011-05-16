@@ -731,7 +731,9 @@ public class GUI_Utils {
     		while(true)
     		{
 				textinLine=br.readLine();
-    			if(textinLine==null|textinLine.equals("END USERDEFINEDFLAGS"))
+    			if(textinLine==null)
+    				break;   
+    			if(textinLine.equals("END USERDEFINEDFLAGS"))
     				break;    
 
     			String[] tokens = textinLine.split(delims);
