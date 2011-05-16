@@ -612,7 +612,7 @@ public class GUI_Utils {
     }
 	
 	
-	public  static void  SetControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl ) {
+	public  static Boolean[] SetControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl) {
 
 
 		FileInputStream fs = null;
@@ -625,6 +625,7 @@ public class GUI_Utils {
 		Integer val1;
 		Boolean val=false;
 		String delims = "[|]";
+		final Boolean [] RegUserEdits = new Boolean[20];
 
     	try {
     		fs = new FileInputStream(f);
@@ -723,6 +724,25 @@ public class GUI_Utils {
     			//table.createDefaultColumnsFromModel();
 
     		}
+    		
+    		//Read in user defined flags data
+    		textinLine=br.readLine();
+    		
+    		while(true)
+    		{
+				textinLine=br.readLine();
+    			if(textinLine==null|textinLine.equals("END USERDEFINEDFLAGS"))
+    				break;    
+
+    			String[] tokens = textinLine.split(delims);
+    			int tID=Integer.parseInt(tokens[0]);
+    			value=tokens[1];
+    			if (value.startsWith("true")) {
+    				RegUserEdits[tID]=true;
+    			} else {
+    				RegUserEdits[tID]=false;
+    			}		
+    		}
 
 
     		//fs.close();
@@ -734,6 +754,7 @@ public class GUI_Utils {
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
+		return RegUserEdits;
 
 
 	}
@@ -844,5 +865,8 @@ public class GUI_Utils {
  	
 
     }
+    
+    
+    
     	
 }
