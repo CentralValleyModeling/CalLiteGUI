@@ -469,7 +469,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							rdb = (JRadioButton) swix.find("reg_rdbD1641");
 							rdb.setSelected(true);
 						}
-					}else{
+					} else {
+						if (RegUserEdits == null) {
+							RegUserEdits = new Boolean[20];							
+						}
+						String fileName = gl.tableNameForCtrl(cID);
+						if (!fileName.trim().equals("")) {
+							int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
+							RegUserEdits[tID] = true;
+						}
+
 						table.setCellSelectionEnabled(true);
 						table.setEnabled(true);
 					}
@@ -483,6 +492,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					component.setEnabled(false);
 					table.setVisible(false);
 					pan.revalidate();
+					
+					JCheckBox ckb = (JCheckBox) e.getItem();
+					String ckbtext = ckb.getText();
+					String[] ckbtext1 = ckbtext.split(" - ");
+					ckbtext = ckbtext1[0];
+					ckb.setText(ckbtext);
 
 				}
 			} else if (cName.startsWith("reg_rdbD1641")) {
@@ -2078,7 +2093,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// Write GUI Tables
 
 				try {
-					GUI_Utils.WriteGUITables(GUILinks, swix);
+					GUI_Utils.WriteGUITables(GUILinks, RegUserEdits, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
