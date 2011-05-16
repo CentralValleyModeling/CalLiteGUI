@@ -275,13 +275,14 @@ public class GUI_Utils {
     } 
     
     
-    public static void WriteGUITables(ArrayList arr, SwingEngine swix) throws IOException {
+    public static void WriteGUITables(ArrayList arr, Boolean[] UDFlags, SwingEngine swix) throws IOException {
     	String filename="";
     	File f=null;
     	BufferedWriter outobj =null;
 		String line="", outstring="";
-		String cName="", tableName="", descr="", value="", option="";
+		String cName="", tableName="", descr="", value="", option="", cID="";
 		Boolean val;
+		int tID;
 		int index=0;
 		
     	final String NL = System.getProperty("line.separator"); 
@@ -343,6 +344,21 @@ public class GUI_Utils {
     				value=val.toString();
     				if (value.startsWith("true")) {
     					option="1";
+    					//Check if user defined flag is selected
+    					if(parts.length > 8) {
+    						cID=parts[8];
+    						tID=Integer.parseInt(cID);
+    						if (UDFlags != null) {
+    							if (UDFlags[tID] != null) {
+        							if(UDFlags[tID] == true) {
+        								option="2";
+        							}
+    							}
+    						}
+
+    					} else {
+    						option="1";
+    					}
     					outstring = (index + "\t" + option + "\t" + descr + NL); 
     					outobj.write(outstring);
     				} else {
