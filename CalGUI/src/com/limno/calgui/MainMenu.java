@@ -1941,7 +1941,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			
 			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 			if (rdb.isVisible()) {
-				if (RegUserEdits != null) {
+				if (RegUserEdits != null && dTableModels!=null) {
 					DataFileTableModel tm = (DataFileTableModel) table.getModel();
 					int tID = tm.tID;
 					if (RegUserEdits[tID] != null) {
