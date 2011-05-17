@@ -17,7 +17,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected String[] datafiles;
 	protected StringBuffer header;
 	protected StringBuffer[] headers;
-	public String columnTitle;
+	protected String columnTitle;
 	protected int tID;
 	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
@@ -34,8 +34,8 @@ public class DataFileTableModel extends AbstractTableModel {
 			// CASE 1: 1 file specified
 			header = new StringBuffer();
 			datafile = f;
-			initVectors();
 			columnTitle = "NOT HANDLED";
+			initVectors();
 		} else if (size == 2) {
 			// CASE 2: 2 files specified
 			headers = new StringBuffer[2];
