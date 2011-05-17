@@ -17,6 +17,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected String[] datafiles;
 	protected StringBuffer header;
 	protected StringBuffer[] headers;
+	public String columnTitle;
 	protected int tID;
 	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
@@ -34,6 +35,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			header = new StringBuffer();
 			datafile = f;
 			initVectors();
+			columnTitle = "NOT HANDLED";
 		} else if (size == 2) {
 			// CASE 2: 2 files specified
 			headers = new StringBuffer[2];
@@ -61,14 +63,17 @@ public class DataFileTableModel extends AbstractTableModel {
 
 				// Read until first non-comment line
 
+				if (headers[i] != null)
+					headers[i].delete(0, headers[i].length());
+
 				aLine = br.readLine();
 				while (aLine.startsWith("!") && aLine != null) {
-					headers[i].append(aLine+ NL);
+					headers[i].append(aLine + NL);
 					aLine = br.readLine();
 				}
 
 				aLine = br.readLine();// Skip title line;
-
+				columnTitle = aLine;
 				if (aLine != null) {
 
 					// Extract column names from second line
@@ -206,14 +211,16 @@ public class DataFileTableModel extends AbstractTableModel {
 			BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
 			// Read until first non-comment line
-
+			if (header != null)
+				header.delete(0, header.length());
 			aLine = br.readLine();
 			while (aLine.startsWith("!") && aLine != null) {
-				header.append(aLine+ NL);
+				header.append(aLine + NL);
 				aLine = br.readLine();
 			}
 
 			aLine = br.readLine();// Skip title line;
+			columnTitle = aLine;
 
 			if (aLine != null) {
 
@@ -390,13 +397,13 @@ public class DataFileTableModel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
-		//System.out.println(tID);
-		if(getColumnCount() >0){
+		// System.out.println(tID);
+		if (getColumnCount() > 0) {
 			return data.size() / getColumnCount();
-		}else{
+		} else {
 			return 0;
 		}
-		
+
 	}
 
 	public int getColumnCount() {
@@ -467,9 +474,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 		OutputStream outputStream;
 		try {
-			// outputStream = new
-			// FileOutputStream("Config_and_Lookup\\Lookup\\"+outputFileName+".table2");
-			String OFileName=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName + ".table";
+			String OFileName = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName + ".table";
 			outputStream = new FileOutputStream(OFileName);
 		} catch (FileNotFoundException e2) {
 			System.out.println("Cannot open output file");
@@ -479,28 +484,37 @@ public class DataFileTableModel extends AbstractTableModel {
 		try {
 
 			PrintStream output = new PrintStream(outputStream);
-			
-			//write header
-			if(header!=null){output.print(header.toString());}
+
+			// write header
+			if (header != null) {
+				output.print(header.toString());
+			}
 
 			output.println(outputFileName);
+			output.println(columnTitle);
+
 			if (columnNames.size() == 2) {
-				output.println(columnNames.elementAt(0) + " " + columnNames.elementAt(1));
 				for (int i = 1; i <= data.size() / 2; i++) {
 					output.println(data.elementAt(i * 2 - 2) + " " + data.elementAt(i * 2 - 1));
 				}
-
 			} else if (columnNames.size() == 6) {
-				output.println("year_type month day");
+				// 5 WYT x 12 Months x 1 value
 				for (int i = 1; i <= 5; i++)
-					for (int j = 0; j < data.size() / 6; j++) {
-						output.println(Integer.toString(i) + " " + Integer.toString(j + 1) + " "
+					for (int j = 0; j < 12; j++) {
+						output.println(Integer.toString(j + 1) + " " + Integer.toString(i) + " "
 								+ data.elementAt(j * 6 + i));
 					}
-
-				output.close();
-				outputStream.close();
+			} else if (columnNames.size() == 11) {
+				// EIS-SJR: 5 WYT x 12 Months x 2 values
+				for (int i = 1; i <= 5; i++)
+					for (int j = 0; j < 12; j++) {
+						output.println(Integer.toString(j + 1) + " " + Integer.toString(i) + " "
+								+ data.elementAt(j * 11 + i * 2) + " " + data.elementAt(j * 11 + i * 2 - 1));
+					}
 			}
+			output.close();
+			outputStream.close();
+
 		} catch (IOException ioe) {
 			System.out.println("IOException");
 		}
@@ -513,8 +527,8 @@ public class DataFileTableModel extends AbstractTableModel {
 		OutputStream outputStream2;
 		try {
 			// outputStream = new
-			String OFileName1=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName1 + ".table";
-			String OFileName2=System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName2 + ".table";
+			String OFileName1 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName1 + ".table";
+			String OFileName2 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName2 + ".table";
 			outputStream1 = new FileOutputStream(OFileName1);
 			outputStream2 = new FileOutputStream(OFileName2);
 		} catch (FileNotFoundException e2) {
@@ -526,11 +540,14 @@ public class DataFileTableModel extends AbstractTableModel {
 
 			PrintStream output1 = new PrintStream(outputStream1);
 			PrintStream output2 = new PrintStream(outputStream2);
-			
-			
-			//write header
-			if(headers[0]!=null){output1.print(headers[0].toString());}
-			if(headers[1]!=null){output2.print(headers[1].toString());}
+
+			// write header
+			if (headers[0] != null) {
+				output1.print(headers[0].toString());
+			}
+			if (headers[1] != null) {
+				output2.print(headers[1].toString());
+			}
 
 			output1.println(outputFileName1);
 			output2.println(outputFileName2);
@@ -573,10 +590,10 @@ public class DataFileTableModel extends AbstractTableModel {
 				output1.println(data1 + " " + data2);
 			}
 
-			output2.println("year_type month day");
+			output2.println("month	wyT_Sac	x2km");
 			for (int i = 2; i <= 6; i++)
 				for (int j = 0; j < data.size() / 7; j++) {
-					output2.println(Integer.toString(i - 1) + " " + Integer.toString(j + 1) + " "
+					output2.println(Integer.toString(j + 1) + " " + Integer.toString(i - 1) + " "
 							+ data.elementAt(j * 7 + i));
 				}
 

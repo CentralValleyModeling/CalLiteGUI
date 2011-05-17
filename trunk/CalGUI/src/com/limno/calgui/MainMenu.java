@@ -172,7 +172,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".144";
+		desktopTitle = desktop.getTitle() + ".155";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1544,7 +1544,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
 
-		if (fileName != null) {
+		if (fileName != null && fileName.length() != 0) {
 
 			String[] files = fileName.split("[|]");
 			int size = files.length;
@@ -1938,8 +1938,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
-
-
 			
 			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 			if (rdb.isVisible()) {
