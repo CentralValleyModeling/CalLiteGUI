@@ -158,8 +158,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public DataFileTableModel[] dTableModels = null;
 	public Boolean[] RegUserEdits = null;
 
-	private SwingEngine swix2;
-
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -172,7 +170,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".155";
+		desktopTitle = desktop.getTitle() + ".158";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -206,7 +204,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
-		
 
 		// Set current directory (Run Settings Page)
 
@@ -270,6 +267,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		spnEY1.setModel(yearModel2);
 		spnSY1.setEditor(new JSpinner.NumberEditor(spnSY1, "####"));
 		spnEY1.setEditor(new JSpinner.NumberEditor(spnEY1, "####"));
+		spnSY1.addChangeListener(this);
+		spnEY1.addChangeListener(this);
+		spnSM1.addChangeListener(this);
+		spnEM1.addChangeListener(this);
 
 		// Set Up Facilities Page
 		JTable table = (JTable) swix.find("tblBanks");
@@ -347,48 +348,47 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		spnEY.setModel(yearModel2);
 		spnSY.setEditor(new JSpinner.NumberEditor(spnSY, "####"));
 		spnEY.setEditor(new JSpinner.NumberEditor(spnEY, "####"));
+
 		// Set up report list
 		JList lstReports = (JList) swix.find("lstReports");
 		lstReports.setBorder(new LineBorder(Color.gray, 1));
 		lstReports.setFixedCellWidth(400);
 		lstReports.setPreferredSize(new Dimension(600, 100));
 		lstReports.setVisible(true);
-		
-		
-		//Load Default Scenario
+
+		// Load Default Scenario
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
-		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" +  scen);
-		RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
-		//Refresh checkbox labels
-		for (int i = 0; i<RegUserEdits.length; i++) {
-			if(RegUserEdits[i]!=null){
-				String cID=Integer.toString(i);
-				String cName=gl.CtrlFortableID(cID);
+		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		// Refresh checkbox labels
+		for (int i = 0; i < RegUserEdits.length; i++) {
+			if (RegUserEdits[i] != null) {
+				String cID = Integer.toString(i);
+				String cName = gl.CtrlFortableID(cID);
 				JCheckBox ckb = (JCheckBox) swix.find(cName);
 				String ckbtext = ckb.getText();
 				String[] ckbtext1 = ckbtext.split(" - ");
 				ckbtext = ckbtext1[0];
-				if (ckbtext1.length >0){
-					if(RegUserEdits[i]==true){
+				if (ckbtext1.length > 0) {
+					if (RegUserEdits[i] == true) {
 						ckb.setText(ckbtext + " - User Def.");
-					}else{
+					} else {
 						ckb.setText(ckbtext + " -  Default");
 					}
 				} else {
 					ckb.setText(ckbtext);
 				}
-				
+
 			}
 		}
-		
-		
+
 		/*
-		String cName = gl.CtrlFortableID(tokens[0]);
-		JCheckBox comp1 = (JCheckBox) swix.find("cName");
-		comp1.setSelected(true);
-		RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
-		*/
+		 * String cName = gl.CtrlFortableID(tokens[0]); JCheckBox comp1 =
+		 * (JCheckBox) swix.find("cName"); comp1.setSelected(true);
+		 * RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels,
+		 * gl);
+		 */
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -452,15 +452,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// CheckBox in Regulations panel changed
 				Boolean isSelect = e.getStateChange() == ItemEvent.SELECTED;
 				SetRegCheckBoxes(cName, isSelect);
-				
-				
+
 			} else if (cName.startsWith("reg_rdbD1641")) {
 				// do not allow user edits to tables
 				JTable table = (JTable) swix.find("tblRegValues");
 				JRadioButton rdb = (JRadioButton) e.getItem();
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					if (dTableModels != null) {
-						
+
 						DataFileTableModel tm = (DataFileTableModel) table.getModel();
 						int size = tm.datafiles.length;
 						if (size == 1) {
@@ -656,9 +655,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
 					sb.append("USERDEFINEDFLAGS" + NL);
-					for (int i = 0; i<RegUserEdits.length; i++) {
-						if(RegUserEdits[i]!=null){
-							sb.append(i+"|"+ RegUserEdits[i] + NL);
+					for (int i = 0; i < RegUserEdits.length; i++) {
+						if (RegUserEdits[i] != null) {
+							sb.append(i + "|" + RegUserEdits[i] + NL);
 						}
 					}
 					sb.append("END USERDEFINEDFLAGS" + NL);
@@ -732,9 +731,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
 					sb.append("END DATATABLEMODELS" + NL);
 					sb.append("USERDEFINEDFLAGS" + NL);
-					for (int i = 0; i<RegUserEdits.length; i++) {
-						if(RegUserEdits[i]!=null){
-							sb.append(i+"|"+ RegUserEdits[i] + NL);
+					for (int i = 0; i < RegUserEdits.length; i++) {
+						if (RegUserEdits[i] != null) {
+							sb.append(i + "|" + RegUserEdits[i] + NL);
 						}
 					}
 					sb.append("END USERDEFINEDFLAGS" + NL);
@@ -772,8 +771,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// ... The user selected a file, get it, use it.
 				File file = fc.getSelectedFile();
 
-				RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl );
-				RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 
 			}
 
@@ -1328,7 +1327,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			cAdd = cAdd + ";TS";
 		}
 
-		// Exceedence Plot
+		// Exceedance Plot
 		Component[] components = controls2.getComponents();
 		ckb = (JCheckBox) swix.find("RepckbExceedancePlot");
 		if (ckb.isSelected()) {
@@ -1513,6 +1512,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			frame.setTitle("CalLite Results - " + namesText[i]);
 			tabbedpane.setSelectedIndex(0);
 			frame.setVisible(true);
+			frame.setSize(980,700);
 			frame.setLocation(displayCount * 20, displayCount * 20);
 			displayCount++;
 
@@ -1605,12 +1605,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				public void tableChanged(TableModelEvent e) {
 
 					/*
-					if (RegUserEdits == null) {
-						RegUserEdits = new Boolean[20];
-					}
-
-					RegUserEdits[tID] = true;
-					*/
+					 * if (RegUserEdits == null) { RegUserEdits = new
+					 * Boolean[20]; }
+					 * 
+					 * RegUserEdits[tID] = true;
+					 */
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
 
@@ -1628,54 +1627,47 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			});
 
-			//Special handling for tiered header tables (11 columns)
-			if (dTableModels[tID].getColumnCount()==11) {
-				
-				//JFrame frame1 = new JFrame();
+			// Special handling for tiered header tables (11 columns)
+			if (dTableModels[tID].getColumnCount() == 11) {
+
+				// JFrame frame1 = new JFrame();
 
 				/*
-			    JTable table = new JTable();
-			    table.setColumnModel(new GroupableTableColumnModel());
-			    table.setTableHeader(new GroupableTableHeader((GroupableTableColumnModel) table.getColumnModel()));
-			    table.setModel(dTableModels[tID]);
-			    table.createDefaultColumnsFromModel();
+				 * JTable table = new JTable(); table.setColumnModel(new
+				 * GroupableTableColumnModel()); table.setTableHeader(new
+				 * GroupableTableHeader((GroupableTableColumnModel)
+				 * table.getColumnModel())); table.setModel(dTableModels[tID]);
+				 * table.createDefaultColumnsFromModel();
+				 * 
+				 * 
+				 * GroupableTableColumnModel cm =
+				 * (GroupableTableColumnModel)table.getColumnModel();
+				 * 
+				 * ColumnGroup g_Wet = new ColumnGroup("Wet");
+				 * g_Wet.add(cm.getColumn(1)); g_Wet.add(cm.getColumn(2));
+				 * ColumnGroup g_AN = new ColumnGroup("Above Normal");
+				 * g_AN.add(cm.getColumn(3)); g_AN.add(cm.getColumn(4));
+				 * ColumnGroup g_BN = new ColumnGroup("Below Normal");
+				 * g_BN.add(cm.getColumn(5)); g_BN.add(cm.getColumn(6));
+				 * ColumnGroup g_DRY = new ColumnGroup("Dry");
+				 * g_DRY.add(cm.getColumn(7)); g_DRY.add(cm.getColumn(8));
+				 * ColumnGroup g_CD = new ColumnGroup("Critical Dry");
+				 * g_CD.add(cm.getColumn(9)); g_CD.add(cm.getColumn(10));
+				 * 
+				 * 
+				 * GroupableTableHeader h =
+				 * (GroupableTableHeader)table.getTableHeader();
+				 * h.addColumnGroup(g_Wet); h.addColumnGroup(g_AN);
+				 * h.addColumnGroup(g_BN); h.addColumnGroup(g_DRY);
+				 * h.addColumnGroup(g_CD); JScrollPane scroll = new JScrollPane(
+				 * table );
+				 * 
+				 * //frame1.add(scroll); //frame1.pack();
+				 * //frame1.setVisible(true);
+				 */
 
-			    
-				GroupableTableColumnModel cm = (GroupableTableColumnModel)table.getColumnModel();
-			    
-				ColumnGroup g_Wet = new ColumnGroup("Wet"); 
-				g_Wet.add(cm.getColumn(1)); 
-				g_Wet.add(cm.getColumn(2)); 
-				ColumnGroup g_AN = new ColumnGroup("Above Normal"); 
-				g_AN.add(cm.getColumn(3)); 
-				g_AN.add(cm.getColumn(4));
-				ColumnGroup g_BN = new ColumnGroup("Below Normal"); 
-				g_BN.add(cm.getColumn(5)); 
-				g_BN.add(cm.getColumn(6));
-				ColumnGroup g_DRY = new ColumnGroup("Dry"); 
-				g_DRY.add(cm.getColumn(7)); 
-				g_DRY.add(cm.getColumn(8));
-				ColumnGroup g_CD = new ColumnGroup("Critical Dry"); 
-				g_CD.add(cm.getColumn(9)); 
-				g_CD.add(cm.getColumn(10));
-				
-
-				GroupableTableHeader h = (GroupableTableHeader)table.getTableHeader();
-				h.addColumnGroup(g_Wet); 
-				h.addColumnGroup(g_AN); 
-				h.addColumnGroup(g_BN); 
-				h.addColumnGroup(g_DRY); 
-				h.addColumnGroup(g_CD); 
-			    JScrollPane scroll = new JScrollPane( table );
-
-				//frame1.add(scroll);
-				//frame1.pack();
-				//frame1.setVisible(true);
-				*/
-				
 			}
-			
-			
+
 			t.revalidate();
 
 			ExcelAdapter myAd = new ExcelAdapter(t);
@@ -1702,13 +1694,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			else if (cName.startsWith("ckbReg")) {
-				
+
 				JCheckBox selcomp = (JCheckBox) e.getComponent();
 				Boolean isSelect = selcomp.isSelected();
-				
-				SetRegCheckBoxes(cName,isSelect);
-				
-				
+
+				SetRegCheckBoxes(cName, isSelect);
+
 			}
 		}
 
@@ -1845,24 +1836,39 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
-		JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-		int index = sourceTabbedPane.getSelectedIndex();
-		String cName = sourceTabbedPane.getTitleAt(index);
-		if (cName.startsWith("D-1641")) {
-			JButton btn = (JButton) swix.find("btnRegDef");
-			btn.setVisible(false);
-			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-			rdb.setVisible(true);
-			rdb = (JRadioButton) swix.find("reg_rdbUD");
-			rdb.setVisible(true);
-		} else {
-			JButton btn = (JButton) swix.find("btnRegDef");
-			btn.setVisible(true);
-			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-			rdb.setVisible(false);
-			rdb = (JRadioButton) swix.find("reg_rdbUD");
-			rdb.setVisible(false);
+		Component c = (Component) changeEvent.getSource();
+		if (c.getName().toLowerCase().substring(0, 3).equals("spn")) {
 
+			// Constrain run times to [10/1921,9/2003]
+			int syr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
+			int eyr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
+			int smo = monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
+			int emo = monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
+			if ((syr == 1921) && (smo < 10))
+				((JSpinner) swix.find("spnRunStartMonth")).setValue("Oct");
+			if ((eyr == 2003) && (emo > 9))
+				((JSpinner) swix.find("spnRunEndMonth")).setValue("Sep");
+
+		} else {
+
+			JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
+			int index = sourceTabbedPane.getSelectedIndex();
+			String cName = sourceTabbedPane.getTitleAt(index);
+			if (cName.startsWith("D-1641")) {
+				JButton btn = (JButton) swix.find("btnRegDef");
+				btn.setVisible(false);
+				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				rdb.setVisible(true);
+				rdb = (JRadioButton) swix.find("reg_rdbUD");
+				rdb.setVisible(true);
+			} else {
+				JButton btn = (JButton) swix.find("btnRegDef");
+				btn.setVisible(true);
+				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				rdb.setVisible(false);
+				rdb = (JRadioButton) swix.find("reg_rdbUD");
+				rdb.setVisible(false);
+			}
 		}
 
 	}
@@ -1913,16 +1919,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public static int getLookupsLength() {
 		return lookups.length;
 	}
-	
+
 	public void SetRegCheckBoxes(String cName, Boolean isSelect) {
-		
+
 		JPanel pan = (JPanel) swix.find("reg_panTab");
 		TitledBorder title;
 		JComponent scr = (JComponent) swix.find("scrRegValues");
 		JTable table = (JTable) swix.find("tblRegValues");
 		if (scr != null)
 			scr.setEnabled((isSelect));
-		
+
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
 		if (isSelect) {
 			scr.setVisible(true);
@@ -1938,7 +1944,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
-			
+
 			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 			if (rdb.isVisible()) {
 				if (RegUserEdits != null && dTableModels!=null) {
@@ -1965,7 +1971,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			} else {
 				if (RegUserEdits == null) {
-					RegUserEdits = new Boolean[20];							
+					RegUserEdits = new Boolean[20];
 				}
 				String fileName = gl.tableNameForCtrl(cID);
 				if (!fileName.trim().equals("")) {
@@ -1976,9 +1982,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				table.setCellSelectionEnabled(true);
 				table.setEnabled(true);
 			}
-			
+
 			pan.revalidate();
-			
 
 		} else {
 			pan.setEnabled(false);
@@ -1987,7 +1992,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			scr.setEnabled(false);
 			table.setVisible(false);
 			pan.revalidate();
-			
+
 			JCheckBox ckb = (JCheckBox) (JCheckBox) swix.find(cName);
 			String ckbtext = ckb.getText();
 			String[] ckbtext1 = ckbtext.split(" - ");
@@ -1995,8 +2000,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ckb.setText(ckbtext);
 
 		}
-		
-		
+
 	}
 
 	public int monthToInt(String EndMon) {
@@ -2316,64 +2320,69 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				publish("Writing GUI option tables.");
 
 				// Write table files
-					ArrayList GUITables = new ArrayList();
-					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+				ArrayList GUITables = new ArrayList();
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
-					for (int i = 0; i < GUITables.size(); i++) {
-						System.out.println(i);
-						String line = GUITables.get(i).toString();
-						String[] parts = line.split("[|]");
-						String cName = parts[0].trim();					// Get name of controlling checkbox;
-						String tableName = gl.tableNameForCtrl(cName);	// Find the corresponding table
-						String switchID = gl.switchIDForCtrl(cName);    // Get the switchID (index in .table file)
-						
-						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+				for (int i = 0; i < GUITables.size(); i++) {
+					System.out.println(i);
+					String line = GUITables.get(i).toString();
+					String[] parts = line.split("[|]");
+					String cName = parts[0].trim(); // Get name of controlling
+													// checkbox;
+					String tableName = gl.tableNameForCtrl(cName); // Find the
+																	// corresponding
+																	// table
+					String switchID = gl.switchIDForCtrl(cName); // Get the
+																	// switchID
+																	// (index in
+																	// .table
+																	// file)
 
-						int option = 0;
-						JCheckBox cb = (JCheckBox) swix.find(cName);
-						if (cb == null) {
-							option = 0;
-						} else if (!cb.isSelected()) {
-							option = 0;
-						} else {
-							option = 1;
-						}
-						System.out.println(switchID + " " + option);
+					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
-						if ((option == 2) || (option == 1)) {
+					int option = 0;
+					JCheckBox cb = (JCheckBox) swix.find(cName);
+					if (cb == null) {
+						option = 0;
+					} else if (!cb.isSelected()) {
+						option = 0;
+					} else {
+						option = 1;
+					}
+					System.out.println(switchID + " " + option);
 
-							String[] files = tableName.split("[|]");
-							int size = files.length;
-							if (size == 1) {
-								// CASE 1: 1 file specified
-								System.out.println("Output to " + tableName);
-								String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
+					if ((option == 2) || (option == 1)) {
 
-								if (dTableModels[tID] == null) {
-									System.out.println("Table not initialized - " + tableName);
-								} else {
-									dTableModels[tID].writeToFile(tableName);
-								}
-							} else if (size == 2) {
-								// CASE 2: 2 files specified
-								System.out.println("Output to " + files[0]);
-								String fo1 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[0] + ".table";
-								String fo2 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[1] + ".table";
+						String[] files = tableName.split("[|]");
+						int size = files.length;
+						if (size == 1) {
+							// CASE 1: 1 file specified
+							System.out.println("Output to " + tableName);
+							String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
 
-								if (dTableModels[tID] == null) {
-									System.out.println("Table not initialized");
-								} else {
-									dTableModels[tID].writeToFile2(files[0], files[1]);
-								}
+							if (dTableModels[tID] == null) {
+								System.out.println("Table not initialized - " + tableName);
+							} else {
+								dTableModels[tID].writeToFile(tableName);
+							}
+						} else if (size == 2) {
+							// CASE 2: 2 files specified
+							System.out.println("Output to " + files[0]);
+							String fo1 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[0] + ".table";
+							String fo2 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + files[1] + ".table";
 
+							if (dTableModels[tID] == null) {
+								System.out.println("Table not initialized");
+							} else {
+								dTableModels[tID].writeToFile2(files[0], files[1]);
 							}
 
 						}
+
 					}
+				}
 
-					
-					desktop.setVisible(false);
-
+				desktop.setVisible(false);
 
 				// "Run" model
 

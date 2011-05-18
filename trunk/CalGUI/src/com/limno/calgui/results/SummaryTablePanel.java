@@ -48,6 +48,9 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 	final String CELL_BREAK = "\t";
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
+	// Year, Sac403030, SJR, SHASTA, ?, Feather, ?, ?, dry 
+	
+
 	private static int ylt[][] = { { 1920, 2, 2, 1, 1, 0, 3, 2, 0, }, { 1921, 2, 2, 1, 1, 0, 3, 2, 0, },
 			{ 1922, 2, 1, 1, 1, 0, 4, 2, 0, }, { 1923, 3, 2, 3, 1, 0, 4, 3, 0, }, { 1924, 5, 5, 4, 2, 1, 5, 6, 0, },
 			{ 1925, 4, 3, 1, 1, 0, 2, 5, 0, }, { 1926, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1927, 1, 2, 1, 1, 0, 2, 1, 0, },
@@ -253,18 +256,6 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 								else
 									rightPart = " (" + rightPartsDry[i2] + ")";
 
-								// System.out.print(leftPart[i1] + rightPart);
-								// System.out.print("\t");
-								// System.out.print(n[i1][i2]);
-								// System.out.print(" ");
-								// System.out.print(df1.format(avg[i1][i2]));
-								// System.out.print(" ");
-								// System.out.print(df2.format(sdev[i1][i2]));
-								// System.out.print(" ");
-								// System.out.print(df1.format(min[i1][i2]));
-								// System.out.print(" ");
-								// System.out.println(df1.format(max[i1][i2]));
-
 								data[t].addElement(leftPart[i1] + rightPart);
 								data[t].addElement(tagStringList[tag]);
 								for (int i3 = 0; i3 < 13; i3++) {
@@ -279,7 +270,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 									switch (tag) {
 									case 0:
-										data[t].addElement(df1.format(avg[i1][i2][i3m]));
+										data[t].addElement(df1.format(avg[i1][i2][i3m]*(i3m == 0? 12: 1)));
 										break;
 									case 1:
 										data[t].addElement(df1.format(sdev[i1][i2][i3m]));
@@ -304,7 +295,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			for (int c = 0; c < 15; c++) {
 				TableColumn col = table.getColumnModel().getColumn(c);
-				col.setPreferredWidth((c == 0) ? 200 : 75);
+				col.setPreferredWidth((c == 0) ? 200 : 50);
 			}
 			table.setCellSelectionEnabled(true);
 
