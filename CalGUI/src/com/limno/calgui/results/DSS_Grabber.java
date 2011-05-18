@@ -2,6 +2,7 @@ package com.limno.calgui.results;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.JList;
@@ -34,6 +35,8 @@ public class DSS_Grabber {
 	 * 
 	 * - Exceedance for main time series for each scenario
 	 */
+
+	static double cfs2TAFday = 0.001983471;
 
 	private JList lstScenarios;
 	private String baseName;
@@ -151,8 +154,13 @@ public class DSS_Grabber {
 
 		// Convert CFS to TAFY
 		if ((result.units.equals("CFS")) && !isCFS) {
-			for (int j = 0; j < result.numberValues; j++)
-				result.values[j] = result.values[j] * 0.723966942;
+			HecTime ht = new HecTime();
+			Calendar calendar = Calendar.getInstance();
+			for (int j = 0; j < result.numberValues; j++) {
+				ht.set(result.times[j]);
+				calendar.set(ht.year(), ht.month()-1, 1);
+				result.values[j] = result.values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
+			}
 			result.units = "TAFY";
 		}
 
