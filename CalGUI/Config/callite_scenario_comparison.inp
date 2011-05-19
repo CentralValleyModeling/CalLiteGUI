@@ -33,12 +33,12 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "Yolo Bypass"				DI		Average		//C_YoloBP/FLOW-CHANNEL//1MON//				//C_YoloBP/FLOW-CHANNEL//1MON//				N		N
 "Mokelumne R"				DI		Average		//C_MoklmnR/FLOW-ACCRDEPL//1MON//			//C_MoklmnR/FLOW-ACCRDEPL//1MON//			N		N
 "San Joaquin R & Calaveras"		DI		Average		//C_SJR/FLOW-ACCRDEPL//1MON//				//C_SJR/FLOW-ACCRDEPL//1MON//				N		N
-"Delta Outflow"				DO		Average		//C_Delta/FLOW-CHANNEL//1MON//				//C_Delta/FLOW-CHANNEL//1MON//				B		N
+"Delta Outflow"				DO		Average		//C_SACSJR/FLOW-CHANNEL//1MON//				//C_SACSJR/FLOW-CHANNEL//1MON//				B		N
 "Delta Outflow for X2 and NDO"		DO		Average		//D_DeltaReqd/FLOW-DELIVERY//1MON//			//D_DeltaReqd/FLOW-DELIVERY//1MON//			N		N
-"Delta Exports"				DE		Average_post	//D_Banks+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	//D_Banks+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	B		N
-"Banks SWP"				DE		Average		//D_Banks/FLOW-DELIVERY//1MON//				//D_Banks/FLOW-DELIVERY//1MON//				N		N
+"Delta Exports"				DE		Avg_Excd_post	//D_Banks+D_Jones/FLOW-DELIVERY//1MON//			//D_Banks+D_Jones/FLOW-DELIVERY//1MON//			B		Y
+"Banks SWP"				DE		Average		//D_Banks_SWP/FLOW-DELIVERY//1MON//			//D_Banks_SWP/FLOW-DELIVERY//1MON//			N		N
 "Banks CVP"				DE		Average		//D_Banks_CVP/FLOW-DELIVERY//1MON//			//D_Banks_CVP/FLOW-DELIVERY//1MON//			N		N
-"Jones"					DE		Average		//D_Jones/FLOW-DELIVERY//1MON//			//D_Jones/FLOW-DELIVERY//1MON//				N		N
+"Jones"					DE		Average		//D_Jones/FLOW-DELIVERY//1MON//				//D_Jones/FLOW-DELIVERY//1MON//				N		N
 "SWP SOD Deliveries"			SWPSOD		Avg_Excd_post	//SWP_TA_TOTAL+SWP_IN_TOTAL+SWP_CO_TOTAL///1MON//	//SWP_TA_TOTAL+SWP_IN_TOTAL+SWP_CO_TOTAL///1MON// 	B		Y
 "Table A (Incl. Article 56)"		SWPSOD		Average		//SWP_TA_TOTAL/SWP_DELIVERY//1MON//			//SWP_TA_TOTAL/SWP_DELIVERY//1MON//			N		N
 "Article 21"				SWPSOD		Average		//SWP_IN_TOTAL/SWP_DELIVERY//1MON//			//SWP_IN_TOTAL/SWP_DELIVERY//1MON//			N		N
