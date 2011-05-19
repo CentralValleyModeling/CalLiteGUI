@@ -416,7 +416,7 @@
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 								</label>
 								<numtextfield id="demtxt1" name="demtxt1" enabled="false"
-									MinVal="0.0000001" MaxVal="1911.5" columns="6" text="1911.5"
+									MinVal="0" MaxVal="1911.5" columns="6" text="1911.5"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
 										fill="GridBagConstraints.HORIZONTAL" anchor="GridBagConstraints.WEST"
@@ -427,7 +427,7 @@
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 								</label>
 								<numtextfield id="demtxt2" name="demtxt2" enabled="false"
-									columns="6" MinVal="0.0000001" MaxVal="1189.4" text="1189.4"
+									columns="6" MinVal="0" MaxVal="1189.4" text="1189.4"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
 										fill="GridBagConstraints.HORIZONTAL" anchor="GridBagConstraints.WEST"
@@ -437,7 +437,7 @@
 									<gridbagconstraints insets="0,5,5,20"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 								</label>
-								<numtextfield id="demtxt3" name="demtxt3" MinVal="0.0000001"
+								<numtextfield id="demtxt3" name="demtxt3" MinVal="0"
 									MaxVal="1032.1" text="1032.1" enabled="false" columns="6"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
@@ -498,7 +498,7 @@
 									<gridbagconstraints insets="0,5,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 								</label>
-								<numtextfield id="demtxt4" name="demtxt4" MinVal="0.0000001"
+								<numtextfield id="demtxt4" name="demtxt4" MinVal="0"
 									MaxVal="1963.1" text="1963.1" enabled="false" columns="6"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
@@ -509,7 +509,7 @@
 									<gridbagconstraints insets="0,5,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 								</label>
-								<numtextfield id="demtxt5" name="demtxt5" MinVal="0.0000001"
+								<numtextfield id="demtxt5" name="demtxt5" MinVal="0"
 									MaxVal="147.65" text="147.65" enabled="false" columns="6"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
@@ -521,7 +521,7 @@
 									<gridbagconstraints insets="0,5,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 								</label>
-								<numtextfield id="demtxt6" name="demtxt6" MinVal="0.0000001"
+								<numtextfield id="demtxt6" name="demtxt6" MinVal="0"
 									MaxVal="281.06 " text="281.06" enabled="false" columns="6"
 									HorizontalAlignment="RIGHT">
 									<gridbagconstraints insets="0,0,5,5"
@@ -1241,7 +1241,7 @@
 									preferredsize="340,20" />
 							</checkbox>
 							<checkbox name="ckbRegbo5" id="ckbRegbo5"
-								text="San Joaquin River Inflow to Export Ratio (NMFS RPA Action 4.2.1)">
+								text="San Joaquin River Inflow to Export Ratio (NMFS RPA Action 4.1.2)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="10" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />

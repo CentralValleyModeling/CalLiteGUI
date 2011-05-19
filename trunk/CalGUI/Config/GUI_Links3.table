@@ -1,75 +1,75 @@
-ID	Primary	Secondary	Ytitle	Title
-102	S_TRNTY/STORAGE	null	Storage	Trinity Storage
-103	S_SHSTA/STORAGE;SHSTAE/STORAGE	null	Storage	Shasta Storage
-104	S_FOLSM/STORAGE	null	Storage	null
-105	S_TRNTY/STORAGE;S_SHSTA/STORAGE;S_FOLSM/STORAGE	null	Storage	null
-106	S_SLCVP/STORAGE	null	Storage	null
-107	S_OROVL/STORAGE	null	Storage	null
-108	S_SLSWP/STORAGE	null	Storage	null
-111	S_TRNTY/STORAGE	null	Storage	null
-112	S_SHSTA/STORAGE;SHSTAE/STORAGE	null	Storage	null
-113	S_FOLSM/STORAGE	null	Storage	null
-114	S_SLCVP/STORAGE	CVPRULECV/RULECURVE	Storage	null
-115	S_OROVL/STORAGE	null	Storage	null
-116	S_SLSWP/STORAGE	SWPRULECV/RULECURVE	Storage	null
-202	C_LWSTN/FLOW-CHANNEL	MIF_C_LEWISTONDV/FLOW-MIN-REQUIRED	Flow	null
-203	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	null
-204	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	null
-205	D_SPRING/FLOW-TUNNEL	null	Flow	null
-206	C_KSWCK/FLOW-CHANNEL	EFFKESWICKMIN_DV/FLOW-MIN-REQUIRED	null	null
-207	C_REDBLF/FLOW-CHANNEL	REDBLUFFMIN_DV/FLOW-MIN-REQUIRED	null	null
-208	C_WILNKS/FLOW-CHANNEL	MINFLOW_C_WILKNS/FLOW-MIN-REQUIRED	null	null
-209	C_THERM/FLOW-CHANNEL	THERMOLITOMIN_DV/FLOW-MIN-REQUIRED	null	null
-210	C_YUBFEA/FLOW-CHANNEL	MINFLOWFEAMOUTH/FLOW-MIN-REQUIRED	null	null
-211	C_NIMBUS/FLOW-CHANNEL	NIMBUS_HIST_STDV/FLOW-MIN-REQUIRED	null	null
-212	D_FREWEIR/FLOW-DELIVERY	null	null	null
-213	D_SACWEIR/FLOW-DELIVERY	null	null	null
-214	C_HOOD/FLOW-CHANNEL	D_HOOD/FLOW-CHANNEL	null	null
-215	C_YOLOBP/FLOW-CHANNEL	null	null	null
-216	C_DXC/FLOW-CHANNEL	null	null	null
-217	C_SACRV/FLOW-CHANNEL	C_SACRV_MIF/FLOW-MIN-INSTREAM	null	null
-218	C_OMR/FLOW-CHANNEL;C_INDNSL/FLOW_CHANNEL	null	null	null
-219	C_SJRVI/FLOW-CHANNEL	null	null	null
-302	INFLOW/INFLOW-DELTA	null	null	null
-303	C_SACSJR/FLOW-CHANNEL	null	null	null
-304	D_DELTAREQD/FLOW_DELIVERY;DO_REQ_X2ROE_OUT/FLOW-REQ-X2ROE;DO_REQ_X2CHS_OUT/FLOW-REQ-X2CHS;DO_REQ_X2CNF_OUT/FLOW-REQ-X2CNF;DO_REQ_FLOW_OUT/FLOW-REQ-NDOI	null	null	null
-305	EXPRATIO_/EI-RATIO-STD;D_JONES/FLOW_DELIVERY;D_BANKS/FLOW_DELIVERY;INFLOW/INFLOW-DELTA	null	null	null
-306	X2_PRV/X2-POSITION-PREV	null	null	null
-307	null	null	null	null
-310	D_JONES/FLOW-DELIVERY	null	null	null
-311	D_BANKS/FLOW-DELIVERY	null	null	null
-312	EXPORTACTUAL/EXPORT-PRJ	null	null	null
-313	C_NBA/FLOW-CHANNEL	null	null	null
-314	D_CCWDINTK/FLOW-DELIVERY	null	null	null
-315	D_CCWDVCOR/FLOW-DELIVERY	null	null	null
-316	D_CCWDINTK/FLOW-DELIVERY;D_CCWDVCOR/FLOW-DELIVERY	null	null	null
-402	DEL_CVP_TOTAL_N/DELIVERY-CVP	null	null	null
-403	DEL_CVP_TOTAL_S/DELIVERY-CVP	null	null	null
-404	DEL_SWP_TOT_N/DELIVERY-SWP	null	null	null
-405	SWP_TA_TOTAL/SWP_DELIVERY;SWP_CO_TOTAL/SWP_DELIVERY;SWP_IN_TOTAL/SWP_DELIVERY	null	null	null
-406	SWP_IN_TOTAL/SWP_DELIVERY	null	null	null
-409	JP_EC_STD/SALINITY(-1)	JP_EC_MONTH/SALINITY	null	null
-410	RS_EC_STD/SALINITY(-1)	RS_EC_MONTH/SALINITY	null	null
-411	EM_EC_STD/SALINITY(-1)	EM_EC_MONTH/SALINITY	null	null
-412	CO_EC_STD/SALINITY(-1)	CO_EC_MONTH/SALINITY	null	null
-413	null	null	null	null
-414	null	null	null	null
-415	null	null	null	null
-416	null	null	null	null
-417	null	null	null	null
-418	null	null	null	null
-502	null	null	null	null
-503	null	null	null	null
-504	null	null	null	null
-505	null	null	null	null
-508	null	null	null	null
-509	null	null	null	null
-510	null	null	null	null
-511	null	null	null	null
-512	null	null	null	null
-513	null	null	null	null
-516	null	null	null	null
-517	null	null	null	null
-518	null	null	null	null
-519	null	null	null	null
-520	null	null	null	null
+ID	Primary	Secondary	Ytitle	Title				
+102	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage				
+103	S_SHSTA/STORAGE;SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage				
+104	S_FOLSM/STORAGE	null	Storage	Folsom Reservoir Storage				
+105	S_TRNTY/STORAGE;S_SHSTA/STORAGE;S_FOLSM/STORAGE	null	Storage	CVP North of Delta Storage				
+106	S_SLCVP/STORAGE	null	Storage	CVP San Luis Reservoir Storage				
+107	S_OROVL/STORAGE	null	Storage	Oroville Reservoir Storage				
+108	S_SLSWP/STORAGE	null	Storage	SWP San Luis Reservoir Storage				
+111	S_TRNTY/STORAGE	S_TRNTYLEVEL4DV/STORAGE-LEVEL	Storage	Trinity Reservoir Operations				
+112	S_SHSTA/STORAGE;SHSTAE/STORAGE	S_SHSTALEVEL5DV/STORAGE-LEVEL	Storage	Shasta Reservoir Operations				
+113	S_FOLSM/STORAGE	S_FOLSMLEVEL5DV/STORAGE-LEVEL	Storage	Folsom Reservoir Operations				
+114	S_SLCVP/STORAGE	CVPRULECV/RULECURVE	Storage	CVP San Luis Reservoir Operations				
+115	S_OROVL/STORAGE	S_OROVLLEVEL5DV/STORAGE-LEVEL	Storage	Oroville Reservoir Operations				
+116	S_SLSWP/STORAGE	SWPRULECV/RULECURVE	Storage	SWP San Luis Reservoir Operations				
+202	C_LWSTN/FLOW-CHANNEL	MIF_C_LEWISTONDV/FLOW-MIN-REQUIRED	Flow	Trinity River				
+203	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports				
+204	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek				
+205	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel				
+206	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick				
+207	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff		
+208	C_WILKNS/FLOW-CHANNEL	C_WILKNS_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Wilkins Slough
+209	C_THERM/FLOW-CHANNEL	C_THERM_MIF/FLOW-MIN-INSTREAM	Flow	Feather River at Thermolito
+210	C_YUBFEA/FLOW-CHANNEL	C_YUBFEA_MIF/FLOW-MIN-INSTREAM	Flow	Feather River Below Yuba Confluence	
+211	C_NIMBUS/FLOW-CHANNEL	C_NIMBUS_MIF/FLOW-MIN-INSTREAM	Flow	American River at Nimbus			
+212	D_FREWEIR/FLOW-DELIVERY	null	Flow	Fremont Weir				
+213	D_SACWEIR/FLOW-DELIVERY	null	Flow	Sacramento Weir				
+214	C_HOOD/FLOW-CHANNEL	D_HOOD/FLOW-DELIVERY	Flow	Sacramento River at Hood				
+215	C_YOLOBP/FLOW-CHANNEL	null	Flow	Yolo Bypass				
+216	C_DXC/FLOW-CHANNEL	null	Flow	Delta Cross Channel				
+217	C_SACRV/FLOW-CHANNEL	C_SACRV_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Rio Vista				
+218	C_OMR/FLOW-CHANNEL;	C_INDNSL/FLOW-CHANNEL	Flow	Old and Middle River			
+219	C_SJRVI/FLOW-CHANNEL	null	Flow	San Joaquin River at Venice Island (QWEST)				
+302	INFLOW/INFLOW-DELTA	null	Flow	Delta Inflow				
+303	C_SACSJR/FLOW-CHANNEL	null	Flow	Delta Outflow				
+304	D_DELTAREQD/FLOW-DELIVERY;DO_REQ_X2ROE_OUT/FLOW-REQ-X2ROE;DO_REQ_X2CHS_OUT/FLOW-REQ-X2CHS;DO_REQ_X2CNF_OUT/FLOW-REQ-X2CNF;DO_REQ_FLOW_OUT/FLOW-REQ-NDOI	null	Flow	Delta Required Outflow
+305	EXPRATIO_/EI-RATIO-STD;D_JONES/FLOW_DELIVERY;D_BANKS/FLOW_DELIVERY;INFLOW/INFLOW-DELTA	null	null	Export-Inflow Ratio	
+306	X2_PRV/X2-POSITION-PREV	null	Position	X2 Position				
+307	null	null	null	null				
+310	D_JONES/FLOW-DELIVERY	null	Flow	Jones Exports				
+311	D_BANKS/FLOW-DELIVERY	null	Flow	Banks Exports				
+312	EXPORTACTUAL/EXPORT-PRJ	null	Flow	Total Exports				
+313	C_NBA/FLOW-CHANNEL	null	Flow	North Bay Aqueduct				
+314	D_CCWDVCOR/FLOW-DELIVERY	null	Flow	CCWD Alternative Intake	Exports			
+315	D_CCWDINTK/FLOW-DELIVERY	null	Flow	CCWD Rock Slough Exports				
+316	D_CCWDINTK/FLOW-DELIVERY;D_CCWDVCOR/FLOW-DELIVERY	null	Flow	CCWD Total Exports			
+402	DEL_CVP_TOTAL_N/DELIVERY-CVP	null	Deliveries	CVP North of Delta Deliveries				
+403	DEL_CVP_TOTAL_S/DELIVERY-CVP	null	Deliveries	CVP South of Delta Deliveries				
+404	DEL_SWP_TOT_N/DELIVERY-SWP	null	Deliveries	SWP North of Delta Deliveries				
+405	SWP_TA_TOTAL/SWP_DELIVERY;SWP_CO_TOTAL/SWP_DELIVERY;SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Total Deliveries		
+406	SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Article 21 (Interruptible) Deliveries				
+409	JP_EC_STD/SALINITY(-1)	JP_EC_MONTH/SALINITY	null	null				
+410	JP_EC_STD/SALINITY(-1)	JP_EC_MONTH/SALINITY	Electrical Conductivity	Jersey Point Salinity				
+411	RS_EC_STD/SALINITY(-1)	RS_EC_MONTH/SALINITY	Electrical Conductivity	Rock Slough Salinity				
+412	EM_EC_STD/SALINITY(-1)	EM_EC_MONTH/SALINITY	Electrical Conductivity	Emmaton Salinity				
+413	null	null	null	null				
+414	null	null	null	null				
+415	null	null	null	null				
+416	null	null	null	null				
+417	null	null	null	null				
+418	null	null	null	null				
+502	null	null	null	null				
+503	null	null	null	null				
+504	null	null	null	null				
+505	null	null	null	null				
+508	null	null	null	null				
+509	null	null	null	null				
+510	null	null	null	null				
+511	null	null	null	null				
+512	null	null	null	null				
+513	null	null	null	null				
+516	null	null	null	null				
+517	null	null	null	null				
+518	null	null	null	null				
+519	null	null	null	null				
+520	null	null	null	null				
