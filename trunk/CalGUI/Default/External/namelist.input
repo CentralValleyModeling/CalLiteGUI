@@ -1,6 +1,0 @@
-&warningparameter
- iformat=0
- errorlimit=0.01
- CalLiteRunDir="D:\CalLiteSwitches\CalLite_BO_0405_Options_Global\Run"
- tend=2
-/
