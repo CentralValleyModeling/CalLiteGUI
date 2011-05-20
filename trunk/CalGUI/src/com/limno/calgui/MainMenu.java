@@ -170,7 +170,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".158";
+		desktopTitle = desktop.getTitle() + ".163";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1309,7 +1309,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		if (rdb.isSelected()) {
 			cAdd = cAdd + ";CFS";
 		} else {
-			cAdd = cAdd + ";CFS";
+			cAdd = cAdd + ";TAF";
 		}
 
 		// Date
@@ -1421,6 +1421,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				System.out.println("Unparsed display list component - " + groupParts[i]);
 		}
 
+		dss_Grabber.setIsCFS(isCFS);
+
 		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
 			CheckListItem item = (CheckListItem) lstScenarios.getModel().getElementAt(i);
 			if (item.isSelected())
@@ -1430,8 +1432,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String locationNames[] = locations.split(",");
 		String namesText[] = names.split(",");
 
-		JRadioButton rb = (JRadioButton) swix.find("rdbCFS");
-		dss_Grabber.setIsCFS(rb.isSelected());
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);

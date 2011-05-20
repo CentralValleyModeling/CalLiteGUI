@@ -48,13 +48,12 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 	final String CELL_BREAK = "\t";
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-	// Year, Sac403030, SJR, SHASTA, ?, Feather, ?, ?, dry 
-	
+	// Year, Sac403030, SJR, SHASTA, ?, Feather, ?, ?, dry
 
 	private static int ylt[][] = { { 1920, 2, 2, 1, 1, 0, 3, 2, 0, }, { 1921, 2, 2, 1, 1, 0, 3, 2, 0, },
 			{ 1922, 2, 1, 1, 1, 0, 4, 2, 0, }, { 1923, 3, 2, 3, 1, 0, 4, 3, 0, }, { 1924, 5, 5, 4, 2, 1, 5, 6, 0, },
 			{ 1925, 4, 3, 1, 1, 0, 2, 5, 0, }, { 1926, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1927, 1, 2, 1, 1, 0, 2, 1, 0, },
-			{ 1928, 2, 3, 1, 1, 0, 3, 2, 1, }, { 1929, 5, 5, 3, 1, 0, 5, 6, 1, }, { 1930, 4, 5, 2, 1, 0, 4, 5, 1, },
+			{ 1928, 2, 3, 1, 1, 0, 3, 2, 0, }, { 1929, 5, 5, 3, 1, 0, 5, 6, 1, }, { 1930, 4, 5, 2, 1, 0, 4, 5, 1, },
 			{ 1931, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1932, 4, 2, 4, 1, 0, 4, 5, 1, }, { 1933, 5, 4, 4, 1, 0, 4, 6, 1, },
 			{ 1934, 5, 5, 4, 2, 1, 5, 6, 1, }, { 1935, 3, 2, 1, 1, 0, 4, 3, 0, }, { 1936, 3, 2, 1, 1, 0, 3, 3, 0, },
 			{ 1937, 3, 1, 2, 1, 0, 4, 3, 0, }, { 1938, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1939, 4, 4, 3, 2, 0, 5, 5, 0, },
@@ -73,7 +72,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			{ 1976, 5, 5, 3, 2, 0, 4, 6, 2, }, { 1977, 5, 5, 4, 2, 1, 5, 7, 2, }, { 1978, 2, 1, 1, 1, 0, 1, 2, 0, },
 			{ 1979, 3, 2, 2, 1, 0, 4, 3, 0, }, { 1980, 2, 1, 1, 1, 0, 2, 2, 0, }, { 1981, 4, 4, 2, 2, 0, 4, 5, 0, },
 			{ 1982, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1983, 1, 1, 1, 1, 0, 1, 1, 0, }, { 1984, 1, 2, 1, 1, 0, 2, 1, 0, },
-			{ 1985, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1986, 1, 1, 1, 1, 0, 2, 1, 3, }, { 1987, 4, 5, 3, 2, 0, 4, 5, 3, },
+			{ 1985, 4, 4, 3, 1, 0, 4, 5, 0, }, { 1986, 1, 1, 1, 1, 0, 2, 1, 0, }, { 1987, 4, 5, 3, 2, 0, 4, 5, 3, },
 			{ 1988, 5, 5, 3, 2, 1, 4, 6, 3, }, { 1989, 4, 5, 1, 1, 0, 3, 5, 3, }, { 1990, 5, 5, 3, 2, 0, 4, 6, 3, },
 			{ 1991, 5, 5, 4, 1, 1, 5, 6, 3, }, { 1992, 5, 5, 4, 2, 0, 4, 6, 3, }, { 1993, 2, 1, 1, 1, 0, 2, 2, 0, },
 			{ 1994, 5, 5, 4, 2, 0, 5, 6, 0, }, { 1995, 1, 1, 1, 1, 0, 1, 0, 0, }, { 1996, 1, 1, 1, 1, 0, 2, 0, 0, },
@@ -150,7 +149,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 						x[i1][i2][i3] = 0;
 						xx[i1][i2][i3] = 0;
 						min[i1][i2][i3] = 1e20;
-						max[i1][i2][i3] = 0;
+						max[i1][i2][i3] = -1e20;
 					}
 
 			med = new double[6][6][13];
@@ -168,10 +167,12 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				ht.set(tscs[t].times[i]);
 				int y = ht.year();
 				int m = ht.month();
-				int wy = (m < 10) ? y : y - 1;
+				int wy = (m < 10) ? y : y + 1;
 				if (wy >= 1920) { // TODO - replace temporary filter with values
 					// based on controls
 					int ySac403030 = (m < 2) ? y - 1 : y;
+					ySac403030 = wy;
+					
 					int ySHASTAindex = (m < 3) ? y - 1 : y;
 					int yFEATHERindex = (m < 2) ? y - 1 : y;
 					int ySJRindex = (m < 2) ? y - 1 : y;
@@ -195,7 +196,8 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			data[t] = new Vector<String>();
 			String[] leftPart = { "All", "Sac 40-30-30", "Shasta", "Feather", "SJR", "Dry" };
 			String[] rightPartsclimate = { "", "Wet", "Above", "Normal", "Dry", "Extreme" };
-			String[] rightPartsDry = { "All dry periods", "1928-1934", "1976-1977", "1986-1992" };
+			String[] rightPartsDry = { "All dry periods", "1928-1934", "1976-1977", "1986-1992", "UNKNOWN 4",
+					"UNKNOWN 5" };
 			DecimalFormat df1 = new DecimalFormat("#.#");
 
 			// Calculate results
@@ -210,8 +212,9 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 								|| ((i1 == 4) && tagString.contains("SJR Index"))
 								|| ((i1 == 5) && tagString.contains("All dry"))
 								|| ((i1 == 5) && (i2 == 1) && tagString.contains("1928"))
-								|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) || ((i1 == 5) && (i2 == 3) && tagString
-								.contains("1986"))) && (n[i1][i2][i3] != 0)) {
+								|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) 
+								|| ((i1 == 5) && (i2 == 3) && tagString.contains("1986"))) 
+							&& (n[i1][i2][i3] > 0)) {
 
 							avg[i1][i2][i3] = x[i1][i2][i3] / n[i1][i2][i3];
 							sdev[i1][i2][i3] = Math.sqrt(Math.abs(xx[i1][i2][i3] / n[i1][i2][i3] - avg[i1][2][i3]
@@ -242,8 +245,10 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 									|| ((i1 == 4) && tagString.contains("SJR Index"))
 									|| ((i1 == 5) && tagString.contains("All dry"))
 									|| ((i1 == 5) && (i2 == 1) && tagString.contains("1928"))
-									|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) || ((i1 == 5)
-									&& (i2 == 3) && tagString.contains("1986")))) {
+									|| ((i1 == 5) && (i2 == 2) && tagString.contains("1976")) 
+									|| ((i1 == 5) && (i2 == 3) && tagString.contains("1986")))
+									&& (n[i1][i2][0] > 0)) {
+
 
 								String rightPart;
 
@@ -270,7 +275,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 									switch (tag) {
 									case 0:
-										data[t].addElement(df1.format(avg[i1][i2][i3m]*(i3m == 0? 12: 1)));
+										data[t].addElement(df1.format(avg[i1][i2][i3m] * (i3m == 0 ? 12 : 1)));
 										break;
 									case 1:
 										data[t].addElement(df1.format(sdev[i1][i2][i3m]));
@@ -295,10 +300,9 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			for (int c = 0; c < 15; c++) {
 				TableColumn col = table.getColumnModel().getColumn(c);
-				col.setPreferredWidth((c == 0) ? 200 : 50);
+				col.setPreferredWidth((c == 0) ? 150 : 50);
 			}
 			table.setCellSelectionEnabled(true);
-
 
 			JLabel label = new JLabel();
 			label.setText(title + " (" + tscs[t].units + ") - " + tscs[t].fileName);
@@ -324,13 +328,12 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		copy.setAlignmentX(LEFT_ALIGNMENT);
 		copy.addActionListener((ActionListener) this);
 
-		Box box = Box.createVerticalBox(); 
+		Box box = Box.createVerticalBox();
 
 		box.add(scrollPane);
 		box.add(copy);
 
 		add(box);
-
 
 	}
 
