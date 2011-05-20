@@ -8,7 +8,7 @@ import java.util.Vector;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-import com.limno.calgui.GetDSSFilename.CheckListItem;
+import com.limno.calgui.GetDSSFilename.RBListItem;
 import java.util.Iterator;
 
 import hec.heclib.dss.*;
@@ -182,7 +182,7 @@ public class DSS_Grabber {
 		results[0] = getOneSeries(baseName, primaryDSSName);
 		int j = 0;
 		for (int i = 0; i < scenarios; i++) {
-			String scenarioName = ((CheckListItem) lstScenarios.getModel().getElementAt(i)).toString();
+			String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 			// if (scenarioName.contains("\\"))
 			// scenarioName = new File(scenarioName).getName();
 			if (!baseName.equals(scenarioName)) {

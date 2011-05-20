@@ -45,14 +45,14 @@ public class GetDSSFilename implements ActionListener {
 
 	public GetDSSFilename(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
-		theFileExt ="DSS";
+		theFileExt = "DSS";
 		theTextField = null;
 		Setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField) {
 		theLabel = null;
-		theFileExt ="DSS";
+		theFileExt = "DSS";
 		theTextField = aTextField;
 		Setup(aList);
 	}
@@ -65,25 +65,24 @@ public class GetDSSFilename implements ActionListener {
 	}
 
 	public int dialogRC;
-	
+
 	private void Setup(JList aList) {
 
 		if (theFileExt.equals("DSS")) {
 			fc.setFileFilter(new DSSFileFilter());
-		fc.setCurrentDirectory(new File(".//Scenarios"));
-		}
-		else {
+			fc.setCurrentDirectory(new File(".//Scenarios"));
+		} else {
 			fc.setFileFilter(new GeneralFileFilter(theFileExt));
 			if (theFileExt.equals("PDF") || theFileExt.equals("CLS"))
 				fc.setCurrentDirectory(new File(".//Scenarios"));
 			else
 				fc.setCurrentDirectory(new File(".//Config"));
-			}
+		}
 		if (aList != null) {
 			lmScenNames = new DefaultListModel();
 
 			theList = aList;
-			theList.setCellRenderer(new CheckListRenderer());
+			theList.setCellRenderer(new RBListRenderer());
 			theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 			// Add a mouse listener to handle changing selection
@@ -95,17 +94,19 @@ public class GetDSSFilename implements ActionListener {
 					// Get index of item clicked
 
 					int index = list.locationToIndex(event.getPoint());
-					CheckListItem item = (CheckListItem) list.getModel().getElementAt(index);
 
 					// Toggle selected state
 
-					if (!item.isSelected()) {
-
-						for (int i = 0; i < list.getModel().getSize(); i++) {
-							if (i != index)
-								((CheckListItem) list.getModel().getElementAt(i)).setSelected(false);
+					for (int i = 0; i < list.getModel().getSize(); i++) {
+						RBListItem item = (RBListItem) list.getModel().getElementAt(i);
+						if (i == index) {
+							item.setSelected(true);
+							list.repaint(list.getCellBounds(i, i));
+						} else {
+							if (item.isSelected())
+								list.repaint(list.getCellBounds(i, i));
+							item.setSelected(false);
 						}
-						item.setSelected(true);
 					}
 
 					// Repaint cell
@@ -118,17 +119,17 @@ public class GetDSSFilename implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		
-		if ((((Component) obj).getName()!= null) && ((Component) obj).getName().equals("btnDelScenario")) {
+
+		if ((((Component) obj).getName() != null) && ((Component) obj).getName().equals("btnDelScenario")) {
 			if ((theList != null) && lmScenNames.getSize() > 0) {
 				int todel = -1;
 				for (int i = 0; i < lmScenNames.getSize(); i++)
-					if (((CheckListItem) lmScenNames.getElementAt(i)).isSelected())
+					if (((RBListItem) lmScenNames.getElementAt(i)).isSelected())
 						todel = i;
 				if (todel > 0)
-					((CheckListItem) lmScenNames.getElementAt(todel - 1)).setSelected(true);
+					((RBListItem) lmScenNames.getElementAt(todel - 1)).setSelected(true);
 				else if (todel < lmScenNames.getSize() - 1)
-					((CheckListItem) lmScenNames.getElementAt(todel + 1)).setSelected(true);
+					((RBListItem) lmScenNames.getElementAt(todel + 1)).setSelected(true);
 				lmScenNames.remove(todel);
 
 			}
@@ -144,16 +145,16 @@ public class GetDSSFilename implements ActionListener {
 			if (rc == 0) {
 				file = fc.getSelectedFile();
 				if (theFileExt.equals("PDF") && !file.getName().toLowerCase().endsWith(".pdf")) {
-					file = new File(file.getPath()+".PDF");
+					file = new File(file.getPath() + ".PDF");
 				}
 				if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
-					file = new File(file.getPath()+".CLS");
+					file = new File(file.getPath() + ".CLS");
 				}
 				if (theList != null)
-					lmScenNames.addElement(new CheckListItem(file.getPath(), file.getName()));
+					lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
 				if (theList == null || lmScenNames.getSize() == 1) {
 					if (theList != null)
-						((CheckListItem) lmScenNames.getElementAt(0)).setSelected(true);
+						((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
 					if (theLabel != null) {
 						// theLabel.setText(file.getName());
 						// theLabel.setToolTipText(file.getPath());
@@ -272,14 +273,17 @@ public class GetDSSFilename implements ActionListener {
 			return "DSS File (*.dss)";
 		}
 	}
+
 	class GeneralFileFilter extends javax.swing.filechooser.FileFilter {
 		private String extension;
 		private String description;
+
 		GeneralFileFilter(String extension) {
 			this.extension = "." + extension.toLowerCase();
 			this.description = extension.toUpperCase() + " File (*." + extension.toLowerCase() + ")";
-			
+
 		}
+
 		public boolean accept(File file) {
 			// Convert to lower case before checking extension
 			return (file.getName().toLowerCase().endsWith(extension) || file.isDirectory());
@@ -290,13 +294,12 @@ public class GetDSSFilename implements ActionListener {
 		}
 	}
 
-
-	public class CheckListItem {
+	public class RBListItem {
 		private String label;
 		private String fullname;
 		private boolean isSelected = false;
 
-		public CheckListItem(String label, String label2) {
+		public RBListItem(String label, String label2) {
 			this.label = label2;
 			this.fullname = label;
 		}
@@ -320,15 +323,15 @@ public class GetDSSFilename implements ActionListener {
 
 	// Handles rendering cells in the list using a check box
 
-	class CheckListRenderer extends JRadioButton implements ListCellRenderer {
+	class RBListRenderer extends JRadioButton implements ListCellRenderer {
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 				boolean hasFocus) {
 			setEnabled(list.isEnabled());
-			setSelected(((CheckListItem) value).isSelected());
+			setSelected(((RBListItem) value).isSelected());
 			setFont(list.getFont());
 			setBackground(list.getBackground());
 			setForeground(list.getForeground());
-			setText(((CheckListItem) value).toString2());
+			setText(((RBListItem) value).toString2());
 			this.setToolTipText(value.toString());
 			return this;
 		}
