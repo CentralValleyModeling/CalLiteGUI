@@ -10,6 +10,7 @@ import java.util.Date;
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
 
+import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -18,6 +19,7 @@ import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.util.RectangleInsets;
+import org.jfree.data.Range;
 import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -32,12 +34,15 @@ public class ChartPanel1 extends JPanel {
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
 
-	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
-			Date lower, Date upper) {
+	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs,
+			boolean isExceed, Date lower, Date upper) {
 
 		super();
 
 		// create datasets ...
+
+		double ymax = -1e20;
+		double ymin = 1e20;
 
 		JFreeChart chart;
 		int primaries = 0;
@@ -50,6 +55,10 @@ public class ChartPanel1 extends JPanel {
 					series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
 				}
 				dataset.addSeries(series[i]);
+				if (ymin > tscs[i].minimumValue())
+					ymin = tscs[i].minimumValue();
+				if (ymax < tscs[i].maxmimumValue())
+					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
 			}
 
 			if (stscs != null) {
@@ -60,6 +69,11 @@ public class ChartPanel1 extends JPanel {
 						series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
 					}
 					dataset.addSeries(sseries[i]);
+					if (ymin > stscs[i].minimumValue())
+						ymin = stscs[i].minimumValue();
+					if (ymax < stscs[i].maxmimumValue())
+						ymax = stscs[i].maxmimumValue(); // typo in HEC DSS
+															// classes?
 				}
 			}
 
@@ -84,18 +98,36 @@ public class ChartPanel1 extends JPanel {
 				}
 
 				dataset.addSeries(series[i]);
+				if (ymin > tscs[i].minimumValue())
+					ymin = tscs[i].minimumValue();
+				if (ymax < tscs[i].maxmimumValue())
+					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
 			}
 
 			if (stscs != null) {
 				TimeSeries[] sseries = new TimeSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
 					if (stscs[i].numberValues > 0) {
-						sseries[i] = new TimeSeries(tscs[i].fileName);
+						String sName = "";
+						if (i == 0) {
+							String[] sParts = tscs[i].fullName.split("/");
+							if (sParts.length > 3)
+								sName = sParts[2] + "/" + sParts[3];
+							else
+								sName = "Unparsed Secondary";
+						}
+						sseries[i] = new TimeSeries(sName);
+
 						for (int j = 0; j < stscs[i].numberValues; j++) {
 							ht.set(stscs[i].times[j]);
 							sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
 						}
 						dataset.addSeries(sseries[i]);
+						if (ymin > stscs[i].minimumValue())
+							ymin = stscs[i].minimumValue();
+						if (ymax < stscs[i].maxmimumValue())
+							ymax = stscs[i].maxmimumValue(); // typo in HEC DSS
+																// classes?
 					}
 				}
 			}
@@ -112,11 +144,18 @@ public class ChartPanel1 extends JPanel {
 		chart.setBackgroundPaint(Color.WHITE);
 
 		XYPlot plot = (XYPlot) chart.getPlot();
-		plot.setBackgroundPaint(Color.WHITE);
-		plot.setDomainGridlinesVisible(false);
+		plot.setBackgroundPaint(Color.WHITE); // White background
+		plot.setDomainGridlinesVisible(false); // No gridlines
 		plot.setRangeGridlinesVisible(false);
-		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0));
-		if (stscs != null) {
+		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
+
+		if (tscs.length >= 4) { // Time series #4 in black
+
+			XYItemRenderer r = plot.getRenderer();
+			r.setSeriesPaint(3, ChartColor.BLACK);
+		}
+
+		if (stscs != null) { // Secondary time series as dashed lines
 			XYItemRenderer r = plot.getRenderer();
 			for (int t = 0; t < stscs.length; t++) {
 				Stroke stroke = new BasicStroke(1.0f, // Width
@@ -135,11 +174,12 @@ public class ChartPanel1 extends JPanel {
 			axis.setRange(0.0, 100.0);
 		else {
 			DateAxis dateAxis = (DateAxis) axis;
-			dateAxis.setRange(upper,lower);
+			dateAxis.setRange(upper, lower);
 		}
-			
+
 		axis = plot.getRangeAxis();
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
+		axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
 
 		ChartPanel p1 = new ChartPanel(chart);
 		// JButton clipButton = new JButton();

@@ -94,7 +94,7 @@ import javax.swing.event.TableModelListener;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
-import com.limno.calgui.GetDSSFilename.CheckListItem;
+import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 import com.limno.calgui.results.ChartPanel1;
 import com.limno.calgui.results.DSS_Grabber;
@@ -170,7 +170,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".163";
+		desktopTitle = desktop.getTitle() + ".164";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1424,7 +1424,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		dss_Grabber.setIsCFS(isCFS);
 
 		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-			CheckListItem item = (CheckListItem) lstScenarios.getModel().getElementAt(i);
+			RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
 			if (item.isSelected())
 				dss_Grabber.setBase(item.toString());
 		}
