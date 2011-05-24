@@ -219,6 +219,7 @@ public class DSS_Grabber {
 	public TimeSeriesContainer[] getDifferenceSeries(TimeSeriesContainer[] primaryResults) {
 		TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios - 1];
 		for (int i = 0; i < scenarios - 1; i++) {
+			
 			results[i] = (TimeSeriesContainer) primaryResults[i + 1].clone();
 			for (int j = 0; j < results[i].numberValues; j++)
 				results[i].values[j] = results[i].values[j] - primaryResults[0].values[j];

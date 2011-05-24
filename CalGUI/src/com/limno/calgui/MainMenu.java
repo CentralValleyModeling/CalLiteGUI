@@ -170,7 +170,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".164";
+		desktopTitle = desktop.getTitle() + ".165	";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -204,7 +204,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
-
+		
 		// Set current directory (Run Settings Page)
 
 		// Set Up Run Settings Page
@@ -1445,7 +1445,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JTabbedPane tabbedpane = new JTabbedPane();
 
 			if (doSummaryTable) {
-				SummaryTablePanel stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, summaryTags);
+				SummaryTablePanel stp; 
+				if (doDifference) 
+					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null, summaryTags);
+				else
+					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
