@@ -45,6 +45,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
@@ -104,8 +106,7 @@ import com.limno.calgui.results.ScrollablePicture;
 import com.limno.calgui.results.SummaryTablePanel;
 import com.limno.calgui.SymbolCanvas;
 
-public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener,
-		ChangeListener {
+public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -204,7 +205,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
-		
+
 		// Set current directory (Run Settings Page)
 
 		// Set Up Run Settings Page
@@ -274,24 +275,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		// Set Up Facilities Page
 		JTable table = (JTable) swix.find("tblBanks");
-		String[][] data = { { "Jan", "10300" }, { "Feb", "10300" }, { "Mar", "10300" }, { "Apr", "10300" },
-				{ "May", "10300" }, { "Jun", "10300" }, { "Jul", "10300" }, { "Aug", "10300" }, { "Sep", "10300" },
-				{ "Oct", "10300" }, { "Nov", "10300" }, { "Dec", "10300" } };
+		String[][] data = { { "Jan", "10300" }, { "Feb", "10300" }, { "Mar", "10300" }, { "Apr", "10300" }, { "May", "10300" }, { "Jun", "10300" },
+				{ "Jul", "10300" }, { "Aug", "10300" }, { "Sep", "10300" }, { "Oct", "10300" }, { "Nov", "10300" }, { "Dec", "10300" } };
 		String[] headers = { "Month", "cfs" };
 		DefaultTableModel model = new DefaultTableModel(data, headers);
 		table.setModel(model);
 
 		table = (JTable) swix.find("tblIF1");
-		String[][] data1 = { { "Jan", "15000" }, { "Feb", "15000" }, { "Mar", "15000" }, { "Apr", "15000" },
-				{ "May", "15000" }, { "Jun", "15000" }, { "Jul", "15000" }, { "Aug", "15000" }, { "Sep", "15000" },
-				{ "Oct", "15000" }, { "Nov", "15000" }, { "Dec", "15000" } };
+		String[][] data1 = { { "Jan", "15000" }, { "Feb", "15000" }, { "Mar", "15000" }, { "Apr", "15000" }, { "May", "15000" }, { "Jun", "15000" },
+				{ "Jul", "15000" }, { "Aug", "15000" }, { "Sep", "15000" }, { "Oct", "15000" }, { "Nov", "15000" }, { "Dec", "15000" } };
 		String[] headers1 = { "Month", "cfs" };
 		model = new DefaultTableModel(data1, headers1);
 		table.setModel(model);
 		JTable table2 = (JTable) swix.find("tblIF2");
-		String[][] data2 = { { "Jan", "0", "0" }, { "Feb", "0", "0" }, { "Mar", "0", "0" }, { "Apr", "0", "0" },
-				{ "May", "0", "0" }, { "Jun", "0", "0" }, { "Jul", "0", "0" }, { "Aug", "0", "0" },
-				{ "Sep", "0", "0" }, { "Oct", "0", "0" }, { "Nov", "0", "0" }, { "Dec", "0", "0" } };
+		String[][] data2 = { { "Jan", "0", "0" }, { "Feb", "0", "0" }, { "Mar", "0", "0" }, { "Apr", "0", "0" }, { "May", "0", "0" },
+				{ "Jun", "0", "0" }, { "Jul", "0", "0" }, { "Aug", "0", "0" }, { "Sep", "0", "0" }, { "Oct", "0", "0" }, { "Nov", "0", "0" },
+				{ "Dec", "0", "0" } };
 		String[] headers2 = { "Month", "min cfs", "max cfs" };
 		DefaultTableModel model2 = new DefaultTableModel(data2, headers2);
 		table2.setModel(model2);
@@ -384,10 +383,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		}
 
 		/*
-		 * String cName = gl.CtrlFortableID(tokens[0]); JCheckBox comp1 =
-		 * (JCheckBox) swix.find("cName"); comp1.setSelected(true);
-		 * RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels,
-		 * gl);
+		 * String cName = gl.CtrlFortableID(tokens[0]); JCheckBox comp1 = (JCheckBox) swix.find("cName");
+		 * comp1.setSelected(true); RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 		 */
 
 		// PDF Report
@@ -531,11 +528,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// Checkbox in Demands page changed
 
 				if (cName.startsWith("dem_rdbUD1")) {
-					GUI_Utils.ToggleEnComponentAndChildren(dem_UDSWP, e.getStateChange() == ItemEvent.SELECTED,
-							NumericTextField.class);
+					GUI_Utils.ToggleEnComponentAndChildren(dem_UDSWP, e.getStateChange() == ItemEvent.SELECTED, NumericTextField.class);
 				} else if (cName.startsWith("dem_rdbUD2")) {
-					GUI_Utils.ToggleEnComponentAndChildren(dem_UDCVP, e.getStateChange() == ItemEvent.SELECTED,
-							NumericTextField.class);
+					GUI_Utils.ToggleEnComponentAndChildren(dem_UDCVP, e.getStateChange() == ItemEvent.SELECTED, NumericTextField.class);
 				}
 			} else if (cName.startsWith("op_")) {
 				// Checkbox in Operation page changed
@@ -546,10 +541,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 				} else if (cName.startsWith("op_rdb2")) {
 					JPanel pan2 = (JPanel) swix.find("op_pan2");
-					GUI_Utils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED,
-							JRadioButton.class);
-					GUI_Utils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED,
-							JCheckBox.class);
+					GUI_Utils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JRadioButton.class);
+					GUI_Utils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JCheckBox.class);
 				} else if (cName.startsWith("op_rdb3")) {
 					JButton btn = (JButton) swix.find("op_btn3");
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
@@ -627,10 +620,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				// Ask if User wants to save scenario file
 				Boolean scensave = false;
-				int n = JOptionPane.showConfirmDialog(mainmenu,
-						"Would you like to save the scenario definition? \nScenario information "
-								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'",
-						"CalLite Gui", JOptionPane.YES_NO_OPTION);
+				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information "
+						+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui",
+						JOptionPane.YES_NO_OPTION);
 				if (n == JOptionPane.YES_OPTION) {
 
 					// statusBar.setMessage("Saving CalLite Scenario file...");
@@ -697,8 +689,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				else {
 					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 					desktop.setTitle(desktopTitle + " - " + scenFilename);
-					((JTextField) swix.find("run_txfoDSS"))
-							.setText(scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS");
+					((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS");
 
 				}
 			}
@@ -706,10 +697,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				JTextField tf = (JTextField) swix.find("run_txfScen");
 				String scen = tf.getText();
 				if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
-					proceed = (JOptionPane.showConfirmDialog(mainmenu,
-							"The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-									+ "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
-							JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+					proceed = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\"
+							+ scen + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
 				if (proceed) {
 
@@ -810,8 +799,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
 							table.setValueAt(value, startRow + i, startCol + j);
 						table.repaint();
-						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol
-								+ j);
+						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
 					}
 				}
 			} catch (Exception ex) {
@@ -897,8 +885,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
 							table.setValueAt(value, startRow + i, startCol + j);
 						table.repaint();
-						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol
-								+ j);
+						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
 					}
 				}
 			} catch (Exception ex) {
@@ -967,40 +954,30 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			}
 			/*
-			 * } else if (e.getActionCommand().startsWith("AC_Report")) { try {
-			 * dialog.setVisible(true); swix2.setActionListener(reportdialog,
-			 * this); GetDSSFilename getDSSFilename0 = new GetDSSFilename(null,
-			 * (JTextField) swix2.find("tfTemplateFILE"), "inp"); JButton
-			 * btnFile0 = (JButton) swix2.find("btnGetTemplateFile");
-			 * btnFile0.addActionListener((ActionListener) getDSSFilename0);
-			 * GetDSSFilename getDSSFilename1 = new GetDSSFilename(null,
-			 * (JTextField) swix2.find("tfReportFILE1")); JButton btnFile1 =
-			 * (JButton) swix2.find("btnGetReportFile1");
-			 * btnFile1.addActionListener((ActionListener) getDSSFilename1);
-			 * GetDSSFilename getDSSFilename2 = new GetDSSFilename(null,
-			 * (JTextField) swix2.find("tfReportFILE2")); JButton btnFile2 =
-			 * (JButton) swix2.find("btnGetReportFile2");
-			 * btnFile2.addActionListener((ActionListener) getDSSFilename2);
-			 * GetDSSFilename getDSSFilename3 = new GetDSSFilename(null,
-			 * (JTextField) swix2.find("tfReportFILE3"), "PDF"); JButton
-			 * btnFile3 = (JButton) swix2.find("btnGetReportFile3");
-			 * btnFile3.addActionListener((ActionListener) getDSSFilename3); }
-			 * catch (Exception e1) { // TODO Auto-generated catch block
-			 * e1.printStackTrace(); }
+			 * } else if (e.getActionCommand().startsWith("AC_Report")) { try { dialog.setVisible(true);
+			 * swix2.setActionListener(reportdialog, this); GetDSSFilename getDSSFilename0 = new GetDSSFilename(null,
+			 * (JTextField) swix2.find("tfTemplateFILE"), "inp"); JButton btnFile0 = (JButton)
+			 * swix2.find("btnGetTemplateFile"); btnFile0.addActionListener((ActionListener) getDSSFilename0);
+			 * GetDSSFilename getDSSFilename1 = new GetDSSFilename(null, (JTextField) swix2.find("tfReportFILE1"));
+			 * JButton btnFile1 = (JButton) swix2.find("btnGetReportFile1"); btnFile1.addActionListener((ActionListener)
+			 * getDSSFilename1); GetDSSFilename getDSSFilename2 = new GetDSSFilename(null, (JTextField)
+			 * swix2.find("tfReportFILE2")); JButton btnFile2 = (JButton) swix2.find("btnGetReportFile2");
+			 * btnFile2.addActionListener((ActionListener) getDSSFilename2); GetDSSFilename getDSSFilename3 = new
+			 * GetDSSFilename(null, (JTextField) swix2.find("tfReportFILE3"), "PDF"); JButton btnFile3 = (JButton)
+			 * swix2.find("btnGetReportFile3"); btnFile3.addActionListener((ActionListener) getDSSFilename3); } catch
+			 * (Exception e1) { // TODO Auto-generated catch block e1.printStackTrace(); }
 			 */
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
-			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty()
-					|| ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
+			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty() || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
 					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file",
-						"Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file", "Error",
+						JOptionPane.ERROR_MESSAGE);
 			} else {
 				Report report = null;
 				// dialog.setVisible(false);
 				try {
 					// Create an inputstream from template file;
-					FileInputStream fin = new FileInputStream(
-							((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
+					FileInputStream fin = new FileInputStream(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					// Open the template file
 					System.out.println(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
@@ -1008,13 +985,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					theText = theText + br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					br.readLine();
-					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText()
-							+ "\n";
+					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
 					br.readLine();
 					theText = theText + "NAME_BASE\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
 					br.readLine();
-					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText()
-							+ "\n";
+					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
 					br.readLine();
 					theText = theText + "NAME_ALT\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
 					br.readLine();
@@ -1022,8 +997,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					br.readLine();
 					theText = theText + "NOTE\t\"" + ((JTextArea) swix.find("taReportNOTES")).getText() + "\"\n";
 					br.readLine();
-					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix.find("taReportASSUMPTIONS")).getText()
-							+ "\"\n";
+					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix.find("taReportASSUMPTIONS")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "MODELER\t\"" + ((JTextField) swix.find("tfReportMODELER")).getText() + "\"\n";
 
@@ -1257,8 +1231,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		} else if (e.getActionCommand().startsWith("Sch_Delta")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
 			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			verticalScrollBar
-					.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+			verticalScrollBar.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
 			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
@@ -1391,6 +1364,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String summaryTags = "";
 		String names = "";
 		String locations = "";
+		String dateRange = "";
 
 		String[] groupParts = displayGroup.split(";");
 
@@ -1417,8 +1391,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				names = groupParts[i].substring(5);
 			else if (groupParts[i].startsWith("Index-"))
 				locations = groupParts[i].substring(6);
-			else
-				System.out.println("Unparsed display list component - " + groupParts[i]);
+			else {
+				// Check to see if the groupPart parses as mmmyyyy-mmmyyy
+				Pattern p = Pattern.compile("\\w\\w\\w\\d\\d\\d\\d-\\w\\w\\w\\d\\d\\d\\d");
+				Matcher m = p.matcher(groupParts[i]);
+				if (m.find())
+					dateRange = groupParts[i];
+				else
+					System.out.println("Unparsed display list component - " + groupParts[i]);
+			}
 		}
 
 		dss_Grabber.setIsCFS(isCFS);
@@ -1435,6 +1416,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
+			dss_Grabber.setDateRange(dateRange);
 
 			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
 			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
@@ -1445,9 +1427,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JTabbedPane tabbedpane = new JTabbedPane();
 
 			if (doSummaryTable) {
-				SummaryTablePanel stp; 
-				if (doDifference) 
-					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null, summaryTags);
+				SummaryTablePanel stp;
+				if (doDifference)
+					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
+							summaryTags);
 				else
 					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
@@ -1474,14 +1457,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 											// done
 				for (int m1 = 0; m1 < 12; m1++)
 					if (exceedMonths.contains(monthNames[m1])) {
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
-								dss_Grabber.getYLabel(), exc_Results[m1], null, true, upper, lower);
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
+								exc_Results[m1], null, true, upper, lower);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("Annual") || !plottedOne) {
-					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)",
-							dss_Grabber.getYLabel(), exc_Results[12], null, true, upper, lower);
+					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[12], null,
+							true, upper, lower);
 					tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
 				}
 			}
@@ -1490,19 +1473,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ChartPanel1 cp2;
 			if (primary_Results.length > 1) {
 				if (doDifference) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", dss_Grabber.getYLabel(),
-							diff_Results, null, false, upper, lower);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", dss_Grabber.getYLabel(), diff_Results, null, false, upper, lower);
 					tabbedpane.insertTab("Difference", null, cp2, null, 0);
 				}
 				if (doComparison) {
-					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(),
-							primary_Results, secondary_Results, false, upper, lower);
+					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results, secondary_Results,
+							false, upper, lower);
 					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 				}
 			} else {
 				if (doTimeSeries) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results,
-							secondary_Results, false, upper, lower);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 				}
 			}
@@ -1516,7 +1497,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			frame.setTitle("CalLite Results - " + namesText[i]);
 			tabbedpane.setSelectedIndex(0);
 			frame.setVisible(true);
-			frame.setSize(980,700);
+			frame.setSize(980, 700);
 			frame.setLocation(displayCount * 20, displayCount * 20);
 			displayCount++;
 
@@ -1567,8 +1548,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
 					f = new File(fileName);
 					exists = f.exists();
-					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-							+ System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|" + System.getProperty("user.dir")
+							+ "\\Default\\Lookup\\" + files[1] + ".table";
 				}
 			}
 
@@ -1609,8 +1590,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				public void tableChanged(TableModelEvent e) {
 
 					/*
-					 * if (RegUserEdits == null) { RegUserEdits = new
-					 * Boolean[20]; }
+					 * if (RegUserEdits == null) { RegUserEdits = new Boolean[20]; }
 					 * 
 					 * RegUserEdits[tID] = true;
 					 */
@@ -1637,37 +1617,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// JFrame frame1 = new JFrame();
 
 				/*
-				 * JTable table = new JTable(); table.setColumnModel(new
-				 * GroupableTableColumnModel()); table.setTableHeader(new
-				 * GroupableTableHeader((GroupableTableColumnModel)
-				 * table.getColumnModel())); table.setModel(dTableModels[tID]);
-				 * table.createDefaultColumnsFromModel();
+				 * JTable table = new JTable(); table.setColumnModel(new GroupableTableColumnModel());
+				 * table.setTableHeader(new GroupableTableHeader((GroupableTableColumnModel) table.getColumnModel()));
+				 * table.setModel(dTableModels[tID]); table.createDefaultColumnsFromModel();
 				 * 
 				 * 
-				 * GroupableTableColumnModel cm =
-				 * (GroupableTableColumnModel)table.getColumnModel();
+				 * GroupableTableColumnModel cm = (GroupableTableColumnModel)table.getColumnModel();
 				 * 
-				 * ColumnGroup g_Wet = new ColumnGroup("Wet");
-				 * g_Wet.add(cm.getColumn(1)); g_Wet.add(cm.getColumn(2));
-				 * ColumnGroup g_AN = new ColumnGroup("Above Normal");
-				 * g_AN.add(cm.getColumn(3)); g_AN.add(cm.getColumn(4));
-				 * ColumnGroup g_BN = new ColumnGroup("Below Normal");
-				 * g_BN.add(cm.getColumn(5)); g_BN.add(cm.getColumn(6));
-				 * ColumnGroup g_DRY = new ColumnGroup("Dry");
-				 * g_DRY.add(cm.getColumn(7)); g_DRY.add(cm.getColumn(8));
-				 * ColumnGroup g_CD = new ColumnGroup("Critical Dry");
-				 * g_CD.add(cm.getColumn(9)); g_CD.add(cm.getColumn(10));
+				 * ColumnGroup g_Wet = new ColumnGroup("Wet"); g_Wet.add(cm.getColumn(1)); g_Wet.add(cm.getColumn(2));
+				 * ColumnGroup g_AN = new ColumnGroup("Above Normal"); g_AN.add(cm.getColumn(3));
+				 * g_AN.add(cm.getColumn(4)); ColumnGroup g_BN = new ColumnGroup("Below Normal");
+				 * g_BN.add(cm.getColumn(5)); g_BN.add(cm.getColumn(6)); ColumnGroup g_DRY = new ColumnGroup("Dry");
+				 * g_DRY.add(cm.getColumn(7)); g_DRY.add(cm.getColumn(8)); ColumnGroup g_CD = new
+				 * ColumnGroup("Critical Dry"); g_CD.add(cm.getColumn(9)); g_CD.add(cm.getColumn(10));
 				 * 
 				 * 
-				 * GroupableTableHeader h =
-				 * (GroupableTableHeader)table.getTableHeader();
-				 * h.addColumnGroup(g_Wet); h.addColumnGroup(g_AN);
-				 * h.addColumnGroup(g_BN); h.addColumnGroup(g_DRY);
-				 * h.addColumnGroup(g_CD); JScrollPane scroll = new JScrollPane(
-				 * table );
+				 * GroupableTableHeader h = (GroupableTableHeader)table.getTableHeader(); h.addColumnGroup(g_Wet);
+				 * h.addColumnGroup(g_AN); h.addColumnGroup(g_BN); h.addColumnGroup(g_DRY); h.addColumnGroup(g_CD);
+				 * JScrollPane scroll = new JScrollPane( table );
 				 * 
-				 * //frame1.add(scroll); //frame1.pack();
-				 * //frame1.setVisible(true);
+				 * //frame1.add(scroll); //frame1.pack(); //frame1.setVisible(true);
 				 */
 
 			}
@@ -1759,23 +1728,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							dss_Grabber.setLocation("102");
 
 							TimeSeriesContainer[] primary_Results = new TimeSeriesContainer[1];
-							primary_Results[0] = dss_Grabber.getOneSeries(
-									((JTextField) swix.find("schem_tfload")).getText(), dss_Grabber.primaryDSSName);
+							primary_Results[0] = dss_Grabber.getOneSeries(((JTextField) swix.find("schem_tfload")).getText(),
+									dss_Grabber.primaryDSSName);
 
 							Date lower = new Date();
 							JSpinner m = (JSpinner) swix.find("spnStartMonth");
 							JSpinner y1 = (JSpinner) swix.find("spnStartYear");
-							lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue()))
-									.getFirstMillisecond());
+							lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue())).getFirstMillisecond());
 
 							Date upper = new Date();
 							m = (JSpinner) swix.find("spnEndMonth");
 							y1 = (JSpinner) swix.find("spnEndYear");
-							upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue())
-									.getLastMillisecond()));
+							upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue()).getLastMillisecond()));
 
-							ChartPanel1 cp1 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(),
-									primary_Results, null, false, upper, lower);
+							ChartPanel1 cp1 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, null, false, upper,
+									lower);
 							mapPlotFrame.add(cp1);
 							mapPlotFrame.pack();
 							mapPlotFrame.setVisible(true);
@@ -1951,7 +1918,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
 			if (rdb.isVisible()) {
-				if (RegUserEdits != null && dTableModels!=null) {
+				if (RegUserEdits != null && dTableModels != null) {
 					DataFileTableModel tm = (DataFileTableModel) table.getModel();
 					int tID = tm.tID;
 					if (RegUserEdits[tID] != null) {
@@ -2118,10 +2085,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 
 				/*
-				 * GUI_Utils .ReplaceLineInFile(System.getProperty("user.dir") +
-				 * "\\Run\\Lookup\\options.table", 13, "9       " + LODFlag +
-				 * "   !Level of Development, LOD_Future = 1 for future and 0 for existing"
-				 * );
+				 * GUI_Utils .ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\options.table", 13,
+				 * "9       " + LODFlag + "   !Level of Development, LOD_Future = 1 for future and 0 for existing" );
 				 */
 
 				// Copy 2005/2030 lookup tables
@@ -2311,8 +2276,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
 					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				} else {
-					fsAnnS = new File(System.getProperty("user.dir")
-							+ "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
 					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				}
 				try {
