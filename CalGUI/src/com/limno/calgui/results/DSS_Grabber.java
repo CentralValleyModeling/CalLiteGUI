@@ -46,7 +46,8 @@ public class DSS_Grabber {
 	private String title;
 	private String yLabel;
 	private boolean isCFS;
-
+	private int startTime;
+	private int endTime;
 	private int scenarios;
 
 	public DSS_Grabber(JList list) {
@@ -56,6 +57,24 @@ public class DSS_Grabber {
 
 	public void setIsCFS(boolean isCFS) {
 		this.isCFS = isCFS;
+	}
+
+	public void setDateRange(String dateRange) {
+
+		// Assumes daterange specified as mmmyyyy-mmmyyyy
+
+		HecTime ht = new HecTime();
+
+		int m = monthToInt(dateRange.substring(0, 3));
+		int y = new Integer(dateRange.substring(3, 7));
+		ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
+		startTime = ht.value();
+
+		m = monthToInt(dateRange.substring(8, 11));
+		y = new Integer(dateRange.substring(11, 15));
+		ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
+		endTime = ht.value();
+
 	}
 
 	public void setBase(String string) {
@@ -114,31 +133,26 @@ public class DSS_Grabber {
 
 			String[] dssNames = dssName.split(";");
 
+			// Check for time shift (-1 at end of name)
+
 			boolean doTimeShift = false;
 			if (dssNames[0].endsWith("(-1)")) {
 				doTimeShift = true;
 				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
 			}
+
 			result = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
 
-			// Do time shift were indicated
-			if (doTimeShift) {
-				for (int i = result.numberValues; i < result.numberValues - 1; i++)
-					result.times[i] = result.times[i + 1];
-				result.numberValues = result.numberValues - 1;
-			}
 			if ((result == null) || (result.numberValues < 1)) {
 
-				JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error", JOptionPane.ERROR_MESSAGE);
 
 			} else {
 				for (int i = 1; i < dssNames.length; i++) {
-					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[i]
-							+ "/01JAN2020/1MON/" + hecFPart, true);
+					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
 					if (result2 == null) {
-						JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename,
-								"Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
+								JOptionPane.ERROR_MESSAGE);
 					} else {
 						for (int j = 0; j < result2.numberValues; j++)
 
@@ -146,6 +160,33 @@ public class DSS_Grabber {
 					}
 
 				}
+			}
+
+			// Trim to date range
+
+			int first = 0;
+			for (int i = 0; (i < result.numberValues) && (result.times[i] < startTime); i++)
+				first = i;
+
+			int last = result.numberValues - 1;
+			for (int i = result.numberValues - 1; (i >= 0) && (result.times[i] > endTime); i--)
+				last = i;
+
+			System.out.println(result.times[first]);
+			System.out.println(result.times[last]);
+
+			if (first != 0)
+				for (int i = 0; i < (last - first); i++) {
+					result.times[i] = result.times[i + first];
+					result.values[i] = result.values[i + first];
+				}
+			result.numberValues = last - first + 1;
+
+			// Do time shift were indicated
+			if (doTimeShift) {
+				for (int i = result.numberValues; i < result.numberValues - 1; i++)
+					result.times[i] = result.times[i + 1];
+				result.numberValues = result.numberValues - 1;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -158,7 +199,7 @@ public class DSS_Grabber {
 			Calendar calendar = Calendar.getInstance();
 			for (int j = 0; j < result.numberValues; j++) {
 				ht.set(result.times[j]);
-				calendar.set(ht.year(), ht.month()-1, 1);
+				calendar.set(ht.year(), ht.month() - 1, 1);
 				result.values[j] = result.values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
 			}
 			result.units = "TAFY";
@@ -209,7 +250,7 @@ public class DSS_Grabber {
 				String scenarioName = lstScenarios.getModel().getElementAt(i).toString();
 				if (!baseName.equals(scenarioName)) {
 					j = j + 1;
-					results[j] = getOneSeries(scenarioName, primaryDSSName);
+					results[j] = getOneSeries(scenarioName, secondaryDSSName);
 				}
 			}
 			return results;
@@ -219,7 +260,7 @@ public class DSS_Grabber {
 	public TimeSeriesContainer[] getDifferenceSeries(TimeSeriesContainer[] primaryResults) {
 		TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios - 1];
 		for (int i = 0; i < scenarios - 1; i++) {
-			
+
 			results[i] = (TimeSeriesContainer) primaryResults[i + 1].clone();
 			for (int j = 0; j < results[i].numberValues; j++)
 				results[i].values[j] = results[i].values[j] - primaryResults[0].values[j];
@@ -275,4 +316,36 @@ public class DSS_Grabber {
 		}
 		return results;
 	}
+
+	public int monthToInt(String EndMon) {
+		int iEMon = 0;
+
+		if (EndMon.equals("Apr")) {
+			iEMon = 4;
+		} else if (EndMon.equals("Jun")) {
+			iEMon = 6;
+		} else if (EndMon.equals("Sep")) {
+			iEMon = 9;
+		} else if (EndMon.equals("Nov")) {
+			iEMon = 11;
+		} else if (EndMon.equals("Feb")) {
+			iEMon = 2;
+		} else if (EndMon.equals("Jan")) {
+			iEMon = 1;
+		} else if (EndMon.equals("Mar")) {
+			iEMon = 3;
+		} else if (EndMon.equals("May")) {
+			iEMon = 5;
+		} else if (EndMon.equals("Jul")) {
+			iEMon = 7;
+		} else if (EndMon.equals("Aug")) {
+			iEMon = 8;
+		} else if (EndMon.equals("Oct")) {
+			iEMon = 10;
+		} else if (EndMon.equals("Dec")) {
+			iEMon = 12;
+		}
+		return iEMon;
+	}
+
 }
