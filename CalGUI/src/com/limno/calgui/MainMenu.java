@@ -1432,10 +1432,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			dss_Grabber.setDateRange(dateRange);
 
 			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
-			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-
-			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
 			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
+			
+			dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
+
+			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
+			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
 
 			JTabbedPane tabbedpane = new JTabbedPane();
 
@@ -1450,7 +1452,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			if (doMonthlyTable) {
-				MonthlyTablePanel mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results);
+				MonthlyTablePanel mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber);
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 

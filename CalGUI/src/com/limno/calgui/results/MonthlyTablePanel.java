@@ -37,7 +37,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	final String CELL_BREAK = "\t";
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs) {
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSS_Grabber dss_Grabber) {
 
 		super();
 
@@ -65,8 +65,8 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		if (tscs[0].units.equals("CFS") || tscs[0].units.equals("TAFY")) {
-			columns.addElement("Ann (TAFY)");
+		if (dss_Grabber.originalUnits.equals("CFS")) {
+			columns.addElement("Ann (TAF)");
 		}
 
 		for (int s = 0; s < tscs.length; s++) {
@@ -89,26 +89,23 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				int m = ht.month();
 				int wy = (m < 10) ? y : y + 1;
 				if ((i - first) % 12 == 0) {
-					if (i != first)
-						if (tscs[s].units.equals("CFS"))
-							data.addElement(df1.format(sum * 0.723966942));
-						else if (tscs[s].units.equals("TAFY"))
-							data.addElement(df1.format(sum));
-					sum = 0;
+					if (i != first && dss_Grabber.originalUnits.equals("CFS"))
+						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
 					data.addElement(Integer.toString(wy));
 				}
 				sum = sum + tscs[s].values[i];
 				data.addElement(df1.format(tscs[s].values[i]));
 			}
-			if (tscs[s].units.equals("CFS")) {
-				data.addElement(df1.format(sum));
+			if (dss_Grabber.originalUnits.equals("CFS")) {
+				
 			}
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);
 			JTable table = new JTable(model);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-			TableColumn col = table.getColumnModel().getColumn(0);
-			col.setPreferredWidth(50);
+			for (int c = 0; c < table.getColumnCount(); c++)
+				table.getColumnModel().getColumn(c).setPreferredWidth((c == 0)? 50: 30);
+			
 			table.setCellSelectionEnabled(true);
 
 			addComponentListener((ComponentListener) this);
