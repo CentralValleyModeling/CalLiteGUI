@@ -76,6 +76,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.ProgressMonitor;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
@@ -88,6 +89,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
@@ -106,7 +109,7 @@ import com.limno.calgui.results.ScrollablePicture;
 import com.limno.calgui.results.SummaryTablePanel;
 import com.limno.calgui.SymbolCanvas;
 
-public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener {
+public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -311,12 +314,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		// Set up scenario list
 		lstScenarios = (JList) swix.find("SelectedList");
+
 		dss_Grabber = new DSS_Grabber(lstScenarios);
-		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"));
+		JRadioButton rdb1= (JRadioButton) swix.find("rdbp001");
+		JRadioButton rdb2= (JRadioButton) swix.find("rdbp002");
+
+		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"),rdb1, rdb2);
 		lstScenarios.setModel(getDSSFilename.lmScenNames);
 		lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 		lstScenarios.setPreferredSize(new Dimension(285, 100));
-
+		
 		JButton btnScenario = (JButton) swix.find("btnAddScenario");
 		btnScenario.addActionListener((ActionListener) getDSSFilename);
 
@@ -2379,4 +2386,25 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		worker.execute();
 	}
+
+	@Override
+	public void contentsChanged(ListDataEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Changed");
+	}
+
+	@Override
+	public void intervalAdded(ListDataEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Added");
+	}
+
+	@Override
+	public void intervalRemoved(ListDataEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Removed");
+	}
+	
+
+	
 }
