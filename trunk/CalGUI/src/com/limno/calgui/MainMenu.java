@@ -1268,17 +1268,23 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		String cAdd;
 		cAdd = "";
-		// Comparison and Difference
-		JCheckBox ckb = (JCheckBox) swix.find("ckbp001");
-		if (ckb.isSelected()) {
+		// Base, Comparison and Difference
+		JRadioButton rdb = (JRadioButton) swix.find("rdbp000");
+		if (rdb.isSelected()) {
+			cAdd = cAdd + "Base";
+		}
+		
+		rdb = (JRadioButton) swix.find("rdbp001");
+		if (rdb.isSelected()) {
 			cAdd = cAdd + "Comp";
 		}
-		ckb = (JCheckBox) swix.find("ckbp002");
-		if (ckb.isSelected()) {
-			cAdd = cAdd + ";Diff";
+		
+		rdb = (JRadioButton) swix.find("rdbp002");
+		if (rdb.isSelected()) {
+			cAdd = cAdd + "Diff";
 		}
 		// Units
-		JRadioButton rdb = (JRadioButton) swix.find("rdbCFS");
+		rdb = (JRadioButton) swix.find("rdbCFS");
 		if (rdb.isSelected()) {
 			cAdd = cAdd + ";CFS";
 		} else {
@@ -1295,7 +1301,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		cAdd = cAdd + ";" + cDate;
 
 		// Time Series
-		ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
+		JCheckBox ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
 		if (ckb.isSelected()) {
 			cAdd = cAdd + ";TS";
 		}
