@@ -1033,7 +1033,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			}
 
-		} else if (e.getActionCommand().startsWith("Rep_AllMonths")) {
+		} else if (e.getActionCommand().startsWith("Rep_All")) {
 			Component[] components = controls2.getComponents();
 			for (int i = 0; i < components.length; i++) {
 				if (components[i] instanceof JCheckBox) {
@@ -1046,7 +1046,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 				}
 			}
-		} else if (e.getActionCommand().startsWith("Rep_ClearMonths")) {
+		} else if (e.getActionCommand().startsWith("Rep_ClearScen")) {
 			Component[] components = controls2.getComponents();
 			for (int i = 0; i < components.length; i++) {
 				if (components[i] instanceof JCheckBox) {
@@ -1138,9 +1138,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			String aLine;
 			Vector<String> data = new Vector<String>();
 
+			JFileChooser fc = new JFileChooser();
+			fc.setFileFilter(new CGRFileFilter());
+			fc.setCurrentDirectory(new File(".//Config"));
+
+			String dirname = ".//Config";
+			File file = null;
+			String filename = null;
+			int retval = fc.showOpenDialog(mainmenu);
+			if (retval == JFileChooser.APPROVE_OPTION) {
+				// ... The user selected a file, get it, use it.
+				file = fc.getSelectedFile();
+				filename = file.toString();
+				
+			}
+			
+			
 			try {
 
-				FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				//FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				FileInputStream fin = new FileInputStream(filename);
 				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
 				// Read until first non-comment line
@@ -1165,16 +1182,33 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
 
-			// Delete existing reportlist
+			JFileChooser fc = new JFileChooser();
+			fc.setFileFilter(new CGRFileFilter());
+			fc.setCurrentDirectory(new File(".//Config"));
+
+			String dirname = ".//Config";
+			File file = null;
+			String filename = null;
+			int retval = fc.showSaveDialog(mainmenu);
+			if (retval == JFileChooser.APPROVE_OPTION) {
+				// ... The user selected a file, get it, use it.
+				file = fc.getSelectedFile();
+				filename = file.toString();
+			}
+			
+			
+			/* Delete existing reportlist
 			File f = new File(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
 			GUI_Utils.deleteDir(f);
 			GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+			*/
 
 			OutputStream outputStream;
 			try {
-				outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				//outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				outputStream = new FileOutputStream(filename);
 			} catch (FileNotFoundException e2) {
-				System.out.println("Cannot open reportlist.cgr");
+				System.out.println("Cannot open " + filename );
 				return;
 			}
 
