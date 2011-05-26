@@ -24,6 +24,8 @@ import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 
 class FileListModel extends DefaultListModel {
 
@@ -42,6 +44,8 @@ public class GetDSSFilename implements ActionListener {
 	JLabel theLabel;
 	JTextField theTextField;
 	String theFileExt = null;
+	JRadioButton rdbopt1;
+	JRadioButton rdbopt2;
 
 	public GetDSSFilename(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
@@ -63,6 +67,15 @@ public class GetDSSFilename implements ActionListener {
 		theFileExt = aFileExt;
 		Setup(aList);
 	}
+	
+	public GetDSSFilename(JList aList, JLabel aLabel, JRadioButton rdb1,JRadioButton rdb2 ) {
+		theLabel = aLabel;
+		theFileExt = "DSS";
+		theTextField = null;
+		Setup(aList);
+		rdbopt1=rdb1;
+		rdbopt2=rdb2;
+	}
 
 	public int dialogRC;
 
@@ -80,6 +93,8 @@ public class GetDSSFilename implements ActionListener {
 		}
 		if (aList != null) {
 			lmScenNames = new DefaultListModel();
+			lmScenNames.addListDataListener(new MyListDataListener());
+			
 
 			theList = aList;
 			theList.setCellRenderer(new RBListRenderer());
@@ -116,6 +131,26 @@ public class GetDSSFilename implements ActionListener {
 			});
 		}
 	}
+	
+	class MyListDataListener implements ListDataListener {
+	    public void contentsChanged(ListDataEvent e) {
+	    	//System.out.println("Changed");
+	    }
+	    public void intervalAdded(ListDataEvent e) {
+	    	//System.out.println(lmScenNames.getSize());
+	    	if (rdbopt1 != null &&  rdbopt2 != null){
+	    		rdbopt1.setEnabled(lmScenNames.getSize()>1);
+	    		rdbopt2.setEnabled(lmScenNames.getSize()>1);
+	    	}
+	    }
+	    public void intervalRemoved(ListDataEvent e) {
+	    	//System.out.println(lmScenNames.getSize());
+	    	if (rdbopt1 != null &&  rdbopt2 != null){
+	    		rdbopt1.setEnabled(lmScenNames.getSize()>1);
+	    		rdbopt2.setEnabled(lmScenNames.getSize()>1);
+	    	}
+	    }
+	} 
 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();

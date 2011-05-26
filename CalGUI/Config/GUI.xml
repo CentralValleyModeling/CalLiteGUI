@@ -1530,7 +1530,7 @@
 							<scrollpane minimumsize="380,100" preferredsize="380,100">
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" gridwidth="4" />
-								<list id="SelectedList" visiblerowcount="5" minimumsize="300,100">
+								<list id="SelectedList" name="SelectedList" visiblerowcount="5" minimumsize="300,100">
 									<gridbagconstraints insets="0,0,0,0"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0"
 										gridwidth="4" />
