@@ -129,7 +129,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		columns.addElement("Annual");
+		columns.addElement("All");
 
 		// loop over all Primary datasets
 
@@ -172,25 +172,23 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				int y = ht.year();
 				int m = ht.month();
 				int wy = (m < 10) ? y : y + 1;
-				if (wy >= 1920) { // TODO - replace temporary filter with values
-					// based on controls
-					int ySac403030 = (m < 2) ? y - 1 : y;
-					ySac403030 = wy;
 
-					int ySHASTAindex = (m < 3) ? y - 1 : y;
-					int yFEATHERindex = (m < 2) ? y - 1 : y;
-					int ySJRindex = (m < 2) ? y - 1 : y;
+				// int ySac403030 = (m < 2) ? y - 1 : y;
+				int ySac403030 = wy;
 
-					update(0, 0, tsc.values[i], m);
-					update(1, ylt[ySac403030 - 1920][1], tsc.values[i], m);
-					update(2, ylt[ySHASTAindex - 1920][3], tsc.values[i], m);
-					update(3, ylt[yFEATHERindex - 1920][5], tsc.values[i], m);
-					update(4, ylt[ySJRindex - 1920][2], tsc.values[i], m);
+				int ySHASTAindex = (m < 3) ? y - 1 : y;
+				int yFEATHERindex = (m < 2) ? y - 1 : y;
+				int ySJRindex = (m < 2) ? y - 1 : y;
 
-					if (ylt[wy - 1920][8] != 0) {
-						update(5, ylt[wy - 1920][8], tsc.values[i], m);
-						update(5, 0, tsc.values[i], m);
-					}
+				update(0, 0, tsc.values[i], m);
+				update(1, ylt[ySac403030 - 1920][1], tsc.values[i], m);
+				update(2, ylt[ySHASTAindex - 1920][3], tsc.values[i], m);
+				update(3, ylt[yFEATHERindex - 1920][5], tsc.values[i], m);
+				update(4, ylt[ySJRindex - 1920][2], tsc.values[i], m);
+
+				if (ylt[wy - 1920][8] != 0) {
+					update(5, ylt[wy - 1920][8], tsc.values[i], m);
+					update(5, 0, tsc.values[i], m);
 				}
 
 			}
@@ -301,7 +299,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 					}
 
 			// Delete extra blank row at end of table
-			
+
 			for (int i = 0; i < 15; i++)
 				data[t].removeElementAt(data[t].size() - 1);
 
@@ -321,7 +319,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				String[] parts = tsc.fullName.split("/");
 				label.setText(parts[2] + "/" + parts[3] + " (" + tsc.units + ") - " + tsc.fileName);
 			}
-			label.setPreferredSize(new Dimension(500,30));
+			label.setPreferredSize(new Dimension(500, 30));
 
 			panel.add(label);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);

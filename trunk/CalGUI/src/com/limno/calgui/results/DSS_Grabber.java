@@ -43,12 +43,20 @@ public class DSS_Grabber {
 	private String locationName;
 	public String primaryDSSName;
 	private String secondaryDSSName;
-	private String title;
-	private String yLabel;
-	private boolean isCFS;
-	private int startTime;
+
+	private String title; // Chart title
+	private String yLabel; // Y-axis label
+
+	private boolean isCFS; // Indicates whether "CFS" button was selected
+	public String originalUnits; // Copy of original units
+
+	private int startTime; // Start and end time from dashboard
 	private int endTime;
+	private int startWY;
+	private int endWY; // Number of water years in time period
+
 	private int scenarios;
+	private double[][] annualTAFs;
 
 	public DSS_Grabber(JList list) {
 
@@ -69,12 +77,13 @@ public class DSS_Grabber {
 		int y = new Integer(dateRange.substring(3, 7));
 		ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
 		startTime = ht.value();
+		startWY = (m < 10) ? y : y + 1; // Water year of startTime
 
 		m = monthToInt(dateRange.substring(8, 11));
 		y = new Integer(dateRange.substring(11, 15));
 		ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
 		endTime = ht.value();
-
+		endWY = ((m < 10) ? y : y + 1);
 	}
 
 	public void setBase(String string) {
@@ -114,6 +123,79 @@ public class DSS_Grabber {
 				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
 				yLabel = com.limno.calgui.MainMenu.getLookups(i, 3);
 				title = com.limno.calgui.MainMenu.getLookups(i, 4);
+			}
+		}
+	}
+
+	public double getAnnualTAF(int i, int wy) {
+
+		return annualTAFs[i][wy - startWY];
+	}
+
+	public void calcTAFforCFS(TimeSeriesContainer[] primaryResults, TimeSeriesContainer[] secondaryResults) {
+
+		/*
+		 * Procedure calculates annual volume in TAF for any CFS dataset, and replaces monthly values if TAF flag is
+		 * checked.
+		 * 
+		 * Should only be called after getPrimarySeries and getSecondarySeries have been invoked.
+		 */
+
+		// Allocate and zero out
+
+		int datasets = primaryResults.length;
+		if (secondaryResults != null)
+			datasets = datasets + secondaryResults.length;
+
+		annualTAFs = new double[datasets][endWY - startWY + 1];
+
+		for (int i = 0; i < datasets; i++)
+			for (int j = 0; j < endWY - startWY + 1; j++)
+				annualTAFs[i][j] = 0.0;
+
+		// Calculate
+
+		if (originalUnits.equals("CFS")) {
+
+			HecTime ht = new HecTime();
+			Calendar calendar = Calendar.getInstance();
+
+			// Primary series
+
+			for (int i = 0; i < primaryResults.length; i++) {
+				for (int j = 0; j < primaryResults[i].numberValues; j++) {
+
+					ht.set(primaryResults[i].times[j]);
+					calendar.set(ht.year(), ht.month() - 1, 1);
+					double monthlyTAF = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
+					int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
+					annualTAFs[i][wy] += monthlyTAF;
+					if (!isCFS)
+						primaryResults[i].values[j] = monthlyTAF;
+				}
+				if (!isCFS)
+					primaryResults[i].units = "TAF";
+			}
+
+			if (secondaryResults != null) {
+
+				// Secondary series
+
+				for (int i = 0; i < secondaryResults.length; i++) {
+					for (int j = 0; j < secondaryResults[i].numberValues; j++) {
+
+						ht.set(secondaryResults[i].times[j]);
+						calendar.set(ht.year(), ht.month() - 1, 1);
+						double monthlyTAF = secondaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
+						int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
+						annualTAFs[i + primaryResults.length][wy] += monthlyTAF;
+						if (!isCFS)
+							secondaryResults[i].values[j] = monthlyTAF;
+
+					}
+					if (!isCFS)
+						secondaryResults[i].units = "TAF";
+				}
 			}
 		}
 	}
@@ -193,18 +275,6 @@ public class DSS_Grabber {
 			e.printStackTrace();
 		}
 
-		// Convert CFS to TAFY
-		if ((result.units.equals("CFS")) && !isCFS) {
-			HecTime ht = new HecTime();
-			Calendar calendar = Calendar.getInstance();
-			for (int j = 0; j < result.numberValues; j++) {
-				ht.set(result.times[j]);
-				calendar.set(ht.year(), ht.month() - 1, 1);
-				result.values[j] = result.values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
-			}
-			result.units = "TAFY";
-		}
-
 		String shortFileName = new File(dssFilename).getName();
 		result.fileName = shortFileName;
 		return result;
@@ -212,25 +282,27 @@ public class DSS_Grabber {
 
 	public TimeSeriesContainer[] getPrimarySeries() {
 
-		// Number of scenarios
+		// Store number of scenarios
 
 		scenarios = lstScenarios.getModel().getSize();
-
 		TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios];
 
 		// Base first
 
 		results[0] = getOneSeries(baseName, primaryDSSName);
+		originalUnits = results[0].units;
+
+		// Then scenarios
+
 		int j = 0;
 		for (int i = 0; i < scenarios; i++) {
 			String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
-			// if (scenarioName.contains("\\"))
-			// scenarioName = new File(scenarioName).getName();
 			if (!baseName.equals(scenarioName)) {
 				j = j + 1;
 				results[j] = getOneSeries(scenarioName, primaryDSSName);
 			}
 		}
+
 		return results;
 	}
 
@@ -270,42 +342,68 @@ public class DSS_Grabber {
 
 	public TimeSeriesContainer[][] getExceedanceSeries(TimeSeriesContainer[] primaryResults) {
 
-		TimeSeriesContainer[][] results = new TimeSeriesContainer[13][scenarios];
+		/*
+		 * Generates exceedance time series for all values [index=0], for each month's values [1..12], and [TBI] for
+		 * annual totals [Index=13]
+		 */
 
-		for (int month = 0; month < 13; month++) {
+		TimeSeriesContainer[][] results = new TimeSeriesContainer[14][scenarios];
+
+		for (int month = 0; month < 14; month++) {
 
 			HecTime ht = new HecTime();
 			for (int i = 0; i < scenarios; i++) {
 
-				if (month == 12) {
+				if (month == 13) {
 					results[month][i] = (TimeSeriesContainer) primaryResults[i].clone();
 				} else {
-					int[] times = primaryResults[i].times;
-					double[] values = primaryResults[i].values;
-					int n = 0;
-					for (int j = 0; j < times.length; j++) {
-						ht.set(times[j]);
-						if (ht.month() == month)
-							n = n + 1;
-					}
-					int times2[] = new int[n];
-					double values2[] = new double[n];
-					n = 0;
-					for (int j = 0; j < times.length; j++) {
-						ht.set(times[j]);
-						if (ht.month() == month) {
-							times2[n] = times[j];
-							values2[n] = values[j];
-							n = n + 1;
-						}
-					}
-					results[month][i] = new TimeSeriesContainer();
-					results[month][i].times = times2;
-					results[month][i].values = values2;
-					results[month][i].numberValues = n;
-					results[month][i].units = primaryResults[i].units;
-					results[month][i].fileName = primaryResults[i].fileName;
 
+					int n;
+					int times2[];
+					double values2[];
+
+					results[month][i] = new TimeSeriesContainer();
+
+					if (month == 12) {
+
+						// Annual totals - grab from annualTAFs
+						n = annualTAFs[i].length;
+						times2 = new int[n];
+						values2 = new double[n];
+						for (int j = 0; j < n; j++) {
+							ht.setYearMonthDay(j + startWY, 11, 1, 0);
+							times2[j] = ht.value();
+							values2[j] = annualTAFs[i][j];
+						}
+
+					} else {
+
+						int[] times = primaryResults[i].times;
+						double[] values = primaryResults[i].values;
+						n = 0;
+						for (int j = 0; j < times.length; j++) {
+							ht.set(times[j]);
+							if (ht.month() == month + 1)
+								n = n + 1;
+						}
+						times2 = new int[n];
+						values2 = new double[n];
+						n = 0;
+						for (int j = 0; j < times.length; j++) {
+							ht.set(times[j]);
+							if (ht.month() == month + 1) {
+								times2[n] = times[j];
+								values2[n] = values[j];
+								n = n + 1;
+							}
+						}
+						results[month][i].times = times2;
+						results[month][i].values = values2;
+						results[month][i].numberValues = n;
+						results[month][i].units = primaryResults[i].units;
+						results[month][i].fileName = primaryResults[i].fileName;
+
+					}
 				}
 				if (results[month][i].values != null) {
 					double[] sortArray = results[month][i].values;
