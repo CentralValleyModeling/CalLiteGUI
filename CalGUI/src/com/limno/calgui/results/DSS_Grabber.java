@@ -147,7 +147,7 @@ public class DSS_Grabber {
 		if (secondaryResults != null)
 			datasets = datasets + secondaryResults.length;
 
-		annualTAFs = new double[datasets][endWY - startWY + 1];
+		annualTAFs = new double[datasets][endWY - startWY + 2];
 
 		for (int i = 0; i < datasets; i++)
 			for (int j = 0; j < endWY - startWY + 1; j++)
@@ -397,13 +397,12 @@ public class DSS_Grabber {
 								n = n + 1;
 							}
 						}
-						results[month][i].times = times2;
-						results[month][i].values = values2;
-						results[month][i].numberValues = n;
-						results[month][i].units = primaryResults[i].units;
-						results[month][i].fileName = primaryResults[i].fileName;
-
 					}
+					results[month][i].times = times2;
+					results[month][i].values = values2;
+					results[month][i].numberValues = n;
+					results[month][i].units = primaryResults[i].units;
+					results[month][i].fileName = primaryResults[i].fileName;
 				}
 				if (results[month][i].values != null) {
 					double[] sortArray = results[month][i].values;

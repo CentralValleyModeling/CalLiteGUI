@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".165	";
+		desktopTitle = desktop.getTitle() + ".171";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -316,14 +316,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		lstScenarios = (JList) swix.find("SelectedList");
 
 		dss_Grabber = new DSS_Grabber(lstScenarios);
-		JRadioButton rdb1= (JRadioButton) swix.find("rdbp001");
-		JRadioButton rdb2= (JRadioButton) swix.find("rdbp002");
+		JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
+		JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
-		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"),rdb1, rdb2);
+		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
 		lstScenarios.setModel(getDSSFilename.lmScenNames);
 		lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 		lstScenarios.setPreferredSize(new Dimension(285, 100));
-		
+
 		JButton btnScenario = (JButton) swix.find("btnAddScenario");
 		btnScenario.addActionListener((ActionListener) getDSSFilename);
 
@@ -1150,13 +1150,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// ... The user selected a file, get it, use it.
 				file = fc.getSelectedFile();
 				filename = file.toString();
-				
+
 			}
-			
-			
+
 			try {
 
-				//FileInputStream fin = new FileInputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				// FileInputStream fin = new FileInputStream(System.getProperty("user.dir") +
+				// "\\Config\\reportlist.cgr");
 				FileInputStream fin = new FileInputStream(filename);
 				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
@@ -1195,20 +1195,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				file = fc.getSelectedFile();
 				filename = file.toString();
 			}
-			
-			
-			/* Delete existing reportlist
-			File f = new File(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
-			GUI_Utils.deleteDir(f);
-			GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
-			*/
+
+			/*
+			 * Delete existing reportlist File f = new File(System.getProperty("user.dir") +
+			 * "\\Config\\reportlist.cgr"); GUI_Utils.deleteDir(f);
+			 * GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+			 */
 
 			OutputStream outputStream;
 			try {
-				//outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
+				// outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
 				outputStream = new FileOutputStream(filename);
 			} catch (FileNotFoundException e2) {
-				System.out.println("Cannot open " + filename );
+				System.out.println("Cannot open " + filename);
 				return;
 			}
 
@@ -1314,12 +1313,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		if (rdb.isSelected()) {
 			cAdd = cAdd + "Base";
 		}
-		
+
 		rdb = (JRadioButton) swix.find("rdbp001");
 		if (rdb.isSelected()) {
 			cAdd = cAdd + "Comp";
 		}
-		
+
 		rdb = (JRadioButton) swix.find("rdbp002");
 		if (rdb.isSelected()) {
 			cAdd = cAdd + "Diff";
@@ -1403,6 +1402,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		boolean doComparison = false;
 		boolean doDifference = false;
 		boolean doTimeSeries = false;
+		boolean doBase = false;
 		boolean doExceedance = false;
 		boolean isCFS = false;
 		boolean doMonthlyTable = false;
@@ -1416,6 +1416,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String[] groupParts = displayGroup.split(";");
 
 		for (int i = 0; i < groupParts.length; i++) {
+			if (groupParts[i].equals("Base"))
+				doBase = true;
 			if (groupParts[i].equals("Comp"))
 				doComparison = true;
 			else if (groupParts[i].equals("Diff"))
@@ -1467,7 +1469,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
 			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
-			
+
 			dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
 
 			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
@@ -1486,7 +1488,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			if (doMonthlyTable) {
-				MonthlyTablePanel mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber);
+				MonthlyTablePanel mtp;
+				if (doDifference) {
+					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
+							dss_Grabber);
+				} else
+					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber);
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 
@@ -1511,29 +1518,46 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
-				if (exceedMonths.contains("Annual") || !plottedOne) {
+				if (exceedMonths.contains("ALL") || !plottedOne) {
 					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[12], null,
 							true, upper, lower);
-					tabbedpane.insertTab("Exceedance", null, cp3, null, 0);
+					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
+				}
+				if (exceedMonths.contains("Annual")) {
+					if (dss_Grabber.originalUnits.equals("CFS")) {
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)", exc_Results[13],
+								null, true, upper, lower);
+						tabbedpane.insertTab("Exceedance (Annual Total)", null, cp3, null, 0);
+					} else {
+						JPanel panel = new JPanel();
+						panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
+						tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
+					}
 				}
 			}
 
 			ChartPanel1 cp1;
 			ChartPanel1 cp2;
-			if (primary_Results.length > 1) {
-				if (doDifference) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference ", dss_Grabber.getYLabel(), diff_Results, null, false, upper, lower);
-					tabbedpane.insertTab("Difference", null, cp2, null, 0);
-				}
-				if (doComparison) {
-					cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results, secondary_Results,
-							false, upper, lower);
-					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-				}
-			} else {
-				if (doTimeSeries) {
+
+			if (doTimeSeries) {
+				if (doBase) {
 					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
+
+				} else if (primary_Results.length < 2) {
+					JPanel panel = new JPanel();
+					panel.add(new JLabel("No chart - need two or more time series."));
+					tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
+				} else {
+					if (doDifference) {
+						cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, dss_Grabber.getYLabel(),
+								diff_Results, null, false, upper, lower);
+						tabbedpane.insertTab("Difference", null, cp2, null, 0);
+					} else if (doComparison) {
+						cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results, secondary_Results,
+								false, upper, lower);
+						tabbedpane.insertTab("Comparison", null, cp1, null, 0);
+					}
 				}
 			}
 
@@ -2440,7 +2464,5 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// TODO Auto-generated method stub
 		System.out.println("Removed");
 	}
-	
 
-	
 }

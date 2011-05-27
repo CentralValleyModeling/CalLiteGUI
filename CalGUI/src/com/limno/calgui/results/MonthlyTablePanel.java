@@ -27,6 +27,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 public class MonthlyTablePanel extends JPanel implements ActionListener, ComponentListener {
@@ -107,6 +108,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				table.getColumnModel().getColumn(c).setPreferredWidth((c == 0)? 50: 30);
 			
 			table.setCellSelectionEnabled(true);
+		       DefaultTableCellRenderer renderer =   
+	                (DefaultTableCellRenderer)table.getDefaultRenderer(String.class);   
+	        renderer.setHorizontalAlignment(JLabel.RIGHT);   
 
 			addComponentListener((ComponentListener) this);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);

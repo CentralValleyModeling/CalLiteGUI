@@ -274,7 +274,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 									switch (tag) {
 									case 0:
-										data[t].addElement(df1.format(avg[i1][i2][i3m] * (i3m == 0 ? 12 : 1)));
+										data[t].addElement(df1.format(avg[i1][i2][i3m])); // * (i3m == 0 ? 12 : 1)));
 										break;
 									case 1:
 										data[t].addElement(df1.format(sdev[i1][i2][i3m]));
@@ -311,6 +311,8 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				col.setPreferredWidth((c == 0) ? 150 : 45);
 			}
 			table.setCellSelectionEnabled(true);
+			DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(String.class);
+			renderer.setHorizontalAlignment(JLabel.RIGHT);
 
 			JLabel label = new JLabel();
 			if (t < tscs.length)
