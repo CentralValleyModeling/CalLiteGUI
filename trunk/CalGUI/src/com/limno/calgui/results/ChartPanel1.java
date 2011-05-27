@@ -52,7 +52,7 @@ public class ChartPanel1 extends JPanel {
 			for (int i = 0; i < tscs.length; i++) {
 				series[i] = new XYSeries(tscs[i].fileName);
 				for (int j = 0; j < tscs[i].numberValues; j++) {
-					series[i].add((double) (100.0 * j / tscs[i].numberValues), tscs[i].values[j]);
+					series[i].add((double) (100.0 * j / (tscs[i].numberValues-1)), tscs[i].values[j]);
 				}
 				dataset.addSeries(series[i]);
 				if (ymin > tscs[i].minimumValue())
@@ -79,7 +79,7 @@ public class ChartPanel1 extends JPanel {
 
 			chart = ChartFactory.createXYLineChart(title.replace(";", "+"), // title
 					"Percent", // x-axis label
-					yLabel + " (" + tscs[0].units + ")", // y-axis label
+					yLabel + ((yLabel.endsWith("(TAF)")?"": "(" + tscs[0].units + ")")), // y-axis label
 					dataset, // data
 					true); // create and display a frame...
 
@@ -172,10 +172,10 @@ public class ChartPanel1 extends JPanel {
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
 		if (isExceed)
 			axis.setRange(0.0, 100.0);
-		else {
-			DateAxis dateAxis = (DateAxis) axis;
-			dateAxis.setRange(upper, lower);
-		}
+//		else {
+//			DateAxis dateAxis = (DateAxis) axis;
+//			dateAxis.setRange(upper, lower);
+//		}
 
 		axis = plot.getRangeAxis();
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
