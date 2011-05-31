@@ -170,7 +170,7 @@ public class GetDSSFilename implements ActionListener {
 			}
 		} else {
 			int rc;
-			if (theFileExt == null)
+			if (theFileExt == null || theFileExt.equals("DSS"))
 				rc = fc.showOpenDialog(null);
 			else
 				rc = fc.showDialog(null, "Save");

@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".171";
+		desktopTitle = desktop.getTitle() + ".172";
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1046,7 +1046,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 				}
 			}
-		} else if (e.getActionCommand().startsWith("Rep_ClearScen")) {
+		} else if (e.getActionCommand().startsWith("Rep_ClearMonths")) {
 			Component[] components = controls2.getComponents();
 			for (int i = 0; i < components.length; i++) {
 				if (components[i] instanceof JCheckBox) {
@@ -1474,6 +1474,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
 			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
+			TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
 
 			JTabbedPane tabbedpane = new JTabbedPane();
 
@@ -1514,19 +1515,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				for (int m1 = 0; m1 < 12; m1++)
 					if (exceedMonths.contains(monthNames[m1])) {
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-								exc_Results[m1], null, true, upper, lower);
+								exc_Results[m1], sexc_Results[m1], true, upper, lower);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("ALL") || !plottedOne) {
-					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[12], null,
+					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[12], sexc_Results[12],
 							true, upper, lower);
 					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
 				}
 				if (exceedMonths.contains("Annual")) {
 					if (dss_Grabber.originalUnits.equals("CFS")) {
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)", exc_Results[13],
-								null, true, upper, lower);
+								sexc_Results[13], true, upper, lower);
 						tabbedpane.insertTab("Exceedance (Annual Total)", null, cp3, null, 0);
 					} else {
 						JPanel panel = new JPanel();

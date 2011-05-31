@@ -1701,7 +1701,7 @@
 										anchor="GridBagConstraints.CENTER" gridx="3" gridy="2"
 										gridwidth="2" />
 								</button>
-								<button name="RepbtnClearMonths" text="Clear months"
+								<button name="RepbtnClearMonths" text="Clear Checks"
 									font="Tahoma-Normal-11" enabled="false" ActionCommand="Rep_ClearMonths">
 									<gridbagconstraints insets="0,0,0,0"
 										anchor="GridBagConstraints.CENTER" gridx="5" gridy="2"
