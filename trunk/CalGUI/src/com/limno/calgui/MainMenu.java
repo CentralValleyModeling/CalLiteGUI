@@ -176,7 +176,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		desktopTitle = desktop.getTitle() + ".173";
 		desktop.setResizable(false);
-
+		
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
@@ -333,9 +333,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		JButton btnClearAll = (JButton) swix.find("btnClearScenario");
 		btnClearAll.addActionListener(this);
-
-		JButton btnSetBase = (JButton) swix.find("btnSetBase");
-		btnSetBase.addActionListener(this);
 
 		JButton btnReport = (JButton) swix.find("btnReport");
 		btnReport.addActionListener(this);
@@ -1516,19 +1513,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				for (int m1 = 0; m1 < 12; m1++)
 					if (exceedMonths.contains(monthNames[m1])) {
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-								exc_Results[m1], sexc_Results[m1], true, upper, lower);
+								exc_Results[m1], sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel());
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("ALL") || !plottedOne) {
 					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[12], sexc_Results[12],
-							true, upper, lower);
+							true, upper, lower, dss_Grabber.getSLabel());
 					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
 				}
 				if (exceedMonths.contains("Annual")) {
 					if (dss_Grabber.originalUnits.equals("CFS")) {
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)", exc_Results[13],
-								sexc_Results[13], true, upper, lower);
+								sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel());
 						tabbedpane.insertTab("Exceedance (Annual Total)", null, cp3, null, 0);
 					} else {
 						JPanel panel = new JPanel();
@@ -1543,7 +1540,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			if (doTimeSeries) {
 				if (doBase) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower);
+					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower, dss_Grabber.getSLabel());
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 
 				} else if (primary_Results.length < 2) {
@@ -1553,11 +1550,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else {
 					if (doDifference) {
 						cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, dss_Grabber.getYLabel(),
-								diff_Results, null, false, upper, lower);
+								diff_Results, null, false, upper, lower, dss_Grabber.getSLabel());
 						tabbedpane.insertTab("Difference", null, cp2, null, 0);
 					} else if (doComparison) {
 						cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results, secondary_Results,
-								false, upper, lower);
+								false, upper, lower, dss_Grabber.getSLabel());
 						tabbedpane.insertTab("Comparison", null, cp1, null, 0);
 					}
 				}
@@ -1817,7 +1814,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue()).getLastMillisecond()));
 
 							ChartPanel1 cp1 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, null, false, upper,
-									lower);
+									lower, dss_Grabber.getSLabel());
 							mapPlotFrame.add(cp1);
 							mapPlotFrame.pack();
 							mapPlotFrame.setVisible(true);
@@ -1941,10 +1938,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			lineCount++;
 		}
 		input.close();
-		lookups = new String[lineCount][5];
+		lookups = new String[lineCount][6];
 		for (int i = 0; i < lineCount; i++) {
 			String[] parts = allLookups.get(i).split("[\t]+");
-			for (int j = 0; j < 5; j++) {
+			for (int j = 0; j < 6; j++) {
 				if (parts[j].equals("null"))
 					parts[j] = "";
 				lookups[i][j] = parts[j];

@@ -44,7 +44,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
 
-	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower, Date upper) {
+	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
+			Date upper, String sLabel) {
 
 		super();
 
@@ -56,13 +57,16 @@ public class ChartPanel1 extends JPanel implements Printable {
 		JFreeChart chart;
 		int primaries = 0;
 		String sName = "";
-		if (stscs != null) {
-			String[] sParts = stscs[0].fullName.split("/");
-			if (sParts.length > 3)
-				sName = sParts[2] + "/" + sParts[3];
-			else
-				sName = "Unparsed Secondary";
-		}
+		if (sLabel.equals("")) {
+			if (stscs != null) {
+				String[] sParts = stscs[0].fullName.split("/");
+				if (sParts.length > 3)
+					sName = sParts[2] + "/" + sParts[3];
+				else
+					sName = "Unassigned Secondary";
+			}
+		} else
+			sName = sLabel;
 
 		if (isExceed) {
 
