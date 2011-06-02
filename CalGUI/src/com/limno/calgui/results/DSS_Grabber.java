@@ -46,6 +46,7 @@ public class DSS_Grabber {
 
 	private String title; // Chart title
 	private String yLabel; // Y-axis label
+	private String sLabel; // Label for secondary time series
 
 	private boolean isCFS; // Indicates whether "CFS" button was selected
 	public String originalUnits; // Copy of original units
@@ -104,6 +105,12 @@ public class DSS_Grabber {
 
 	}
 
+	public String getSLabel() {
+
+		return sLabel;
+
+	}
+	
 	public String getTitle() {
 		if (title != "")
 			return title;
@@ -123,6 +130,7 @@ public class DSS_Grabber {
 				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
 				yLabel = com.limno.calgui.MainMenu.getLookups(i, 3);
 				title = com.limno.calgui.MainMenu.getLookups(i, 4);
+				sLabel = com.limno.calgui.MainMenu.getLookups(i, 5);
 			}
 		}
 	}
