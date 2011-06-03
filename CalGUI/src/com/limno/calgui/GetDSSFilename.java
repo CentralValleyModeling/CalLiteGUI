@@ -92,10 +92,10 @@ public class GetDSSFilename implements ActionListener {
 				fc.setCurrentDirectory(new File(".//Config"));
 		}
 		if (aList != null) {
+			
 			lmScenNames = new DefaultListModel();
 			lmScenNames.addListDataListener(new MyListDataListener());
 			
-
 			theList = aList;
 			theList.setCellRenderer(new RBListRenderer());
 			theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -166,7 +166,6 @@ public class GetDSSFilename implements ActionListener {
 				else if (todel < lmScenNames.getSize() - 1)
 					((RBListItem) lmScenNames.getElementAt(todel + 1)).setSelected(true);
 				lmScenNames.remove(todel);
-
 			}
 		} else {
 			int rc;
@@ -193,13 +192,18 @@ public class GetDSSFilename implements ActionListener {
 					if (theLabel != null) {
 						// theLabel.setText(file.getName());
 						// theLabel.setToolTipText(file.getPath());
-					} else {
+					} else if (theTextField != null){
 						theTextField.setText(file.getName());
 						theTextField.setToolTipText(file.getPath());
 					}
 				}
-				if (theList != null)
-					theList.repaint();
+				if (theList != null) {
+					theList.ensureIndexIsVisible(lmScenNames.getSize()-1);
+					theList.revalidate();
+					theList.validate();
+					theList.getParent().invalidate();
+				}
+					
 			}
 		}
 		return;

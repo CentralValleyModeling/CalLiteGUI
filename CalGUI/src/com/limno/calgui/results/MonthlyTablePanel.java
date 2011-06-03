@@ -38,7 +38,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	final String CELL_BREAK = "\t";
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSS_Grabber dss_Grabber) {
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSS_Grabber dss_Grabber, String sName) {
 
 		super();
 
@@ -70,22 +70,35 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			columns.addElement("Ann (TAF)");
 		}
 
-		for (int s = 0; s < tscs.length; s++) {
+		for (int s = 0; s < tscs.length + stscs.length; s++) {
 
+			String sLabel = sName;
+			TimeSeriesContainer tsc;
+			if (s < tscs.length) {
+				tsc = tscs[s];
+				sLabel = title;
+			} else {
+				tsc = stscs[s - tscs.length];
+				if (sName.equals("")) {
+					String[] parts = tsc.fullName.split("/");
+					sLabel = parts[2] + "/" + parts[3];
+				} else
+					sLabel = sName;
+			}
 			JLabel label = new JLabel();
-			label.setText(title + " (" + tscs[s].units + ") - " + tscs[s].fileName);
+			label.setText(sLabel + " (" + tsc.units + ") - " + tsc.fileName);
 			panel.add(label);
 
 			int first = 0;
-			ht.set(tscs[s].times[first]);
+			ht.set(tsc.times[first]);
 			while (ht.month() != 10) {
 				first++;
-				ht.set(tscs[s].times[first]);
+				ht.set(tsc.times[first]);
 			}
 			Vector<String> data = new Vector<String>();
 			double sum = 0;
-			for (int i = first; i < tscs[s].numberValues; i++) {
-				ht.set(tscs[s].times[i]);
+			for (int i = first; i < tsc.numberValues; i++) {
+				ht.set(tsc.times[i]);
 				int y = ht.year();
 				int m = ht.month();
 				int wy = (m < 10) ? y : y + 1;
@@ -94,23 +107,22 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
 					data.addElement(Integer.toString(wy));
 				}
-				sum = sum + tscs[s].values[i];
-				data.addElement(df1.format(tscs[s].values[i]));
+				sum = sum + tsc.values[i];
+				data.addElement(df1.format(tsc.values[i]));
 			}
 			if (dss_Grabber.originalUnits.equals("CFS")) {
-				
+
 			}
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);
 			JTable table = new JTable(model);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			for (int c = 0; c < table.getColumnCount(); c++)
-				table.getColumnModel().getColumn(c).setPreferredWidth((c == 0)? 50: 30);
-			
+				table.getColumnModel().getColumn(c).setPreferredWidth((c == 0) ? 50 : 30);
+
 			table.setCellSelectionEnabled(true);
-		       DefaultTableCellRenderer renderer =   
-	                (DefaultTableCellRenderer)table.getDefaultRenderer(String.class);   
-	        renderer.setHorizontalAlignment(JLabel.RIGHT);   
+			DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(String.class);
+			renderer.setHorizontalAlignment(JLabel.RIGHT);
 
 			addComponentListener((ComponentListener) this);
 			panel.add(table.getTableHeader(), BorderLayout.NORTH);
