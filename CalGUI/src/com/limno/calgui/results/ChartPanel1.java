@@ -76,6 +76,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 			XYSeries[] series = new XYSeries[tscs.length];
 			for (int i = 0; i < tscs.length; i++) {
 				series[i] = new XYSeries(tscs[i].fileName);
+				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					series[i].add((double) (100.0 * j / (tscs[i].numberValues - 1)), tscs[i].values[j]);
 				}
