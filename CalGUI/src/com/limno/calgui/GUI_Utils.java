@@ -611,6 +611,38 @@ public class GUI_Utils {
 		return sb;
     }
 	
+    public static StringBuffer ReadScenarioFile(File f){
+    	StringBuffer sb = new StringBuffer();
+		
+		FileInputStream fs = null;
+		InputStreamReader in = null;
+		BufferedReader br = null;
+		String textinLine;
+		final String NL = System.getProperty("line.separator"); 
+		
+		try {
+    		fs = new FileInputStream(f);
+    		in = new InputStreamReader(fs);
+    		br = new BufferedReader(in);
+    		
+    		while(true) {
+				textinLine=br.readLine();
+				if(textinLine==null)
+    				break;  
+				
+				sb.append(textinLine + NL);
+    			
+    		}
+    		
+    	} catch (FileNotFoundException e) {
+    		e.printStackTrace();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+		}
+    	
+    	return sb;
+    	
+    }
 	
 	public  static Boolean[] SetControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl) {
 
