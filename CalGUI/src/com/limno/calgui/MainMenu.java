@@ -209,7 +209,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
 
-		// Set current directory (Run Settings Page)
+		
+		// Recolor results tabs
+		
+		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+		jtp.setForegroundAt(6,Color.blue);  		
+		
+		
+		jtp.setForegroundAt(7,Color.blue);
+		jtp.setForegroundAt(8,Color.blue);
+		jtp.setForegroundAt(9,Color.blue);
+		
+		jtp.setBackgroundAt(6,Color.WHITE);
+		jtp.setBackgroundAt(7,Color.WHITE);
+		jtp.setBackgroundAt(8,Color.WHITE);
+		jtp.setBackgroundAt(9,Color.WHITE);
 
 		// Set Up Run Settings Page
 		JLabel label = (JLabel) swix.find("map");

@@ -13,9 +13,11 @@
 			<separator />
 			<menuitem text="Delete" enabled="false" />
 		</menu>
-		<menu id="menuS" name="menuS" text="Scenario Settings" mnemonic="VK_S">
+		<menu visible="false" id="menuS" name="menuS" text="Scenario Settings"
+			mnemonic="VK_S">
 		</menu>
-		<menu id="menuR" name="menuR" text="Results" mnemonic="VK_R">
+		<menu visible="false" id="menuR" name="menuR" text="Results"
+			mnemonic="VK_R">
 		</menu>
 		<menu text="Help" mnemonic="VK_H">
 			<menuitem text="View Help" mnemonic="VK_H" enabled="true"
@@ -28,9 +30,9 @@
 	<panel id="mainmenu">
 
 		<panel id="settings" name="settings" layout="BorderLayout"
-			visible="false" preferredsize="1020,768">
+			visible="true" preferredsize="1020,740">
 
-			<tabbedpane constraints="Borderlayout.NORTH" id="tabbedPane1"
+			<tabbedpane constraints="Borderlayout.WEST" id="tabbedPane1"
 				name="tabbedPane1">
 				<panel id="runsettings" name="Run Settings" border="TitledBorder()"
 					font="Tahoma-Bold-12" layout="GridBagLayout">
@@ -1491,15 +1493,10 @@
 					</panel>
 
 				</panel>
-			</tabbedpane>
-		</panel>
-
-		<panel id="results" name="results" layout="BorderLayout"
-			visible="true" preferredsize="1020,740">
-
-			<tabbedpane constraints="Borderlayout.WEST" id="tabbedPane2"
-				name="tabbedPane2">
-				<panel id="Reporting" name="Quick" constraints="BorderLayout.LEFT"
+				<!-- </tabbedpane> </panel> <panel id="results" name="results" layout="BorderLayout" 
+					visible="true" preferredsize="1020,740"> <tabbedpane constraints="Borderlayout.WEST" 
+					id="tabbedPane2" name="tabbedPane2"> -->
+				<panel id="Reporting" name="Quick Results" constraints="BorderLayout.LEFT"
 					titlefont="Tahoma-Italic-12" layout="GridBagLayout" preferredsize="1020,748">
 
 					<panel id="controls" resizeable="true" layout="GridBagLayout"
@@ -1520,7 +1517,8 @@
 									text="Clear All" />
 							</hbox>
 
-							<scrollpane name="spsl" id="spsl" minimumsize="410,100" preferredsize="410,100">
+							<scrollpane name="spsl" id="spsl" minimumsize="410,100"
+								preferredsize="410,100">
 								<gridbagconstraints insets="5,10,0,10"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 								<list id="SelectedList" name="SelectedList">
@@ -2216,9 +2214,9 @@
 					</button>
 				</panel>
 
-				<panel id="Custom" name="Custom" font="Tahoma-Italic-12">
+				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12">
 				</panel>
-				<panel id="schematics" name="Schematics" font="Tahoma-Italic-12"
+				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 					<button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD">
 						<gridbagconstraints insets="0,0,2,2"

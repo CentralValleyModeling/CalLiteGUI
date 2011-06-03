@@ -15,7 +15,7 @@ public class DataFileTable extends JPanel {
     f = new Font("SanSerif",Font.PLAIN,24);
     setFont(f);
     setLayout(new BorderLayout());
-
+    
     model = new DataFileTableModel(dataFilePath, tID);
 
     table = new JTable();
