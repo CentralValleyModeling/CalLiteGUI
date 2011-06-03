@@ -18,6 +18,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -174,15 +175,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".173";
+		desktopTitle = desktop.getTitle() + ".176";
 		desktop.setResizable(false);
 		
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
-		// swix2 = new SwingEngine(this);
-		// swix2.render(new File("Config\\ReportDialog.xml"));
 
 		// Set ActionListeners (Regulations Page)
 
@@ -314,6 +313,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Setup for Reporting page
 
 		// Set up scenario list
+
 		lstScenarios = (JList) swix.find("SelectedList");
 
 		dss_Grabber = new DSS_Grabber(lstScenarios);
@@ -323,7 +323,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
 		lstScenarios.setModel(getDSSFilename.lmScenNames);
 		lstScenarios.setBorder(new LineBorder(Color.gray, 1));
-		lstScenarios.setPreferredSize(new Dimension(285, 100));
 
 		JButton btnScenario = (JButton) swix.find("btnAddScenario");
 		btnScenario.addActionListener((ActionListener) getDSSFilename);
@@ -356,8 +355,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Set up report list
 		JList lstReports = (JList) swix.find("lstReports");
 		lstReports.setBorder(new LineBorder(Color.gray, 1));
-		lstReports.setFixedCellWidth(400);
-		lstReports.setPreferredSize(new Dimension(600, 100));
 		lstReports.setVisible(true);
 
 		// Load Default Scenario
@@ -421,7 +418,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			helpViewer.setCurrentID("Introduction");
 		} catch (Exception e) {
 			System.err.println("API Help Set not found");
-			;
 		}
 		help = new JFrame("CalLite 2.0 GUI Help");
 		help.getContentPane().add(helpViewer);
@@ -1480,9 +1476,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				SummaryTablePanel stp;
 				if (doDifference)
 					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
-							summaryTags);
+							summaryTags,"");
 				else
-					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags);
+					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel());
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1490,9 +1486,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				MonthlyTablePanel mtp;
 				if (doDifference) {
 					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
-							dss_Grabber);
+							dss_Grabber,"");
 				} else
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber);
+					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber,dss_Grabber.getSLabel());
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 
@@ -1756,6 +1752,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	}
 
+	JComponent lastComponent=null;
+	
 	public void mousePressed(MouseEvent e) {
 		// Double Click
 		Integer iClickCount = e.getClickCount();
@@ -1767,7 +1765,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			if (cName != null) {
 				if (cName.startsWith("ckbp")) {
 
-					// ----- HANDLE DISPLAY OF SINGLE VARIABLE -----
+					// ----- Quick Results: HANDLE DISPLAY OF SINGLE VARIABLE -----
 
 					menu.setCursor(hourglassCursor);
 
@@ -1776,14 +1774,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					} else {
 
 						JCheckBox chk = (JCheckBox) component;
-						chk.setFont(new Font("Tahoma", Font.ITALIC, 12));
-						chk.repaint();
-
 						DisplayFrame(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
-						System.out.println(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
-						chk.setFont(new Font("Tahoma", Font.BOLD, 12));
-						chk.repaint();
-
 						menu.setCursor(normalCursor);
 
 					}
@@ -2076,7 +2067,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		}
 		return iEMon;
 	}
-
+	
+	
 	/*
 	 * setupAndRun - method to do setup in alternate thread
 	 */

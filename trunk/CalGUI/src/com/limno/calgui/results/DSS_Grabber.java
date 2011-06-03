@@ -110,7 +110,7 @@ public class DSS_Grabber {
 		return sLabel;
 
 	}
-	
+
 	public String getTitle() {
 		if (title != "")
 			return title;
@@ -177,7 +177,8 @@ public class DSS_Grabber {
 					calendar.set(ht.year(), ht.month() - 1, 1);
 					double monthlyTAF = TimeSeriesResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
 					int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
-					annualTAFs[i][wy] += monthlyTAF;
+					if (wy >= 0)
+						annualTAFs[i][wy] += monthlyTAF;
 					if (!isCFS)
 						TimeSeriesResults[i].values[j] = monthlyTAF;
 				}
@@ -262,8 +263,8 @@ public class DSS_Grabber {
 			for (int i = result.numberValues - 1; (i >= 0) && (result.times[i] > endTime); i--)
 				last = i;
 
-			System.out.println(result.times[first]);
-			System.out.println(result.times[last]);
+			System.out.println(result.times[first]+ " " + result.startTime);
+			System.out.println(result.times[last] + " " + result.endTime);
 
 			if (first != 0)
 				for (int i = 0; i < (last - first); i++) {

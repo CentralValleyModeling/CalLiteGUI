@@ -32,6 +32,7 @@ import java.awt.event.ComponentListener;
 //import com.limno.calgui.table.GroupableTableHeader;
 
 public class SummaryTablePanel extends JPanel implements ActionListener, ComponentListener {
+
 	int n[][][];
 	double x[][][];
 	double xx[][][];
@@ -101,7 +102,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 	Vector<String> columns;
 
-	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString) {
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName) {
 
 		super();
 
@@ -314,13 +315,19 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(String.class);
 			renderer.setHorizontalAlignment(JLabel.RIGHT);
 
-			JLabel label = new JLabel();
+			String labelText;
 			if (t < tscs.length)
-				label.setText(title + " (" + tsc.units + ") - " + tsc.fileName);
+				labelText= title;
 			else {
-				String[] parts = tsc.fullName.split("/");
-				label.setText(parts[2] + "/" + parts[3] + " (" + tsc.units + ") - " + tsc.fileName);
+				if (!sName.equals(""))
+					labelText = sName;
+				else {
+					String[] parts = tsc.fullName.split("/");
+					labelText= parts[2] + "/" + parts[3];
+				}
 			}
+			JLabel label = new JLabel();
+			label.setText(labelText + " (" + tsc.units + ") - " + tsc.fileName);
 			label.setPreferredSize(new Dimension(500, 30));
 
 			panel.add(label);

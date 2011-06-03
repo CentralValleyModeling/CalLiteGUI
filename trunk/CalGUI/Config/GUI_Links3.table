@@ -6,30 +6,30 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 106	S_SLCVP/STORAGE	null	Storage	CVP San Luis Reservoir Storage	null
 107	S_OROVL/STORAGE	null	Storage	Oroville Reservoir Storage	null
 108	S_SLSWP/STORAGE	null	Storage	SWP San Luis Reservoir Storage	null
-111	S_TRNTY/STORAGE	S_TRNTYLEVEL4DV/STORAGE-LEVEL	Storage	Trinity Reservoir Operations	null
-112	S_SHSTA/STORAGE;SHSTAE/STORAGE	S_SHSTALEVEL5DV/STORAGE-LEVEL	Storage	Shasta Reservoir Operations	null
-113	S_FOLSM/STORAGE	S_FOLSMLEVEL5DV/STORAGE-LEVEL	Storage	Folsom Reservoir Operations	null
-114	S_SLCVP/STORAGE	CVPRULECV/RULECURVE	Storage	CVP San Luis Reservoir Operations	null
-115	S_OROVL/STORAGE	S_OROVLLEVEL5DV/STORAGE-LEVEL	Storage	Oroville Reservoir Operations	null
-116	S_SLSWP/STORAGE	SWPRULECV/RULECURVE	Storage	SWP San Luis Reservoir Operations	null
-202	C_LWSTN/FLOW-CHANNEL	MIF_C_LEWISTONDV/FLOW-MIN-REQUIRED	Flow	Trinity River	Minimum Required Flow
-203	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	null
-204	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Instream Flow Minimum
+111	S_TRNTY/STORAGE	S_TRNTYLEVEL4DV/STORAGE-LEVEL	Storage	Trinity Reservoir Operations	Flood Pool Target
+112	S_SHSTA/STORAGE;SHSTAE/STORAGE	S_SHSTALEVEL5DV/STORAGE-LEVEL	Storage	Shasta Reservoir Operations	Flood Pool Target
+113	S_FOLSM/STORAGE	S_FOLSMLEVEL5DV/STORAGE-LEVEL	Storage	Folsom Reservoir Operations	Flood Pool Target
+114	S_SLCVP/STORAGE	CVPRULECV/RULECURVE	Storage	CVP San Luis Reservoir Operations	Rule Curve
+115	S_OROVL/STORAGE	S_OROVLLEVEL5DV/STORAGE-LEVEL	Storage	Oroville Reservoir Operations	Flood Pool Target
+116	S_SLSWP/STORAGE	SWPRULECV/RULECURVE	Storage	SWP San Luis Reservoir Operations	Rule Curve
+202	C_LWSTN/FLOW-CHANNEL	MIF_C_LEWISTONDV/FLOW-MIN-REQUIRED	Flow	Trinity River	Minimum Instream Flow
+203	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
+204	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
 205	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
-206	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	null
-207	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	null
-208	C_WILKNS/FLOW-CHANNEL	C_WILKNS_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Wilkins Slough	null
-209	C_THERM/FLOW-CHANNEL	C_THERM_MIF/FLOW-MIN-INSTREAM	Flow	Feather River at Thermolito	null
-210	C_YUBFEA/FLOW-CHANNEL	C_YUBFEA_MIF/FLOW-MIN-INSTREAM	Flow	Feather River Below Yuba Confluence	null
-211	C_NIMBUS/FLOW-CHANNEL	C_NIMBUS_MIF/FLOW-MIN-INSTREAM	Flow	American River at Nimbus	null
+206	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+207	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
+208	C_WILKNS/FLOW-CHANNEL	C_WILKNS_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Wilkins Slough	Minimum Instream Flow
+209	C_THERM/FLOW-CHANNEL	C_THERM_MIF/FLOW-MIN-INSTREAM	Flow	Feather River at Thermolito	Minimum Instream Flow
+210	C_YUBFEA/FLOW-CHANNEL	C_YUBFEA_MIF/FLOW-MIN-INSTREAM	Flow	Feather River Below Yuba Confluence	Minimum Instream Flow
+211	C_NIMBUS/FLOW-CHANNEL	C_NIMBUS_MIF/FLOW-MIN-INSTREAM	Flow	American River at Nimbus	Minimum Instream Flow
 212	D_FREWEIR/FLOW-DELIVERY	null	Flow	Fremont Weir	null
 213	D_SACWEIR/FLOW-DELIVERY	null	Flow	Sacramento Weir	null
-214	C_HOOD/FLOW-CHANNEL	D_HOOD/FLOW-DELIVERY	Flow	Sacramento River at Hood	null
+214	C_HOOD/FLOW-CHANNEL	D_HOOD/FLOW-DELIVERY	Flow	Sacramento River at Hood	Diversion
 215	C_YOLOBP/FLOW-CHANNEL	null	Flow	Yolo Bypass	null
 216	C_DXC/FLOW-CHANNEL	null	Flow	Delta Cross Channel	null
-217	C_SACRV/FLOW-CHANNEL	C_SACRV_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Rio Vista	null
-218	C_OMR/FLOW-CHANNEL;	C_INDNSL/FLOW-CHANNEL	Flow	Old and Middle River	null
-219	C_SJRVI/FLOW-CHANNEL	null	Flow	San Joaquin River at Venice Island (QWEST)	null
+217	C_SACRV/FLOW-CHANNEL	C_SACRV_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Rio Vista	Minimum Instream Flow
+218	C_OMR/FLOW-CHANNEL	C_INDNSL/FLOW-CHANNEL	Flow	Old and Middle River	Indian Slough Flow
+219	C_SJRVI/FLOW-CHANNEL	null	Flow	San Joaquin River near Jersey Point (QWEST)	null
 302	INFLOW/INFLOW-DELTA	null	Flow	Delta Inflow	null
 303	C_SACSJR/FLOW-CHANNEL	null	Flow	Delta Outflow	null
 304	D_DELTAREQD/FLOW-DELIVERY;DO_REQ_X2ROE_OUT/FLOW-REQ-X2ROE;DO_REQ_X2CHS_OUT/FLOW-REQ-X2CHS;DO_REQ_X2CNF_OUT/FLOW-REQ-X2CNF;DO_REQ_FLOW_OUT/FLOW-REQ-NDOI	null	Flow	Delta Required Outflow	null
@@ -48,10 +48,10 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 404	DEL_SWP_TOT_N/DELIVERY-SWP	null	Deliveries	SWP North of Delta Deliveries	null
 405	SWP_TA_TOTAL/SWP_DELIVERY;SWP_CO_TOTAL/SWP_DELIVERY;SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Total Deliveries	null
 406	SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Article 21 (Interruptible) Deliveries	null
-409	JP_EC_STD/SALINITY(-1)	JP_EC_MONTH/SALINITY	null	null	null
-410	JP_EC_STD/SALINITY(-1)	JP_EC_MONTH/SALINITY	Electrical Conductivity	Jersey Point Salinity	null
-411	RS_EC_STD/SALINITY(-1)	RS_EC_MONTH/SALINITY	Electrical Conductivity	Rock Slough Salinity	null
-412	EM_EC_STD/SALINITY(-1)	EM_EC_MONTH/SALINITY	Electrical Conductivity	Emmaton Salinity	null
+409	JP_EC_MONTH/SALINITY	JP_EC_STD/SALINITY(-1)	null	null	null
+410	JP_EC_MONTH/SALINITY	JP_EC_STD/SALINITY(-1)	Electrical Conductivity	Jersey Point Salinity	Salinity Standard
+411	RS_EC_MONTH/SALINITY	RS_EC_STD/SALINITY(-1)	Electrical Conductivity	Rock Slough Salinity	Salinity Standard
+412	EM_EC_MONTH/SALINITY	EM_EC_STD/SALINITY(-1)	Electrical Conductivity	Emmaton Salinity	Salinity Standard
 413	null	null	null	null	null
 414	null	null	null	null	null
 415	null	null	null	null	null

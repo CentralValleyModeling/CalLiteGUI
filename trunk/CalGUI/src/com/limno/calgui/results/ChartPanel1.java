@@ -93,15 +93,22 @@ public class ChartPanel1 extends JPanel implements Printable {
 				for (int i = 0; i < stscs.length; i++) {
 					if (stscs[i].numberValues > 0) {
 						sseries[i] = new XYSeries(i == 0 ? sName : "");
+						double maxval = -1e37;
 						for (int j = 0; j < stscs[i].numberValues; j++) {
-							sseries[i].add((double) (100.0 * j / (stscs[i].numberValues - 1)), stscs[i].values[j]);
+							if (stscs[i].values[j] == 99000)
+								sseries[i].add((double) (100.0 * j / (stscs[i].numberValues - 1)), null);
+							else {
+								sseries[i].add((double) (100.0 * j / (stscs[i].numberValues - 1)), stscs[i].values[j]);
+								if (maxval < stscs[i].values[j])
+									maxval = stscs[i].values[j];
+							}
 						}
 						dataset.addSeries(sseries[i]);
 						if (ymin > stscs[i].minimumValue())
 							ymin = stscs[i].minimumValue();
-						if (ymax < stscs[i].maxmimumValue())
-							ymax = stscs[i].maxmimumValue(); // typo in HEC DSS
-																// classes?
+						if (ymax < maxval)
+							ymax = maxval;// typo in HEC DSS
+											// classes?
 					}
 				}
 			}
@@ -123,7 +130,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					ht.set(tscs[i].times[j]);
-					series[i].add(new Month(ht.month(), ht.year()), tscs[i].values[j]);
+					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
 				}
 
 				dataset.addSeries(series[i]);
@@ -138,17 +145,23 @@ public class ChartPanel1 extends JPanel implements Printable {
 				for (int i = 0; i < stscs.length; i++) {
 					if (stscs[i].numberValues > 0) {
 						sseries[i] = new TimeSeries(i == 0 ? sName : "");
-
+						double maxval = -1e37;
 						for (int j = 0; j < stscs[i].numberValues; j++) {
 							ht.set(stscs[i].times[j]);
-							sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
+							if (stscs[i].values[j] == 99000)
+								sseries[i].add(new Month(ht.month(), ht.year()), null);
+							else {
+								sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
+								if (maxval < stscs[i].values[j])
+									maxval = stscs[i].values[j];
+							}
 						}
 						dataset.addSeries(sseries[i]);
 						if (ymin > stscs[i].minimumValue())
 							ymin = stscs[i].minimumValue();
-						if (ymax < stscs[i].maxmimumValue())
-							ymax = stscs[i].maxmimumValue(); // typo in HEC DSS
-																// classes?
+						if (ymax < maxval)
+							ymax = maxval; // typo in HEC DSS
+											// classes?
 					}
 				}
 			}
