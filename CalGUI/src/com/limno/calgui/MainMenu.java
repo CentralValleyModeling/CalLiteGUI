@@ -21,6 +21,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -413,6 +415,102 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GetDSSFilename getDSSFilename3 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE3"), "PDF");
 		JButton btnFile3 = (JButton) swix.find("btnGetReportFile3");
 		btnFile3.addActionListener((ActionListener) getDSSFilename3);
+		
+		//Check for scenario changes on Exit.
+		desktop.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent we) {
+				System.out.println("Exiting");
+
+				//*** Determine if scenario has changed.
+
+				//Store selections
+				StringBuffer sb = new StringBuffer();
+				sb = GUI_Utils.GetControlValues(runsettings, sb);
+				sb = GUI_Utils.GetControlValues(regulations, sb);
+				sb = GUI_Utils.GetControlValues(hydroclimate, sb);
+				sb = GUI_Utils.GetControlValues(demands, sb);
+				sb = GUI_Utils.GetControlValues(operations, sb);
+				sb = GUI_Utils.GetControlValues(facilities, sb);
+
+				// get table values.
+				final String NL = System.getProperty("line.separator");
+				sb.append("DATATABLEMODELS" + NL);
+				ArrayList GUILinks = new ArrayList();
+				ArrayList GUITables = new ArrayList();
+				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
+				sb.append("END DATATABLEMODELS" + NL);
+				sb.append("USERDEFINEDFLAGS" + NL);
+				for (int i = 0; i < RegUserEdits.length; i++) {
+					if (RegUserEdits[i] != null) {
+						sb.append(i + "|" + RegUserEdits[i] + NL);
+					}
+				}
+				sb.append("END USERDEFINEDFLAGS" + NL);
+
+				//Read existing file
+				JTextField tf = (JTextField) swix.find("run_txfScen");
+				String scen = tf.getText();
+				File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+				StringBuffer sbExisting=GUI_Utils.ReadScenarioFile(f);
+
+				Boolean scensave = false;
+
+				if (!sb.toString().equals(sbExisting.toString())) {
+
+					/*int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information "
+								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui",
+								JOptionPane.YES_NO_OPTION);
+					 */
+					int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the the changes?", "CalLite Gui",
+							JOptionPane.YES_NO_OPTION);
+
+					if (n == JOptionPane.YES_OPTION) {
+
+						JFileChooser fc = new JFileChooser();
+						fc.setFileFilter(new CLSFileFilter());
+						fc.setCurrentDirectory(new File(".//Scenarios"));
+
+						String dirname = ".//Scenarios";
+						File file = null;
+						String filename = null;
+						int retval = fc.showSaveDialog(mainmenu);
+						if (retval == JFileChooser.APPROVE_OPTION) {
+							file = fc.getSelectedFile();
+							filename = file.toString();
+						}
+
+						if (filename!=null) {
+
+							if (new File(filename).exists())
+								scensave = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + filename + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+
+							if (scensave = true){
+
+								GUI_Utils.CreateNewFile(filename);
+								f = new File(filename);
+								try {
+									FileWriter fstream = new FileWriter(f);
+									BufferedWriter outobj = new BufferedWriter(fstream);
+									outobj.write(sb.toString());
+									outobj.close();
+
+								} catch (Exception e1) {
+									System.err.println("Error: " + e1.getMessage());
+								}
+
+
+							}
+						}
+					}
+
+				}
+
+				System.exit(0);
+			}
+		});
+		
 
 	}
 
@@ -630,17 +728,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			String scen = tf.getText();
 			if (!scen.equals("")) {
 
-				// Ask if User wants to save scenario file
-				Boolean scensave = false;
-				int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information "
-						+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui",
-						JOptionPane.YES_NO_OPTION);
-				if (n == JOptionPane.YES_OPTION) {
+				//Make sure current run isnt in background.
+				if ((new File(System.getProperty("user.dir") + "\\Run\\running.txt")).exists()) {
+					JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
+				}
 
-					// statusBar.setMessage("Saving CalLite Scenario file...");
-					// statusBar.revalidate();
 
-					scensave = true;
+				else{
+
+					//*** Determine if scenario has changed.
+					
+					//Store selections
 					StringBuffer sb = new StringBuffer();
 					sb = GUI_Utils.GetControlValues(runsettings, sb);
 					sb = GUI_Utils.GetControlValues(regulations, sb);
@@ -665,20 +763,60 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						}
 					}
 					sb.append("END USERDEFINEDFLAGS" + NL);
-
-					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+					
+					//Read existing file
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					try {
-						FileWriter fstream = new FileWriter(f);
-						BufferedWriter outobj = new BufferedWriter(fstream);
-						outobj.write(sb.toString());
-						outobj.close();
+					StringBuffer sbExisting=GUI_Utils.ReadScenarioFile(f);
 
-					} catch (Exception e1) {
-						System.err.println("Error: " + e1.getMessage());
+					Boolean scensave = false;
+					
+					if (!sb.toString().equals(sbExisting.toString())) {
+
+						/*int n = JOptionPane.showConfirmDialog(mainmenu, "Would you like to save the scenario definition? \nScenario information "
+								+ "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui",
+								JOptionPane.YES_NO_OPTION);
+								*/
+						int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the the changes?", "CalLite Gui",
+								JOptionPane.YES_NO_OPTION);
+						
+						if (n == JOptionPane.YES_OPTION) {
+
+							getScenFilename.actionPerformed(e);
+							if (getScenFilename.dialogRC != 0)
+								scensave = false;
+							else {
+								tf = (JTextField) swix.find("run_txfScen");
+								scen = tf.getText();
+								
+								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
+									scensave = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\"
+											+ scen + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+
+								
+								if (scensave = true){
+									scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+									desktop.setTitle(desktopTitle + " - " + scenFilename);
+									((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS");
+
+									GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+									f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+									try {
+										FileWriter fstream = new FileWriter(f);
+										BufferedWriter outobj = new BufferedWriter(fstream);
+										outobj.write(sb.toString());
+										outobj.close();
+
+									} catch (Exception e1) {
+										System.err.println("Error: " + e1.getMessage());
+									}
+								}
+								
+							}
+						}
+
 					}
+					setupAndRun(scen);
 				}
-				setupAndRun(scen);
 
 			} else {
 				JFrame frame = new JFrame("Error");
@@ -2470,5 +2608,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// TODO Auto-generated method stub
 		System.out.println("Removed");
 	}
+	
+	
 
 }
