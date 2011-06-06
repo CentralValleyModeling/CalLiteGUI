@@ -206,6 +206,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Display, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
 		GUI_Utils.SetMouseListener(presets, this);
+		GUI_Utils.SetMouseListener(facilities, this);
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
 		GUI_Utils.SetChangeListener(regulations, this);
@@ -1878,6 +1879,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String cName = component.getName();
 		if (cName != null) {
 			if (cName.startsWith("ckbReg")) {
+				//Right Click only
 				if (e.getButton() == MouseEvent.BUTTON3) { 
 					
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
@@ -1885,6 +1887,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					SetRegCheckBoxes(cName, isSelect);
 				 }
+			} else if (cName.startsWith("fac_ckb")) {
+				//Right Click only
+				if (e.getButton() == MouseEvent.BUTTON3) {
+					JPanel panel = (JPanel) swix.find("fac_pan" + cName.substring(7));
+					// set all "data" panels to invisible
+					GUI_Utils.ToggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
+					// set specified "data" panel to active
+					GUI_Utils.ToggleVisComponent(panel, true);
+				}
 			}
 		}
 	
