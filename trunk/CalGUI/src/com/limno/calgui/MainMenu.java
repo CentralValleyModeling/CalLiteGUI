@@ -1873,11 +1873,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		JComponent component = (JComponent) e.getComponent();
+		String cName = component.getName();
+		if (cName != null) {
+			if (cName.startsWith("ckbReg")) {
+				if (e.getButton() == MouseEvent.BUTTON3) { 
+					
+					JCheckBox selcomp = (JCheckBox) e.getComponent();
+					Boolean isSelect = selcomp.isSelected();
 
+					SetRegCheckBoxes(cName, isSelect);
+				 }
+			}
+		}
+	
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		
 		// TODO Auto-generated method stub
 		JComponent component = (JComponent) e.getComponent();
 		// was "e.getItemSelected"
@@ -1889,11 +1905,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 			else if (cName.startsWith("ckbReg")) {
-
+				
+				/*
 				JCheckBox selcomp = (JCheckBox) e.getComponent();
 				Boolean isSelect = selcomp.isSelected();
 
 				SetRegCheckBoxes(cName, isSelect);
+				*/
 
 			}
 		}
@@ -2124,12 +2142,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			String cID = cName;
 			populateDTable(cID, table, scr);
 
-			title = BorderFactory.createTitledBorder(selcomp.getText());
-			pan.setBorder(title);
-			pan.setEnabled(true);
-			scr.setEnabled(true);
-			table.setVisible(true);
-
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 
@@ -2171,21 +2183,33 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				table.setEnabled(true);
 			}
 
+			
+			String ckbtext = selcomp.getText();
+			String[] ckbtext1 = ckbtext.split(" - ");
+			ckbtext = ckbtext1[0];
+			title = BorderFactory.createTitledBorder(ckbtext);
+			
+			pan.setBorder(title);
+			pan.setEnabled(true);
+			scr.setEnabled(true);
+			table.setVisible(true);
 			pan.revalidate();
 
 		} else {
-			pan.setEnabled(false);
-			title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
-			pan.setBorder(title);
-			scr.setEnabled(false);
-			table.setVisible(false);
-			pan.revalidate();
+
 
 			JCheckBox ckb = (JCheckBox) (JCheckBox) swix.find(cName);
 			String ckbtext = ckb.getText();
 			String[] ckbtext1 = ckbtext.split(" - ");
 			ckbtext = ckbtext1[0];
 			ckb.setText(ckbtext);
+			
+			pan.setEnabled(false);
+			title = BorderFactory.createTitledBorder(selcomp.getText() + " (not selected)");
+			pan.setBorder(title);
+			scr.setEnabled(false);
+			table.setVisible(false);
+			pan.revalidate();
 
 		}
 
