@@ -738,6 +738,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 
 				else{
+					
+					//Disable run button
+					JButton btn = (JButton) e.getSource();
+					btn.setEnabled(false);
+					mainmenu.revalidate();
 
 					//*** Determine if scenario has changed.
 					
@@ -819,6 +824,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					}
 					setupAndRun(scen);
+					btn.setEnabled(true);
+					mainmenu.revalidate();
 				}
 
 			} else {
