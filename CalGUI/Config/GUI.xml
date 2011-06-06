@@ -1272,33 +1272,33 @@
 							</checkbox>
 						</panel>
 					</tabbedpane>
-					<panel id="reg_panTab" border="TitledBorder(Values)"
+					<panel id="reg_panTab" border="TitledBorder(Values)" enabled="false"
 						resizeable="false" minimumsize="600,450" layout="GridBagLayout">
 						<gridbagconstraints insets="0,5,0,5" gridx="1"
 							gridy="0" gridheight="30" gridwidth="6"
 							anchor="GridBagConstraints.NORTHWEST" />
-						<button enabled="true" text="Copy" minimumsize="100,20"
+						<button text="Copy" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Copy">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button enabled="true" text="Paste" minimumsize="100,20"
+						<button text="Paste" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Paste">
 							<gridbagconstraints insets="0,0,5,5" gridx="1"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button id="btnRegDef" text="Default" minimumsize="100,20"
+						<button id="btnRegDef" text="Default" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Default" visible="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<buttongroup id="reg_btng1" name="reg_btng1">
-							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641"
+							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641" enabled="false"
 								text="D-1641">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0" />
 							</radiobutton>
-							<radiobutton id="reg_rdbUD" name="reg_rdbUD" text="User defined"
+							<radiobutton id="reg_rdbUD" name="reg_rdbUD" text="User defined" enabled="false"
 								selected="false">
 								<gridbagconstraints insets="10,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
