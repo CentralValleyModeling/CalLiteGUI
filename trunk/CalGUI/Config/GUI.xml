@@ -623,6 +623,14 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 						</panel>
+						<label text="Access facilities parameters by selecting">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="90"  anchor="GridBagConstraints.NORTHWEST" />
+						</label>
+						<label text="or right-clicking on item at left">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="91" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
 						<label icon="images/DWR_logo_small.gif" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
@@ -1313,6 +1321,10 @@
 								</table>
 							</scrollpane>
 						</HBox>
+						<label text="Access regulation table by selecting or right-clicking on item at left">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
 					</panel>
 				</panel>
 				<panel id="operations" name="Operations" layout="GridBagLayout">
