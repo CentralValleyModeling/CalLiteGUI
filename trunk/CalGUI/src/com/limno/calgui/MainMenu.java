@@ -633,6 +633,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// set specified "data" panel to active
 					GUI_Utils.ToggleVisComponent(panel, true);
 					GUI_Utils.ToggleEnComponentAndChildren(panel, e.getStateChange() == ItemEvent.SELECTED);
+					
+					
 				}
 
 			} else if (cName.startsWith("dem_rdbUD")) {
@@ -1895,6 +1897,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					GUI_Utils.ToggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
 					// set specified "data" panel to active
 					GUI_Utils.ToggleVisComponent(panel, true);
+					
+					JCheckBox ckb = (JCheckBox) component;
+					GUI_Utils.ToggleEnComponentAndChildren(panel, ckb.isSelected());
 				}
 			}
 		}
