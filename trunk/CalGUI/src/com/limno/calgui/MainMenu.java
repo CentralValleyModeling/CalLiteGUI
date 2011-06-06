@@ -2148,6 +2148,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
 		if (isSelect) {
+			
+			GUI_Utils.ToggleEnComponentAndChildren(pan, true);
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
@@ -2208,7 +2210,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		} else {
 
-
+			GUI_Utils.ToggleEnComponentAndChildren(pan, false);
+			
 			JCheckBox ckb = (JCheckBox) (JCheckBox) swix.find(cName);
 			String ckbtext = ckb.getText();
 			String[] ckbtext1 = ckbtext.split(" - ");
