@@ -28,6 +28,7 @@ import org.jfree.data.Range;
 import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -35,8 +36,10 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
 import javax.print.attribute.standard.OrientationRequested;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 public class ChartPanel1 extends JPanel implements Printable {
 	/**
@@ -220,11 +223,45 @@ public class ChartPanel1 extends JPanel implements Printable {
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
 		axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
 
-		ChartPanel p1 = new ChartPanel(chart);
-		// JButton clipButton = new JButton();
-		// clipButton.setText("Copy" );
-		// p1.add(clipButton);
+		plot.setDomainPannable(true);
+		plot.setRangePannable(true);
 
+		ChartPanel p1 = new ChartPanel(chart);
+
+		// Copy title, all data series to clipboard
+
+		JPopupMenu popupmenu = p1.getPopupMenu();
+		JMenuItem item = popupmenu.add("Copy Data");
+
+		String buffer = title + "\n";
+
+		XYDataset dataset = plot.getDataset();
+		for (int i = 0; i < dataset.getSeriesCount(); i++)
+			buffer = buffer + "Dataset " + i + "\t\t\t";
+		buffer = buffer + "\n";
+
+		for (int i = 0; i < dataset.getSeriesCount(); i++)
+			buffer = buffer + "x\ty\t\t";
+		buffer = buffer + "\n";
+
+		for (int j = 0; j < dataset.getItemCount(0); j++) {
+
+			for (int i = 0; i < dataset.getSeriesCount(); i++)
+				if (j < dataset.getItemCount(i)) {
+					if (isExceed)
+
+						buffer = buffer + dataset.getXValue(i, j) + "\t" + dataset.getYValue(i, j) + "\t\t";
+					else {
+						buffer = buffer + new Date((long) dataset.getXValue(i, j)) + "\t" + dataset.getYValue(i, j) + "\t\t";
+					}
+				} else
+					buffer = buffer + "\t\t\t";
+
+			buffer = buffer + "\n";
+		}
+
+		// Finish up
+		
 		p1.setPreferredSize(new Dimension(800, 600));
 		this.setLayout(new BorderLayout());
 		this.add(p1);
