@@ -3,7 +3,23 @@
                      "http://java.sun.com/products/javahelp/map_2_0.dtd">
 
 <map version="1.0">
+	<mapID target="Demands_screen" url="Demands screen.htm"/>
+	<mapID target="Dropdown Menus" url="Dropdown Menus.html"/>
+	<mapID target="Facilities" url="Facilities.html"/>
+	<mapID target="Hydroclimate" url="Hydroclimate.html"/>
 	<mapID target="Introduction" url="Introduction.htm"/>
-	<mapID target="Modeling_Approach" url="Modeling_Approach.htm"/>
-	<mapID target="Demands_screen" url="Demands_screen.htm"/>
+	<mapID target="Operations" url="Operations.html"/>
+	<mapID target="Regulations" url="Regulations.html"/>
+	<mapID target="Run Settings" url="Run Settings.html"/>
+	<mapID target="Scenario Settings" url="Scenario Settings.html"/>
+	<mapID target="Results" url="Results.html"/>
+	<mapID target="Quick" url="Quick.html"/>
+	<mapID target="Custom" url="Custom.html"/>
+	<mapID target="Schematics" url="Schematics.html"/>
+	<mapID target="External PDF" url="External PDF.html"/>
+	<mapID target="demandscrop" url="Images/demandscrop.JPG"/>
+	<mapID target="Demands" url="Demands.html"/>
+	<mapID target="D1641 Regulations" url="D1641 Regulations.html"/>
+	<mapID target="BORPA regulations" url="BORPA regulations.html"/>
+	<mapID target="Other regulations" url="Other regulations.html"/>
 </map>

@@ -11,6 +11,8 @@ import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -112,7 +114,7 @@ import com.limno.calgui.results.ScrollablePicture;
 import com.limno.calgui.results.SummaryTablePanel;
 import com.limno.calgui.SymbolCanvas;
 
-public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener {
+public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener, KeyEventDispatcher {
 	private SwingEngine swix;
 
 	// Declare public Objects
@@ -179,6 +181,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		desktopTitle = desktop.getTitle() + ".185";
 		desktop.setResizable(false);
+		
+		//Help hotkey
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+	    manager.addKeyEventDispatcher(this);
 
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -1432,6 +1438,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			verticalScrollBar.setValue(verticalScrollBar.getMaximum());
 
 		} else if (e.getActionCommand().startsWith("AC_Help")) {
+			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+			int selIndex = jtp.getSelectedIndex();
+			String label = jtp.getTitleAt(selIndex);
+			helpViewer.setCurrentID(label);
 			help.setVisible(true);
 		} else {
 			JComponent component = (JComponent) e.getSource();
@@ -2314,6 +2324,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				File fs = new File(System.getProperty("user.dir") + "\\Default");
 				File ft = new File(System.getProperty("user.dir") + "\\Run");
+				
+				//Delete Default\Lookup
+				
+				
+				//Delete 
 
 				// First delete existing Run directory.
 				GUI_Utils.deleteDir(ft);
@@ -2657,6 +2672,20 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public void intervalRemoved(ListDataEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Removed");
+	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent arg0) {
+		if (arg0.getID() == KeyEvent.KEY_PRESSED) {
+            if(arg0.getKeyCode() == KeyEvent.VK_F1){
+    			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+    			int selIndex = jtp.getSelectedIndex();
+    			String label = jtp.getTitleAt(selIndex);
+    			helpViewer.setCurrentID(label);
+    			help.setVisible(true);
+            }
+		}
+        return false;
 	}
 	
 	
