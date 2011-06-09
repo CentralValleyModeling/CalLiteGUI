@@ -735,14 +735,37 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			// Check if selections are valid
 			JTextField tf = (JTextField) swix.find("run_txfScen");
 			String scen = tf.getText();
+			
+			JSpinner spn = (JSpinner) swix.find("spnRunStartMonth");
+			String StartMon = (String) spn.getValue();
+			StartMon = StartMon.trim();
+			spn = (JSpinner) swix.find("spnRunEndMonth");
+			String EndMon = (String) spn.getValue();
+			EndMon = EndMon.trim();
+			spn = (JSpinner) swix.find("spnRunStartYear");
+			Integer StartYr = (Integer) spn.getValue();
+			spn = (JSpinner) swix.find("spnRunEndYear");
+			Integer EndYr = (Integer) spn.getValue();
+			
+			// Determine Month/Count
+			Integer iSMon = GUI_Utils.MonthStr2int(StartMon);
+			Integer iEMon = GUI_Utils.MonthStr2int(EndMon);
+
+			Integer numMon;
+			numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
+			
+			double  startdate= 1.0;
+			double  enddate= 1.0;
+			
 			if (!scen.equals("")) {
 
 				//Make sure current run isnt in background.
 				if ((new File(System.getProperty("user.dir") + "\\Run\\running.txt")).exists()) {
 					JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
+				
+				} else if (numMon < 1) {
+					JOptionPane.showMessageDialog(mainmenu, "The specified start date must be before then end date.");
 				}
-
-
 				else{
 					
 					//Disable run button
@@ -2324,21 +2347,70 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				File fs = new File(System.getProperty("user.dir") + "\\Default");
 				File ft = new File(System.getProperty("user.dir") + "\\Run");
-				
-				//Delete Default\Lookup
-				
-				
-				//Delete 
-
 				// First delete existing Run directory.
 				GUI_Utils.deleteDir(ft);
 
 				try {
-					GUI_Utils.copyDirectory(fs, ft);
+					GUI_Utils.copyDirectory(fs, ft, false);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				
+				// Development flag
+				Integer LODFlag = 0;
+				JRadioButton rdb = (JRadioButton) swix.find("hyd_rdb2005");
+				if (rdb.isSelected()) {
+					LODFlag = 0;
+				} else {
+					LODFlag = 1;
+				}
+				
+				//Copy DSS files.
+				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS");
+				ft.mkdir();
+				if (LODFlag == 0) {
+					fs= new File(System.getProperty("user.dir") + "\\Default\\DSS\\CL2005A01A021411_SV.DSS");
+					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CL2005A01A021411_SV.DSS");
+					try {
+						GUI_Utils.copyDirectory(fs, ft, false);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					fs= new File(System.getProperty("user.dir") + "\\Default\\DSS\\CalLite2005A01AINIT.DSS");
+					ft= new File(System.getProperty("user.dir") + "\\Run\\DSS\\CalLite2005A01AINIT.DSS");
+					try {
+						GUI_Utils.copyDirectory(fs, ft, false);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+
+				} else {
+					fs= new File(System.getProperty("user.dir") + "\\Default\\DSS\\CL_FUTURE_WHL021111_SV.DSS");
+					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CL_FUTURE_WHL021111_SV.DSS");
+					try {
+						GUI_Utils.copyDirectory(fs, ft, false);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					fs= new File(System.getProperty("user.dir") + "\\Default\\DSS\\CALLITE2020D09EINIT.DSS");
+					ft= new File(System.getProperty("user.dir") + "\\Run\\DSS\\CALLITE2020D09EINIT.DSS");
+					try {
+						GUI_Utils.copyDirectory(fs, ft, false);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+				
 
 				publish("Writing GUI tables.");
 
@@ -2357,14 +2429,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				publish("Copying demand tables.");
 
-				// Write options.table
-				Integer LODFlag = 0;
-				JRadioButton rdb = (JRadioButton) swix.find("hyd_rdb2005");
-				if (rdb.isSelected()) {
-					LODFlag = 0;
-				} else {
-					LODFlag = 1;
-				}
+
 
 				/*
 				 * GUI_Utils .ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\options.table", 13,
@@ -2397,7 +2462,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
 
-				GUI_Utils.copyDirectory(fsDem, fsLookup);
+				GUI_Utils.copyDirectory(fsDem, fsLookup, true);
 
 				publish("Creating study.sty.");
 
@@ -2416,72 +2481,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				Integer EndYr = (Integer) spn.getValue();
 
 				// Determine Month/Count
-				Integer dayct = 1;
-				Integer iEMon = 1;
-				Integer iSMon = 1;
-				if (StartMon.equals("Apr")) {
-					dayct = 30;
-					iSMon = 4;
-				} else if (StartMon.equals("Jun")) {
-					dayct = 30;
-					iSMon = 6;
-				} else if (StartMon.equals("Sep")) {
-					dayct = 30;
-					iSMon = 9;
-				} else if (StartMon.equals("Nov")) {
-					dayct = 30;
-					iSMon = 11;
-				} else if (StartMon.equals("Feb")) {
-					dayct = 28;
-					iSMon = 2;
-				} else if (StartMon.equals("Jan")) {
-					dayct = 31;
-					iSMon = 1;
-				} else if (StartMon.equals("Mar")) {
-					dayct = 31;
-					iSMon = 3;
-				} else if (StartMon.equals("May")) {
-					dayct = 31;
-					iSMon = 5;
-				} else if (StartMon.equals("Jul")) {
-					dayct = 31;
-					iSMon = 7;
-				} else if (StartMon.equals("Aug")) {
-					dayct = 31;
-					iSMon = 8;
-				} else if (StartMon.equals("Oct")) {
-					dayct = 31;
-					iSMon = 10;
-				} else if (StartMon.equals("Dec")) {
-					dayct = 31;
-					iSMon = 12;
-				}
-
-				if (EndMon.equals("Apr")) {
-					iEMon = 4;
-				} else if (EndMon.equals("Jun")) {
-					iEMon = 6;
-				} else if (EndMon.equals("Sep")) {
-					iEMon = 9;
-				} else if (EndMon.equals("Nov")) {
-					iEMon = 11;
-				} else if (EndMon.equals("Feb")) {
-					iEMon = 2;
-				} else if (EndMon.equals("Jan")) {
-					iEMon = 1;
-				} else if (EndMon.equals("Mar")) {
-					iEMon = 3;
-				} else if (EndMon.equals("May")) {
-					iEMon = 5;
-				} else if (EndMon.equals("Jul")) {
-					iEMon = 7;
-				} else if (EndMon.equals("Aug")) {
-					iEMon = 8;
-				} else if (EndMon.equals("Oct")) {
-					iEMon = 10;
-				} else if (EndMon.equals("Dec")) {
-					iEMon = 12;
-				}
+				Integer dayct = GUI_Utils.DaysinMonth(StartMon);
+				Integer iSMon = GUI_Utils.MonthStr2int(StartMon);
+				Integer iEMon = GUI_Utils.MonthStr2int(EndMon);
 
 				Integer numMon;
 				numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
@@ -2562,7 +2564,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				}
 				try {
-					GUI_Utils.copyDirectory(fsAnnS, fsAnnO);
+					GUI_Utils.copyDirectory(fsAnnS, fsAnnO, true);
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
