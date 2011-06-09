@@ -41,11 +41,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class ChartPanel1 extends JPanel implements Printable {
 	/**
 	 * ChartPanel1 - Creates JPanel with a single ChartPanel
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
+	private String buffer;
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
 			Date upper, String sLabel) {
@@ -232,8 +238,10 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 		JPopupMenu popupmenu = p1.getPopupMenu();
 		JMenuItem item = popupmenu.add("Copy Data");
+	    item.addActionListener(new CopyL());
 
-		String buffer = title + "\n";
+
+		buffer = title + "\n";
 
 		XYDataset dataset = plot.getDataset();
 		for (int i = 0; i < dataset.getSeriesCount(); i++)
@@ -295,4 +303,15 @@ public class ChartPanel1 extends JPanel implements Printable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	private Clipboard clipbd = getToolkit().getSystemClipboard();
+	class CopyL implements ActionListener {
+	    public void actionPerformed(ActionEvent e) {
+	      if (buffer == null)
+	        return;
+	      StringSelection clipString = new StringSelection(buffer);
+	      clipbd.setContents(clipString, clipString);
+	    }
+	  }
+
 }
