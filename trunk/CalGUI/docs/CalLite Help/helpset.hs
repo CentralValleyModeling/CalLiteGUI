@@ -9,12 +9,6 @@
 		<mapref location="map.xml"/>
 	</maps>
 	<view mergetype="javax.help.AppendMerge">
-		<name>TOC</name>
-		<label>Table of Contents</label>
-		<type>javax.help.TOCView</type>
-		<data>toc.xml</data>
-	</view>
-	<view mergetype="javax.help.AppendMerge">
 		<name>Index</name>
 		<label>Index</label>
 		<type>javax.help.IndexView</type>
@@ -25,5 +19,11 @@
 		<label>Search</label>
 		<type>javax.help.SearchView</type>
 		<data engine="com.sun.java.help.search.DefaultSearchEngine">JavaHelpSearch</data>
+	</view>
+	<view>
+		<name>TOC</name>
+		<label>Table of Contents</label>
+		<type>javax.help.TOCView</type>
+		<data>toc.xml</data>
 	</view>
 </helpset>

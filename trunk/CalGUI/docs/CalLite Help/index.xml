@@ -4,6 +4,23 @@
 
 <index version="2.0">
 	<indexitem text="Introduction" target="Introduction" />
-	<indexitem text="Modeling_Approach" target="Modeling_Approach" />
-	<indexitem text="Demands_screen" target="Demands_screen" />
+	<indexitem text="Main Menu Options" target="Dropdown Menus" />
+	<indexitem text="Scenario Settings" target="Scenario Settings">
+		<indexitem text="Run Settings tab" target="Run Settings" />
+		<indexitem text="Hydroclimate tab" target="Hydroclimate" />
+		<indexitem text="Demands tab" target="Demands" />
+		<indexitem text="Facilities tab" target="Facilities" />
+		<indexitem text="Regulations tab" target="Regulations">
+			<indexitem text="D-1641 Regulations" target="D1641 Regulations" />
+			<indexitem text="BO RPA Regulations" target="BORPA regulations" />
+			<indexitem text="Other Regulations" target="Other regulations" />
+		</indexitem>
+		<indexitem text="Operations tab" target="Operations" />
+	</indexitem>
+	<indexitem text="Results" target="Results">
+		<indexitem text="Quick Results tab" target="Quick" />
+		<indexitem text="Custom Results tab" target="Custom" />
+		<indexitem text="Schematics" target="Schematics" />
+		<indexitem text="External PDF tab" target="External PDF" />
+	</indexitem>
 </index>
