@@ -222,7 +222,8 @@ public class DSS_Grabber {
 			hecFPart = hecFPart.substring(hecFPart.length() - 9);
 			System.out.println(hecFPart);
 
-			String[] dssNames = dssName.split(";");
+			String delims = "[+]";
+			String[] dssNames = dssName.split(delims);
 
 			// Check for time shift (-1 at end of name)
 
