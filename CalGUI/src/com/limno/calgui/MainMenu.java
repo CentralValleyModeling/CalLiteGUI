@@ -2357,6 +2357,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 				
+				//Copy lookup files.
+				fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup");
+				ft = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
+				try {
+					GUI_Utils.copyDirectory(fs, ft, false);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				// Development flag
 				Integer LODFlag = 0;
@@ -2440,6 +2449,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// pMon.setNote("Copying lookup tables...");
 				// pMon.setProgress(30);
 				File fsDem;
+				/*
 				rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
 				if (rdb.isSelected()) {
 					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\FutureDemand");
@@ -2447,17 +2457,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand");
 				}
 				GUI_Utils.deleteDir(fsDem);
-
+				*/
+				
 				rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
 
 				if (rdb.isSelected()) {
-
-					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand");
-
+					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\VariableDemand");
 				} else {
-
-					fsDem = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\FutureDemand");
-
+					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\FutureDemand");
 				}
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
