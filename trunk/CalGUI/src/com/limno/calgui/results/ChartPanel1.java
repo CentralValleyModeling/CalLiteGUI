@@ -19,7 +19,6 @@ import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
@@ -46,6 +45,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 	 * ChartPanel1 - Creates JPanel with a single ChartPanel
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
+	private String buffer;
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
 			Date upper, String sLabel) {
@@ -233,17 +233,30 @@ public class ChartPanel1 extends JPanel implements Printable {
 		JPopupMenu popupmenu = p1.getPopupMenu();
 		JMenuItem item = popupmenu.add("Copy Data");
 
-		String buffer = title + "\n";
+		// Finish up window
+
+		p1.setPreferredSize(new Dimension(800, 600));
+		this.setLayout(new BorderLayout());
+		this.add(p1);
+
+		// Put data in buffer for clipboard
+
+		buffer = title + "\n";
+
+		// Dataset titles
 
 		XYDataset dataset = plot.getDataset();
 		for (int i = 0; i < dataset.getSeriesCount(); i++)
-			buffer = buffer + "Dataset " + i + "\t\t\t";
+			buffer = buffer + dataset.getSeriesKey(i).toString() + "\t\t\t";
+
 		buffer = buffer + "\n";
 
 		for (int i = 0; i < dataset.getSeriesCount(); i++)
-			buffer = buffer + "x\ty\t\t";
+			buffer = buffer + (isExceed ? "%" : "Date") + "\t" + axis.getLabel() + "\t\t";
+
 		buffer = buffer + "\n";
 
+		// Data
 		for (int j = 0; j < dataset.getItemCount(0); j++) {
 
 			for (int i = 0; i < dataset.getSeriesCount(); i++)
@@ -259,12 +272,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 			buffer = buffer + "\n";
 		}
-
-		// Finish up
-		
-		p1.setPreferredSize(new Dimension(800, 600));
-		this.setLayout(new BorderLayout());
-		this.add(p1);
+		System.out.println(buffer);
 
 	}
 
