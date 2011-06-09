@@ -38,19 +38,49 @@ import org.swixml.SwingEngine;
 public class GUI_Utils {
 
     // If targetLocation does not exist, it will be created.
-    public static void copyDirectory(File sourceLocation , File targetLocation)
+    public static void copyDirectory(File sourceLocation , File targetLocation, Boolean subdir)
     throws IOException {
         
-        if (sourceLocation.isDirectory()) {
+        if (sourceLocation.isDirectory() ) {
             if (!targetLocation.exists()) {
                 targetLocation.mkdir();
             }
             
             String[] children = sourceLocation.list();
-            for (int i=0; i<children.length; i++) {
-                copyDirectory(new File(sourceLocation, children[i]),
-                        new File(targetLocation, children[i]));
+            if (subdir==true){
+                for (int i=0; i<children.length; i++) {
+                    copyDirectory(new File(sourceLocation, children[i]),
+                            new File(targetLocation, children[i]), subdir);
+                }
+            }else{
+            	for (int i=0; i<children.length; i++) {
+            		copyOnlyFilesinDir(new File(sourceLocation, children[i]),
+                            new File(targetLocation, children[i]));
+                }
             }
+
+        } else {
+            
+            InputStream in = new FileInputStream(sourceLocation);
+            OutputStream out = new FileOutputStream(targetLocation);
+            
+            // Copy the bits from instream to outstream
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+        }
+    }
+    
+    // If targetLocation does not exist, it will be created.
+    public static void copyOnlyFilesinDir(File sourceLocation , File targetLocation)
+    throws IOException {
+        
+        if (sourceLocation.isDirectory() ) {
+
         } else {
             
             InputStream in = new FileInputStream(sourceLocation);
@@ -896,6 +926,73 @@ public class GUI_Utils {
 
 		}
 		return arr1;
+ 	
+
+    }
+    
+    
+    public static int MonthStr2int (String mon)  {
+		int iMon = 0;
+		
+    	if (mon.equals("Apr")) {
+			iMon = 4;
+		} else if (mon.equals("Jun")) {
+			iMon = 6;
+		} else if (mon.equals("Sep")) {
+			iMon = 9;
+		} else if (mon.equals("Nov")) {
+			iMon = 11;
+		} else if (mon.equals("Feb")) {
+			iMon = 2;
+		} else if (mon.equals("Jan")) {
+			iMon = 1;
+		} else if (mon.equals("Mar")) {
+			iMon = 3;
+		} else if (mon.equals("May")) {
+			iMon = 5;
+		} else if (mon.equals("Jul")) {
+			iMon = 7;
+		} else if (mon.equals("Aug")) {
+			iMon = 8;
+		} else if (mon.equals("Oct")) {
+			iMon = 10;
+		} else if (mon.equals("Dec")) {
+			iMon = 12;
+		}
+		return iMon;
+ 	
+
+    }
+    
+    public static int DaysinMonth (String mon)  {
+		int dayct = 0;
+		
+    	if (mon.equals("Apr")) {
+			dayct = 30;
+		} else if (mon.equals("Jun")) {
+			dayct = 30;
+		} else if (mon.equals("Sep")) {
+			dayct = 30;
+		} else if (mon.equals("Nov")) {
+			dayct = 30;
+		} else if (mon.equals("Feb")) {
+			dayct = 28;
+		} else if (mon.equals("Jan")) {
+			dayct = 31;
+		} else if (mon.equals("Mar")) {
+			dayct = 31;
+		} else if (mon.equals("May")) {
+			dayct = 31;
+		} else if (mon.equals("Jul")) {
+			dayct = 31;
+		} else if (mon.equals("Aug")) {
+			dayct = 31;
+		} else if (mon.equals("Oct")) {
+			dayct = 31;
+		} else if (mon.equals("Dec")) {
+			dayct = 31;
+		}
+		return dayct;
  	
 
     }
