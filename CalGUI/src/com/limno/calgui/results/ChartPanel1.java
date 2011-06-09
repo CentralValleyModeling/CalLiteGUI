@@ -6,10 +6,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Stroke;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import hec.heclib.util.HecTime;
@@ -232,6 +236,14 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 		JPopupMenu popupmenu = p1.getPopupMenu();
 		JMenuItem item = popupmenu.add("Copy Data");
+		item.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (buffer == null)
+					return;
+				StringSelection clipString = new StringSelection(buffer);
+				getToolkit().getSystemClipboard().setContents(clipString, clipString);
+			}
+		});
 
 		// Finish up window
 
@@ -257,6 +269,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 		buffer = buffer + "\n";
 
 		// Data
+		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 		for (int j = 0; j < dataset.getItemCount(0); j++) {
 
 			for (int i = 0; i < dataset.getSeriesCount(); i++)
@@ -265,15 +278,13 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 						buffer = buffer + dataset.getXValue(i, j) + "\t" + dataset.getYValue(i, j) + "\t\t";
 					else {
-						buffer = buffer + new Date((long) dataset.getXValue(i, j)) + "\t" + dataset.getYValue(i, j) + "\t\t";
+						buffer = buffer + df.format(new Date((long) dataset.getXValue(i, j))) + "\t" + dataset.getYValue(i, j) + "\t\t";
 					}
 				} else
 					buffer = buffer + "\t\t\t";
 
 			buffer = buffer + "\n";
 		}
-		System.out.println(buffer);
-
 	}
 
 	public void createChartPrintJob() {
