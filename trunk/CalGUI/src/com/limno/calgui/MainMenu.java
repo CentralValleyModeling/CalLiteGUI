@@ -136,6 +136,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JPanel controls2;
 	JPanel controls3;
 	JPanel presets;
+	JPanel WMA;
 	JPanel hyd_CCOpt;
 	JPanel hyd_CC;
 	JPanel hyd_CC1;
@@ -1156,6 +1157,25 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			 * swix2.find("btnGetReportFile3"); btnFile3.addActionListener((ActionListener) getDSSFilename3); } catch
 			 * (Exception e1) { // TODO Auto-generated catch block e1.printStackTrace(); }
 			 */
+			
+		} else if (e.getActionCommand().startsWith("AC_PresetClear")) {
+			
+			Component[] components = presets.getComponents();
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					c.setSelected(false);
+				}
+			}
+			
+			components = WMA.getComponents();
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					c.setSelected(false);
+				}
+			}
+			
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
 			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty() || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
 					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
