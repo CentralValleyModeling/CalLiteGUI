@@ -70,7 +70,8 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			columns.addElement("Ann (TAF)");
 		}
 
-		for (int s = 0; s < tscs.length + stscs.length; s++) {
+
+		for (int s = 0; s < tscs.length + (stscs == null? 0: stscs.length); s++) {
 
 			String sLabel = sName;
 			TimeSeriesContainer tsc;
