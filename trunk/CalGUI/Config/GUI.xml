@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768" title="CalLite GUI 0.80"
+<frame id="desktop" size="1024,768" title="CalLite GUI 0.81"
 	defaultCloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
 
 	<menubar id="menu">
