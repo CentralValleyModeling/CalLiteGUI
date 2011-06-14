@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -47,6 +49,12 @@ public class GUI_Utils {
             }
             
             String[] children = sourceLocation.list();
+            
+            List<String> list = new ArrayList<String>(Arrays.asList(children));
+            list.removeAll(Arrays.asList(".svn"));
+            children = list.toArray(new String[0]);
+
+           
             if (subdir==true){
                 for (int i=0; i<children.length; i++) {
                     copyDirectory(new File(sourceLocation, children[i]),
