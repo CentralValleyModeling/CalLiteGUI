@@ -1836,6 +1836,68 @@
 						<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 							gridx="1" gridy="1" />
 						<tabbedpane>
+						
+						<panel id="shortage_flow" name="Shortage" layout="GridBagLayout"
+								minimumsize="510,490">
+								<label text="Flow Shortage " font="Tahoma-BOLD" preferredsize="110,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
+								</label>
+								<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
+								</label>
+								<checkbox name="ckbp801" id="ckbp801" text="SHORT_AD_HST ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
+								</checkbox>
+								<checkbox name="ckbp802" id="ckbp802" text="SHORT_AD_KSWCK ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
+								</checkbox>
+								<checkbox name="ckbp803" id="ckbp803" text="SHORT_AD_NIMBUS ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
+								</checkbox>
+								<checkbox name="ckbp804" id="ckbp804" text="SHORT_AD_REDBLF ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
+								</checkbox>
+								<checkbox name="ckbp805" id="ckbp805" text="SHORT_AD_SACAME ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
+								</checkbox>
+								<checkbox name="ckbp806" id="ckbp806" text="SHORT_AD_SACFEA ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
+								</checkbox>
+								<checkbox name="ckbp807" id="ckbp807" text="SHORT_AD_THERM ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="9" />
+								</checkbox>
+								<checkbox name="ckbp808" id="ckbp808" text="SHORT_AD_WILKNS ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
+								</checkbox>																																
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="11" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="5" gridy="1" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="7" gridy="1" />
+								</label>
+								
+								<button name="btnpClear_shortage" id="btnpClear_shortage" text="Clear All" ActionCommand = "AC_ShortageClear">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
+								</button>
+							</panel>
+						
 							<panel id="presets" name="Storage and Flows" layout="GridBagLayout"
 								minimumsize="510,490">
 								<label text="Storage" font="Tahoma-BOLD" preferredsize="110,15">
