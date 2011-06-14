@@ -137,6 +137,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JPanel controls2;
 	JPanel controls3;
 	JPanel presets;
+	JPanel shortage_flow;
 	JPanel WMA;
 	JPanel hyd_CCOpt;
 	JPanel hyd_CC;
@@ -213,7 +214,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(facilities, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Display, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
+		GUI_Utils.SetCheckBoxorRadioButtonItemListener(shortage_flow, this);
 		GUI_Utils.SetMouseListener(presets, this);
+		GUI_Utils.SetMouseListener(shortage_flow, this);
 		GUI_Utils.SetMouseListener(facilities, this);
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
@@ -1179,6 +1182,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			}
 
+		} else if (e.getActionCommand().startsWith("AC_ShortageClear")) {
+
+			Component[] components = shortage_flow.getComponents();
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					c.setSelected(false);
+				}
+			}		
+			
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
 			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty() || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
 					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
@@ -1308,6 +1321,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
 			}
+			components = shortage_flow.getComponents();
+			for (int i = 0; i < components.length; i++) {
+				if (components[i] instanceof JCheckBox) {
+					JCheckBox c = (JCheckBox) components[i];
+					String cName = c.getName();
+					if (cName.startsWith("ckbp")) {
+						boolean b = c.isSelected();
+						if (b == true) {
+							cSTOR = cSTOR + c.getText().trim() + ",";
+							cSTORIdx = cSTORIdx + cName + ",";
+						}
+					}
+				}
+
+				lstArray1[n] = QuickState() + cSTOR + cSTORIdx;
+
+				// String[] reportNamesEG = {cDate};
+				lstReports.setListData(lstArray1);
+			}
+			
 		}
 
 		else if (e.getActionCommand().startsWith("Sch_Load")) {

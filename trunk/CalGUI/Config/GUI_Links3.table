@@ -73,3 +73,11 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 518	null	null	null	null	null
 519	null	null	null	null	null
 520	null	null	null	null	null
+801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
+802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
+803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
+804	SHORT_AD_REDBLF/SHORTAGE-FLOW	null	Shortage	SHORT_AD_REDBLF	null
+805	SHORT_AD_SACAME/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACAME	null
+806	SHORT_AD_SACFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACFEA	null
+807	SHORT_AD_THERM/SHORTAGE-FLOW	null	Shortage	SHORT_AD_THERM	null
+808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_WILKNS	null
