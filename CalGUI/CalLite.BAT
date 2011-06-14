@@ -9,8 +9,7 @@ REM --
 REM ----------------------------------------------------------
 REM
 
-PROMPT "CalLite will run here - press any key to continue"
-
-PAUSE
+cd run
+..\model\main_bo
 
 EXIT
