@@ -1886,11 +1886,7 @@
 								<checkbox name="ckbp810" id="ckbp810" text="SHORT_AD_YUBFEA ">
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="1" gridy="12" />
-								</checkbox>	
-								<checkbox name="ckbp811" id="ckbp811" text="Net Delta Outflow ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="13" />
-								</checkbox>								
+								</checkbox>									
 								<label text="    ">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="1" gridy="15" />
@@ -1931,10 +1927,6 @@
 								<checkbox name="ckbp903" id="ckbp903" text="San Joaquin River at Vernalis ">
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
-								</checkbox>
-								<checkbox name="ckbp904" id="ckbp904" text="SHORT_AD_YUBFEA ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
 								</checkbox>									
 								<label text="    ">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"

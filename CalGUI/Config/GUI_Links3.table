@@ -83,8 +83,6 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_WILKNS	null
 809	SHORT_AD_YOLOBP/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YOLOBP	null
 810	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YUBFEA	null
-811	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Delta Outflow	Detla Out Flow Criteria
-901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Delta Outflow	Detla Out Flow Criteria
-902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento River at Rio Vista	Sacramento River Flow Criteria at Rio Vista
-903	C_SJR/FLOW-CHANNEL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San Joaquin River at Vernalis	San Joaquin River Flow Criteria at Vernalis
-904	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YUBFEA	null
+901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Delta_Outflow	Detla_OutFlow_Criteria
+902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento_River_at_Rio_Vista	Sacramento_River_Flow_Criteria_at_Rio_Vista
+903	C_SJR/FLOW-ACCRDEPL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San_Joaquin_River_at_Vernalis	San_Joaquin_River_Flow_Criteria_at_Vernalis
