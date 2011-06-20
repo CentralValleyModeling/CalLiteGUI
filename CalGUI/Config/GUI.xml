@@ -1927,7 +1927,19 @@
 								<checkbox name="ckbp903" id="ckbp903" text="San Joaquin River at Vernalis ">
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
-								</checkbox>									
+								</checkbox>
+								<checkbox name="ckbp904" id="ckbp904" text="Extra Water Needed for Net Delta Outflow ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
+								</checkbox>
+								<checkbox name="ckbp905" id="ckbp905" text="Extra Water Needed for Sacramento River at Rio Vista ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
+								</checkbox>
+								<checkbox name="ckbp906" id="ckbp906" text="Extra Water Needed for San Joaquin River at Vernalis ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
+								</checkbox>
 								<label text="    ">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="1" gridy="13" />
