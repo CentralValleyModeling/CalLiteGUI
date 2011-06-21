@@ -185,7 +185,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".215";
+		desktopTitle = desktop.getTitle() + ".216";
 		desktop.setResizable(false);
 
 		// Help hotkey
@@ -966,9 +966,15 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			if (retval == JFileChooser.APPROVE_OPTION) {
 				// ... The user selected a file, get it, use it.
 				File file = fc.getSelectedFile();
+				
+
 
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+				scenFilename = file.getName();
+				desktop.setTitle(desktopTitle + " - " + scenFilename);
+				JTextField tf = (JTextField) swix.find("run_txfScen");
+				tf.setText(scenFilename);
 
 			}
 
