@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768" title="CalLite GUI 0.82"
+<frame id="desktop" size="1024,768" title="CalLite GUI 0.83"
 	defaultCloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
 
 	<menubar id="menu">
@@ -187,7 +187,7 @@
 						</button>
 						<button text="Help" id="RunHelp" ActionCommand="AC_Help">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 					</panel>
 					<panel preferredsize="603,619">
@@ -388,7 +388,7 @@
 						</label>
 						<button text="Help" id="HydHelp" ActionCommand="AC_Help">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 					</panel>
 
@@ -558,7 +558,7 @@
 						</panel>
 						<button text="Help" id="DemandHelp" ActionCommand="AC_Help">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 					</panel>
 
@@ -634,7 +634,7 @@
 						</panel>
 						<label text="Access facilities parameters by selecting">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
-								gridy="90"  anchor="GridBagConstraints.NORTHWEST" />
+								gridy="90" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 						<label text="or right-clicking on item at left">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
@@ -646,7 +646,7 @@
 						</label>
 						<button text="Help" id="FacHelp" ActionCommand="AC_Help">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 						<panel name="fac_pan1" id="fac_pan1" resizeable="false"
 							enabled="false" visible="false"
@@ -1294,8 +1294,8 @@
 						</panel>
 					</tabbedpane>
 					<button text="Help" id="RegHelp" ActionCommand="AC_Help">
-							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+						<gridbagconstraints anchor="GridBagConstraints.WEST"
+							gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 					</button>
 					<panel id="reg_panTab" border="TitledBorder(Values)" enabled="false"
 						resizeable="false" minimumsize="600,450" layout="GridBagLayout">
@@ -1312,19 +1312,19 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="1"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button id="btnRegDef" text="Default" minimumsize="100,20" enabled="false"
-							ActionCommand="Reg_Default" visible="false">
+						<button id="btnRegDef" text="Default" minimumsize="100,20"
+							enabled="false" ActionCommand="Reg_Default" visible="false">
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<buttongroup id="reg_btng1" name="reg_btng1">
-							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641" enabled="false"
-								text="D-1641">
+							<radiobutton id="reg_rdbD1641" name="reg_rdbD1641"
+								enabled="false" text="D-1641">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0" />
 							</radiobutton>
-							<radiobutton id="reg_rdbUD" name="reg_rdbUD" text="User defined" enabled="false"
-								selected="false">
+							<radiobutton id="reg_rdbUD" name="reg_rdbUD" text="User defined"
+								enabled="false" selected="false">
 								<gridbagconstraints insets="10,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
 							</radiobutton>
@@ -1338,7 +1338,8 @@
 								</table>
 							</scrollpane>
 						</HBox>
-						<label text="Access regulation table by selecting or right-clicking on item at left">
+						<label
+							text="Access regulation table by selecting or right-clicking on item at left">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
@@ -1490,8 +1491,8 @@
 						</checkbox>
 					</panel>
 					<button text="Help" id="OpHelp" ActionCommand="AC_Help">
-							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="99"  gridwidth="2" insets="5,5,5,0"/>
+						<gridbagconstraints anchor="GridBagConstraints.WEST"
+							gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 					</button>
 
 					<panel id="op_panTab" border="TitledBorder(Values)"
@@ -1836,129 +1837,7 @@
 						<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 							gridx="1" gridy="1" />
 						<tabbedpane>
-						
-						<panel id="shortage" name="Shortage" layout="GridBagLayout"
-								minimumsize="510,490">
-								<label text="Flow Shortage " font="Tahoma-BOLD" preferredsize="110,15">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
-								</label>
-								<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
-								</label>
-								<checkbox name="ckbp801" id="ckbp801" text="SHORT_AD_HST ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
-								</checkbox>
-								<checkbox name="ckbp802" id="ckbp802" text="SHORT_AD_KSWCK ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
-								</checkbox>
-								<checkbox name="ckbp803" id="ckbp803" text="SHORT_AD_NIMBUS ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
-								</checkbox>
-								<checkbox name="ckbp804" id="ckbp804" text="SHORT_AD_REDBLF ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
-								</checkbox>
-								<checkbox name="ckbp805" id="ckbp805" text="SHORT_AD_SACAME ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
-								</checkbox>
-								<checkbox name="ckbp806" id="ckbp806" text="SHORT_AD_SACFEA ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
-								</checkbox>
-								<checkbox name="ckbp807" id="ckbp807" text="SHORT_AD_THERM ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="9" />
-								</checkbox>
-								<checkbox name="ckbp808" id="ckbp808" text="SHORT_AD_WILKNS ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
-								</checkbox>								
-								<checkbox name="ckbp809" id="ckbp809" text="SHORT_AD_YOLOBP ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="11" />
-								</checkbox>								
-								<checkbox name="ckbp810" id="ckbp810" text="SHORT_AD_YUBFEA ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="12" />
-								</checkbox>									
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="1" gridy="15" />
-								</label>
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="5" gridy="1" />
-								</label>
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="7" gridy="1" />
-								</label>
-								
-								<button name="btnpClear_shortage" id="btnpClear_shortage" text="Clear All" ActionCommand = "AC_ShortageClear">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
-								</button>
-							</panel>
-							
-							<panel id="delta_flow_criteria" name="Delta Flow Criteria" layout="GridBagLayout"
-								minimumsize="510,490">
-								<label text="Delta Flow Criteria " font="Tahoma-BOLD" preferredsize="110,15">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
-								</label>
-								<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
-								</label>
-								<checkbox name="ckbp901" id="ckbp901" text="Net Delta Outflow ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
-								</checkbox>
-								<checkbox name="ckbp902" id="ckbp902" text="Sacramento River at Rio Vista ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
-								</checkbox>
-								<checkbox name="ckbp903" id="ckbp903" text="San Joaquin River at Vernalis ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
-								</checkbox>
-								<checkbox name="ckbp904" id="ckbp904" text="Extra Water Needed for Net Delta Outflow ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
-								</checkbox>
-								<checkbox name="ckbp905" id="ckbp905" text="Extra Water Needed for Sacramento River at Rio Vista ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
-								</checkbox>
-								<checkbox name="ckbp906" id="ckbp906" text="Extra Water Needed for San Joaquin River at Vernalis ">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
-								</checkbox>
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="1" gridy="13" />
-								</label>
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="5" gridy="1" />
-								</label>
-								<label text="    ">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="7" gridy="1" />
-								</label>
-								
-								<button name="btnpClear_dfc" id="btnpClear_dfc" text="Clear All" ActionCommand = "AC_DfcClear">
-									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
-								</button>
-							</panel>
-						
+
 							<panel id="presets" name="Storage and Flows" layout="GridBagLayout"
 								minimumsize="510,490">
 								<label text="Storage" font="Tahoma-BOLD" preferredsize="110,15">
@@ -2237,17 +2116,144 @@
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="7" gridy="1" />
 								</label>
-								
-								<button name="btnpClear" id="btnpClear" text="Clear All" ActionCommand = "AC_PresetClear">
+
+								<button name="btnpClear" id="btnpClear" text="Clear All"
+									ActionCommand="AC_PresetClear">
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
 								</button>
 								<label text="Right-click item to display  ">
 									<gridbagconstraints weightx="0.5"
-										anchor="GridBagConstraints.EAST" gridx="5" gridy="19" gridwidth="3"/>
-								
+										anchor="GridBagConstraints.EAST" gridx="5" gridy="19"
+										gridwidth="3" />
+
 								</label>
 							</panel>
+
+							<panel id="shortage" name="Shortages/Flow Criteria" layout="GridBagLayout"
+								minimumsize="510,490">
+								<label text="Flow Shortage " font="Tahoma-BOLD"
+									preferredsize="110,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="1"
+										gridwidth="2" />
+								</label>
+								<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
+								</label>
+								<checkbox name="ckbp801" id="ckbp801" text="SHORT_AD_HST ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
+								</checkbox>
+								<checkbox name="ckbp802" id="ckbp802" text="SHORT_AD_KSWCK ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
+								</checkbox>
+								<checkbox name="ckbp803" id="ckbp803" text="SHORT_AD_NIMBUS ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
+								</checkbox>
+								<checkbox name="ckbp804" id="ckbp804" text="SHORT_AD_REDBLF ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
+								</checkbox>
+								<checkbox name="ckbp805" id="ckbp805" text="SHORT_AD_SACAME ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
+								</checkbox>
+								<checkbox name="ckbp806" id="ckbp806" text="SHORT_AD_SACFEA ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
+								</checkbox>
+								<checkbox name="ckbp807" id="ckbp807" text="SHORT_AD_THERM ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="9" />
+								</checkbox>
+								<checkbox name="ckbp808" id="ckbp808" text="SHORT_AD_WILKNS ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
+								</checkbox>
+								<checkbox name="ckbp809" id="ckbp809" text="SHORT_AD_YOLOBP ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="11" />
+								</checkbox>
+								<checkbox name="ckbp810" id="ckbp810" text="SHORT_AD_YUBFEA ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="12" />
+								</checkbox>
+								
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="13" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="14" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="15" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="16" />
+								</label>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="1" gridy="17" />
+								</label>
+
+								<button name="btnpClear_shortage" id="btnpClear_shortage"
+									text="Clear All" ActionCommand="AC_ShortageClear">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
+								</button>
+
+								<label text="Delta Flow Criteria " font="Tahoma-BOLD"
+									preferredsize="250,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="1" />
+								</label>
+								<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="2" />
+								</label>
+								<checkbox name="ckbp901" id="ckbp901" text="Net Delta Outflow ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="3" />
+								</checkbox>
+								<checkbox name="ckbp902" id="ckbp902"
+									text="Sacramento River at Rio Vista ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="4" />
+								</checkbox>
+								<checkbox name="ckbp903" id="ckbp903"
+									text="San Joaquin River at Vernalis ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="5" />
+								</checkbox>
+								<checkbox name="ckbp904" id="ckbp904"
+									text="Extra Water Needed for Net Delta Outflow ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="6" />
+								</checkbox>
+								<checkbox name="ckbp905" id="ckbp905"
+									text="Extra Water Needed for Sacramento River at Rio Vista ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="7" />
+								</checkbox>
+								<checkbox name="ckbp906" id="ckbp906"
+									text="Extra Water Needed for San Joaquin River at Vernalis ">
+									<gridbagconstraints weightx="0.5"
+										anchor="GridBagConstraints.WEST" gridx="10" gridy="8" />
+								</checkbox>
+								<label text="    ">
+									<gridbagconstraints anchor="GridBagConstraints.WEST"
+										gridx="10" gridy="13" />
+								</label>
+							</panel>
+
 
 							<panel id="WMA" name="Water Management Actions" layout="GridBagLayout">
 								<label text="Sites" font="Tahoma-BOLD" preferredsize="110,15">
@@ -2379,8 +2385,11 @@
 					</button>
 				</panel>
 
-				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12">
+				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12"
+					layout="GridBagLayout">
+					<label icon="images/WRIMS.JPG" />
 				</panel>
+
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 					<button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD">

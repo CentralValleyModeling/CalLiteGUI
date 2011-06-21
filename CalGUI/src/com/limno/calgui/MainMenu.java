@@ -104,6 +104,8 @@ import javax.swing.event.TableModelListener;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
+import calsim.gui.GuiUtils;
+
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.GetDSSFilename.JFileChooser2;
 import com.limno.calgui.results.ChartPanel1;
@@ -183,7 +185,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".196";
+		desktopTitle = desktop.getTitle() + ".215";
 		desktop.setResizable(false);
 
 		// Help hotkey
@@ -216,10 +218,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Display, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(presets, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(shortage, this);
-		GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria, this);
+		// GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria, this);
 		GUI_Utils.SetMouseListener(presets, this);
 		GUI_Utils.SetMouseListener(shortage, this);
-		GUI_Utils.SetMouseListener(delta_flow_criteria, this);
+		// GUI_Utils.SetMouseListener(delta_flow_criteria, this);
 		GUI_Utils.SetMouseListener(facilities, this);
 		GUI_Utils.SetMenuListener(menu, this);
 		GUI_Utils.SetMouseListener(regulations, this);
@@ -228,8 +230,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Recolor results tabs
 
 		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
-		jtp.setForegroundAt(6, Color.blue);
 
+		jtp.setForegroundAt(6, Color.blue);
 		jtp.setForegroundAt(7, Color.blue);
 		jtp.setForegroundAt(8, Color.blue);
 		jtp.setForegroundAt(9, Color.blue);
@@ -238,6 +240,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		jtp.setBackgroundAt(7, Color.WHITE);
 		jtp.setBackgroundAt(8, Color.WHITE);
 		jtp.setBackgroundAt(9, Color.WHITE);
+
+		// Load in WRIMS functionality
+
+		// JPanel outPanel = (JPanel) swix.find("Custom");
+		// outPanel.setPreferredSize(new Dimension(1000,700));
+		// outPanel.add(GuiUtils.exportGUI(desktop));
 
 		// Set Up Run Settings Page
 		JLabel label = (JLabel) swix.find("map");
@@ -777,7 +785,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else {
 
 					// Disable run button
-					JButton btn = (JButton) e.getSource();
+					JButton btn = (JButton) swix.find("run_btnRun");
 					btn.setEnabled(false);
 					mainmenu.revalidate();
 
@@ -1193,9 +1201,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JCheckBox c = (JCheckBox) components[i];
 					c.setSelected(false);
 				}
-			}	
-			
-			/// delta flow criteria
+			}
+
+			// / delta flow criteria
 		} else if (e.getActionCommand().startsWith("AC_DfcClear")) {
 
 			Component[] components = delta_flow_criteria.getComponents();
@@ -1204,8 +1212,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JCheckBox c = (JCheckBox) components[i];
 					c.setSelected(false);
 				}
-			}	
-			
+			}
+
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
 			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty() || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
 					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
@@ -1226,11 +1234,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					br.readLine();
 					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME_BASE\t" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\n";
+					theText = theText + "NAME_BASE\t\"" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
 					br.readLine();
-					theText = theText + "NAME_ALT\t" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\n";
+					theText = theText + "NAME_ALT\t\"" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\"\n";
 					br.readLine();
 					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText() + "\n";
 					br.readLine();
@@ -1354,26 +1362,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
 			}
-			components = delta_flow_criteria.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
-						}
-					}
-				}
 
-				lstArray1[n] = QuickState() + cSTOR + cSTORIdx;
-
-				// String[] reportNamesEG = {cDate};
-				lstReports.setListData(lstArray1);
-			}
-			
 		}
 
 		else if (e.getActionCommand().startsWith("Sch_Load")) {
@@ -1750,6 +1739,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
 			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
 			TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
+			TimeSeriesContainer[][] dexc_Results = dss_Grabber.getExceedanceSeries2(primary_Results);
 
 			JTabbedPane tabbedpane = new JTabbedPane();
 
@@ -1757,9 +1747,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				SummaryTablePanel stp;
 				if (doDifference)
 					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
-							summaryTags, "");
+							summaryTags, "", dss_Grabber);
 				else
-					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel());
+					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel(),
+							dss_Grabber);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1789,21 +1780,37 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 											// done
 				for (int m1 = 0; m1 < 12; m1++)
 					if (exceedMonths.contains(monthNames[m1])) {
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-								exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel());
+						if (doDifference)
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")" + " - Difference from "
+									+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[m1], null, true, upper, lower,
+									dss_Grabber.getSLabel());
+						else
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
+									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel());
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
 				if (exceedMonths.contains("ALL") || !plottedOne) {
-					cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (All months)", dss_Grabber.getYLabel(), exc_Results[13],
-							sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel());
+					if (doDifference)
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
+								+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
+								dss_Grabber.getSLabel());
+					else
+						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(), exc_Results[13],
+								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel());
 					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
 				}
 				if (exceedMonths.contains("Annual")) {
 					if (dss_Grabber.originalUnits.equals("CFS")) {
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)", exc_Results[12],
-								sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Exceedance (Annual Total)", null, cp3, null, 0);
+						if (doDifference)
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
+									+ primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true, upper, lower,
+									dss_Grabber.getSLabel());
+						else
+
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
+									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel());
+						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
 					} else {
 						JPanel panel = new JPanel();
 						panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
@@ -2050,7 +2057,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	public void mousePressed(MouseEvent e) {
 
 		// Handles mouse presses for results tabs
-		
+
 		JComponent component = (JComponent) e.getComponent();
 		String cName = component.getName();
 
@@ -2090,30 +2097,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							int x = (int) b.getX();
 							int y = (int) b.getY();
 
-							if ((x - 111) * (x - 111) + (y - 150) * (y - 150) < 100) {
-								JFrame mapPlotFrame = new JFrame("Example map plot");
-								dss_Grabber.setLocation("102");
+							if (((x - 111) * (x - 111) + (y - 150) * (y - 150) < 100) || ((x - 339) * (x - 339) + (y - 157) * (y - 157) < 100)
+									|| ((x - 339) * (x - 339) + (y - 250) * (y - 250) < 100)) {
 
-								TimeSeriesContainer[] primary_Results = new TimeSeriesContainer[1];
-								primary_Results[0] = dss_Grabber.getOneSeries(((JTextField) swix.find("schem_tfload")).getText(),
-										dss_Grabber.primaryDSSName);
+								if (y < 200)
+									DisplayFrame(QuickState() + ";Locs-Shasta Storage,;Index-ckbp104,");
 
-								Date lower = new Date();
-								JSpinner m = (JSpinner) swix.find("spnStartMonth");
-								JSpinner y1 = (JSpinner) swix.find("spnStartYear");
-								lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue())).getFirstMillisecond());
-
-								Date upper = new Date();
-								m = (JSpinner) swix.find("spnEndMonth");
-								y1 = (JSpinner) swix.find("spnEndYear");
-								upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y1.getValue()).getLastMillisecond()));
-
-								ChartPanel1 cp1 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, null, false,
-										upper, lower, dss_Grabber.getSLabel());
-								mapPlotFrame.add(cp1);
-								mapPlotFrame.pack();
-								mapPlotFrame.setVisible(true);
-
+								else
+									DisplayFrame(QuickState() + ";Locs-Keswick Flows,;Index-ckbp206,");
 							}
 
 							else

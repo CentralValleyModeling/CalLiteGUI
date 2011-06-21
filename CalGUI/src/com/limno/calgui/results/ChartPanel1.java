@@ -159,7 +159,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 							if (stscs[i].values[j] == 99000)
 								sseries[i].add(new Month(ht.month(), ht.year()), null);
 							else {
-								sseries[i].add(new Month(ht.month(), ht.year()), stscs[i].values[j]);
+								sseries[i].addOrUpdate(new Month(ht.month(), ht.year()), stscs[i].values[j]);
 								if (maxval < stscs[i].values[j])
 									maxval = stscs[i].values[j];
 							}

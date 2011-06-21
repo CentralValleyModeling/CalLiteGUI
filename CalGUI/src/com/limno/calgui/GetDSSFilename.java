@@ -241,8 +241,8 @@ public class GetDSSFilename implements ActionListener {
 							try {
 								FileInputStream fin = new FileInputStream(listOfFiles[i]);
 								BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-								String theKey = br.readLine();
-								String theValue = br.readLine();
+								String theKey = br.readLine().toLowerCase();
+								String theValue = br.readLine()+"\n"+br.readLine()+"\n"+br.readLine();
 								theToolTips.put(theKey.toLowerCase(), theValue);
 							} catch (IOException e1) {
 								// TODO Auto-generated catch block
