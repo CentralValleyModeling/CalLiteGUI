@@ -81,6 +81,9 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			{ 2001, 4, 4, 1, 2, 0, 4, 0, 0, }, { 2002, 4, 4, 1, 1, 0, 3, 0, 0, }, { 2003, 2, 3, 1, 1, 0, 2, 0, 0, } };
 
 	private void update(int i1, int i2, double value, int m) {
+		/*
+		 * Accumulates monthly and all-value totals
+		 */
 		x[i1][i2][m] += value;
 		xx[i1][i2][m] += (value * value);
 		if (min[i1][i2][m] > value)
@@ -100,9 +103,24 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		n[i1][i2][0]++;
 	}
 
+	private void update2(int i1, int i2, double value, int m) {
+		/*
+		 * Copy of update to handle ONLY annual totals
+		 */
+		x[i1][i2][13] += value;
+		xx[i1][i2][13] += (value * value);
+		if (min[i1][i2][13] > value)
+			min[i1][i2][13] = value;
+		if (max[i1][i2][13] < value)
+			max[i1][i2][13] = value;
+		medx[i1][i2][13][n[i1][i2][13]] = value;
+		n[i1][i2][13]++;
+	}
+
 	Vector<String> columns;
 
-	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName) {
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
+			DSS_Grabber dss_Grabber) {
 
 		super();
 
@@ -144,14 +162,14 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 			// Initialize accumulators
 
-			n = new int[6][6][13];
-			x = new double[6][6][13];
-			xx = new double[6][6][13];
-			min = new double[6][6][13];
-			max = new double[6][6][13];
+			n = new int[6][6][14];
+			x = new double[6][6][14];
+			xx = new double[6][6][14];
+			min = new double[6][6][14];
+			max = new double[6][6][14];
 			for (int i1 = 0; i1 < 6; i1++)
 				for (int i2 = 0; i2 < 6; i2++)
-					for (int i3 = 0; i3 < 13; i3++) {
+					for (int i3 = 0; i3 < 14; i3++) {
 
 						n[i1][i2][i3] = 0;
 						x[i1][i2][i3] = 0;
@@ -160,12 +178,13 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 						max[i1][i2][i3] = -1e20;
 					}
 
-			med = new double[6][6][13];
-			medx = new double[6][6][13][tsc.numberValues];
+			med = new double[6][6][14];
+			medx = new double[6][6][14][tsc.numberValues];
 
 			// Loop through timeseries
 
 			HecTime ht = new HecTime();
+			int lastWY = -9999;
 
 			for (int i = 0; i < tsc.numberValues; i++) {
 
@@ -173,6 +192,8 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				int y = ht.year();
 				int m = ht.month();
 				int wy = (m < 10) ? y : y + 1;
+				boolean isNewWY = (wy != lastWY);
+				lastWY = wy;
 
 				// int ySac403030 = (m < 2) ? y - 1 : y;
 				int ySac403030 = wy;
@@ -191,11 +212,31 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 					update(5, ylt[wy - 1920][8], tsc.values[i], m);
 					update(5, 0, tsc.values[i], m);
 				}
+				if (isNewWY) {
+					// Calculate values based on annual totals
+					double value;
+					if (title.contains("Difference"))
+						value = dss_Grabber.getAnnualTAFDiff(t, wy);
+					else
+						value = dss_Grabber.getAnnualTAF(t, wy);
+
+					update2(0, 0, value, m);
+					update2(1, ylt[ySac403030 - 1920][1], value, m);
+					update2(2, ylt[ySHASTAindex - 1920][3], value, m);
+					update2(3, ylt[yFEATHERindex - 1920][5], value, m);
+					update2(4, ylt[ySJRindex - 1920][2], value, m);
+
+					if (ylt[wy - 1920][8] != 0) {
+						update2(5, ylt[wy - 1920][8], value, m);
+						update2(5, 0, value, m);
+					}
+
+				}
 
 			}
 
-			avg = new double[6][6][13];
-			sdev = new double[6][6][13];
+			avg = new double[6][6][14];
+			sdev = new double[6][6][14];
 			data[t] = new Vector<String>();
 			String[] leftPart = { "All", "Sac 40-30-30", "Shasta", "Feather", "SJR", "Dry" };
 			String[] rightPartsclimate = { "", "Wet", "Above", "Normal", "Dry", "Extreme" };
@@ -207,7 +248,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			// Calculate results
 			for (int i1 = 0; i1 < 6; i1++)
 				for (int i2 = 0; i2 < 6; i2++)
-					for (int i3 = 0; i3 < 13; i3++)
+					for (int i3 = 0; i3 < 14; i3++)
 
 						if ((((i1 == 0) && tagString.contains("All years") && (i2 == 0)) || ((i1 == 1) && tagString.contains("40-30-30"))
 								|| ((i1 == 2) && tagString.contains("Shasta")) || ((i1 == 3) && tagString.contains("Feather"))
@@ -270,6 +311,8 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 										i3m = i3 + 10;
 									else if (i3 < 12)
 										i3m = i3 - 2;
+									else if (dss_Grabber.originalUnits.contains("CFS"))
+										i3m = 13;
 									else
 										i3m = 0;
 
@@ -317,13 +360,13 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 			String labelText;
 			if (t < tscs.length)
-				labelText= title;
+				labelText = title;
 			else {
 				if (!sName.equals(""))
 					labelText = sName;
 				else {
 					String[] parts = tsc.fullName.split("/");
-					labelText= parts[2] + "/" + parts[3];
+					labelText = parts[2] + "/" + parts[3];
 				}
 			}
 			JLabel label = new JLabel();
