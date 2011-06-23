@@ -48,7 +48,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 404	DEL_SWP_TOT_N/DELIVERY-SWP	null	Deliveries	SWP North of Delta Deliveries	null
 405	SWP_TA_TOTAL/SWP_DELIVERY+SWP_CO_TOTAL/SWP_DELIVERY+SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Total Deliveries	null
 406	SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Article 21 (Interruptible) Deliveries	null
-409	JP_EC_MONTH/SALINITY	JP_EC_STD/SALINITY(-1)	null	null	null
+409	null	null	null	null	null
 410	JP_EC_MONTH/SALINITY	JP_EC_STD/SALINITY(-1)	Electrical Conductivity	Jersey Point Salinity	Salinity Standard
 411	RS_EC_MONTH/SALINITY	RS_EC_STD/SALINITY(-1)	Electrical Conductivity	Rock Slough Salinity	Salinity Standard
 412	EM_EC_MONTH/SALINITY	EM_EC_STD/SALINITY(-1)	Electrical Conductivity	Emmaton Salinity	Salinity Standard
