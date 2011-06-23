@@ -249,7 +249,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		// Set Up Run Settings Page
 		JLabel label = (JLabel) swix.find("map");
-		java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta.jpg");
+		//java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta.jpg");
+		java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta_logo1.jpg");
 		if (imgURL != null) {
 
 			BufferedImage img;

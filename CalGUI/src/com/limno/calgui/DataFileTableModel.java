@@ -304,58 +304,103 @@ public class DataFileTableModel extends AbstractTableModel {
 					String secondColumnName = (String) columnNames.get(1);
 					String thirdColumnName = (String) columnNames.get(2);
 					String fourthColumnName = (String) columnNames.get(3);
-					String wyts1[] = { "W-", "AN-", "BN-", "D-", "CD-" };
-					String prefix = "";
+					
+					if (secondColumnName.toLowerCase().startsWith("wyt")) {
 
-					columnNames.clear();
-					columnNames.addElement(firstColumnName);
 
-					String lastColID = "-1";
-					int rowCount = 0;
+						String wyts1[] = { "W-", "AN-", "BN-", "D-", "CD-" };
+						String prefix = "";
 
-					ArrayList<String> allValues = new ArrayList<String>();
-					while (aLine != null) {
+						columnNames.clear();
+						columnNames.addElement(firstColumnName);
 
-						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
-						if (st2.countTokens() > 3) {
+						String lastColID = "-1";
+						int rowCount = 0;
 
-							st2.nextToken();
-							String aColID = st2.nextToken();
-							String aValue = st2.nextToken();
-							String aValue1 = st2.nextToken();
-							if (Integer.parseInt(aColID) > Integer.parseInt(lastColID)) {
-								lastColID = aColID;
-								rowCount = 0;
-								if (secondColumnName.toLowerCase().startsWith("wyt")) {
-									// columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
-									prefix = wyts1[Integer.parseInt(aColID) - 1];
-									columnNames.addElement(prefix + fourthColumnName); // Multiplier
-									columnNames.addElement(prefix + thirdColumnName); // Offset
+						ArrayList<String> allValues = new ArrayList<String>();
+						while (aLine != null) {
+
+							StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+							if (st2.countTokens() > 3) {
+
+								st2.nextToken();
+								String aColID = st2.nextToken();
+								String aValue = st2.nextToken();
+								String aValue1 = st2.nextToken();
+								if (Integer.parseInt(aColID) > Integer.parseInt(lastColID)) {
+									lastColID = aColID;
+									rowCount = 0;
+									if (secondColumnName.toLowerCase().startsWith("wyt")) {
+										// columnNames.addElement(wyts[Integer.parseInt(aColID)-1]);
+										prefix = wyts1[Integer.parseInt(aColID) - 1];
+										columnNames.addElement(prefix + fourthColumnName); // Multiplier
+										columnNames.addElement(prefix + thirdColumnName); // Offset
+									} else {
+										// columnNames.addElement(secondColumnName +
+										// aColID);
+									}
 								} else {
-									// columnNames.addElement(secondColumnName +
-									// aColID);
+
 								}
-							} else {
-
+								rowCount++;
+								allValues.add(aValue1); // Multiplier
+								allValues.add(aValue); // Offset
 							}
-							rowCount++;
-							allValues.add(aValue1); // Multiplier
-							allValues.add(aValue); // Offset
+							aLine = br.readLine();
 						}
-						aLine = br.readLine();
-					}
 
-					int colct = columnNames.size() / 2;
-					int idx = 0;
-					for (int r = 0; r < rowCount; r++) {
+						int colct = columnNames.size() / 2;
+						int idx = 0;
+						for (int r = 0; r < rowCount; r++) {
 
-						data.addElement(Integer.toString(r + 1)); // month
-						for (int c = 0; c < colct; c++) {
-							for (int c1 = 0; c1 < 2; c1++) {
-								idx = c * rowCount * 2 + r * 2 + c1;
+							data.addElement(Integer.toString(r + 1)); // month
+							for (int c = 0; c < colct; c++) {
+								for (int c1 = 0; c1 < 2; c1++) {
+									idx = c * rowCount * 2 + r * 2 + c1;
+									data.addElement(allValues.get(idx));
+								}
+							}
+						}
+					} else {
+						columnNames.clear();
+						columnNames.addElement(firstColumnName);
+						columnNames.addElement(secondColumnName);
+						columnNames.addElement(thirdColumnName);
+						columnNames.addElement(fourthColumnName);
+						String lastColID = "-1";
+						int rowCount = 0;
+
+						ArrayList<String> allValues = new ArrayList<String>();
+						while (aLine != null) {
+							
+							StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+							if (st2.countTokens() > 3) {
+
+								String aMon = st2.nextToken();
+								String aValue1 = st2.nextToken();
+								String aValue2 = st2.nextToken();
+								String aValue3 = st2.nextToken();
+
+								rowCount++;
+								allValues.add(aMon); 
+								allValues.add(aValue1); 
+								allValues.add(aValue2); 
+								allValues.add(aValue3); 
+							}
+							aLine = br.readLine();	
+						}
+						int colct = columnNames.size();
+						int idx = 0;
+						for (int r = 0; r < rowCount; r++) {
+							
+							//data.addElement(allValues.get(idx)); // month
+							for (int c = 0; c < colct; c++) {
 								data.addElement(allValues.get(idx));
+								idx++;
 							}
-						}
+						}						
+						
+						
 					}
 				}
 
@@ -496,6 +541,12 @@ public class DataFileTableModel extends AbstractTableModel {
 			if (columnNames.size() == 2) {
 				for (int i = 1; i <= data.size() / 2; i++) {
 					output.println(data.elementAt(i * 2 - 2) + " " + data.elementAt(i * 2 - 1));
+				}
+			} else if (columnNames.size() == 4) {
+				// 12 Months x 3 values
+				for (int j = 0; j < 12; j++) {
+					output.println(data.elementAt(j * 4) + " " + data.elementAt(j * 4 + 1) + " "
+							+ data.elementAt(j * 4 + 2) + " " + data.elementAt(j * 4 + 3));
 				}
 			} else if (columnNames.size() == 6) {
 				// 5 WYT x 12 Months x 1 value
