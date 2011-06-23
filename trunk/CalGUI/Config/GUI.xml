@@ -193,7 +193,7 @@
 					<panel preferredsize="603,619">
 						<gridbagconstraints insets="0,0,5,5"
 							anchor="GridBagConstraints.NORTHEAST" gridx="1" gridy="0" />
-						<label id="map" icon="images/CA_map_and_Delta.jpg"></label>
+						<label id="map" icon="images/CA_map_and_Delta_logo1.jpg"></label>
 					</panel>
 					<hbox preferredsize="50,50" minimumsize="50,50">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
@@ -208,12 +208,12 @@
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							<buttongroup>
 								<radiobutton id="hyd_rdb2005" name="hyd_rdb2005"
-									text="LOD2005" minimumsize="240,20" selected="true">
+									text="Current Land use" minimumsize="240,20" selected="true">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 								</radiobutton>
 								<radiobutton id="hyd_rdb2030" name="hyd_rdb2030"
-									text="LOD2030" minimumsize="240,20">
+									text="Future Land Use" minimumsize="240,20">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 								</radiobutton>
@@ -241,7 +241,7 @@
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 								</radiobutton>
 								<radiobutton id="hyd_rdb4" name="hyd_rdb4"
-									text="Base (Current Sea Level) / KM X2" minimumsize="240,20">
+									text="Base (Current Sea Level) / KM X2" minimumsize="240,20" visible="false">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 								</radiobutton>
@@ -372,7 +372,7 @@
 						</panel>
 						<label
 							text="When LOD2005 is selected, CL2005A01A021411_SV.DSS will be used as the SV file."
-							font="Tahoma-Italic-12">
+							font="Tahoma-Italic-12" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" columns="2"
 								gridy="3" />
@@ -381,7 +381,7 @@
 
 						<label
 							text="When LOD2030 is selected, CL_FUTURE_WHL021111_SV.DSS will be used as the SV file."
-							font="Tahoma-Italic-12">
+							font="Tahoma-Italic-12" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" columns="2"
 								gridy="4" />
@@ -574,13 +574,13 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
-							<checkbox name="fac_ckb2" id="fac_ckb2" text="Shasta Enlargement"
-								minimumsize="240,20">
+							<checkbox name="fac_ckb2" id="fac_ckb2" text="Shasta Enlargement" 
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
-							<checkbox name="fac_ckb3" id="fac_ckb3" text="Los Vaqueros Enlargement"
-								minimumsize="240,20">
+							<checkbox name="fac_ckb3" id="fac_ckb3" text="Los Vaqueros Enlargement" 
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
@@ -590,7 +590,8 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
-								text="Sacramento Valley Conunctive Use" minimumsize="240,20">
+								text="Sacramento Valley Conunctive Use" 
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 							</checkbox>
@@ -601,12 +602,12 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							<checkbox name="fac_ckb6" id="fac_ckb6" text="Isolated Facility"
-								minimumsize="240,20">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb7" id="fac_ckb7" text="Banks Pumping Plant"
-								minimumsize="240,20">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
@@ -617,17 +618,17 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							<checkbox name="fac_ckb8" id="fac_ckb8"
-								text="Fremont Weir - Yolo Bypass" minimumsize="240,20">
+								text="Fremont Weir - Yolo Bypass" minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb9" id="fac_ckb9" text="DWSC East Bypass"
-								minimumsize="240,20">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
 							<checkbox name="fac_ckb10" id="fac_ckb10" text="Stone Lakes Bypass"
-								minimumsize="240,20">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
@@ -1386,12 +1387,12 @@
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3"
 								gridwidth="2" />
 							<label
-								text="Choose forecast allocation method to use instead of WSI/DI for either or both projects.">
+								text="Choose forecast allocation method to use instead of WSI/DI for either or both projects." enabled="false">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
 									gridwidth="2" />
 							</label>
-							<label text="Model will search for an optimal allocation percentage. ">
+							<label text="Model will search for an optimal allocation percentage." enabled="false">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
 									gridwidth="2" />
@@ -1413,7 +1414,7 @@
 								</radiobutton>
 							</buttongroup>
 							<checkbox id="op_ckbSWP" name="op_ckbSWP" enabled="false"
-								text="Use Forecast Allocation Model for SWP" checked="true">
+								text="Use Forecast Allocation Model for SWP" checked="true" >
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5"
 									gridwidth="1" />
@@ -1431,7 +1432,7 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="6"
 									gridwidth="1" />
 							</numtextfield>
-							<checkbox id="op_ckbCWP" name="op_ckbCWP"
+							<checkbox id="op_ckbCWP" name="op_ckbCWP" enabled="false"
 								text="Use Forecast Allocation Model for CVP" checked="true">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10"
@@ -2064,7 +2065,7 @@
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="7" gridy="8" />
 								</label>
-								<checkbox name="ckbp409" id="ckbp409" text="All Delta">
+								<checkbox name="ckbp409" id="ckbp409" text="All Delta" >
 									<gridbagconstraints weightx="0.5"
 										anchor="GridBagConstraints.WEST" gridx="7" gridy="9" />
 								</checkbox>
@@ -2130,7 +2131,7 @@
 								</label>
 							</panel>
 
-							<panel id="shortage" name="Shortages/Flow Criteria" layout="GridBagLayout"
+							<panel id="shortage" name="Shortages/Flow Objectives" layout="GridBagLayout"
 								minimumsize="510,490">
 								<label text="Flow Shortage " font="Tahoma-BOLD"
 									preferredsize="110,15">
@@ -2210,7 +2211,7 @@
 										anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
 								</button>
 
-								<label text="Delta Flow Criteria " font="Tahoma-BOLD"
+								<label text="SWRCB Flow Objectives" font="Tahoma-BOLD"
 									preferredsize="250,15">
 									<gridbagconstraints insets="0,0,0,0"
 										anchor="GridBagConstraints.WEST" gridx="10" gridy="1" />
