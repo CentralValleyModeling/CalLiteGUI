@@ -185,7 +185,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + ".216";
+		desktopTitle = desktop.getTitle() + ".216a";
 		desktop.setResizable(false);
 
 		// Help hotkey
@@ -247,22 +247,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// outPanel.setPreferredSize(new Dimension(1000,700));
 		// outPanel.add(GuiUtils.exportGUI(desktop));
 
-		// Set Up Run Settings Page
-		JLabel label = (JLabel) swix.find("map");
-		//java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta.jpg");
-		java.net.URL imgURL = getClass().getResource("/images/CA_map_and_Delta_logo1.jpg");
-		if (imgURL != null) {
-
-			BufferedImage img;
-			img = ImageIO.read(imgURL);
-			ImageIcon image = new ImageIcon(img, null);
-			// label.setIcon(image);
-
-			// ImageIcon image = new ImageIcon(imgURL, null);
-			// label.setIcon(image);
-		}
-
-		imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
+		java.net.URL imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
 		if (imgURL != null) {
 			// ImageIcon image = new ImageIcon(imgURL, null);
 			// System.out.println(image.getIconHeight());

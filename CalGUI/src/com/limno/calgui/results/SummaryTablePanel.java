@@ -195,7 +195,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				boolean isNewWY = (wy != lastWY);
 				lastWY = wy;
 
-				// int ySac403030 = (m < 2) ? y - 1 : y;
+				//int ySac403030 = (m < 2) ? y - 1 : y;
 				int ySac403030 = wy;
 
 				int ySHASTAindex = (m < 3) ? y - 1 : y;
