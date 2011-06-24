@@ -1293,6 +1293,16 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="17" anchor="GridBagConstraints.WEST" />
 							</checkbox>
+							<separator orientation="HORIZONTAL" preferredsize="5,2">
+								<gridbagconstraints gridx="0" gridy="18"
+									insets="0,0,5,5" gridwidth="5" anchor="GridBagConstraints.CENTER"
+									fill="GridBagConstraints.BOTH" />
+							</separator>
+							<checkbox name="ckbReg16" id="ckbReg16"
+								text="Fraction of Unimpaired Flow for Delta Flow Criteria">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="20" anchor="GridBagConstraints.WEST" />
+							</checkbox>
 						</panel>
 					</tabbedpane>
 					<button text="Help" id="RegHelp" ActionCommand="AC_Help">
