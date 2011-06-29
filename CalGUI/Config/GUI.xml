@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768" title="CalLite GUI 0.84"
+<frame id="desktop" size="1024,768" title="CalLite 2.0 - The Cental Valley Water Management Screening Model"
 	defaultCloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
 
 	<menubar id="menu">
@@ -220,7 +220,7 @@
 							</buttongroup>
 						</panel>
 						<panel border="TitledBorder(Sea Level Rise Options)"
-							preferredsize="250,130" layout="GridBagLayout">
+							preferredsize="250,110" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							<buttongroup>
@@ -391,7 +391,9 @@
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
-					</panel>
+						
+						
+				</panel>
 
 
 
