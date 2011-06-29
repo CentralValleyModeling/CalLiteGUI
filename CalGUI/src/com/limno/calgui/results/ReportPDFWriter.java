@@ -1,6 +1,5 @@
 package com.limno.calgui.results;
 
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
@@ -41,6 +40,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPRow;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.TextField;
 
 public class ReportPDFWriter implements Writer {
 	Document document;
@@ -52,12 +52,10 @@ public class ReportPDFWriter implements Writer {
 	private Font subtitleFont;
 	private Font smallBoldFont;
 	private String dateStr;
-	
+
 	private Font tableFont;
 	private Font tableBoldFont;
 
-
-	
 	public ReportPDFWriter() {
 
 	}
@@ -65,22 +63,20 @@ public class ReportPDFWriter implements Writer {
 	public ReportPDFWriter(String filename) {
 		startDocument(filename);
 	}
-	
-	
-	public void setTableFontSize(String tableFontSize){
-		
+
+	public void setTableFontSize(String tableFontSize) {
+
 		int fontSize = 9;
 		try {
-	      fontSize = Integer.parseInt(tableFontSize.trim());
-	    } catch (NumberFormatException nfe){
-	      System.out.println("NumberFormatException: " + nfe.getMessage());
-	    } 
+			fontSize = Integer.parseInt(tableFontSize.trim());
+		} catch (NumberFormatException nfe) {
+			System.out.println("NumberFormatException: " + nfe.getMessage());
+		}
 
-		
 		tableFont = FontFactory.getFont("Arial", fontSize);
 		tableBoldFont = FontFactory.getFont("Arial", fontSize);
-		tableBoldFont.setStyle(Font.BOLD);		
-		
+		tableBoldFont.setStyle(Font.BOLD);
+
 	}
 
 	public void startDocument(String filename) {
@@ -106,20 +102,41 @@ public class ReportPDFWriter implements Writer {
 			System.err.println(ioe.getMessage());
 		}
 	}
-	
-	public void addTitlePage(String compareInfo, String author){
+
+	public void addTitlePage(String compareInfo, String author,
+			String fileBase, String fileAlt) {
 		document.newPage();
 		try {
-			Paragraph title = new Paragraph("\n\n\n\n"+compareInfo, FontFactory.getFont("Arial", 24, Font.BOLD, Color.BLUE));
+			Paragraph title = new Paragraph("\n\n\n\n" + compareInfo,
+					FontFactory.getFont("Arial", 24, Font.BOLD, Color.BLUE));
 			title.setAlignment(Element.ALIGN_CENTER);
 			document.add(title);
-			Paragraph pauthor = new Paragraph("\n\n"+"Author: "+author, FontFactory.getFont("Arial", 16, Font.BOLD));
+			Paragraph pauthor = new Paragraph("\n\n" + "Author: " + author,
+					FontFactory.getFont("Arial", 16, Font.BOLD));
 			pauthor.setAlignment(Element.ALIGN_CENTER);
 			document.add(pauthor);
 			dateStr = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-			Paragraph pdate = new Paragraph("\n"+"Generated on "+dateStr);
+			Paragraph pdate = new Paragraph("\n" + "Generated on " + dateStr);
 			pdate.setAlignment(Element.ALIGN_CENTER);
 			document.add(pdate);
+			try {
+				TextField tf1 = new TextField(writer, new Rectangle(40, 100,
+						800, 150), "fox");
+				tf1.setBackgroundColor(Color.WHITE);
+				tf1.setBorderColor(Color.RED);
+				tf1.setBorderWidth(1);
+				tf1.setRotation(90);
+				// tf1.setBorderStyle(PdfBorderDictionary.STYLE_BEVELED);
+				tf1.setText("Alternative 1 DSS file: " + fileBase + "\n\n"
+						+ "Alternative 2 DSS file: " + fileAlt);
+				tf1.setAlignment(Element.ALIGN_LEFT);
+				tf1.setOptions(TextField.REQUIRED | TextField.READ_ONLY
+						| TextField.MULTILINE);
+				writer.addAnnotation(tf1.getTextField());
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -128,24 +145,24 @@ public class ReportPDFWriter implements Writer {
 
 	public void setAuthor(String author) {
 		/*
-		footer = new HeaderFooter(new Phrase(author), new Phrase(dateStr));
-		document.setFooter(footer);
-		document.addAuthor(author);
-		*/
+		 * footer = new HeaderFooter(new Phrase(author), new Phrase(dateStr));
+		 * document.setFooter(footer); document.addAuthor(author);
+		 */
 	}
-	
-	public void addNewPage(){
+
+	public void addNewPage() {
 		document.newPage();
 	}
-	
+
 	public void writeParagraph(String text) throws DocumentException {
 		document.newPage();
 		document.add(new Paragraph(text, bigFont));
 	}
-	
+
 	protected void drawChart(JFreeChart chart) {
 		document.newPage();
-		new PdfOutline(writer.getRootOutline(),new PdfDestination(PdfDestination.FITH), chart.getTitle().getText());
+		new PdfOutline(writer.getRootOutline(), new PdfDestination(
+				PdfDestination.FITH), chart.getTitle().getText());
 		PdfContentByte cb = writer.getDirectContent();
 		Graphics2D graphics2D = cb.createGraphics(PageSize.A4.getHeight(),
 				PageSize.A4.getWidth());
@@ -163,15 +180,16 @@ public class ReportPDFWriter implements Writer {
 			summaryTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 			summaryTable.setHorizontalAlignment(PdfPTable.ALIGN_CENTER);
 			summaryTable.setWidthPercentage(100);
-			new PdfOutline(writer.getRootOutline(),new PdfDestination(PdfDestination.FITH), "Summary Table");
+			new PdfOutline(writer.getRootOutline(), new PdfDestination(
+					PdfDestination.FITH), "Summary Table");
 		}
 		addTableRow(headerRow, columnSpans, BOLD, true);
-		PdfPRow row = summaryTable.getRow(summaryTable.getRows().size()-1);
+		PdfPRow row = summaryTable.getRow(summaryTable.getRows().size() - 1);
 		PdfPCell[] cells = row.getCells();
-		for (int i = 0; i < cells.length; i++) {
-			if (cells[i] != null){
-				cells[i].setGrayFill(0.6f);
-				cells[i].setPaddingLeft(1);
+		for (PdfPCell cell : cells) {
+			if (cell != null) {
+				cell.setGrayFill(0.6f);
+				cell.setPaddingLeft(1);
 			}
 		}
 	}
@@ -180,18 +198,17 @@ public class ReportPDFWriter implements Writer {
 	public void addTableRow(List<String> rowData, int[] columnSpans, int style,
 			boolean centered) {
 		for (int i = 0; i < rowData.size(); i++) {
-			
+
 			PdfPCell cell = new PdfPCell(new Phrase(rowData.get(i),
 					style == BOLD ? tableBoldFont : tableFont));
 
-						
 			if (centered) {
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			} else {
-				if (i!=0){
+				if (i != 0) {
 					cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 				} else {
-					if (style==BOLD){
+					if (style == BOLD) {
 						cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 					} else {
 						cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -201,7 +218,7 @@ public class ReportPDFWriter implements Writer {
 			cell.setVerticalAlignment(Element.ALIGN_CENTER);
 			if (columnSpans != null) {
 				cell.setColspan(columnSpans[i]);
-			} 
+			}
 			summaryTable.addCell(cell);
 		}
 	}
@@ -238,26 +255,26 @@ public class ReportPDFWriter implements Writer {
 			PdfPCell[] cells = summaryTable.getRow(0).getCells();
 			setRightAndLeftBorders(cells);
 			setColumnBoundaries(cells, 1);
-			for (int i = 0; i < cells.length; i++) {
-				if (cells[i] != null) {
-					cells[i].setBorderWidthTop(2);
+			for (PdfPCell cell : cells) {
+				if (cell != null) {
+					cell.setBorderWidthTop(2);
 				}
 			}
 			ArrayList rows = summaryTable.getRows();
-			for(int i=1; i < rows.size()-1; i++){
-				PdfPCell[] dataCells = ((PdfPRow)rows.get(i)).getCells();
+			for (int i = 1; i < rows.size() - 1; i++) {
+				PdfPCell[] dataCells = ((PdfPRow) rows.get(i)).getCells();
 				setRightAndLeftBorders(dataCells);
-				setColumnBoundaries(dataCells,4);
-				setCellPadding(dataCells,3,2);
+				setColumnBoundaries(dataCells, 4);
+				setCellPadding(dataCells, 3, 2);
 			}
-			PdfPRow lastRow = (PdfPRow) rows.get(rows.size()-1);
+			PdfPRow lastRow = (PdfPRow) rows.get(rows.size() - 1);
 			cells = lastRow.getCells();
 			setRightAndLeftBorders(cells);
-			setColumnBoundaries(cells,4);
-			setCellPadding(cells,3,4);
-			for (int i = 0; i < cells.length; i++) {
-				if (cells[i] != null) {
-					cells[i].setBorderWidthBottom(2);
+			setColumnBoundaries(cells, 4);
+			setCellPadding(cells, 3, 4);
+			for (PdfPCell cell : cells) {
+				if (cell != null) {
+					cell.setBorderWidthBottom(2);
 				}
 			}
 			document.add(summaryTable);
@@ -266,34 +283,36 @@ public class ReportPDFWriter implements Writer {
 			throw new RuntimeException(ex);
 		}
 	}
-	
-	private void setCellPadding(PdfPCell[] cells, int padding, int bottomPadding){
-		for(int i=0; i < cells.length; i++){
-			if (cells[i]!= null){
-				cells[i].setPadding(padding);
-				cells[i].setPaddingBottom(bottomPadding);
+
+	private void setCellPadding(PdfPCell[] cells, int padding, int bottomPadding) {
+		for (PdfPCell cell : cells) {
+			if (cell != null) {
+				cell.setPadding(padding);
+				cell.setPaddingBottom(bottomPadding);
 			}
 		}
 	}
-	
-	private void setColumnBoundaries(PdfPCell[] cells, int span){
-		for(int i=0; i < cells.length; i++){
-			if (i%span==0 && cells[i] != null){
+
+	private void setColumnBoundaries(PdfPCell[] cells, int span) {
+		for (int i = 0; i < cells.length; i++) {
+			if ((i % span == 0) && (cells[i] != null)) {
 				cells[i].setBorderWidthRight(2);
 			}
 		}
 	}
-	
-	private void setRightAndLeftBorders(PdfPCell[] cells){
-		if (cells==null) return;
-		if (cells[0] != null){
+
+	private void setRightAndLeftBorders(PdfPCell[] cells) {
+		if (cells == null) {
+			return;
+		}
+		if (cells[0] != null) {
 			cells[0].setBorderWidthLeft(2);
 		}
-		int i=cells.length-1;
-		while (cells[i] == null && i >= 0){
+		int i = cells.length - 1;
+		while ((cells[i] == null) && (i >= 0)) {
 			i--;
 		}
-		if (i >=0){
+		if (i >= 0) {
 			cells[i].setBorderWidthRight(2);
 		}
 	}
@@ -303,7 +322,7 @@ public class ReportPDFWriter implements Writer {
 			String title, String[] seriesName, String xAxisLabel,
 			String yAxisLabel) {
 		DefaultXYDataset dataset = new DefaultXYDataset();
-		for (int i = seriesName.length-1; i >= 0; i--) {
+		for (int i = seriesName.length - 1; i >= 0; i--) {
 			double[][] seriesData = new double[2][buildDataArray.size()];
 			for (int j = 0; j < buildDataArray.size(); j++) {
 				double[] data = buildDataArray.get(j);
@@ -331,7 +350,7 @@ public class ReportPDFWriter implements Writer {
 			String title, String[] seriesName, String xAxisLabel,
 			String yAxisLabel) {
 		TimeSeriesCollection datasets = new TimeSeriesCollection();
-		for (int i = seriesName.length-1; i >= 0; i--) {
+		for (int i = seriesName.length - 1; i >= 0; i--) {
 			TimeSeries ts = new TimeSeries(seriesName[i]);
 			datasets.addSeries(ts);
 		}

@@ -17,18 +17,14 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 
-import com.limno.calgui.ProgressFrame;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Element;
-import com.lowagie.text.Font;
-import com.lowagie.text.FontFactory;
-import com.lowagie.text.Paragraph;
-
+import vista.report.TSMath;
 import vista.set.DataReference;
 import vista.set.Group;
 import vista.set.RegularTimeSeries;
 import vista.time.TimeFactory;
 import vista.time.TimeWindow;
+
+import com.limno.calgui.ProgressFrame;
 
 /**
  * Generates a report based on the template file instructions
@@ -36,7 +32,7 @@ import vista.time.TimeWindow;
  * @author psandhu
  * 
  */
-public class Report extends SwingWorker<Void,String> {
+public class Report extends SwingWorker<Void, String> {
 	/**
 	 * Externalizes the format for output. This allows the flexibility of
 	 * defining a writer to output the report to a PDF file vs an HTML file.
@@ -51,7 +47,7 @@ public class Report extends SwingWorker<Void,String> {
 		void startDocument(String outputFile);
 
 		void endDocument();
-		
+
 		void setTableFontSize(String tableFontSize);
 
 		void addTableTitle(String string);
@@ -75,13 +71,14 @@ public class Report extends SwingWorker<Void,String> {
 
 		void addTableSubTitle(String string);
 
-		public void addTitlePage(String compareInfo, String author);
+		public void addTitlePage(String compareInfo, String author,
+				String fileBase, String fileAlt);
 	}
 
 	/*
-	 ********** START SwingWorker additions
+	 * ********* START SwingWorker additions
 	 */
-	
+
 	private InputStream inputStream;
 	private JFrame desktop = null;
 	private ProgressFrame frame;
@@ -108,38 +105,38 @@ public class Report extends SwingWorker<Void,String> {
 
 	protected void process(List<String> status) {
 
-		frame.setText(status.get(status.size()-1));
+		frame.setText(status.get(status.size() - 1));
 		return;
 	}
-	
-	protected void done(){
+
+	protected void done() {
 
 		frame.setCursor(null);
 		frame.dispose();
 
 		desktop.setVisible(true);
 		try {
-			Runtime.getRuntime().exec(
-					"cmd /c start " + outputFilename);
+			Runtime.getRuntime().exec("cmd /c start " + outputFilename);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return;
-		
+
 	}
 
-	public Report(InputStream inputStream, String outputFilename, JFrame desktop) throws IOException {
+	public Report(InputStream inputStream, String outputFilename, JFrame desktop)
+			throws IOException {
 
 		this.desktop = desktop;
 		this.inputStream = inputStream;
 		this.outputFilename = outputFilename;
-		
-	}
-	/*
-	 ********** END SwingWorker additions
-	 */
 
+	}
+
+	/*
+	 * ********* END SwingWorker additions
+	 */
 
 	static final Logger logger = Logger.getLogger("callite.report");
 	private ArrayList<ArrayList<String>> twValues;
@@ -164,10 +161,11 @@ public class Report extends SwingWorker<Void,String> {
 	}
 
 	void parseTemplateFile(InputStream templateFileStream) throws IOException {
-		
-		if (desktop != null)
+
+		if (desktop != null) {
 			publish("Parsing template file.");
-		
+		}
+
 		Parser p = new Parser();
 		Tables tables = p.parseModel(templateFileStream);
 		// load scalars into a map
@@ -198,11 +196,12 @@ public class Report extends SwingWorker<Void,String> {
 			path_map.var_category = pathnameMappingTable.getValue(i,
 					"VAR_CATEGORY");
 			path_map.row_type = pathnameMappingTable.getValue(i, "ROW_TYPE");
-			if (path_map.pathAlt == null || path_map.pathAlt.length() == 0) {
+			if ((path_map.pathAlt == null) || (path_map.pathAlt.length() == 0)) {
 				path_map.pathAlt = path_map.pathBase;
 			}
 			path_map.plot = pathnameMappingTable.getValue(i, "PLOT")
 					.equalsIgnoreCase("Y");
+			path_map.units = pathnameMappingTable.getValue(i, "UNIT");
 			pathnameMaps.add(path_map);
 		}
 		InputTable timeWindowTable = tables.getTableNamed("TIME_PERIODS");
@@ -211,8 +210,9 @@ public class Report extends SwingWorker<Void,String> {
 
 	public void doProcessing() {
 		// open files 1 and file 2 and loop over to plot
-		if (desktop != null)
+		if (desktop != null) {
 			publish("Processing template file.");
+		}
 		Group dssGroupBase = Utils.opendss(scalars.get("FILE_BASE"));
 		Group dssGroupAlt = Utils.opendss(scalars.get("FILE_ALT"));
 		ArrayList<TimeWindow> timewindows = new ArrayList<TimeWindow>();
@@ -228,10 +228,12 @@ public class Report extends SwingWorker<Void,String> {
 		writer = new ReportPDFWriter();
 		writer.startDocument(output_file);
 		String author = scalars.get("MODELER").replace("\"", "");
-		writer.addTitlePage(String.format("System Water Balance Report: %s vs %s",
-				scalars.get("NAME_ALT"), scalars.get("NAME_BASE")), author);
+		writer.addTitlePage(String.format(
+				"System Water Balance Report: %s vs %s", scalars
+						.get("NAME_ALT"), scalars.get("NAME_BASE")), author,
+				scalars.get("FILE_BASE"), scalars.get("FILE_ALT"));
 		writer.setAuthor(author);
-		if (dssGroupBase == null || dssGroupAlt == null) {
+		if ((dssGroupBase == null) || (dssGroupAlt == null)) {
 			String msg = "No data available in either : "
 					+ scalars.get("FILE_BASE") + " or "
 					+ scalars.get("FILE_ALT");
@@ -244,11 +246,13 @@ public class Report extends SwingWorker<Void,String> {
 		int dataIndex = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
 			dataIndex = dataIndex + 1;
-			if (desktop != null)
-				publish("Generating plot " + dataIndex + " of " + pathnameMaps.size() + ".");
+			if (desktop != null) {
+				publish("Generating plot " + dataIndex + " of "
+						+ pathnameMaps.size() + ".");
+			}
 
 			logger.fine("Working on index: " + dataIndex);
-			if (pathMap.pathAlt == null || pathMap.pathAlt == "") {
+			if ((pathMap.pathAlt == null) || (pathMap.pathAlt == "")) {
 				pathMap.pathAlt = pathMap.pathBase;
 			}
 			boolean calculate_dts = false;
@@ -263,11 +267,18 @@ public class Report extends SwingWorker<Void,String> {
 					pathMap.pathBase, calculate_dts, pathnameMaps, 1);
 			DataReference refAlt = Utils.getReference(dssGroupAlt,
 					pathMap.pathAlt, calculate_dts, pathnameMaps, 2);
-			if (refBase == null || refAlt == null) {
+			if ((refBase == null) || (refAlt == null)) {
 				continue;
 			}
 			String[] series_name = new String[] { scalars.get("NAME_BASE"),
 					scalars.get("NAME_ALT") };
+			if (pathMap.units.equals("CFS2TAF")) {
+				TSMath.cfs2taf((RegularTimeSeries) refBase.getData());
+				TSMath.cfs2taf((RegularTimeSeries) refAlt.getData());
+			} else if (pathMap.units.equals("TAF2CFS")) {
+				TSMath.taf2cfs((RegularTimeSeries) refBase.getData());
+				TSMath.taf2cfs((RegularTimeSeries) refAlt.getData());
+			}
 			String data_units = Utils.getUnits(refBase, refAlt);
 			String data_type = Utils.getType(refBase, refAlt);
 			if (pathMap.plot) {
@@ -313,18 +324,19 @@ public class Report extends SwingWorker<Void,String> {
 	}
 
 	private void generateSummaryTable() {
-		
-		if (desktop != null)
+
+		if (desktop != null) {
 			publish("Generating summary table.");
+		}
 
 		writer.setTableFontSize(scalars.get("TABLE_FONT_SIZE"));
-		
-		
+
 		writer.addTableTitle(String.format("System Flow Comparision: %s vs %s",
 				scalars.get("NAME_ALT"), scalars.get("NAME_BASE")));
 		writer.addTableSubTitle(scalars.get("NOTE").replace("\"", ""));
 		writer.addTableSubTitle(scalars.get("ASSUMPTIONS").replace("\"", ""));
-		writer.addTableSubTitle(" ");  // add empty line to increase space between title and table
+		writer.addTableSubTitle(" "); // add empty line to increase space
+		// between title and table
 		Group dssGroupBase = Utils.opendss(scalars.get("FILE_BASE"));
 		Group dssGroupAlt = Utils.opendss(scalars.get("FILE_ALT"));
 		ArrayList<TimeWindow> timewindows = new ArrayList<TimeWindow>();
@@ -354,10 +366,12 @@ public class Report extends SwingWorker<Void,String> {
 		boolean firstDataRow = true;
 		int dataIndex = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
-			dataIndex ++;
-			if (desktop != null)
-				publish("Processing dataset " + dataIndex + " of " + pathnameMaps.size());
-			
+			dataIndex++;
+			if (desktop != null) {
+				publish("Processing dataset " + dataIndex + " of "
+						+ pathnameMaps.size());
+			}
+
 			if (!categoryList.contains(pathMap.var_category)) {
 				continue;
 			}
@@ -393,7 +407,7 @@ public class Report extends SwingWorker<Void,String> {
 				} else {
 					rowData.add("");
 				}
-				if (refBase == null || refAlt == null) {
+				if ((refBase == null) || (refAlt == null)) {
 					rowData.add("");
 					rowData.add("");
 				} else {
@@ -459,6 +473,7 @@ public class Report extends SwingWorker<Void,String> {
 		String var_category;
 		String var_name;
 		String row_type;
+		String units;
 		boolean plot;
 
 		public PathnameMap(String var_name) {
