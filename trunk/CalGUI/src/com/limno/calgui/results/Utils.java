@@ -1,13 +1,10 @@
 package com.limno.calgui.results;
 
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.TimeZone;
-
-import com.limno.calgui.results.Report.PathnameMap;
 
 import vista.db.dss.DSSUtil;
 import vista.report.TSMath;
@@ -26,6 +23,8 @@ import vista.time.SubTimeFormat;
 import vista.time.Time;
 import vista.time.TimeFactory;
 import vista.time.TimeWindow;
+
+import com.limno.calgui.results.Report.PathnameMap;
 
 public class Utils {
 	static StringBuffer messages = new StringBuffer();
@@ -152,8 +151,8 @@ public class Utils {
 			parts[2] = varname;
 		}
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < parts.length; i++) {
-			builder.append(parts[i]).append("/");
+		for (String part : parts) {
+			builder.append(part).append("/");
 		}
 		return builder.toString();
 	}
@@ -227,7 +226,7 @@ public class Utils {
 	public static ArrayList<double[]> buildDataArray(DataReference ref1,
 			DataReference ref2, TimeWindow tw) {
 		ArrayList<double[]> dlist = new ArrayList<double[]>();
-		if (ref1 == null && ref2 == null) {
+		if ((ref1 == null) && (ref2 == null)) {
 			return dlist;
 		}
 		TimeSeries data1 = (TimeSeries) ref1.getData();
@@ -277,7 +276,7 @@ public class Utils {
 		ArrayList<Double> x2 = sort(ref2, end_of_sept, tw);
 		ArrayList<double[]> darray = new ArrayList<double[]>();
 		int i = 0;
-		int n = (int) Math.round(Math.min(x1.size(), x2.size()));
+		int n = Math.round(Math.min(x1.size(), x2.size()));
 		while (i < n) {
 			darray.add(new double[] { 100.0 - 100.0 * i / (n + 1), x1.get(i),
 					x2.get(i) });
@@ -290,6 +289,13 @@ public class Utils {
 		RegularTimeSeries data_taf = (RegularTimeSeries) TSMath
 				.createCopy(data);
 		TSMath.cfs2taf(data_taf);
+		return data_taf;
+	}
+
+	public static RegularTimeSeries taf2cfs(RegularTimeSeries data) {
+		RegularTimeSeries data_taf = (RegularTimeSeries) TSMath
+				.createCopy(data);
+		TSMath.taf2cfs(data_taf);
 		return data_taf;
 	}
 
