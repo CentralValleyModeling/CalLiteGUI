@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -61,6 +62,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -185,7 +187,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + "; Scenario";
+		desktopTitle = desktop.getTitle() + " (v225); Scenario";
 		desktop.setResizable(false);
 
 		// Help hotkey
@@ -242,13 +244,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		jtp.setBackgroundAt(9, Color.WHITE);
 
 		// Load in WRIMS functionality
-
-		// JPanel outPanel = (JPanel) swix.find("Custom");
-		// outPanel.setPreferredSize(new Dimension(1000,700));
-		// outPanel.add(GuiUtils.exportGUI(desktop));
-
+		
 		java.net.URL imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
-		if (imgURL != null) {
+		if (imgURL != null) { 
 			// ImageIcon image = new ImageIcon(imgURL, null);
 			// System.out.println(image.getIconHeight());
 
@@ -946,14 +944,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			fc.setFileFilter(new ScenarioFileFilter());
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 
-			String dirname = ".//Scenarios";
-
 			int retval = fc.showOpenDialog(mainmenu);
 			if (retval == JFileChooser.APPROVE_OPTION) {
 				// ... The user selected a file, get it, use it.
-				File file = fc.getSelectedFile();
-				
 
+				File file = fc.getSelectedFile();
+				getScenFilename.fc.setSelectedFile(file); // Use this name for next Save As
 
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
@@ -1438,7 +1434,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			fc.setFileFilter(new CGRFileFilter());
 			fc.setCurrentDirectory(new File(".//Config"));
 
-			String dirname = ".//Config";
 			File file = null;
 			String filename = null;
 			int retval = fc.showSaveDialog(mainmenu);
@@ -1447,12 +1442,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				file = fc.getSelectedFile();
 				filename = file.toString();
 			}
-
-			/*
-			 * Delete existing reportlist File f = new File(System.getProperty("user.dir") +
-			 * "\\Config\\reportlist.cgr"); GUI_Utils.deleteDir(f);
-			 * GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
-			 */
 
 			OutputStream outputStream;
 			try {

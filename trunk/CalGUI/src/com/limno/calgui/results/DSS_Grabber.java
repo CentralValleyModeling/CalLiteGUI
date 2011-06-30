@@ -433,9 +433,9 @@ public class DSS_Grabber {
 						results[month][i].times = times2;
 						results[month][i].values = values2;
 						results[month][i].numberValues = n;
-						results[month][i].units = timeSeriesResults[i].units;
-						results[month][i].fullName = timeSeriesResults[i].fullName;
-						results[month][i].fileName = timeSeriesResults[i].fileName;
+						results[month][i].units = timeSeriesResults[i+1].units;
+						results[month][i].fullName = timeSeriesResults[i+1].fullName;
+						results[month][i].fileName = timeSeriesResults[i+1].fileName;
 					}
 					if (results[month][i].values != null) {
 						double[] sortArray = results[month][i].values;

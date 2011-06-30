@@ -70,8 +70,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			columns.addElement("Ann (TAF)");
 		}
 
-
-		for (int s = 0; s < tscs.length + (stscs == null? 0: stscs.length); s++) {
+		for (int s = 0; s < tscs.length + (stscs == null ? 0 : stscs.length); s++) {
 
 			String sLabel = sName;
 			TimeSeriesContainer tsc;
@@ -96,13 +95,15 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				first++;
 				ht.set(tsc.times[first]);
 			}
+
 			Vector<String> data = new Vector<String>();
 			double sum = 0;
+			int wy = 0;
 			for (int i = first; i < tsc.numberValues; i++) {
 				ht.set(tsc.times[i]);
 				int y = ht.year();
 				int m = ht.month();
-				int wy = (m < 10) ? y : y + 1;
+				wy = (m < 10) ? y : y + 1;
 				if ((i - first) % 12 == 0) {
 					if (i != first && dss_Grabber.originalUnits.equals("CFS"))
 						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
@@ -112,7 +113,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				data.addElement(df1.format(tsc.values[i]));
 			}
 			if (dss_Grabber.originalUnits.equals("CFS")) {
-
+				data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy)));
 			}
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);
