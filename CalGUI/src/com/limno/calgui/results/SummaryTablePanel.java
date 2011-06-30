@@ -212,7 +212,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 					update(5, ylt[wy - 1920][8], tsc.values[i], m);
 					update(5, 0, tsc.values[i], m);
 				}
-				if (isNewWY) {
+				if (isNewWY && dss_Grabber.originalUnits.equals("CFS")) {
 					// Calculate values based on annual totals
 					double value;
 					if (title.contains("Difference"))

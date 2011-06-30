@@ -39,7 +39,7 @@ class FileListModel extends DefaultListModel {
 public class GetDSSFilename implements ActionListener {
 
 	public DefaultListModel lmScenNames;
-	JFileChooser fc = new JFileChooser2();
+	public JFileChooser fc = new JFileChooser2();
 	JList theList;
 	JLabel theLabel;
 	JTextField theTextField;

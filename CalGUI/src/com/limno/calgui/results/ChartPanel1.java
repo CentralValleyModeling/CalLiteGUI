@@ -100,7 +100,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				XYSeries[] sseries = new XYSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
 					if (stscs[i].numberValues > 0) {
-						sseries[i] = new XYSeries(i == 0 ? sName : "");
+						sseries[i] = new XYSeries(sName);
 						double maxval = -1e37;
 						for (int j = 0; j < stscs[i].numberValues; j++) {
 							if (stscs[i].values[j] == 99000)
@@ -152,7 +152,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				TimeSeries[] sseries = new TimeSeries[stscs.length];
 				for (int i = 0; i < stscs.length; i++) {
 					if (stscs[i].numberValues > 0) {
-						sseries[i] = new TimeSeries(i == 0 ? sName : "");
+						sseries[i] = new TimeSeries(sName);
 						double maxval = -1e37;
 						for (int j = 0; j < stscs[i].numberValues; j++) {
 							ht.set(stscs[i].times[j]);
@@ -191,14 +191,12 @@ public class ChartPanel1 extends JPanel implements Printable {
 		plot.setRangeGridlinesVisible(false);
 		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
 
-		if (tscs.length >= 4) { // Time series #4 in black
+		XYItemRenderer r = plot.getRenderer();
 
-			XYItemRenderer r = plot.getRenderer();
-			r.setSeriesPaint(3, ChartColor.BLACK);
-		}
+		if (plot.getDataset(0).getSeriesCount() >= 4) // Fourth series assumed yellow, switched to black
+				r.setSeriesPaint(3, ChartColor.BLACK);
 
 		if (stscs != null) { // Secondary time series as dashed lines
-			XYItemRenderer r = plot.getRenderer();
 			for (int t = 0; t < stscs.length; t++) {
 				Stroke stroke = new BasicStroke(1.0f, // Width
 						BasicStroke.CAP_SQUARE, // End cap
