@@ -520,6 +520,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				System.exit(0);
 			}
 		});
+		new WebData(jtp);
 
 	}
 
