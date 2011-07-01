@@ -9,6 +9,8 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import com.limno.calgui.GetDSSFilename.RBListItem;
+import com.limno.calgui.Prefix;
+
 import java.util.Iterator;
 
 import hec.heclib.dss.*;
@@ -136,6 +138,22 @@ public class DSS_Grabber {
 		}
 	}
 
+	public void setLocationWeb(String string) {
+
+		locationName = string;
+		primaryDSSName = null;
+		secondaryDSSName = null;
+		for (int i = 0; i < com.limno.calgui.MainMenu.getLookupsLength(); i++) {
+			Prefix prefix=new Prefix();
+			String type=prefix.getType(string);
+			primaryDSSName = string+"/"+type;
+			secondaryDSSName = ""; 
+			yLabel = type;
+			title = string;
+			sLabel = "";
+		}
+	}
+	
 	public double getAnnualTAF(int i, int wy) {
 
 		return annualTAFs[i][wy - startWY];
