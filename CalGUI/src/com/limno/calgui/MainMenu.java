@@ -134,6 +134,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JPanel hydroclimate;
 	JPanel regulations;
 	JPanel Reporting;
+	JPanel externalPDF;
 	JPanel reportdialog;
 	JPanel facilities;
 	JPanel operations;
@@ -209,6 +210,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.setActionListener(facilities, this);
 		swix.setActionListener(runsettings, this);
 		swix.setActionListener(schematics, this);
+		swix.setActionListener(externalPDF, this);
+
 
 		// Set ItemListeners
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(regulations, this);

@@ -35,8 +35,8 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "San Joaquin R & Calaveras"		DI		Average		//C_SJR/FLOW-ACCRDEPL//1MON//				//C_SJR/FLOW-ACCRDEPL//1MON//				N		N		DEFAULT
 "Delta Outflow"				DO		Average		//C_Delta/FLOW-CHANNEL//1MON//				//C_Delta/FLOW-CHANNEL//1MON//				B		N		DEFAULT
 "Delta Outflow for X2 and NDO"		DO		Average		//D_DeltaReqd/FLOW-DELIVERY//1MON//			//D_DeltaReqd/FLOW-DELIVERY//1MON//			N		N		DEFAULT
-"Delta Exports"				DE		Average_post	//D_Banks+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	//D_Banks+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	B		N		CFS2TAF
-"Banks SWP"				DE		Average		//D_Banks/FLOW-DELIVERY//1MON//				//D_Banks/FLOW-DELIVERY//1MON//				N		N		CFS2TAF
+"Delta Exports"				DE		Average_post	//D_Banks_SWP+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	//D_Banks_SWP+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	B		N		CFS2TAF
+"Banks SWP"				DE		Average		//D_Banks_SWP/FLOW-DELIVERY//1MON//			//D_Banks_SWP/FLOW-DELIVERY//1MON//			N		N		CFS2TAF
 "Banks CVP"				DE		Average		//D_Banks_CVP/FLOW-DELIVERY//1MON//			//D_Banks_CVP/FLOW-DELIVERY//1MON//			N		N		CFS2TAF
 "Jones"					DE		Average		//D_Jones/FLOW-DELIVERY//1MON//				//D_Jones/FLOW-DELIVERY//1MON//				N		N		CFS2TAF
 "SWP SOD Deliveries"			SWPSOD		Avg_Excd_post	//SWP_TA_TOTAL+SWP_IN_TOTAL+SWP_CO_TOTAL///1MON//	//SWP_TA_TOTAL+SWP_IN_TOTAL+SWP_CO_TOTAL///1MON// 	B		Y		CFS2TAF

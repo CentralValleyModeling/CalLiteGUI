@@ -5,7 +5,7 @@
 <helpset version="2.0">
 	<title>CalLite Help</title>
 	<maps>
-		<homeID></homeID>
+		<homeID>Introduction</homeID>
 		<mapref location="map.xml"/>
 	</maps>
 	<view mergetype="javax.help.AppendMerge">

@@ -6,21 +6,23 @@
 	<tocitem text="1. Introduction" target="Introduction" />
 	<tocitem text="2. Main Menu Options" target="Dropdown Menus" />
 	<tocitem text="3. Scenario Settings" target="Scenario Settings">
-		<tocitem text="3.1. Run Settings tab" target="Run Settings" />
-		<tocitem text="3.2. Hydroclimate tab" target="Hydroclimate" />
-		<tocitem text="3.3. Demands tab" target="Demands" />
-		<tocitem text="3.4. Facilities tab" target="Facilities" />
-		<tocitem text="3.5. Regulations tab" target="Regulations">
+		<tocitem text="3.1. Run Settings" target="Run Settings" />
+		<tocitem text="3.2. Hydroclimate" target="Hydroclimate" />
+		<tocitem text="3.3. Demands" target="Demands" />
+		<tocitem text="3.4. Facilities" target="Facilities" />
+		<tocitem text="3.5. Regulations" target="Regulations">
 			<tocitem text="3.5.1. D-1641 Regulations" target="D1641 Regulations" />
 			<tocitem text="3.5.2. BO RPA Regulations" target="BORPA regulations" />
 			<tocitem text="3.5.3. Other Regulations" target="Other regulations" />
 		</tocitem>
-		<tocitem text="3.6. Operations tab" target="Operations" />
+		<tocitem text="3.6. Operations" target="Operations" />
 	</tocitem>
 	<tocitem text="4. Results" target="Results">
-		<tocitem text="4.1. Quick tab" target="Quick" />
-		<tocitem text="4.2. Custom tab" target="Custom" />
-		<tocitem text="4.3. Schematics tab" target="Schematics" />
-		<tocitem text="4.4. External PDF tab" target="External PDF" />
+		<tocitem text="4.1. Quick Results" target="Quick" />
+		<tocitem text="4.2. Custom Results" target="Custom" />
+		<tocitem text="4.3. Map View" target="Schematics" />
+		<tocitem text="4.4. External PDF" target="External PDF" />
+		<tocitem text="4.5. Map Display" target="Map Display" />
 	</tocitem>
+	<tocitem text="5. Tutorial" target="Tutorial" />
 </toc>
