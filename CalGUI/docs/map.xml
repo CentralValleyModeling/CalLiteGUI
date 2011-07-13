@@ -13,9 +13,9 @@
 	<mapID target="Run Settings" url="Run Settings.html"/>
 	<mapID target="Scenario Settings" url="Scenario Settings.html"/>
 	<mapID target="Results" url="Results.html"/>
-	<mapID target="Quick" url="Quick.html"/>
-	<mapID target="Custom" url="Custom.html"/>
-	<mapID target="Schematics" url="Schematics.html"/>
+	<mapID target="Quick Results" url="Quick.html"/>
+	<mapID target="Custom Results" url="Custom.html"/>
+	<mapID target="Map View" url="Schematics.html"/>
 	<mapID target="External PDF" url="External PDF.html"/>
 	<mapID target="Demands" url="Demands.html"/>
 	<mapID target="D1641 Regulations" url="D1641 Regulations.html"/>
@@ -53,7 +53,7 @@
 	<mapID target="imagelqzkybko766005600835213504" url="Images/imagelqzkybko766005600835213504.jpg"/>
 	<mapID target="imagenmkccuqh8824478093454813451" url="Images/imagenmkccuqh8824478093454813451.jpg"/>
 	<mapID target="imagedjmwlegq3566830970070749478" url="Images/imagedjmwlegq3566830970070749478.jpg"/>
-	<mapID target="Map Display" url="Map Display.html"/>
+	<mapID target="Web Map" url="Map Display.html"/>
 	<mapID target="imagejcnhhjts6698311430087798235" url="Images/imagejcnhhjts6698311430087798235.gif"/>
 	<mapID target="imagekgxvrwsw4233986803733364488" url="Images/imagekgxvrwsw4233986803733364488.gif"/>
 	<mapID target="imagecszhglkm5724847970819370389" url="Images/imagecszhglkm5724847970819370389.gif"/>
