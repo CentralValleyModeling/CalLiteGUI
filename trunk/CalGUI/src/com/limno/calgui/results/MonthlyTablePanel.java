@@ -39,6 +39,11 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
 	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSS_Grabber dss_Grabber, String sName) {
+		this(title, tscs, stscs, dss_Grabber, sName, false);
+
+	}
+
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSS_Grabber dss_Grabber, String sName, boolean isBase) {
 
 		super();
 
@@ -70,7 +75,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			columns.addElement("Ann (TAF)");
 		}
 
-		for (int s = 0; s < tscs.length + (stscs == null ? 0 : stscs.length); s++) {
+		for (int s = 0; s < tscs.length + (stscs == null ? 0 : stscs.length); s+= (isBase ? tscs.length : 1)) {
 
 			String sLabel = sName;
 			TimeSeriesContainer tsc;

@@ -122,14 +122,21 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
 			DSS_Grabber dss_Grabber) {
 
+		this(title, tscs, stscs, tagString, sName, dss_Grabber, false);
+
+	}
+
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
+			DSS_Grabber dss_Grabber, boolean isBase) {
+
 		super();
 
 		panel = new JPanel();
 		panel.setLayout((LayoutManager) (new BoxLayout(panel, BoxLayout.PAGE_AXIS)));
 
-		int nDatasets = tscs.length;
+		int nDatasets = (isBase ? 1 : tscs.length);
 		if (stscs != null)
-			nDatasets = nDatasets + stscs.length;
+			nDatasets = nDatasets + (isBase ? 1 : stscs.length);
 
 		Vector<String> data[] = new Vector[nDatasets];
 
@@ -155,11 +162,17 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		for (int t = 0; t < nDatasets; t++) {
 
 			TimeSeriesContainer tsc;
-			if (t < tscs.length)
-				tsc = tscs[t];
-			else
-				tsc = stscs[t - tscs.length];
-
+			if (isBase) {
+				if (t == 0)
+					tsc = tscs[0];
+				else
+					tsc = stscs[0];
+			} else {
+				if (t < tscs.length)
+					tsc = tscs[t];
+				else
+					tsc = stscs[t - tscs.length];
+			}
 			// Initialize accumulators
 
 			n = new int[6][6][14];
@@ -195,7 +208,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 				boolean isNewWY = (wy != lastWY);
 				lastWY = wy;
 
-				//int ySac403030 = (m < 2) ? y - 1 : y;
+				// int ySac403030 = (m < 2) ? y - 1 : y;
 				int ySac403030 = wy;
 
 				int ySHASTAindex = (m < 3) ? y - 1 : y;
@@ -359,14 +372,27 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 			renderer.setHorizontalAlignment(JLabel.RIGHT);
 
 			String labelText;
-			if (t < tscs.length)
-				labelText = title;
-			else {
-				if (!sName.equals(""))
-					labelText = sName;
+			if (isBase) {
+				if (t == 0)
+					labelText = title;
 				else {
-					String[] parts = tsc.fullName.split("/");
-					labelText = parts[2] + "/" + parts[3];
+					if (!sName.equals(""))
+						labelText = sName;
+					else {
+						String[] parts = tsc.fullName.split("/");
+						labelText = parts[2] + "/" + parts[3];
+					}
+				}
+			} else {
+				if (t < tscs.length)
+					labelText = title;
+				else {
+					if (!sName.equals(""))
+						labelText = sName;
+					else {
+						String[] parts = tsc.fullName.split("/");
+						labelText = parts[2] + "/" + parts[3];
+					}
 				}
 			}
 			JLabel label = new JLabel();
