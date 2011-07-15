@@ -1735,7 +1735,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							summaryTags, "", dss_Grabber);
 				else
 					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel(),
-							dss_Grabber);
+							dss_Grabber,doBase);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1745,7 +1745,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
 							dss_Grabber, "");
 				} else
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel());
+					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel(),doBase);
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 
@@ -1771,7 +1771,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 									dss_Grabber.getSLabel());
 						else
 							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel());
+									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel(),doBase);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
@@ -1782,7 +1782,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								dss_Grabber.getSLabel());
 					else
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(), exc_Results[13],
-								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel());
+								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel(),doBase);
 					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
 				}
 				if (exceedMonths.contains("Annual")) {
@@ -1794,7 +1794,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						else
 
 							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
-									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel());
+									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(),doBase);
 						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
 					} else {
 						JPanel panel = new JPanel();
@@ -1810,7 +1810,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			if (doTimeSeries) {
 				if (doBase) {
 					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower,
-							dss_Grabber.getSLabel());
+							dss_Grabber.getSLabel(),doBase);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 
 				} else if (primary_Results.length < 2) {

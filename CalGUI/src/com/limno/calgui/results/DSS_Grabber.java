@@ -144,16 +144,16 @@ public class DSS_Grabber {
 		primaryDSSName = null;
 		secondaryDSSName = null;
 		for (int i = 0; i < com.limno.calgui.MainMenu.getLookupsLength(); i++) {
-			Prefix prefix=new Prefix();
-			String type=prefix.getType(string);
-			primaryDSSName = string+"/"+type;
-			secondaryDSSName = ""; 
+			Prefix prefix = new Prefix();
+			String type = prefix.getType(string);
+			primaryDSSName = string + "/" + type;
+			secondaryDSSName = "";
 			yLabel = type;
 			title = string;
 			sLabel = "";
 		}
 	}
-	
+
 	public double getAnnualTAF(int i, int wy) {
 
 		return annualTAFs[i][wy - startWY];
@@ -180,8 +180,7 @@ public class DSS_Grabber {
 			datasets = datasets + secondaryResults.length;
 
 		annualTAFs = new double[datasets][endWY - startWY + 2];
-		
-		
+
 		for (int i = 0; i < datasets; i++)
 			for (int j = 0; j < endWY - startWY + 1; j++)
 				annualTAFs[i][j] = 0.0;
@@ -212,7 +211,7 @@ public class DSS_Grabber {
 			}
 
 			// Calculate differences if applicable (primary series only)
-			
+
 			if (primaryResults.length > 1) {
 				annualTAFsDiff = new double[primaryResults.length - 1][endWY - startWY + 2];
 				for (int i = 0; i < primaryResults.length - 1; i++)
@@ -451,9 +450,9 @@ public class DSS_Grabber {
 						results[month][i].times = times2;
 						results[month][i].values = values2;
 						results[month][i].numberValues = n;
-						results[month][i].units = timeSeriesResults[i+1].units;
-						results[month][i].fullName = timeSeriesResults[i+1].fullName;
-						results[month][i].fileName = timeSeriesResults[i+1].fileName;
+						results[month][i].units = timeSeriesResults[i + 1].units;
+						results[month][i].fullName = timeSeriesResults[i + 1].fullName;
+						results[month][i].fileName = timeSeriesResults[i + 1].fileName;
 					}
 					if (results[month][i].values != null) {
 						double[] sortArray = results[month][i].values;

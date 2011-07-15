@@ -53,6 +53,11 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
 			Date upper, String sLabel) {
+		this(title,yLabel,tscs,stscs,isExceed,lower,upper,sLabel,false);
+	}
+	
+	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
+			Date upper, String sLabel, boolean isBase) {
 
 		super();
 
@@ -80,8 +85,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			// Primary datasets
 
 			XYSeriesCollection dataset = new XYSeriesCollection();
-			XYSeries[] series = new XYSeries[tscs.length];
-			for (int i = 0; i < tscs.length; i++) {
+			XYSeries[] series = new XYSeries[(isBase ? 1: tscs.length)];
+			for (int i = 0; i < (isBase ? 1 : tscs.length); i++) {
 				series[i] = new XYSeries(tscs[i].fileName);
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
@@ -97,8 +102,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			// Secondary datasets
 
 			if (stscs != null) {
-				XYSeries[] sseries = new XYSeries[stscs.length];
-				for (int i = 0; i < stscs.length; i++) {
+				XYSeries[] sseries = new XYSeries[(isBase ? 1: stscs.length)];
+				for (int i = 0; i < (isBase ? 1: stscs.length); i++) {
 					if (stscs[i].numberValues > 0) {
 						sseries[i] = new XYSeries(sName);
 						double maxval = -1e37;
@@ -132,8 +137,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			HecTime ht = new HecTime();
 			TimeSeriesCollection dataset = new TimeSeriesCollection();
 
-			TimeSeries[] series = new TimeSeries[tscs.length];
-			for (int i = 0; i < tscs.length; i++) {
+			TimeSeries[] series = new TimeSeries[(isBase ? 1: tscs.length)];
+			for (int i = 0; i < (isBase ? 1: tscs.length); i++) {
 				series[i] = new TimeSeries(tscs[i].fileName);
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
@@ -149,8 +154,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			}
 
 			if (stscs != null) {
-				TimeSeries[] sseries = new TimeSeries[stscs.length];
-				for (int i = 0; i < stscs.length; i++) {
+				TimeSeries[] sseries = new TimeSeries[(isBase ? 1: stscs.length)];
+				for (int i = 0; i < (isBase ? 1: stscs.length); i++) {
 					if (stscs[i].numberValues > 0) {
 						sseries[i] = new TimeSeries(sName);
 						double maxval = -1e37;
@@ -197,7 +202,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				r.setSeriesPaint(3, ChartColor.BLACK);
 
 		if (stscs != null) { // Secondary time series as dashed lines
-			for (int t = 0; t < stscs.length; t++) {
+			for (int t = 0; t < (isBase ? 1: stscs.length); t++) {
 				Stroke stroke = new BasicStroke(1.0f, // Width
 						BasicStroke.CAP_SQUARE, // End cap
 						BasicStroke.JOIN_MITER, // Join style
