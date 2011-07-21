@@ -209,7 +209,7 @@
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							<buttongroup>
 								<radiobutton id="hyd_rdb2005" name="hyd_rdb2005"
-									text="Current Land use" minimumsize="240,20" selected="true">
+									text="Current Land Use" minimumsize="240,20" selected="true">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 								</radiobutton>
@@ -271,6 +271,73 @@
 								</radiobutton>
 							</buttongroup>
 						</panel>
+
+						<panel id="hyd_DSS" border="TitledBorder(SV/Init Files)"
+							layout="GridBagLayout">
+							<gridbagconstraints insets="0,0,5,5"
+								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3"
+								gridwidth="2" />
+
+							<checkbox text="Allow user to specify DSS files"
+								enabled="false">
+								<gridbagconstraints insets="0,0,5,5"
+									anchor="GridBagConstraints.EAST" gridx="3" gridy="0" gridwidth="3" />
+							</checkbox>
+							<label text="SV Input File:  ">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="0" gridy="1" />
+							</label>
+							<textfield id="hyd_DSS_SV" text=" " preferredsize="200,25"
+								minimumsize="200,25">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="1" gridy="1" />
+							</textfield>
+
+							<label text="   F-Part:  ">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="2" gridy="1" />
+							</label>
+							<textfield id="hyd_DSS_SV_F" text="2005A01A"
+								minimumsize="150,25" preferredsize="150,25">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="3" gridy="1" />
+							</textfield>
+
+							<button text="Select..." minimumsize="100,25">
+								<gridbagconstraints anchor="GridBagConstraints.EAST"
+									insets="0,20,0,0" gridx="4" gridy="1" />
+							</button>
+							<label text=" ">
+								<gridbagconstraints gridx="0" gridy="2" />
+							</label>
+
+							<label text="Initialization File:  ">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="0" gridy="3" />
+							</label>
+							<textfield id="hyd_DSS_Init" preferredsize="300,25"
+								minimumsize="300,25">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="1" gridy="3" />
+							</textfield>
+
+							<label text="   F-Part:  ">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="2" gridy="3" />
+							</label>
+							<textfield id="hyd_DSS_Init_F" text="2005A01A"
+								minimumsize="100,25">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="3" gridy="3" />
+							</textfield>
+
+							<button text="Select..." minimumsize="100,25">
+								<gridbagconstraints anchor="GridBagConstraints.EAST"
+									insets="0,20,0,0" gridx="4" gridy="3" />
+							</button>
+
+						</panel>
+
 						<panel id="hyd_CC" border="TitledBorder(Climate Change Scenarios)"
 							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
@@ -350,6 +417,8 @@
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="5" />
 								</checkbox>
 							</panel>
+
+
 							<button text="Clear" enabled="false" ActionCommand="HYD_Clear">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
@@ -372,42 +441,27 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" gridwidth="4" />
 							</label>
 						</panel>
-						<label
-							text="When LOD2005 is selected, CL2005A01A021411_SV.DSS will be used as the SV file."
-							font="Tahoma-Italic-12" visible="false">
-							<gridbagconstraints insets="0,0,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="0" columns="2"
-								gridy="3" />
-
-						</label>
-
-						<label
-							text="When LOD2030 is selected, CL_FUTURE_WHL021111_SV.DSS will be used as the SV file."
-							font="Tahoma-Italic-12" visible="false">
-							<gridbagconstraints insets="0,0,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="0" columns="2"
-								gridy="4" />
-						</label>
 						<button text="Help" id="HydHelp" ActionCommand="AC_Help">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
-						
+
 						<panel preferredsize="400,300">
-						<gridbagconstraints insets="0,25,0,0"
-							anchor="GridBagConstraints.WEST" gridx="1" gridy="100" />
-						<label id="map1" icon="images/hydroClimate.jpg" />
+							<gridbagconstraints insets="0,25,0,0"
+								anchor="GridBagConstraints.WEST" gridx="1" gridy="100" />
+							<label id="map1" icon="images/hydroClimate.jpg" />
 						</panel>
-						
-						
-				</panel>
+
+
+					</panel>
 
 
 
 				</panel>
 				<panel id="demands" name="Demands" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel font="Tahoma-Bold-12" layout="GridBagLayout">
-						<panel id="dem_SWP" resizeable="false" border="TitledBorder(SWP Demands - South of Delta)"
+						<panel id="dem_SWP" resizeable="false"
+							border="TitledBorder(SWP Demands - South of Delta)"
 							preferredsize="570,280" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
@@ -498,7 +552,8 @@
 								</label>
 							</panel>
 						</panel>
-						<panel id="dem_CVP" resizeable="false" border="TitledBorder(CVP Demands - South of Delta)"
+						<panel id="dem_CVP" resizeable="false"
+							border="TitledBorder(CVP Demands - South of Delta)"
 							preferredsize="550,220" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
@@ -571,14 +626,14 @@
 								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 					</panel>
-						<panel preferredsize="400,370">
+					<panel preferredsize="400,370">
 						<gridbagconstraints insets="0,25,20,0"
 							anchor="GridBagConstraints.NORTH" gridx="2" gridy="0" />
 						<label id="map2" icon="images/aqueduct_demand.gif" />
 					</panel>
 				</panel>
-				
-				
+
+
 				<panel id="facilities" name="Facilities" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel id="facilities1" font="Tahoma-Bold-12" layout="GridBagLayout">
 						<panel resizeable="false" border="TitledBorder(Storage Facility Options)"
@@ -649,12 +704,14 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 						</panel>
-						
-						<label text="Access facilities parameters by selecting" font="Tahoma-BOLD-13" foreground ="CC3333">
+
+						<label text="Access facilities parameters by selecting"
+							font="Tahoma-BOLD-13" foreground="CC3333">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="90" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
-						<label text="or right-clicking on item at left" font="Tahoma-BOLD-13" foreground ="CC3333">
+						<label text="or right-clicking on item at left" font="Tahoma-BOLD-13"
+							foreground="CC3333">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="91" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
@@ -666,8 +723,8 @@
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
-						
-					
+
+
 						<panel name="fac_pan1" id="fac_pan1" resizeable="false"
 							enabled="false" visible="false"
 							border="TitledBorder(North of Delta Offstream Storage NODOS Options)"
@@ -1116,15 +1173,15 @@
 							</label>
 						</panel>
 					</panel>
-						<panel preferredsize="300,400">
+					<panel preferredsize="300,400">
 						<gridbagconstraints insets="0,0,0,0"
 							anchor="GridBagConstraints.NORTH" gridx="2" gridy="0" />
 						<label id="map3" icon="images/Banks_pumping_Plant.jpg" />
-						</panel>		
+					</panel>
 				</panel>
-				
-				
-				
+
+
+
 				<panel id="regulations" name="Regulations" constraints="BorderLayout.LEFT"
 					layout="GridBagLayout">
 					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER"
@@ -1377,8 +1434,8 @@
 							</scrollpane>
 						</HBox>
 						<label
-							text="Access regulation table by selecting or right-clicking on item at left" 
-							font="Tahoma-BOLD-13" foreground ="CC3333" >
+							text="Access regulation table by selecting or right-clicking on item at left"
+							font="Tahoma-BOLD-13" foreground="CC3333">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
@@ -1865,13 +1922,13 @@
 										anchor="GridBagConstraints.WEST" />
 								</checkbox>
 							</panel>
-							
-									<button text="Help" id="QuickHelp" ActionCommand="AC_Help">
-					        			<gridbagconstraints anchor="GridBagConstraints.WEST"
-					         		 	gridx="0" gridy="10" gridwidth="2" insets="0,0,0,0" />
-									</button>
 
-						
+							<button text="Help" id="QuickHelp" ActionCommand="AC_Help">
+								<gridbagconstraints anchor="GridBagConstraints.WEST"
+									gridx="0" gridy="10" gridwidth="2" insets="0,0,0,0" />
+							</button>
+
+
 						</panel>
 
 						<panel id="ss2" resizeable="false" border="TitledBorder(Report List)"
@@ -1924,9 +1981,10 @@
 							<tabbedpane>
 
 								<panel id="presets" name="Storage and Flows" layout="GridBagLayout">
-									<label text="Storage" font="Tahoma-BOLD-14" foreground = "3366FF" preferredsize="110,15">
+									<label text="Storage" font="Tahoma-BOLD-14" foreground="3366FF"
+										preferredsize="110,15">
 										<gridbagconstraints insets="0,0,0,0"
-											anchor="GridBagConstraints.WEST" gridx="1" gridy="1" ipady="7"/>
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="1" ipady="7" />
 									</label>
 									<checkbox name="ckbp102" id="ckbp102" text="Trinity ">
 										<gridbagconstraints anchor="GridBagConstraints.WEST"
@@ -1956,7 +2014,8 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
 									</checkbox>
-									<label text="Storage Ops" font="Tahoma-BOLD-14" foreground = "3366FF">
+									<label text="Storage Ops" font="Tahoma-BOLD-14"
+										foreground="3366FF">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
 									</label>
@@ -1984,7 +2043,8 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="16" />
 									</checkbox>
-									<label text="Flows" font="Tahoma-BOLD-14" foreground = "3366FF" preferredsize="110,15">
+									<label text="Flows" font="Tahoma-BOLD-14" foreground="3366FF"
+										preferredsize="110,15">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="3" gridy="1" />
 									</label>
@@ -2060,7 +2120,8 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="3" gridy="19" />
 									</checkbox>
-									<label text="Delta " font="Tahoma-BOLD-14" foreground = "3366FF" preferredsize="110,15">
+									<label text="Delta " font="Tahoma-BOLD-14" foreground="3366FF"
+										preferredsize="110,15">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="1" />
 									</label>
@@ -2088,7 +2149,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="7" />
 									</checkbox>
-									<label text="Exports" font="Tahoma-BOLD-14" foreground = "3366FF">
+									<label text="Exports" font="Tahoma-BOLD-14" foreground="3366FF">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="9" />
 									</label>
@@ -2120,8 +2181,8 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="16" />
 									</checkbox>
-									<label text="Deliveries" font="Tahoma-BOLD-14" foreground = "3366FF"
-										preferredsize="110,15">
+									<label text="Deliveries" font="Tahoma-BOLD-14"
+										foreground="3366FF" preferredsize="110,15">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="1" />
 									</label>
@@ -2145,7 +2206,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="6" />
 									</checkbox>
-									<label text="Salinity" font="Tahoma-BOLD-14" foreground = "3366FF">
+									<label text="Salinity" font="Tahoma-BOLD-14" foreground="3366FF">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="8" />
 									</label>
@@ -2207,7 +2268,8 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
 									</button>
-									<label font="Tahoma-BOLD-13" foreground ="CC3333" text="Right-click item to display  "  >
+									<label font="Tahoma-BOLD-13" foreground="CC3333"
+										text="Right-click item to display  ">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.EAST" gridx="5" gridy="19"
 											gridwidth="3" />
@@ -2217,8 +2279,8 @@
 
 								<panel id="shortage" name="Shortages/Flow Objectives"
 									layout="GridBagLayout">
-									<label text="Flow Shortage " font="Tahoma-BOLD-14" foreground = "3366FF"
-										preferredsize="110,20" ipady ="10">
+									<label text="Flow Shortage " font="Tahoma-BOLD-14"
+										foreground="3366FF" preferredsize="110,20" ipady="10">
 										<gridbagconstraints insets="0,0,0,0"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="1"
 											gridwidth="2" />
@@ -2295,8 +2357,8 @@
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
 									</button>
 
-									<label text="Flow Objectives Output" font="Tahoma-BOLD-14" foreground = "3366FF"
-										preferredsize="250,20">
+									<label text="Flow Objectives Output" font="Tahoma-BOLD-14"
+										foreground="3366FF" preferredsize="250,20">
 										<gridbagconstraints insets="0,0,0,0"
 											anchor="GridBagConstraints.WEST" gridx="10" gridy="1" />
 									</label>
@@ -2418,7 +2480,7 @@
 						</panel>
 					</panel>
 
-							
+
 				</panel>
 
 				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12"
@@ -2426,15 +2488,16 @@
 					<label enabled="false" icon="images/WRIMS.jpg">
 						<gridbagconstraints gridx="0" gridy="2" />
 					</label>
-					<label text="Under Construction!" font="Tahoma-BOLD-15" foreground ="CC3333">
+					<label text="Under Construction!" font="Tahoma-BOLD-15"
+						foreground="CC3333">
 						<gridbagconstraints gridx="0" gridy="1" />
 					</label>
-					
+
 				</panel>
 
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
-					
+
 					<button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD">
 						<gridbagconstraints insets="0,0,2,2"
 							anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
@@ -2448,18 +2511,19 @@
 							anchor="GridBagConstraints.WEST" gridx="2" gridy="0" />
 					</button>
 					<button name="schem_btnload" id="schem_btnload" text="Load Scenario"
-						preferredwidth="100,12" ActionCommand="Sch_Load" visible = "false">
+						preferredwidth="100,12" ActionCommand="Sch_Load" visible="false">
 						<gridbagconstraints insets="0,0,2,2"
 							anchor="GridBagConstraints.WEST" gridx="3" gridy="0" />
 					</button>
-					
-					<label text="Under Construction!" font="Tahoma-BOLD-15" foreground ="CC3333">
+
+					<label text="Under Construction!" font="Tahoma-BOLD-15"
+						foreground="CC3333">
 						<gridbagconstraints insets="2,40,0,0"
 							anchor="GridBagConstraints.WEST" gridx="4" gridy="0" />
 					</label>
-					
+
 					<textfield name="schem_tfload" id="schem_tfload" text=""
-						minimumsize="500,25" enabled="false" visible = "false">
+						minimumsize="500,25" enabled="false" visible="false">
 						<gridbagconstraints insets="0,0,2,2"
 							anchor="GridBagConstraints.WEST" gridx="4" gridy="0" />
 					</textfield>
@@ -2595,16 +2659,16 @@
 						<gridbagconstraints insets="10,5,5,5"
 							anchor="GridBagConstraints.EAST" gridx="2" gridy="90" />
 					</button>
-					
+
 					<button text="Help" id="ReportHelp" ActionCommand="AC_Help">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
 							gridx="0" gridy="95" gridwidth="2" insets="5,5,5,0" />
 					</button>
-					
+
 				</panel>
-				
+
 			</tabbedpane>
 		</panel>
-							
+
 	</panel>
 </frame>
