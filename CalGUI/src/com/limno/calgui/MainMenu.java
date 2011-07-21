@@ -963,6 +963,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				tf.setText(scenFilename);
 
 			}
+			
+		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
+
+			ScenarioFrame ScenFrame= new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison");
+			ScenFrame.setVisible(true);
+			
+			
+
+			
+			
+			
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
 
@@ -2826,7 +2837,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				publish("Writing GUI option tables.");
 
-				// Write table files
+				// Write regulations table files
 				ArrayList GUITables = new ArrayList();
 				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 
@@ -2887,6 +2898,30 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						}
 
 					}
+				}
+				
+				// Write operations table files
+				GUITables = new ArrayList();
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Operations");
+
+				for (int i = 0; i < GUITables.size(); i++) {
+					String line = GUITables.get(i).toString();
+					String[] parts = line.split("[|]");
+					String cName = parts[0].trim(); 
+					String tableName = gl.tableNameForCtrl(cName); 
+					String switchID = gl.switchIDForCtrl(cName); 
+
+					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+
+					System.out.println("Output to " + tableName);
+					String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
+
+					if (dTableModels[tID] == null) {
+						System.out.println("Table not initialized - " + tableName);
+					} else {
+						dTableModels[tID].writeToFile(tableName);
+					}
+
 				}
 
 				desktop.setVisible(false);
