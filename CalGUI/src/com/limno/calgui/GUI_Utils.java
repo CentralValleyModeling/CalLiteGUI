@@ -18,19 +18,24 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JMenu;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuListener;
 import javax.swing.text.JTextComponent;
@@ -1005,7 +1010,77 @@ public class GUI_Utils {
 
     }
     
+    public static StringBuffer GetControlParents(Component component, StringBuffer sb) {
+        //System.out.println(component.getName());
+		Container c= (Container) component;
+		String desc = "";
+		String text = "";
+		
+
+		while ( c.getParent() != null )
+		{
+			c = c.getParent();
+			JComponent jc = (JComponent) c;
+			Object oc = (Object) c;
+
+			String cName = jc.getName();
+			if (cName != null) {
+				if (jc.getName().toString().startsWith("tabbedPane1")) {
+					break;
+				}
+				if (jc instanceof JPanel) {
+					JPanel jp = (JPanel) jc;
+					TitledBorder tb = (TitledBorder) jp.getBorder();
+					if (tb != null) {
+						desc = tb.getTitle();
+						if (desc.equals("")) {
+							sb.append(cName + "|" );
+						}else {
+							sb.append(desc + "|" );
+						}
+							
+					} else {
+						sb.append(cName + "|" );
+					}
+				}
+			} else {
+				if (jc instanceof JPanel) {
+					JPanel jp = (JPanel) jc;
+					TitledBorder tb = (TitledBorder) jp.getBorder();
+					if (tb != null) {
+						desc = tb.getTitle();
+						sb.append(desc + "|" );
+					}
+
+				}
+			}
+
+		}
+
+        sb=sb.deleteCharAt(sb.length()-1);
+		return sb;
+    }
     
+    public static StringBuffer ReverseStringBuffer(StringBuffer sb, String delim ) {
+    	String[] strArray = sb.toString().split(delim); 	
+    	List result = new LinkedList();
+    	
+    	for(int i = 0; i< strArray.length; i++)
+    	{
+    	result.add(strArray[i]);
+    	}
+    	
+    	Collections.reverse(result);
+    	StringBuffer sb1 = new StringBuffer();
+    	for (int i=0; i<result.size(); i++) {
+    		sb1.append(result.toArray()[i].toString()+ "|" );
+		}
+    	
+        sb=sb1.deleteCharAt(sb1.length()-1);
+		return sb;
+    }
+    
+
     
     	
 }

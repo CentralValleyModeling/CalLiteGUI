@@ -966,7 +966,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			
 		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
 
-			ScenarioFrame ScenFrame= new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison");
+			ScenarioFrame ScenFrame= new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
 			
 			

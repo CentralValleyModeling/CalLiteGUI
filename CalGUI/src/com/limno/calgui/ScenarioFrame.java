@@ -8,26 +8,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.*;
+
+import org.swixml.SwingEngine;
 
 import rma.awt.JButtonGroup;
 
 public class ScenarioFrame extends JFrame {
 	private JLabel lblscen1;
-	private JLabel lblscen2;
-	private JTextField tfscen1;
-	private JTextField tfscen2;
 	private JButtonGroup btngrp;
 	private JRadioButton rdbAll;
 	private JRadioButton rdbDiff;
-	private JButton btn1;
-	private JButton btn2;
 	private JButton btnComp;
-	private StringBuffer sbScen1;
-	private StringBuffer sbScen2;
+	private JList lstScen;
 
-	public ScenarioFrame(String title) {
+	public ScenarioFrame(String title, final SwingEngine swix) {
 
 		super();
 
@@ -35,14 +34,14 @@ public class ScenarioFrame extends JFrame {
 		//getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		setPreferredSize(new Dimension(400, 400));
-		setMinimumSize(new Dimension(400, 400));
+		setPreferredSize(new Dimension(400, 300));
+		setMinimumSize(new Dimension(400, 300));
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
 		setTitle(title);
 		
-		lblscen1 = new JLabel("Scenario 1: ",SwingConstants.HORIZONTAL);
+		/*lblscen1 = new JLabel("Scenario 1: ",SwingConstants.HORIZONTAL);
 		c.gridx = 0;
 		c.gridy = 0;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -83,49 +82,36 @@ public class ScenarioFrame extends JFrame {
 			}
         });
 		add(btn1,c);
+				
+		*/
 		
-		lblscen2 = new JLabel("Scenario 2: ",SwingConstants.HORIZONTAL);
+		
+		lblscen1 = new JLabel("Select Scenarios to Compare",SwingConstants.HORIZONTAL);
+		c.gridx = 0;
+		c.gridy = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.anchor = GridBagConstraints.WEST;
+		add(lblscen1,c);
+		
+		lstScen= new JList();
+		lstScen.setVisibleRowCount(7);
+		//populate with file list.
+		File dir = new File(".//Scenarios");
+		FilenameFilter filter = new FilenameFilter() {
+		    public boolean accept(File dir, String name) {
+		        return name.endsWith(".cls");
+		    }
+		};
+		Vector filelist = new Vector(Arrays.asList(dir.list(filter)));
+		lstScen.setListData(filelist);
+		JScrollPane scrollingList = new JScrollPane(lstScen);
 		c.gridx = 0;
 		c.gridy = 1;
-		c.ipadx = 0;
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipadx = 200;
 		c.anchor = GridBagConstraints.WEST;
-		add(lblscen2,c);
+		add(scrollingList,c);
 		
-		tfscen2 = new JTextField("",SwingConstants.LEFT);
-		c.gridx = 1;
-		c.gridy = 1;
-		c.ipadx = 160;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.WEST;
-		add(tfscen2,c);
-		
-		btn2 = new JButton("Select");
-		c.gridx = 2;
-		c.gridy = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipadx = 0;
-		c.anchor = GridBagConstraints.WEST;
-		btn2.addActionListener(new ActionListener() {
-			 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new ScenarioFileFilter());
-				fc.setCurrentDirectory(new File(".//Scenarios"));
-
-				int retval = fc.showOpenDialog(null);
-
-				if (retval == JFileChooser.APPROVE_OPTION) {
-					// ... The user selected a file, get it, use it.
-					File file1 = fc.getSelectedFile();
-					sbScen2 = GUI_Utils.ReadScenarioFile(file1);
-					tfscen2.setText(file1.toString());
-				}	
-				
-			}
-        });
-		add(btn2,c);
 		
 		rdbAll = new JRadioButton("List All");
 		rdbAll.setSelected(true);
@@ -159,19 +145,91 @@ public class ScenarioFrame extends JFrame {
 			 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String strFile1=(String) tfscen1.getText();
-				String strFile2=(String) tfscen2.getText();
-				
-				if ((strFile1.isEmpty()) || (strFile2.isEmpty())) {
-					JOptionPane.showMessageDialog(null, "You must specify two scenario files to compare.", "Error",
+				Object[] selected = lstScen.getSelectedValues();
+				String[] headers = null;
+				String[][] scenmatrix = null;
+				if (selected.length<2) {
+					JOptionPane.showMessageDialog(null, "You must select at least two scenario files to compare.", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-										
+					int option;
+					if (rdbAll.isSelected()) {
+						option=1;
+					} else {
+						option=2;
+					} 
+					StringBuffer[] sbScen = new StringBuffer[selected.length];				
+					for (int i=0; i<selected.length; i++) {
+						File f=new File(System.getProperty("user.dir") + "\\Scenarios\\"+selected[i].toString());
+						sbScen[i]= GUI_Utils.ReadScenarioFile(f);
+					}
 					
 					
+					//Populate Cross Tab Matrix (control info columns first)
+					@SuppressWarnings("unused")
+					String delims = "[|]";
+					String NL = System.getProperty("line.separator"); 
+					String sFull = sbScen[0].toString();
+					String[] lines = sFull.split(NL);
+		
+					scenmatrix = new String [lines.length][selected.length+2];
+					headers = new String[selected.length+2];
+					headers[0]="Control";
+					headers[1]="Location";
+					headers[2]=selected[0].toString();
 					
-					
+					int i=0;
+		    		while(true)
+		    		{
+						String textinLine=lines[i];
+		    			if(textinLine==null|textinLine.equals("DATATABLEMODELS"))
+		    				break;
+						String[] tokens = textinLine.split(delims);
+						
+						String comp=tokens[0];
+						String value=tokens[1];
+						JComponent component = (JComponent) swix.find(comp);
+						StringBuffer sbparents =new StringBuffer();
+						sbparents = GUI_Utils.GetControlParents(component, sbparents);
+						
+						sbparents=GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
+
+						scenmatrix[i][0]=comp;
+						scenmatrix[i][1]=sbparents.toString();
+						scenmatrix[i][2]=value;
+
+						i++;
+		    		}
+
+		    		//Populate Cross Tab Matrix (selected scenarios)
+					for (i=1; i<selected.length; i++) {
+						sFull = sbScen[i].toString();
+						lines = sFull.split(NL);
+
+						int j=0;
+			    		while(true)
+			    		{
+							String textinLine=lines[j];
+			    			if(textinLine==null|textinLine.equals("DATATABLEMODELS"))
+			    				break;
+							String[] tokens = textinLine.split(delims);
+							
+							String comp=tokens[0];
+							String value=tokens[1];
+
+							scenmatrix[j][i+2]=value;
+
+							j++;
+			    		}
+			    		headers[i+2]=selected[i].toString();
+						
+					}
+		    		
+
 				}
+				
+				ScenarioTable ScenTable= new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison",scenmatrix, headers);
+				ScenTable.setVisible(true);
 				
 			}
         });
@@ -196,5 +254,6 @@ public class ScenarioFrame extends JFrame {
 		
 
 	}
+	
 
 }
