@@ -715,7 +715,7 @@ public class GUI_Utils {
 				String[] tokens = textinLine.split(delims);
 				
 				
-				
+				System.out.println(textinLine);
 				comp=tokens[0];
 				value=tokens[1];
 				JComponent component = (JComponent) swix.find(comp);
@@ -740,7 +740,7 @@ public class GUI_Utils {
 
 				}else {
 					((JTextComponent) component).setText(value);
-					//System.out.println(comp +": " + value);
+					System.out.println(comp +": " + value);
 				}
 
     		}

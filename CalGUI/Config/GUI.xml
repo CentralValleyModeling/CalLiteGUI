@@ -294,7 +294,7 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="0" gridy="1" />
 							</label>
-							<textfield id="hyd_DSS_SV" text=" " preferredsize="300,25"
+							<textfield id="hyd_DSS_SV" name="hyd_DSS_SV" text=" " preferredsize="300,25"
 								minimumsize="300,25" enabled="false">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="1" />
@@ -303,7 +303,7 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="1" />
 							</label>
-							<textfield id="hyd_DSS_SV_F" text="2005A01A" enabled="false"
+							<textfield id="hyd_DSS_SV_F" name="hyd_DSS_SV_F" text="2005A01A" enabled="false"
 								minimumsize="80,25" preferredsize="80,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="3" gridy="1" />
@@ -321,7 +321,7 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="0" gridy="3" />
 							</label>
-							<textfield id="hyd_DSS_Init" preferredsize="300,25"
+							<textfield id="hyd_DSS_Init" name="hyd_DSS_Init" preferredsize="300,25"
 								enabled="false" minimumsize="300,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="3" />
@@ -331,7 +331,7 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="3" />
 							</label>
-							<textfield id="hyd_DSS_Init_F" text="2005A01A" enabled="false"
+							<textfield id="hyd_DSS_Init_F" name="hyd_DSS_Init_F" text="2005A01A" enabled="false"
 								minimumsize="80,25" preferredsize="80,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="3" gridy="3" />
