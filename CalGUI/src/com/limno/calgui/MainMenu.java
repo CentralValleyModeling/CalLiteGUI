@@ -163,6 +163,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	static public String lookups[][];
 
+	String table4[][] = { { "1110", "PreBO_Existing_SV.DSS", "2005A01A", "PreBO_ExistingINIT.DSS", "2005A01A" },
+			{ "1210", "PreBO_Future_SV.DSS", "2020D09E", "PreBO_FutureINIT.DSS", "2020D09E" },
+			{ "2110", "BO_Existing_SV.DSS", "2005A01A", "BO_ExistingINIT.DSS", "2005A01A" },
+			{ "2210", "BO_Future_SV.DSS", "2020D09E", "BO_FutureINIT.DSS", "2020D09E" } };
+
 	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
 	Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
@@ -212,12 +217,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.setActionListener(schematics, this);
 		swix.setActionListener(externalPDF, this);
 
-
 		// Set ItemListeners
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(regulations, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(operations, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_SWP, this);
 		GUI_Utils.SetRadioButtonItemListener(dem_CVP, this);
+		GUI_Utils.SetCheckBoxorRadioButtonItemListener(runsettings, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(hydroclimate, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(facilities, this);
 		GUI_Utils.SetCheckBoxorRadioButtonItemListener(Display, this);
@@ -247,9 +252,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		jtp.setBackgroundAt(9, Color.WHITE);
 
 		// Load in WRIMS functionality
-		
+
 		java.net.URL imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
-		if (imgURL != null) { 
+		if (imgURL != null) {
 			// ImageIcon image = new ImageIcon(imgURL, null);
 			// System.out.println(image.getIconHeight());
 
@@ -563,7 +568,32 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// was "e.getItemSelected"
 		String cName = component.getName();
 		if (cName != null) {
-			if (cName.startsWith("ckbp")) {
+
+			if (cName.startsWith("hyd_rdb20") || cName.startsWith("run_rdb")) {
+
+				// Handling for update of DSS files
+
+				String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
+				lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
+				if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
+					lookup = lookup + "10";
+				else {
+					lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+					// TODO: Finish off with CCModelID
+
+				}
+				int l = -1;
+				for (int i = 0; i < table4.length; i++)
+					if (lookup.equals(table4[i][0]))
+						l = i;
+				
+				((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
+				((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
+				((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
+				((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
+				
+
+			} else if (cName.startsWith("ckbp")) {
 				// CheckBox in presets panel changed
 				// String cID = cName.substring(3);
 			}
@@ -963,17 +993,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				tf.setText(scenFilename);
 
 			}
-			
+
 		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
 
 			ScenarioFrame ScenFrame= new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
-			
-			
-
-			
-			
-			
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
 
@@ -1746,7 +1770,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							summaryTags, "", dss_Grabber);
 				else
 					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel(),
-							dss_Grabber,doBase);
+							dss_Grabber, doBase);
 				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 			}
 
@@ -1756,7 +1780,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
 							dss_Grabber, "");
 				} else
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel(),doBase);
+					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel(),
+							doBase);
 				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
 			}
 
@@ -1782,7 +1807,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 									dss_Grabber.getSLabel());
 						else
 							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel(),doBase);
+									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel(),
+									doBase);
 						plottedOne = true;
 						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
 					}
@@ -1793,7 +1819,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								dss_Grabber.getSLabel());
 					else
 						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(), exc_Results[13],
-								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel(),doBase);
+								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel(), doBase);
 					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
 				}
 				if (exceedMonths.contains("Annual")) {
@@ -1805,7 +1831,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						else
 
 							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
-									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(),doBase);
+									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(),
+									doBase);
 						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
 					} else {
 						JPanel panel = new JPanel();
@@ -1821,7 +1848,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			if (doTimeSeries) {
 				if (doBase) {
 					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower,
-							dss_Grabber.getSLabel(),doBase);
+							dss_Grabber.getSLabel(), doBase);
 					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
 
 				} else if (primary_Results.length < 2) {
@@ -2066,7 +2093,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		return;
 	}
-	
+
 	// This method returns the selected radio button in a button group
 	/**
 	 * @wbp.parser.entryPoint
@@ -2899,7 +2926,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 					}
 				}
-				
+
 				// Write operations table files
 				GUITables = new ArrayList();
 				GUITables = GUI_Utils.GetGUITables(GUILinks, "Operations");
@@ -2907,9 +2934,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				for (int i = 0; i < GUITables.size(); i++) {
 					String line = GUITables.get(i).toString();
 					String[] parts = line.split("[|]");
-					String cName = parts[0].trim(); 
-					String tableName = gl.tableNameForCtrl(cName); 
-					String switchID = gl.switchIDForCtrl(cName); 
+					String cName = parts[0].trim();
+					String tableName = gl.tableNameForCtrl(cName);
+					String switchID = gl.switchIDForCtrl(cName);
 
 					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
