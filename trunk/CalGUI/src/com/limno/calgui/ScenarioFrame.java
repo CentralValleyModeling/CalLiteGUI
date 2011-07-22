@@ -40,52 +40,7 @@ public class ScenarioFrame extends JFrame {
 		GridBagConstraints c = new GridBagConstraints();
 
 		setTitle(title);
-		
-		/*lblscen1 = new JLabel("Scenario 1: ",SwingConstants.HORIZONTAL);
-		c.gridx = 0;
-		c.gridy = 0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.WEST;
-		add(lblscen1,c);
-		
-		tfscen1 = new JTextField("",SwingConstants.LEFT);
-		c.gridx = 1;
-		c.gridy = 0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipadx = 160;
-		c.anchor = GridBagConstraints.WEST;
-		add(tfscen1,c);
-		
-		btn1 = new JButton("Select");
-		c.gridx = 2;
-		c.gridy = 0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipadx = 00;
-		c.anchor = GridBagConstraints.WEST;
-		btn1.addActionListener(new ActionListener() {
-			 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new ScenarioFileFilter());
-				fc.setCurrentDirectory(new File(".//Scenarios"));
-
-				int retval = fc.showOpenDialog(null);
-
-				if (retval == JFileChooser.APPROVE_OPTION) {
-					// ... The user selected a file, get it, use it.
-					File file1 = fc.getSelectedFile();
-					sbScen1 = GUI_Utils.ReadScenarioFile(file1);
-					tfscen1.setText(file1.toString());
-				}	
 				
-			}
-        });
-		add(btn1,c);
-				
-		*/
-		
-		
 		lblscen1 = new JLabel("Select Scenarios to Compare",SwingConstants.HORIZONTAL);
 		c.gridx = 0;
 		c.gridy = 0;
@@ -99,7 +54,7 @@ public class ScenarioFrame extends JFrame {
 		File dir = new File(".//Scenarios");
 		FilenameFilter filter = new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
-		        return name.endsWith(".cls");
+		        return name.toLowerCase().endsWith(".cls");
 		    }
 		};
 		Vector filelist = new Vector(Arrays.asList(dir.list(filter)));
@@ -146,6 +101,7 @@ public class ScenarioFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Object[] selected = lstScen.getSelectedValues();
+				String[] controls;
 				String[] headers = null;
 				String[][] scenmatrix = null;
 				if (selected.length<2) {
@@ -172,6 +128,7 @@ public class ScenarioFrame extends JFrame {
 					String sFull = sbScen[0].toString();
 					String[] lines = sFull.split(NL);
 		
+					controls = new String [lines.length];
 					scenmatrix = new String [lines.length][selected.length+2];
 					headers = new String[selected.length+2];
 					headers[0]="Control";
@@ -182,6 +139,7 @@ public class ScenarioFrame extends JFrame {
 		    		while(true)
 		    		{
 						String textinLine=lines[i];
+						String comptext="";
 		    			if(textinLine==null|textinLine.equals("DATATABLEMODELS"))
 		    				break;
 						String[] tokens = textinLine.split(delims);
@@ -194,14 +152,22 @@ public class ScenarioFrame extends JFrame {
 						
 						sbparents=GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
 
-						scenmatrix[i][0]=comp;
+						controls[i]=comp;
+						
+						if (component instanceof JCheckBox ||component instanceof JRadioButton) {
+							AbstractButton jab = (AbstractButton) component;
+							comptext=comp+"| "+jab.getText();
+						}else{
+							comptext=comp;
+						}
+						scenmatrix[i][0]=comptext;
 						scenmatrix[i][1]=sbparents.toString();
 						scenmatrix[i][2]=value;
 
 						i++;
 		    		}
 
-		    		//Populate Cross Tab Matrix (selected scenarios)
+		    		//Populate Cross Tab Matrix (other selected scenarios)
 					for (i=1; i<selected.length; i++) {
 						sFull = sbScen[i].toString();
 						lines = sFull.split(NL);
@@ -210,14 +176,18 @@ public class ScenarioFrame extends JFrame {
 			    		while(true)
 			    		{
 							String textinLine=lines[j];
-			    			if(textinLine==null|textinLine.equals("DATATABLEMODELS"))
+			    			if(j==lines.length-1|textinLine.equals("DATATABLEMODELS"))
 			    				break;
 							String[] tokens = textinLine.split(delims);
 							
 							String comp=tokens[0];
 							String value=tokens[1];
 
-							scenmatrix[j][i+2]=value;
+							//Search fo control index
+							int index = GUI_Utils.FindInArray(controls, comp);
+							//System.out.println(index);
+							
+							scenmatrix[index][i+2]=value;
 
 							j++;
 			    		}
