@@ -294,8 +294,8 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="0" gridy="1" />
 							</label>
-							<textfield id="hyd_DSS_SV" name="hyd_DSS_SV" text=" " preferredsize="300,25"
-								minimumsize="300,25" enabled="false">
+							<textfield id="hyd_DSS_SV" name="hyd_DSS_SV" text=" "
+								preferredsize="300,25" minimumsize="300,25" enabled="false">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="1" />
 							</textfield>
@@ -303,8 +303,8 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="1" />
 							</label>
-							<textfield id="hyd_DSS_SV_F" name="hyd_DSS_SV_F" text="2005A01A" enabled="false"
-								minimumsize="80,25" preferredsize="80,25">
+							<textfield id="hyd_DSS_SV_F" name="hyd_DSS_SV_F" text="2005A01A"
+								enabled="false" minimumsize="80,25" preferredsize="80,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="3" gridy="1" />
 							</textfield>
@@ -321,8 +321,8 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="0" gridy="3" />
 							</label>
-							<textfield id="hyd_DSS_Init" name="hyd_DSS_Init" preferredsize="300,25"
-								enabled="false" minimumsize="300,25">
+							<textfield id="hyd_DSS_Init" name="hyd_DSS_Init"
+								preferredsize="300,25" enabled="false" minimumsize="300,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="3" />
 							</textfield>
@@ -331,8 +331,9 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="3" />
 							</label>
-							<textfield id="hyd_DSS_Init_F" name="hyd_DSS_Init_F" text="2005A01A" enabled="false"
-								minimumsize="80,25" preferredsize="80,25">
+							<textfield id="hyd_DSS_Init_F" name="hyd_DSS_Init_F"
+								text="2005A01A" enabled="false" minimumsize="80,25"
+								preferredsize="80,25">
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="3" gridy="3" />
 							</textfield>
@@ -498,7 +499,8 @@
 								preferredsize="500,280">
 								<gridbagconstraints insets="0,20,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
-								<label text="MWDSC (cannot exceed Table A value of 1911.5 TAF/yr)">
+								<label id="demtxt1_t"
+									text="MWDSC (cannot exceed Table A value of 1911.5 TAF/yr)">
 									<gridbagconstraints insets="0,5,5,20"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 								</label>
@@ -2508,43 +2510,49 @@
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 
-					<button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD">
-						<gridbagconstraints insets="0,0,2,2"
-							anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
-					</button>
-					<button text="Delta" preferredwidth="100,12" ActionCommand="Sch_Delta">
-						<gridbagconstraints insets="0,0,2,2"
-							anchor="GridBagConstraints.WEST" gridx="1" gridy="0" />
-					</button>
-					<button text="SOD" preferredwidth="100,12" ActionCommand="Sch_SOD">
-						<gridbagconstraints insets="0,0,2,2"
-							anchor="GridBagConstraints.WEST" gridx="2" gridy="0" />
-					</button>
-					<button name="schem_btnload" id="schem_btnload" text="Load Scenario"
-						preferredwidth="100,12" ActionCommand="Sch_Load" visible="false">
-						<gridbagconstraints insets="0,0,2,2"
-							anchor="GridBagConstraints.WEST" gridx="3" gridy="0" />
-					</button>
-
-					<label text="Under Construction!" font="Tahoma-BOLD-15"
-						foreground="CC3333">
-						<gridbagconstraints insets="2,40,0,0"
-							anchor="GridBagConstraints.WEST" gridx="4" gridy="0" />
-					</label>
-
-					<textfield name="schem_tfload" id="schem_tfload" text=""
-						minimumsize="500,25" enabled="false" visible="false">
-						<gridbagconstraints insets="0,0,2,2"
-							anchor="GridBagConstraints.WEST" gridx="4" gridy="0" />
-					</textfield>
-					<panel layout="GridBagLayout">
-						<gridbagconstraints insets="0,5,5,5"
-							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
-							gridwidth="5" />
-						<scrollpane id="schem_scr" name="schem_scr"
-							minimumsize="900,600" layout="BorderLayout">
-						</scrollpane>
+					<panel id="schematic_holder" preferredsize="950,600"
+						maximumsize="950,600" layout="BorderLayout">
+						<gridbagconstraints gridx="0" gridy="0"
+							gridwidth="2" insets="0,0,20,60" />
 					</panel>
+
+					<panel layout="FlowLayout(FlowLayout.Left)">
+						<gridbagconstraints anchor="GridBagConstraints.WEST"
+							gridx="0" gridy="1" />
+						<label
+							text="Click on an element for data; shift-click, then drag to pan; ctrl-click, then drag to zoom; or zoom to: " />
+						<button text="NOD" ActionCommand="Sch_NOD"></button>
+						<button text="Delta" ActionCommand="Sch_Delta"></button>
+						<button text="SOD" ActionCommand="Sch_SOD"></button>
+						<button text="All" ActionCommand="Sch_SOD"></button>
+					</panel>
+					<panel layout="FlowLayout(FlowLayout.Right)">
+						<gridbagconstraints anchor="GridBagConstraints.EAST"
+							gridx="1" gridy="1" insets="0,0,0,60" />
+						<button text="Help" ActionCommand="AC_Help">
+
+						</button>
+					</panel>
+
+
+					<!-- <button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD"> 
+						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="0" 
+						gridy="0" /> </button> <button text="Delta" preferredwidth="100,12" ActionCommand="Sch_Delta"> 
+						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="1" 
+						gridy="0" /> </button> <button text="SOD" preferredwidth="100,12" ActionCommand="Sch_SOD"> 
+						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="2" 
+						gridy="0" /> </button> <button name="schem_btnload" id="schem_btnload" text="Load 
+						Scenario" preferredwidth="100,12" ActionCommand="Sch_Load" visible="false"> 
+						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="3" 
+						gridy="0" /> </button> <label text="Under Construction!" font="Tahoma-BOLD-15" 
+						foreground="CC3333"> <gridbagconstraints insets="2,40,0,0" anchor="GridBagConstraints.WEST" 
+						gridx="4" gridy="0" /> </label> <textfield name="schem_tfload" id="schem_tfload" 
+						text="" minimumsize="500,25" enabled="false" visible="false"> <gridbagconstraints 
+						insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="4" gridy="0" /> 
+						</textfield> <panel layout="GridBagLayout"> <gridbagconstraints insets="0,5,5,5" 
+						anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" gridwidth="5" /> 
+						<scrollpane id="schem_scr" name="schem_scr" minimumsize="900,600" layout="BorderLayout"> 
+						</scrollpane> </panel> -->
 				</panel>
 				<panel id="externalPDF" name="External PDF" font="Tahoma-Italic-12"
 					layout="GridBagLayout">

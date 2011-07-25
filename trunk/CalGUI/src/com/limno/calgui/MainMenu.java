@@ -1,16 +1,12 @@
 package com.limno.calgui;
 
-import hec.heclib.dss.HecDss;
-import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
@@ -20,12 +16,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -36,17 +30,14 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -56,14 +47,10 @@ import java.util.regex.Pattern;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -76,20 +63,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
 import javax.swing.ProgressMonitor;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -103,20 +85,20 @@ import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
 //import calsim.gui.GuiUtils;
 
 import com.limno.calgui.GetDSSFilename.RBListItem;
-import com.limno.calgui.GetDSSFilename.JFileChooser2;
 import com.limno.calgui.results.ChartPanel1;
 import com.limno.calgui.results.DSS_Grabber;
 import com.limno.calgui.results.MonthlyTablePanel;
 import com.limno.calgui.results.Report;
-import com.limno.calgui.results.ScrollablePicture;
+import com.limno.calgui.results.SchematicMain;
 import com.limno.calgui.results.SummaryTablePanel;
-import com.limno.calgui.SymbolCanvas;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
 		KeyEventDispatcher {
@@ -186,6 +168,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	 */
 	public MainMenu() throws Exception {
 
+		// Code added to disable logger
+		
+		System.setProperty("log4j.defaultInitOverride","tr ue");
+		LogManager.resetConfiguration();
+		LogManager.getRootLogger().addAppender(new NullAppender());
+		
+		// new SchematicMain();
+
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
@@ -195,6 +185,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		desktopTitle = desktop.getTitle() + " (v225); Scenario";
 		desktop.setResizable(false);
+		desktop.setResizable(true);
 
 		// Help hotkey
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -251,33 +242,40 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		jtp.setBackgroundAt(8, Color.WHITE);
 		jtp.setBackgroundAt(9, Color.WHITE);
 
-		// Load in WRIMS functionality
+		// Schematic view
 
-		java.net.URL imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
-		if (imgURL != null) {
-			// ImageIcon image = new ImageIcon(imgURL, null);
-			// System.out.println(image.getIconHeight());
+		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
+		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
+		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
+		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
 
-			BufferedImage img;
-			img = ImageIO.read(imgURL);
-			Font defaultFont = new Font("Serif", Font.PLAIN, 20);
-			SymbolCanvas symbols = new SymbolCanvas(defaultFont, 0x2500, 207, img);
-			symbols.paint(img.getGraphics());
+		// // Load in WRIMS functionality
 
-			ImageIcon image = new ImageIcon(img, null);
-
-			ScrollablePicture picture = new ScrollablePicture(image, 100);
-			picture.setName("schem_map");
-			JScrollPane scrollpane = (JScrollPane) swix.find("schem_scr");
-			scrollpane.add(picture);
-			scrollpane.setViewportView(picture);
-			scrollpane.setPreferredSize(new Dimension(800, 700));
-			scrollpane.setOpaque(true);
-			scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-			GUI_Utils.SetMouseListener(scrollpane, this);
-
-		}
+		// java.net.URL imgURL = getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
+		// if (imgURL != null) {
+		// // ImageIcon image = new ImageIcon(imgURL, null);
+		// // System.out.println(image.getIconHeight());
+		//
+		// BufferedImage img;
+		// img = ImageIO.read(imgURL);
+		// Font defaultFont = new Font("Serif", Font.PLAIN, 20);
+		// SymbolCanvas symbols = new SymbolCanvas(defaultFont, 0x2500, 207, img);
+		// symbols.paint(img.getGraphics());
+		//
+		// ImageIcon image = new ImageIcon(img, null);
+		//
+		// ScrollablePicture picture = new ScrollablePicture(image, 100);
+		// picture.setName("schem_map");
+		// JScrollPane scrollpane = (JScrollPane) swix.find("schem_scr");
+		// scrollpane.add(picture);
+		// scrollpane.setViewportView(picture);
+		// scrollpane.setPreferredSize(new Dimension(800, 700));
+		// scrollpane.setOpaque(true);
+		// scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		//
+		// GUI_Utils.SetMouseListener(scrollpane, this);
+		//
+		// }
 
 		JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
 		JSpinner spnEM1 = (JSpinner) swix.find("spnRunEndMonth");
@@ -586,12 +584,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				for (int i = 0; i < table4.length; i++)
 					if (lookup.equals(table4[i][0]))
 						l = i;
-				
+
 				((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
 				((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
 				((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
 				((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
-				
 
 			} else if (cName.startsWith("ckbp")) {
 				// CheckBox in presets panel changed
@@ -996,7 +993,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
 
-			ScenarioFrame ScenFrame= new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
+			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
@@ -1544,19 +1541,20 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
-			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			verticalScrollBar.setValue(verticalScrollBar.getMinimum());
+			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+			// verticalScrollBar.setValue(verticalScrollBar.getMinimum());
 
 		} else if (e.getActionCommand().startsWith("Sch_Delta")) {
-			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			verticalScrollBar.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) * 0.25));
+			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+			// verticalScrollBar.setValue((int) ((verticalScrollBar.getMaximum() - verticalScrollBar.getMinimum()) *
+			// 0.25));
 
 		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
-			JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			verticalScrollBar.setValue(verticalScrollBar.getMaximum());
+			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
+			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
+			// verticalScrollBar.setValue(verticalScrollBar.getMaximum());
 
 		} else if (e.getActionCommand().startsWith("AC_Help")) {
 			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
