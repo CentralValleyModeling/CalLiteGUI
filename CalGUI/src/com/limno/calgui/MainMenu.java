@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -51,6 +52,7 @@ import javax.swing.BorderFactory;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -98,6 +100,7 @@ import com.limno.calgui.results.MonthlyTablePanel;
 import com.limno.calgui.results.Report;
 import com.limno.calgui.results.SchematicMain;
 import com.limno.calgui.results.SummaryTablePanel;
+import com.lowagie.text.Image;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
 		KeyEventDispatcher {
@@ -183,6 +186,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		desktopTitle = desktop.getTitle() + " (v241); Scenario";
 		desktop.setResizable(false);
 		desktop.setResizable(true);
+		
+		//Set Icon
+		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+		desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
 		// Help hotkey
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -526,6 +533,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		});
 		new WebData(jtp, this);
 
+	}
+
+	private void setIconImage(java.awt.Image img) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -992,6 +1004,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
 
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
+			ScenFrame.setVisible(true);
+			//Set Icon
+			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+			ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {

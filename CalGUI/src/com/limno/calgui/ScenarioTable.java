@@ -32,7 +32,9 @@ public class ScenarioTable extends JFrame {
 		scentable.setSize(450, 600);
 		JScrollPane scrollingtable = new JScrollPane(scentable);
 		add(scrollingtable);
-	
+		//Set Icon
+		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 		
 		pack();
 		//setAlwaysOnTop(true);
