@@ -90,6 +90,7 @@ import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
+import com.limno.calgui.GUI_Utils;
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.results.ChartPanel1;
 import com.limno.calgui.results.DSS_Grabber;
@@ -241,7 +242,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
+		//SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
+		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" +System.getProperty("user.dir") + "/Config/callite_sample.svg");
 		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
 		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
 

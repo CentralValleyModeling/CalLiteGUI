@@ -104,11 +104,12 @@ public class ScenarioFrame extends JFrame {
 				String[] controls;
 				String[] headers = null;
 				String[][] scenmatrix = null;
+				String[][] scenmatrixdiff = null;
+				int option = 0;
 				if (selected.length < 2) {
 					JOptionPane
 							.showMessageDialog(null, "You must select at least two scenario files to compare.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					int option;
 					if (rdbAll.isSelected()) {
 						option = 1;
 					} else {
@@ -201,12 +202,39 @@ public class ScenarioFrame extends JFrame {
 					}
 
 				}
+				if (option == 1) {
+					//All scenario infor
+					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrix, headers);
+					ScenTable.setVisible(true);
+				} else {
+					//Only differing scenario info
+					scenmatrixdiff = new String[scenmatrix.length][selected.length + 2];
+					int k=0;
+					for (int i = 0; i < scenmatrix.length; i++) {
+						if (scenmatrix[i][0]==null) {break;};
+						String[] scenariovals = new String[selected.length];
+						for (int j = 0; j < selected.length; j++) {
+							scenariovals[j]=scenmatrix[i][j+2];
+						}
+						for (int j = 0; j < scenariovals.length-1; j++) {
+							if (!scenariovals[j].equals(scenariovals[j+1])){
+								//Differing values
+								scenmatrixdiff[k][0]=scenmatrix[i][0];
+								scenmatrixdiff[k][1]=scenmatrix[i][1];
+								for (int jj = 0; jj < scenariovals.length; jj++) {
+									scenmatrixdiff[k][jj+2]=scenmatrix[i][jj+2];
+								}
+								k++;
+								break;
+							}
+						}
+						
+					}
+					
+					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrixdiff, headers);
+					ScenTable.setVisible(true);
+				}
 
-				// Post-process scenmatrix to create final table
-				
-				
-				ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrix, headers);
-				ScenTable.setVisible(true);
 
 			}
 		});
