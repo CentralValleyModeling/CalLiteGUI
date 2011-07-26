@@ -129,9 +129,11 @@ public class ScenarioFrame extends JFrame {
 					String NL = System.getProperty("line.separator");
 					String sFull = sbScen[0].toString();
 					String[] lines = sFull.split(NL);
+					String[] temp = sFull.split("[;]");
+					int totlines = lines.length+temp.length;
 
-					controls = new String[lines.length];
-					scenmatrix = new String[lines.length][selected.length + 2];
+					controls = new String[totlines];
+					scenmatrix = new String[totlines][selected.length + 2];
 					headers = new String[selected.length + 2];
 					headers[0] = "Control";
 					headers[1] = "Location";
@@ -176,6 +178,7 @@ public class ScenarioFrame extends JFrame {
 						i++;
 					}
 					//Data Table Entries
+					int ii=i;
 					i++;
 					gl = new GUILinks();
 					gl.readIn("Config\\GUI_Links2.table");
@@ -196,14 +199,23 @@ public class ScenarioFrame extends JFrame {
 
 						sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
 
-						controls[i-1] = fileName;
+						controls[ii] = fileName;
 						comptext=fileName;
 
+						String[] values = value.split("[;]");
+						scenmatrix[ii][0] = comptext;
+						scenmatrix[ii][1] = sbparents.toString();
 						
-						scenmatrix[i-1][0] = comptext;
-						scenmatrix[i-1][1] = sbparents.toString();
-						scenmatrix[i-1][2] = value;
+						for (int j = 0; j < values.length; j++) {
+							scenmatrix[ii][2] = values[j];
+							ii++;
+							controls[ii] ="";
+							scenmatrix[ii][0] ="";
+							scenmatrix[ii][1] ="";
+						}
 
+						
+						//ii++;
 						i++;
 					}
 					
@@ -250,17 +262,18 @@ public class ScenarioFrame extends JFrame {
 							// Search for control index
 							int index = GUI_Utils.FindInArray(controls, fileName);
 							// System.out.println(index);
+							
+							ii=index;
+							String[] values = value.split("[;]");
 
-							scenmatrix[index][i + 2] = value;
-
+							for (int k = 0; k < values.length; k++) {
+								scenmatrix[ii][i+2] = values[k];
+								ii++;
+							}
 							j++;
 						}
 
 					}
-					
-
-
-
 				}
 				if (option == 1) {
 					//All scenario infor
@@ -277,15 +290,17 @@ public class ScenarioFrame extends JFrame {
 							scenariovals[j]=scenmatrix[i][j+2];
 						}
 						for (int j = 0; j < scenariovals.length-1; j++) {
-							if (!scenariovals[j].equals(scenariovals[j+1])){
-								//Differing values
-								scenmatrixdiff[k][0]=scenmatrix[i][0];
-								scenmatrixdiff[k][1]=scenmatrix[i][1];
-								for (int jj = 0; jj < scenariovals.length; jj++) {
-									scenmatrixdiff[k][jj+2]=scenmatrix[i][jj+2];
+							if (scenariovals[j]!=null) {
+								if (!scenariovals[j].equals(scenariovals[j+1])) {
+									//Differing values
+									scenmatrixdiff[k][0]=scenmatrix[i][0];
+									scenmatrixdiff[k][1]=scenmatrix[i][1];
+									for (int jj = 0; jj < scenariovals.length; jj++) {
+										scenmatrixdiff[k][jj+2]=scenmatrix[i][jj+2];
+									}
+									k++;
+									break;
 								}
-								k++;
-								break;
 							}
 						}
 						
