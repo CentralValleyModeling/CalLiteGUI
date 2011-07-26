@@ -105,6 +105,8 @@ public class ScenarioFrame extends JFrame {
 				String[] headers = null;
 				String[][] scenmatrix = null;
 				String[][] scenmatrixdiff = null;
+				GUILinks gl;
+
 				int option = 0;
 				if (selected.length < 2) {
 					JOptionPane
@@ -173,13 +175,46 @@ public class ScenarioFrame extends JFrame {
 
 						i++;
 					}
+					//Data Table Entries
+					i++;
+					gl = new GUILinks();
+					gl.readIn("Config\\GUI_Links2.table");
+					while (true) {
+						String textinLine = lines[i];
+						String comptext = "";
+						if (textinLine == null | textinLine.equals("END DATATABLEMODELS"))
+							break;
+						String[] tokens = textinLine.split(delims);
+
+						String value = tokens[1];
+						String cID=tokens[0];
+		    			String cName=gl.CtrlFortableID(cID);
+		    			String fileName = gl.tableNameForCtrl(cName);
+		    			JComponent component = (JComponent) swix.find(cName);
+						StringBuffer sbparents = new StringBuffer();
+						sbparents = GUI_Utils.GetControlParents(component, sbparents);
+
+						sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
+
+						controls[i-1] = fileName;
+						comptext=fileName;
+
+						
+						scenmatrix[i-1][0] = comptext;
+						scenmatrix[i-1][1] = sbparents.toString();
+						scenmatrix[i-1][2] = value;
+
+						i++;
+					}
+					
 
 					// Populate Cross Tab Matrix (other selected scenarios)
+					int j = 0;
 					for (i = 1; i < selected.length; i++) {
 						sFull = sbScen[i].toString();
 						lines = sFull.split(NL);
 
-						int j = 0;
+						j = 0;
 						while (true) {
 							String textinLine = lines[j];
 							if (j == lines.length - 1 | textinLine.equals("DATATABLEMODELS"))
@@ -198,8 +233,33 @@ public class ScenarioFrame extends JFrame {
 							j++;
 						}
 						headers[i + 2] = selected[i].toString();
+						
+						//Data Table Entries
+						j++;
+						while (true) {
+							String textinLine = lines[j];
+							if (j == lines.length - 1 | textinLine.equals("END DATATABLEMODELS"))
+								break;
+							String[] tokens = textinLine.split(delims);
+
+							String value = tokens[1];
+							String cID=tokens[0];
+			    			String cName=gl.CtrlFortableID(cID);
+			    			String fileName = gl.tableNameForCtrl(cName);
+
+							// Search for control index
+							int index = GUI_Utils.FindInArray(controls, fileName);
+							// System.out.println(index);
+
+							scenmatrix[index][i + 2] = value;
+
+							j++;
+						}
 
 					}
+					
+
+
 
 				}
 				if (option == 1) {
