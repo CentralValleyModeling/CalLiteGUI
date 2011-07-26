@@ -3,15 +3,22 @@ package com.limno.calgui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import org.mozilla.interfaces.nsIDOMWindow;
+import org.mozilla.interfaces.nsIWebBrowser;
 import org.python.modules.types;
 
+import com.jniwrapper.win32.ie.WebBrowser;
 import com.teamdev.jxbrowser.Browser;
 import com.teamdev.jxbrowser.BrowserFactory;
 import com.teamdev.jxbrowser.BrowserType;
@@ -19,13 +26,40 @@ import com.teamdev.jxbrowser.events.StatusChangedEvent;
 import com.teamdev.jxbrowser.events.StatusListener;
 import com.teamdev.jxbrowser.events.TitleChangedEvent;
 import com.teamdev.jxbrowser.events.TitleListener;
+import com.teamdev.jxbrowser.mozilla.*;
 
 public class WebData {
 	public WebData(JTabbedPane jtp, final MainMenu mainMenu){
 		final Browser browser = BrowserFactory.createBrowser(BrowserType.Mozilla);  
+		
 		if (isInternetReachable()){
 			browser.navigate("http://callitewebapp.appspot.com");
-			jtp.add("Web Map", browser.getComponent());
+
+//			MozillaBrowser mozillaBrowser = (MozillaBrowser) browser;
+//			WebBrowser mozillaPeer = (WebBrowser) mozillaBrowser.getPeer();
+//			nsIWebBrowser nsIWebBrowser = ((MozillaWebBrowser) mozillaPeer).getWebBrowser();
+//			nsIDOMWindow window = nsIWebBrowser.getContentDOMWindow();
+//			window.getScrollbars().setVisible(false);
+//			
+			
+			JPanel p = new JPanel();
+			p.setPreferredSize(new Dimension(800,600));
+			p.setMaximumSize(new Dimension(800,600));
+			p.setMinimumSize(new Dimension(800,600));
+			p.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			c.gridx = 0;
+			c.gridy = 0;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.anchor = GridBagConstraints.WEST;
+
+			browser.getComponent().setMinimumSize(new Dimension(800,600));
+
+			p.add(browser.getComponent(),c);
+
+			jtp.add("Web Map", p);
+
+			
 			jtp.setForegroundAt(jtp.getTabCount()-1, Color.blue);
 			jtp.setBackgroundAt(jtp.getTabCount()-1, Color.WHITE);
 			browser.addTitleListener(new TitleListener(){
