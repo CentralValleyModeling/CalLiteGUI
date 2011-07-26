@@ -188,7 +188,7 @@ public class ScenarioFrame extends JFrame {
 							String comp = tokens[0];
 							String value = tokens[1];
 
-							// Search fo control index
+							// Search for control index
 							int index = GUI_Utils.FindInArray(controls, comp);
 							// System.out.println(index);
 
@@ -202,6 +202,9 @@ public class ScenarioFrame extends JFrame {
 
 				}
 
+				// Post-process scenmatrix to create final table
+				
+				
 				ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrix, headers);
 				ScenTable.setVisible(true);
 

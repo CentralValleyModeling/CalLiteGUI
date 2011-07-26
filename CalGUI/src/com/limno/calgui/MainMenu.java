@@ -90,8 +90,6 @@ import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
-//import calsim.gui.GuiUtils;
-
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.results.ChartPanel1;
 import com.limno.calgui.results.DSS_Grabber;
@@ -174,8 +172,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		LogManager.resetConfiguration();
 		LogManager.getRootLogger().addAppender(new NullAppender());
 		
-		// new SchematicMain();
-
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
@@ -183,7 +179,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + " (v225); Scenario";
+		desktopTitle = desktop.getTitle() + " (v241); Scenario";
 		desktop.setResizable(false);
 		desktop.setResizable(true);
 
