@@ -229,7 +229,7 @@ public class ScenarioFrame extends JFrame {
 						j = 0;
 						while (true) {
 							String textinLine = lines[j];
-							if (j == lines.length - 1 | textinLine.equals("DATATABLEMODELS"))
+							if (j == lines.length - 1 || textinLine.equals("DATATABLEMODELS"))
 								break;
 							String[] tokens = textinLine.split(delims);
 
@@ -248,31 +248,33 @@ public class ScenarioFrame extends JFrame {
 						
 						//Data Table Entries
 						j++;
-						while (true) {
-							String textinLine = lines[j];
-							if (j == lines.length - 1 | textinLine.equals("END DATATABLEMODELS"))
-								break;
-							String[] tokens = textinLine.split(delims);
+						if (j < lines.length){
+							while (true) {
+								String textinLine = lines[j];
+								if (j == lines.length - 1 || textinLine.equals("END DATATABLEMODELS"))
+									break;
+								String[] tokens = textinLine.split(delims);
 
-							String value = tokens[1];
-							String cID=tokens[0];
-			    			String cName=gl.CtrlFortableID(cID);
-			    			String fileName = gl.tableNameForCtrl(cName);
+								String value = tokens[1];
+								String cID=tokens[0];
+								String cName=gl.CtrlFortableID(cID);
+								String fileName = gl.tableNameForCtrl(cName);
 
-							// Search for control index
-							int index = GUI_Utils.FindInArray(controls, fileName);
-							// System.out.println(index);
-							
-							ii=index;
-							String[] values = value.split("[;]");
+								// Search for control index
+								int index = GUI_Utils.FindInArray(controls, fileName);
+								// System.out.println(index);
 
-							for (int k = 0; k < values.length; k++) {
-								scenmatrix[ii][i+2] = values[k];
-								ii++;
+								ii=index;
+								String[] values = value.split("[;]");
+
+								for (int k = 0; k < values.length; k++) {
+									scenmatrix[ii][i+2] = values[k];
+									ii++;
+								}
+								j++;
 							}
-							j++;
-						}
 
+						}
 					}
 				}
 				if (option == 1) {
