@@ -133,6 +133,7 @@ public class ScenarioFrame extends JFrame {
 					int totlines = lines.length+temp.length;
 
 					controls = new String[totlines];
+					String [] conttypes = new String[totlines];
 					scenmatrix = new String[totlines][selected.length + 2];
 					headers = new String[selected.length + 2];
 					headers[0] = "Control";
@@ -157,18 +158,32 @@ public class ScenarioFrame extends JFrame {
 
 						controls[i] = comp;
 
-						if (component instanceof JCheckBox || component instanceof JRadioButton) {
-							AbstractButton jab = (AbstractButton) component;
-							comptext = comp + "| " + jab.getText();
+						//if (component instanceof JCheckBox || component instanceof JRadioButton) {
+						if (component instanceof JCheckBox ) {
+							JCheckBox jab = (JCheckBox) component;
+							//comptext = comp + "| " + jab.getText();
+							if (jab.getText().equals("")){
+								comptext =  comp;
+							} else {
+								comptext =  jab.getText();	
+							}
+							
+							conttypes[i] ="chk";
+						} else if (component instanceof JRadioButton ) {
+							JRadioButton jab = (JRadioButton) component;
+							comptext =  jab.getText();
+							conttypes[i] ="rdb";
 						} else {
 							if (component instanceof JTextField || component instanceof NumericTextField) {
+								conttypes[i] ="txt";
 								JLabel label = (JLabel) swix.find(comp + "_t");
 								if (label != null)
-									comptext = comp + "| " + label.getText();
+									//comptext = comp + "| " + label.getText();
+									comptext =  label.getText();
 								else
 									comptext = comp;
 							} else
-
+								conttypes[i] ="oth";
 								comptext = comp;
 						}
 						scenmatrix[i][0] = comptext;
@@ -213,9 +228,6 @@ public class ScenarioFrame extends JFrame {
 							scenmatrix[ii][0] ="";
 							scenmatrix[ii][1] ="";
 						}
-
-						
-						//ii++;
 						i++;
 					}
 					
@@ -279,33 +291,107 @@ public class ScenarioFrame extends JFrame {
 				}
 				
 				//Process scenario matrix for hierarchical results
-				
-				
+				String[] headers1 = new String[selected.length + 1];
+				headers1[0] = "Location";
+				for (int j = 1; j <= selected.length; j++) {
+					headers1[j] = selected[j-1].toString();
+				}
+				String [][] procscenmatrix = new String[scenmatrix.length*2][selected.length + 1];
+				int ii=0;
+				String CurLoc="";
+				String PrevLoc="";
+				String CurDash="";
+				String PrevDash="";
+				for (int i = 0; i < scenmatrix.length; i++) {
+					CurLoc=scenmatrix[i][1];
+					if (scenmatrix[i][1]==null) {break;};
+					String [] parArr = scenmatrix[i][1].split("[|]");
+					CurDash=parArr[0].toUpperCase();
+					if (!CurDash.equals(PrevDash)) {
+						procscenmatrix[ii][0]=parArr[0].toUpperCase();
+						ii++;
+						procscenmatrix[ii][0]= "  " + scenmatrix[i][0];
+						for (int j = 1; j <= selected.length; j++) {
+							procscenmatrix[ii][j]= scenmatrix[i][j+1];
+						}
+						ii++;
+					}
+					if (parArr.length ==1) {
+						if (!CurLoc.equals(PrevLoc)) {
+							//procscenmatrix[ii][0]=parArr[0].toUpperCase();
+							//ii++;
+						} else {
+							procscenmatrix[ii][0]= "  " + scenmatrix[i][0];
+							for (int j = 1; j <= selected.length; j++) {
+								procscenmatrix[ii][j]= scenmatrix[i][j+1];
+							}
+							ii++;
+						}
+					}else if (parArr.length ==2) {
+						if (!CurLoc.equals(PrevLoc)) {
+							procscenmatrix[ii][0]="  " +parArr[1];
+							ii++;
+							procscenmatrix[ii][0]= "    " + scenmatrix[i][0];
+							for (int j = 1; j <= selected.length; j++) {
+								procscenmatrix[ii][j]= scenmatrix[i][j+1];
+							}
+							ii++;
+						} else {
+							procscenmatrix[ii][0]= "    " + scenmatrix[i][0];
+							for (int j = 1; j <= selected.length; j++) {
+								procscenmatrix[ii][j]= scenmatrix[i][j+1];
+							}
+							ii++;
+						}
+					}else if (parArr.length ==3) {
+						if (!CurLoc.equals(PrevLoc)) {
+							procscenmatrix[ii][0]="    " + parArr[2];
+							ii++;
+							procscenmatrix[ii][0]= "      " + scenmatrix[i][0];
+							for (int j = 1; j <= selected.length; j++) {
+								procscenmatrix[ii][j]= scenmatrix[i][j+1];
+							}
+							ii++;
+						} else {
+							procscenmatrix[ii][0]= "      " + scenmatrix[i][0];
+							for (int j = 1; j <= selected.length; j++) {
+								procscenmatrix[ii][j]= scenmatrix[i][j+1];
+							}
+							ii++;
+						}
+						
+						
+					}
+					
+					
+					PrevDash=CurDash;
+					PrevLoc=CurLoc;
+				}
 				
 				
 				
 				if (option == 1) {
 					//All scenario infor
-					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrix, headers);
+					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", procscenmatrix, headers1);
 					ScenTable.setVisible(true);
 				} else {
 					//Only differing scenario info
-					scenmatrixdiff = new String[scenmatrix.length][selected.length + 2];
+					scenmatrixdiff = new String[procscenmatrix.length][selected.length + 1];
 					int k=0;
-					for (int i = 0; i < scenmatrix.length; i++) {
-						if (scenmatrix[i][0]==null) {break;};
+					for (int i = 0; i < procscenmatrix.length; i++) {
+						if (procscenmatrix[i][0]==null) {break;};
 						String[] scenariovals = new String[selected.length];
 						for (int j = 0; j < selected.length; j++) {
-							scenariovals[j]=scenmatrix[i][j+2];
+							scenariovals[j]=procscenmatrix[i][j+1];
 						}
 						for (int j = 0; j < scenariovals.length-1; j++) {
 							if (scenariovals[j]!=null) {
 								if (!scenariovals[j].equals(scenariovals[j+1])) {
 									//Differing values
-									scenmatrixdiff[k][0]=scenmatrix[i][0];
-									scenmatrixdiff[k][1]=scenmatrix[i][1];
+									scenmatrixdiff[k][0]=procscenmatrix[i][0];
+									//scenmatrixdiff[k][1]=scenmatrix[i][1];
 									for (int jj = 0; jj < scenariovals.length; jj++) {
-										scenmatrixdiff[k][jj+2]=scenmatrix[i][jj+2];
+										scenmatrixdiff[k][jj+1]=procscenmatrix[i][jj+1];
 									}
 									k++;
 									break;
@@ -315,7 +401,7 @@ public class ScenarioFrame extends JFrame {
 						
 					}
 					
-					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrixdiff, headers);
+					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrixdiff, headers1);
 					ScenTable.setVisible(true);
 				}
 
