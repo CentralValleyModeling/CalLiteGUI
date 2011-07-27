@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -43,17 +44,16 @@ public class WebData {
 //			
 			
 			JPanel p = new JPanel();
-			p.setPreferredSize(new Dimension(800,600));
-			p.setMaximumSize(new Dimension(800,600));
-			p.setMinimumSize(new Dimension(800,600));
 			p.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			c.gridx = 0;
 			c.gridy = 0;
 			c.fill = GridBagConstraints.HORIZONTAL;
-			c.anchor = GridBagConstraints.WEST;
+			c.anchor = GridBagConstraints.NORTHWEST;
+			c.insets = new Insets(0,0,25,75);
 
-			browser.getComponent().setMinimumSize(new Dimension(800,600));
+			browser.getComponent().setMinimumSize(new Dimension(1010,680));
+			browser.getComponent().setPreferredSize(new Dimension(1010,680));
 
 			p.add(browser.getComponent(),c);
 

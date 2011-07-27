@@ -147,10 +147,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	static public String lookups[][];
 
-	String table4[][] = { { "1110", "PreBO_Existing_SV.DSS", "2005A01A", "PreBO_ExistingINIT.DSS", "2005A01A" },
-			{ "1210", "PreBO_Future_SV.DSS", "2020D09E", "PreBO_FutureINIT.DSS", "2020D09E" },
-			{ "2110", "BO_Existing_SV.DSS", "2005A01A", "BO_ExistingINIT.DSS", "2005A01A" },
-			{ "2210", "BO_Future_SV.DSS", "2020D09E", "BO_FutureINIT.DSS", "2020D09E" } };
+	String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI
+						// files
+
+	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO
+
+	// configuration. Set False initially
 
 	String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
@@ -170,12 +172,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	 */
 	public MainMenu() throws Exception {
 
+		// Read GUI_Links4.table and place in Table4
+
+		ArrayList GUILinks4 = new ArrayList();
+		GUILinks4 = GUI_Utils.GetGUILinks("Config\\GUI_Links4.table");
+		table4 = new String[GUILinks4.size()][5];
+		for (int i = 0; i < GUILinks4.size(); i++) {
+			String tokens[] = ((String) GUILinks4.get(i)).split("\t");
+			table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
+			table4[i][1] = tokens[4];
+			table4[i][2] = tokens[5];
+			table4[i][3] = tokens[6];
+			table4[i][4] = tokens[7];
+		}
+
 		// Code added to disable logger
-		
-		System.setProperty("log4j.defaultInitOverride","tr ue");
+
+		System.setProperty("log4j.defaultInitOverride", "tr ue");
 		LogManager.resetConfiguration();
 		LogManager.getRootLogger().addAppender(new NullAppender());
-		
+
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
@@ -186,8 +202,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		desktopTitle = desktop.getTitle() + " (v241); Scenario";
 		desktop.setResizable(false);
 		desktop.setResizable(true);
-		
-		//Set Icon
+
+		// Set Icon
 		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
 		desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
@@ -249,8 +265,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		//SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
-		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" +System.getProperty("user.dir") + "/Config/callite_sample.svg");
+		// SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
+		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite_sample.svg");
 		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
 		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
 
@@ -392,8 +408,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Load Default Scenario
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
+
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		action_WSIDI = 0;
 		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+		action_WSIDI = 1;
+
 		// Refresh checkbox labels
 		for (int i = 0; i < RegUserEdits.length; i++) {
 			if (RegUserEdits[i] != null) {
@@ -537,7 +557,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	private void setIconImage(java.awt.Image img) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -570,6 +590,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	}
 
+	private int copyWSIDItoLookup(String index, String where) {
+
+		int retval = 0;
+		try {
+			File fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_cvp_sys_" + index + ".table");
+			File ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_cvp_sys.table");
+			GUI_Utils.copyDirectory(fs, ft, false);
+
+			fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_swp_" + index + ".table");
+			ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_swp.table");
+			GUI_Utils.copyDirectory(fs, ft, false);
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			retval = -1;
+		}
+		return retval;
+
+	}
+
 	// Respond to selection of a check box or radiobox.
 	public void itemStateChanged(ItemEvent e) {
 		JComponent component = (JComponent) e.getItem();
@@ -581,24 +622,97 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				// Handling for update of DSS files
 
-				String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
-				lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-				if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
-					lookup = lookup + "10";
-				else {
-					lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
-					// TODO: Finish off with CCModelID
+				// Confirm CWP/SWP overwrite;
+				if (((JRadioButton) component).isSelected() && action_WSIDI != 2) {
 
+					// Actions are only performed if selection is being set to true
+
+					int option = JOptionPane.YES_OPTION; // default is to overwrite everything
+					boolean isntDefault = false;
+					if (RegUserEdits != null) {
+						if (RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn1"))] != null)
+							isntDefault = isntDefault || RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn1"))];
+						if (RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn2"))] != null)
+							isntDefault = isntDefault || RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn2"))];
+
+					}
+					if ((action_WSIDI == 1) && (isntDefault))
+
+						// Prompt is needed only in "regular" processing (action_WSIDI = 1) with non-default table
+
+						option = JOptionPane.showConfirmDialog(desktop, "You have made changes to the SWP and/or CVP WSI/DI curves. \n"
+								+ "Do you want to overwrite these changes with the default values for the configuration ("
+								+ ((JRadioButton) component).getText() + " ) you have selected?\n\n"
+								+ "Press YES to overwrite, NO to use these values in the selected configuration, or Cancel to revert");
+
+					// Once option is determined, process ...
+
+					if (option == JOptionPane.CANCEL_OPTION) {
+
+						// Cancel: undo change by selecting "other" radio button
+
+						String newcName = null;
+						if (cName.equals("hyd_rdb2005"))
+							newcName = "hyd_rdb2020";
+						else if (cName.equals("hyd_rdb_2020"))
+							newcName = "hyd_rdb2005";
+						else if (cName.equals("run_rdbD1641"))
+							newcName = "run_rdbBO";
+						else if (cName.equals("run_rdbBO"))
+							newcName = "hyd_rdbD1641";
+
+						action_WSIDI = 2; // Skip all actions on update
+						((JRadioButton) swix.find(newcName)).setSelected(true);
+						action_WSIDI = 1;
+
+					} else {
+
+						// Yes or no: first determine which GUI_link4.table row to use
+
+						String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
+						lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
+						if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
+							lookup = lookup + "10";
+						else {
+							lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+
+							// TODO: Finish off with CCModelID? Move to batch processing?
+
+						}
+
+						int l = -1;
+						for (int i = 0; i < table4.length; i++)
+							if (lookup.equals(table4[i][0]))
+								l = i;
+
+						if (l != -1) {
+
+							// Then update GUI values, files in Default\Lookup directory
+
+							((JTextField) swix.find("hyd_DSS_Index")).setText(lookup);
+							((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
+							((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
+							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
+							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
+
+							copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
+
+							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
+
+								// Force CVP and SWP tables to be reset from files
+
+								String fileName = "Default\\Lookup\\"+ gl.tableNameForCtrl("op_btn1")+".table";
+								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
+								dTableModels[tID] = new DataFileTableModel(fileName, tID);
+
+								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
+								dTableModels[tID] = new DataFileTableModel(fileName, tID);
+
+							}
+						}
+					}
 				}
-				int l = -1;
-				for (int i = 0; i < table4.length; i++)
-					if (lookup.equals(table4[i][0]))
-						l = i;
-
-				((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
-				((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
-				((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
-				((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
 
 			} else if (cName.startsWith("ckbp")) {
 				// CheckBox in presets panel changed
@@ -796,9 +910,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			Integer numMon;
 			numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
 
-			double startdate = 1.0;
-			double enddate = 1.0;
-
 			if (!scen.equals("")) {
 
 				// Make sure current run isnt in background.
@@ -992,8 +1103,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				File file = fc.getSelectedFile();
 				getScenFilename.fc.setSelectedFile(file); // Use this name for next Save As
 
+				action_WSIDI = 0;
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 				RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
+				action_WSIDI = 1;
 				scenFilename = file.getName();
 				desktop.setTitle(desktopTitle + " - " + scenFilename);
 				JTextField tf = (JTextField) swix.find("run_txfScen");
@@ -1005,7 +1118,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
-			//Set Icon
+			// Set Icon
 			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
 			ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
@@ -1903,6 +2016,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	public void DisplayFrameWeb(String displayGroup) {
 
+		// if (lstScenarios.getModel().getSize() < 1) {
+		// JOptionPane.showMessageDialog(desktop, "Please specify scenario(s) of interest on Quick Results tab.");
+		// return;
+		// }
 		boolean doComparison = false;
 		boolean doDifference = false;
 		boolean doTimeSeries = false;
@@ -2686,43 +2803,25 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				// Copy DSS files.
 				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS");
 				ft.mkdir();
-				if (LODFlag == 0) {
-					fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\CL2005A01A021411_SV.DSS");
-					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CL2005A01A021411_SV.DSS");
-					try {
-						GUI_Utils.copyDirectory(fs, ft, false);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 
-					fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\CalLite2005A01AINIT.DSS");
-					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CalLite2005A01AINIT.DSS");
-					try {
-						GUI_Utils.copyDirectory(fs, ft, false);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				// TODO: Files are assumed to be in Default\DSS
+				fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText());
 
-				} else {
-					fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\CL_FUTURE_WHL021111_SV.DSS");
-					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CL_FUTURE_WHL021111_SV.DSS");
-					try {
-						GUI_Utils.copyDirectory(fs, ft, false);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				try {
+					GUI_Utils.copyDirectory(fs, ft, false);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
-					fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\CALLITE2020D09EINIT.DSS");
-					ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\CALLITE2020D09EINIT.DSS");
-					try {
-						GUI_Utils.copyDirectory(fs, ft, false);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				try {
+					GUI_Utils.copyDirectory(fs, ft, false);
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
 				}
 
 				publish("Writing GUI tables.");
@@ -2764,6 +2863,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else {
 					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\FutureDemand");
 				}
+
+				// Copy proper WSIDI table AFTER future/variable demand copy
+
+				copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Run\\Lookup");
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
 
@@ -2818,17 +2921,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					LineNum[6] = 11;
 				}
 
-				if (LODFlag == 0) {
-					newtext[5] = System.getProperty("user.dir") + "\\Run\\DSS\\CL2005A01A021411_SV.DSS";
-					LineNum[5] = 10;
-					newtext[7] = System.getProperty("user.dir") + "\\Run\\DSS\\CalLite2005A01AINIT.DSS";
-					LineNum[7] = 12;
-				} else {
-					newtext[5] = System.getProperty("user.dir") + "\\Run\\DSS\\CL_FUTURE_WHL021111_SV.DSS";
-					LineNum[5] = 10;
-					newtext[7] = System.getProperty("user.dir") + "\\Run\\DSS\\CALLITE2020D09EINIT.DSS";
-					LineNum[7] = 12;
-				}
+				LineNum[5] = 10;
+				newtext[5] = System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText();
+				LineNum[7] = 12;
+				newtext[7] = System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText();
 
 				newtext[8] = numMon.toString();
 				LineNum[8] = 14;
@@ -2840,14 +2936,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				LineNum[11] = 17;
 
 				LineNum[12] = 33;
+				newtext[12] = ((JTextField) swix.find("hyd_DSS_SV_F")).getText();
 				LineNum[13] = 34;
-				if (LODFlag == 0) {
-					newtext[12] = "2005A01A";
-					newtext[13] = "2005A01A";
-				} else {
-					newtext[12] = "2020D09E";
-					newtext[13] = "2020D09E";
-				}
+				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
