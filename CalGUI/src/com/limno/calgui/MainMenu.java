@@ -708,6 +708,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
 								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
+								
+								JTable table = (JTable) swix.find("tblOpValues");
+								table.setModel(dTableModels[tID]);
 
 							}
 						}
@@ -2312,6 +2315,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					 * 
 					 * RegUserEdits[tID] = true;
 					 */
+					 RegUserEdits[tID] = true;
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
 

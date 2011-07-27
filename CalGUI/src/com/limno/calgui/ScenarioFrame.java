@@ -125,11 +125,6 @@ public class ScenarioFrame extends JFrame {
 
 					// Populate Cross Tab Matrix (control info columns first)
 					@SuppressWarnings("unused")
-					String sLoc="";
-					String CurLoc="";
-					String PrevLoc="";
-					String CurDash="";
-					String PrevDash="";
 					String delims = "[|]";
 					String NL = System.getProperty("line.separator");
 					String sFull = sbScen[0].toString();
@@ -137,17 +132,15 @@ public class ScenarioFrame extends JFrame {
 					String[] temp = sFull.split("[;]");
 					int totlines = lines.length+temp.length;
 
-					controls = new String[totlines*2];
-					scenmatrix = new String[totlines*2][selected.length + 1];
-					headers = new String[selected.length + 1];
-					headers[0] = "Location";
-					//headers[1] = "Control";
-					headers[1] = selected[0].toString();
+					controls = new String[totlines];
+					scenmatrix = new String[totlines][selected.length + 2];
+					headers = new String[selected.length + 2];
+					headers[0] = "Control";
+					headers[1] = "Location";
+					headers[2] = selected[0].toString();
 
 					int i = 0;
-					int i2=0;
 					while (true) {
-						i2=i;
 						String textinLine = lines[i];
 						String comptext = "";
 						if (textinLine == null | textinLine.equals("DATATABLEMODELS"))
@@ -157,71 +150,30 @@ public class ScenarioFrame extends JFrame {
 						String comp = tokens[0];
 						String value = tokens[1];
 						JComponent component = (JComponent) swix.find(comp);
-						
+						StringBuffer sbparents = new StringBuffer();
+						sbparents = GUI_Utils.GetControlParents(component, sbparents);
+
+						sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
+
+						controls[i] = comp;
+
 						if (component instanceof JCheckBox || component instanceof JRadioButton) {
 							AbstractButton jab = (AbstractButton) component;
-							comptext =  jab.getText();
+							comptext = comp + "| " + jab.getText();
 						} else {
 							if (component instanceof JTextField || component instanceof NumericTextField) {
 								JLabel label = (JLabel) swix.find(comp + "_t");
 								if (label != null)
-									comptext = label.getText();
+									comptext = comp + "| " + label.getText();
 								else
 									comptext = comp;
-							} else {
+							} else
+
 								comptext = comp;
-							}
 						}
-						
-						sLoc="";
-						StringBuffer sbparents = new StringBuffer();
-						sbparents = GUI_Utils.GetControlParents(component, sbparents);
-						sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
-						String[]  parArray= sbparents.toString().split("[|]"); 
-						String[]  prevparArray= PrevLoc.split("[|]"); 
-						
-
-						CurLoc=sbparents.toString();
-						CurDash=parArray[0].toString().toUpperCase();
-						
-						if (!CurDash.equals(PrevDash)) {  
-							sLoc=parArray[0].toString().toUpperCase();
-							scenmatrix[i2][0] = sLoc;
-							scenmatrix[i2][1] = "";
-							i2++;
-							
-							for (int j = 1; j < parArray.length; j++) {
-								if (j>=prevparArray.length) {
-									break;
-								} else if (!prevparArray[j].equals(parArray[j])) {  
-									sLoc=parArray[j];
-									scenmatrix[i2][0] = sLoc;
-									scenmatrix[i2][1] = "";
-									i2++;
-								}
-								
-								
-							
-								sLoc=sLoc + "  " + parArray[j];
-							}
-							
-							scenmatrix[i2][0] = "  "+ comptext;
-							scenmatrix[i2][1]=value;
-						}else{
-							
-							
-						}
-						
-						
-						
-						PrevLoc=CurLoc;
-						PrevDash=CurDash;
-
-						
-						sLoc=sLoc + "  " + comptext;
-						controls[i] = comp;
-						scenmatrix[i][0] = sLoc;
-						scenmatrix[i][1] = value;
+						scenmatrix[i][0] = comptext;
+						scenmatrix[i][1] = sbparents.toString();
+						scenmatrix[i][2] = value;
 
 						i++;
 					}
@@ -244,21 +196,22 @@ public class ScenarioFrame extends JFrame {
 		    			JComponent component = (JComponent) swix.find(cName);
 						StringBuffer sbparents = new StringBuffer();
 						sbparents = GUI_Utils.GetControlParents(component, sbparents);
+
 						sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
 
 						controls[ii] = fileName;
 						comptext=fileName;
 
 						String[] values = value.split("[;]");
-						scenmatrix[ii][0] = sbparents.toString();
-						scenmatrix[ii][1] = comptext;
+						scenmatrix[ii][0] = comptext;
+						scenmatrix[ii][1] = sbparents.toString();
 						
 						for (int j = 0; j < values.length; j++) {
-							scenmatrix[ii][1] = values[j];
+							scenmatrix[ii][2] = values[j];
 							ii++;
 							controls[ii] ="";
 							scenmatrix[ii][0] ="";
-							//scenmatrix[ii][1] ="";
+							scenmatrix[ii][1] ="";
 						}
 
 						
@@ -287,11 +240,11 @@ public class ScenarioFrame extends JFrame {
 							int index = GUI_Utils.FindInArray(controls, comp);
 							// System.out.println(index);
 
-							scenmatrix[index][i + 1] = value;
+							scenmatrix[index][i + 2] = value;
 
 							j++;
 						}
-						headers[i + 1] = selected[i].toString();
+						headers[i + 2] = selected[i].toString();
 						
 						//Data Table Entries
 						j++;
@@ -315,7 +268,7 @@ public class ScenarioFrame extends JFrame {
 								String[] values = value.split("[;]");
 
 								for (int k = 0; k < values.length; k++) {
-									scenmatrix[ii][i+1] = values[k];
+									scenmatrix[ii][i+2] = values[k];
 									ii++;
 								}
 								j++;
@@ -324,6 +277,13 @@ public class ScenarioFrame extends JFrame {
 						}
 					}
 				}
+				
+				//Process scenario matrix for hierarchical results
+				
+				
+				
+				
+				
 				if (option == 1) {
 					//All scenario infor
 					ScenarioTable ScenTable = new ScenarioTable("CalLite 2.0 GUI - Scenario Comparison", scenmatrix, headers);
