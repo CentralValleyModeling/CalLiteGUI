@@ -218,15 +218,15 @@ public class ScenarioFrame extends JFrame {
 						comptext=fileName;
 
 						String[] values = value.split("[;]");
-						scenmatrix[ii][0] = comptext;
-						scenmatrix[ii][1] = sbparents.toString();
+						scenmatrix[ii][1] = comptext;
+						scenmatrix[ii][0] = sbparents.toString();
 						
 						for (int j = 0; j < values.length; j++) {
 							scenmatrix[ii][2] = values[j];
 							ii++;
 							controls[ii] ="";
 							scenmatrix[ii][0] ="";
-							scenmatrix[ii][1] ="";
+							scenmatrix[ii][1] =fileName;
 						}
 						i++;
 					}
