@@ -213,31 +213,6 @@ public class ScenarioFrame extends JFrame {
 						}
 						
 						
-						if (!CurLoc.equals(PrevLoc)) {    
-							if (!CurDash.equals(PrevDash)) {  
-								sLoc=parArray[0].toString().toUpperCase();
-								scenmatrix[i2][0] = sLoc;
-								scenmatrix[i2][1] = "";
-								
-								
-								
-								i2++;
-								scenmatrix[i2][0] = "  "+ comptext;
-								scenmatrix[i2][1]=value;
-							}else{
-								
-								
-
-							}
-						}
-
-						
-						
-						for (int j = 0; j < parArray.length; j++) {
-							sLoc=sLoc + "  " + parArray[j];
-						}
-
-						
 						
 						PrevLoc=CurLoc;
 						PrevDash=CurDash;
