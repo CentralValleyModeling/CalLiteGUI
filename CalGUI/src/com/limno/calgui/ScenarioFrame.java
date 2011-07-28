@@ -102,6 +102,7 @@ public class ScenarioFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Object[] selected = lstScen.getSelectedValues();
 				String[] controls;
+				String[] conttypes;
 				String[] headers = null;
 				String[][] scenmatrix = null;
 				String[][] scenmatrixdiff = null;
@@ -133,7 +134,7 @@ public class ScenarioFrame extends JFrame {
 					int totlines = lines.length+temp.length;
 
 					controls = new String[totlines];
-					String [] conttypes = new String[totlines];
+					conttypes = new String[totlines];
 					scenmatrix = new String[totlines][selected.length + 2];
 					headers = new String[selected.length + 2];
 					headers[0] = "Control";
@@ -338,9 +339,9 @@ public class ScenarioFrame extends JFrame {
 							ii++;
 						} else {
 							procscenmatrix[ii][0]= "    " + scenmatrix[i][0];
-							for (int j = 1; j <= selected.length; j++) {
-								procscenmatrix[ii][j]= scenmatrix[i][j+1];
-							}
+								for (int j = 1; j <= selected.length; j++) {
+									procscenmatrix[ii][j]= scenmatrix[i][j+1];
+								}
 							ii++;
 						}
 					}else if (parArr.length ==3) {
