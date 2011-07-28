@@ -188,10 +188,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		// Code added to disable logger
 
-		System.setProperty("log4j.defaultInitOverride", "tr ue");
+		System.setProperty("log4j.defaultInitOverride", "true");
 		LogManager.resetConfiguration();
 		LogManager.getRootLogger().addAppender(new NullAppender());
 
+		
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
@@ -199,7 +200,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + " (v241); Scenario";
+		desktopTitle = desktop.getTitle() + " (v252); Scenario";
 		desktop.setResizable(false);
 		desktop.setResizable(true);
 
@@ -211,12 +212,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		manager.addKeyEventDispatcher(this);
 
+		// Title
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
-		// Set ActionListeners (Regulations Page)
-
+		// ActionListeners 
 		swix.setActionListener(menu, this);
 		swix.setActionListener(regulations, this);
 		swix.setActionListener(Reporting, this);
@@ -265,7 +266,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		// SchematicMain schemView = new SchematicMain(schematicPanel, "file:///d:/callite_sample.svg");
 		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite_sample.svg");
 		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
 		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
@@ -345,10 +345,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		String[] headers2 = { "Month", "min cfs", "max cfs" };
 		DefaultTableModel model2 = new DefaultTableModel(data2, headers2);
 		table2.setModel(model2);
-
-		// String currentDir = System.getProperty("user.dir");
-		// JTextField tb = (JTextField) swix.find("tbRSdir");
-		// tb.setText(currentDir);
 
 		// Read switch lookup
 
