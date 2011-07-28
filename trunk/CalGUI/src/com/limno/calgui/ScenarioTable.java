@@ -8,46 +8,68 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class ScenarioTable extends JFrame {
-	
-	private JTable scentable;
 
-	public ScenarioTable(String title,String[][]data, String[] headers) {
+	private JTable scentable;
+	private JScrollPane scrollingtable;
+
+	public ScenarioTable(String title, String[][] data, String[] headers) {
 
 		super();
 
-		//setUndecorated(true);
-		//getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+		// setUndecorated(true);
+		// getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setPreferredSize(new Dimension(500, 700));
 		setMinimumSize(new Dimension(500, 700));
 		setLayout(new FlowLayout());
-		//GridBagConstraints c = new GridBagConstraints();
+		// GridBagConstraints c = new GridBagConstraints();
 
 		setTitle(title);
-		
+
 		scentable = new JTable();
 		DefaultTableModel model = new DefaultTableModel(data, headers);
 		scentable.setModel(model);
-		scentable.setSize(450, 600);
-		JScrollPane scrollingtable = new JScrollPane(scentable);
+		scrollingtable = new JScrollPane(scentable);
+		scrollingtable.setPreferredSize(new Dimension(480, 600));
 		add(scrollingtable);
-		//Set Icon
+		// Set Icon
 		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
-		
+
 		pack();
-		//setAlwaysOnTop(true);
-		
-		
+		this.addComponentListener((new ComponentListener() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				Dimension dim = ((Component) e.getSource()).getSize();
+				int width = (int) (dim.width * 0.99);
+				int height = (int) (dim.height * 0.90);
+				scrollingtable.setPreferredSize(new Dimension(width, height));
+				scrollingtable.revalidate();
+			}
+
+			@Override
+			public void componentHidden(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void componentMoved(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void componentShown(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		}));
 
 		// TODO - Add close/cancel button
-		
-		
-		
-		
 
-	}
-	
+	};
 
 }

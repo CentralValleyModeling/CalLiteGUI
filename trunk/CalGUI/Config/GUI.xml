@@ -46,7 +46,8 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="5" />
 						</button>
-						<label text="Scenario Directory" visible="false">
+						<!-- NOTE id added to label below to associate with textfield -->
+						<label id="run_txfDir_t" text="Scenario Directory" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 						</label>
@@ -75,7 +76,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="16" />
 						</button>
-						<label text="Scenario Name">
+						<label text="Scenario Name" id="run_txfScen_t">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
 						</label>
@@ -84,7 +85,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHEAST" gridx="1" gridy="20" />
 						</textfield>
-						<label text="DSS File Name">
+						<label text="DSS File Name" id="run_txfoDSS_t">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="30" />
 						</label>
@@ -93,7 +94,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="30" />
 						</textfield>
-						<label text="Scenario Description" minimumsize="120,20"
+						<label text="Scenario Description" id="run_txaScenDesc_t" minimumsize="120,20"
 							preferredsize="120,20">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="40"
@@ -516,7 +517,7 @@
 										fill="GridBagConstraints.HORIZONTAL" anchor="GridBagConstraints.WEST"
 										gridx="1" gridy="0" gridwidth="2" />
 								</numtextfield>
-								<label text="Other MI (cannot exceed Table A value of 1189.4 TAF/yr)">
+								<label id="demtxt2_t" text="Other MI (cannot exceed Table A value of 1189.4 TAF/yr)">
 									<gridbagconstraints insets="0,5,5,20"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 								</label>
@@ -527,7 +528,7 @@
 										fill="GridBagConstraints.HORIZONTAL" anchor="GridBagConstraints.WEST"
 										gridx="1" gridy="1" gridwidth="2" />
 								</numtextfield>
-								<label text="AG (cannot exceed Table A value of 1047 TAF/yr)">
+								<label id="demtxt3_t" text="AG (cannot exceed Table A value of 1047 TAF/yr)">
 									<gridbagconstraints insets="0,5,5,20"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 								</label>
