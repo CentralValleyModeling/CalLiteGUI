@@ -240,6 +240,7 @@ public class ScenarioFrame extends JFrame {
 
 						for (int j = 0; j < values.length; j++) {
 							scenmatrix[ii][2] = values[j];
+							conttypes[ii]="tab";
 							ii++;
 							controls[ii] = "";
 							scenmatrix[ii][0] = "";
