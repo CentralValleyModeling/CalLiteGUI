@@ -71,10 +71,15 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="15" />
 						</button>
-						<button minimumsize="240,20" enabled="true"
-							text="Compare Scenario Inputs..." ActionCommand="AC_CompScen">
+						<button enabled="true" minimumsize="240,20"
+							text="View Scenario Settings" ActionCommand="AC_ViewScen">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="16" />
+						</button>
+						<button enabled="true" minimumsize="100,20" visible="true"
+							text="Compare..." ActionCommand="AC_CompScen">
+							<gridbagconstraints insets="0,0,5,5"
+								anchor="GridBagConstraints.NORTHEAST" gridx="0" gridy="16" />
 						</button>
 						<label text="Scenario Name" id="run_txfScen_t">
 							<gridbagconstraints insets="0,0,5,5"
@@ -475,6 +480,7 @@
 
 
 				</panel>
+			
 				<panel id="demands" name="Demands" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel font="Tahoma-Bold-12" layout="GridBagLayout">
 						<panel id="dem_SWP" resizeable="false"
@@ -1459,6 +1465,7 @@
 						</label>
 					</panel>
 				</panel>
+		
 				<panel id="operations" name="Operations" layout="GridBagLayout">
 
 					<panel border="TitledBorder(CVP/SVP Allocation Methods)"

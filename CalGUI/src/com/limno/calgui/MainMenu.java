@@ -192,7 +192,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		LogManager.resetConfiguration();
 		LogManager.getRootLogger().addAppender(new NullAppender());
 
-		
 		// Read GUI configuration
 
 		swix = new SwingEngine(this);
@@ -200,9 +199,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + " (v252); Scenario";
+		desktopTitle = desktop.getTitle() + " (v256); Scenario";
 		desktop.setResizable(false);
-		desktop.setResizable(true);
 
 		// Set Icon
 		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
@@ -217,7 +215,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
-		// ActionListeners 
+		// ActionListeners
 		swix.setActionListener(menu, this);
 		swix.setActionListener(regulations, this);
 		swix.setActionListener(Reporting, this);
@@ -697,14 +695,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 								// Force CVP and SWP tables to be reset from files
 
-								String fileName = "Default\\Lookup\\"+ gl.tableNameForCtrl("op_btn1")+".table";
+								String fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1") + ".table";
 								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
 								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
 								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
-								
+
 								JTable table = (JTable) swix.find("tblOpValues");
 								table.setModel(dTableModels[tID]);
 
@@ -1032,7 +1030,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 					desktop.setTitle(desktopTitle + " - " + scenFilename);
 					((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS");
-
 				}
 			}
 			if (proceed) {
@@ -1043,44 +1040,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							+ scen + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
 				if (proceed) {
-
-					StringBuffer sb = new StringBuffer();
-					sb = GUI_Utils.GetControlValues(runsettings, sb);
-					sb = GUI_Utils.GetControlValues(regulations, sb);
-					sb = GUI_Utils.GetControlValues(hydroclimate, sb);
-					sb = GUI_Utils.GetControlValues(demands, sb);
-					sb = GUI_Utils.GetControlValues(operations, sb);
-					sb = GUI_Utils.GetControlValues(facilities, sb);
-
-					// get table values.
-					final String NL = System.getProperty("line.separator");
-					sb.append("DATATABLEMODELS" + NL);
-					ArrayList GUITables = new ArrayList();
-					ArrayList GUILinks = new ArrayList();
-					GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
-					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
-					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
-					sb.append("END DATATABLEMODELS" + NL);
-					sb.append("USERDEFINEDFLAGS" + NL);
-					for (int i = 0; i < RegUserEdits.length; i++) {
-						if (RegUserEdits[i] != null) {
-							sb.append(i + "|" + RegUserEdits[i] + NL);
-						}
-					}
-					sb.append("END USERDEFINEDFLAGS" + NL);
-
-					GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-
-					try {
-						FileWriter fstream = new FileWriter(f);
-						BufferedWriter outobj = new BufferedWriter(fstream);
-						outobj.write(sb.toString());
-						outobj.close();
-
-					} catch (Exception e1) {
-						System.err.println("Error: " + e1.getMessage());
-					}
+					saveFile(scen);
 				} else {
 					JFrame frame = new JFrame("Error");
 
@@ -1115,12 +1075,34 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		} else if (e.getActionCommand().startsWith("AC_CompScen")) {
 
+			// Save current settings to temp file
+			saveFile("Current_Scenario");
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
 			// Set Icon
 			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
 			ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
+			// Delete temp file
+			//File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario.cls");
+			//GUI_Utils.deleteDir(ft);
+
+		} else if (e.getActionCommand().startsWith("AC_ViewScen")) {
+
+			// Save current settings to temp file
+			saveFile("Current_Scenario");
+			// Build list
+			Object scenlist[] = { "Current_Scenario" };
+			// Show frame
+			ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix);
+			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+			sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+			sTableFrame.setVisible(true);
+			// Delete temp file
+			File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario");
+			GUI_Utils.deleteDir(ft);
+
+			
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
 
@@ -1708,6 +1690,47 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			}
 
+		}
+
+	}
+
+	private void saveFile(String scen) {
+		StringBuffer sb = new StringBuffer();
+		sb = GUI_Utils.GetControlValues(runsettings, sb);
+		sb = GUI_Utils.GetControlValues(regulations, sb);
+		sb = GUI_Utils.GetControlValues(hydroclimate, sb);
+		sb = GUI_Utils.GetControlValues(demands, sb);
+		sb = GUI_Utils.GetControlValues(operations, sb);
+		sb = GUI_Utils.GetControlValues(facilities, sb);
+
+		// get table values.
+		final String NL = System.getProperty("line.separator");
+		sb.append("DATATABLEMODELS" + NL);
+		ArrayList GUITables = new ArrayList();
+		ArrayList GUILinks = new ArrayList();
+		GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
+		GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+		sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb);
+		sb.append("END DATATABLEMODELS" + NL);
+		sb.append("USERDEFINEDFLAGS" + NL);
+		for (int i = 0; i < RegUserEdits.length; i++) {
+			if (RegUserEdits[i] != null) {
+				sb.append(i + "|" + RegUserEdits[i] + NL);
+			}
+		}
+		sb.append("END USERDEFINEDFLAGS" + NL);
+
+		GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+
+		try {
+			FileWriter fstream = new FileWriter(f);
+			BufferedWriter outobj = new BufferedWriter(fstream);
+			outobj.write(sb.toString());
+			outobj.close();
+
+		} catch (Exception e1) {
+			System.err.println("Error: " + e1.getMessage());
 		}
 
 	}
@@ -2311,7 +2334,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					 * 
 					 * RegUserEdits[tID] = true;
 					 */
-					 RegUserEdits[tID] = true;
+					RegUserEdits[tID] = true;
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
 
@@ -2791,15 +2814,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 
-				// Development flag
-				Integer LODFlag = 0;
-				JRadioButton rdb = (JRadioButton) swix.find("hyd_rdb2005");
-				if (rdb.isSelected()) {
-					LODFlag = 0;
-				} else {
-					LODFlag = 1;
-				}
-
 				// Copy DSS files.
 				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS");
 				ft.mkdir();
@@ -2856,7 +2870,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				 * File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand"); } GUI_Utils.deleteDir(fsDem);
 				 */
 
-				rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
+				JRadioButton rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
 
 				if (rdb.isSelected()) {
 					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\VariableDemand");
