@@ -182,10 +182,12 @@ public class ScenarioFrame extends JFrame {
 							JRadioButton jab = (JRadioButton) component;
 							comptext = comp;
 
-							if (jab.isSelected())
+							//if (jab.isSelected())
+							if (value.equals("true")){
 								value = jab.getText();
-							else
+							}else{
 								value = "";
+							}
 							conttypes[i] = "rdb";
 						} else {
 							if (component instanceof JTextField || component instanceof NumericTextField) {
@@ -258,10 +260,34 @@ public class ScenarioFrame extends JFrame {
 							if (j == lines.length - 1 || textinLine.equals("DATATABLEMODELS"))
 								break;
 							String[] tokens = textinLine.split(delims);
-
+				
 							String comp = tokens[0];
 							String value = tokens[1];
+							
+							JComponent component = (JComponent) swix.find(comp);
+							if (component instanceof JCheckBox) {
+								JCheckBox jab = (JCheckBox) component;
+								StringBuffer sbparents=new StringBuffer();
+								sbparents = GUI_Utils.GetControlParents(component, sbparents);
+								sbparents = GUI_Utils.ReverseStringBuffer(sbparents, "[|]");
+								
+								if (value.equals("false"))
+									value = "Turned off";
+								else if (sbparents.toString().contains("D-1641") && jab.getText().contains("Default"))
+									value = "Per D-1641";
+								else
+									value = "Turned on";
+							} else if (component instanceof JRadioButton) {
+								JRadioButton jab = (JRadioButton) component;
 
+								//if (jab.isSelected())
+								if (value.equals("true")){
+									value = jab.getText();
+								}else{
+									value = "";
+								}
+							}
+							
 							// Search for control index
 							int index = GUI_Utils.FindInArray(controls, comp);
 							// System.out.println(index);

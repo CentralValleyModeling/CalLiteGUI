@@ -20,8 +20,8 @@ public class ScenarioTable extends JFrame {
 		// getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		setPreferredSize(new Dimension(500, 700));
-		setMinimumSize(new Dimension(500, 700));
+		setPreferredSize(new Dimension(600, 700));
+		setMinimumSize(new Dimension(600, 700));
 		setLayout(new FlowLayout());
 		// GridBagConstraints c = new GridBagConstraints();
 
@@ -43,7 +43,7 @@ public class ScenarioTable extends JFrame {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				Dimension dim = ((Component) e.getSource()).getSize();
-				int width = (int) (dim.width * 0.99);
+				int width = (int) (dim.width * 0.95);
 				int height = (int) (dim.height * 0.90);
 				scrollingtable.setPreferredSize(new Dimension(width, height));
 				scrollingtable.revalidate();
