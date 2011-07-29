@@ -1685,7 +1685,26 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					((DefaultListModel) lstScenarios.getModel()).clear();
 					lstScenarios.repaint();
 
-				} else if (component.getName().equals("btnDisplayCurrent")) {
+				} else if (component.getName().equals("btnCompareScenarios")) {
+					Object scenlist[] = new Object[lstScenarios.getModel().getSize()];
+					int j=0;
+					for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
+						RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
+						if (item.isSelected())
+							scenlist[0] = item.toString2().replace("_DV.DSS", ".cls");
+						else {
+							j++;
+							scenlist[j] = item.toString2().replace("_DV.DSS",".cls");
+						}
+							
+					}
+					// Show frame
+					ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix);
+					java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+					sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+					sTableFrame.setVisible(true);
+
+					
 
 				}
 			}
