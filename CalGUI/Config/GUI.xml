@@ -206,7 +206,6 @@
 
 				</panel>
 
-
 				<panel id="hydroclimate" name="Hydroclimate" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel id="hyd_ss" font="Tahoma-Bold-12" layout="GridBagLayout">
 						<panel resizeable="false" border="TitledBorder(Level of Development)"
@@ -656,7 +655,6 @@
 						<label id="map2" icon="images/aqueduct_demand.gif" />
 					</panel>
 				</panel>
-
 
 				<panel id="facilities" name="Facilities" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel id="facilities1" font="Tahoma-Bold-12" layout="GridBagLayout">
@@ -1204,8 +1202,6 @@
 					</panel>
 				</panel>
 
-
-
 				<panel id="regulations" name="Regulations" constraints="BorderLayout.LEFT"
 					layout="GridBagLayout">
 					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER"
@@ -1669,6 +1665,9 @@
 								<button id="btnDelScenario" name="btnDelScenario" text="Delete" />
 								<button id="btnClearScenario" name="btnClearScenario"
 									text="Clear All" />
+								<label text="       "></label>	
+								<button id="btnCompareScenarios" name="btnCompareScenarios"
+									text="Compare Scenarios" />
 							</hbox>
 
 							<scrollpane name="spsl" id="spsl" minimumsize="410,90"

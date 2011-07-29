@@ -332,10 +332,10 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		boolean isBlank = true;
 		for (i = procscenmatrix.length - 1; (i >= 0) && isBlank; i--) {
 			isBlank = true;
-			System.out.println(i + " " + isBlank);
 			for (j = 0; j < procscenmatrix[i].length; j++)
 				isBlank = isBlank & (procscenmatrix[i][j] == null);
 		}
+
 		String m1[][] = new String[i + 1][2];
 		String m2[][] = new String[i + 1][selected.length + 1];
 		for (; i >= 0; i--) {
@@ -343,6 +343,9 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			m1[i][0] = procscenmatrix[i][0];
 			m1[i][1] = procscenmatrix[i][1];
 		}
+		
+		// Headers for tables
+		
 		String[] headers1 = new String[2];
 		headers1[0] = "Location";
 		headers1[1] = selected[0].toString();
@@ -414,7 +417,16 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 			sPanel3 = new ScenarioPanel(m3, headers2);
 
-			b2.setSelected(true);
+			if (((String) selected[0]).equals("Current_Scenario")) {
+				b2.setSelected(true);
+				sPanel2.setVisible(true);
+				sPanel3.setVisible(false);
+			} else {
+				b2.setSelected(true);
+				sPanel2.setVisible(true);
+				sPanel3.setVisible(false);
+			}
+			
 			vbox.add(sPanel2);
 			vbox.add(sPanel3);
 			sPanel1.setVisible(false);
