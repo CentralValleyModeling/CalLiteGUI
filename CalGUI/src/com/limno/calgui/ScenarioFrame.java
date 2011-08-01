@@ -69,29 +69,7 @@ public class ScenarioFrame extends JFrame {
 		c.ipadx = 200;
 		c.anchor = GridBagConstraints.WEST;
 		add(scrollingList, c);
-		scrollingList.setMinimumSize(new Dimension(100, 100));
-
-		rdbAll = new JRadioButton("List All");
-		rdbAll.setSelected(true);
-		c.gridx = 0;
-		c.gridy = 2;
-		c.ipadx = 0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridwidth = 3;
-		c.anchor = GridBagConstraints.EAST;
-		add(rdbAll, c);
-
-		rdbDiff = new JRadioButton("List Differences");
-		c.gridx = 0;
-		c.gridy = 3;
-		c.gridwidth = 3;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.EAST;
-		add(rdbDiff, c);
-
-		btngrp = new JButtonGroup();
-		btngrp.add(rdbAll);
-		btngrp.add(rdbDiff);
+		scrollingList.setMinimumSize(new Dimension(100, 200));
 
 		btnComp = new JButton("Compare");
 		c.gridx = 0;
@@ -104,16 +82,16 @@ public class ScenarioFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Object[] selected = lstScen.getSelectedValues();
-				int option = 0;
 				if (selected.length < 1) {
 					JOptionPane.showMessageDialog(null, "You must select at least one scenario file to display.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
 					Object list[] = new Object[1+selected.length];
-					list[0] = "Current_Scenario.cls";
+					list[0] = "Current_Scenario";
 					for (int i = 0; i < selected.length; i++)
 						list[i+1] = selected[i];
 					ScenarioTable sTable = new ScenarioTable(list, swix);
 					sTable.setVisible(true);
+					
 				}
 			}
 		});
