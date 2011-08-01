@@ -15,18 +15,16 @@
 ! 10 RS_DLTSW          1         0            N/A
 ! 11 CO_DLTSW          1         0            N/A
 ! ==========================================
-gui_D1641Regs
-Index   OPTION
-1       1
-2       1
-3       1
-4       1
-5       1
-6       1
-7       1
-8       1
-9       1
-10      1
-11      1
-
-
+GUI_D1641Regs
+Index	Option
+1	1	!DCC_DLTSW -  Delta Cross Channel
+2	1	!EI_DLTSW -  Export-Inflow Ratio
+3	1	!NDO_DLTSW -  Minimum Net Delta Outflow
+4	1	!RV_DLTSW -  Sacramento River at Rio Vista Minimum Flow
+5	1	!X2_DLTSW -  X2 Requirements
+6	1	!X2ROE_DLTSW -  Roe Trigger
+7	1	!VAMP_DLTSW -  Vernalis
+8	1	!EM_DLTSW -  Emmaton
+9	1	!JP_DLTSW -  Jersey Point
+10	1	!RS_DLTSW -  Rock Slough
+11	1	!CO_DLTSW -  Collinsville
