@@ -199,7 +199,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + " (v256); Scenario";
+		desktopTitle = desktop.getTitle() + " (v260); Scenario";
 		desktop.setResizable(false);
 
 		// Set Icon
@@ -818,17 +818,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else if (cName.startsWith("op_rdb3")) {
 					JButton btn = (JButton) swix.find("op_btn3");
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				} else if (cName.startsWith("op_ckbSWP")) {
-					JLabel lab = (JLabel) swix.find("op_labSWP");
+				} else if (cName.startsWith("op_op_ntfSWP_t")) { 
+					JLabel lab = (JLabel) swix.find("op_ntfSWP_t");
 					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					NumericTextField ntf = (NumericTextField) swix.find("op_ntfSWP");
+					NumericTextField ntf = (NumericTextField) swix.find("op_ntfSWP_t");
 					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 				} else if (cName.startsWith("op_ckbCWP")) {
-					JLabel lab = (JLabel) swix.find("op_labCWP1");
+					JLabel lab = (JLabel) swix.find("op_ntfCWP1_t");
 					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 					NumericTextField ntf = (NumericTextField) swix.find("op_ntfCWP1");
 					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					lab = (JLabel) swix.find("op_labCWP2");
+					lab = (JLabel) swix.find("op_ntfCWP2_t");
 					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 					ntf = (NumericTextField) swix.find("op_ntfCWP2");
 					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
@@ -1716,11 +1716,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	private void saveFile(String scen) {
 		StringBuffer sb = new StringBuffer();
 		sb = GUI_Utils.GetControlValues(runsettings, sb);
-		sb = GUI_Utils.GetControlValues(regulations, sb);
 		sb = GUI_Utils.GetControlValues(hydroclimate, sb);
 		sb = GUI_Utils.GetControlValues(demands, sb);
-		sb = GUI_Utils.GetControlValues(operations, sb);
 		sb = GUI_Utils.GetControlValues(facilities, sb);
+		sb = GUI_Utils.GetControlValues(regulations, sb);
+		sb = GUI_Utils.GetControlValues(operations, sb);
 
 		// get table values.
 		final String NL = System.getProperty("line.separator");

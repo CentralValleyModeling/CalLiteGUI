@@ -126,6 +126,9 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					comptext = comp;
 				}
 			}
+			if (comptext.equals("run_txaScenDesc"))
+				comptext = "Scenario Description";
+
 			scenmatrix[i][0] = comptext;
 			scenmatrix[i][1] = sbparents.toString();
 			scenmatrix[i][2] = value;
@@ -343,9 +346,9 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			m1[i][0] = procscenmatrix[i][0];
 			m1[i][1] = procscenmatrix[i][1];
 		}
-		
+
 		// Headers for tables
-		
+
 		String[] headers1 = new String[2];
 		headers1[0] = "Location";
 		headers1[1] = selected[0].toString();
@@ -426,7 +429,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				sPanel2.setVisible(true);
 				sPanel3.setVisible(false);
 			}
-			
+
 			vbox.add(sPanel2);
 			vbox.add(sPanel3);
 			sPanel1.setVisible(false);
