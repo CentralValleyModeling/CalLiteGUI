@@ -742,18 +742,24 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						if (table.isEditing()) {
 							table.getCellEditor().stopCellEditing();
 						}
-						int tID = tm.tID;
-						if (RegUserEdits == null) {
-							RegUserEdits = new Boolean[20];
-						}
-						RegUserEdits[tID] = false;
+						
+						JComponent scr = (JComponent) swix.find("scrRegValues");
+						if (scr.isVisible()) {
+							int tID = tm.tID;
+							if (RegUserEdits == null) {
+								RegUserEdits = new Boolean[20];
+							}
+							RegUserEdits[tID] = false;
 
-						String cName1 = gl.CtrlFortableID(Integer.toString(tID));
-						JCheckBox ckb = (JCheckBox) swix.find(cName1);
-						String ckbtext = ckb.getText();
-						String[] ckbtext1 = ckbtext.split(" - ");
-						ckbtext = ckbtext1[0];
-						ckb.setText(ckbtext + " -  Default");
+							String cName1 = gl.CtrlFortableID(Integer.toString(tID));
+							JCheckBox ckb = (JCheckBox) swix.find(cName1);
+							String ckbtext = ckb.getText();
+							String[] ckbtext1 = ckbtext.split(" - ");
+							ckbtext = ckbtext1[0];
+							ckb.setText(ckbtext + " -  Default");
+						} else {
+							//JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
+						}
 					}
 
 				}
@@ -764,23 +770,34 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				JRadioButton rdb = (JRadioButton) e.getItem();
 
 				if (e.getStateChange() == ItemEvent.SELECTED) {
+					JComponent scr = (JComponent) swix.find("scrRegValues");
+					if (scr.isVisible()) {
+						table.setCellSelectionEnabled(true);
+						table.setEnabled(true);
 
-					table.setCellSelectionEnabled(true);
-					table.setEnabled(true);
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int tID = tm.tID;
+						if (RegUserEdits == null) {
+							RegUserEdits = new Boolean[20];
+						}
+						RegUserEdits[tID] = true;
 
-					DataFileTableModel tm = (DataFileTableModel) table.getModel();
-					int tID = tm.tID;
-					if (RegUserEdits == null) {
-						RegUserEdits = new Boolean[20];
+						String cName1 = gl.CtrlFortableID(Integer.toString(tID));
+						JCheckBox ckb = (JCheckBox) swix.find(cName1);
+						String ckbtext = ckb.getText();
+						String[] ckbtext1 = ckbtext.split(" - ");
+						ckbtext = ckbtext1[0];
+						ckb.setText(ckbtext + " - User Def.");
+					} else {
+						JPanel pan = (JPanel) swix.find("reg_panTab");
+						TitledBorder b = (TitledBorder) pan.getBorder();
+						String title=b.getTitle();
+						JOptionPane.showMessageDialog(mainmenu, title + " inputs are not user-specifiable at this time.");
+						JRadioButton rdb1 = (JRadioButton) swix.find("reg_rdbD1641");
+						rdb1.setSelected(true);
+						rdb1.revalidate();
+
 					}
-					RegUserEdits[tID] = true;
-
-					String cName1 = gl.CtrlFortableID(Integer.toString(tID));
-					JCheckBox ckb = (JCheckBox) swix.find(cName1);
-					String ckbtext = ckb.getText();
-					String[] ckbtext1 = ckbtext.split(" - ");
-					ckbtext = ckbtext1[0];
-					ckb.setText(ckbtext + " - User Def.");
 				}
 
 			} else if (cName.startsWith("fac_ckb")) {
@@ -2317,10 +2334,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// File f = new File("Default\\Lookup\\" + fileName + ".table");
 		// boolean exists = f.exists();
 		if (!exists) {
+			//t.setVisible(false);
 			container.setVisible(false);
 		} else {
 
 			// int tID = Integer.parseInt(cID);
+			//t.setVisible(true);
 			final int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
@@ -2670,17 +2689,23 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 
-			JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-			if (rdb.isVisible()) {
-				if (RegUserEdits != null && dTableModels != null) {
-					DataFileTableModel tm = (DataFileTableModel) table.getModel();
-					int tID = tm.tID;
-					if (RegUserEdits[tID] != null) {
-						reg_btng1.clearSelection();
-						if (RegUserEdits[tID] == true) {
-							rdb = (JRadioButton) swix.find("reg_rdbUD");
-							rdb.setSelected(true);
+			if (scr.isVisible()) {
+				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				if (rdb.isVisible()) {
+					if (RegUserEdits != null && dTableModels != null) {
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int tID = tm.tID;
+						if (RegUserEdits[tID] != null) {
+							reg_btng1.clearSelection();
+							if (RegUserEdits[tID] == true) {
+								rdb = (JRadioButton) swix.find("reg_rdbUD");
+								rdb.setSelected(true);
+							} else {
+								rdb = (JRadioButton) swix.find("reg_rdbD1641");
+								rdb.setSelected(true);
+							}
 						} else {
+							reg_btng1.clearSelection();
 							rdb = (JRadioButton) swix.find("reg_rdbD1641");
 							rdb.setSelected(true);
 						}
@@ -2690,34 +2715,31 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						rdb.setSelected(true);
 					}
 				} else {
-					reg_btng1.clearSelection();
-					rdb = (JRadioButton) swix.find("reg_rdbD1641");
-					rdb.setSelected(true);
-				}
-			} else {
-				if (RegUserEdits == null) {
-					RegUserEdits = new Boolean[20];
-				}
-				String fileName = gl.tableNameForCtrl(cID);
-				if (!fileName.trim().equals("")) {
-					int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
-					RegUserEdits[tID] = true;
-				}
+					if (RegUserEdits == null) {
+						RegUserEdits = new Boolean[20];
+					}
+					String fileName = gl.tableNameForCtrl(cID);
+					if (!fileName.trim().equals("")) {
+						int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
+						RegUserEdits[tID] = true;
+					}
 
-				table.setCellSelectionEnabled(true);
-				table.setEnabled(true);
+					table.setCellSelectionEnabled(true);
+					table.setEnabled(true);
+				}
 			}
 
-			String ckbtext = selcomp.getText();
-			String[] ckbtext1 = ckbtext.split(" - ");
-			ckbtext = ckbtext1[0];
-			title = BorderFactory.createTitledBorder(ckbtext);
-
-			pan.setBorder(title);
-			pan.setEnabled(true);
-			scr.setEnabled(true);
-			table.setVisible(true);
-			pan.revalidate();
+				String ckbtext = selcomp.getText();
+				String[] ckbtext1 = ckbtext.split(" - ");
+				ckbtext = ckbtext1[0];
+				title = BorderFactory.createTitledBorder(ckbtext);
+	
+				pan.setBorder(title);
+				pan.setEnabled(true);
+				scr.setEnabled(true);
+				table.setVisible(true);
+				pan.revalidate();
+			
 
 		} else {
 
