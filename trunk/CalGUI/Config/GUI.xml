@@ -469,9 +469,9 @@
 								gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
 						</button>
 
-						<panel preferredsize="400,300">
-							<gridbagconstraints insets="0,25,0,0"
-								anchor="GridBagConstraints.WEST" gridx="2" gridy="1" gridheight="3" />
+						<panel preferredsize="300,300">
+							<gridbagconstraints insets="0,0,0,0"
+								anchor="GridBagConstraints.WEST" gridx="2" gridy="0" gridheight="3" />
 							<label id="map1" icon="images/hydroClimate.jpg" />
 						</panel>
 

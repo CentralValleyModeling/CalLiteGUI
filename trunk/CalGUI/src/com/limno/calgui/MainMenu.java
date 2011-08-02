@@ -203,7 +203,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		desktop.setResizable(false);
 
 		// Set Icon
-		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+		java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 		desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
 		// Help hotkey
@@ -498,7 +498,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					 * + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui",
 					 * JOptionPane.YES_NO_OPTION);
 					 */
-					int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the the changes?",
+					int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the changes?",
 							"CalLite Gui", JOptionPane.YES_NO_OPTION);
 
 					if (n == JOptionPane.YES_OPTION) {
