@@ -141,6 +141,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ButtonGroup reg_btng1;
 	GUILinks gl;
 
+
 	String desktopTitle;
 	String scenFilename;
 	GetDSSFilename getScenFilename;
@@ -376,7 +377,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		btnClearAll.addActionListener(this);
 
 		JButton btnReport = (JButton) swix.find("btnReport");
-		btnReport.addActionListener(this);
+		//btnReport.addActionListener(this);
 
 		// Set up month spinners
 		// TODO (?) - cycling spinner?
@@ -891,6 +892,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	// React to menu selections.
 	public void actionPerformed(ActionEvent e) {
+
 		if (e.getActionCommand().startsWith("UD_Table")) {
 
 			// Figure out calling button and look up table
@@ -1364,6 +1366,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 
 		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
+
 			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty() || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
 					|| ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
 				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file", "Error",
@@ -1420,8 +1423,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
 			}
 
+			
 		} else if (e.getActionCommand().startsWith("Rep_All")) {
 			Component[] components = controls2.getComponents();
 			for (int i = 0; i < components.length; i++) {
