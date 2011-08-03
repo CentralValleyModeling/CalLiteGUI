@@ -1099,7 +1099,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
 			// Set Icon
-			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 			ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
 			// Delete temp file
@@ -1114,7 +1114,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			Object scenlist[] = { "Current_Scenario" };
 			// Show frame
 			ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix);
-			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 			sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			sTableFrame.setVisible(true);
 			// Delete temp file
@@ -1722,7 +1722,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					}
 					// Show frame
 					ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix);
-					java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+					java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 					sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 					sTableFrame.setVisible(true);
 
