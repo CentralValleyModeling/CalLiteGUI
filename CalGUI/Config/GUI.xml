@@ -128,11 +128,11 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</label>
-							<spinner id="spnRunStartMonth" name="spnRunStartMonth">
+							<spinner id="spnRunStartMonth" name="spnRunStartMonth" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
 							</spinner>
-							<spinner id="spnRunStartYear" name="spnRunStartYear">
+							<spinner id="spnRunStartYear" name="spnRunStartYear" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="1" />
 							</spinner>
