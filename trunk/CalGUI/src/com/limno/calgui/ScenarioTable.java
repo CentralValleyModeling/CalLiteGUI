@@ -262,8 +262,12 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			if (conttypes[i] == null || scenmatrix[i][1] == null) {
 				break;
 			} else {
+				
 				scenmatrix[ito] = scenmatrix[i];
-				if (scenmatrix[i][0].equals("spnRunStartMonth")) {
+				if (scenmatrix[i][0].equals("Scenario Directory")) {
+					for (j = 1; j <= selected.length; j++)
+						scenmatrix[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios\\" + scenmatrix[i][j + 1];
+				} else if (scenmatrix[i][0].equals("spnRunStartMonth")) {
 					scenmatrix[ito][0] = "  Run Start";
 					for (j = 1; j <= selected.length; j++)
 						scenmatrix[ito][j + 1] = scenmatrix[i][j + 1] + " " + scenmatrix[i + 1][j + 1];
@@ -279,8 +283,10 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					int irdb = i;
 					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
 						for (j = 1; j <= selected.length; j++)
-							if (!scenmatrix[irdb][j + 1].equals(""))
-								scenmatrix[ito][j + 1] = scenmatrix[irdb][j + 1];
+							if  (scenmatrix[irdb][j + 1]!=null) {
+								if (!scenmatrix[irdb][j + 1].equals(""))
+									scenmatrix[ito][j + 1] = scenmatrix[irdb][j + 1];
+							}
 					}
 					i = irdb - 1;
 				}

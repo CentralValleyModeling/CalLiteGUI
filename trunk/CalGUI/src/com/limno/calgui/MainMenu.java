@@ -1706,7 +1706,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else if (component.getName().equals("btnClearScenario")) {
 					((DefaultListModel) lstScenarios.getModel()).clear();
 					lstScenarios.repaint();
-
+				/*
 				} else if (component.getName().equals("btnCompareScenarios")) {
 					Object scenlist[] = new Object[lstScenarios.getModel().getSize()];
 					int j=0;
@@ -1725,7 +1725,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 					sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 					sTableFrame.setVisible(true);
-
+*/
 					
 
 				}
