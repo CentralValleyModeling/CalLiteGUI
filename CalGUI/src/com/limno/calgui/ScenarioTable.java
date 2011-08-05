@@ -354,7 +354,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					i = irdb - 1;
 				}
 			}
-			System.out.println(scenmatrix1[ito][0] + " " + scenmatrix1[ito][1]);
+			//System.out.println(scenmatrix1[ito][0] + " " + scenmatrix1[ito][1]);
 			ito++;
 			
 		}
@@ -381,6 +381,14 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				procscenmatrix[ii][0] = parArr[0].toUpperCase();
 				ii++;
 				System.out.println(i + " " + scenmatrix[i][1]);
+			}
+			
+			//Special Handling for Regulation Sub Tabs
+			if (CurDash.equals("REGULATIONS")) {
+				if (!CurLoc.equals(PrevLoc)) {
+					procscenmatrix[ii][0] = " " + parArr[1];
+					ii++;
+				}
 			}
 
 			// Start by always copying exactly
