@@ -552,7 +552,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			scrollingtable.setPreferredSize(new Dimension(480, 600));
 			add(scrollingtable);
 			// Set Icon
-			java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 			setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
 			pack();

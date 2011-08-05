@@ -30,7 +30,7 @@ public class ProgressFrame extends JFrame {
 		setAlwaysOnTop(true);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((dim.width - 400) / 2, (dim.height - 100) / 2);
-		java.net.URL imgURL = getClass().getResource("/images/Cal-lite-label-_no_tex08_KF.jpg");
+		java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 		setVisible(true);
 
