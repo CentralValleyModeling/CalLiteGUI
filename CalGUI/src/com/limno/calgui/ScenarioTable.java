@@ -37,6 +37,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		String[] conttypes = null;
 		String[] headers = null;
 		String[][] scenmatrix = null;
+		String[][] scenmatrix1 = null;
 		String[][] scenmatrixdiff = null;
 		GUILinks gl;
 
@@ -58,6 +59,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		controls = new String[totlines];
 		conttypes = new String[totlines];
 		scenmatrix = new String[totlines][selected.length + 2];
+		scenmatrix1 = new String[totlines][selected.length + 2];
 		headers = new String[selected.length + 2];
 		headers[0] = "Control";
 		headers[1] = "Location";
@@ -132,7 +134,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			scenmatrix[i][0] = comptext;
 			scenmatrix[i][1] = sbparents.toString();
 			scenmatrix[i][2] = value;
-
+			
 			i++;
 		}
 		// Data Table Entries
@@ -220,7 +222,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				// System.out.println(index);
 
 				scenmatrix[index][i + 2] = value;
-
+				
 				j++;
 			}
 			headers[i + 2] = selected[i].toString();
@@ -258,42 +260,100 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 		int ito = 0;
 		for (i = 0; i < scenmatrix.length; i++) {
-
+			
 			if (conttypes[i] == null || scenmatrix[i][1] == null) {
 				break;
 			} else {
 				
-				scenmatrix[ito] = scenmatrix[i];
+				scenmatrix1[ito] = scenmatrix[i];
 				if (scenmatrix[i][0].equals("Scenario Directory")) {
 					for (j = 1; j <= selected.length; j++)
-						scenmatrix[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios\\" + scenmatrix[i][j + 1];
+						scenmatrix1[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios\\" + scenmatrix[i][j + 1];
 				} else if (scenmatrix[i][0].equals("spnRunStartMonth")) {
-					scenmatrix[ito][0] = "  Run Start";
+					scenmatrix1[ito][0] = "  Run Start";
 					for (j = 1; j <= selected.length; j++)
-						scenmatrix[ito][j + 1] = scenmatrix[i][j + 1] + " " + scenmatrix[i + 1][j + 1];
+						scenmatrix1[ito][j + 1] = scenmatrix[i][j + 1] + " " + scenmatrix[i + 1][j + 1];
 					i++;
 				} else if (scenmatrix[i][0].equals("spnRunEndMonth")) {
-					scenmatrix[ito][0] = "  Run End";
+					scenmatrix1[ito][0] = "  Run End";
 					for (j = 1; j <= selected.length; j++)
-						scenmatrix[ito][j + 1] = scenmatrix[i][j + 1] + " " + scenmatrix[i + 1][j + 1];
+						scenmatrix1[ito][j + 1] = scenmatrix[i][j + 1] + " " + scenmatrix[i + 1][j + 1];
 					i++;
-				} else if (conttypes[i].equals("rdb")) {
-					scenmatrix[ito][0] = "RDB";
-					scenmatrix[ito][1] = scenmatrix[i][1];
+				} else if (scenmatrix[i][1].equals("Demands|SWP Demands - South of Delta")) {
+					scenmatrix1[ito][0] = "RDB";
+					scenmatrix1[ito][1] = scenmatrix[i][1];
 					int irdb = i;
 					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
 						for (j = 1; j <= selected.length; j++)
 							if  (scenmatrix[irdb][j + 1]!=null) {
 								if (!scenmatrix[irdb][j + 1].equals(""))
-									scenmatrix[ito][j + 1] = scenmatrix[irdb][j + 1];
+									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
+							}
+					}
+					int isel=ito;
+					i = irdb;
+					int ictrl = i;
+					for (; scenmatrix[ictrl][1].equals(scenmatrix[i][1]); ictrl++) {
+						int ct=0;
+						for (j = 1; j <= selected.length; j++){
+							if  (scenmatrix1[isel][j + 1].equals("User-Defined")) {
+								if (ct==0) {ito++;}
+								scenmatrix1[ito][0] = scenmatrix[ictrl][0];
+								scenmatrix1[ito][1] = scenmatrix[ictrl][1];
+								scenmatrix1[ito][j + 1] = scenmatrix[ictrl][j + 1];
+								ct++;
+							}
+						}
+					}
+					i = ictrl - 1;
+				} else if (scenmatrix[i][1].equals("Demands|CVP Demands - South of Delta")) {
+					scenmatrix1[ito][0] = "RDB";
+					scenmatrix1[ito][1] = scenmatrix[i][1];
+					int irdb = i;
+					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
+						for (j = 1; j <= selected.length; j++)
+							if  (scenmatrix[irdb][j + 1]!=null) {
+								if (!scenmatrix[irdb][j + 1].equals(""))
+									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
+							}
+					}
+					int isel=ito;
+					i = irdb;
+					int ictrl = i;
+					for (; scenmatrix[ictrl][1].equals(scenmatrix[i][1]); ictrl++) {
+						int ct=0;
+						for (j = 1; j <= selected.length; j++){
+							if  (scenmatrix1[isel][j + 1].equals("User-Defined")) {
+								if (ct==0) {ito++;}
+								scenmatrix1[ito][0] = scenmatrix[ictrl][0];
+								scenmatrix1[ito][1] = scenmatrix[ictrl][1];
+								scenmatrix1[ito][j + 1] = scenmatrix[ictrl][j + 1];
+								ct++;
+							}
+						}
+					}
+					i = ictrl - 1;
+				} else if (conttypes[i].equals("rdb")) {
+					scenmatrix1[ito][0] = "RDB";
+					scenmatrix1[ito][1] = scenmatrix[i][1];
+					int irdb = i;
+					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
+						for (j = 1; j <= selected.length; j++)
+							if  (scenmatrix[irdb][j + 1]!=null) {
+								if (!scenmatrix[irdb][j + 1].equals(""))
+									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
 							}
 					}
 					i = irdb - 1;
 				}
 			}
+			System.out.println(scenmatrix1[ito][0] + " " + scenmatrix1[ito][1]);
 			ito++;
+			
 		}
-
+		scenmatrix=scenmatrix1;
+		
+		
 		// Process scenario matrix for hierarchical results
 
 		String[][] procscenmatrix = new String[scenmatrix.length * 2][selected.length + 1];
