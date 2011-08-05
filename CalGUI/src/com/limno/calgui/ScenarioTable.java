@@ -114,6 +114,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					value = "";
 				}
 				conttypes[i] = "rdb";
+				
 			} else {
 				if (component instanceof JTextField || component instanceof NumericTextField) {
 					conttypes[i] = "txt";
@@ -333,6 +334,12 @@ public class ScenarioTable extends JFrame implements ItemListener {
 						}
 					}
 					i = ictrl - 1;
+					
+					
+				}else if (scenmatrix[i][0].equals("reg_rdbD1641") || (scenmatrix[i][0].equals("reg_rdbUD"))) {
+					ito--;
+
+									
 				} else if (conttypes[i].equals("rdb")) {
 					scenmatrix1[ito][0] = "RDB";
 					scenmatrix1[ito][1] = scenmatrix[i][1];
