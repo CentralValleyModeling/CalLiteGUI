@@ -50,9 +50,9 @@
 	<classpathentry kind="lib" path="lib/engine-gecko.jar"/>
 	<classpathentry kind="lib" path="lib/engine-ie.jar"/>
 	<classpathentry kind="lib" path="lib/engine-webkit.jar"/>
-	<classpathentry kind="lib" path="lib/jxbrowser-2.8.jar"/>
 	<classpathentry kind="lib" path="lib/winpack-3.8.2.jar"/>
 	<classpathentry kind="lib" path="docs"/>
 	<classpathentry kind="lib" path="lib/jh.jar"/>
+	<classpathentry kind="lib" path="lib/jxbrowser-2.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
