@@ -1740,7 +1740,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		sb = GUI_Utils.GetControlValues(runsettings, sb);
 		sb = GUI_Utils.GetControlValues(hydroclimate, sb);
 		sb = GUI_Utils.GetControlValues(demands, sb);
-		//sb = GUI_Utils.GetControlValues(facilities, sb);
+		sb = GUI_Utils.GetControlValues(facilities, sb);
 		sb = GUI_Utils.GetControlValues(regulations, sb);
 		sb = GUI_Utils.GetControlValues(operations, sb);
 
@@ -1760,7 +1760,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			}
 		}
 		sb.append("END USERDEFINEDFLAGS" + NL);
-		sb = GUI_Utils.GetControlValues(facilities, sb);
 
 		GUI_Utils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
