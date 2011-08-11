@@ -62,7 +62,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		scenmatrix1 = new String[totlines][selected.length + 2];
 		headers = new String[selected.length + 2];
 		headers[0] = "Control";
-		headers[1] = "Location";
+		headers[1] = "Dashboard Options";
 		headers[2] = selected[0].toString();
 
 		int i = 0;
@@ -431,11 +431,11 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		// Headers for tables
 
 		String[] headers1 = new String[2];
-		headers1[0] = "Location";
+		headers1[0] = "Dashboard Options";
 		headers1[1] = selected[0].toString();
 
 		String[] headers2 = new String[selected.length + 1];
-		headers2[0] = "Location";
+		headers2[0] = "Dashboard Options";
 		for (j = 1; j <= selected.length; j++) {
 			headers2[j] = selected[j - 1].toString();
 		}
