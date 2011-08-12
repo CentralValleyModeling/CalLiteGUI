@@ -611,7 +611,7 @@ public class GUI_Utils {
 		return sb;
     }
       
-    public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,StringBuffer sb) {
+    public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,StringBuffer sb, SwingEngine swix) {
     	final String NL = System.getProperty("line.separator"); 
     	
     	if (dTableModels == null) {
@@ -625,10 +625,13 @@ public class GUI_Utils {
 				String tableName = gl.tableNameForCtrl(cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+				JCheckBox ckb = (JCheckBox) swix.find(cName);
 
 				//int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
 					System.out.println("Table not initialized");
+				} else if (!ckb.isSelected()) {														//option checked off
+					System.out.println("Table not selected");
 				} else {
 					Object[][] dataArr;
 					dataArr=dTableModels[tID].getTableData();
