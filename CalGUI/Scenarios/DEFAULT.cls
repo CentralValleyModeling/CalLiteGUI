@@ -135,6 +135,9 @@ ckbReg10|false
 ckbReg16|false
 reg_rdbD1641|true
 reg_rdbUD|false
+op_rdb6|true
+op_rdb7|true
+op_rdb8|true
 op_rdb1|true
 op_rdb2|false
 op_rdb3|false
@@ -145,9 +148,6 @@ op_ntfSWP|100
 op_ckbCWP|false
 op_ntfCWP1|50
 op_ntfCWP2|1
-op_rdb6|true
-op_rdb7|true
-op_rdb8|true
 DATATABLEMODELS
 1|1,31;2,20;3,16;4,11;5,0;6,0;7,0;8,0;9,26;10,31;11,31;12,30;
 2|1,0.65;2,0.65;3,0.65;4,0.65;5,0.45;6,0.35;7,0.35;8,0.35;9,0.35;10,0.65;11,0.65;12,0.65;

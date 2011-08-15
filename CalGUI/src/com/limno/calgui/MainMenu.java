@@ -983,7 +983,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						 * "will be saved to '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'",
 						 * "CalLite Gui", JOptionPane.YES_NO_OPTION);
 						 */
-						int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the the changes?",
+						int n = JOptionPane.showConfirmDialog(mainmenu, "Scenario selections have changed. Would you like to save the changes?",
 								"CalLite Gui", JOptionPane.YES_NO_OPTION);
 
 						if (n == JOptionPane.YES_OPTION) {
