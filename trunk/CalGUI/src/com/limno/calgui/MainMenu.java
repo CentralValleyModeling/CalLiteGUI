@@ -200,7 +200,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
 
-		desktopTitle = desktop.getTitle() + " (v260); Scenario";
+		desktopTitle = desktop.getTitle() + " (v261); Scenario";
 		desktop.setResizable(false);
 
 		// Set Icon
@@ -2058,15 +2058,22 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			// Show the frame
 			JFrame frame = new JFrame();
+			
 
 			Container container = frame.getContentPane();
 			container.add(tabbedpane);
+			
 			frame.pack();
 			frame.setTitle("CalLite Results - " + namesText[i]);
+			// CalLite icon
+			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
+			frame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+
 			if (!(doTimeSeries || doExceedance || doMonthlyTable || doSummaryTable))
 				container.add(new JLabel("Nothing to show!"));
 			else
 				tabbedpane.setSelectedIndex(0);
+		
 			frame.setVisible(true);
 			frame.setSize(980, 700);
 			frame.setLocation(displayCount * 20, displayCount * 20);
