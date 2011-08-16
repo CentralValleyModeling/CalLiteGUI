@@ -270,8 +270,11 @@ public class Report extends SwingWorker<Void, String> {
 			if ((refBase == null) || (refAlt == null)) {
 				continue;
 			}
-			String[] series_name = new String[] { scalars.get("NAME_BASE"),
-					scalars.get("NAME_ALT") };
+			// Switch order from original code to reverse legends ... LimnoTech 20110816
+			String[] series_name = new String[] { scalars.get("NAME_ALT"),
+					scalars.get("NAME_BASE") };
+//			String[] series_name = new String[] { scalars.get("NAME_BASE"),
+//					scalars.get("NAME_ALT") };
 			if (pathMap.units.equals("CFS2TAF")) {
 				TSMath.cfs2taf((RegularTimeSeries) refBase.getData());
 				TSMath.cfs2taf((RegularTimeSeries) refAlt.getData());
