@@ -32,7 +32,7 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "Sacramento R @ Hood"			DI		Average		//C400/FLOW-CHANNEL//1MON//				//C_Hood/FLOW-CHANNEL//1MON//				N		N		DEFAULT
 "Yolo Bypass"				DI		Average		//C157/FLOW-CHANNEL//1MON//				//C_YoloBP/FLOW-CHANNEL//1MON//				N		N		DEFAULT
 "Mokelumne R"				DI		Average		//C504/FLOW-CHANNEL//1MON//				//C_MoklmnR/FLOW-ACCRDEPL//1MON//			N		N		DEFAULT
-"San Joaquin R & Calaveras"		DI		Average		//C644/FLOW-CHANNEL//1MON//				//C_SJR/FLOW-ACCRDEPL//1MON//				N		N		DEFAULT
+"San Joaquin R d/s Vernalis"		DI		Average		//C644/FLOW-CHANNEL//1MON//				//C_SJR/FLOW-ACCRDEPL//1MON//				N		N		DEFAULT
 "Delta Outflow"				DO		Average		//C407/FLOW-CHANNEL//1MON//				//C_Delta/FLOW-CHANNEL//1MON//				B		N		DEFAULT
 "Delta Outflow for X2 and NDO"		DO		Average		//D407/FLOW-DELIVERY//1MON//				//D_DeltaReqd/FLOW-DELIVERY//1MON//			N		N		DEFAULT
 "Delta Exports"				DE		Average_post	//D419_SWP+D419_CVP+D418/FLOW-DELIVERY//1MON//		//D_Banks_SWP+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	B		N		CFS2TAF
