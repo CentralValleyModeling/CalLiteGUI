@@ -625,12 +625,12 @@ public class GUI_Utils {
 				String tableName = gl.tableNameForCtrl(cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
-				JCheckBox ckb = (JCheckBox) swix.find(cName);
+				AbstractButton ckb = (AbstractButton) swix.find(cName);
 
 				//int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
 					System.out.println("Table not initialized");
-				} else if (!ckb.isSelected()) {														//option checked off
+				} else if (!ckb.isSelected() && !cName.startsWith("op_btn")) {														//option checked off
 					System.out.println("Table not selected");
 				} else {
 					Object[][] dataArr;
@@ -935,9 +935,9 @@ public class GUI_Utils {
 				TID=parts[8].trim();
 				
 				board1 = parts[5].trim();
-				if (board1.equals(board)) {
+				//if (board1.equals(board)) {
 					arr1.add(cName + "|" + datatable + "|" + switchID + "|" + TID);
-				}
+				//}
 		    }
 
 		}

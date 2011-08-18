@@ -404,6 +404,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
 
+
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		action_WSIDI = 0;
 		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
@@ -449,6 +450,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GetDSSFilename getDSSFilename3 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE3"), "PDF");
 		JButton btnFile3 = (JButton) swix.find("btnGetReportFile3");
 		btnFile3.addActionListener((ActionListener) getDSSFilename3);
+		
+		
 
 		// Check for scenario changes on Exit.
 		desktop.addWindowListener(new WindowAdapter() {
