@@ -141,7 +141,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	ButtonGroup reg_btng1;
 	GUILinks gl;
 
-
 	String desktopTitle;
 	String scenFilename;
 	GetDSSFilename getScenFilename;
@@ -162,7 +161,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	JMenuBar menu;
 	ProgressMonitor pMon;
-	private JList lstScenarios;
+	public JList lstScenarios;
 	private DSS_Grabber dss_Grabber;
 
 	public DataFileTableModel[] dTableModels = null;
@@ -265,7 +264,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite_sample.svg");
+		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite_sample.svg", this);
 		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
 		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
 
@@ -377,7 +376,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		btnClearAll.addActionListener(this);
 
 		JButton btnReport = (JButton) swix.find("btnReport");
-		//btnReport.addActionListener(this);
+		// btnReport.addActionListener(this);
 
 		// Set up month spinners
 		// TODO (?) - cycling spinner?
@@ -746,7 +745,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						if (table.isEditing()) {
 							table.getCellEditor().stopCellEditing();
 						}
-						
+
 						JComponent scr = (JComponent) swix.find("scrRegValues");
 						if (scr.isVisible()) {
 							int tID = tm.tID;
@@ -762,7 +761,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							ckbtext = ckbtext1[0];
 							ckb.setText(ckbtext + " -  Default");
 						} else {
-							//JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
+							// JOptionPane.showMessageDialog(mainmenu,
+							// "There is currently a simulation running at this time.");
 						}
 					}
 
@@ -795,7 +795,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					} else {
 						JPanel pan = (JPanel) swix.find("reg_panTab");
 						TitledBorder b = (TitledBorder) pan.getBorder();
-						String title=b.getTitle();
+						String title = b.getTitle();
 						JOptionPane.showMessageDialog(mainmenu, title + " inputs are not user-specifiable at this time.");
 						JRadioButton rdb1 = (JRadioButton) swix.find("reg_rdbD1641");
 						rdb1.setSelected(true);
@@ -839,7 +839,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else if (cName.startsWith("op_rdb3")) {
 					JButton btn = (JButton) swix.find("op_btn3");
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				} else if (cName.startsWith("op_op_ntfSWP_t")) { 
+				} else if (cName.startsWith("op_op_ntfSWP_t")) {
 					JLabel lab = (JLabel) swix.find("op_ntfSWP_t");
 					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 					NumericTextField ntf = (NumericTextField) swix.find("op_ntfSWP_t");
@@ -1106,8 +1106,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
 			// Delete temp file
-			//File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario.cls");
-			//GUI_Utils.deleteDir(ft);
+			// File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario.cls");
+			// GUI_Utils.deleteDir(ft);
 
 		} else if (e.getActionCommand().startsWith("AC_ViewScen")) {
 
@@ -1123,8 +1123,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			// Delete temp file
 			File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario");
 			GUI_Utils.deleteDir(ft);
-
-			
 
 		} else if (e.getActionCommand().startsWith("Reg_Copy")) {
 
@@ -1426,10 +1424,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 
-			
 		} else if (e.getActionCommand().startsWith("Rep_All")) {
 			Component[] components = controls2.getComponents();
 			for (int i = 0; i < components.length; i++) {
@@ -1709,27 +1706,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				} else if (component.getName().equals("btnClearScenario")) {
 					((DefaultListModel) lstScenarios.getModel()).clear();
 					lstScenarios.repaint();
-				/*
-				} else if (component.getName().equals("btnCompareScenarios")) {
-					Object scenlist[] = new Object[lstScenarios.getModel().getSize()];
-					int j=0;
-					for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-						RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
-						if (item.isSelected())
-							scenlist[0] = item.toString2().replace("_DV.DSS", ".cls");
-						else {
-							j++;
-							scenlist[j] = item.toString2().replace("_DV.DSS",".cls");
-						}
-							
-					}
-					// Show frame
-					ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix);
-					java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
-					sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
-					sTableFrame.setVisible(true);
-*/
-					
+					/*
+					 * } else if (component.getName().equals("btnCompareScenarios")) { Object scenlist[] = new
+					 * Object[lstScenarios.getModel().getSize()]; int j=0; for (int i = 0; i <
+					 * lstScenarios.getModel().getSize(); i++) { RBListItem item = (RBListItem)
+					 * lstScenarios.getModel().getElementAt(i); if (item.isSelected()) scenlist[0] =
+					 * item.toString2().replace("_DV.DSS", ".cls"); else { j++; scenlist[j] =
+					 * item.toString2().replace("_DV.DSS",".cls"); }
+					 * 
+					 * } // Show frame ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix); java.net.URL
+					 * imgURL = getClass().getResource("/images/CalLiteIcon.png");
+					 * sTableFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+					 * sTableFrame.setVisible(true);
+					 */
 
 				}
 			}
@@ -1940,150 +1929,153 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
-			dss_Grabber.setDateRange(dateRange);
+			if (dss_Grabber.primaryDSSName.equals(""))
+				JOptionPane.showMessageDialog(desktop,"No DSS time series specified for " + namesText[i] + "/" + locationNames[i] +".");
+			else {
 
-			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
-			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
+				dss_Grabber.setDateRange(dateRange);
 
-			dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
+				TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
+				TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
 
-			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
-			TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
-			TimeSeriesContainer[][] dexc_Results = dss_Grabber.getExceedanceSeries2(primary_Results);
+				dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
 
-			JTabbedPane tabbedpane = new JTabbedPane();
+				TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
+				TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
+				TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
+				TimeSeriesContainer[][] dexc_Results = dss_Grabber.getExceedanceSeries2(primary_Results);
 
-			if (doSummaryTable) {
-				SummaryTablePanel stp;
-				if (doDifference)
-					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
-							summaryTags, "", dss_Grabber);
-				else
-					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel(),
-							dss_Grabber, doBase);
-				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
-			}
+				JTabbedPane tabbedpane = new JTabbedPane();
 
-			if (doMonthlyTable) {
-				MonthlyTablePanel mtp;
-				if (doDifference) {
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
-							dss_Grabber, "");
-				} else
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel(),
-							doBase);
-				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
-			}
-
-			Date lower = new Date();
-			JSpinner m = (JSpinner) swix.find("spnStartMonth");
-			JSpinner y = (JSpinner) swix.find("spnStartYear");
-			lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
-
-			Date upper = new Date();
-			m = (JSpinner) swix.find("spnEndMonth");
-			y = (JSpinner) swix.find("spnEndYear");
-			upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
-
-			ChartPanel1 cp3;
-			if (doExceedance) {
-				boolean plottedOne = false; // Check if any monthly plots were
-											// done
-				for (int m1 = 0; m1 < 12; m1++)
-					if (exceedMonths.contains(monthNames[m1])) {
-						if (doDifference)
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")" + " - Difference from "
-									+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[m1], null, true, upper, lower,
-									dss_Grabber.getSLabel());
-						else
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
-									exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel(),
-									doBase);
-						plottedOne = true;
-						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
-					}
-				if (exceedMonths.contains("ALL") || !plottedOne) {
+				if (doSummaryTable) {
+					SummaryTablePanel stp;
 					if (doDifference)
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
-								+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
-								dss_Grabber.getSLabel());
+						stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
+								summaryTags, "", dss_Grabber);
 					else
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(), exc_Results[13],
-								sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel(), doBase);
-					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
+						stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags, dss_Grabber.getSLabel(),
+								dss_Grabber, doBase);
+					tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
 				}
-				if (exceedMonths.contains("Annual")) {
-					if (dss_Grabber.originalUnits.equals("CFS")) {
+
+				if (doMonthlyTable) {
+					MonthlyTablePanel mtp;
+					if (doDifference) {
+						mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, diff_Results, null,
+								dss_Grabber, "");
+					} else
+						mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber, dss_Grabber.getSLabel(),
+								doBase);
+					tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
+				}
+
+				Date lower = new Date();
+				JSpinner m = (JSpinner) swix.find("spnStartMonth");
+				JSpinner y = (JSpinner) swix.find("spnStartYear");
+				lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
+
+				Date upper = new Date();
+				m = (JSpinner) swix.find("spnEndMonth");
+				y = (JSpinner) swix.find("spnEndYear");
+				upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
+
+				ChartPanel1 cp3;
+				if (doExceedance) {
+					boolean plottedOne = false; // Check if any monthly plots were
+												// done
+					for (int m1 = 0; m1 < 12; m1++)
+						if (exceedMonths.contains(monthNames[m1])) {
+							if (doDifference)
+								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")" + " - Difference from "
+										+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[m1], null, true, upper, lower,
+										dss_Grabber.getSLabel());
+							else
+								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")", dss_Grabber.getYLabel(),
+										exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true, upper, lower, dss_Grabber.getSLabel(),
+										doBase);
+							plottedOne = true;
+							tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
+						}
+					if (exceedMonths.contains("ALL") || !plottedOne) {
 						if (doDifference)
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
-									+ primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true, upper, lower,
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
+									+ primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
 									dss_Grabber.getSLabel());
 						else
+							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(), exc_Results[13],
+									sexc_Results == null ? null : sexc_Results[13], true, upper, lower, dss_Grabber.getSLabel(), doBase);
+						tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
+					}
+					if (exceedMonths.contains("Annual")) {
+						if (dss_Grabber.originalUnits.equals("CFS")) {
+							if (doDifference)
+								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
+										+ primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true, upper, lower,
+										dss_Grabber.getSLabel());
+							else
 
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
-									exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(),
-									doBase);
-						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
-					} else {
+								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
+										exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(),
+										doBase);
+							tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
+						} else {
+							JPanel panel = new JPanel();
+							panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
+							tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
+						}
+					}
+				}
+
+				ChartPanel1 cp1;
+				ChartPanel1 cp2;
+
+				if (doTimeSeries) {
+					if (doBase) {
+						cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper,
+								lower, dss_Grabber.getSLabel(), doBase);
+						tabbedpane.insertTab("Time Series", null, cp2, null, 0);
+
+					} else if (primary_Results.length < 2) {
 						JPanel panel = new JPanel();
-						panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
-						tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
+						panel.add(new JLabel("No chart - need two or more time series."));
+						tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
+					} else {
+						if (doDifference) {
+							cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+									dss_Grabber.getYLabel(), diff_Results, null, false, upper, lower, dss_Grabber.getSLabel());
+							tabbedpane.insertTab("Difference", null, cp2, null, 0);
+						} else if (doComparison) {
+							cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results,
+									secondary_Results, false, upper, lower, dss_Grabber.getSLabel());
+							tabbedpane.insertTab("Comparison", null, cp1, null, 0);
+						}
 					}
 				}
+
+				// Show the frame
+				JFrame frame = new JFrame();
+
+				Container container = frame.getContentPane();
+				container.add(tabbedpane);
+
+				frame.pack();
+				frame.setTitle("CalLite Results - " + namesText[i]);
+				// CalLite icon
+				java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
+				frame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+
+				if (!(doTimeSeries || doExceedance || doMonthlyTable || doSummaryTable))
+					container.add(new JLabel("Nothing to show!"));
+				else
+					tabbedpane.setSelectedIndex(0);
+
+				frame.setVisible(true);
+				frame.setSize(980, 700);
+				frame.setLocation(displayCount * 20, displayCount * 20);
+				displayCount++;
+
 			}
-
-			ChartPanel1 cp1;
-			ChartPanel1 cp2;
-
-			if (doTimeSeries) {
-				if (doBase) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper, lower,
-							dss_Grabber.getSLabel(), doBase);
-					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
-
-				} else if (primary_Results.length < 2) {
-					JPanel panel = new JPanel();
-					panel.add(new JLabel("No chart - need two or more time series."));
-					tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
-				} else {
-					if (doDifference) {
-						cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName, dss_Grabber.getYLabel(),
-								diff_Results, null, false, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Difference", null, cp2, null, 0);
-					} else if (doComparison) {
-						cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results, secondary_Results,
-								false, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-					}
-				}
-			}
-
-			// Show the frame
-			JFrame frame = new JFrame();
-			
-
-			Container container = frame.getContentPane();
-			container.add(tabbedpane);
-			
-			frame.pack();
-			frame.setTitle("CalLite Results - " + namesText[i]);
-			// CalLite icon
-			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
-			frame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
-
-			if (!(doTimeSeries || doExceedance || doMonthlyTable || doSummaryTable))
-				container.add(new JLabel("Nothing to show!"));
-			else
-				tabbedpane.setSelectedIndex(0);
-		
-			frame.setVisible(true);
-			frame.setSize(980, 700);
-			frame.setLocation(displayCount * 20, displayCount * 20);
-			displayCount++;
-
 		}
-
 		return;
 	}
 
@@ -2349,12 +2341,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// File f = new File("Default\\Lookup\\" + fileName + ".table");
 		// boolean exists = f.exists();
 		if (!exists) {
-			//t.setVisible(false);
+			// t.setVisible(false);
 			container.setVisible(false);
 		} else {
 
 			// int tID = Integer.parseInt(cID);
-			//t.setVisible(true);
+			// t.setVisible(true);
 			final int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
@@ -2666,7 +2658,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					parts[j] = "";
 				lookups[i][j] = parts[j];
 			}
-			if (lookups[i][1].equals("")) {
+			if (lookups[i][1].equals("") && !lookups[i][0].startsWith("0")) { // additional condition added to handle
+																				// "0xx" - these have no checkbox
 				JCheckBox cb = (JCheckBox) swix.find("ckbp" + lookups[i][0]);
 				cb.setEnabled(false);
 			}
@@ -2744,17 +2737,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 			}
 
-				String ckbtext = selcomp.getText();
-				String[] ckbtext1 = ckbtext.split(" - ");
-				ckbtext = ckbtext1[0];
-				title = BorderFactory.createTitledBorder(ckbtext);
-	
-				pan.setBorder(title);
-				pan.setEnabled(true);
-				scr.setEnabled(true);
-				table.setVisible(true);
-				pan.revalidate();
-			
+			String ckbtext = selcomp.getText();
+			String[] ckbtext1 = ckbtext.split(" - ");
+			ckbtext = ckbtext1[0];
+			title = BorderFactory.createTitledBorder(ckbtext);
+
+			pan.setBorder(title);
+			pan.setEnabled(true);
+			scr.setEnabled(true);
+			table.setVisible(true);
+			pan.revalidate();
 
 		} else {
 
