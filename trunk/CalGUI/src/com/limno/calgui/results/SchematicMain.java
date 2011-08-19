@@ -71,7 +71,8 @@ public class SchematicMain {
 			}
 		});
 
-		setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0);
+		setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0); // Default values in ViewboxTransform
+		setAffineTransform(0.76, 0.0, 0.0, 0.76, -143, -187); //Desired values to start up with focus on fragment
 		p.add("Center", new JSVGScrollPane(canvas));
 
 	}

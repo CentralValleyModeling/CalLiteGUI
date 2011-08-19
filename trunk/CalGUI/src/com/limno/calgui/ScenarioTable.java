@@ -30,7 +30,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 		setPreferredSize(new Dimension(600, 700));
 		setMinimumSize(new Dimension(600, 700));
-		//setLayout(new FlowLayout());
+		// setLayout(new FlowLayout());
 		setTitle("CalLite 2.0 GUI - Scenario Comparison");
 
 		String[] controls;
@@ -114,7 +114,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					value = "";
 				}
 				conttypes[i] = "rdb";
-				
+
 			} else {
 				if (component instanceof JTextField || component instanceof NumericTextField) {
 					conttypes[i] = "txt";
@@ -135,7 +135,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			scenmatrix[i][0] = comptext;
 			scenmatrix[i][1] = sbparents.toString();
 			scenmatrix[i][2] = value;
-			
+
 			i++;
 		}
 		// Data Table Entries
@@ -220,10 +220,10 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 				// Search for control index
 				int index = GUI_Utils.FindInArray(controls, comp);
-				 System.out.println(index);
+				System.out.println(index);
 
 				scenmatrix[index][i + 2] = value;
-				
+
 				j++;
 			}
 			headers[i + 2] = selected[i].toString();
@@ -261,11 +261,11 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 		int ito = 0;
 		for (i = 0; i < scenmatrix.length; i++) {
-			
+
 			if (conttypes[i] == null || scenmatrix[i][1] == null) {
 				break;
 			} else {
-				
+
 				scenmatrix1[ito] = scenmatrix[i];
 				if (scenmatrix[i][0].equals("Scenario Directory")) {
 					for (j = 1; j <= selected.length; j++)
@@ -286,19 +286,21 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					int irdb = i;
 					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
 						for (j = 1; j <= selected.length; j++)
-							if  (scenmatrix[irdb][j + 1]!=null) {
+							if (scenmatrix[irdb][j + 1] != null) {
 								if (!scenmatrix[irdb][j + 1].equals(""))
 									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
 							}
 					}
-					int isel=ito;
+					int isel = ito;
 					i = irdb;
 					int ictrl = i;
 					for (; scenmatrix[ictrl][1].equals(scenmatrix[i][1]); ictrl++) {
-						int ct=0;
-						for (j = 1; j <= selected.length; j++){
-							if  (scenmatrix1[isel][j + 1].equals("User-Defined")) {
-								if (ct==0) {ito++;}
+						int ct = 0;
+						for (j = 1; j <= selected.length; j++) {
+							if (scenmatrix1[isel][j + 1].equals("User-Defined")) {
+								if (ct == 0) {
+									ito++;
+								}
 								scenmatrix1[ito][0] = scenmatrix[ictrl][0];
 								scenmatrix1[ito][1] = scenmatrix[ictrl][1];
 								scenmatrix1[ito][j + 1] = scenmatrix[ictrl][j + 1];
@@ -313,19 +315,21 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					int irdb = i;
 					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
 						for (j = 1; j <= selected.length; j++)
-							if  (scenmatrix[irdb][j + 1]!=null) {
+							if (scenmatrix[irdb][j + 1] != null) {
 								if (!scenmatrix[irdb][j + 1].equals(""))
 									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
 							}
 					}
-					int isel=ito;
+					int isel = ito;
 					i = irdb;
 					int ictrl = i;
 					for (; scenmatrix[ictrl][1].equals(scenmatrix[i][1]); ictrl++) {
-						int ct=0;
-						for (j = 1; j <= selected.length; j++){
-							if  (scenmatrix1[isel][j + 1].equals("User-Defined")) {
-								if (ct==0) {ito++;}
+						int ct = 0;
+						for (j = 1; j <= selected.length; j++) {
+							if (scenmatrix1[isel][j + 1].equals("User-Defined")) {
+								if (ct == 0) {
+									ito++;
+								}
 								scenmatrix1[ito][0] = scenmatrix[ictrl][0];
 								scenmatrix1[ito][1] = scenmatrix[ictrl][1];
 								scenmatrix1[ito][j + 1] = scenmatrix[ictrl][j + 1];
@@ -334,19 +338,17 @@ public class ScenarioTable extends JFrame implements ItemListener {
 						}
 					}
 					i = ictrl - 1;
-					
-					
-				}else if (scenmatrix[i][0].equals("reg_rdbD1641") || (scenmatrix[i][0].equals("reg_rdbUD"))) {
+
+				} else if (scenmatrix[i][0].equals("reg_rdbD1641") || (scenmatrix[i][0].equals("reg_rdbUD"))) {
 					ito--;
 
-									
 				} else if (conttypes[i].equals("rdb")) {
 					scenmatrix1[ito][0] = "RDB";
 					scenmatrix1[ito][1] = scenmatrix[i][1];
 					int irdb = i;
 					for (; conttypes[irdb].equals("rdb") && scenmatrix[irdb][1].equals(scenmatrix[i][1]); irdb++) {
 						for (j = 1; j <= selected.length; j++)
-							if  (scenmatrix[irdb][j + 1]!=null) {
+							if (scenmatrix[irdb][j + 1] != null) {
 								if (!scenmatrix[irdb][j + 1].equals(""))
 									scenmatrix1[ito][j + 1] = scenmatrix[irdb][j + 1];
 							}
@@ -354,13 +356,12 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					i = irdb - 1;
 				}
 			}
-			//System.out.println(scenmatrix1[ito][0] + " " + scenmatrix1[ito][1]);
+			// System.out.println(scenmatrix1[ito][0] + " " + scenmatrix1[ito][1]);
 			ito++;
-			
+
 		}
-		scenmatrix=scenmatrix1;
-		
-		
+		scenmatrix = scenmatrix1;
+
 		// Process scenario matrix for hierarchical results
 
 		String[][] procscenmatrix = new String[scenmatrix.length * 2][selected.length + 1];
@@ -371,32 +372,34 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		String PrevDash = "";
 
 		for (i = 0; i < ito; i++) {
-			//Special Handling for Facilities (skip over for now)
-			
+			// Special Handling for Facilities (skip over for now)
 
-			
 			CurLoc = scenmatrix[i][1];
 			String[] parArr = scenmatrix[i][1].split("[|]");
 
 			// Whenever the dashboard changes, always add a new row
 			CurDash = parArr[0].toUpperCase();
-			if (!CurDash.equals("FACILITIES")) {
-				
+			
+			// !TODO - replace hardcoded exclusion of operations controls with appropriate logic in GUI.xml and code
+			
+			if (!CurDash.equals("FACILITIES") && !scenmatrix[i][1].contains("op_pan2")
+					&& !scenmatrix[i][0].equals("Use Forecast Allocation Model for SWP") && !scenmatrix[i][0].equals("SWP Allocation (%)")
+					&& !scenmatrix[i][0].equals("Use Forecast Allocation Model for CVP") && !scenmatrix[i][0].equals("CVP System (%)")
+					&& !scenmatrix[i][0].equals("CVP SOD (%)")) {
+
 				if (!CurDash.equals(PrevDash)) {
 					procscenmatrix[ii][0] = parArr[0].toUpperCase();
 					ii++;
 					System.out.println(i + " " + scenmatrix[i][1]);
 				}
 
-				//Special Handling for Regulation Sub Tabs
+				// Special Handling for Regulation Sub Tabs
 				if (CurDash.equals("REGULATIONS")) {
 					if (!CurLoc.equals(PrevLoc)) {
 						procscenmatrix[ii][0] = " " + parArr[1];
 						ii++;
 					}
 				}
-
-
 
 				// Start by always copying exactly
 
@@ -416,7 +419,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			}
 			PrevDash = CurDash;
 			PrevLoc = CurLoc;
-			
+
 		}
 
 		// Create reduced arrays for tables
@@ -448,7 +451,6 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			headers2[j] = selected[j - 1].toString();
 		}
 
-        
 		JRadioButton b1 = new JRadioButton("Base");
 		JRadioButton b2 = new JRadioButton("Comparison");
 		JRadioButton b3 = new JRadioButton("Difference");
@@ -465,25 +467,25 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 		Box vbox = new Box(BoxLayout.PAGE_AXIS);
 		vbox.add(box);
-		
+
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
-        c.gridy = 0;
+		c.gridy = 0;
 
-        c.insets = new Insets(10, 10, 10, 10);
-        c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(10, 10, 10, 10);
+		c.fill = GridBagConstraints.BOTH;
 
-        add(vbox,c);
+		add(vbox, c);
 
 		sPanel1 = new ScenarioPanel(m1, headers1);
 		c.gridx = 0;
-        c.gridy = 1;
-        c.weightx = 1;
-        c.weighty = 1;
-        add(sPanel1,c);
+		c.gridy = 1;
+		c.weightx = 1;
+		c.weighty = 1;
+		add(sPanel1, c);
 
-		//vbox.add(sPanel1);
+		// vbox.add(sPanel1);
 
 		if (selected.length == 1) {
 			b1.setSelected(true);
@@ -536,20 +538,18 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				sPanel3.setVisible(false);
 			}
 
-			//vbox.add(sPanel2);
-			//vbox.add(sPanel3);
+			// vbox.add(sPanel2);
+			// vbox.add(sPanel3);
 			c.gridx = 0;
-	        c.gridy = 1;
-	        c.weightx = 1;
-	        c.weighty = 1;
-	        add(sPanel2,c);
-	        add(sPanel3,c);
+			c.gridy = 1;
+			c.weightx = 1;
+			c.weighty = 1;
+			add(sPanel2, c);
+			add(sPanel3, c);
 			sPanel1.setVisible(false);
 			sPanel2.setVisible(true);
 			sPanel3.setVisible(false);
 		}
-
-		
 
 		b1.addItemListener(this);
 		b2.addItemListener(this);
@@ -573,28 +573,25 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 			setPreferredSize(new Dimension(600, 700));
 			setMinimumSize(new Dimension(600, 700));
-			//setLayout(new FlowLayout());
+			// setLayout(new FlowLayout());
 			// GridBagConstraints c = new GridBagConstraints();
-			
+
 			setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			c.gridx = 0;
-	        c.gridy = 0;
+			c.gridy = 0;
 
-	        c.insets = new Insets(10, 10, 10, 10);
-	        c.fill = GridBagConstraints.BOTH;
-	        c.weightx = 1;
-	        c.weighty = 1;
-
-
-			
+			c.insets = new Insets(10, 10, 10, 10);
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 1;
+			c.weighty = 1;
 
 			scentable = new JTable();
 			DefaultTableModel model = new DefaultTableModel(data, headers);
 			scentable.setModel(model);
 			scrollingtable = new JScrollPane(scentable);
 			scrollingtable.setPreferredSize(new Dimension(480, 600));
-			add(scrollingtable,c);
+			add(scrollingtable, c);
 			// Set Icon
 			java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 			setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));

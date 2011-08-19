@@ -412,22 +412,27 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Refresh checkbox labels
 		for (int i = 0; i < RegUserEdits.length; i++) {
 			if (RegUserEdits[i] != null) {
+
 				String cID = Integer.toString(i);
 				String cName = gl.CtrlFortableID(cID);
-				JCheckBox ckb = (JCheckBox) swix.find(cName);
-				String ckbtext = ckb.getText();
-				String[] ckbtext1 = ckbtext.split(" - ");
-				ckbtext = ckbtext1[0];
-				if (ckbtext1.length > 0) {
-					if (RegUserEdits[i] == true) {
+
+				System.out.println(cName);
+				JComponent c = (JComponent) swix.find(cName);
+				
+				if (c instanceof JCheckBox) {
+				  JCheckBox ckb = (JCheckBox) c;
+  				  String ckbtext = ckb.getText();
+				  String[] ckbtext1 = ckbtext.split(" - ");
+				  ckbtext = ckbtext1[0];
+				  if (ckbtext1.length > 0) {
+					  if (RegUserEdits[i] == true) 
 						ckb.setText(ckbtext + " - User Def.");
-					} else {
+					   else 
 						ckb.setText(ckbtext + " -  Default");
-					}
-				} else {
+					  
+				  } else 
 					ckb.setText(ckbtext);
 				}
-
 			}
 		}
 
@@ -1930,7 +1935,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			dss_Grabber.setLocation(locationNames[i]);
 			if (dss_Grabber.primaryDSSName.equals(""))
-				JOptionPane.showMessageDialog(desktop,"No DSS time series specified for " + namesText[i] + "/" + locationNames[i] +".");
+				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
 			else {
 
 				dss_Grabber.setDateRange(dateRange);
