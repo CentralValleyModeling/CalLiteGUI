@@ -8,6 +8,7 @@ package com.limno.calgui.results;
  *
  */
 
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.JFrame;
@@ -40,6 +41,7 @@ public class SchematicMain {
 
 		AffineTransform t = new AffineTransform(m0, m1, m2, m3, m4, m5);
 		canvas.setRenderingTransform(t);
+	
 	}
 
 	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn) {
@@ -69,7 +71,9 @@ public class SchematicMain {
 			}
 		});
 
+		setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0);
 		p.add("Center", new JSVGScrollPane(canvas));
+
 	}
 
 	public void registerListeners() {
@@ -107,52 +111,59 @@ public class SchematicMain {
 			t.getMatrix(m);
 			for (int i = 0; i < 6; i++)
 				System.out.println(m[i]);
-			System.out.println(m);
+			System.out.println("Clicked on: " + evt.getTarget());
 
 			String label = null;
 
-			System.out.println("Clicked on: " + evt.getTarget());
 			Element el = ((Element) evt.getTarget());
-			System.out.println("---" + el.getTagName() + " " + el.getNodeName() + el.getNodeType() + el.getNodeValue());
 
-			String tag = el.getTagName();
 			evt.stopPropagation();
 
 			Element pel = el;
-
-			String ptag = pel.getTagName();
-
-			System.out.println("--" + tag + el.getAttribute("id"));
-			while (el.getParentNode() != null && !ptag.equals("g")) {
+			while (label == null && pel.getParentNode() != null && pel.getParentNode() instanceof Element) {
 
 				pel = (Element) pel.getParentNode();
-				ptag = pel.getTagName();
-			}
-			System.out.println("Parent: " + ptag);
-
-			if (tag.startsWith("tspan")) // Not sure why, but seems to work
-				pel = (Element) pel.getParentNode();
-
-			NodeList childNodes2 = pel.getChildNodes();
-			for (int i = 0; i < childNodes2.getLength(); i++) {
-				Node item = childNodes2.item(i);
-				if (item instanceof Element) {
-					Element ce = (Element) item;
-					System.out.println("ce = " + ce.getTagName());
-					if (ce.getTagName().equals("title")) {
-						label = ce.getTextContent();
-					}
+				String ptag = pel.getTagName();
+				if (ptag.equals("g")) {
+					NodeList childNodes = pel.getChildNodes();
+					for (int i = 0; i < childNodes.getLength(); i++) {
+						Node item = childNodes.item(i);
+						if (item instanceof Element) {
+							Element ce = (Element) item;
+							//System.out.println("ce = " + ce.getTagName());
+							if (ce.getTagName().equals("title")) {
+								label = ce.getTextContent();
+							}
+						}
+					}		
 				}
+				
 			}
+//			System.out.println("Parent: " + ptag);
+//
+//			if (tag.startsWith("tspan")) // Not sure why, but seems to work
+//				pel = (Element) pel.getParentNode();
+//
+//			NodeList childNodes2 = pel.getChildNodes();
+//			for (int i = 0; i < childNodes2.getLength(); i++) {
+//				Node item = childNodes2.item(i);
+//				if (item instanceof Element) {
+//					Element ce = (Element) item;
+//					System.out.println("ce = " + ce.getTagName());
+//					if (ce.getTagName().equals("title")) {
+//						label = ce.getTextContent();
+//					}
+//				}
+//			}
 
 			if (label == null) {
-				window.alert("No group identified for this tag");
+				//window.alert("No group identified for this tag");
+				Toolkit.getDefaultToolkit().beep();
 			} else {
 				String titleParts[] = label.split("/");
 				if (titleParts.length < 2)
 					window.alert("No link found in group title '" + label + "'.");
 				else {
-					System.out.println(mainMenu.QuickState() + ";Locs-" + titleParts[0] + ";Index-" + titleParts[1]);
 					if (mainMenu.lstScenarios.getModel().getSize() == 0)
 						JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
 					else
