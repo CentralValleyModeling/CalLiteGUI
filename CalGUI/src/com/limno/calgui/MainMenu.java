@@ -403,7 +403,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
 
-
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		action_WSIDI = 0;
 		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
@@ -416,22 +415,21 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				String cID = Integer.toString(i);
 				String cName = gl.CtrlFortableID(cID);
 
-				System.out.println(cName);
 				JComponent c = (JComponent) swix.find(cName);
-				
+
 				if (c instanceof JCheckBox) {
-				  JCheckBox ckb = (JCheckBox) c;
-  				  String ckbtext = ckb.getText();
-				  String[] ckbtext1 = ckbtext.split(" - ");
-				  ckbtext = ckbtext1[0];
-				  if (ckbtext1.length > 0) {
-					  if (RegUserEdits[i] == true) 
-						ckb.setText(ckbtext + " - User Def.");
-					   else 
-						ckb.setText(ckbtext + " -  Default");
-					  
-				  } else 
-					ckb.setText(ckbtext);
+					JCheckBox ckb = (JCheckBox) c;
+					String ckbtext = ckb.getText();
+					String[] ckbtext1 = ckbtext.split(" - ");
+					ckbtext = ckbtext1[0];
+					if (ckbtext1.length > 0) {
+						if (RegUserEdits[i] == true)
+							ckb.setText(ckbtext + " - User Def.");
+						else
+							ckb.setText(ckbtext + " -  Default");
+
+					} else
+						ckb.setText(ckbtext);
 				}
 			}
 		}
@@ -454,8 +452,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GetDSSFilename getDSSFilename3 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE3"), "PDF");
 		JButton btnFile3 = (JButton) swix.find("btnGetReportFile3");
 		btnFile3.addActionListener((ActionListener) getDSSFilename3);
-		
-		
 
 		// Check for scenario changes on Exit.
 		desktop.addWindowListener(new WindowAdapter() {
@@ -1934,6 +1930,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
+			if (dss_Grabber.primaryDSSName == null)
+				JOptionPane.showMessageDialog(desktop, "No GUI_Links3.table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
+			else
 			if (dss_Grabber.primaryDSSName.equals(""))
 				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
 			else {

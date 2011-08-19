@@ -1,18 +1,18 @@
 ID	Primary	Secondary	Ytitle	Title	Slegend
-1	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
-2	C_TRNTY/FLOW-CHANNEL	null	Flow	Clear Creek	null
-3	C_LWSTN/FLOW-CHANNEL	null	Flow	Trinity River	null
-4	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
-5	S_WKYTN/STORAGE	null	Storage	Whiskeytown Reservoir Storage	null
-6	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
-7	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
-8	I_SHSTA/STORAGE	null	Flow	Sacramento River Inflow	null
-9	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
-10	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
-11	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
-12	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
-13	D_REDBLF/FLOW-DELIVERY	null	Flow	Diversion at Red Bluff	null
-14	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
+001	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
+002	C_TRNTY/FLOW-CHANNEL	null	Flow	Clear Creek	null
+003	C_LWSTN/FLOW-CHANNEL	null	Flow	Trinity River	null
+004	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
+005	S_WKYTN/STORAGE	null	Storage	Whiskeytown Reservoir Storage	null
+006	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
+007	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
+008	I_SHSTA/STORAGE	null	Flow	Sacramento River Inflow	null
+009	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
+010	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
+011	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+012	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
+013	D_REDBLF/FLOW-DELIVERY	null	Flow	Diversion at Red Bluff	null
+014	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
 102	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
 103	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
 104	S_FOLSM/STORAGE	null	Storage	Folsom Reservoir Storage	null
