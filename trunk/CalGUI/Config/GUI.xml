@@ -2541,10 +2541,10 @@
 							gridx="0" gridy="1" />
 						<label
 							text="Click on an element for data; shift-click, then drag to pan; ctrl-click, then drag to zoom; or zoom to: " />
-						<button text="NOD" ActionCommand="Sch_NOD"></button>
-						<button text="Delta" ActionCommand="Sch_Delta"></button>
-						<button text="SOD" ActionCommand="Sch_SOD"></button>
-						<button text="All" ActionCommand="Sch_SOD"></button>
+						<button text="NOD" ActionCommand="Sch_NOD" enabled="false"></button>
+						<button text="Delta" ActionCommand="Sch_Delta" enabled="false"></button>
+						<button text="SOD" ActionCommand="Sch_SOD" enabled="false"></button>
+						<button text="All" ActionCommand="Sch_SOD" enabled="false"></button>
 					</panel>
 					<panel layout="FlowLayout(FlowLayout.Right)">
 						<gridbagconstraints anchor="GridBagConstraints.EAST"
