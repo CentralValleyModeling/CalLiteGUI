@@ -13,6 +13,8 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 012	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
 013	D_REDBLF/FLOW-DELIVERY	null	Flow	Diversion at Red Bluff	null
 014	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
+015	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+016	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
 102	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
 103	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
 104	S_FOLSM/STORAGE	null	Storage	Folsom Reservoir Storage	null
