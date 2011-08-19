@@ -22,8 +22,30 @@
    sodipodi:docname="callite_sample.svg"><metadata
    id="metadata2556"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-   id="defs2554" /><sodipodi:namedview
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+   id="defs2554">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</defs><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -59,6 +81,7 @@
 
 
 
+
 	<text
    transform="scale(1.1717508,0.85342376)"
    font-size="27.0179"
@@ -66,6 +89,7 @@
    x="1242.5034"
    y="580.65735"
    style="font-size:31.65824699px;font-family:TimesNewRomanPSMT">River Flow (positive)</text>
+
 
 
 
@@ -83,6 +107,7 @@
 
 
 
+
 	<text
    transform="scale(1.1717508,0.85342376)"
    font-size="27.0179"
@@ -90,6 +115,7 @@
    x="1243.5485"
    y="535.66504"
    style="font-size:31.65824699px;font-family:TimesNewRomanPSMT">Inflow/Accretion</text>
+
 
 
 
@@ -107,6 +133,7 @@
 
 
 
+
 	<text
    transform="scale(1.1717508,0.85342376)"
    font-size="23.7757"
@@ -114,6 +141,7 @@
    x="1210.9043"
    y="325.7283"
    style="font-size:27.85919571px;font-family:ArialMT">LEGEND</text>
+
 
 
 
@@ -226,29 +254,21 @@
 	
 
 	
-		<g
-   id="g4303"><title
-   id="title3668">AD_Kswick/010</title><line
-   id="line55"
-   y2="546.391"
-   x2="892.575"
-   y1="510.521"
-   x1="937.964"
-   stroke-dasharray="12,2.5"
+		<line
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke-width="1.5"
-   stroke="#010101"
-   fill="none" /><text
-   id="text99"
+   x1="937.96399"
+   y1="510.521"
+   x2="892.57501"
+   y2="546.39099"
+   id="line55" /><text
+   style="font-size:10.07145977px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   transform="matrix(0.79707445,-0.61969255,0.6813733,0.72484828,0,0)"
    font-size="10.0196"
-   font-family="'MyriadPro-Regular'"
-   fill="#1C75BC"
-   transform="matrix(0.8012 -0.6229 0.6849 0.7286 904.2661 549.6494)">AD_Kswck</text>
+   id="text99"
+   x="280.9393"
+   y="998.47845">AD_Kswck</text>
 
-
-
-</g>
 
 	
 		
@@ -525,12 +545,13 @@
 	
 	<g
    id="g4318"><title
-   id="title3666">C_Kswck</title><text
+   id="title3666">C_Kswck/015</title><text
    id="text101"
    font-size="10.561"
    transform="matrix(-8.184870e-005 0.9094 -1 -7.000000e-005 879.1641 633.7622)"
    font-family="'MyriadPro-Regular'"
    fill="#1C75BC">C_Kswck</text>
+
 
 
 
@@ -555,6 +576,7 @@
    font-family="'MyriadPro-Regular'"
    fill="#1C75BC"
    transform="matrix(-0.0055 0.9894 -1 -0.0046 881.1563 891.4565)">C_RedBlf</text>
+
 
 
 <polygon
@@ -640,6 +662,7 @@
 
 
 
+
 <polygon
    id="polygon469"
    points="589.601,506.791    589.601,507.266 587.904,507.266 587.904,506.791 589.601,506.791  "
@@ -662,6 +685,7 @@
    transform="matrix(0 0.9094 -1 0 334.6211 493.2007)"
    font-family="'MyriadPro-Regular'"
    fill="#1C75BC">C_Trnty</text>
+
 
 
 
@@ -815,6 +839,7 @@
 
 
 
+
 		<rect
    x="889.396"
    y="835.677"
@@ -877,6 +902,7 @@
 
 
 
+
 		<rect
    x="882.6"
    y="544.793"
@@ -896,6 +922,7 @@
    font-family="'MyriadPro-Regular'"
    font-size="9.6045"
    id="text85">D_Spring</text>
+
 
 
 
@@ -1007,6 +1034,7 @@
 
 
 
+
 		<rect
    id="rect693"
    height="27.271"
@@ -1034,6 +1062,7 @@
    font-family="'MyriadPro-Regular'"
    font-size="9.9916"
    id="text103">C_Wkytn</text>
+
 
 
 <g
@@ -1101,6 +1130,7 @@
 
 
 
+
 		<rect
    x="558.179"
    y="681.146"
@@ -1122,6 +1152,7 @@
    font-family="'MyriadPro-Regular'"
    font-size="9.6045"
    id="text83">D_ClearTu</text>
+
 
 
 
@@ -1215,6 +1246,7 @@
      x="131.897">l</tspan></text>
 
 
+
 </g>
 
 
@@ -1276,6 +1308,7 @@
 
 
 
+
 <polygon
    fill="none"
    stroke="#010101"
@@ -1328,6 +1361,7 @@
 
 
 
+
 		<rect
    id="rect1151"
    height="34.847"
@@ -1364,6 +1398,7 @@
      font-family="'MyriadPro-Regular'"
      font-size="7.2034"
      id="tspan77">A_Wkytn</tspan></text>
+
 
 
 
@@ -1437,6 +1472,7 @@
 
 
 
+
 		<rect
    id="rect1229"
    height="30.299"
@@ -1454,41 +1490,29 @@
 	
 		
 	
-	<g
-   id="g4312"><title
-   id="title3656">AD_RedBlf/012</title><text
-   id="text105"
+	<text
+   style="font-size:10.07119274px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   transform="matrix(0.58392664,-0.79213668,0.8709933,0.53098151,0,0)"
    font-size="10.274"
-   font-family="'MyriadPro-Regular'"
-   fill="#1C75BC"
-   transform="matrix(0.5724 -0.7765 0.8538 0.5205 908.7759 816.5952)">AD_RedBlf</text>
-
-
-
+   id="text105"
+   x="-228.70575"
+   y="1196.7064">AD_RedBlf</text>
 <line
-   id="line147"
-   y2="763.184"
-   x2="932.27"
-   y1="820.99"
-   x1="891.197"
-   stroke-dasharray="12,2.5"
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke-width="1.5"
-   stroke="#010101"
-   fill="none" /><polygon
-   id="polygon1257"
-   points="887.803,822.676 887.06,824.663    885.467,824.189 886.21,822.203 887.803,822.676  "
+   x1="891.19702"
+   y1="820.98999"
+   x2="932.27002"
+   y2="763.18402"
+   id="line147" /><polygon
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /><polygon
-   id="polygon1259"
-   points="894.017,826.143    880.793,832.623 882.788,819.27 894.017,826.143  "
+   points="885.467,824.189 886.21,822.203 887.803,822.676 887.803,822.676 887.06,824.663 "
+   id="polygon1257" /><polygon
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /></g>
+   points="882.788,819.27 894.017,826.143 894.017,826.143 880.793,832.623 "
+   id="polygon1259" />
 	
 	
 	
@@ -1518,30 +1542,22 @@
 	
 	
 	
-	<g
-   id="g4307"><title
-   id="title3662">D:RedBlf/013</title><text
-   id="text107"
+	<text
+   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   transform="scale(1.0486181,0.95363599)"
    font-size="9.6045"
-   font-family="'MyriadPro-Regular'"
-   fill="#1C75BC"
-   transform="matrix(1.0996 0 0 1 809.144 854.6367)">D_RedBlf</text>
-
-
-
+   id="text107"
+   x="771.62885"
+   y="896.18756">D_RedBlf</text>
 <polygon
-   id="polygon479"
-   points="857.442,821.16 862.219,833.942    847.78,829.776 857.442,821.16  "
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /><polygon
-   id="polygon1375"
-   points="789.074,849.378    775.592,843.032 789.392,837.257 789.074,849.378  "
+   points="847.78,829.776 857.442,821.16 857.442,821.16 862.219,833.942 "
+   id="polygon479" /><polygon
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /></g>
+   points="789.392,837.257 789.074,849.378 789.074,849.378 775.592,843.032 "
+   id="polygon1375" />
 	<path
    fill="#010101"
    stroke="#010101"
@@ -1609,6 +1625,7 @@
 
 
 
+
 		<rect
    x="204.881"
    y="566.002"
@@ -1628,6 +1645,7 @@
    font-family="'MyriadPro-Regular'"
    fill="#1C75BC"
    transform="matrix(0 0.9094 -1 0 335.0781 580.1509)">C_Lwstn</text>
+
 
 
 
@@ -1659,12 +1677,14 @@
 	
 	
 	<g
-   id="g4293"><text
+   id="g4293"><title
+   id="title3267">C_Shsta/016</title><text
    id="text97"
    font-size="10.561"
    font-family="'MyriadPro-Regular'"
    fill="#1C75BC"
    transform="matrix(0 0.9094 -1 0 882.5674 494.4375)">C_Shsta</text>
+
 
 
 
@@ -1908,6 +1928,7 @@
      font-family="'MyriadPro-Semibold'"
      font-size="47.8612"
      id="tspan1709">August 30, 2010</tspan></text>
+
 
 
 
@@ -2214,232 +2235,197 @@
 	
 		
 	
-	<g
-   id="g5708"><title
-   id="title3682">I_Lwstn</title><text
-   id="text79"
+	<text
+   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   transform="scale(1.0486181,0.95363599)"
    font-size="9.6045"
-   font-family="'MyriadPro-Regular'"
-   fill="#1C75BC"
-   transform="matrix(1.0996 0 0 1 239.4453 544.7939)">I_Lewiston</text>
-
-
-
-
+   id="text79"
+   x="228.34366"
+   y="571.28076">I_Lewiston</text>
 <line
-   id="line207"
-   y2="554.055"
-   x2="233.21"
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
+   stroke-miterlimit="10"
+   x1="295.65799"
    y1="554.401"
-   x1="295.658"
-   stroke-dasharray="12,2.5"
+   x2="233.21001"
+   y2="554.05499"
+   id="line207" /><polygon
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke-width="1.5"
-   stroke="#010101"
-   fill="none" /><polygon
-   id="polygon2205"
-   points="295.658,547.776    309.247,553.833 295.658,559.989 295.658,547.776  "
+   points="295.658,559.989 295.658,547.776 295.658,547.776 309.247,553.833 "
+   id="polygon2205" />
+	
+	
+		
+	
+		
+	
+	
+	
+
+	
+	
+	
+
+	
+
+	
+
+	
+		
+
+	
+		
+
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+	
+		
+
+	
+		
+
+	
+
+	
+		
+	
+	
+		
+
+	
+		
+	
+	
+
+	
+		
+
+	
+		
+	
+	
+		
+	
+
+	
+
+	
+	<line
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /></g>
-	
-	
-		
-	
-		
-	
-	
-	
-
-	
-	
-	
-
-	
-
-	
-
-	
-		
-
-	
-		
-
-	
-		
-	
-	
-		
-	
-	
-		
-	
-	
-		
-	
-	
-	
-		
-
-	
-		
-
-	
-
-	
-		
-	
-	
-		
-
-	
-		
-	
-	
-
-	
-		
-
-	
-		
-	
-	
-		
-	
-
-	
-
-	
-	<g
-   id="g5713"><title
-   id="title3688">I_Trnty</title><line
-   id="line49"
-   y2="340.07"
-   x2="323.49"
-   y1="396.861"
-   x1="323.49"
-   stroke-dasharray="12,2.5"
-   stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke-width="1.5"
-   stroke="#010101"
-   fill="none" /><text
-   id="text67"
+   x1="323.48999"
+   y1="396.86099"
+   x2="323.48999"
+   y2="340.07001"
+   id="line49" /><text
+   style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    font-size="10.561"
-   font-family="'MyriadPro-Regular'"
-   fill="#1C75BC"
-   transform="matrix(0 0.9094 -1 0 344.3013 353.6792)">I_Trnty</text>
-
-
-
-
+   id="text67"
+   x="370.87885"
+   y="-328.3342">I_Trnty</text>
 <g
    id="g559">
 		<text
-   id="text561"
-   transform="matrix(1.1211 0 0 1 268.0786 334.4912)"><tspan
-     id="tspan563"
+   transform="matrix(1.1211,0,0,1,268.0786,334.4912)"
+   id="text561"><tspan
+     style="font-size:19.69529915px;letter-spacing:-0.89200002;fill:#010101;font-family:ArialMT"
+     x="0"
+     y="0"
+     font-size="19.6953"
      letter-spacing="-0.892"
-     font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan563">T</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="10.612"
      y="0"
-     x="0">T</tspan><tspan
-     id="tspan565"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan565">r</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="16.677999"
      y="0"
-     x="10.612">r</tspan><tspan
-     id="tspan567"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan567">i</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="21.212"
      y="0"
-     x="16.678">i</tspan><tspan
-     id="tspan569"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan569">n</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="31.83"
      y="0"
-     x="21.212">n</tspan><tspan
-     id="tspan571"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan571">i</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="36.363998"
      y="0"
-     x="31.83">i</tspan><tspan
-     id="tspan573"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan573">t</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="42.407001"
      y="0"
-     x="36.364">t</tspan><tspan
-     id="tspan575"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan575">y</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="53.002998"
      y="0"
-     x="42.407">y</tspan><tspan
-     id="tspan577"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan577"> </tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="59.046001"
      y="0"
-     x="53.003"> </tspan><tspan
-     id="tspan579"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan579">R</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="72.697998"
      y="0"
-     x="59.046">R</tspan><tspan
-     id="tspan581"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan581">i</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="77.232002"
      y="0"
-     x="72.698">i</tspan><tspan
-     id="tspan583"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan583">v</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="87.828003"
      y="0"
-     x="77.232">v</tspan><tspan
-     id="tspan585"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
+     id="tspan585">e</tspan><tspan
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     x="98.446999"
      y="0"
-     x="87.828">e</tspan><tspan
-     id="tspan587"
      font-size="19.6953"
-     font-family="'ArialMT'"
-     fill="#010101"
-     y="0"
-     x="98.447">r</tspan></text>
+     id="tspan587">r</tspan></text>
+
 
 
 
 
 
 		<rect
-   id="rect589"
-   height="45.448"
-   width="147.774"
-   fill="none"
+   style="fill:none"
+   x="238.85201"
+   y="317.54001"
    clip-rule="evenodd"
-   fill-rule="evenodd"
-   y="317.54"
-   x="238.852" />
+   width="147.774"
+   height="45.448002"
+   id="rect589" />
 	</g><polygon
-   id="polygon2299"
-   points="329.744,396.861 322.844,408.98    316.051,396.861 329.744,396.861  "
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    stroke-miterlimit="10"
-   stroke-linejoin="round"
-   stroke="#010101"
-   fill="#010101" /></g>
+   points="316.051,396.861 329.744,396.861 329.744,396.861 322.844,408.98 "
+   id="polygon2299" />
 	
 	
 	
@@ -2504,6 +2490,7 @@
 
 
 
+
 	
 		<line
    stroke-miterlimit="10"
@@ -2543,130 +2530,123 @@
 	
 	
 	<g
-   id="g3574"><title
-     id="title3672">I_Shsta/008</title><g
-     transform="translate(-10.606601,-14.142135)"
-     id="g325">
+   id="g325"
+   transform="translate(-10.606601,-14.142135)">
 		<text
-   id="text327"
-   transform="matrix(1.1211,0,0,1,802.3506,339.5454)"><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+   transform="matrix(1.1211,0,0,1,802.3506,339.5454)"
+   id="text327"><tspan
+     x="0"
+     y="0"
+     font-size="19.6953"
      id="tspan329"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">S</tspan><tspan
+     x="13.629"
      y="0"
-     x="0">S</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan331"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">a</tspan><tspan
+     x="24.247999"
      y="0"
-     x="13.629">a</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan333"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">c</tspan><tspan
+     x="34.844002"
      y="0"
-     x="24.247999">c</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan335"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">r</tspan><tspan
+     x="40.91"
      y="0"
-     x="34.844002">r</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan337"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">a</tspan><tspan
+     x="51.528"
      y="0"
-     x="40.91">a</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan339"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">m</tspan><tspan
+     x="68.191002"
      y="0"
-     x="51.528">m</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan341"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">en</tspan><tspan
+     x="89.429001"
      y="0"
-     x="68.191002">en</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan343"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">t</tspan><tspan
+     x="95.471001"
      y="0"
-     x="89.429001">t</tspan><tspan
-     style="font-size:19.69529915px;letter-spacing:0.89200002;fill:#010101;font-family:ArialMT"
-     id="tspan345"
+     font-size="19.6953"
      letter-spacing="0.892"
-     font-size="19.6953"
+     id="tspan345"
+     style="font-size:19.69529915px;letter-spacing:0.89200002;fill:#010101;font-family:ArialMT">o</tspan><tspan
+     x="107.587"
      y="0"
-     x="95.471001">o</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan347"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"> </tspan><tspan
+     x="113.63"
      y="0"
-     x="107.587"> </tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan349"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">R</tspan><tspan
+     x="127.282"
      y="0"
-     x="113.63">R</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan351"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">i</tspan><tspan
+     x="131.815"
      y="0"
-     x="127.282">i</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan353"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">v</tspan><tspan
+     x="142.41"
      y="0"
-     x="131.815">v</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan355"
-     font-size="19.6953"
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">e</tspan><tspan
+     x="153.02901"
      y="0"
-     x="142.41">e</tspan><tspan
-     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT"
+     font-size="19.6953"
      id="tspan357"
-     font-size="19.6953"
-     y="0"
-     x="153.02901">r</tspan></text>
+     style="font-size:19.69529915px;fill:#010101;font-family:ArialMT">r</tspan></text>
+
 
 
 
 
 
 		<rect
-   style="fill:none"
-   id="rect359"
-   height="71.205002"
-   width="207.22099"
-   clip-rule="evenodd"
+   x="788.96399"
    y="325.798"
-   x="788.96399" />
+   clip-rule="evenodd"
+   width="207.22099"
+   height="71.205002"
+   id="rect359"
+   style="fill:none" />
 	</g><g
-     id="g4280"><line
-   fill="none"
-   stroke="#010101"
-   stroke-width="1.5"
-   stroke-linejoin="round"
-   stroke-miterlimit="10"
-   stroke-dasharray="12,2.5"
-   x1="873.136"
-   y1="406.852"
-   x2="873.136"
+   id="g4280"><line
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
+   id="line53"
    y2="350.061"
-   id="line53" /><text
-   transform="matrix(0 0.9094 -1 0 880.8896 361.4009)"
-   fill="#1C75BC"
-   font-family="'MyriadPro-Regular'"
+   x2="873.13599"
+   y1="406.85199"
+   x1="873.13599"
+   stroke-miterlimit="10" /><text
+   style="font-size:10.56099987px;fill:#1c75bc;font-family:MyriadPro-Regular"
+   id="text87"
    font-size="10.561"
-   id="text87">I_Shsta</text>
+   transform="matrix(0,0.9094,-1,0,880.8896,361.4009)">I_Shsta</text>
+
 
 
 
 <polygon
-   fill="#010101"
-   stroke="#010101"
-   stroke-linejoin="round"
-   stroke-miterlimit="10"
-   points="880.264,402.921    873.364,415.041 866.571,402.921 880.264,402.921  "
-   id="polygon2393" /></g></g>
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
+   id="polygon2393"
+   points="866.571,402.921 880.264,402.921 880.264,402.921 873.364,415.041 "
+   stroke-miterlimit="10" /></g>
 	
 		
 	
@@ -2706,6 +2686,7 @@
      x="0"
      font-family="'MyriadPro-Regular'"
      fill="#1C75BC">A_Trnty</tspan></text>
+
 
 
 
@@ -2763,6 +2744,7 @@
      x="49.957"
      font-family="'Arial-BoldMT'"
      fill="#010101">y</tspan></text>
+
 
 
 
