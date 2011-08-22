@@ -940,9 +940,9 @@ public class GUI_Utils {
 				TID=parts[8].trim();
 				
 				board1 = parts[5].trim();
-				//if (board1.equals(board)) {
+				if (board1.equals(board)) {
 					arr1.add(cName + "|" + datatable + "|" + switchID + "|" + TID);
-				//}
+				}
 		    }
 
 		}
