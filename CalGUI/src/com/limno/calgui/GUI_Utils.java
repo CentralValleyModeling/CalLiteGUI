@@ -713,7 +713,9 @@ public class GUI_Utils {
     		while(true)
     		{
 				textinLine=br.readLine();
-    			if(textinLine==null|textinLine.equals("DATATABLEMODELS"))
+    			if(textinLine==null)
+    				break;
+    			if(textinLine.equals("DATATABLEMODELS"))
     				break;
 				String[] tokens = textinLine.split(delims);
 				
@@ -753,8 +755,11 @@ public class GUI_Utils {
     		while(true)
     		{
 				textinLine=br.readLine();
-    			if(textinLine==null|textinLine.equals("END DATATABLEMODELS"))
-    				break;    			
+
+    			if(textinLine==null)
+    				break;
+    			if(textinLine.equals("END DATATABLEMODELS"))
+    				break;
     			
     			String[] tokens = textinLine.split(delims);
     			String cID=tokens[0];
