@@ -1087,9 +1087,11 @@ public class GUI_Utils {
     public static int FindInArray(String[] arr, String targ) {
     	int idx=0;
     	for(int i = 0; i< arr.length; i++){
-    		if (arr[i].equals(targ)) {
-    			idx=i;
-    			break; 
+    		if(arr[i]!=null) {
+    			if (arr[i].equals(targ)) {
+    				idx=i;
+    				break; 
+    			}
     		}
     	}
 		return idx;
