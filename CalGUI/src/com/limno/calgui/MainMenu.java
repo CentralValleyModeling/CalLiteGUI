@@ -405,6 +405,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		action_WSIDI = 0;
 		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 		action_WSIDI = 1;
+		
+		JPanel pan = (JPanel) swix.find("op_panTab");
+		JComponent component1 = (JComponent) swix.find("scrOpValues");
+		JTable table1 = (JTable) swix.find("tblOpValues");
+
+		component1.setVisible(true);
+		component1.setEnabled(true);
+		populateDTable("op_btn1", table1, component1);
+		populateDTable("op_btn2", table1, component1);
+
+		// pan.setBorder(title);
+		component1.setEnabled(false);
+		table1.setVisible(false);
 
 		// Refresh checkbox labels
 		for (int i = 0; i < RegUserEdits.length; i++) {
