@@ -410,13 +410,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JComponent component1 = (JComponent) swix.find("scrOpValues");
 		JTable table1 = (JTable) swix.find("tblOpValues");
 
-		component1.setVisible(true);
-		component1.setEnabled(true);
+		//component1.setVisible(true);
+		//component1.setEnabled(true);
 		populateDTable("op_btn1", table1, component1);
 		populateDTable("op_btn2", table1, component1);
 
 		// pan.setBorder(title);
-		component1.setEnabled(false);
+		component1.setVisible(false);
 		table1.setVisible(false);
 
 		// Refresh checkbox labels
