@@ -475,6 +475,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
 				GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
 				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+				GUITables = GUI_Utils.GetGUITables(GUILinks, "Operations");
+				sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
 				sb.append("END DATATABLEMODELS" + NL);
 				sb.append("USERDEFINEDFLAGS" + NL);
 				for (int i = 0; i < RegUserEdits.length; i++) {
@@ -961,6 +963,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					ArrayList GUITables = new ArrayList();
 					GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
 					GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+					GUITables = GUI_Utils.GetGUITables(GUILinks, "Operations");
 					sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
 					sb.append("END DATATABLEMODELS" + NL);
 					sb.append("USERDEFINEDFLAGS" + NL);
@@ -1742,6 +1746,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		ArrayList GUILinks = new ArrayList();
 		GUILinks = GUI_Utils.GetGUILinks("Config\\GUI_Links2.table");
 		GUITables = GUI_Utils.GetGUITables(GUILinks, "Regulations");
+		sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+		GUITables = GUI_Utils.GetGUITables(GUILinks, "Operations");
 		sb = GUI_Utils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
 		sb.append("END DATATABLEMODELS" + NL);
 		sb.append("USERDEFINEDFLAGS" + NL);
