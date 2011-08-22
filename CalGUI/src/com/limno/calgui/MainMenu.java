@@ -48,11 +48,10 @@ import java.util.regex.Pattern;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
-
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -70,6 +69,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.ProgressMonitor;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
@@ -77,7 +77,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListDataEvent;
@@ -86,13 +85,13 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
-import com.limno.calgui.GUI_Utils;
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.results.ChartPanel1;
 import com.limno.calgui.results.DSS_Grabber;
@@ -100,7 +99,6 @@ import com.limno.calgui.results.MonthlyTablePanel;
 import com.limno.calgui.results.Report;
 import com.limno.calgui.results.SchematicMain;
 import com.limno.calgui.results.SummaryTablePanel;
-import com.lowagie.text.Image;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
 		KeyEventDispatcher {
@@ -3055,13 +3053,16 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
 					int option = 0;
-					JCheckBox cb = (JCheckBox) swix.find(cName);
-					if (cb == null) {
-						option = 0;
-					} else if (!cb.isSelected()) {
+					AbstractButton buttonC = (AbstractButton) swix.find(cName);
+					if (buttonC == null || !(buttonC instanceof JToggleButton)) {
 						option = 0;
 					} else {
-						option = 1;
+						JToggleButton cb = (JToggleButton) swix.find(cName);
+						if (!cb.isSelected()) {
+							option = 0;
+						} else {
+							option = 1;
+						}
 					}
 					System.out.println(switchID + " " + option);
 

@@ -246,6 +246,7 @@ public class DSS_Grabber {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
+		String aPart="CALLITE";
 		try {
 			hD = HecDss.open(dssFilename);
 
@@ -266,7 +267,7 @@ public class DSS_Grabber {
 				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
 			}
 
-			result = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
+			result = (TimeSeriesContainer) hD.get("/"+aPart+"/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
 
 			if ((result == null) || (result.numberValues < 1)) {
 
@@ -274,7 +275,7 @@ public class DSS_Grabber {
 
 			} else {
 				for (int i = 1; i < dssNames.length; i++) {
-					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/CALSIM/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
+					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/"+aPart+"/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
 					if (result2 == null) {
 						JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 								JOptionPane.ERROR_MESSAGE);
