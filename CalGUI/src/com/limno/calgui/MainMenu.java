@@ -664,16 +664,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 						String newcName = null;
 						if (cName.equals("hyd_rdb2005"))
-							newcName = "hyd_rdb2020";
-						else if (cName.equals("hyd_rdb_2020"))
+							newcName = "hyd_rdb2030";
+						else if (cName.equals("hyd_rdb2030"))
 							newcName = "hyd_rdb2005";
 						else if (cName.equals("run_rdbD1641"))
 							newcName = "run_rdbBO";
 						else if (cName.equals("run_rdbBO"))
-							newcName = "hyd_rdbD1641";
-
+							newcName = "run_rdbD1641";
+    
 						action_WSIDI = 2; // Skip all actions on update
+
+						System.out.println(cName + ":-"+newcName);
 						((JRadioButton) swix.find(newcName)).setSelected(true);
+						
 						action_WSIDI = 1;
 
 					} else {
