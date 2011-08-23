@@ -410,8 +410,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		JComponent component1 = (JComponent) swix.find("scrOpValues");
 		JTable table1 = (JTable) swix.find("tblOpValues");
 
-		//component1.setVisible(true);
-		//component1.setEnabled(true);
+		component1.setVisible(true);
+		component1.setEnabled(true);
 		populateDTable("op_btn1", table1, component1);
 		populateDTable("op_btn2", table1, component1);
 
@@ -1226,8 +1226,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			populateDTable(cName, table, component);
 
 			// pan.setBorder(title);
+			//JComponent box = (JComponent) swix.find("Op_Box");
+			//box.setVisible(true);
 			component.setEnabled(true);
 			table.setVisible(true);
+			
+			mainmenu.revalidate();
 
 		} else if (e.getActionCommand().startsWith("Op_Copy")) {
 

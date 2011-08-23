@@ -1641,7 +1641,7 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="2"
 								gridy="1" gridheight="2" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<HBox preferredsize="350,450">
+						<HBox name="Op_Box" id="Op_Box" preferredsize="350,450">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
 							<scrollpane id="scrOpValues" layout="BorderLayout"
