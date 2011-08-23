@@ -537,7 +537,7 @@
 										gridx="1" gridy="1" gridwidth="2" />
 								</numtextfield>
 								<label id="demtxt3_t"
-									text="AG (cannot exceed Table A value of 1047 TAF/yr)">
+									text="AG (cannot exceed Table A value of 1032.1 TAF/yr)">
 									<gridbagconstraints insets="0,5,5,20"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 								</label>
