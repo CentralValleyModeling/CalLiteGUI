@@ -42,7 +42,7 @@ public class DSS_Grabber {
 
 	private JList lstScenarios;
 	private String baseName;
-	private String locationName;
+	public String locationName;
 	public String primaryDSSName;
 	private String secondaryDSSName;
 
@@ -127,15 +127,28 @@ public class DSS_Grabber {
 		locationName = string;
 		primaryDSSName = null;
 		secondaryDSSName = null;
-		for (int i = 0; i < com.limno.calgui.MainMenu.getLookupsLength(); i++) {
-			if (string.endsWith(com.limno.calgui.MainMenu.getLookups(i, 0))) {
-				primaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 1);
-				secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
-				yLabel = com.limno.calgui.MainMenu.getLookups(i, 3);
-				title = com.limno.calgui.MainMenu.getLookups(i, 4);
-				sLabel = com.limno.calgui.MainMenu.getLookups(i, 5);
+		if (string.startsWith("SchVw")) {
+			// Schematic view uses Table5 in mainMenu; this should be combined with GUI_Links3 table
+			for (int i = 0; i < com.limno.calgui.MainMenu.getLookups5Length(); i++) {
+				if (string.toUpperCase().endsWith(com.limno.calgui.MainMenu.getLookups5(i, 0))) {
+					primaryDSSName = com.limno.calgui.MainMenu.getLookups5(i, 1);
+					secondaryDSSName = com.limno.calgui.MainMenu.getLookups5(i, 2);
+					yLabel = com.limno.calgui.MainMenu.getLookups5(i, 3);
+					title = com.limno.calgui.MainMenu.getLookups5(i, 4);
+					sLabel = com.limno.calgui.MainMenu.getLookups5(i, 5);
+				}
 			}
-		}
+		} else
+
+			for (int i = 0; i < com.limno.calgui.MainMenu.getLookupsLength(); i++) {
+				if (string.endsWith(com.limno.calgui.MainMenu.getLookups(i, 0))) {
+					primaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 1);
+					secondaryDSSName = com.limno.calgui.MainMenu.getLookups(i, 2);
+					yLabel = com.limno.calgui.MainMenu.getLookups(i, 3);
+					title = com.limno.calgui.MainMenu.getLookups(i, 4);
+					sLabel = com.limno.calgui.MainMenu.getLookups(i, 5);
+				}
+			}
 	}
 
 	public void setLocationWeb(String string) {
@@ -246,13 +259,16 @@ public class DSS_Grabber {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
-		String aPart="CALLITE";
+		String aPart = "CALLITE";
+		aPart = "CALSIM";
+
 		try {
 			hD = HecDss.open(dssFilename);
 
 			Vector<String> aList = hD.getPathnameList();
 			Iterator<String> it = aList.iterator();
 			String hecFPart = (String) it.next();
+			System.out.println(hecFPart);
 			hecFPart = hecFPart.substring(hecFPart.length() - 9);
 			System.out.println(hecFPart);
 
@@ -267,7 +283,7 @@ public class DSS_Grabber {
 				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
 			}
 
-			result = (TimeSeriesContainer) hD.get("/"+aPart+"/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
+			result = (TimeSeriesContainer) hD.get("/" + aPart + "/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
 
 			if ((result == null) || (result.numberValues < 1)) {
 
@@ -275,7 +291,7 @@ public class DSS_Grabber {
 
 			} else {
 				for (int i = 1; i < dssNames.length; i++) {
-					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/"+aPart+"/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
+					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/" + aPart + "/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
 					if (result2 == null) {
 						JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 								JOptionPane.ERROR_MESSAGE);
@@ -322,32 +338,47 @@ public class DSS_Grabber {
 
 	public TimeSeriesContainer[] getPrimarySeries() {
 
-		// Store number of scenarios
+		TimeSeriesContainer[] results;
+		if (locationName.contains("SchVw") && primaryDSSName.contains(",")) {
 
-		scenarios = lstScenarios.getModel().getSize();
-		TimeSeriesContainer[] results = new TimeSeriesContainer[scenarios];
+			// Special handling for DEMO of schematic view - treat multiple series as multiple scenarios
+			// Longer-term approach is probably to add a rank to arrays storing all series
 
-		// Base first
+			String[] dssNames = primaryDSSName.split(",");
+			scenarios = dssNames.length;
+			results = new TimeSeriesContainer[scenarios];
+			for (int i = 0; i < scenarios; i++)
+				results[i] = getOneSeries(baseName, dssNames[i]);
+			
+			originalUnits = results[0].units;
 
-		results[0] = getOneSeries(baseName, primaryDSSName);
-		originalUnits = results[0].units;
+		} else {
+			// Store number of scenarios
 
-		// Then scenarios
+			scenarios = lstScenarios.getModel().getSize();
+			results = new TimeSeriesContainer[scenarios];
 
-		int j = 0;
-		for (int i = 0; i < scenarios; i++) {
-			String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
-			if (!baseName.equals(scenarioName)) {
-				j = j + 1;
-				results[j] = getOneSeries(scenarioName, primaryDSSName);
+			// Base first
+
+			results[0] = getOneSeries(baseName, primaryDSSName);
+			originalUnits = results[0].units;
+
+			// Then scenarios
+
+			int j = 0;
+			for (int i = 0; i < scenarios; i++) {
+				String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
+				if (!baseName.equals(scenarioName)) {
+					j = j + 1;
+					results[j] = getOneSeries(scenarioName, primaryDSSName);
+				}
 			}
 		}
-
 		return results;
 	}
 
 	public TimeSeriesContainer[] getSecondarySeries() {
-		if (secondaryDSSName.equals("")) {
+		if (secondaryDSSName.equals("") || secondaryDSSName.equals("null")) {
 			return null;
 		} else {
 			scenarios = lstScenarios.getModel().getSize();

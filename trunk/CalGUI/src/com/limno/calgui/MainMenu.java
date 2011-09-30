@@ -145,8 +145,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	static public String lookups[][];
 
-	String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI
-						// files
+	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as
+								// WSI_DI
+	// files
+	static String table5[][]; // Holds DSS Schematic link values
+	// files
 
 	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO
 
@@ -170,18 +173,33 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	 */
 	public MainMenu() throws Exception {
 
-		// Read GUI_Links4.table and place in Table4
+		// Read Schematic_DSS_link4.table and place in Table5
+
+		ArrayList GUILinks5 = new ArrayList();
+		GUILinks5 = GUI_Utils.GetGUILinks("Config\\Schematic_DSS_link4.table");
+		table5 = new String[GUILinks5.size()][6];
+		for (int i = 0; i < GUILinks5.size(); i++) {
+			String tokens[] = ((String) GUILinks5.get(i)).split("\t");
+			table5[i][0] = tokens[0];
+			table5[i][1] = tokens[1];
+			table5[i][2] = tokens[2];
+			table5[i][3] = tokens[3];
+			table5[i][4] = tokens[4];
+			table5[i][5] = tokens[5];
+		}
+
+		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV, init file, etc.)
 
 		ArrayList GUILinks4 = new ArrayList();
 		GUILinks4 = GUI_Utils.GetGUILinks("Config\\GUI_Links4.table");
 		table4 = new String[GUILinks4.size()][5];
 		for (int i = 0; i < GUILinks4.size(); i++) {
 			String tokens[] = ((String) GUILinks4.get(i)).split("\t");
-			table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-			table4[i][1] = tokens[4];
-			table4[i][2] = tokens[5];
-			table4[i][3] = tokens[6];
-			table4[i][4] = tokens[7];
+			table4[i][0] = tokens[0];
+			table4[i][1] = tokens[1];
+			table4[i][2] = tokens[2];
+			table4[i][3] = tokens[3];
+			table4[i][4] = tokens[4];
 		}
 
 		// Code added to disable logger
@@ -262,9 +280,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite_sample.svg", this);
-		schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396, 0.5477924346923828);
-		schemView.setAffineTransform(0.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
+		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir") + "/Config/callite.svg", this);
+		// schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0, 0.5716912122078099, -114.55489341333396,
+		// 0.5477924346923828);
+		// schemView.setAffineTransform(9.1666667, 0.0, 0.0, 0.1666667, 320.0, 0.0);
 
 		// // Load in WRIMS functionality
 
@@ -380,15 +399,19 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// TODO (?) - cycling spinner?
 		JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
 		JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
-		spnSM.setModel(monthModel);
-		spnEM.setModel(monthModel2);
+		SpinnerListModel monthModel1a = new SpinnerListModel(monthNames);
+		SpinnerListModel monthModel2a = new SpinnerListModel(monthNames);
+		spnSM.setModel(monthModel1a);
+		spnEM.setModel(monthModel2a);
 		// Set up year spinners
 		// TODO - Get years from scenarios rather than fixed
 		// TODO (?) - Control spinner so end year >= start year
 		JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
 		JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
-		spnSY.setModel(yearModel1);
-		spnEY.setModel(yearModel2);
+		SpinnerModel yearModel1a = new SpinnerNumberModel(1921, 1921, 2003, 1);
+		SpinnerModel yearModel2a = new SpinnerNumberModel(2003, 1921, 2003, 1);
+		spnSY.setModel(yearModel1a);
+		spnEY.setModel(yearModel2a);
 		spnSY.setEditor(new JSpinner.NumberEditor(spnSY, "####"));
 		spnEY.setEditor(new JSpinner.NumberEditor(spnEY, "####"));
 
@@ -405,7 +428,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		action_WSIDI = 0;
 		RegUserEdits = GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
 		action_WSIDI = 1;
-		
+
 		JPanel pan = (JPanel) swix.find("op_panTab");
 		JComponent component1 = (JComponent) swix.find("scrOpValues");
 		JTable table1 = (JTable) swix.find("tblOpValues");
@@ -671,12 +694,12 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							newcName = "run_rdbBO";
 						else if (cName.equals("run_rdbBO"))
 							newcName = "run_rdbD1641";
-    
+
 						action_WSIDI = 2; // Skip all actions on update
 
-						System.out.println(cName + ":-"+newcName);
+						System.out.println(cName + ":-" + newcName);
 						((JRadioButton) swix.find(newcName)).setSelected(true);
-						
+
 						action_WSIDI = 1;
 
 					} else {
@@ -1226,11 +1249,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			populateDTable(cName, table, component);
 
 			// pan.setBorder(title);
-			//JComponent box = (JComponent) swix.find("Op_Box");
-			//box.setVisible(true);
+			// JComponent box = (JComponent) swix.find("Op_Box");
+			// box.setVisible(true);
 			component.setEnabled(true);
 			table.setVisible(true);
-			
+
 			mainmenu.revalidate();
 
 		} else if (e.getActionCommand().startsWith("Op_Copy")) {
@@ -1954,10 +1977,10 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		for (int i = 0; i < locationNames.length; i++) {
 
 			dss_Grabber.setLocation(locationNames[i]);
+
 			if (dss_Grabber.primaryDSSName == null)
 				JOptionPane.showMessageDialog(desktop, "No GUI_Links3.table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
-			else
-			if (dss_Grabber.primaryDSSName.equals(""))
+			else if (dss_Grabber.primaryDSSName.equals(""))
 				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
 			else {
 
@@ -2058,6 +2081,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				ChartPanel1 cp2;
 
 				if (doTimeSeries) {
+					if (dss_Grabber.locationName.contains("SchVw") && dss_Grabber.primaryDSSName.contains(",")) {
+						cp2 = new ChartPanel1("SchVw" + dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper,
+								lower, dss_Grabber.primaryDSSName, false); // abuse slabel to pass individual dataset names
+						tabbedpane.insertTab("Time Series (experimental)", null, cp2, null, 0);
+
+					} else
+
 					if (doBase) {
 						cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper,
 								lower, dss_Grabber.getSLabel(), doBase);
@@ -2173,8 +2203,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				dss_Grabber.setBase(item.toString());
 		}
 
-		String locationNames[] = locations.split(",");
 		String namesText[] = names.split(",");
+		String locationNames[] = locations.split(",");
+
+		// String locationNames[]; // Differentiate between schematicandnon-schematic view
+		// boolean isSchematicView = locations.startsWith("SchVw"); // TODO - Look at using currently visible panel to
+		// do this check
+		// if (isSchematicView)
+		// locationNames = locations.substring(5).split(",");
+		// else
+		// locationNames = locations.split(",");
+		//
 
 		for (int i = 0; i < locationNames.length; i++) {
 
@@ -2702,6 +2741,14 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	public static int getLookupsLength() {
 		return lookups.length;
+	}
+
+	public static String getLookups5(int i, int j) {
+		return table5[i][j];
+	}
+
+	public static int getLookups5Length() {
+		return table5.length;
 	}
 
 	public void SetRegCheckBoxes(String cName, Boolean isSelect) {
