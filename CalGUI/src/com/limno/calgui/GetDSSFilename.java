@@ -197,7 +197,8 @@ public class GetDSSFilename implements ActionListener {
 						lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
 				}
 				if (match) {
-					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\" is already in the Scenario list.","Alert",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"+
+							"and will not be added. It is already in the Scenarios list.","Alert",JOptionPane.ERROR_MESSAGE);
 				} else {
 					if (theList == null || lmScenNames.getSize() == 1) {
 						if (theList != null)

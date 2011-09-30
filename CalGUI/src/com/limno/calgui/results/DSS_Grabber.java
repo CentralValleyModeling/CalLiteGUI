@@ -260,7 +260,7 @@ public class DSS_Grabber {
 		HecDss hD;
 		TimeSeriesContainer result = null;
 		String aPart = "CALLITE";
-		aPart = "CALSIM";
+//		aPart = "CALSIM";
 
 		try {
 			hD = HecDss.open(dssFilename);
