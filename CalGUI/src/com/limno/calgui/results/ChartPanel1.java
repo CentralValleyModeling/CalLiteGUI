@@ -23,8 +23,14 @@ import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.AxisLocation;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CombinedDomainXYPlot;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.util.RectangleInsets;
 import org.jfree.data.Range;
@@ -53,9 +59,9 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
 			Date upper, String sLabel) {
-		this(title,yLabel,tscs,stscs,isExceed,lower,upper,sLabel,false);
+		this(title, yLabel, tscs, stscs, isExceed, lower, upper, sLabel, false);
 	}
-	
+
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed, Date lower,
 			Date upper, String sLabel, boolean isBase) {
 
@@ -80,17 +86,26 @@ public class ChartPanel1 extends JPanel implements Printable {
 		} else
 			sName = sLabel;
 
+		boolean isSchVw = false;
+		String[] svNames = null;
+
+		if (title.startsWith("SchVw")) {
+			title = title.substring(5);
+			isSchVw = true;
+			svNames = sLabel.split(",");
+		}
+
 		if (isExceed) {
 
 			// Primary datasets
 
 			XYSeriesCollection dataset = new XYSeriesCollection();
-			XYSeries[] series = new XYSeries[(isBase ? 1: tscs.length)];
+			XYSeries[] series = new XYSeries[(isBase ? 1 : tscs.length)];
 			for (int i = 0; i < (isBase ? 1 : tscs.length); i++) {
 				series[i] = new XYSeries(tscs[i].fileName);
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
-					series[i].add((double) (100.0 * j / (tscs[i].numberValues - 1)), tscs[i].values[j]);
+					series[i].add((double) (100.0 - 100.0 * j / (tscs[i].numberValues - 1)), tscs[i].values[j]);
 				}
 				dataset.addSeries(series[i]);
 				if (ymin > tscs[i].minimumValue())
@@ -102,16 +117,16 @@ public class ChartPanel1 extends JPanel implements Printable {
 			// Secondary datasets
 
 			if (stscs != null) {
-				XYSeries[] sseries = new XYSeries[(isBase ? 1: stscs.length)];
-				for (int i = 0; i < (isBase ? 1: stscs.length); i++) {
+				XYSeries[] sseries = new XYSeries[(isBase ? 1 : stscs.length)];
+				for (int i = 0; i < (isBase ? 1 : stscs.length); i++) {
 					if (stscs[i].numberValues > 0) {
 						sseries[i] = new XYSeries(sName);
 						double maxval = -1e37;
 						for (int j = 0; j < stscs[i].numberValues; j++) {
 							if (stscs[i].values[j] == 99000)
-								sseries[i].add((double) (100.0 * j / (stscs[i].numberValues - 1)), null);
+								sseries[i].add((double) (100.0 - 100.0 * j / (stscs[i].numberValues - 1)), null);
 							else {
-								sseries[i].add((double) (100.0 * j / (stscs[i].numberValues - 1)), stscs[i].values[j]);
+								sseries[i].add((double) (100.0 - 100.0 * j / (stscs[i].numberValues - 1)), stscs[i].values[j]);
 								if (maxval < stscs[i].values[j])
 									maxval = stscs[i].values[j];
 							}
@@ -135,57 +150,144 @@ public class ChartPanel1 extends JPanel implements Printable {
 		} else {
 
 			HecTime ht = new HecTime();
-			TimeSeriesCollection dataset = new TimeSeriesCollection();
+			TimeSeries[] series = new TimeSeries[(isBase ? 1 : tscs.length)];
 
-			TimeSeries[] series = new TimeSeries[(isBase ? 1: tscs.length)];
-			for (int i = 0; i < (isBase ? 1: tscs.length); i++) {
-				series[i] = new TimeSeries(tscs[i].fileName);
-				primaries++;
-				for (int j = 0; j < tscs[i].numberValues; j++) {
-					ht.set(tscs[i].times[j]);
-					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
-				}
+			if (isSchVw && sLabel.contains("EVAPORATION")) {
+				
+				// MULTIPLE (COMBINED) CHARTS FOR SCHEMATIC VIEW
 
-				dataset.addSeries(series[i]);
-				if (ymin > tscs[i].minimumValue())
-					ymin = tscs[i].minimumValue();
-				if (ymax < tscs[i].maxmimumValue())
-					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
-			}
-
-			if (stscs != null) {
-				TimeSeries[] sseries = new TimeSeries[(isBase ? 1: stscs.length)];
-				for (int i = 0; i < (isBase ? 1: stscs.length); i++) {
-					if (stscs[i].numberValues > 0) {
-						sseries[i] = new TimeSeries(sName);
-						double maxval = -1e37;
-						for (int j = 0; j < stscs[i].numberValues; j++) {
-							ht.set(stscs[i].times[j]);
-							if (stscs[i].values[j] == 99000)
-								sseries[i].add(new Month(ht.month(), ht.year()), null);
-							else {
-								sseries[i].addOrUpdate(new Month(ht.month(), ht.year()), stscs[i].values[j]);
-								if (maxval < stscs[i].values[j])
-									maxval = stscs[i].values[j];
-							}
-						}
-						dataset.addSeries(sseries[i]);
-						if (ymin > stscs[i].minimumValue())
-							ymin = stscs[i].minimumValue();
-						if (ymax < maxval)
-							ymax = maxval; // typo in HEC DSS
-											// classes?
+				// Build the data series
+				for (int i = 0; i < (isBase ? 1 : tscs.length); i++) {
+					if (isSchVw)
+						series[i] = new TimeSeries("");
+					else
+						series[i] = new TimeSeries(tscs[i].fileName);
+					for (int j = 0; j < tscs[i].numberValues; j++) {
+						ht.set(tscs[i].times[j]);
+						series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
 					}
 				}
+
+				// Subplot 1 - STORAGE
+				
+				TimeSeriesCollection dataset1 = new TimeSeriesCollection();
+				dataset1.addSeries(series[0]);
+				XYItemRenderer renderer1 = new StandardXYItemRenderer();
+				NumberAxis rangeAxis1 = new NumberAxis("Storage (" + tscs[0].units + ")");
+				XYPlot subplot1 = new XYPlot(dataset1, null, rangeAxis1, renderer1);
+				subplot1.setRangeAxisLocation(AxisLocation.BOTTOM_OR_LEFT);
+				subplot1.setBackgroundPaint(Color.WHITE); // White background
+				subplot1.setDomainGridlinesVisible(false); // No gridlines
+				subplot1.setRangeGridlinesVisible(false);
+				subplot1.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
+
+				// SUBPLOT2 - EVAPORATION ...
+				
+				TimeSeriesCollection dataset2 = new TimeSeriesCollection();
+				dataset2.addSeries(series[1]);
+				NumberAxis rangeAxis2 = new NumberAxis("Evaporation (" + tscs[1].units + ")");
+				
+				XYPlot subplot2 = new XYPlot(dataset2, null, rangeAxis2, renderer1);
+				subplot2.setRangeAxisLocation(AxisLocation.BOTTOM_OR_LEFT);
+				subplot2.setBackgroundPaint(Color.WHITE); // White background
+				subplot2.setDomainGridlinesVisible(false); // No gridlines
+				subplot2.setRangeGridlinesVisible(false);
+				subplot2.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
+
+				// ... and SURFACE AREA
+				
+				TimeSeriesCollection dataset2a = new TimeSeriesCollection();
+				dataset2a.addSeries(series[2]);
+				subplot2.setDataset(1,dataset2a);
+				NumberAxis axis2 = new NumberAxis("Surface Area (" + tscs[2].units + ")");
+				subplot2.setRangeAxis(1, axis2);
+				subplot2.setRangeAxisLocation(1, AxisLocation.BOTTOM_OR_RIGHT);
+				subplot2.mapDatasetToRangeAxis(1,1);
+				final XYItemRenderer renderer2 = new StandardXYItemRenderer();
+				subplot2.setRenderer(1, renderer2);
+				axis2.setTickLabelPaint(ChartColor.BLUE);
+				
+
+				// SUBPLOT 3 - FLOWS
+				
+				TimeSeriesCollection dataset3 = new TimeSeriesCollection();
+				dataset3.addSeries(series[3]);
+				if (stscs.length > 4)
+					dataset3.addSeries(series[4]);
+					
+				final NumberAxis rangeAxis3 = new NumberAxis("Flow (" + tscs[3].units + ")");
+				XYPlot subplot3 = new XYPlot(dataset3, null, rangeAxis3, renderer1);
+				subplot3.setRangeAxisLocation(AxisLocation.BOTTOM_OR_LEFT);
+				subplot3.setBackgroundPaint(Color.WHITE); // White background
+				subplot3.setDomainGridlinesVisible(false); // No gridlines
+				subplot3.setRangeGridlinesVisible(false);
+				subplot3.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
+
+				// COMBINE THE SUBPLOTS
+				
+				CombinedDomainXYPlot plot = new CombinedDomainXYPlot(new DateAxis(""));
+				plot.add(subplot1, 1);
+				plot.add(subplot2, 1);
+				plot.add(subplot3, 1);
+				plot.setGap(15.0);
+				plot.setOrientation(PlotOrientation.VERTICAL);
+				chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT, plot, false);
+				
+				//TODO: HANDLE LEGEND AND MULTIPLE SCENARIOS
+
+			} else {
+				TimeSeriesCollection dataset = new TimeSeriesCollection();
+				for (int i = 0; i < (isBase ? 1 : tscs.length); i++) {
+					if (isSchVw)
+						series[i] = new TimeSeries(svNames[i]);
+					else
+						series[i] = new TimeSeries(tscs[i].fileName);
+					primaries++;
+					for (int j = 0; j < tscs[i].numberValues; j++) {
+						ht.set(tscs[i].times[j]);
+						series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
+					}
+
+					dataset.addSeries(series[i]);
+					if (ymin > tscs[i].minimumValue())
+						ymin = tscs[i].minimumValue();
+					if (ymax < tscs[i].maxmimumValue())
+						ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+				}
+
+				if (stscs != null) {
+					TimeSeries[] sseries = new TimeSeries[(isBase ? 1 : stscs.length)];
+					for (int i = 0; i < (isBase ? 1 : stscs.length); i++) {
+						if (stscs[i].numberValues > 0) {
+							sseries[i] = new TimeSeries(sName);
+							double maxval = -1e37;
+							for (int j = 0; j < stscs[i].numberValues; j++) {
+								ht.set(stscs[i].times[j]);
+								if (stscs[i].values[j] == 99000)
+									sseries[i].add(new Month(ht.month(), ht.year()), null);
+								else {
+									sseries[i].addOrUpdate(new Month(ht.month(), ht.year()), stscs[i].values[j]);
+									if (maxval < stscs[i].values[j])
+										maxval = stscs[i].values[j];
+								}
+							}
+							dataset.addSeries(sseries[i]);
+							if (ymin > stscs[i].minimumValue())
+								ymin = stscs[i].minimumValue();
+							if (ymax < maxval)
+								ymax = maxval; // typo in HEC DSS
+												// classes?
+						}
+					}
+				}
+
+				chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
+						"Time (1MON)", // x-axis label //TODO - Hard-coded to
+										// monthly!
+						yLabel + " (" + tscs[0].units + ")", // y-axis label
+						dataset, // data
+						true); // create and display a frame...
 			}
-
-			chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
-					"Time (1MON)", // x-axis label //TODO - Hard-coded to
-									// monthly!
-					yLabel + " (" + tscs[0].units + ")", // y-axis label
-					dataset, // data
-					true); // create and display a frame...
-
 		}
 
 		chart.setBackgroundPaint(Color.WHITE);
@@ -198,11 +300,13 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 		XYItemRenderer r = plot.getRenderer();
 
-		if (plot.getDataset(0).getSeriesCount() >= 4) // Fourth series assumed yellow, switched to black
-				r.setSeriesPaint(3, ChartColor.BLACK);
+		if (plot instanceof CombinedDomainXYPlot)
+			;
+		else if (plot.getDataset(0).getSeriesCount() >= 4) // Fourth series assumed yellow, switched to black
+			r.setSeriesPaint(3, ChartColor.BLACK);
 
 		if (stscs != null) { // Secondary time series as dashed lines
-			for (int t = 0; t < (isBase ? 1: stscs.length); t++) {
+			for (int t = 0; t < (isBase ? 1 : stscs.length); t++) {
 				Stroke stroke = new BasicStroke(1.0f, // Width
 						BasicStroke.CAP_SQUARE, // End cap
 						BasicStroke.JOIN_MITER, // Join style
@@ -214,6 +318,9 @@ public class ChartPanel1 extends JPanel implements Printable {
 		}
 
 		ValueAxis axis = plot.getDomainAxis();
+		if (isExceed)
+			axis.setInverted(true);
+
 		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
 		if (isExceed)
 			axis.setRange(0.0, 100.0);
@@ -226,18 +333,31 @@ public class ChartPanel1 extends JPanel implements Printable {
 			ymax += 0.05;
 			ymin -= 0.05;
 		}
-		axis = plot.getRangeAxis();
-		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
-		axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
-
+		if (plot instanceof CombinedDomainXYPlot)
+			;
+		else {
+			axis = plot.getRangeAxis();
+			axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
+			axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
+		}
 		plot.setDomainPannable(true);
 		plot.setRangePannable(true);
 
-		ChartPanel p1 = new ChartPanel(chart);
+		final ChartPanel p1 = new ChartPanel(chart);
 
 		// Copy title, all data series to clipboard
 
 		JPopupMenu popupmenu = p1.getPopupMenu();
+		JMenuItem item0 = popupmenu.add("Reset Axes");
+		item0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// JMenuItem mi = (JMenuItem) e.getSource();
+				// JPopupMenu pm = (JPopupMenu) mi.getParent();
+				// ChartPanel cp = (ChartPanel) pm.getParent();
+				// cp.restoreAutoBounds();
+				p1.restoreAutoBounds();
+			}
+		});
 		JMenuItem item = popupmenu.add("Copy Data");
 		item.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -252,41 +372,50 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 		p1.setPreferredSize(new Dimension(800, 600));
 		this.setLayout(new BorderLayout());
+
 		this.add(p1);
 
-		// Put data in buffer for clipboard
+		if (isSchVw) {
+			ChartPanel p2 = new ChartPanel(chart);
+			this.add(p2);
+		}
+		if (plot instanceof CombinedDomainXYPlot)
+			;
+		else {
+			// Put data in buffer for clipboard
 
-		buffer = title + "\n";
+			buffer = title + "\n";
 
-		// Dataset titles
+			// Dataset titles
 
-		XYDataset dataset = plot.getDataset();
-		for (int i = 0; i < dataset.getSeriesCount(); i++)
-			buffer = buffer + dataset.getSeriesKey(i).toString() + "\t\t\t";
-
-		buffer = buffer + "\n";
-
-		for (int i = 0; i < dataset.getSeriesCount(); i++)
-			buffer = buffer + (isExceed ? "%" : "Date") + "\t" + axis.getLabel() + "\t\t";
-
-		buffer = buffer + "\n";
-
-		// Data
-		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-		for (int j = 0; j < dataset.getItemCount(0); j++) {
-
+			XYDataset dataset = plot.getDataset();
 			for (int i = 0; i < dataset.getSeriesCount(); i++)
-				if (j < dataset.getItemCount(i)) {
-					if (isExceed)
-
-						buffer = buffer + dataset.getXValue(i, j) + "\t" + dataset.getYValue(i, j) + "\t\t";
-					else {
-						buffer = buffer + df.format(new Date((long) dataset.getXValue(i, j))) + "\t" + dataset.getYValue(i, j) + "\t\t";
-					}
-				} else
-					buffer = buffer + "\t\t\t";
+				buffer = buffer + dataset.getSeriesKey(i).toString() + "\t\t\t";
 
 			buffer = buffer + "\n";
+
+			for (int i = 0; i < dataset.getSeriesCount(); i++)
+				buffer = buffer + (isExceed ? "%" : "Date") + "\t" + axis.getLabel() + "\t\t";
+
+			buffer = buffer + "\n";
+
+			// Data
+			SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+			for (int j = 0; j < dataset.getItemCount(0); j++) {
+
+				for (int i = 0; i < dataset.getSeriesCount(); i++)
+					if (j < dataset.getItemCount(i)) {
+						if (isExceed)
+
+							buffer = buffer + dataset.getXValue(i, j) + "\t" + dataset.getYValue(i, j) + "\t\t";
+						else {
+							buffer = buffer + df.format(new Date((long) dataset.getXValue(i, j))) + "\t" + dataset.getYValue(i, j) + "\t\t";
+						}
+					} else
+						buffer = buffer + "\t\t\t";
+
+				buffer = buffer + "\n";
+			}
 		}
 	}
 

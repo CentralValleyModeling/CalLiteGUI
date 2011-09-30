@@ -155,7 +155,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		columns.addElement("All");
+		columns.addElement("All (TAF)");
 
 		// loop over all Primary datasets
 

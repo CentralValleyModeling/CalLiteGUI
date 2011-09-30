@@ -19,6 +19,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
@@ -67,14 +68,14 @@ public class GetDSSFilename implements ActionListener {
 		theFileExt = aFileExt;
 		Setup(aList);
 	}
-	
-	public GetDSSFilename(JList aList, JLabel aLabel, JRadioButton rdb1,JRadioButton rdb2 ) {
+
+	public GetDSSFilename(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
 		Setup(aList);
-		rdbopt1=rdb1;
-		rdbopt2=rdb2;
+		rdbopt1 = rdb1;
+		rdbopt2 = rdb2;
 	}
 
 	public int dialogRC;
@@ -92,10 +93,10 @@ public class GetDSSFilename implements ActionListener {
 				fc.setCurrentDirectory(new File(".//Config"));
 		}
 		if (aList != null) {
-			
+
 			lmScenNames = new DefaultListModel();
 			lmScenNames.addListDataListener(new MyListDataListener());
-			
+
 			theList = aList;
 			theList.setCellRenderer(new RBListRenderer());
 			theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -131,26 +132,28 @@ public class GetDSSFilename implements ActionListener {
 			});
 		}
 	}
-	
+
 	class MyListDataListener implements ListDataListener {
-	    public void contentsChanged(ListDataEvent e) {
-	    	//System.out.println("Changed");
-	    }
-	    public void intervalAdded(ListDataEvent e) {
-	    	//System.out.println(lmScenNames.getSize());
-	    	if (rdbopt1 != null &&  rdbopt2 != null){
-	    		rdbopt1.setEnabled(lmScenNames.getSize()>1);
-	    		rdbopt2.setEnabled(lmScenNames.getSize()>1);
-	    	}
-	    }
-	    public void intervalRemoved(ListDataEvent e) {
-	    	//System.out.println(lmScenNames.getSize());
-	    	if (rdbopt1 != null &&  rdbopt2 != null){
-	    		rdbopt1.setEnabled(lmScenNames.getSize()>1);
-	    		rdbopt2.setEnabled(lmScenNames.getSize()>1);
-	    	}
-	    }
-	} 
+		public void contentsChanged(ListDataEvent e) {
+			// System.out.println("Changed");
+		}
+
+		public void intervalAdded(ListDataEvent e) {
+			// System.out.println(lmScenNames.getSize());
+			if (rdbopt1 != null && rdbopt2 != null) {
+				rdbopt1.setEnabled(lmScenNames.getSize() > 1);
+				rdbopt2.setEnabled(lmScenNames.getSize() > 1);
+			}
+		}
+
+		public void intervalRemoved(ListDataEvent e) {
+			// System.out.println(lmScenNames.getSize());
+			if (rdbopt1 != null && rdbopt2 != null) {
+				rdbopt1.setEnabled(lmScenNames.getSize() > 1);
+				rdbopt2.setEnabled(lmScenNames.getSize() > 1);
+			}
+		}
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
@@ -172,7 +175,7 @@ public class GetDSSFilename implements ActionListener {
 			if (theFileExt == null)
 				rc = fc.showOpenDialog(null);
 			else
-				rc = fc.showDialog(null,  theFileExt.equals("DSS") ? "Open" : "Save");
+				rc = fc.showDialog(null, theFileExt.equals("DSS") ? "Open" : "Save");
 
 			dialogRC = rc;
 			File file;
@@ -184,26 +187,37 @@ public class GetDSSFilename implements ActionListener {
 				if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
 					file = new File(file.getPath() + ".CLS");
 				}
-				if (theList != null)
-					lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
-				if (theList == null || lmScenNames.getSize() == 1) {
-					if (theList != null)
-						((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
-					if (theLabel != null) {
-						// theLabel.setText(file.getName());
-						// theLabel.setToolTipText(file.getPath());
-					} else if (theTextField != null){
-						theTextField.setText(file.getName());
-						theTextField.setToolTipText(file.getPath());
-					}
-				}
+				boolean match = false;
 				if (theList != null) {
-					theList.ensureIndexIsVisible(lmScenNames.getSize()-1);
-					theList.revalidate();
-					theList.validate();
-					theList.getParent().invalidate();
+					for (int i = 0; i < lmScenNames.getSize(); i++) {
+						RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
+						match = match | (rbli.toString().equals(file.getPath()));
+					}
+					if (!match)
+						lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
 				}
-					
+				if (match) {
+					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\" is already in the Scenario list.","Alert",JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (theList == null || lmScenNames.getSize() == 1) {
+						if (theList != null)
+							((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
+						if (theLabel != null) {
+							// theLabel.setText(file.getName());
+							// theLabel.setToolTipText(file.getPath());
+						} else if (theTextField != null) {
+							theTextField.setText(file.getName());
+							theTextField.setToolTipText(file.getPath());
+						}
+					}
+					if (theList != null) {
+						theList.ensureIndexIsVisible(lmScenNames.getSize() - 1);
+						theList.revalidate();
+						theList.validate();
+						theList.getParent().invalidate();
+					}
+
+				}
 			}
 		}
 		return;
@@ -223,8 +237,7 @@ public class GetDSSFilename implements ActionListener {
 			theOwner = jFileChooser;
 		}
 
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-				boolean cellHasFocus) {
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 			JLabel lbl = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 			if (!theOwner.ToolTipFlag) {
 				theToolTips.clear();
@@ -242,7 +255,7 @@ public class GetDSSFilename implements ActionListener {
 								FileInputStream fin = new FileInputStream(listOfFiles[i]);
 								BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 								String theKey = br.readLine().toLowerCase();
-								String theValue = br.readLine()+"\n"+br.readLine()+"\n"+br.readLine();
+								String theValue = br.readLine() + "\n" + br.readLine() + "\n" + br.readLine();
 								theToolTips.put(theKey.toLowerCase(), theValue);
 							} catch (IOException e1) {
 								// TODO Auto-generated catch block
@@ -363,8 +376,7 @@ public class GetDSSFilename implements ActionListener {
 	// Handles rendering cells in the list using a check box
 
 	class RBListRenderer extends JRadioButton implements ListCellRenderer {
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-				boolean hasFocus) {
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
 			setEnabled(list.isEnabled());
 			setSelected(((RBListItem) value).isSelected());
 			setFont(list.getFont());

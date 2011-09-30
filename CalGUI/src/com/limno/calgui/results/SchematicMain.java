@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import org.apache.batik.script.Window;
 import org.apache.batik.swing.JSVGCanvas;
 import org.apache.batik.swing.JSVGScrollPane;
+import org.apache.batik.swing.gvt.GVTTreeRendererAdapter;
+import org.apache.batik.swing.gvt.GVTTreeRendererEvent;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.w3c.dom.Document;
@@ -41,7 +43,7 @@ public class SchematicMain {
 
 		AffineTransform t = new AffineTransform(m0, m1, m2, m3, m4, m5);
 		canvas.setRenderingTransform(t);
-	
+
 	}
 
 	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn) {
@@ -71,8 +73,19 @@ public class SchematicMain {
 			}
 		});
 
-		setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0); // Default values in ViewboxTransform
-		setAffineTransform(0.76, 0.0, 0.0, 0.76, -143, -187); //Desired values to start up with focus on fragment
+		canvas.addGVTTreeRendererListener(new GVTTreeRendererAdapter() {
+
+			@Override
+			public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
+				super.gvtRenderingCompleted(e);
+				canvas.setRenderingTransform(new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0), true);
+			}
+
+		});
+
+		// setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0); // Default
+		// values in ViewboxTransform
+		// setAffineTransform(0.76, 0.0, 0.0, 0.76, -143, -187); //Desired values to start up with focus on fragment
 		p.add("Center", new JSVGScrollPane(canvas));
 
 	}
@@ -115,64 +128,42 @@ public class SchematicMain {
 			System.out.println("Clicked on: " + evt.getTarget());
 
 			String label = null;
-
 			Element el = ((Element) evt.getTarget());
-
-			evt.stopPropagation();
-
+			String tag = el.getTagName();
+			System.out.println("Clicked on: " + evt.getTarget() + " " + tag);
 			Element pel = el;
+
+			// Get first text element in containing group
+
 			while (label == null && pel.getParentNode() != null && pel.getParentNode() instanceof Element) {
 
 				pel = (Element) pel.getParentNode();
 				String ptag = pel.getTagName();
 				if (ptag.equals("g")) {
+					// When first group is found, look for first text element
 					NodeList childNodes = pel.getChildNodes();
-					for (int i = 0; i < childNodes.getLength(); i++) {
+					for (int i = 0; (label == null) && (i < childNodes.getLength()); i++) {
 						Node item = childNodes.item(i);
 						if (item instanceof Element) {
 							Element ce = (Element) item;
-							//System.out.println("ce = " + ce.getTagName());
-							if (ce.getTagName().equals("title")) {
+							System.out.println("ce = tag:" + ce.getTagName() + " content: " + ce.getTextContent());
+							if (ce.getTagName().startsWith("text")) {
 								label = ce.getTextContent();
 							}
 						}
-					}		
+					}
 				}
-				
-			}
-//			System.out.println("Parent: " + ptag);
-//
-//			if (tag.startsWith("tspan")) // Not sure why, but seems to work
-//				pel = (Element) pel.getParentNode();
-//
-//			NodeList childNodes2 = pel.getChildNodes();
-//			for (int i = 0; i < childNodes2.getLength(); i++) {
-//				Node item = childNodes2.item(i);
-//				if (item instanceof Element) {
-//					Element ce = (Element) item;
-//					System.out.println("ce = " + ce.getTagName());
-//					if (ce.getTagName().equals("title")) {
-//						label = ce.getTextContent();
-//					}
-//				}
-//			}
 
-			if (label == null) {
-				//window.alert("No group identified for this tag");
+			}
+			if (label == null)
 				Toolkit.getDefaultToolkit().beep();
-			} else {
-				String titleParts[] = label.split("/");
-				if (titleParts.length < 2)
-					window.alert("No link found in group title '" + label + "'.");
-				else {
-					if (mainMenu.lstScenarios.getModel().getSize() == 0)
-						JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-					else
-						mainMenu.DisplayFrame(mainMenu.QuickState() + ";Locs-" + titleParts[0] + ";Index-" + titleParts[1]);
-				}
-
+			else {
+				if (mainMenu.lstScenarios.getModel().getSize() == 0) 
+					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
+				 else 
+					mainMenu.DisplayFrame(mainMenu.QuickState() + ";Locs-" + label + ";Index-" + "SchVw" + label);
 			}
-
+				
 			System.out.println("Title: " + label);
 
 			// if (tag.startsWith("polygon") || tag.startsWith("line")) {

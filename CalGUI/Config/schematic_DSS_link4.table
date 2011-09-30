@@ -1,0 +1,135 @@
+ID	Primary	Secondary	Ytitle	Title	Slegend
+TRINITY	S_TRNTY/STORAGE,E_TRNTY/EVAPORATION,A_TRNTY/SURFACE-AREA,C_TRNTY/FLOW-CHANNEL	null	Storage	Trinity Experimental View		null
+LEWISTON	C_TRNTY/FLOW-CHANNEL,C_LWSTN/FLOW-CHANNEL,D_CLEARTU/FLOW-TUNNEL	null	Flow	Flows at Lewiston	null
+S_TRNTY	S_TRNTY/STORAGE	null	Storage	Storage at Trinity	null
+C_ALAMO	C_ALAMO/FLOW-CHANNEL	null	Flow	Flow at ALAMO	null
+C_BNKEXP	C_BNKEXP/FLOW-CHANNEL	null	Flow	Flow at BNKEXP	null
+C_CHRISPP	C_CHRISPP/FLOW-CHANNEL	null	Flow	Flow at CHRISPP	null
+C_COASTAQDCT	C_COASTAQDCT/FLOW-CHANNEL	null	Flow	Flow at COASTAQDCT	null
+C_CONYIS	C_CONYIS/FLOW-CHANNEL	null	Flow	Flow at CONYIS	null
+C_CVC	C_CVC/FLOW-CHANNEL	null	Flow	Flow at CVC	null
+C_CVPJU	C_CVPJU/FLOW-CHANNEL	null	Flow	Flow at CVPJU	null
+C_DAGUER	C_DAGUER/FLOW-CHANNEL	null	Flow	Flow at DAGUER	null
+C_DELTA	C_DELTA/FLOW-CHANNEL	null	Flow	Flow at DELTA	null
+C_DSAMGC	C_DSAMGC/FLOW-CHANNEL	null	Flow	Flow at DSAMGC	null
+C_DSAMGS	C_DSAMGS/FLOW-CHANNEL	null	Flow	Flow at DSAMGS	null
+C_DXC	C_DXC/FLOW-CHANNEL	null	Flow	Flow at DXC	null
+C_FOLSM	C_FOLSM/FLOW-CHANNEL	null	Flow	Flow at FOLSM	null
+C_HOOD	C_HOOD/FLOW-CHANNEL	D_HOOD/FLOW-DELIVERY	Flow	Sacramento River at Hood	Diversion
+C_HST	C_HST/FLOW-CHANNEL	null	Flow	Flow at HST	null
+C_INDNSL	C_INDNSL/FLOW-CHANNEL	null	Flow	Flow at INDNSL	null
+C_INTRTI	C_INTRTI/FLOW-CHANNEL	null	Flow	Flow at INTRTI	null
+C_JTUTERM	C_JTUTERM/FLOW-CHANNEL	null	Flow	Flow at JTUTERM	null
+C_KCWA	C_KCWA/FLOW-CHANNEL	null	Flow	Flow at KCWA	null
+C_KSWCK	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+C_LASPER	C_LASPER/FLOW-CHANNEL	null	Flow	Flow at LASPER	null
+C_LWSTN	C_LWSTN/FLOW-CHANNEL	null	Flow	Flow at LWSTN	null
+C_MOKLMN	C_MOKLMN/FLOW-CHANNEL	null	Flow	Flow at MOKLMN	null
+C_MPOOL	C_MPOOL/FLOW-CHANNEL	null	Flow	Flow at MPOOL	null
+C_NBA	C_NBA/FLOW-CHANNEL	null	Flow	Flow at NBA	null
+C_NIMBUS	C_NIMBUS/FLOW-CHANNEL	C_NIMBUS_MIF/FLOW-MIN-INSTREAM	Flow	American River at Nimbus	Minimum Instream Flow
+C_OFBCVP	C_OFBCVP/FLOW-CHANNEL	null	Flow	Flow at OFBCVP	null
+C_OFBSWP	C_OFBSWP/FLOW-CHANNEL	null	Flow	Flow at OFBSWP	null
+C_OMR	C_OMR/FLOW-CHANNEL	C_INDNSL/FLOW-CHANNEL	Flow	Old and Middle River	Indian Slough Flow
+C_ONLFB	C_ONLFB/FLOW-CHANNEL	null	Flow	Flow at ONLFB	null
+C_OROVL	C_OROVL/FLOW-CHANNEL	null	Flow	Flow at OROVL	null
+C_OSO	C_OSO/FLOW-CHANNEL	null	Flow	Flow at OSO	null
+C_PEARBLPP	C_PEARBLPP/FLOW-CHANNEL	null	Flow	Flow at PEARBLPP	null
+C_REDBLF	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
+C_SACAME	C_SACAME/FLOW-CHANNEL	null	Flow	Flow at SACAME	null
+C_SACBI	C_SACBI/FLOW-CHANNEL	null	Flow	Flow at SACBI	null
+C_SACDXC	C_SACDXC/FLOW-CHANNEL	null	Flow	Flow at SACDXC	null
+C_SACFEA	C_SACFEA/FLOW-CHANNEL	null	Flow	Flow at SACFEA	null
+C_SACND	C_SACND/FLOW-CHANNEL	null	Flow	Flow at SACND	null
+C_SACRV	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento_River_at_Rio_Vista	Sacramento_River_Flow_Criteria_at_Rio_Vista
+C_SACSJR	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Net_Delta_Outflow	Detla_OutFlow_Criteria
+C_SBAY	C_SBAY/FLOW-CHANNEL	null	Flow	Flow at SBAY	null
+C_SHSTA	C_SHSTA/FLOW-CHANNEL	null	Flow	Flow at SHSTA	null
+C_SJRCAL	C_SJRCAL/FLOW-CHANNEL	null	Flow	Flow at SJRCAL	null
+C_SJRCD	C_SJRCD/FLOW-CHANNEL	null	Flow	Flow at SJRCD	null
+C_SJRMI	C_SJRMI/FLOW-CHANNEL	null	Flow	Flow at SJRMI	null
+C_SJRSTO	C_SJRSTO/FLOW-CHANNEL	null	Flow	Flow at SJRSTO	null
+C_SJRVER	C_SJRVER/FLOW-CHANNEL	null	Flow	Flow at SJRVER	null
+C_SJRVI	C_SJRVI/FLOW-CHANNEL	null	Flow	Flow at SJRVI	null
+C_SLCVP	C_SLCVP/FLOW-CHANNEL	null	Flow	Flow at SLCVP	null
+C_SLSWP	C_SLSWP/FLOW-CHANNEL	null	Flow	Flow at SLSWP	null
+C_SWPJU	C_SWPJU/FLOW-CHANNEL	null	Flow	Flow at SWPJU	null
+C_THERM	C_THERM/FLOW-CHANNEL	C_THERM_MIF/FLOW-MIN-INSTREAM	Flow	Feather River at Thermolito	Minimum Instream Flow
+C_TRMNS	C_TRMNS/FLOW-CHANNEL	null	Flow	Flow at TRMNS	null
+C_TRNTY	C_TRNTY/FLOW-CHANNEL	null	Flow	Flow at TRNTY	null
+C_UPDMC	C_UPDMC/FLOW-CHANNEL	null	Flow	Flow at UPDMC	null
+C_VRNLIS	C_VRNLIS/FLOW-CHANNEL	null	Flow	Flow at VRNLIS	null
+C_WARNEPP	C_WARNEPP/FLOW-CHANNEL	null	Flow	Flow at WARNEPP	null
+C_WILKNS	C_WILKNS/FLOW-CHANNEL	C_WILKNS_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Wilkins Slough	Minimum Instream Flow
+C_WKYTN	C_WKYTN/FLOW-CHANNEL	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
+C_YOLOBP	C_YOLOBP/FLOW-CHANNEL	null	Flow	Flow at YOLOBP	null
+C_YUBFEA	C_YUBFEA/FLOW-CHANNEL	C_YUBFEA_MIF/FLOW-MIN-INSTREAM	Flow	Feather River Below Yuba Confluence	Minimum Instream Flow
+D_ALAMO	D_ALAMO/FLOW-DELIVERY	null	Deliveries	Deliveries from ALAMO	null
+D_ANTIOCH	D_ANTIOCH/FLOW-DELIVERY	null	Deliveries	Deliveries from ANTIOCH	null
+D_BANKS	D_BANKS/FLOW-DELIVERY	null	Deliveries	Deliveries from BANKS	null
+D_BRANANIS	D_BRANANIS/FLOW-DELIVERY	null	Deliveries	Deliveries from BRANANIS	null
+D_CASTAIC	D_CASTAIC/FLOW-DELIVERY	null	Deliveries	Deliveries from CASTAIC	null
+D_CCWDINTK	D_CCWDINTK/FLOW-DELIVERY	null	Deliveries	Deliveries from CCWDINTK	null
+D_CCWDVCOR	D_CCWDVCOR/FLOW-DELIVERY	null	Deliveries	Deliveries from CCWDVCOR	null
+D_COASTAQDCT	D_COASTAQDCT/FLOW-DELIVERY	null	Deliveries	Deliveries from COASTAQDCT	null
+D_CONEYIS	D_CONEYIS/FLOW-DELIVERY	null	Deliveries	Deliveries from CONEYIS	null
+D_CVC2CHRIS	D_CVC2CHRIS/FLOW-DELIVERY	null	Deliveries	Deliveries from CVC2CHRIS	null
+D_CVP_CVC	D_CVP_CVC/FLOW-DELIVERY	null	Deliveries	Deliveries from CVP_CVC	null
+D_CVPJU_LDMC	D_CVPJU_LDMC/FLOW-DELIVERY	null	Deliveries	Deliveries from CVPJU_LDMC	null
+D_CVPJUSWP	D_CVPJUSWP/FLOW-DELIVERY	null	Deliveries	Deliveries from CVPJUSWP	null
+D_CVPRFG_854	D_CVPRFG_854/FLOW-DELIVERY	null	Deliveries	Deliveries from CVPRFG_854	null
+D_DAGUER	D_DAGUER/FLOW-DELIVERY	null	Deliveries	Deliveries from DAGUER	null
+D_DELTAREQD	D_DELTAREQD/FLOW-DELIVERY	null	Deliveries	Deliveries from DELTAREQD	null
+D_DELVALLE	D_DELVALLE/FLOW-DELIVERY	null	Deliveries	Deliveries from DELVALLE	null
+D_DOSAMIGOSCVP	D_DOSAMIGOSCVP/FLOW-DELIVERY	null	Deliveries	Deliveries from DOSAMIGOSCVP	null
+D_DOSAMIGOSSWP	D_DOSAMIGOSSWP/FLOW-DELIVERY	null	Deliveries	Deliveries from DOSAMIGOSSWP	null
+D_EMP2DUD	D_EMP2DUD/FLOW-DELIVERY	null	Deliveries	Deliveries from EMP2DUD	null
+D_EXPTD	D_EXPTD/FLOW-DELIVERY	null	Deliveries	Deliveries from EXPTD	null
+D_FOLSM	D_FOLSM/FLOW-DELIVERY	null	Deliveries	Deliveries from FOLSM	null
+D_FREWEIR	D_FREWEIR/FLOW-DELIVERY	null	Deliveries	Deliveries from FREWEIR	null
+D_FVB	D_FVB/FLOW-DELIVERY	null	Deliveries	Deliveries from FVB	null
+D_HOOD	D_HOOD/FLOW-DELIVERY	null	Deliveries	Deliveries from HOOD	null
+D_HST	D_HST/FLOW-DELIVERY	null	Deliveries	Deliveries from HST	null
+D_JONES	D_JONES/FLOW-DELIVERY	null	Deliveries	Deliveries from JONES	null
+D_KCWA	D_KCWA/FLOW-DELIVERY	null	Deliveries	Deliveries from KCWA	null
+D_MEDFORDIS	D_MEDFORDIS/FLOW-DELIVERY	null	Deliveries	Deliveries from MEDFORDIS	null
+D_MENDOTAPL	D_MENDOTAPL/FLOW-DELIVERY	null	Deliveries	Deliveries from MENDOTAPL	null
+D_NAPA	D_NAPA/FLOW-DELIVERY	null	Deliveries	Deliveries from NAPA	null
+D_NIMBUS	D_NIMBUS/FLOW-DELIVERY	null	Deliveries	Deliveries from NIMBUS	null
+D_OFBCVP	D_OFBCVP/FLOW-DELIVERY	null	Deliveries	Deliveries from OFBCVP	null
+D_OFBSWP	D_OFBSWP/FLOW-DELIVERY	null	Deliveries	Deliveries from OFBSWP	null
+D_ONEILLFBSWP	D_ONEILLFBSWP/FLOW-DELIVERY	null	Deliveries	Deliveries from ONEILLFBSWP	null
+D_OROVL	D_OROVL/FLOW-DELIVERY	null	Deliveries	Deliveries from OROVL	null
+D_OSO	D_OSO/FLOW-DELIVERY	null	Deliveries	Deliveries from OSO	null
+D_PEARBLPP	D_PEARBLPP/FLOW-DELIVERY	null	Deliveries	Deliveries from PEARBLPP	null
+D_PERRIS	D_PERRIS/FLOW-DELIVERY	null	Deliveries	Deliveries from PERRIS	null
+D_PYRAMID	D_PYRAMID/FLOW-DELIVERY	null	Deliveries	Deliveries from PYRAMID	null
+D_REDBLF	D_REDBLF/FLOW-DELIVERY	null	Deliveries	Deliveries from REDBLF	null
+D_SACAME	D_SACAME/FLOW-DELIVERY	null	Deliveries	Deliveries from SACAME	null
+D_SACSJR	D_SACSJR/FLOW-DELIVERY	null	Deliveries	Deliveries from SACSJR	null
+D_SACWEIR	D_SACWEIR/FLOW-DELIVERY	null	Deliveries	Deliveries from SACWEIR	null
+D_SBAY	D_SBAY/FLOW-DELIVERY	null	Deliveries	Deliveries from SBAY	null
+D_SILVERWOOD	D_SILVERWOOD/FLOW-DELIVERY	null	Deliveries	Deliveries from SILVERWOOD	null
+D_SLCVP	D_SLCVP/FLOW-DELIVERY	null	Deliveries	Deliveries from SLCVP	null
+D_SOLANO	D_SOLANO/FLOW-DELIVERY	null	Deliveries	Deliveries from SOLANO	null
+D_STOCKTON	D_STOCKTON/FLOW-DELIVERY	null	Deliveries	Deliveries from STOCKTON	null
+D_TERMINOUS	D_TERMINOUS/FLOW-DELIVERY	null	Deliveries	Deliveries from TERMINOUS	null
+D_THERM	D_THERM/FLOW-DELIVERY	null	Deliveries	Deliveries from THERM	null
+D_UPDMC	D_UPDMC/FLOW-DELIVERY	null	Deliveries	Deliveries from UPDMC	null
+D_VALLEJO	D_VALLEJO/FLOW-DELIVERY	null	Deliveries	Deliveries from VALLEJO	null
+D_WARNEPP	D_WARNEPP/FLOW-DELIVERY	null	Deliveries	Deliveries from WARNEPP	null
+D_WARNEPP_SPILL	D_WARNEPP_SPILL/FLOW-DELIVERY	null	Deliveries	Deliveries from WARNEPP_SPILL	null
+D_WILKNS	D_WILKNS/FLOW-DELIVERY	null	Deliveries	Deliveries from WILKNS	null
+D_YUBFEA	D_YUBFEA/FLOW-DELIVERY	null	Deliveries	Deliveries from YUBFEA	null
+D_CLEARTU	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
+D_SPRING	D_SPRING/FLOW-TUNNEL	null	Deliveries	Deliveries from D_SPRING	null
+AD_HST_ACTUAL	AD_HST_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at HST	null
+AD_KSWCK_ACTUAL	AD_KSWCK_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at KSWCK	null
+AD_NIMBUS_ACTUAL	AD_NIMBUS_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at NIMBUS	null
+AD_REDBLF_ACTUAL	AD_REDBLF_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at REDBLF	null
+AD_SACAME_ACTUAL	AD_SACAME_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at SACAME	null
+AD_SACFEA_ACTUAL	AD_SACFEA_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at SACFEA	null
+AD_THERM_ACTUAL	AD_THERM_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at THERM	null
+AD_WILKNS_ACTUAL	AD_WILKNS_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at WILKNS	null
+AD_YOLOBP_ACTUAL	AD_YOLOBP_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at YOLOBP	null
+AD_YUBFEA_ACTUAL	AD_YUBFEA_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at YUBFEA	null
