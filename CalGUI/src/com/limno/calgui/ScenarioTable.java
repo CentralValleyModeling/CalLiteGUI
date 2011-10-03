@@ -498,14 +498,20 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			// Only differing scenario info
 			scenmatrixdiff = new String[procscenmatrix.length][selected.length + 1];
 			int k = 0;
+			int nullct;
 			for (i = 0; i < procscenmatrix.length; i++) {
+				nullct = 0;
 				if (procscenmatrix[i][0] == null) {
 					break;
 				}
-				;
+				//;
 				String[] scenariovals = new String[selected.length];
 				for (j = 0; j < selected.length; j++) {
 					scenariovals[j] = procscenmatrix[i][j + 1];
+					if (scenariovals[j] == null) {
+						nullct++;
+					}
+					
 				}
 				for (j = 0; j < scenariovals.length - 1; j++) {
 					if (scenariovals[j] != null) {
@@ -519,6 +525,13 @@ public class ScenarioTable extends JFrame implements ItemListener {
 							k++;
 							break;
 						}
+					} else {
+						if (nullct==selected.length) {
+							scenmatrixdiff[k][0] = procscenmatrix[i][0];
+							k++;
+							break;
+						}
+						
 					}
 				}
 			}
