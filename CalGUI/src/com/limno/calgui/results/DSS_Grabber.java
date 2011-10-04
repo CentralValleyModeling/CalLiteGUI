@@ -259,17 +259,22 @@ public class DSS_Grabber {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
-		String aPart = "CALLITE";
-//		aPart = "CALSIM";
 
 		try {
+
 			hD = HecDss.open(dssFilename);
 
+			// Determine A-part and F-part directly from file - 10/4/2011 - assumes constant throughout
+			
+			@SuppressWarnings("unchecked")
 			Vector<String> aList = hD.getPathnameList();
 			Iterator<String> it = aList.iterator();
-			String hecFPart = (String) it.next();
-			System.out.println(hecFPart);
-			hecFPart = hecFPart.substring(hecFPart.length() - 9);
+			String aPath = (String) it.next();
+			String[] temp = aPath.split("/");
+			String hecAPart = temp[1];
+			String hecFPart = temp[6]+ "/";
+			
+			System.out.println(aPath);
 			System.out.println(hecFPart);
 
 			String delims = "[+]";
@@ -283,7 +288,7 @@ public class DSS_Grabber {
 				dssNames[0] = dssNames[0].substring(0, dssNames[0].length() - 4);
 			}
 
-			result = (TimeSeriesContainer) hD.get("/" + aPart + "/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
+			result = (TimeSeriesContainer) hD.get("/" + hecAPart + "/" + dssNames[0] + "/01JAN1930/1MON/" + hecFPart, true);
 
 			if ((result == null) || (result.numberValues < 1)) {
 
@@ -291,7 +296,7 @@ public class DSS_Grabber {
 
 			} else {
 				for (int i = 1; i < dssNames.length; i++) {
-					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/" + aPart + "/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
+					TimeSeriesContainer result2 = (TimeSeriesContainer) hD.get("/" + hecAPart + "/" + dssNames[i] + "/01JAN2020/1MON/" + hecFPart, true);
 					if (result2 == null) {
 						JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 								JOptionPane.ERROR_MESSAGE);
