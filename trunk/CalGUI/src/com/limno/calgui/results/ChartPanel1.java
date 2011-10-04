@@ -212,7 +212,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				
 				TimeSeriesCollection dataset3 = new TimeSeriesCollection();
 				dataset3.addSeries(series[3]);
-				if (stscs.length > 4)
+				if (tscs.length > 4)
 					dataset3.addSeries(series[4]);
 					
 				final NumberAxis rangeAxis3 = new NumberAxis("Flow (" + tscs[3].units + ")");
