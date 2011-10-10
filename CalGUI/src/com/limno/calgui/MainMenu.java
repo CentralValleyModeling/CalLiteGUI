@@ -1979,7 +1979,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			dss_Grabber.setLocation(locationNames[i]);
 
 			if (dss_Grabber.primaryDSSName == null)
-				JOptionPane.showMessageDialog(desktop, "No GUI_Links3.table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
+				JOptionPane.showMessageDialog(desktop, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
 			else if (dss_Grabber.primaryDSSName.equals(""))
 				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
 			else {

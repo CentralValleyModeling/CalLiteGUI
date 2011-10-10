@@ -46,6 +46,8 @@ public class SchematicMain {
 
 	}
 
+	AffineTransform theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
+	
 	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn) {
 
 		mainMenu = mainMenuIn;
@@ -78,7 +80,7 @@ public class SchematicMain {
 			@Override
 			public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
 				super.gvtRenderingCompleted(e);
-				canvas.setRenderingTransform(new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0), true);
+				canvas.setRenderingTransform(theAT, true);
 			}
 
 		});
@@ -86,6 +88,7 @@ public class SchematicMain {
 		// setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0); // Default
 		// values in ViewboxTransform
 		// setAffineTransform(0.76, 0.0, 0.0, 0.76, -143, -187); //Desired values to start up with focus on fragment
+//		theAT = new AffineTransform(6.0, 0, 0.0, 6.0, -1400.0, -200.0);
 		p.add("Center", new JSVGScrollPane(canvas));
 
 	}
@@ -105,6 +108,7 @@ public class SchematicMain {
 	public class OnClickAction implements EventListener {
 		public void handleEvent(Event evt) {
 			// Perform some actions here...
+			theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
 			evt.stopPropagation();
 			// ...for example schedule an action for later:
 			window.setTimeout(new DisplayClickedLabelTask(evt), 500);
@@ -119,13 +123,6 @@ public class SchematicMain {
 		}
 
 		public void run() {
-
-			AffineTransform t = canvas.getViewBoxTransform();
-			double[] m = new double[6];
-			t.getMatrix(m);
-			for (int i = 0; i < 6; i++)
-				System.out.println(m[i]);
-			System.out.println("Clicked on: " + evt.getTarget());
 
 			String label = null;
 			Element el = ((Element) evt.getTarget());

@@ -474,10 +474,11 @@ public class DSS_Grabber {
 							}
 							times2 = new int[n];
 							values2 = new double[n];
+							int nmax = n; // Added to trap Schematic View case where required flow has extra values 
 							n = 0;
 							for (int j = 0; j < times.length; j++) {
 								ht.set(times[j]);
-								if (ht.month() == month + 1) {
+								if ((ht.month() == month + 1) && (n < nmax) && (j < timeSeriesResults[0].values.length)) {
 									times2[n] = times[j];
 									values2[n] = values[j] - timeSeriesResults[0].values[j];
 									n = n + 1;
