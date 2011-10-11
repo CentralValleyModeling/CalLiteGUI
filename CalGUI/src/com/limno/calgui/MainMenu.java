@@ -402,7 +402,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		SpinnerListModel monthModel1a = new SpinnerListModel(monthNames);
 		SpinnerListModel monthModel2a = new SpinnerListModel(monthNames);
 		spnSM.setModel(monthModel1a);
+		spnSM.setValue(monthNames[9]);
 		spnEM.setModel(monthModel2a);
+		spnEM.setValue(monthNames[8]);
 		// Set up year spinners
 		// TODO - Get years from scenarios rather than fixed
 		// TODO (?) - Control spinner so end year >= start year
@@ -976,7 +978,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
 
 				} else if (numMon < 1) {
-					JOptionPane.showMessageDialog(mainmenu, "The specified start date must be before then end date.");
+					JOptionPane.showMessageDialog(mainmenu, "The specified start date must be before the end date.");
 				} else {
 
 					// Disable run button
@@ -2670,6 +2672,17 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				((JSpinner) swix.find("spnRunStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
 				((JSpinner) swix.find("spnRunEndMonth")).setValue("Sep");
+
+			// Constrain display times the same way [inefficient?]
+			
+			syr = (Integer) ((JSpinner) swix.find("spnStartYear")).getValue();
+			eyr = (Integer) ((JSpinner) swix.find("spnEndYear")).getValue();
+			smo = monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
+			emo = monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
+			if ((syr == 1921) && (smo < 10))
+				((JSpinner) swix.find("spnStartMonth")).setValue("Oct");
+			if ((eyr == 2003) && (emo > 9))
+				((JSpinner) swix.find("spnEndMonth")).setValue("Sep");
 
 		} else {
 
