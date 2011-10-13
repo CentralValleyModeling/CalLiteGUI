@@ -1613,32 +1613,31 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				file = fc.getSelectedFile();
 				filename = file.toString();
 
-			}
+				try {
 
-			try {
+					// FileInputStream fin = new FileInputStream(System.getProperty("user.dir") +
+					// "\\Config\\reportlist.cgr");
+					FileInputStream fin = new FileInputStream(filename);
+					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
-				// FileInputStream fin = new FileInputStream(System.getProperty("user.dir") +
-				// "\\Config\\reportlist.cgr");
-				FileInputStream fin = new FileInputStream(filename);
-				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-				// Read until first non-comment line
-				aLine = br.readLine();
-				while (aLine.startsWith("!") && aLine != null) {
+					// Read until first non-comment line
 					aLine = br.readLine();
+					while (aLine.startsWith("!") && aLine != null) {
+						aLine = br.readLine();
+					}
+					// aLine = br.readLine();// Skip title line;
+					while (aLine != null) {
+						data.add(aLine);
+						aLine = br.readLine();
+					}
+					br.close();
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
-				// aLine = br.readLine();// Skip title line;
-				while (aLine != null) {
-					data.add(aLine);
-					aLine = br.readLine();
-				}
-				br.close();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
 
-			JList lstReports = (JList) swix.find("lstReports");
-			lstReports.setListData(data);
+				JList lstReports = (JList) swix.find("lstReports");
+				lstReports.setListData(data);
+			}
 
 		}
 
@@ -1652,46 +1651,57 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			String filename = null;
 			int retval = fc.showSaveDialog(mainmenu);
 			if (retval == JFileChooser.APPROVE_OPTION) {
+
 				// ... The user selected a file, get it, use it.
+
 				file = fc.getSelectedFile();
 				filename = file.toString();
-			}
+				if (!filename.toUpperCase().endsWith(".CGR") && !filename.endsWith("."))
+					filename = filename + ".cgr";
 
-			OutputStream outputStream;
-			try {
-				// outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\Config\\reportlist.cgr");
-				outputStream = new FileOutputStream(filename);
-			} catch (FileNotFoundException e2) {
-				System.out.println("Cannot open " + filename);
-				return;
-			}
+				boolean saveFlag = true;
+				if (new File(filename).exists())
+					saveFlag = (JOptionPane.showConfirmDialog(mainmenu, "The display list file '" + filename
+							+ "' already exists. Press OK to overwrite.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
-			// Store previous list items
-			JList lstReports = (JList) swix.find("lstReports");
-			int size = lstReports.getModel().getSize(); // 4
-			int n;
-			n = 0;
-			String[] lstArray = new String[size];
-			for (int i = 0; i < size; i++) {
-				Object item = lstReports.getModel().getElementAt(i);
-				if (item.toString() != " ") {
-					lstArray[n] = item.toString();
-					n = n + 1;
+				if (saveFlag) {
+					OutputStream outputStream;
+					try {
+						// outputStream = new FileOutputStream(System.getProperty("user.dir") +
+						// "\\Config\\reportlist.cgr");
+						outputStream = new FileOutputStream(filename);
+					} catch (FileNotFoundException e2) {
+						System.out.println("Cannot open " + filename);
+						return;
+					}
+
+					// Store previous list items
+					JList lstReports = (JList) swix.find("lstReports");
+					int size = lstReports.getModel().getSize(); // 4
+					int n;
+					n = 0;
+					String[] lstArray = new String[size];
+					for (int i = 0; i < size; i++) {
+						Object item = lstReports.getModel().getElementAt(i);
+						if (item.toString() != " ") {
+							lstArray[n] = item.toString();
+							n = n + 1;
+						}
+					}
+					try {
+
+						PrintStream output = new PrintStream(outputStream);
+						for (int i = 0; i < n; i++) {
+							output.println(lstArray[i]);
+						}
+
+						output.close();
+						outputStream.close();
+					} catch (IOException ioe) {
+						System.out.println("IOException");
+					}
 				}
 			}
-			try {
-
-				PrintStream output = new PrintStream(outputStream);
-				for (int i = 0; i < n; i++) {
-					output.println(lstArray[i]);
-				}
-
-				output.close();
-				outputStream.close();
-			} catch (IOException ioe) {
-				System.out.println("IOException");
-			}
-
 		}
 
 		else if (e.getActionCommand().startsWith("Rep_DispAll")) {
@@ -2084,8 +2094,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				if (doTimeSeries) {
 					if (dss_Grabber.locationName.contains("SchVw") && dss_Grabber.primaryDSSName.contains(",")) {
-						cp2 = new ChartPanel1("SchVw" + dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false, upper,
-								lower, dss_Grabber.primaryDSSName, false); // abuse slabel to pass individual dataset names
+						cp2 = new ChartPanel1("SchVw" + dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results, false,
+								upper, lower, dss_Grabber.primaryDSSName, false); // abuse slabel to pass individual
+																					// dataset names
 						tabbedpane.insertTab("Time Series (experimental)", null, cp2, null, 0);
 
 					} else
@@ -2674,7 +2685,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				((JSpinner) swix.find("spnRunEndMonth")).setValue("Sep");
 
 			// Constrain display times the same way [inefficient?]
-			
+
 			syr = (Integer) ((JSpinner) swix.find("spnStartYear")).getValue();
 			eyr = (Integer) ((JSpinner) swix.find("spnEndYear")).getValue();
 			smo = monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
