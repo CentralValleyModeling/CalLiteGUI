@@ -1,20 +1,20 @@
 ID	Primary	Secondary	Ytitle	Title	Slegend
-001	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
-002	C_TRNTY/FLOW-CHANNEL	null	Flow	Clear Creek	null
-003	C_LWSTN/FLOW-CHANNEL	null	Flow	Trinity River	null
-004	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
-005	S_WKYTN/STORAGE	null	Storage	Whiskeytown Reservoir Storage	null
-006	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
-007	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
-008	I_SHSTA/STORAGE	null	Flow	Sacramento River Inflow	null
-009	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
-010	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
-011	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
-012	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
-013	D_REDBLF/FLOW-DELIVERY	null	Flow	Diversion at Red Bluff	null
-014	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
-015	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
-016	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
+1	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
+2	C_TRNTY/FLOW-CHANNEL	null	Flow	Clear Creek	null
+3	C_LWSTN/FLOW-CHANNEL	null	Flow	Trinity River	null
+4	D_CLEARTU/FLOW-TUNNEL	TRINITY_IMPORTDV/ALIAS	Flow	Trinity River Exports	Import Target
+5	S_WKYTN/STORAGE	null	Storage	Whiskeytown Reservoir Storage	null
+6	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
+7	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
+8	I_SHSTA/STORAGE	null	Flow	Sacramento River Inflow	null
+9	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
+10	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
+11	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+12	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
+13	D_REDBLF/FLOW-DELIVERY	null	Flow	Diversion at Red Bluff	null
+14	C_REDBLF/FLOW-CHANNEL	C_REDBLF_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Red Bluff	Minimum Instream Flow
+15	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
+16	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
 102	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
 103	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
 104	S_FOLSM/STORAGE	null	Storage	Folsom Reservoir Storage	null
@@ -48,8 +48,8 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 219	C_SJRVI/FLOW-CHANNEL	null	Flow	San Joaquin River near Jersey Point (QWEST)	null
 302	INFLOW/INFLOW-DELTA	null	Flow	Delta Inflow	null
 303	C_SACSJR/FLOW-CHANNEL	null	Flow	Delta Outflow	null
-304	D_DELTAREQD/FLOW-DELIVERY+DO_REQ_X2ROE_OUT/FLOW-REQ-X2ROE+DO_REQ_X2CHS_OUT/FLOW-REQ-X2CHS+DO_REQ_X2CNF_OUT/FLOW-REQ-X2CNF+DO_REQ_FLOW_OUT/FLOW-REQ-NDOI	null	Flow	Delta Required Outflow	null
-305	EXPRATIO_/EI-RATIO-STD+D_JONES/FLOW_DELIVERY+D_BANKS/FLOW_DELIVERY+INFLOW/INFLOW-DELTA	null	null	Export-Inflow Ratio	null
+304	D_DELTAREQD/FLOW-DELIVERY	null	Flow	Delta Required Outflow	null
+305	EXPRATIO_/EI-RATIO-STD	null	null	Export-Inflow Ratio	null
 306	X2_PRV/X2-POSITION-PREV	null	Position	X2 Position	null
 307	null	null	null	null	null
 310	D_JONES/FLOW-DELIVERY	null	Flow	Jones Exports	null

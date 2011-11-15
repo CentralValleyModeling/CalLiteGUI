@@ -17,7 +17,7 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "Shasta Storage"			S_SEPT		Exceedance	//S4/STORAGE//1MON//					//S_Shsta/STORAGE//1MON//				N		Y		DEFAULT
 "FolSom Storage"			S_SEPT		Exceedance	//S8/STORAGE//1MON//					//S_Folsm/STORAGE//1MON//				N		Y		DEFAULT
 "NOD Storage"				S_SEPT		Exceedance_Post	//S1+S4+S8/STORAGE//1MON//				//S_Trnty+S_Shsta+S_Folsm/STORAGE//1MON//		N		Y		DEFAULT
-"Orovile Storage"			S_SEPT		Exceedance	//S6/STORAGE//1MON//					//S_Orovl/STORAGE//1MON//				N		Y		DEFAULT
+"Oroville Storage"			S_SEPT		Exceedance	//S6/STORAGE//1MON//					//S_Orovl/STORAGE//1MON//				N		Y		DEFAULT
 "CVP SanLuis Storage"			S_SEPT		Exceedance	//S11/STORAGE//1MON//					//S_SLCVP/STORAGE//1MON//				N		Y		DEFAULT
 "SWP SanLuis Storage"			S_SEPT		Exceedance	//S12/STORAGE//1MON//					//S_SLSWP/STORAGE//1MON//				N		Y		DEFAULT
 "River Flow"				RF		Average		IGNORE							IGNORE							B		N		DEFAULT

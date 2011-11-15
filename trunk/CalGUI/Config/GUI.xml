@@ -2538,13 +2538,15 @@
 
 					<panel layout="FlowLayout(FlowLayout.Left)">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="1" />
+							gridx="0" gridy="1" insets="-40,0,0,0"/>
 						<label
-							text="Click on an element for data; shift-click, then drag to pan; ctrl-click, then drag to zoom; or zoom to: " />
-						<button text="NOD" ActionCommand="Sch_NOD" enabled="false"></button>
-						<button text="Delta" ActionCommand="Sch_Delta" enabled="false"></button>
-						<button text="SOD" ActionCommand="Sch_SOD" enabled="false"></button>
-						<button text="All" ActionCommand="Sch_SOD" enabled="false"></button>
+							text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in" font="Tahoma-BOLD-13" foreground="CC3333" />
+					</panel>
+					<panel layout="FlowLayout(FlowLayout.Left)">
+						<gridbagconstraints anchor="GridBagConstraints.WEST"
+							gridx="0" gridy="2" insets="-40,0,0,0"/>
+						<label
+							text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic" font="Tahoma-BOLD-13" foreground="CC3333" />
 					</panel>
 					<panel layout="FlowLayout(FlowLayout.Right)">
 						<gridbagconstraints anchor="GridBagConstraints.EAST"
