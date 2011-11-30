@@ -10,6 +10,6 @@ REM ----------------------------------------------------------
 REM
 
 cd run
-..\model\main_bo
+..\model\CalLite2.00.exe
 
 EXIT
