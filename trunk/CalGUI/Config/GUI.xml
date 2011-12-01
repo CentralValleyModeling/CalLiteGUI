@@ -355,7 +355,7 @@
 
 							<!-- Following used to store the WSI/DI index used to identify the 
 								appropriate CWP and SWP curve tables -->
-							<textfield id="hyd_DSS_Index" visible="false">
+							<textfield id="hyd_DSS_Index" visible="false" text="2210">
 								<gridbagconstraints gridx="1" gridy="4" />
 							</textfield>
 
