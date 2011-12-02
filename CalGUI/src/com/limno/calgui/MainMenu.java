@@ -34,12 +34,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -91,6 +94,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
+
+import wrimsv2.tools.Tools;
 
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.results.ChartPanel1;
@@ -3104,6 +3109,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
 				pFrame.setText("Copying DLL.");
+				
 
 				// Sea Level Selections
 				File fsAnnO;
@@ -3219,6 +3225,77 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				}
 
 				desktop.setVisible(false);
+				
+				
+				
+				
+				// wrims2 configuration
+				
+				// copy wresl codes to Run dir
+				File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
+				File runDir = new File(System.getProperty("user.dir") + "\\Run");
+				
+				GUI_Utils.copyDirectory(wreslDir, runDir, true);
+				
+				
+				// wrims2 ANN file name is different from wrims1
+				File fsAnnO_wrims2;
+				rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
+				rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
+
+				if (rdbSLR45.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				} else if (rdbSLR15.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				} else {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				}
+				try {
+					GUI_Utils.copyOnlyFilesinDir(fsAnnS, fsAnnO_wrims2);
+				} catch (IOException e1) { // TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				// configuration file for wrims v2
+				Map<String,String> configMap = new HashMap<String, String>();
+				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main_bo.wresl");
+				configMap.put("DvarFile", newtext[6] );
+				configMap.put("SvarFile", newtext[5] );
+				configMap.put("SvarFPart", newtext[12] );
+				configMap.put("InitFile", newtext[7] );
+				configMap.put("InitFPart", newtext[12] );
+				configMap.put("StartYear", StartYr.toString());
+				configMap.put("StartMonth", StartMon);
+				configMap.put("StartDay", dayct.toString());
+				configMap.put("EndYear", "2003" );
+				configMap.put("EndMonth", "9" );
+				configMap.put("EndDay", "30" );
+
+				// replace vars in batch file 
+				
+				String batchText = Tools.readFileAsString(System.getProperty("user.dir") + "\\Model_w2\\CalLite_wrims2.bat.template");
+				
+				batchText=batchText.replace("{SvarFile}", configMap.get("SvarFile"));
+				batchText=batchText.replace("{SvarFPart}", configMap.get("SvarFPart"));
+				batchText=batchText.replace("{InitFile}", configMap.get("InitFile"));
+				batchText=batchText.replace("{InitFPart}", configMap.get("InitFPart"));
+				batchText=batchText.replace("{DvarFile}", configMap.get("DvarFile"));
+
+				
+				System.out.println(batchText);
+		
+				File f = new File(System.getProperty("user.dir"), "CalLite_wrims2.bat");
+			
+				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+				
+				cfgFile.print(batchText);
+				cfgFile.flush();
+				cfgFile.close();
+				
+				
 
 				// "Run" model
 
