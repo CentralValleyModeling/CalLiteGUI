@@ -54,5 +54,6 @@
 	<classpathentry kind="lib" path="lib/jh.jar"/>
 	<classpathentry kind="lib" path="lib/jxbrowser-2.9.jar"/>
 	<classpathentry kind="lib" path="lib/runtime.jar"/>
+	<classpathentry kind="lib" path="lib/WRIMSv2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
