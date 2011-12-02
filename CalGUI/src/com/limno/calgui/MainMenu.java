@@ -3287,7 +3287,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				
 				System.out.println(batchText);
 		
-				File f = new File(System.getProperty("user.dir"), "CalLite_wrims2.bat");
+				File f = new File(System.getProperty("user.dir"), "CalLite.bat");
 			
 				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 				
