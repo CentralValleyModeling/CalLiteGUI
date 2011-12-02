@@ -44,6 +44,7 @@ hyd_rdbMid|false
 hyd_rdbEnd|false
 btnDSS_Auto|true
 btnDSS_Manual|false
+hyd_DSS_Index|2210
 hyd_DSS_SV|CL_FUTURE_BO_080911_SV.DSS
 hyd_DSS_SV_F|2020D09E
 hyd_DSS_Init|CL_INIT.dss
