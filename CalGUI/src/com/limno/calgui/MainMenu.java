@@ -3328,7 +3328,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					pFrame.dispose();
 
 					Runtime rt = Runtime.getRuntime();
-					Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite.BAT");
+					Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
 					int exitVal = proc.waitFor();
 					System.out.println("Process exitValue: " + exitVal);
 				} catch (Throwable t) {
