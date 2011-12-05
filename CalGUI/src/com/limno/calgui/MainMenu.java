@@ -95,7 +95,7 @@ import org.apache.log4j.varia.NullAppender;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
-import wrimsv2.tools.Tools;
+import wrimsv2.evaluator.TimeOperation;
 
 import com.limno.calgui.GetDSSFilename.RBListItem;
 import com.limno.calgui.results.ChartPanel1;
@@ -725,9 +725,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 						}
 
 						int l = -1;
-						for (int i = 0; i < table4.length; i++)
-							if (lookup.equals(table4[i][0]))
-								l = i;
+						for (int i = 0; i < table4.length; i++) {
+							if (lookup.equals(table4[i][0])) l = i;
+						}
 
 						if (l != -1) {
 
@@ -2944,11 +2944,23 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				publish("Creating new Run directory.");
 
-				File fs = new File(System.getProperty("user.dir") + "\\Default");
+
 				File ft = new File(System.getProperty("user.dir") + "\\Run");
 				// First delete existing Run directory.
 				GUI_Utils.deleteDir(ft);
-
+				ft.mkdirs();				
+				
+				// Copy wrims2 wresl directory to Run directory
+				File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
+				
+				try {
+					GUI_Utils.copyDirectory(wreslDir, ft, true);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				// Copy Default dir to Run dir. This may overwrite wrims2 wresl's copy
+				File fs = new File(System.getProperty("user.dir") + "\\Default");
 				try {
 					GUI_Utils.copyDirectory(fs, ft, false);
 				} catch (IOException e1) {
@@ -3108,8 +3120,60 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 				GUI_Utils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
-				pFrame.setText("Copying DLL.");
+				pFrame.setText("Writing WRIMSv2 Batchfile.");
 				
+				// wrims2 configuration
+				
+				// configuration file for wrims v2
+				Integer iStartMonth = TimeOperation.monthValue(StartMon.toLowerCase());
+				Integer iEndMonth = TimeOperation.monthValue(EndMon.toLowerCase());
+				Integer iStartDay = TimeOperation.numberOfDays(iStartMonth, StartYr);
+				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, EndYr);
+				
+				Map<String,String> configMap = new HashMap<String, String>();
+				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main_bo.wresl");
+				configMap.put("DvarFile", newtext[6] );
+				configMap.put("SvarFile", newtext[5] );
+				configMap.put("SvarFPart", newtext[12] );
+				configMap.put("InitFile", newtext[7] );
+				configMap.put("InitFPart", newtext[13] );
+				configMap.put("StartYear", StartYr.toString());
+				configMap.put("StartMonth", iStartMonth.toString());
+				configMap.put("StartDay", iStartDay.toString());
+				configMap.put("EndYear", EndYr.toString() );
+				configMap.put("EndMonth", iEndMonth.toString() );				
+				configMap.put("EndDay", iEndDay.toString() );
+
+				// replace vars in batch file 
+				
+				String batchText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir") + "\\Model_w2\\CalLite_w2.bat.template");
+				
+				batchText=batchText.replace("{MainFile}", configMap.get("MainFile"));
+				batchText=batchText.replace("{SvarFile}", configMap.get("SvarFile"));
+				batchText=batchText.replace("{SvarFPart}", configMap.get("SvarFPart"));
+				batchText=batchText.replace("{InitFile}", configMap.get("InitFile"));
+				batchText=batchText.replace("{InitFPart}", configMap.get("InitFPart"));
+				batchText=batchText.replace("{DvarFile}", configMap.get("DvarFile"));
+				batchText=batchText.replace("{StartYear}", configMap.get("StartYear"));
+				batchText=batchText.replace("{StartMonth}", configMap.get("StartMonth"));
+				batchText=batchText.replace("{EndYear}", configMap.get("EndYear"));
+				batchText=batchText.replace("{EndMonth}", configMap.get("EndMonth"));
+				batchText=batchText.replace("{StartDay}", configMap.get("StartDay"));
+				batchText=batchText.replace("{EndDay}", configMap.get("EndDay"));
+				
+				//System.out.println(batchText);
+		
+				// write WRIMSv2 batch file
+				File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
+			
+				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+				
+				cfgFile.print(batchText);
+				cfgFile.flush();
+				cfgFile.close();
+				
+				
+				pFrame.setText("Copying WRIMSv1 DLL.");				
 
 				// Sea Level Selections
 				File fsAnnO;
@@ -3132,6 +3196,29 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					e1.printStackTrace();
 				}
 
+				pFrame.setText("Copying WRIMSv2 DLL.");
+				
+				// wrims2 ANN file name is different from wrims1
+				File fsAnnO_wrims2;
+
+				if (rdbSLR45.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				} else if (rdbSLR15.isSelected()) {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				} else {
+					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
+				}
+				try {
+					GUI_Utils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
+				} catch (IOException e1) { // TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+
+				
 				publish("Writing GUI option tables.");
 
 				// Write regulations table files
@@ -3229,71 +3316,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				
 				
 				
-				// wrims2 configuration
-				
-				// copy wresl codes to Run dir
-				File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
-				File runDir = new File(System.getProperty("user.dir") + "\\Run");
-				
-				GUI_Utils.copyDirectory(wreslDir, runDir, true);
-				
-				
-				// wrims2 ANN file name is different from wrims1
-				File fsAnnO_wrims2;
-				rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
-				rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
 
-				if (rdbSLR45.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
-					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
-				} else if (rdbSLR15.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
-					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
-				} else {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
-					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
-				}
-				try {
-					GUI_Utils.copyOnlyFilesinDir(fsAnnS, fsAnnO_wrims2);
-				} catch (IOException e1) { // TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				// configuration file for wrims v2
-				Map<String,String> configMap = new HashMap<String, String>();
-				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main_bo.wresl");
-				configMap.put("DvarFile", newtext[6] );
-				configMap.put("SvarFile", newtext[5] );
-				configMap.put("SvarFPart", newtext[12] );
-				configMap.put("InitFile", newtext[7] );
-				configMap.put("InitFPart", newtext[12] );
-				configMap.put("StartYear", StartYr.toString());
-				configMap.put("StartMonth", StartMon);
-				configMap.put("StartDay", dayct.toString());
-				configMap.put("EndYear", "2003" );
-				configMap.put("EndMonth", "9" );
-				configMap.put("EndDay", "30" );
-
-				// replace vars in batch file 
-				
-				String batchText = Tools.readFileAsString(System.getProperty("user.dir") + "\\Model_w2\\CalLite_wrims2.bat.template");
-				
-				batchText=batchText.replace("{SvarFile}", configMap.get("SvarFile"));
-				batchText=batchText.replace("{SvarFPart}", configMap.get("SvarFPart"));
-				batchText=batchText.replace("{InitFile}", configMap.get("InitFile"));
-				batchText=batchText.replace("{InitFPart}", configMap.get("InitFPart"));
-				batchText=batchText.replace("{DvarFile}", configMap.get("DvarFile"));
-
-				
-				System.out.println(batchText);
-		
-				File f = new File(System.getProperty("user.dir"), "CalLite.bat");
-			
-				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
-				
-				cfgFile.print(batchText);
-				cfgFile.flush();
-				cfgFile.close();
 				
 				
 
