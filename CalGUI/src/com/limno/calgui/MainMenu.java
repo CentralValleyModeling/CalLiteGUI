@@ -200,11 +200,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		table4 = new String[GUILinks4.size()][5];
 		for (int i = 0; i < GUILinks4.size(); i++) {
 			String tokens[] = ((String) GUILinks4.get(i)).split("\t");
-			table4[i][0] = tokens[0];
-			table4[i][1] = tokens[1];
-			table4[i][2] = tokens[2];
-			table4[i][3] = tokens[3];
-			table4[i][4] = tokens[4];
+			table4[i][0] = tokens[0]+tokens[1]+tokens[2]+tokens[3];
+			table4[i][1] = tokens[4];
+			table4[i][2] = tokens[5];
+			table4[i][3] = tokens[6];
+			table4[i][4] = tokens[7];
 		}
 
 		// Code added to disable logger
