@@ -1,0 +1,113 @@
+#summary One-sentence summary of this page.
+
+Architecture:
+
+High-level system architecture - Diagram + brief narrative describing what we have
+
+  List of packages and functionality
+  Relationships between packages
+  Javadoc description of package - including reference to Swixml and explanation for selection
+  Diagrams
+
+Look for model-view-controller design pattern elements among the components; other design patterns
+
+MAKE IT CLEAR WHERE TO START
+
+Configuration necessary for program to run - ".ini" files? Pull hard-coded constants out of code and place in text or xml.
+
+
+(cc Modeler's Documentation to MBI)
+
+----
+
+Coupling --> interdependency of classes ("normalization of code") - use of interfaces? Global variables as concern
+
+----
+
+Flexibility of design - robustness of code - does one code change cascade into many fixes/rewrites?
+
+=====
+
+Cohesive --> Classes should be simple, do not overload to do many things. 
+
+(order Refactoring - Martin Fowler)
+
+----
+
+Algorithms: code-level review (later in the process). Dev Team to identify and confirm choices.
+
+  (reliability/accuracy may outweigh speed, memory performance; include in documentation)
+
+  Look at appropriate Java language elements
+
+----
+
+I/O techniques - note use of HEC library for binary, review text file I/O (buffer string) 
+note standalone nature of application in documentation
+
+-----
+
+Mechanism to measure performance metrics
+
+-----
+
+Per cohesiveness discussion above
+
+=====
+
+Version control and release structure - discuss whether/how to use branches and tags
+
+----
+
+Packages seem to be amenable to refactoring -
+
+-----
+
+Configuration management
+
+  What do you need as a developer - includes referenced libraries - common environment
+
+======
+
+Testing - code refactoring is important; redesign of code is needed to write effective unit tests 
+
+
+------ 
+
+Build process - automated process - continuous integration triggered by check-in; incorporate testing
+
+------
+
+Deployment - define 
+
+=====
+
+Style standards - standardize across developers, whatever is chosen
+
+=====
+
+Process management - Check-in/check-out, automated build/notification. developer consensus/agreement.
+
+"readme" file for installation as a code developer, mode developer or end-user
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Separate document describing referenced libraries
