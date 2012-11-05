@@ -16,6 +16,6 @@ Wiki for CalLite GUI Development
 
 == Review call notes ==
 
-  * [10/29/2012]
-  * [11/1/2012]
-  * [11/5/2012]
+  * [Notes20121029 10/29/2012]
+  * [Notes20121101 11/1/2012]
+  * [Notes20121105 11/5/2012]
