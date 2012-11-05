@@ -1,0 +1,34 @@
+#summary Review call notes - 11/5/2012
+
+Agenda:
+
+1. Eclipse Juno configuration (Soumya)
+
+Project-level properties
+  Java Editor Save Actions
+    - Enable project-specific settings
+    - Format all lines
+    - organize import
+    - remove unused
+    - 132 columns
+
+2. Mainmenu.java
+
+  - Package naming 
+
+  - Packages should be for certain purposes
+    - Organize around functionality, data flow
+    - dependency flow; data access should not have dependency on UI (e.g)
+
+Mainmenu is too long; initialization should be moved; xml version of GUI_LINKS.table files?
+
+Breaking out into separate testable portions
+
+Testing that GUI tables are valid v. building unit text;
+
+Class-level 1-2 lines why is class here and responsibility. Add to methods as we have them.
+
+
+
+3. Documentation
+
