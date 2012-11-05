@@ -1,0 +1,15 @@
+#summary Review call notes - 11/1/2012
+
+More detail requested on CalLite input and display templates
+
+More detail in components - particularly GUI and scenario generation
+
+Consider UML for higher-level representation, other?
+
+Best documentation - jUnit/testing
+
+Send link to code
+
+Default settings for Eclipse Juno; Apply actions on file save - onsave.xmlv.project
+
+Use eclipse svn
