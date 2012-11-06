@@ -2,11 +2,11 @@
 
 = Introduction =
 
-Wiki for CalLite GUI Development
+Wiki for CalLite GUI Development (Phase 2)
 
 == Development Environment ==
 
-  * IDE: Eclipse Helios SR1 IDE for Java Developers [http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/heliossr1 [link]]
+  * IDE: Eclipse Juno SR1 IDE for Java Developers - Win32 [http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/juno/SR1/eclipse-java-juno-SR1-win32.zip link]]
   * Java SE Runtime Environment (JRE) 6
   * SwiX^ml^,,1.5,, GUI generation engine [http://swixml.org/ [link]] 
 
