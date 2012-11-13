@@ -40,7 +40,7 @@ public class DSS_Grabber {
 
 	static double cfs2TAFday = 0.001983471;
 
-	private final JList<String> lstScenarios;
+	private final JList lstScenarios;
 	private String baseName;
 	public String locationName;
 	public String primaryDSSName;
@@ -70,7 +70,7 @@ public class DSS_Grabber {
 	 *            a list of DSS file names corresponding to scenarios to be grabbed.
 	 * 
 	 */
-	public DSS_Grabber(JList<String> list) {
+	public DSS_Grabber(JList list) {
 		lstScenarios = list;
 		// TODO: Initialize privates here?
 		// TODO: Check that necessary sequence was followed?
@@ -386,7 +386,7 @@ public class DSS_Grabber {
 
 			int j = 0;
 			for (int i = 0; i < scenarios; i++) {
-				String scenarioName = lstScenarios.getModel().getElementAt(i);
+				String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
 				// String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 				if (!baseName.equals(scenarioName)) {
 					j = j + 1;
@@ -419,7 +419,7 @@ public class DSS_Grabber {
 
 			int j = 0;
 			for (int i = 0; i < scenarios; i++) {
-				String scenarioName = lstScenarios.getModel().getElementAt(i);
+				String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
 				if (!baseName.equals(scenarioName)) {
 					j = j + 1;
 					results[j] = getOneSeries(scenarioName, secondaryDSSName);
