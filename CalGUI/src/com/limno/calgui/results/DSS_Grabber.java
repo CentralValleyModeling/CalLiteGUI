@@ -169,7 +169,8 @@ public class DSS_Grabber {
 
 	public double getAnnualTAF(int i, int wy) {
 
-		return annualTAFs[i][wy - startWY];
+		return annualTAFs[i][wy - startWY];		
+
 	}
 
 	public double getAnnualTAFDiff(int i, int wy) {
@@ -318,7 +319,7 @@ public class DSS_Grabber {
 				last = i;
 
 			if (first != 0)
-				for (int i = 0; i < (last - first); i++) {
+				for (int i = 0; i <= (last - first); i++) {
 					result.times[i] = result.times[i + first];
 					result.values[i] = result.values[i + first];
 				}
