@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Palette>
-<PaletteGroupJar ID="Jars">
-</PaletteGroupJar>
-<PaletteGroupCustom ID="CustomControls" name="CustomControls">
-</PaletteGroupCustom>
-<PaletteGroupCustom_NonUI ID="CustomControls_NonUI" name="Non-UI CustomControls">
-</PaletteGroupCustom_NonUI>
-</Palette>
