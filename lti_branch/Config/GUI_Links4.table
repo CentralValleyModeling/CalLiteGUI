@@ -1,5 +1,0 @@
-RunBasis_ID	LOD_ID	CCProject_ID	CCModel_ID	SV_File	F_PartSV	Init_File	F_PartSV	CVP_WSI_DI	SWP_WSI_DI
-1	1	1	0	CL_EXISTING_PREBO_081011_SV.DSS	2005A01A	CL_INIT.dss	INITIAL	\WSI_DI\wsi_di_cvp_sys_1110.table	\WSI_DI\wsi_di_swp_1110.table
-1	2	1	0	CL_FUTURE_PREBO_080911_SV.DSS	2020D09E	CL_INIT.dss	INITIAL	\WSI_DI\wsi_di_cvp_sys_1210.table	\WSI_DI\wsi_di_swp_1210.table
-2	1	1	0	CL_EXISTING_BO_081011_SV.DSS	2005A01A	CL_INIT.dss	INITIAL	\WSI_DI\wsi_di_cvp_sys_2110.table	\WSI_DI\wsi_di_swp_2110.table
-2	2	1	0	CL_FUTURE_BO_080911_SV.DSS	2020D09E	CL_INIT.dss	INITIAL	\WSI_DI\wsi_di_cvp_sys_2210.table	\WSI_DI\wsi_di_swp_2210.table
