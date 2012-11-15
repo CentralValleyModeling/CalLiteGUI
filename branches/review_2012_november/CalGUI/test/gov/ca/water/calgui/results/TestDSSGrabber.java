@@ -6,11 +6,9 @@ import javax.swing.JList;
 
 import junit.framework.TestCase;
 
-import com.limno.calgui.results.DSS_Grabber;
-
 public class TestDSSGrabber extends TestCase {
 
-	private DSS_Grabber grabber;
+	private DSSGrabber grabber;
 
 	public TestDSSGrabber() {
 
@@ -19,15 +17,19 @@ public class TestDSSGrabber extends TestCase {
 	@Override
 	protected void setUp() {
 		JList list = new JList(new String[] { "item1", "item2" });
-		grabber = new DSS_Grabber(list);
+		grabber = new DSSGrabber(list);
 	}
 
 	@Override
 	protected void tearDown() {
 	}
 
+	public void testDateRangeErrorHandling() {
+		grabber.setDateRange("Apr2001-MAN2011");
+	}
+
 	public void testOrderOfCalls() {
-		grabber.setBase("base");
+		// grabber.setBase("base");
 		TimeSeriesContainer[] primarySeries = grabber.getPrimarySeries();
 		assertNotNull(primarySeries);
 		assertEquals("title", grabber.getTitle());
