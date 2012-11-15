@@ -40,8 +40,8 @@ public class DSSGrabber {
 
 	private final JList lstScenarios;
 	private String baseName;
-	public String locationName;
-	public String primaryDSSName;
+	private String locationName;
+	private String primaryDSSName;
 	private String secondaryDSSName;
 
 	private String title; // Chart title
@@ -49,7 +49,7 @@ public class DSSGrabber {
 	private String sLabel; // Label for secondary time series
 
 	private boolean isCFS; // Indicates whether "CFS" button was selected
-	public String originalUnits; // Copy of original units
+	private String originalUnits; // Copy of original units
 
 	private int startTime; // Start and end time from dashboard
 	private int endTime;
@@ -116,20 +116,20 @@ public class DSSGrabber {
 		if (title != "")
 			return title;
 		else {
-			return primaryDSSName;
+			return getPrimaryDSSName();
 		}
 	}
 
 	public void setLocation(String string) {
 
-		locationName = string;
-		primaryDSSName = null;
+		setLocationName(string);
+		setPrimaryDSSName(null);
 		secondaryDSSName = null;
 		if (string.startsWith("SchVw")) {
 			// Schematic view uses Table5 in mainMenu; this should be combined with GUI_Links3 table
 			for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookups5Length(); i++) {
 				if (string.toUpperCase().endsWith(gov.ca.water.calgui.MainMenu.getLookups5(i, 0))) {
-					primaryDSSName = gov.ca.water.calgui.MainMenu.getLookups5(i, 1);
+					setPrimaryDSSName(gov.ca.water.calgui.MainMenu.getLookups5(i, 1));
 					secondaryDSSName = gov.ca.water.calgui.MainMenu.getLookups5(i, 2);
 					yLabel = gov.ca.water.calgui.MainMenu.getLookups5(i, 3);
 					title = gov.ca.water.calgui.MainMenu.getLookups5(i, 4);
@@ -140,7 +140,7 @@ public class DSSGrabber {
 
 			for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookupsLength(); i++) {
 				if (string.endsWith(gov.ca.water.calgui.MainMenu.getLookups(i, 0))) {
-					primaryDSSName = gov.ca.water.calgui.MainMenu.getLookups(i, 1);
+					setPrimaryDSSName(gov.ca.water.calgui.MainMenu.getLookups(i, 1));
 					secondaryDSSName = gov.ca.water.calgui.MainMenu.getLookups(i, 2);
 					yLabel = gov.ca.water.calgui.MainMenu.getLookups(i, 3);
 					title = gov.ca.water.calgui.MainMenu.getLookups(i, 4);
@@ -151,13 +151,13 @@ public class DSSGrabber {
 
 	public void setLocationWeb(String string) {
 
-		locationName = string;
-		primaryDSSName = null;
+		setLocationName(string);
+		setPrimaryDSSName(null);
 		secondaryDSSName = null;
 		for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookupsLength(); i++) {
 			Prefix prefix = new Prefix();
 			String type = prefix.getType(string);
-			primaryDSSName = string + "/" + type;
+			setPrimaryDSSName(string + "/" + type);
 			secondaryDSSName = "";
 			yLabel = type;
 			title = string;
@@ -197,7 +197,7 @@ public class DSSGrabber {
 
 		// Calculate
 
-		if (originalUnits.equals("CFS")) {
+		if (getOriginalUnits().equals("CFS")) {
 
 			HecTime ht = new HecTime();
 			Calendar calendar = Calendar.getInstance();
@@ -344,18 +344,18 @@ public class DSSGrabber {
 	public TimeSeriesContainer[] getPrimarySeries() {
 
 		TimeSeriesContainer[] results;
-		if (locationName.contains("SchVw") && primaryDSSName.contains(",")) {
+		if (getLocationName().contains("SchVw") && getPrimaryDSSName().contains(",")) {
 
 			// Special handling for DEMO of schematic view - treat multiple series as multiple scenarios
 			// Longer-term approach is probably to add a rank to arrays storing all series
 
-			String[] dssNames = primaryDSSName.split(",");
+			String[] dssNames = getPrimaryDSSName().split(",");
 			scenarios = dssNames.length;
 			results = new TimeSeriesContainer[scenarios];
 			for (int i = 0; i < scenarios; i++)
 				results[i] = getOneSeries(baseName, dssNames[i]);
 
-			originalUnits = results[0].units;
+			setOriginalUnits(results[0].units);
 
 		} else {
 			// Store number of scenarios
@@ -365,8 +365,8 @@ public class DSSGrabber {
 
 			// Base first
 
-			results[0] = getOneSeries(baseName, primaryDSSName);
-			originalUnits = results[0].units;
+			results[0] = getOneSeries(baseName, getPrimaryDSSName());
+			setOriginalUnits(results[0].units);
 
 			// Then scenarios
 
@@ -375,7 +375,7 @@ public class DSSGrabber {
 				String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 				if (!baseName.equals(scenarioName)) {
 					j = j + 1;
-					results[j] = getOneSeries(scenarioName, primaryDSSName);
+					results[j] = getOneSeries(scenarioName, getPrimaryDSSName());
 				}
 			}
 		}
@@ -611,6 +611,30 @@ public class DSSGrabber {
 			iEMon = 12;
 		}
 		return iEMon;
+	}
+
+	public String getOriginalUnits() {
+		return originalUnits;
+	}
+
+	public void setOriginalUnits(String originalUnits) {
+		this.originalUnits = originalUnits;
+	}
+
+	public String getPrimaryDSSName() {
+		return primaryDSSName;
+	}
+
+	private void setPrimaryDSSName(String primaryDSSName) {
+		this.primaryDSSName = primaryDSSName;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	private void setLocationName(String locationName) {
+		this.locationName = locationName;
 	}
 
 }
