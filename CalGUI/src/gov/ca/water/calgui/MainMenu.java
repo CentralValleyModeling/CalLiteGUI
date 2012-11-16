@@ -1,19 +1,11 @@
 package gov.ca.water.calgui;
 
-import gov.ca.water.calgui.GetDSSFilename.RBListItem;
-import gov.ca.water.calgui.results.ChartPanel1;
 import gov.ca.water.calgui.results.DSSGrabber;
-import gov.ca.water.calgui.results.MonthlyTablePanel;
-import gov.ca.water.calgui.results.Report;
 import gov.ca.water.calgui.results.SchematicMain;
-import gov.ca.water.calgui.results.SummaryTablePanel;
-import hec.io.TimeSeriesContainer;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
@@ -22,31 +14,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
@@ -67,7 +47,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
 import javax.swing.border.LineBorder;
@@ -83,10 +62,7 @@ import javax.swing.event.TableModelListener;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.varia.NullAppender;
-import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
-
-import com.limno.calgui.Actions;
 
 public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener,
         ListDataListener, KeyEventDispatcher {
@@ -148,7 +124,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JMenuBar menu;
 	ProgressMonitor pMon;
 	public JList lstScenarios;
-	private final DSSGrabber dss_Grabber;
 
 	public DataFileTableModel[] dTableModels = null;
 	public Boolean[] RegUserEdits = null;
@@ -250,7 +225,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Set up scenario list
 		lstScenarios = (JList) swix.find("SelectedList");
 
-		dss_Grabber = new DSSGrabber(lstScenarios);
 		JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
 		JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
@@ -304,8 +278,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		component1.setVisible(true);
 		component1.setEnabled(true);
-		populateDTable("op_btn1", table1, component1);
-		populateDTable("op_btn2", table1, component1);
+		PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl);
+		PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl);
 
 		// pan.setBorder(title);
 		component1.setVisible(false);
@@ -345,7 +319,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		// Schematic view
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
 		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir")
-		        + "/Config/callite.svg", this);
+		        + "/Config/callite.svg", this, swix);
 		// schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0,
 		// 0.5716912122078099, -114.55489341333396,
 		// 0.5477924346923828);
@@ -405,7 +379,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUIUtils.SetMouseListener(regulations, this);
 		GUIUtils.SetChangeListener(regulations, this);
 
-		swix.setActionListener(Reporting, this);
+		swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
 		swix.setActionListener(hydroclimate, new HydAction(swix));
 		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, this);
@@ -446,7 +420,11 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				System.exit(0);
 			}
 		});
-		new WebData(jtp, this);
+
+		lstScenarios = (JList) swix.find("SelectedList");
+		DSSGrabber dss_Grabber;
+		dss_Grabber = new DSSGrabber(lstScenarios);
+		new WebData(jtp, this, swix, dss_Grabber, lstReports, desktop, 0);
 
 	}
 
@@ -798,202 +776,9 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 		if (e.getActionCommand().startsWith("UD_Table")) {
 
-			Actions.UD_Table(e);
+			// Actions.UD_Table(e);
 
-		} else if (e.getActionCommand().startsWith("AC_PresetClear")) {
-
-			Component[] components = presets.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
-
-			components = WMA.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
-
-		} else if (e.getActionCommand().startsWith("AC_ShortageClear")) {
-
-			Component[] components = shortage.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
-
-			// / delta flow criteria
-		} else if (e.getActionCommand().startsWith("AC_DfcClear")) {
-
-			Component[] components = delta_flow_criteria.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
-
-		} else if (e.getActionCommand().startsWith("AC_GenReport")) {
-
-			if (((JTextField) swix.find("tfReportFILE1")).getText().isEmpty()
-			        || ((JTextField) swix.find("tfReportFILE2")).getText().isEmpty()
-			        || ((JTextField) swix.find("tfReportFILE3")).getText().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file", "Error",
-				        JOptionPane.ERROR_MESSAGE);
-			} else {
-				Report report = null;
-				// dialog.setVisible(false);
-				try {
-					// Create an inputstream from template file;
-					FileInputStream fin = new FileInputStream(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
-					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-					// Open the template file
-					System.out.println(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
-					String theText = br.readLine() + "\n";
-					theText = theText + br.readLine() + "\n";
-					theText = theText + br.readLine() + "\n";
-					br.readLine();
-					theText = theText + "FILE_BASE\t" + ((JTextField) swix.find("tfReportFILE1")).getToolTipText() + "\n";
-					br.readLine();
-					theText = theText + "NAME_BASE\t\"" + ((JTextField) swix.find("tfReportNAME1")).getText() + "\"\n";
-					br.readLine();
-					theText = theText + "FILE_ALT\t" + ((JTextField) swix.find("tfReportFILE2")).getToolTipText() + "\n";
-					br.readLine();
-					theText = theText + "NAME_ALT\t\"" + ((JTextField) swix.find("tfReportNAME2")).getText() + "\"\n";
-					br.readLine();
-					theText = theText + "OUTFILE\t" + ((JTextField) swix.find("tfReportFILE3")).getToolTipText() + "\n";
-					br.readLine();
-					theText = theText + "NOTE\t\"" + ((JTextArea) swix.find("taReportNOTES")).getText() + "\"\n";
-					br.readLine();
-					theText = theText + "ASSUMPTIONS\t\"" + ((JTextArea) swix.find("taReportASSUMPTIONS")).getText() + "\"\n";
-					br.readLine();
-					theText = theText + "MODELER\t\"" + ((JTextField) swix.find("tfReportMODELER")).getText() + "\"\n";
-
-					theText = theText + "TABLE_FONT_SIZE\t" + ((JTextField) swix.find("tfFontSize")).getText() + "\n";
-
-					System.out.println(theText);
-					String aLine = br.readLine();
-					while (aLine != null) {
-						theText = theText + aLine + "\n";
-						aLine = br.readLine();
-					}
-					theText = theText + "\n";
-					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
-					try {
-						System.out.println(theText);
-						report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText(), desktop);
-						report.execute();
-						// report = new Report(bs);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
-
-		} else if (e.getActionCommand().startsWith("Rep_All")) {
-			Component[] components = controls2.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName != null) {
-						if (cName.startsWith("RepchkMon")) {
-							c.setSelected(true);
-						}
-					}
-				}
-			}
-		} else if (e.getActionCommand().startsWith("Rep_ClearMonths")) {
-			Component[] components = controls2.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = components[i].getName();
-					if (cName != null) {
-						if (cName.startsWith("RepchkMon")) {
-							c.setSelected(false);
-						}
-					}
-				}
-			}
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_AddList")) {
-
-			// Store previous list items
-			JList lstReports = (JList) swix.find("lstReports");
-			int size = lstReports.getModel().getSize(); // 4
-			int n;
-			n = 0;
-			String[] lstArray = new String[size];
-			for (int i = 0; i < size; i++) {
-				Object item = lstReports.getModel().getElementAt(i);
-				if (item.toString() != " ") {
-					lstArray[n] = item.toString();
-					n = n + 1;
-				}
-			}
-
-			String[] lstArray1 = new String[n + 1];
-			for (int i = 0; i < n; i++) {
-				lstArray1[i] = lstArray[i];
-			}
-
-			String cSTOR = ";Locs-";
-			String cSTORIdx = ";Index-";
-			Component[] components = presets.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
-						}
-					}
-				}
-
-				lstArray1[n] = QuickState() + cSTOR + cSTORIdx;
-
-				// String[] reportNamesEG = {cDate};
-				lstReports.setListData(lstArray1);
-			}
-			components = shortage.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
-						}
-					}
-				}
-
-				lstArray1[n] = QuickState() + cSTOR + cSTORIdx;
-
-				// String[] reportNamesEG = {cDate};
-				lstReports.setListData(lstArray1);
-			}
-
-		}
-
-		else if (e.getActionCommand().startsWith("Sch_Load")) {
+		} else if (e.getActionCommand().startsWith("Sch_Load")) {
 
 			JFileChooser fc = new JFileChooser();
 			fc.setFileFilter(new DSSFileFilter());
@@ -1009,151 +794,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				JTextField tf = (JTextField) swix.find("schem_tfload");
 				tf.setText(file.toString());
 
-			}
-
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_ClearList")) {
-
-			JList lstReports = (JList) swix.find("lstReports");
-			String[] lstArray1 = new String[0];
-			lstReports.setListData(lstArray1);
-
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_LoadList")) {
-
-			String aLine;
-			Vector<String> data = new Vector<String>();
-
-			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new CGRFileFilter());
-			fc.setCurrentDirectory(new File(".//Config"));
-
-			String dirname = ".//Config";
-			File file = null;
-			String filename = null;
-			int retval = fc.showOpenDialog(mainmenu);
-			if (retval == JFileChooser.APPROVE_OPTION) {
-				// ... The user selected a file, get it, use it.
-				file = fc.getSelectedFile();
-				filename = file.toString();
-
-				try {
-
-					// FileInputStream fin = new
-					// FileInputStream(System.getProperty("user.dir") +
-					// "\\Config\\reportlist.cgr");
-					FileInputStream fin = new FileInputStream(filename);
-					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-					// Read until first non-comment line
-					aLine = br.readLine();
-					while (aLine.startsWith("!") && aLine != null) {
-						aLine = br.readLine();
-					}
-					// aLine = br.readLine();// Skip title line;
-					while (aLine != null) {
-						data.add(aLine);
-						aLine = br.readLine();
-					}
-					br.close();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-
-				JList lstReports = (JList) swix.find("lstReports");
-				lstReports.setListData(data);
-			}
-
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
-
-			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new CGRFileFilter());
-			fc.setCurrentDirectory(new File(".//Config"));
-
-			File file = null;
-			String filename = null;
-			int retval = fc.showSaveDialog(mainmenu);
-			if (retval == JFileChooser.APPROVE_OPTION) {
-
-				// ... The user selected a file, get it, use it.
-
-				file = fc.getSelectedFile();
-				filename = file.toString();
-				if (!filename.toUpperCase().endsWith(".CGR") && !filename.endsWith("."))
-					filename = filename + ".cgr";
-
-				boolean saveFlag = true;
-				if (new File(filename).exists())
-					saveFlag = (JOptionPane.showConfirmDialog(mainmenu, "The display list file '" + filename
-					        + "' already exists. Press OK to overwrite.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
-
-				if (saveFlag) {
-					OutputStream outputStream;
-					try {
-						// outputStream = new
-						// FileOutputStream(System.getProperty("user.dir") +
-						// "\\Config\\reportlist.cgr");
-						outputStream = new FileOutputStream(filename);
-					} catch (FileNotFoundException e2) {
-						System.out.println("Cannot open " + filename);
-						return;
-					}
-
-					// Store previous list items
-					JList lstReports = (JList) swix.find("lstReports");
-					int size = lstReports.getModel().getSize(); // 4
-					int n;
-					n = 0;
-					String[] lstArray = new String[size];
-					for (int i = 0; i < size; i++) {
-						Object item = lstReports.getModel().getElementAt(i);
-						if (item.toString() != " ") {
-							lstArray[n] = item.toString();
-							n = n + 1;
-						}
-					}
-					try {
-
-						PrintStream output = new PrintStream(outputStream);
-						for (int i = 0; i < n; i++) {
-							output.println(lstArray[i]);
-						}
-
-						output.close();
-						outputStream.close();
-					} catch (IOException ioe) {
-						System.out.println("IOException");
-					}
-				}
-			}
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_DispAll")) {
-
-			if (lstScenarios.getModel().getSize() == 0) {
-				JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				displayCount = 0;
-				JList list = (JList) swix.find("lstReports");
-				for (int i = 0; i < list.getModel().getSize(); i++)
-					DisplayFrame((String) (list.getModel().getElementAt(i)));
-
-			}
-		}
-
-		else if (e.getActionCommand().startsWith("Rep_DispCur")) {
-
-			if (lstScenarios.getModel().getSize() == 0) {
-				JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-			} else if (((JList) swix.find("lstReports")).getSelectedValue() == null) {
-				JOptionPane.showMessageDialog(null, "No display group selected", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				displayCount = 0;
-				DisplayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue());
 			}
 
 		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
@@ -1212,563 +852,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	}
 
-	public String QuickState() {
-
-		String cAdd;
-		cAdd = "";
-		// Base, Comparison and Difference
-		JRadioButton rdb = (JRadioButton) swix.find("rdbp000");
-		if (rdb.isSelected()) {
-			cAdd = cAdd + "Base";
-		}
-
-		rdb = (JRadioButton) swix.find("rdbp001");
-		if (rdb.isSelected()) {
-			cAdd = cAdd + "Comp";
-		}
-
-		rdb = (JRadioButton) swix.find("rdbp002");
-		if (rdb.isSelected()) {
-			cAdd = cAdd + "Diff";
-		}
-		// Units
-		rdb = (JRadioButton) swix.find("rdbCFS");
-		if (rdb.isSelected()) {
-			cAdd = cAdd + ";CFS";
-		} else {
-			cAdd = cAdd + ";TAF";
-		}
-
-		// Date
-		JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
-		JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
-		JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
-		JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
-		String cDate = spnSM.getValue().toString() + spnSY.getValue().toString();
-		cDate = cDate + "-" + spnEM.getValue().toString() + spnEY.getValue().toString();
-		cAdd = cAdd + ";" + cDate;
-
-		// Time Series
-		JCheckBox ckb = (JCheckBox) swix.find("RepckbTimeSeriesPlot");
-		if (ckb.isSelected()) {
-			cAdd = cAdd + ";TS";
-		}
-
-		// Exceedance Plot
-		Component[] components = controls2.getComponents();
-		ckb = (JCheckBox) swix.find("RepckbExceedancePlot");
-		if (ckb.isSelected()) {
-			String cST;
-			cST = ";EX-";
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					boolean b = c.isSelected();
-					if (b == true) {
-						String cName = c.getText();
-						// TODO Need different naming convention.
-						cST = cST + "," + cName;
-					}
-				}
-			}
-			cAdd = cAdd + cST;
-		}
-
-		// Monthly Table
-		ckb = (JCheckBox) swix.find("RepckbMonthlyTable");
-		if (ckb.isSelected()) {
-			cAdd = cAdd + ";Monthly";
-		}
-
-		// Summary Table
-		components = controls3.getComponents();
-		ckb = (JCheckBox) swix.find("RepckbSummaryTable");
-		if (ckb.isSelected()) {
-			String cST;
-			cST = ";ST-";
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					boolean b = c.isSelected();
-					if (b == true) {
-						String cName = c.getText();
-						// TODO Need different naming convention.
-						cST = cST + "," + cName;
-					}
-				}
-			}
-			cAdd = cAdd + cST;
-		}
-
-		return cAdd;
-	}
-
-	public int displayCount;
-
-	public void DisplayFrame(String displayGroup) {
-
-		boolean doComparison = false;
-		boolean doDifference = false;
-		boolean doTimeSeries = false;
-		boolean doBase = false;
-		boolean doExceedance = false;
-		boolean isCFS = false;
-		boolean doMonthlyTable = false;
-		boolean doSummaryTable = false;
-		String exceedMonths = "";
-		String summaryTags = "";
-		String names = "";
-		String locations = "";
-		String dateRange = "";
-
-		String[] groupParts = displayGroup.split(";");
-		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
-		for (int i = 0; i < groupParts.length; i++) {
-			if (groupParts[i].equals("Base"))
-				doBase = true;
-			if (groupParts[i].equals("Comp"))
-				doComparison = true;
-			else if (groupParts[i].equals("Diff"))
-				doDifference = true;
-			else if (groupParts[i].equals("TS"))
-				doTimeSeries = true;
-			else if (groupParts[i].startsWith("EX-")) {
-				doExceedance = true;
-				exceedMonths = groupParts[i].substring(3);
-			} else if (groupParts[i].equals("CFS"))
-				isCFS = true;
-			else if (groupParts[i].equals("TAF"))
-				isCFS = false;
-			else if (groupParts[i].equals("Monthly"))
-				doMonthlyTable = true;
-			else if (groupParts[i].startsWith("ST-")) {
-				doSummaryTable = true;
-				summaryTags = groupParts[i].substring(4);
-			} else if (groupParts[i].startsWith("Locs-"))
-				names = groupParts[i].substring(5);
-			else if (groupParts[i].startsWith("Index-"))
-				locations = groupParts[i].substring(6);
-			else {
-				// Check to see if the groupPart parses as mmmyyyy-mmmyyy
-				Pattern p = Pattern.compile("\\w\\w\\w\\d\\d\\d\\d-\\w\\w\\w\\d\\d\\d\\d");
-				Matcher m = p.matcher(groupParts[i]);
-				if (m.find())
-					dateRange = groupParts[i];
-				else
-					System.out.println("Unparsed display list component - " + groupParts[i]);
-			}
-		}
-
-		dss_Grabber.setIsCFS(isCFS);
-
-		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-			RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
-			if (item.isSelected())
-				dss_Grabber.setBase(item.toString());
-		}
-
-		String locationNames[] = locations.split(",");
-		String namesText[] = names.split(",");
-
-		for (int i = 0; i < locationNames.length; i++) {
-
-			dss_Grabber.setLocation(locationNames[i]);
-
-			if (dss_Grabber.primaryDSSName == null)
-				JOptionPane.showMessageDialog(desktop, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i]
-				        + ".");
-			else if (dss_Grabber.primaryDSSName.equals(""))
-				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
-				        + ".");
-			else {
-
-				dss_Grabber.setDateRange(dateRange);
-
-				TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
-				TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
-
-				dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
-
-				TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-				TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
-				TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
-				TimeSeriesContainer[][] dexc_Results = dss_Grabber.getExceedanceSeries2(primary_Results);
-
-				JTabbedPane tabbedpane = new JTabbedPane();
-
-				if (doSummaryTable) {
-					SummaryTablePanel stp;
-					if (doDifference)
-						stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-						        diff_Results, null, summaryTags, "", dss_Grabber);
-					else
-						stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags,
-						        dss_Grabber.getSLabel(), dss_Grabber, doBase);
-					tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
-				}
-
-				if (doMonthlyTable) {
-					MonthlyTablePanel mtp;
-					if (doDifference) {
-						mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-						        diff_Results, null, dss_Grabber, "");
-					} else
-						mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber,
-						        dss_Grabber.getSLabel(), doBase);
-					tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
-				}
-
-				Date lower = new Date();
-				JSpinner m = (JSpinner) swix.find("spnStartMonth");
-				JSpinner y = (JSpinner) swix.find("spnStartYear");
-				lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
-
-				Date upper = new Date();
-				m = (JSpinner) swix.find("spnEndMonth");
-				y = (JSpinner) swix.find("spnEndYear");
-				upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
-
-				ChartPanel1 cp3;
-				if (doExceedance) {
-					boolean plottedOne = false; // Check if any monthly plots
-					                            // were
-					                            // done
-					for (int m1 = 0; m1 < 12; m1++)
-						if (exceedMonths.contains(monthNames[m1])) {
-							if (doDifference)
-								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")"
-								        + " - Difference from " + primary_Results[0].fileName, dss_Grabber.getYLabel(),
-								        dexc_Results[m1], null, true, upper, lower, dss_Grabber.getSLabel());
-							else
-								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
-								        dss_Grabber.getYLabel(), exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1],
-								        true, upper, lower, dss_Grabber.getSLabel(), doBase);
-							plottedOne = true;
-							tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
-						}
-					if (exceedMonths.contains("ALL") || !plottedOne) {
-						if (doDifference)
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
-							        + primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[13], null, true, upper,
-							        lower, dss_Grabber.getSLabel());
-						else
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(),
-							        exc_Results[13], sexc_Results == null ? null : sexc_Results[13], true, upper, lower,
-							        dss_Grabber.getSLabel(), doBase);
-						tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
-					}
-					if (exceedMonths.contains("Annual")) {
-						if (dss_Grabber.originalUnits.equals("CFS")) {
-							if (doDifference)
-								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (annual total)"
-								        + " - Difference from " + primary_Results[0].fileName, "Annual Total Volume (TAF)",
-								        dexc_Results[12], null, true, upper, lower, dss_Grabber.getSLabel());
-							else
-
-								cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)",
-								        "Annual Total Volume (TAF)", exc_Results[12], sexc_Results == null ? null
-								                : sexc_Results[12], true, upper, lower, dss_Grabber.getSLabel(), doBase);
-							tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
-						} else {
-							JPanel panel = new JPanel();
-							panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
-							tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
-						}
-					}
-				}
-
-				ChartPanel1 cp1;
-				ChartPanel1 cp2;
-
-				if (doTimeSeries) {
-					if (dss_Grabber.locationName.contains("SchVw") && dss_Grabber.primaryDSSName.contains(",")) {
-						cp2 = new ChartPanel1("SchVw" + dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results,
-						        secondary_Results, false, upper, lower, dss_Grabber.primaryDSSName, false); // abuse
-						                                                                                    // slabel to
-						                                                                                    // pass
-						                                                                                    // individual
-						                                                                                    // dataset
-						                                                                                    // names
-						tabbedpane.insertTab("Time Series (experimental)", null, cp2, null, 0);
-
-					} else
-
-					if (doBase) {
-						cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results,
-						        false, upper, lower, dss_Grabber.getSLabel(), doBase);
-						tabbedpane.insertTab("Time Series", null, cp2, null, 0);
-
-					} else if (primary_Results.length < 2) {
-						JPanel panel = new JPanel();
-						panel.add(new JLabel("No chart - need two or more time series."));
-						tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
-					} else {
-						if (doDifference) {
-							cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-							        dss_Grabber.getYLabel(), diff_Results, null, false, upper, lower, dss_Grabber.getSLabel());
-							tabbedpane.insertTab("Difference", null, cp2, null, 0);
-						} else if (doComparison) {
-							cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(),
-							        primary_Results, secondary_Results, false, upper, lower, dss_Grabber.getSLabel());
-							tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-						}
-					}
-				}
-
-				// Show the frame
-				JFrame frame = new JFrame();
-
-				Container container = frame.getContentPane();
-				container.add(tabbedpane);
-
-				frame.pack();
-				frame.setTitle("CalLite Results - " + namesText[i]);
-				// CalLite icon
-				java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
-				frame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
-
-				if (!(doTimeSeries || doExceedance || doMonthlyTable || doSummaryTable))
-					container.add(new JLabel("Nothing to show!"));
-				else
-					tabbedpane.setSelectedIndex(0);
-
-				frame.setVisible(true);
-				frame.setSize(980, 700);
-				frame.setLocation(displayCount * 20, displayCount * 20);
-				displayCount++;
-
-			}
-		}
-		return;
-	}
-
-	public void DisplayFrameWeb(String displayGroup) {
-
-		// if (lstScenarios.getModel().getSize() < 1) {
-		// JOptionPane.showMessageDialog(desktop,
-		// "Please specify scenario(s) of interest on Quick Results tab.");
-		// return;
-		// }
-		boolean doComparison = false;
-		boolean doDifference = false;
-		boolean doTimeSeries = false;
-		boolean doBase = false;
-		boolean doExceedance = false;
-		boolean isCFS = false;
-		boolean doMonthlyTable = false;
-		boolean doSummaryTable = false;
-		String exceedMonths = "";
-		String summaryTags = "";
-		String names = "";
-		String locations = "";
-		String dateRange = "";
-
-		String[] groupParts = displayGroup.split(";");
-		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
-		for (int i = 0; i < groupParts.length; i++) {
-			if (groupParts[i].equals("Base"))
-				doBase = true;
-			if (groupParts[i].equals("Comp"))
-				doComparison = true;
-			else if (groupParts[i].equals("Diff"))
-				doDifference = true;
-			else if (groupParts[i].equals("TS"))
-				doTimeSeries = true;
-			else if (groupParts[i].startsWith("EX-")) {
-				doExceedance = true;
-				exceedMonths = groupParts[i].substring(3);
-			} else if (groupParts[i].equals("CFS"))
-				isCFS = true;
-			else if (groupParts[i].equals("TAF"))
-				isCFS = false;
-			else if (groupParts[i].equals("Monthly"))
-				doMonthlyTable = true;
-			else if (groupParts[i].startsWith("ST-")) {
-				doSummaryTable = true;
-				summaryTags = groupParts[i].substring(4);
-			} else if (groupParts[i].startsWith("Locs-"))
-				names = groupParts[i].substring(5);
-			else if (groupParts[i].startsWith("Index-"))
-				locations = groupParts[i].substring(6);
-			else {
-				// Check to see if the groupPart parses as mmmyyyy-mmmyyy
-				Pattern p = Pattern.compile("\\w\\w\\w\\d\\d\\d\\d-\\w\\w\\w\\d\\d\\d\\d");
-				Matcher m = p.matcher(groupParts[i]);
-				if (m.find())
-					dateRange = groupParts[i];
-				else
-					System.out.println("Unparsed display list component - " + groupParts[i]);
-			}
-		}
-
-		dss_Grabber.setIsCFS(isCFS);
-
-		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-			RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
-			if (item.isSelected())
-				dss_Grabber.setBase(item.toString());
-		}
-
-		String namesText[] = names.split(",");
-		String locationNames[] = locations.split(",");
-
-		// String locationNames[]; // Differentiate between
-		// schematicandnon-schematic view
-		// boolean isSchematicView = locations.startsWith("SchVw"); // TODO -
-		// Look at using currently visible panel to
-		// do this check
-		// if (isSchematicView)
-		// locationNames = locations.substring(5).split(",");
-		// else
-		// locationNames = locations.split(",");
-		//
-
-		for (int i = 0; i < locationNames.length; i++) {
-
-			dss_Grabber.setLocationWeb(locationNames[i]);
-			dss_Grabber.setDateRange(dateRange);
-
-			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
-			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
-
-			dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
-
-			TimeSeriesContainer[] diff_Results = dss_Grabber.getDifferenceSeries(primary_Results);
-			TimeSeriesContainer[][] exc_Results = dss_Grabber.getExceedanceSeries(primary_Results);
-			TimeSeriesContainer[][] sexc_Results = dss_Grabber.getExceedanceSeries(secondary_Results);
-			TimeSeriesContainer[][] dexc_Results = dss_Grabber.getExceedanceSeries2(primary_Results);
-
-			JTabbedPane tabbedpane = new JTabbedPane();
-
-			if (doSummaryTable) {
-				SummaryTablePanel stp;
-				if (doDifference)
-					stp = new SummaryTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-					        diff_Results, null, summaryTags, "", dss_Grabber);
-				else
-					stp = new SummaryTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, summaryTags,
-					        dss_Grabber.getSLabel(), dss_Grabber);
-				tabbedpane.insertTab("Summary - " + dss_Grabber.getBase(), null, stp, null, 0);
-			}
-
-			if (doMonthlyTable) {
-				MonthlyTablePanel mtp;
-				if (doDifference) {
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-					        diff_Results, null, dss_Grabber, "");
-				} else
-					mtp = new MonthlyTablePanel(dss_Grabber.getTitle(), primary_Results, secondary_Results, dss_Grabber,
-					        dss_Grabber.getSLabel());
-				tabbedpane.insertTab("Monthly - " + dss_Grabber.getBase(), null, mtp, null, 0);
-			}
-
-			Date lower = new Date();
-			JSpinner m = (JSpinner) swix.find("spnStartMonth");
-			JSpinner y = (JSpinner) swix.find("spnStartYear");
-			lower.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
-
-			Date upper = new Date();
-			m = (JSpinner) swix.find("spnEndMonth");
-			y = (JSpinner) swix.find("spnEndYear");
-			upper.setTime((new Month(monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
-
-			ChartPanel1 cp3;
-			if (doExceedance) {
-				boolean plottedOne = false; // Check if any monthly plots were
-				                            // done
-				for (int m1 = 0; m1 < 12; m1++)
-					if (exceedMonths.contains(monthNames[m1])) {
-						if (doDifference)
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")"
-							        + " - Difference from " + primary_Results[0].fileName, dss_Grabber.getYLabel(),
-							        dexc_Results[m1], null, true, upper, lower, dss_Grabber.getSLabel());
-						else
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
-							        dss_Grabber.getYLabel(), exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true,
-							        upper, lower, dss_Grabber.getSLabel());
-						plottedOne = true;
-						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
-					}
-				if (exceedMonths.contains("ALL") || !plottedOne) {
-					if (doDifference)
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
-						        + primary_Results[0].fileName, dss_Grabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
-						        dss_Grabber.getSLabel());
-					else
-						cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (all months)", dss_Grabber.getYLabel(),
-						        exc_Results[13], sexc_Results == null ? null : sexc_Results[13], true, upper, lower,
-						        dss_Grabber.getSLabel());
-					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
-				}
-				if (exceedMonths.contains("Annual")) {
-					if (dss_Grabber.originalUnits.equals("CFS")) {
-						if (doDifference)
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
-							        + primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true,
-							        upper, lower, dss_Grabber.getSLabel());
-						else
-
-							cp3 = new ChartPanel1(dss_Grabber.getTitle() + " - Exceedance (Annual Total)",
-							        "Annual Total Volume (TAF)", exc_Results[12], sexc_Results == null ? null : sexc_Results[12],
-							        true, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
-					} else {
-						JPanel panel = new JPanel();
-						panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
-						tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
-					}
-				}
-			}
-
-			ChartPanel1 cp1;
-			ChartPanel1 cp2;
-
-			if (doTimeSeries) {
-				if (doBase) {
-					cp2 = new ChartPanel1(dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results, secondary_Results,
-					        false, upper, lower, dss_Grabber.getSLabel());
-					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
-
-				} else if (primary_Results.length < 2) {
-					JPanel panel = new JPanel();
-					panel.add(new JLabel("No chart - need two or more time series."));
-					tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
-				} else {
-					if (doDifference) {
-						cp2 = new ChartPanel1(dss_Grabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-						        dss_Grabber.getYLabel(), diff_Results, null, false, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Difference", null, cp2, null, 0);
-					} else if (doComparison) {
-						cp1 = new ChartPanel1(dss_Grabber.getTitle() + " - Comparison ", dss_Grabber.getYLabel(), primary_Results,
-						        secondary_Results, false, upper, lower, dss_Grabber.getSLabel());
-						tabbedpane.insertTab("Comparison", null, cp1, null, 0);
-					}
-				}
-			}
-
-			// Show the frame
-			JFrame frame = new JFrame();
-
-			Container container = frame.getContentPane();
-			container.add(tabbedpane);
-			frame.pack();
-			frame.setTitle("CalLite Results - " + namesText[i]);
-			if (!(doTimeSeries || doExceedance || doMonthlyTable || doSummaryTable))
-				container.add(new JLabel("Nothing to show!"));
-			else
-				tabbedpane.setSelectedIndex(0);
-			frame.setVisible(true);
-			frame.setSize(980, 700);
-			frame.setLocation(displayCount * 20, displayCount * 20);
-			displayCount++;
-
-		}
-
-		return;
-	}
-
 	// This method returns the selected radio button in a button group
 	/**
 	 * @wbp.parser.entryPoint
@@ -1786,136 +869,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-
-	@SuppressWarnings("unused")
-	protected void populateDTable(String cID, final JTable t, JComponent container) {
-
-		boolean exists = false;
-		String fileName = gl.tableNameForCtrl(cID);
-
-		if (fileName != null && fileName.length() != 0) {
-
-			String[] files = fileName.split("[|]");
-			int size = files.length;
-
-			if (size == 1) {
-				// CASE 1: 1 file specified
-				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + fileName + ".table";
-				File f = new File(fileName);
-				exists = f.exists();
-			} else if (size == 2) {
-				// CASE 2: 2 files specified
-				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table";
-				File f = new File(fileName);
-				exists = f.exists();
-				if (exists) {
-					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
-					f = new File(fileName);
-					exists = f.exists();
-					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-					        + System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
-				}
-			}
-
-		}
-
-		// File f = new File("Default\\Lookup\\" + fileName + ".table");
-		// boolean exists = f.exists();
-		if (!exists) {
-			// t.setVisible(false);
-			container.setVisible(false);
-		} else {
-
-			// int tID = Integer.parseInt(cID);
-			// t.setVisible(true);
-			final int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
-			if (dTableModels == null) {
-				dTableModels = new DataFileTableModel[20];
-			}
-			if (dTableModels[tID] == null) {
-				dTableModels[tID] = new DataFileTableModel(fileName, tID);
-			}
-			// dTableModels[tID].addTableModelListener(this);
-
-			t.setModel(dTableModels[tID]);
-			t.createDefaultColumnsFromModel();
-
-			t.setRowHeight(20);
-			for (int col = 0; col < t.getColumnCount(); col++) {
-				t.getColumnModel().getColumn(col).setWidth(50);
-			}
-
-			t.setPreferredScrollableViewportSize(new Dimension(t.getColumnCount() * 60 + 60, t.getRowCount() * 20));
-
-			t.setCellSelectionEnabled(true);
-			t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-			t.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
-
-			t.getModel().addTableModelListener(new TableModelListener() {
-				@Override
-				public void tableChanged(TableModelEvent e) {
-
-					/*
-					 * if (RegUserEdits == null) { RegUserEdits = new Boolean[20]; }
-					 * 
-					 * RegUserEdits[tID] = true;
-					 */
-					RegUserEdits[tID] = true;
-					JButton btn = (JButton) swix.find("btnRegDef");
-					btn.setEnabled(true);
-
-				}
-			});
-
-			t.addKeyListener(new KeyAdapter() {
-				@Override
-				public void keyTyped(KeyEvent ke) {
-
-					int l = t.getSelectedRow();
-					int c = t.getSelectedColumn();
-
-					// t.setValueAt(Character.toString(ke.getKeyChar()),l,c);
-					// t.editCellAt(l, c);
-				}
-			});
-
-			// Special handling for tiered header tables (11 columns)
-			if (dTableModels[tID].getColumnCount() == 11) {
-
-				// JFrame frame1 = new JFrame();
-
-				/*
-				 * JTable table = new JTable(); table.setColumnModel(new GroupableTableColumnModel()); table.setTableHeader(new
-				 * GroupableTableHeader((GroupableTableColumnModel) table.getColumnModel())); table.setModel(dTableModels[tID]);
-				 * table.createDefaultColumnsFromModel();
-				 * 
-				 * 
-				 * GroupableTableColumnModel cm = (GroupableTableColumnModel)table.getColumnModel();
-				 * 
-				 * ColumnGroup g_Wet = new ColumnGroup("Wet"); g_Wet.add(cm.getColumn(1)); g_Wet.add(cm.getColumn(2)); ColumnGroup
-				 * g_AN = new ColumnGroup("Above Normal"); g_AN.add(cm.getColumn(3)); g_AN.add(cm.getColumn(4)); ColumnGroup g_BN =
-				 * new ColumnGroup("Below Normal"); g_BN.add(cm.getColumn(5)); g_BN.add(cm.getColumn(6)); ColumnGroup g_DRY = new
-				 * ColumnGroup("Dry"); g_DRY.add(cm.getColumn(7)); g_DRY.add(cm.getColumn(8)); ColumnGroup g_CD = new
-				 * ColumnGroup("Critical Dry"); g_CD.add(cm.getColumn(9)); g_CD.add(cm.getColumn(10));
-				 * 
-				 * 
-				 * GroupableTableHeader h = (GroupableTableHeader)table.getTableHeader(); h.addColumnGroup(g_Wet);
-				 * h.addColumnGroup(g_AN); h.addColumnGroup(g_BN); h.addColumnGroup(g_DRY); h.addColumnGroup(g_CD); JScrollPane
-				 * scroll = new JScrollPane( table );
-				 * 
-				 * //frame1.add(scroll); //frame1.pack(); //frame1.setVisible(true);
-				 */
-
-			}
-
-			t.revalidate();
-
-			ExcelAdapter myAd = new ExcelAdapter(t);
-
-		}
-
-	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -1984,8 +937,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
 
+					lstScenarios = (JList) swix.find("SelectedList");
+					DSSGrabber dss_Grabber;
+					dss_Grabber = new DSSGrabber(lstScenarios);
+
 					JCheckBox chk = (JCheckBox) component;
-					DisplayFrame(QuickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName());
+					DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
+					        swix, dss_Grabber, lstScenarios, desktop, 0);
 					menu.setCursor(normalCursor);
 				}
 			}
@@ -2008,11 +966,18 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 							        || ((x - 339) * (x - 339) + (y - 157) * (y - 157) < 100)
 							        || ((x - 339) * (x - 339) + (y - 250) * (y - 250) < 100)) {
 
+								lstScenarios = (JList) swix.find("SelectedList");
+								DSSGrabber dss_Grabber;
+								dss_Grabber = new DSSGrabber(lstScenarios);
+
 								if (y < 200)
-									DisplayFrame(QuickState() + ";Locs-Shasta Storage,;Index-ckbp104,");
+									DisplayFrame.displayFrame(DisplayFrame.QuickState(swix)
+									        + ";Locs-Shasta Storage,;Index-ckbp104,", swix, dss_Grabber, lstScenarios, desktop, 0);
 
 								else
-									DisplayFrame(QuickState() + ";Locs-Keswick Flows,;Index-ckbp206,");
+									DisplayFrame.displayFrame(
+									        DisplayFrame.QuickState(swix) + ";Locs-Keswick Flows,;Index-ckbp206,", swix,
+									        dss_Grabber, lstScenarios, desktop, 0);
 							}
 
 							else
@@ -2080,8 +1045,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			// Constrain run times to [10/1921,9/2003]
 			int syr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
 			int eyr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
-			int smo = monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
-			int emo = monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
+			int smo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
+			int emo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnRunStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
@@ -2091,8 +1056,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 			syr = (Integer) ((JSpinner) swix.find("spnStartYear")).getValue();
 			eyr = (Integer) ((JSpinner) swix.find("spnEndYear")).getValue();
-			smo = monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
-			emo = monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
+			smo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
+			emo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
@@ -2185,37 +1150,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 
 	public static int getLookups5Length() {
 		return table5.length;
-	}
-
-	public int monthToInt(String EndMon) {
-		int iEMon = 0;
-
-		if (EndMon.equals("Apr")) {
-			iEMon = 4;
-		} else if (EndMon.equals("Jun")) {
-			iEMon = 6;
-		} else if (EndMon.equals("Sep")) {
-			iEMon = 9;
-		} else if (EndMon.equals("Nov")) {
-			iEMon = 11;
-		} else if (EndMon.equals("Feb")) {
-			iEMon = 2;
-		} else if (EndMon.equals("Jan")) {
-			iEMon = 1;
-		} else if (EndMon.equals("Mar")) {
-			iEMon = 3;
-		} else if (EndMon.equals("May")) {
-			iEMon = 5;
-		} else if (EndMon.equals("Jul")) {
-			iEMon = 7;
-		} else if (EndMon.equals("Aug")) {
-			iEMon = 8;
-		} else if (EndMon.equals("Oct")) {
-			iEMon = 10;
-		} else if (EndMon.equals("Dec")) {
-			iEMon = 12;
-		}
-		return iEMon;
 	}
 
 	/*
