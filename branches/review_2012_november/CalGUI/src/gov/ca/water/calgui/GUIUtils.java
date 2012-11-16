@@ -1108,4 +1108,35 @@ public class GUIUtils {
 		return retval;
 
 	}
+
+	public static int monthToInt(String EndMon) {
+		int iEMon = 0;
+
+		if (EndMon.equals("Apr")) {
+			iEMon = 4;
+		} else if (EndMon.equals("Jun")) {
+			iEMon = 6;
+		} else if (EndMon.equals("Sep")) {
+			iEMon = 9;
+		} else if (EndMon.equals("Nov")) {
+			iEMon = 11;
+		} else if (EndMon.equals("Feb")) {
+			iEMon = 2;
+		} else if (EndMon.equals("Jan")) {
+			iEMon = 1;
+		} else if (EndMon.equals("Mar")) {
+			iEMon = 3;
+		} else if (EndMon.equals("May")) {
+			iEMon = 5;
+		} else if (EndMon.equals("Jul")) {
+			iEMon = 7;
+		} else if (EndMon.equals("Aug")) {
+			iEMon = 8;
+		} else if (EndMon.equals("Oct")) {
+			iEMon = 10;
+		} else if (EndMon.equals("Dec")) {
+			iEMon = 12;
+		}
+		return iEMon;
+	}
 }

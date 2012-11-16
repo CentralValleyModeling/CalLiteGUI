@@ -8,11 +8,14 @@ package gov.ca.water.calgui.results;
  *
  */
 
+import gov.ca.water.calgui.DisplayFrame;
 import gov.ca.water.calgui.MainMenu;
 
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
+import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -23,6 +26,7 @@ import org.apache.batik.swing.gvt.GVTTreeRendererAdapter;
 import org.apache.batik.swing.gvt.GVTTreeRendererEvent;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
+import org.swixml.SwingEngine;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -37,6 +41,7 @@ public class SchematicMain {
 	Document document;
 	Window window;
 	MainMenu mainMenu;
+	SwingEngine swix;
 
 	public void setAffineTransform(double m0, double m1, double m2, double m3, double m4, double m5) {
 
@@ -47,9 +52,10 @@ public class SchematicMain {
 
 	AffineTransform theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
 
-	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn) {
+	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn, SwingEngine swix) {
 
 		mainMenu = mainMenuIn;
+		this.swix = swix;
 		canvas = new JSVGCanvas();
 
 		// Forces the canvas to always be dynamic even if the current
@@ -154,13 +160,21 @@ public class SchematicMain {
 				}
 
 			}
+
 			if (label == null)
 				Toolkit.getDefaultToolkit().beep();
 			else {
+				JList lstScenarios = null;
+				JFrame desktop = null;
 				if (mainMenu.lstScenarios.getModel().getSize() == 0)
 					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
 				else
-					mainMenu.DisplayFrame(mainMenu.QuickState() + ";Locs-" + label + ";Index-" + "SchVw" + label);
+					desktop = (JFrame) swix.find("desktop");
+				lstScenarios = (JList) swix.find("SelectedList");
+				DSSGrabber dss_Grabber;
+				dss_Grabber = new DSSGrabber(lstScenarios);
+				DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + label + ";Index-" + "SchVw" + label, swix,
+				        dss_Grabber, lstScenarios, desktop, 0);
 			}
 
 			System.out.println("Title: " + label);
