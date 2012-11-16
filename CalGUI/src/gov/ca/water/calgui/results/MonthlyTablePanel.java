@@ -70,7 +70,7 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		if (dss_Grabber.originalUnits.equals("CFS")) {
+		if (dss_Grabber.getOriginalUnits().equals("CFS")) {
 			columns.addElement("Ann (TAF)");
 		}
 
@@ -109,14 +109,14 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				int m = ht.month();
 				wy = (m < 10) ? y : y + 1;
 				if ((i - first) % 12 == 0) {
-					if (i != first && dss_Grabber.originalUnits.equals("CFS"))
+					if (i != first && dss_Grabber.getOriginalUnits().equals("CFS"))
 						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
 					data.addElement(Integer.toString(wy));
 				}
 				sum = sum + tsc.values[i];
 				data.addElement(df1.format(tsc.values[i]));
 			}
-			if (dss_Grabber.originalUnits.equals("CFS")) {
+			if (dss_Grabber.getOriginalUnits().equals("CFS")) {
 				data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy)));
 			}
 

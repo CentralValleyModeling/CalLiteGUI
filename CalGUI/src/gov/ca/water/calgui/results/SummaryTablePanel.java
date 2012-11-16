@@ -227,7 +227,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 					update(5, ylt[wy - 1920][8], tsc.values[i], m);
 					update(5, 0, tsc.values[i], m);
 				}
-				if (isNewWY && dss_Grabber.originalUnits.equals("CFS")) {
+				if (isNewWY && dss_Grabber.getOriginalUnits().equals("CFS")) {
 					// Calculate values based on annual totals
 					double value;
 					if (title.contains("Difference"))
@@ -330,7 +330,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 										i3m = i3 + 10;
 									else if (i3 < 12)
 										i3m = i3 - 2;
-									else if (dss_Grabber.originalUnits.contains("CFS"))
+									else if (dss_Grabber.getOriginalUnits().contains("CFS"))
 										i3m = 13;
 									else
 										i3m = 0;
