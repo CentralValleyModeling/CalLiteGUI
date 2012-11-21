@@ -12,8 +12,6 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -50,7 +48,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListDataEvent;
@@ -64,8 +61,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.varia.NullAppender;
 import org.swixml.SwingEngine;
 
-public class MainMenu implements ActionListener, ItemListener, MouseListener, TableModelListener, MenuListener, ChangeListener,
-        ListDataListener, KeyEventDispatcher {
+public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
+        KeyEventDispatcher {
 	private final SwingEngine swix;
 
 	// Declare public Objects
@@ -85,20 +82,13 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 	JPanel facilities;
 	JPanel operations;
 	JPanel Display;
-	JPanel controls2;
-	JPanel controls3;
 	JPanel presets;
 	JPanel shortage;
 	JPanel delta_flow_criteria;
 	JPanel WMA;
 	JPanel hyd_CCOpt;
-	JPanel hyd_CC;
-	JPanel hyd_CC1;
-	JPanel hyd_CC2;
 	JPanel dem_SWP;
 	JPanel dem_CVP;
-	JPanel dem_UDSWP;
-	JPanel dem_UDCVP;
 	JFrame dialog;
 	ButtonGroup reg_btng1;
 	GUILinks gl;
@@ -375,28 +365,29 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUIUtils.SetMenuListener(menu, this);
 
 		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(regulations, this);
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(regulations, new ListenerReg(swix, RegUserEdits, dTableModels, gl, reg_btng1));
 		GUIUtils.SetMouseListener(regulations, this);
 		GUIUtils.SetChangeListener(regulations, this);
 
 		swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
 		swix.setActionListener(hydroclimate, new HydAction(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, this);
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, new ListenerHyd(desktop, swix, RegUserEdits, dTableModels, gl,
+		        action_WSIDI));
 
 		swix.setActionListener(demands, this);
 
 		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(operations, this);
-		GUIUtils.SetRadioButtonItemListener(dem_SWP, this);
-		GUIUtils.SetRadioButtonItemListener(dem_CVP, this);
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(operations, new ListenerOp(swix));
+		GUIUtils.SetRadioButtonItemListener(dem_SWP, new ListenerDem(swix));
+		GUIUtils.SetRadioButtonItemListener(dem_CVP, new ListenerDem(swix));
 
 		swix.setActionListener(facilities, this);
 		FacilitiesSetup.SetFacilitiesTables(swix);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(facilities, this);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(Display, this);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(presets, this);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(shortage, this);
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(facilities, new ListenerFac(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(Display, new ListenerFac(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(presets, new ListenerFac(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(shortage, new ListenerFac(swix));
 		// GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria,
 		// this);
 		GUIUtils.SetMouseListener(presets, this);
@@ -405,7 +396,8 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 		GUIUtils.SetMouseListener(facilities, this);
 
 		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(runsettings, this);
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(runsettings, new ListenerRun(desktop, swix, RegUserEdits, dTableModels, gl,
+		        action_WSIDI));
 
 		swix.setActionListener(schematics, this);
 
@@ -461,312 +453,6 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 			e.printStackTrace();
 		}
 
-	}
-
-	// Respond to selection of a check box or radiobox.
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		JComponent component = (JComponent) e.getItem();
-		// TODO: EXTERNALIZE
-
-		// was "e.getItemSelected"
-		String cName = component.getName();
-		if (cName != null) {
-
-			if (cName.startsWith("hyd_rdb20") || cName.startsWith("run_rdb")) {
-
-				// Handling for update of DSS files
-
-				// Confirm CWP/SWP overwrite;
-				if (((JRadioButton) component).isSelected() && action_WSIDI != 2) {
-
-					// Actions are only performed if selection is being set to
-					// true
-
-					int option = JOptionPane.YES_OPTION; // default is to
-					                                     // overwrite
-					                                     // everything
-					boolean isntDefault = false;
-					if (RegUserEdits != null) {
-						if (RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn1"))] != null)
-							isntDefault = isntDefault || RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn1"))];
-						if (RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn2"))] != null)
-							isntDefault = isntDefault || RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn2"))];
-
-					}
-					if ((action_WSIDI == 1) && (isntDefault))
-
-						// Prompt is needed only in "regular" processing
-						// (action_WSIDI = 1) with non-default table
-
-						option = JOptionPane
-						        .showConfirmDialog(
-						                desktop,
-						                "You have made changes to the SWP and/or CVP WSI/DI curves. \n"
-						                        + "Do you want to overwrite these changes with the default values for the configuration ("
-						                        + ((JRadioButton) component).getText()
-						                        + " ) you have selected?\n\n"
-						                        + "Press YES to overwrite, NO to use these values in the selected configuration, or Cancel to revert");
-
-					// Once option is determined, process ...
-
-					if (option == JOptionPane.CANCEL_OPTION) {
-
-						// Cancel: undo change by selecting "other" radio button
-
-						String newcName = null;
-						if (cName.equals("hyd_rdb2005"))
-							newcName = "hyd_rdb2030";
-						else if (cName.equals("hyd_rdb2030"))
-							newcName = "hyd_rdb2005";
-						else if (cName.equals("run_rdbD1641"))
-							newcName = "run_rdbBO";
-						else if (cName.equals("run_rdbBO"))
-							newcName = "run_rdbD1641";
-
-						action_WSIDI = 2; // Skip all actions on update
-
-						System.out.println(cName + ":-" + newcName);
-						((JRadioButton) swix.find(newcName)).setSelected(true);
-
-						action_WSIDI = 1;
-
-					} else {
-
-						// Yes or no: first determine which GUI_link4.table row
-						// to use
-
-						String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
-						lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-						if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
-							lookup = lookup + "10";
-						else {
-							lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
-
-							// TODO: Finish off with CCModelID? Move to batch
-							// processing?
-
-						}
-
-						int l = -1;
-						for (int i = 0; i < table4.length; i++) {
-							if (lookup.equals(table4[i][0]))
-								l = i;
-						}
-
-						if (l != -1) {
-
-							// Then update GUI values, files in Default\Lookup
-							// directory
-
-							((JTextField) swix.find("hyd_DSS_Index")).setText(lookup);
-							((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
-							((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
-							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
-							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
-
-							GUIUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
-
-							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
-
-								// Force CVP and SWP tables to be reset from
-								// files
-
-								String fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1") + ".table";
-								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
-								dTableModels[tID] = new DataFileTableModel(fileName, tID);
-
-								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
-								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
-								dTableModels[tID] = new DataFileTableModel(fileName, tID);
-
-								JTable table = (JTable) swix.find("tblOpValues");
-								table.setModel(dTableModels[tID]);
-
-							}
-						}
-					}
-				}
-
-			} else if (cName.startsWith("ckbp")) {
-				// CheckBox in presets panel changed
-				// String cID = cName.substring(3);
-			}
-
-			else if (cName.startsWith("ckbReg")) {
-				// CheckBox in Regulations panel changed
-				Boolean isSelect = e.getStateChange() == ItemEvent.SELECTED;
-				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect);
-
-			} else if (cName.startsWith("reg_rdbD1641")) {
-				// do not allow user edits to tables
-				JTable table = (JTable) swix.find("tblRegValues");
-				JRadioButton rdb = (JRadioButton) e.getItem();
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					if (dTableModels != null) {
-
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int size = tm.datafiles.length;
-						if (size == 1) {
-							tm.initVectors();
-						} else if (size == 2) {
-							tm.initVectors2();
-						}
-						table.repaint();
-
-						table.setCellSelectionEnabled(false);
-						table.setEnabled(false);
-						if (table.isEditing()) {
-							table.getCellEditor().stopCellEditing();
-						}
-
-						JComponent scr = (JComponent) swix.find("scrRegValues");
-						if (scr.isVisible()) {
-							int tID = tm.tID;
-							if (RegUserEdits == null) {
-								RegUserEdits = new Boolean[20];
-							}
-							RegUserEdits[tID] = false;
-
-							String cName1 = gl.CtrlFortableID(Integer.toString(tID));
-							JCheckBox ckb = (JCheckBox) swix.find(cName1);
-							String ckbtext = ckb.getText();
-							String[] ckbtext1 = ckbtext.split(" - ");
-							ckbtext = ckbtext1[0];
-							ckb.setText(ckbtext + " -  Default");
-						} else {
-							// JOptionPane.showMessageDialog(mainmenu,
-							// "There is currently a simulation running at this time.");
-						}
-					}
-
-				}
-
-			} else if (cName.startsWith("reg_rdbUD")) {
-				// do not allow user edits to tables
-				JTable table = (JTable) swix.find("tblRegValues");
-				JRadioButton rdb = (JRadioButton) e.getItem();
-
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					JComponent scr = (JComponent) swix.find("scrRegValues");
-					if (scr.isVisible()) {
-						table.setCellSelectionEnabled(true);
-						table.setEnabled(true);
-
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID = tm.tID;
-						if (RegUserEdits == null) {
-							RegUserEdits = new Boolean[20];
-						}
-						RegUserEdits[tID] = true;
-
-						String cName1 = gl.CtrlFortableID(Integer.toString(tID));
-						JCheckBox ckb = (JCheckBox) swix.find(cName1);
-						String ckbtext = ckb.getText();
-						String[] ckbtext1 = ckbtext.split(" - ");
-						ckbtext = ckbtext1[0];
-						ckb.setText(ckbtext + " - User Def.");
-					} else {
-						JPanel pan = (JPanel) swix.find("reg_panTab");
-						TitledBorder b = (TitledBorder) pan.getBorder();
-						String title = b.getTitle();
-						JOptionPane.showMessageDialog(mainmenu, title + " inputs are not user-specifiable at this time.");
-						JRadioButton rdb1 = (JRadioButton) swix.find("reg_rdbD1641");
-						rdb1.setSelected(true);
-						rdb1.revalidate();
-
-					}
-				}
-
-			} else if (cName.startsWith("fac_ckb")) {
-				// checkbox in facilities panel changed
-				JPanel panel = (JPanel) swix.find("fac_pan" + cName.substring(7));
-
-				if (panel != null) {
-					// set all "data" panels to invisible
-					GUIUtils.ToggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
-					// set specified "data" panel to active
-					GUIUtils.ToggleVisComponent(panel, true);
-					GUIUtils.ToggleEnComponentAndChildren(panel, e.getStateChange() == ItemEvent.SELECTED);
-
-				}
-
-			} else if (cName.startsWith("dem_rdbUD")) {
-				// Checkbox in Demands page changed
-
-				if (cName.startsWith("dem_rdbUD1")) {
-					GUIUtils.ToggleEnComponentAndChildren(dem_UDSWP, e.getStateChange() == ItemEvent.SELECTED,
-					        NumericTextField.class);
-				} else if (cName.startsWith("dem_rdbUD2")) {
-					GUIUtils.ToggleEnComponentAndChildren(dem_UDCVP, e.getStateChange() == ItemEvent.SELECTED,
-					        NumericTextField.class);
-				}
-			} else if (cName.startsWith("op_")) {
-				// Checkbox in Operation page changed
-				if (cName.startsWith("op_rdb1")) {
-					JButton btn = (JButton) swix.find("op_btn1");
-					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					btn = (JButton) swix.find("op_btn2");
-					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				} else if (cName.startsWith("op_rdb2")) {
-					JPanel pan2 = (JPanel) swix.find("op_pan2");
-					GUIUtils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JRadioButton.class);
-					GUIUtils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JCheckBox.class);
-				} else if (cName.startsWith("op_rdb3")) {
-					JButton btn = (JButton) swix.find("op_btn3");
-					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				} else if (cName.startsWith("op_op_ntfSWP_t")) {
-					JLabel lab = (JLabel) swix.find("op_ntfSWP_t");
-					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					NumericTextField ntf = (NumericTextField) swix.find("op_ntfSWP_t");
-					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				} else if (cName.startsWith("op_ckbCWP")) {
-					JLabel lab = (JLabel) swix.find("op_ntfCWP1_t");
-					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					NumericTextField ntf = (NumericTextField) swix.find("op_ntfCWP1");
-					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					lab = (JLabel) swix.find("op_ntfCWP2_t");
-					lab.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-					ntf = (NumericTextField) swix.find("op_ntfCWP2");
-					ntf.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
-				}
-			} else if (cName.startsWith("Repckb")) {
-				// Checkbox in Reporting page changed
-				if (cName.startsWith("RepckbExceedancePlot")) {
-					GUIUtils.ToggleEnComponentAndChildren(controls2, e.getStateChange() == ItemEvent.SELECTED);
-				} else if (cName.startsWith("RepckbSummaryTable")) {
-					GUIUtils.ToggleEnComponentAndChildren(controls3, e.getStateChange() == ItemEvent.SELECTED);
-				}
-			} else if (cName.startsWith("hyd_ckb")) {
-				// Checkbox in Climate Scenarios page changed
-				int selct = 0;
-				selct = GUIUtils.CountSelectedButtons(hyd_CC1, JCheckBox.class, selct);
-				selct = GUIUtils.CountSelectedButtons(hyd_CC2, JCheckBox.class, selct);
-
-				JLabel lab = (JLabel) swix.find("hydlab_selected");
-				if (selct == 0) {
-					lab.setText("0 realizations selected");
-				} else if (selct == 1) {
-					lab.setText("1 realization selected - Deterministic mode required");
-				} else {
-					lab.setText(selct + " realizations selected - Probabilistic mode required");
-				}
-
-			} else if (cName.startsWith("hyd_rdb")) {
-				// Radio in Hydroclimate
-
-				if (cName.startsWith("hyd_rdbHis")) {
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, e.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, e.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.ToggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
-					GUIUtils.ToggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class);
-				} else if (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, e.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, e.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC2, e.getStateChange() == ItemEvent.SELECTED);
-				}
-			}
-		}
 	}
 
 	// React to menu selections.
