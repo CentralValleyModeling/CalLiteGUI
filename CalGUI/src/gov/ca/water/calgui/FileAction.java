@@ -52,6 +52,7 @@ public class FileAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
+		// TODO: Break out individual actions for readability?
 
 		if ("AC_RUN".equals(ae.getActionCommand())) {
 
@@ -306,6 +307,9 @@ public class FileAction implements ActionListener {
 	}
 
 	static ProgressFrame pFrame;
+
+	// TODO: Modify to read/set swix state from scenario file "scen", possibly saving current state of swix in temporary string
+	// buffer.
 
 	public static void setupAndRun(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] RegUserEdits,
 	        final DataFileTableModel[] dTableModels, final GUILinks gl) {
