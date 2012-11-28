@@ -14,6 +14,8 @@ import java.util.Vector;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+import org.apache.log4j.Logger;
+
 /**
  * Class to grab (load) DSS time series for a set of scenarios passed in a JList. Each scenario is a string that corresponds to a
  * fully qualified (?) DSS file name. The DSS_Grabber instance provides access to the following:
@@ -37,7 +39,8 @@ import javax.swing.JOptionPane;
  */
 public class DSSGrabber {
 
-	static double cfs2TAFday = 0.001983471;
+	static Logger log = Logger.getLogger(DSSGrabber.class.getName());
+	static final double CFS_2_TAF_DAY = 0.001983471;
 
 	private final JList lstScenarios;
 	private String baseName;
@@ -110,9 +113,11 @@ public class DSSGrabber {
 			endTime = ht.value();
 			endWY = ((m < 10) ? y : y + 1);
 		} catch (IndexOutOfBoundsException e) {
+			
 			startTime = -1;
-			System.out.println("Date range not set - bad daterange string '" + dateRange + "'.");
+			log.debug(e.getMessage());
 		}
+		
 	}
 
 	/**
@@ -123,6 +128,7 @@ public class DSSGrabber {
 	 *            name of scenario/DSS file to use as base.
 	 */
 	public void setBase(String string) {
+		
 		baseName = string;
 	}
 
@@ -344,8 +350,9 @@ public class DSSGrabber {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block - what's a good thing to do here? should it return null?
-			e.printStackTrace();
+			
+			log.debug(e.getMessage());
+
 		}
 
 		// Store name portion of DSS file in TimeSeriesContainer
@@ -514,7 +521,7 @@ public class DSSGrabber {
 
 					ht.set(primaryResults[i].times[j]);
 					calendar.set(ht.year(), ht.month() - 1, 1);
-					double monthlyTAF = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * cfs2TAFday;
+					double monthlyTAF = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * CFS_2_TAF_DAY;
 					int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
 					if (wy >= 0)
 						annualTAFs[i][wy] += monthlyTAF;
@@ -544,7 +551,7 @@ public class DSSGrabber {
 						ht.set(secondaryResults[i].times[j]);
 						calendar.set(ht.year(), ht.month() - 1, 1);
 						double monthlyTAF = secondaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-						        * cfs2TAFday;
+						        * CFS_2_TAF_DAY;
 						int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
 						annualTAFs[i + primaryResults.length][wy] += monthlyTAF;
 						if (!isCFS)
