@@ -14,7 +14,7 @@ import javax.swing.border.TitledBorder;
 
 import org.swixml.SwingEngine;
 
-public class ListenerReg implements ItemListener {
+public class RegListener implements ItemListener {
 	private final SwingEngine swix;
 	private JComponent component;
 	private Boolean[] RegUserEdits;
@@ -22,7 +22,7 @@ public class ListenerReg implements ItemListener {
 	private final GUILinks gl;
 	private final ButtonGroup reg_btng1;
 
-	public ListenerReg(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
+	public RegListener(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        ButtonGroup reg_btng1) {
 		this.swix = swix;
 		this.RegUserEdits = RegUserEdits;

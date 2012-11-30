@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 
 import org.swixml.SwingEngine;
 
-public class ListenerFac implements ItemListener {
+public class FacListener implements ItemListener {
 	private final SwingEngine swix;
 
-	public ListenerFac(SwingEngine swix) {
+	public FacListener(SwingEngine swix) {
 		this.swix = swix;
 	}
 

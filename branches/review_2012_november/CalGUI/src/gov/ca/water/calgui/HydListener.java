@@ -4,16 +4,19 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import org.swixml.SwingEngine;
 
-public class ListenerRun implements ItemListener {
+public class HydListener implements ItemListener {
 	private final JFrame desktop;
 	private final SwingEngine swix;
 	private JComponent component;
@@ -22,7 +25,7 @@ public class ListenerRun implements ItemListener {
 	private final GUILinks gl;
 	private int action_WSIDI;
 
-	public ListenerRun(JFrame desktop, SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
+	public HydListener(JFrame desktop, SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        int action_WSIDI) {
 		this.desktop = desktop;
 		this.swix = swix;
@@ -40,7 +43,7 @@ public class ListenerRun implements ItemListener {
 		String cName = component.getName();
 		if (cName != null) {
 
-			if (cName.startsWith("run_rdb")) {
+			if (cName.startsWith("hyd_rdb20")) {
 
 				// Handling for update of DSS files
 
@@ -156,11 +159,13 @@ public class ListenerRun implements ItemListener {
 								// Force CVP and SWP tables to be reset from
 								// files
 
-								String fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1") + ".table";
+								String fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\"
+								        + gl.tableNameForCtrl("op_btn1") + ".table";
 								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+								fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2")
+								        + ".table";
 								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
@@ -170,6 +175,39 @@ public class ListenerRun implements ItemListener {
 							}
 						}
 					}
+				}
+			} else if (cName.startsWith("hyd_ckb")) {
+				// Checkbox in Climate Scenarios page changed
+				int selct = 0;
+				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1");
+				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
+				selct = GUIUtils.CountSelectedButtons(hyd_CC1, JCheckBox.class, selct);
+				selct = GUIUtils.CountSelectedButtons(hyd_CC2, JCheckBox.class, selct);
+
+				JLabel lab = (JLabel) swix.find("hydlab_selected");
+				if (selct == 0) {
+					lab.setText("0 realizations selected");
+				} else if (selct == 1) {
+					lab.setText("1 realization selected - Deterministic mode required");
+				} else {
+					lab.setText(selct + " realizations selected - Probabilistic mode required");
+				}
+
+			} else if (cName.startsWith("hyd_rdb")) {
+				// Radio in Hydroclimate
+				JPanel hyd_CC = (JPanel) swix.find("hyd_CC");
+				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1");
+				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
+
+				if (cName.startsWith("hyd_rdbHis")) {
+					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, ie.getStateChange() != ItemEvent.SELECTED);
+					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
+					GUIUtils.ToggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
+					GUIUtils.ToggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class);
+				} else if (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
+					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.ToggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED);
 				}
 			}
 		}
