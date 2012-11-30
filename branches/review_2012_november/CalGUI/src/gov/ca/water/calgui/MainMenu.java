@@ -365,29 +365,29 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		GUIUtils.SetMenuListener(menu, this);
 
 		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(regulations, new ListenerReg(swix, RegUserEdits, dTableModels, gl, reg_btng1));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1));
 		GUIUtils.SetMouseListener(regulations, this);
 		GUIUtils.SetChangeListener(regulations, this);
 
 		swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
 		swix.setActionListener(hydroclimate, new HydAction(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, new ListenerHyd(desktop, swix, RegUserEdits, dTableModels, gl,
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
 		swix.setActionListener(demands, this);
 
 		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(operations, new ListenerOp(swix));
-		GUIUtils.SetRadioButtonItemListener(dem_SWP, new ListenerDem(swix));
-		GUIUtils.SetRadioButtonItemListener(dem_CVP, new ListenerDem(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
+		GUIUtils.SetRadioButtonItemListener(dem_SWP, new DemListener(swix));
+		GUIUtils.SetRadioButtonItemListener(dem_CVP, new DemListener(swix));
 
 		swix.setActionListener(facilities, this);
 		FacilitiesSetup.SetFacilitiesTables(swix);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(facilities, new ListenerFac(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(Display, new ListenerFac(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(presets, new ListenerFac(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(shortage, new ListenerFac(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
 		// GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria,
 		// this);
 		GUIUtils.SetMouseListener(presets, this);
@@ -396,7 +396,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		GUIUtils.SetMouseListener(facilities, this);
 
 		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(runsettings, new ListenerRun(desktop, swix, RegUserEdits, dTableModels, gl,
+		GUIUtils.SetCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
 		swix.setActionListener(schematics, this);
