@@ -12,10 +12,10 @@ import javax.swing.JRadioButton;
 
 import org.swixml.SwingEngine;
 
-public class ListenerOp implements ItemListener {
+public class OpListener implements ItemListener {
 	private final SwingEngine swix;
 
-	public ListenerOp(SwingEngine swix) {
+	public OpListener(SwingEngine swix) {
 		this.swix = swix;
 	}
 
