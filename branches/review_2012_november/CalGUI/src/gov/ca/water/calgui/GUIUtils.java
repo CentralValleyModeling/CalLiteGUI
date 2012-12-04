@@ -44,6 +44,18 @@ import org.swixml.SwingEngine;
 public class GUIUtils {
 
 	// If targetLocation does not exist, it will be created.
+	/**
+	 * Method copies a directory and its contents
+	 * 
+	 * @param sourceLocation
+	 *            Path to sourcedirectory
+	 * @param targetLocation
+	 *            Path to target directory
+	 * @param subdir
+	 *            If true, copy source directory to a subdirectory under the target directory; otherwise copy source contents to
+	 *            target.
+	 * @throws IOException
+	 */
 	public static void copyDirectory(File sourceLocation, File targetLocation, Boolean subdir) throws IOException {
 
 		if (sourceLocation.isDirectory()) {
@@ -311,42 +323,70 @@ public class GUIUtils {
 		}
 	}
 
-	public static void WriteGUITables(ArrayList arr, Boolean[] UDFlags, SwingEngine swix) throws IOException {
-		String filename = "";
+	/**
+	 * Writes .table files to Run directory with values set in GUI
+	 * 
+	 * @param links
+	 *            Array containing strings read from GUI_Links2.table - one string for each line
+	 * @param UDFlags
+	 *            Array of boolean values that indicate whether user-defined values have been entered for certain data tables
+	 * @param swix
+	 *            Pointer to UI for retrieval of GUI selections made by user
+	 * @throws IOException
+	 */
+	public static void WriteGUITables(ArrayList links, Boolean[] UDFlags, SwingEngine swix) throws IOException {
+		String openFileName = "";
 		File f = null;
-		BufferedWriter outobj = null;
+		BufferedWriter tableFile_BufferedWriter_ = null;
 		String line = "", outstring = "";
-		String cName = "", tableName = "", descr = "", value = "", option = "", cID = "";
+		String swixControlName = "", tableFileName = "", descr = "", value = "", option = "", cID = "";
 		Boolean val;
 		int tID;
 		int index = 0;
 
 		final String NL = System.getProperty("line.separator");
 
-		for (int i = 0; i < arr.size(); i++) {
-			line = arr.get(i).toString();
-			String[] parts = line.split("[\t]+");
-			cName = parts[0].trim();
-			tableName = parts[1].trim();
-			if (tableName.equals("n/a")) {
+		// For each line in GUI_Links2.table ...
 
-			} else {
-				index = Integer.parseInt(parts[2].trim());
+		for (int i = 0; i < links.size(); i++) {
 
-				option = parts[3].trim();
-				descr = "!" + parts[4].trim();
+			line = links.get(i).toString();
+			String[] linkParts = line.split("[\t]+");
 
-				if (tableName.equals(filename)) {
+			// ... Get name of associated control in GUI, and name of CalLite table file where option is set
+			// Links are assumed to be ordered by table file name, and then by index (line in table file)
 
-				} else {
-					if (outobj != null) {
-						outobj.close();
-					} // close existing file
+			swixControlName = linkParts[0].trim();
+			tableFileName = linkParts[1].trim();
 
-					filename = tableName;
-					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + filename);
+			// If there is a table file for the current link ...
 
-					// read in existing header info
+			if (!tableFileName.equals("n/a")) {
+
+				// ... Get the index (line in table file where the link result is written),
+				// option (0..n for choice indicated through radiobuttons, -1 for values entered as text, -2 for bollean from
+				// checkbox)
+				// and descriptive text for link.
+
+				index = Integer.parseInt(linkParts[2].trim());
+				option = linkParts[3].trim();
+				descr = "!" + linkParts[4].trim();
+
+				// If the target table file isn't currently open ...
+
+				if (!tableFileName.equals(openFileName)) {
+
+					// Close the open file, if any
+
+					if (tableFile_BufferedWriter_ != null) {
+						tableFile_BufferedWriter_.close();
+					}
+
+					// TODO: Handle multiple scenarios running simultaneously - probably by passing scenario directory
+
+					// Open existing table file and read in all header comments (lines that start with a "!")
+
+					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + openFileName);
 					FileInputStream fin = new FileInputStream(f);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					StringBuffer header = new StringBuffer();
@@ -355,38 +395,67 @@ public class GUIUtils {
 						header.append(aLine + NL);
 						aLine = br.readLine();
 					}
+
+					// Close existing table file and delete
+
 					br.close();
-
 					GUIUtils.deleteDir(f);
-					FileWriter fstream = new FileWriter(f);
-					outobj = new BufferedWriter(fstream);
 
-					// write header
+					// Create a new file with the same name and write the header comments
+
+					FileWriter fstream = new FileWriter(f);
+					tableFile_BufferedWriter_ = new BufferedWriter(fstream);
 					if (header != null) {
-						outobj.write(header.toString());
+						tableFile_BufferedWriter_.write(header.toString());
+						openFileName = tableFileName;
 					}
 
-					outstring = filename.substring(0, filename.length() - 6) + NL;
-					outobj.write(outstring);
+					// Write column headers for table files
+
+					outstring = openFileName.substring(0, openFileName.length() - 6) + NL;
+					tableFile_BufferedWriter_.write(outstring);
 					outstring = "Index" + "\t" + "Option" + NL;
-					outobj.write(outstring);
+					tableFile_BufferedWriter_.write(outstring);
+
+					// There is now a file ready to have options written to.
 				}
 
-				Component c = swix.find(cName);
+				// Retrieve user entry from GUI
+
+				Component c = swix.find(swixControlName);
 
 				if (c instanceof JTextField || c instanceof NumericTextField || c instanceof JTextArea) {
+
+					// Linked component is a text field or variant: set "option" (in second column) to text
+
 					value = ((JTextComponent) c).getText();
 					option = value;
 					outstring = (index + "\t" + option + "\t" + descr + NL);
-					outobj.write(outstring);
+					tableFile_BufferedWriter_.write(outstring);
+
 				} else if (c instanceof JCheckBox) {
-					val = ((AbstractButton) c).isSelected();
+
+					// Linked component is a checkbox
+
+					val = ((AbstractButton) c).isSelected(); // TODO: Check if we can just use "val" instead of converting to
+					                                         // string?
 					value = val.toString();
-					if (value.startsWith("true")) {
+					if (!value.startsWith("true")) {
+
+						// If it's not selected, set option to "0" - false
+
+						option = "0";
+
+					} else {
+
+						// If it is selected, set option to "1" - true ...
 						option = "1";
-						// Check if user defined flag is selected
-						if (parts.length > 8) {
-							cID = parts[8];
+
+						// ... but check if "user defined" flag is turned on - only for inputs that will be stored as separate data
+						// tables. Those separate tables are written elsewhere
+
+						if (linkParts.length > 8) {
+							cID = linkParts[8];
 							tID = Integer.parseInt(cID);
 							if (UDFlags != null) {
 								if (UDFlags[tID] != null) {
@@ -397,32 +466,39 @@ public class GUIUtils {
 							}
 
 						} else {
-							option = "1";
+							option = "1"; // TODO: Check if this is removable
 						}
-						outstring = (index + "\t" + option + "\t" + descr + NL);
-						outobj.write(outstring);
-					} else {
-						option = "0";
-						outstring = (index + "\t" + option + "\t" + descr + NL);
-						outobj.write(outstring);
 					}
+
+					// Finally write the checkbox status to the file
+
+					outstring = (index + "\t" + option + "\t" + descr + NL);
+					tableFile_BufferedWriter_.write(outstring);
+
 				} else if (c instanceof JRadioButton) {
+
+					// Component is a Radiobutton. The GUI_Links2.table file is assumed to have a link entry for *each* radiobutton
+					// in a radio group, and should write out only one line in the new .table file corresponding to the button
+					// selected in the UI.
+
 					val = ((AbstractButton) c).isSelected();
 					value = val.toString();
 
 					if (value.startsWith("true")) {
 						outstring = (index + "\t" + option + "\t" + descr + NL);
-						outobj.write(outstring);
+						tableFile_BufferedWriter_.write(outstring);
 					}
 				} else if (c == null) { // control not found
-					outstring = (index + "\t" + option + "\t" + descr + NL);
-					outobj.write(outstring);
-				}
 
+					// TODDO: Action TBD if there is no matching control - we should raise an alert of some sort.
+
+					outstring = (index + "\t" + option + "\t" + descr + NL);
+					tableFile_BufferedWriter_.write(outstring);
+				}
 			}
 		}
-		outobj.close();
 
+		tableFile_BufferedWriter_.close();
 	}
 
 	public static void SetMouseListener(Component component, Object obj) {
@@ -841,6 +917,13 @@ public class GUIUtils {
 
 	}
 
+	/**
+	 * Returns ArrayList containing lines from a text file such as GUI_Links2.table
+	 * 
+	 * @param filename
+	 *            Name of file to read
+	 * @return ArrayList of strings - one per line
+	 */
 	public static ArrayList GetGUILinks(String filename) {
 		ArrayList GUILinks = new ArrayList();
 
