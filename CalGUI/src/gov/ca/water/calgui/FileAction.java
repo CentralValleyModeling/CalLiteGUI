@@ -1,12 +1,16 @@
 package gov.ca.water.calgui;
 
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,15 +20,18 @@ import java.util.Map;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SwingWorker;
+import javax.swing.text.JTextComponent;
 
 import org.swixml.SwingEngine;
 
@@ -306,11 +313,267 @@ public class FileAction implements ActionListener {
 		}
 	}
 
+	/**
+	 * Creates a scenario directory, then copies contents of Default and Default\Lookup to new directory
+	 * 
+	 * @param runDirName
+	 */
+	private static void setupScenarioDirectory(String runDirName) {
+
+		File ft = new File(System.getProperty("user.dir") + runDirName);
+		// First delete existing Run directory.
+		GUIUtils.deleteDir(ft);
+		ft.mkdirs();
+
+		// Copy wrims2 wresl directory to Run directory
+		File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
+
+		try {
+			GUIUtils.copyDirectory(wreslDir, ft, true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// Copy Default dir to Run dir. This may overwrite wrims2
+		// wresl's copy
+		File fs = new File(System.getProperty("user.dir") + "\\Default");
+		try {
+			GUIUtils.copyDirectory(fs, ft, false);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// Copy lookup files.
+		fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup");
+		ft = new File(System.getProperty("user.dir") + runDirName + "\\Lookup");
+		try {
+			GUIUtils.copyDirectory(fs, ft, false);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Copies indicates DSS file from \Default\DSS to run directory
+	 * 
+	 * @param runDirName
+	 * @param dssFileName
+	 */
+	private static void copyDSSFileToScenarioDirectory(String runDirName, String dssFileName) {
+
+		File ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS");
+		ft.mkdir();
+
+		// TODO: Files are assumed to be in Default\DSS
+		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
+		ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS\\" + dssFileName);
+
+		try {
+			GUIUtils.copyDirectory(fs, ft, false);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Writes .table files to Run directory with values set in GUI
+	 * 
+	 * @param links
+	 *            Array containing strings read from GUI_Links2.table - one string for each line
+	 * @param UDFlags
+	 *            Array of boolean values that indicate whether user-defined values have been entered for certain data tables
+	 * @param swix
+	 *            Pointer to UI for retrieval of GUI selections made by user
+	 * @throws IOException
+	 */
+	public static void writeScenarioTables(ArrayList<String> links, Boolean[] UDFlags, SwingEngine swix) throws IOException {
+
+		String openFileName = "";
+		File f = null;
+		BufferedWriter tableFile_BufferedWriter_ = null;
+		String line = "", outstring = "";
+		String swixControlName = "", tableFileName = "", descr = "", value = "", option = "", cID = "";
+		Boolean val;
+		int tID;
+		int index = 0;
+
+		final String NL = System.getProperty("line.separator");
+
+		// For each line in GUI_Links2.table ...
+
+		for (int i = 0; i < links.size(); i++) {
+
+			line = links.get(i).toString();
+			String[] linkParts = line.split("[\t]+");
+
+			// ... Get name of associated control in GUI, and name of CalLite table file where option is set
+			// Links are assumed to be ordered by table file name, and then by index (line in table file)
+
+			swixControlName = linkParts[0].trim();
+			tableFileName = linkParts[1].trim();
+
+			// If there is a table file for the current link ...
+
+			if (!tableFileName.equals("n/a")) {
+
+				// ... Get the index (line in table file where the link result is written),
+				// option (0..n for choice indicated through radiobuttons, -1 for values entered as text, -2 for bollean from
+				// checkbox)
+				// and descriptive text for link.
+
+				index = Integer.parseInt(linkParts[2].trim());
+				option = linkParts[3].trim();
+				descr = "!" + linkParts[4].trim();
+
+				// If the target table file isn't currently open ...
+
+				if (!tableFileName.equals(openFileName)) {
+
+					// Close the open file, if any
+
+					if (tableFile_BufferedWriter_ != null) {
+						tableFile_BufferedWriter_.close();
+					}
+
+					// TODO: Handle multiple scenarios running simultaneously - probably by passing scenario directory
+
+					// Open existing table file and read in all header comments (lines that start with a "!")
+
+					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + openFileName);
+					FileInputStream fin = new FileInputStream(f);
+					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+					StringBuffer header = new StringBuffer();
+					String aLine = br.readLine();
+					while (aLine.startsWith("!") && aLine != null) {
+						header.append(aLine + NL);
+						aLine = br.readLine();
+					}
+
+					// Close existing table file and delete
+
+					br.close();
+					GUIUtils.deleteDir(f);
+
+					// Create a new file with the same name and write the header comments
+
+					FileWriter fstream = new FileWriter(f);
+					tableFile_BufferedWriter_ = new BufferedWriter(fstream);
+					if (header != null) {
+						tableFile_BufferedWriter_.write(header.toString());
+						openFileName = tableFileName;
+					}
+
+					// Write column headers for table files
+
+					outstring = openFileName.substring(0, openFileName.length() - 6) + NL;
+					tableFile_BufferedWriter_.write(outstring);
+					outstring = "Index" + "\t" + "Option" + NL;
+					tableFile_BufferedWriter_.write(outstring);
+
+					// There is now a file ready to have options written to.
+				}
+
+				// Retrieve user entry from GUI
+
+				Component c = swix.find(swixControlName);
+
+				if (c instanceof JTextField || c instanceof NumericTextField || c instanceof JTextArea) {
+
+					// Linked component is a text field or variant: set "option" (in second column) to text
+
+					value = ((JTextComponent) c).getText();
+					option = value;
+					outstring = (index + "\t" + option + "\t" + descr + NL);
+					tableFile_BufferedWriter_.write(outstring);
+
+				} else if (c instanceof JCheckBox) {
+
+					// Linked component is a checkbox
+
+					val = ((AbstractButton) c).isSelected(); // TODO: Check if we can just use "val" instead of converting to
+					                                         // string?
+					value = val.toString();
+					if (!value.startsWith("true")) {
+
+						// If it's not selected, set option to "0" - false
+
+						option = "0";
+
+					} else {
+
+						// If it is selected, set option to "1" - true ...
+						option = "1";
+
+						// ... but check if "user defined" flag is turned on - only for inputs that will be stored as separate data
+						// tables. Those separate tables are written elsewhere
+
+						if (linkParts.length > 8) {
+							cID = linkParts[8];
+							tID = Integer.parseInt(cID);
+							if (UDFlags != null) {
+								if (UDFlags[tID] != null) {
+									if (UDFlags[tID] == true) {
+										option = "2";
+									}
+								}
+							}
+
+						} else {
+							option = "1"; // TODO: Check if this is removable
+						}
+					}
+
+					// Finally write the checkbox status to the file
+
+					outstring = (index + "\t" + option + "\t" + descr + NL);
+					tableFile_BufferedWriter_.write(outstring);
+
+				} else if (c instanceof JRadioButton) {
+
+					// Component is a Radiobutton. The GUI_Links2.table file is assumed to have a link entry for *each* radiobutton
+					// in a radio group, and should write out only one line in the new .table file corresponding to the button
+					// selected in the UI.
+
+					val = ((AbstractButton) c).isSelected();
+					value = val.toString();
+
+					if (value.startsWith("true")) {
+						outstring = (index + "\t" + option + "\t" + descr + NL);
+						tableFile_BufferedWriter_.write(outstring);
+					}
+				} else if (c == null) { // control not found
+
+					// TODDO: Action TBD if there is no matching control - we should raise an alert of some sort.
+
+					outstring = (index + "\t" + option + "\t" + descr + NL);
+					tableFile_BufferedWriter_.write(outstring);
+				}
+			}
+		}
+
+		tableFile_BufferedWriter_.close();
+	}
+
 	static ProgressFrame pFrame;
 
 	// TODO: Modify to read/set swix state from scenario file "scen", possibly saving current state of swix in temporary string
 	// buffer.
 
+	/**
+	 * Sets up scenario directory and files, then executes
+	 * 
+	 * @param scen
+	 * @param desktop
+	 * @param swix
+	 * @param RegUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 */
 	public static void setupAndRun(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] RegUserEdits,
 	        final DataFileTableModel[] dTableModels, final GUILinks gl) {
 
@@ -342,83 +605,30 @@ public class FileAction implements ActionListener {
 			@Override
 			protected Void doInBackground() throws Exception {
 
-				// Copy Run directory
-
 				pFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 				desktop.setEnabled(false);
 
+				// Extract "model" values from "view"
+
+				String runDirName = "\\Run";
+
+				String hydDSSSVName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
+				String hydDSSInitName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
+
+				// Copy Run directory
+
 				publish("Creating new Run directory.");
 
-				File ft = new File(System.getProperty("user.dir") + "\\Run");
-				// First delete existing Run directory.
-				GUIUtils.deleteDir(ft);
-				ft.mkdirs();
-
-				// Copy wrims2 wresl directory to Run directory
-				File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
-
-				try {
-					GUIUtils.copyDirectory(wreslDir, ft, true);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-				// Copy Default dir to Run dir. This may overwrite wrims2
-				// wresl's copy
-				File fs = new File(System.getProperty("user.dir") + "\\Default");
-				try {
-					GUIUtils.copyDirectory(fs, ft, false);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				// Copy lookup files.
-				fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup");
-				ft = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
-				try {
-					GUIUtils.copyDirectory(fs, ft, false);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				// Copy DSS files.
-				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS");
-				ft.mkdir();
-
-				// TODO: Files are assumed to be in Default\DSS
-				fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\"
-				        + ((JTextField) swix.find("hyd_DSS_SV")).getText());
-				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText());
-
-				try {
-					GUIUtils.copyDirectory(fs, ft, false);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\"
-				        + ((JTextField) swix.find("hyd_DSS_Init")).getText());
-				ft = new File(System.getProperty("user.dir") + "\\Run\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText());
-				try {
-					GUIUtils.copyDirectory(fs, ft, false);
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				setupScenarioDirectory(runDirName);
+				copyDSSFileToScenarioDirectory(runDirName, hydDSSSVName);
+				copyDSSFileToScenarioDirectory(runDirName, hydDSSInitName);
 
 				publish("Writing GUI tables.");
-
-				// Get GUI Link Array
-				ArrayList GUILinks = new ArrayList();
-				GUILinks = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
-
-				// Write GUI Tables
+				ArrayList<String> links2Lines = new ArrayList<String>();
+				links2Lines = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
 
 				try {
-					GUIUtils.WriteGUITables(GUILinks, RegUserEdits, swix);
+					writeScenarioTables(links2Lines, RegUserEdits, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -426,14 +636,6 @@ public class FileAction implements ActionListener {
 
 				publish("Copying demand tables.");
 
-				/*
-				 * GUI_Utils .ReplaceLineInFile(System.getProperty("user.dir") + "\\Run\\Lookup\\options.table", 13, "9       " +
-				 * LODFlag + "   !Level of Development, LOD_Future = 1 for future and 0 for existing" );
-				 */
-
-				// Copy 2005/2030 lookup tables
-				// pMon.setNote("Copying lookup tables...");
-				// pMon.setProgress(30);
 				File fsDem;
 				/*
 				 * rdb = (JRadioButton) swix.find("dem_rdbCurSWP"); if (rdb.isSelected()) { fsDem = new
@@ -627,8 +829,8 @@ public class FileAction implements ActionListener {
 				publish("Writing GUI option tables.");
 
 				// Write regulations table files
-				ArrayList GUITables = new ArrayList();
-				GUITables = GUIUtils.GetGUITables(GUILinks, "Regulations");
+				ArrayList<String> GUITables = new ArrayList<String>();
+				GUITables = GUIUtils.GetGUITables(links2Lines, "Regulations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
 					System.out.println(i);
@@ -694,7 +896,7 @@ public class FileAction implements ActionListener {
 
 				// Write operations table files
 				GUITables = new ArrayList();
-				GUITables = GUIUtils.GetGUITables(GUILinks, "Operations");
+				GUITables = GUIUtils.GetGUITables(links2Lines, "Operations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
 					String line = GUITables.get(i).toString();
