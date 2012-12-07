@@ -10,6 +10,12 @@ Wiki for CalLite GUI Development (Phase 2)
   * Java SE Runtime Environment (JRE) 6
   * SwiX^ml^,,1.5,, GUI generation engine [http://swixml.org/ [link]] 
 
+New comments:
+
+  * Need to confirm that this has a Windows target
+  * Clarify jxbrowser license expectations
+  * Developer platform - difficult/impossible to work on Linux, Mac?
+
 == Details ==
 
   * [Schedule]
