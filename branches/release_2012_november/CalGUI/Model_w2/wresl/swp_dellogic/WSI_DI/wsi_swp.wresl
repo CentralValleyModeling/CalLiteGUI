@@ -23,10 +23,26 @@ define frcst_fea {
     value       0.0 }
 }
 
+define co_final_dv {std kind 'carryover' units 'taf'}
+define co_available_dv {std kind 'carryover' units 'taf'}
+
+define S_SLSWP_effective {
+	case Jan {
+        	condition month == JAN
+                value max(S_SLSWP(-1) - co_final_dv(-1), 0.0)}
+        case FebtoMar {
+                condition month >= FEB .and. month <= MAR
+                value max(S_SLSWP(-1) - co_available_dv(-1), 0.0)}
+        case Rest {
+                condition always
+                value S_SLSWP(-1)}
+}
+
+
 define WSI_SWP {
     case JantoMay {
         condition  month >= JAN .and. month <= MAY
-        value     S_Orovl(-1) + S_SLSWP(-1) + frcst_fea  }     ! Previous month storage plus forecast inflow
+        value     S_Orovl(-1) + S_SLSWP_effective + frcst_fea  }     ! Previous month storage plus forecast inflow
     case other {
         condition   always
         value       0.0 }

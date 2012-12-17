@@ -139,14 +139,19 @@ define buffSWP_AprAug {select buffer from ExportEstimate_SWP where month = Apr}
 define buffSWP_MayAug {select buffer from ExportEstimate_SWP where month = May}
 
 ! SJR in flood - if C639 over 16,000 cfs
+define floodSJRdv {std kind 'trigger' UNITS 'NONE'}
 define floodSJR {
     case Wet {
-        condition AD_SJR_VAMP > 16000.          !C639[VAMP_AND_DO] > 16000.
+        condition month>=MAR .and. month <= MAY .and. AD_SJR_VAMP > 16000.     !C639[VAMP_AND_DO] > 16000.
         value 1.}
+    case MarthruMay {
+        condition month>=APR .and. month <= MAY
+        value floodSJRdv(-1)}
     case other {
         condition always
         value 0.}
 }
+goal savefloodSJR {floodSJRdv=floodSJR}
 
 define wetSJR {
     case Wet {
@@ -329,3 +334,15 @@ define perdel_swp_oth1 {value swp_perdel}
 define perdv_swp_ag1 {std kind 'PERCENT-DELIVERY' units 'none'}
 goal setperdv_swp_ag1 {perdv_swp_ag1 = perdel_swp_ag1}
 define perdv_swp_mwd1 {alias perdel_swp_mwd1 kind 'PERCENT-DELIVERY' units 'none'}
+
+define maxexpbsd_swpdv  {alias max_exp_based_del_swp	 kind 'swp_debug' units 'taf'}
+define swp_perdv_raw1	{alias swp_perdel_raw1	  kind 'swp_debug' units 'taf'}
+define swp_perdv_raw2	{alias swp_perdel_raw2  kind 'swp_debug' units 'taf'}
+define SWPDelCapEst_dv	{alias SWPDelCapEst  kind 'swp_debug' units 'taf'}
+define deltar_expmx_dv	{alias deltar_expmax	 kind 'swp_debug' units 'taf'}
+define deltar_drymn_dv	{alias deltar_drymin	 kind 'swp_debug' units 'taf'}
+define swp_alloc_1dv    {alias swp_allocation_1 kind 'swp_debug' units 'taf'}
+define swp_alloc_2dv    {alias swp_allocation_2 kind 'swp_debug' units 'taf'}
+define swp_alloc_3dv    {alias swp_allocation_3 kind 'swp_debug' units 'taf'}
+
+

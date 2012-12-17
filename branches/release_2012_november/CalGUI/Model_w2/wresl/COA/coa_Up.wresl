@@ -153,83 +153,26 @@ goal setUNUSED_FS { D_Banks_EXP2 < UNUSED_FS }
 goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
   
-! The projects share available export capacity when EI is controlling.
+! Attempt to split export even during EI control situations
 
-
-!EI_control_on = 1 when the EI Ratio was controlling total exports in the Upstream cycle.  When controlling, sharing logic under the EI control is implemented in the Base cycle.
-!When NOT controlling in the Upstream cycle, EI sharing logic is turned off and protections are implemented to prevent one project from incurring the carriage
-!costs of another project aggressively pressing against the EI constraint in the remaining cycles.
-define EI_control_on {
-	case EI_control {
-		condition	c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. eiexpctrl[Upstream] - d_exptd[Upstream] < 0.01
-		value		1.
-	}
-	case otherwise {
-		condition	always
-		value		0.
-	}
-}
-
-goal EI_split_swp {
+/*goal EI_split_swp {
     lhs     D_Banks_EXP1
-    case ei_control {
-    condition	EI_control_on > 0.5
-     rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_therm - ExpRatio*c_therm[Upstream]
+     rhs        0.5*EiExpCtrl
      lhs>rhs    penalty 1290
      lhs<rhs    penalty 0
-}}
+}
 goal EI_split_cvp {
     lhs     D_Jones_EXP1
-    case ei_control {
-    condition	EI_control_on > 0.5
-     rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_wkytn_m + ExpRatio*c_kswck_m + ExpRatio*c_nimbus_m 
-                              - ExpRatio*c_wkytn_m[Upstream] - ExpRatio*c_kswck_m[Upstream] - ExpRatio*c_nimbus_m[Upstream]
+     rhs        0.5*EiExpCtrl
      lhs>rhs    penalty 1290
      lhs<rhs    penalty 0
-}}
+}
 
-goal No_EI_split_swp1 {
-    lhs     D_Banks_SWP
-    case no_ei_control {
-    condition	EI_control_on < 0.5
-    rhs        D_Banks_SWP[Upstream]
-    lhs>rhs    penalty 0
-    lhs<rhs	penalty 1290
-}}
-
-goal No_EI_split_swp2 {
-    lhs     C_Delta_SWP
-    case no_ei_control {
-    condition	EI_control_on < 0.5 .and. S_SLSWP[Upstream] > swprulecv[Upstream] + 0.01
-    rhs        C_Delta_SWP[Upstream]
-    lhs<rhs    penalty 0
-    lhs>rhs    penalty 1290
-}}
-
-goal No_EI_split_cvp1 {
-    lhs     D_Jones_CVP
-    case no_ei_control {
-    condition	EI_control_on < 0.5
-    rhs        D_Jones_CVP[Upstream]
-    lhs>rhs    penalty 0
-    lhs<rhs	penalty 1290
-}}
-
-goal No_EI_split_cvp2 {
-    lhs     C_Delta_CVP
-    case no_ei_control {
-    condition	EI_control_on < 0.5 .and. S_SLCVP[Upstream] > cvprulecv[Upstream] + 0.01
-    rhs        C_Delta_CVP[Upstream]
-    lhs<rhs    penalty 0
-    lhs>rhs    penalty 1290
-}}
-
-
-! Only apply sharing logic under the AprilMay pulse flow export contraint when this constraint was controlling operations in the Upstream cycle.
+! Attempt to split export even during April-May pulse and Vamp control situations
 goal AprMay_split_swp {
     lhs     D_Banks_EXP1
      case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
+        condition      range(month,apr,may) .and. VAMP_DLTSW == 1
      rhs        0.5*AprMayExpCtrl
      lhs>rhs    penalty 1290
      lhs<rhs    penalty 0
@@ -238,9 +181,66 @@ goal AprMay_split_swp {
 goal AprMay_split_cvp {
     lhs     D_Jones_EXP1 
      case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
+        condition      range(month,apr,may) .and. VAMP_DLTSW == 1
      rhs        0.5*AprMayExpCtrl
      lhs>rhs    penalty 1290
      lhs<rhs        penalty 0
      }
+}
+*/
+
+/*goal swp_upstream_control {
+	lhs	D_banks_exp1 - C_OROVL_IBU
+	rhs	banksminpump
+	lhs>rhs	penalty 1000
+	lhs<rhs penalty 0
+}
+
+goal cvp_upstream_control {
+	lhs	D_jones_exp1
+	rhs	Jonesminpump
+	lhs>rhs	penalty 1000
+	lhs<rhs penalty 0
+}
+*/
+
+/*
+The goal temp_exp_penalty was added so that releases from upstream storage in support of exports beyond that necessary for H&S is penalized.
+The penalty is set such that upstream releases will be made solely for flood control, instream flow requirements, in-basin use.  The purpose is to determine
+project operations when based solely on upstream control objectives and not on exports.  The export pumps will still divert incidental water that is available.
+The goal temp_DO_penalty places a further penalty on Delta outflow that is above what is required.  This temporary penalty was necessary to maintain the balance of 
+weights between exports and Delta surplus.  Furthermore, a temporary penalty had to be placed on excess flows in the Trinity River.  This is to maintain the balance of
+weights between surplus Delta outflow and excess Trinity Flow upon which Trinity import decisions are made.
+*/
+goal temp_exp_penalty {
+	lhs	D_exptd
+	rhs	Jonesminpump + banksminpump
+	lhs>rhs penalty 1285
+	lhs<rhs penalty 0
+}
+
+goal temp_DO_penalty {
+	lhs	C_Delta
+	rhs	0
+	lhs>rhs	penalty 1285
+	lhs<rhs penalty 0
+}
+
+
+goal temp_trin_penalty {
+	lhs	C_Lwstn_EXC
+	rhs	0
+	lhs>rhs		penalty 1285
+}
+
+goal temp_C209_np_exc_penalty {
+	lhs	C209_np_exc
+	rhs	0
+	lhs>rhs		penalty 1285
+}
+
+goal temp_C209_prj_exc_penalty {
+	lhs	C209_prj_exc
+	rhs	0
+	lhs>rhs		penalty 1285
 }

@@ -23,16 +23,28 @@ define exp_est_SWPRC {alias EstSWPSodRC kind 'EXPORT-ESTIMATE' units 'CFS'}
 define EstSWPMaxExp_RPA {select estimate from ExportEstimate_SWP where month = month }
 
 ! export for south-of-delta SWP: demand + rulecurve
+define est_oro_release{
+	case verylow {condition s_orovl[upstream] <= 1250.0 
+	value 300.0}
+	case low {condition s_orovl[upstream]>1250.0 .and. s_orovl[upstream] <= 1800.0 
+	value  0.25*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+	case high {condition s_orovl[upstream]>1800.0 .and. s_orovl[upstream] <= 2200.0 
+	value 0.50*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+	case veryhigh { condition always 
+	value 0.75*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+}
+
  
 define EstSWPSodExp { 
     case BO { condition int(OMRBOON) == 1 
-        value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), EstSWPMaxExp_RPA)}
+        value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), EstSWPMaxExp_RPA, max(300.,est_oro_release))}
     case D1641_B2 { condition always
-        value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC))}
+        value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,est_oro_release))}
 }
 
 
 define exp_est_SWP {alias EstSWPSodExp kind 'EXPORT-ESTIMATE' units 'CFS'}
+define exp_estSWPlim3  {alias max(300.,est_oro_release) kind 'debug' units 'cfs'}
 
 !*********************************************************************************************
 ! CVP exports:

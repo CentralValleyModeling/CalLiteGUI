@@ -21,6 +21,8 @@ define nov_trigger_cfs {                    !2500 cfs
         from      feather_fish_203
         where   month = NOV}
 
+define D_Banks_EXP1 {std kind 'flow-delivery' units 'cfs'}
+
 define minflow_C_Therm {        
   case October {                            !minflow_C_Therm + 500 = 500 cfs
     condition month == OCT
@@ -36,7 +38,11 @@ define minflow_C_Therm {
         S_Orovl(prevOCT)+1. >= s_OrovlLevel5(prevOCT)
     value   0
   }
-  case November3 {                         !minflow_C_Therm + 500 = C_Therm(prevOCT) cfs
+  case November3 {
+    condition month == NOV .and. D_Banks_exp1(prevOCT) <= 300.1
+    value  0
+  }
+  case November4 {                         !minflow_C_Therm + 500 = C_Therm(prevOCT) cfs
     condition month == NOV
     value   C_Therm(prevOCT) - 500
   }
@@ -44,20 +50,20 @@ define minflow_C_Therm {
   case DecemberToMarch1 {                  !minflow_C_Therm + 500 = max(C_Therm(prevOCT),C_Therm(prevNOV))
     condition month >= DEC .AND. month <= MAR .AND.
         int(C_Therm(prevOCT)) > oct_trigger_cfs .AND.
-        S_Orovl(prevOCT)+1. < s_OrovlLevel5(prevOCT) .AND.
-        int(C_Therm(prevNOV)) > nov_trigger_cfs .AND.
+        S_Orovl(prevOCT)+1. < s_OrovlLevel5(prevOCT) .AND. D_Banks_exp1(prevOct) > 300.1 .and.
+        int(C_Therm(prevNOV)) > nov_trigger_cfs .AND. D_Banks_exp1(prevNov) > 300.1 .and.
         S_Orovl(prevNOV)+1. < s_OrovlLevel5(prevNOV)
     value   max(C_Therm(prevOCT) - 500, C_Therm(prevNOV) - 500)
   }
   case DecemberToMarch2 {                  !minflow_C_Therm + 500 = C_Therm(prevOCT) cfs
     condition month >= DEC .AND. month <= MAR .AND.
-        int(C_Therm(prevOCT)) > oct_trigger_cfs .AND.
+        int(C_Therm(prevOCT)) > oct_trigger_cfs .AND. D_Banks_exp1(prevOct) > 300.1 .and.
         S_Orovl(prevOCT)+1. < s_OrovlLevel5(prevOCT)
     value   C_Therm(prevOCT) - 500
   }
   case DecemberToMarch3 {                  !minflow_C_Therm + 500 = C_Therm(prevNOV) cfs
     condition month >= DEC .AND. month <= MAR .AND.
-        int(C_Therm(prevNOV)) > nov_trigger_cfs .AND.
+        int(C_Therm(prevNOV)) > nov_trigger_cfs .AND. D_Banks_exp1(prevNov) > 300.1 .and.
         S_Orovl(prevNOV)+1. < s_OrovlLevel5(prevNOV)
     value   C_Therm(prevNOV) - 500
   }
@@ -75,17 +81,27 @@ define minflow_C_Therm {
   Do this by reducing releases for exports if necessary.
 */
 
+!Ensure that the state can release sufficient water to meet it's IBU obligations and H&S
+
+define D_Banks_0 {upper 300 kind 'flow-delivery' units 'cfs'}
+define D_Banks_1 {std kind 'flow-delivery' units 'cfs'}
+goal split_D_Banks_EXP1 {D_Banks_Exp1 = D_Banks_0 + D_Banks_1}
+
+define int_HandS {integer std kind 'INTEGER' units 'none'}
+goal boundN_D_Banks_0 {D_Banks_0 > int_HandS * 300}
+goal boundN_D_Banks_1 {D_Banks_1 < int_HandS * 99999}
+
 goal avoidTrigger {
   lhs C_Therm
   case October {
     condition month == OCT
-    rhs   oct_trigger_cfs
+    rhs   oct_trigger_cfs + 99999 - 99999*int_HandS
     lhs>rhs   penalty 4600
     lhs<rhs   penalty 0
   }
   case November {
     condition month == NOV
-    rhs   max(nov_trigger_cfs, minflow_C_Therm + 500)
+    rhs   max(nov_trigger_cfs, minflow_C_Therm + 500) + 99999 - 99999*int_HandS
     lhs>rhs   penalty 4600
     lhs<rhs   penalty 0
   }
@@ -172,7 +188,13 @@ define C_Orovl_Rem_max_ {value max(0., I_Orovl + (S_Orovl(-1) - 1250.)*taf_cfs)}
 define C_Orovl_PP135_max_ {value max(0., I_Orovl + (S_Orovl(-1) - 850.)*taf_cfs)}
 
 goal lim_C_Orovl_Rem {C_Orovl_Rem < C_Orovl_Rem_max_}
-goal lim_C_Orovl_PP135 {C_Orovl_PP135 < C_Orovl_PP135_max_}
+!goal lim_C_Orovl_PP135 {C_Orovl_PP135 < C_Orovl_PP135_max_}
+goal lim_C_Orovl_PP135 {
+    lhs C_Orovl_PP135
+    rhs C_Orovl_PP135_max_
+    lhs<rhs penalty 0
+    lhs>rhs penalty 99999}
+
 
 define C_Orovl_Rem_max {alias C_Orovl_Rem_max_ kind 'upper-bound' units 'cfs'}
 define C_Orovl_PP135_max {alias C_Orovl_PP135_max_ kind 'upper-bound' units 'cfs'}
