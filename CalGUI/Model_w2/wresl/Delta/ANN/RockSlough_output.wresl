@@ -14,9 +14,6 @@ goal setRSMax1 {
   case LowCL{
     condition C_Hood_ANN(-1) >=40000.
     rhs 999999.}
-  case CritRelax {
-    condition wyt_SAC==Critical .and. RS_m_1_sv >= 1.0
-    rhs 999999.}
   case NoSalinityControlPossible{
     condition abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0
     rhs 999999.}
@@ -26,9 +23,9 @@ goal setRSMax1 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs ExportCap}
-  /*case NegCarriage{
-    condition abs(RS_m_1_sv) >= 1.0
-    rhs 999999.}*/
+  case LargeNegInt{
+    condition RS_b_1_sv < -10000.0
+    rhs 999999.}
   case Normal {
     condition always
     rhs RS_m_1_sv*C_Hood_ANN + RS_m_1_sv*C_YoloBP + RS_b_1_sv}
@@ -52,6 +49,9 @@ goal setRSMax2 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs ExportCap}
+  case LargeNegInt{
+    condition RS_b_2_sv < -10000.0
+    rhs 999999.}
   case NegCarriage{
     condition RS_m_2_sv >= 1.0
     rhs 999999.}
@@ -78,6 +78,9 @@ goal setRSMax3 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs ExportCap}
+  case LargeNegInt{
+    condition RS_b_3_sv < -10000.0
+    rhs 999999.}
   case NegCarriage{
     condition RS_m_3_sv >= 1.0
     rhs 999999.}
@@ -100,9 +103,6 @@ goal setRSmrdo1 {
   case LowCL{
     condition C_Hood_ANN(-1) >=40000.
     rhs 0.}
-  case CritRelax {
-    condition wyt_SAC==Critical .and. RS_m_1_sv >= 1.0
-    rhs 0.}
   case NoSalinityControlPossible{
     condition abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0
     rhs 0.}
@@ -112,9 +112,9 @@ goal setRSmrdo1 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs 0.}
-  /*case NegCarriage{
-    condition abs(RS_m_1_sv) >= 1.0
-    rhs 999999.}*/
+  case LargeNegInt{
+    condition RS_b_1_sv < -10000.0
+    rhs 0.}
   case Normal {
     condition always
     rhs ((1-RS_m_1_sv)/RS_m_1_sv)*D_ExpTD - RS_b_1_sv/RS_m_1_sv + netDeltaInflow}
@@ -137,6 +137,9 @@ goal setRSmrdo2 {
     rhs 0.}
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
+    rhs 0.}
+  case LargeNegInt{
+    condition RS_b_2_sv < -10000.0
     rhs 0.}
   case NegCarriage{
     condition RS_m_2_sv >= 1.0
@@ -164,6 +167,9 @@ goal setRSmrdo3 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs 0.}
+  case LargeNegInt{
+    condition RS_b_3_sv < -10000.0
+    rhs 0.}
   case NegCarriage{
     condition RS_m_3_sv >= 1.0
     rhs 0.}
@@ -185,9 +191,6 @@ goal set_RS_ReqSac1 {
   case LowCL{
     condition C_Hood_ANN(-1) >=40000.
     rhs 0.}
-  case CritRelax {
-    condition wyt_SAC==Critical .and. RS_m_1_sv >= 1.0
-    rhs 0.}
   case NoSalinityControlPossible{
     condition abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0
     rhs 0.}
@@ -197,9 +200,9 @@ goal set_RS_ReqSac1 {
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
     rhs 0.}
-  /*case NegCarriage{
-    condition abs(RS_m_1_sv) >= 1.0
-    rhs 999999.}*/
+  case LargeNegInt{
+    condition RS_b_1_sv < -10000.0
+    rhs 0.}
   case Normal {
     condition always
     rhs D_ExpTD/RS_m_1_sv - RS_b_1_sv/RS_m_1_sv}
@@ -222,6 +225,9 @@ goal set_RS_ReqSac2 {
     rhs 0.}
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
+    rhs 0.}
+  case LargeNegInt{
+    condition RS_b_2_sv < -10000.0
     rhs 0.}
   case NegCarriage{
     condition RS_m_2_sv >= 1.0
@@ -248,6 +254,9 @@ goal set_RS_ReqSac3 {
     rhs 0.}
   case HighCost{
     condition RS_Sac_ZeroExp_sv2 >= ANNcap
+    rhs 0.}
+  case LargeNegInt{
+    condition RS_b_3_sv < -10000.0
     rhs 0.}
   case NegCarriage{
     condition RS_m_3_sv >= 1.0

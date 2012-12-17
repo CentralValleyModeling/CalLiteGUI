@@ -75,6 +75,10 @@ goal Export_limit_during_pulse_mon {
             condition     month == MAY
             rhs           NonPulseExpCtrl*16.0/daysin + PulseExpCtrl*15.0/daysin
             lhs<rhs       penalty 0 }
+        case otherwise {
+	    condition   always
+	    rhs     99999.
+	    lhs<rhs     penalty 0}
 }
 
 ! Limit the actual export to the day weighted average allowable export for each month.
@@ -101,6 +105,10 @@ goal Export_limit_Jones_pulse_mon {
             condition     month == MAY
             rhs           JonesCapPermit*16.0/daysin + PulseExpCtrl*0.5*15.0/daysin
             lhs<rhs       penalty 0 }
+        case otherwise {
+	    condition   always
+	    rhs     99999.
+	    lhs<rhs     penalty 0}
 }
 
 define AprMayBanksCtrl {std kind 'EXPORT-CTRL-APRMAY' units 'CFS'}
@@ -115,6 +123,10 @@ goal Export_limit_Banks_pulse_mon {
             condition     month == MAY
             rhs           BanksMaxAllow*16.0/daysin + PulseExpCtrl*0.5*15.0/daysin
             lhs<rhs       penalty 0 }
+        case otherwise {
+	    condition   always
+	    rhs     99999.
+	    lhs<rhs     penalty 0}
 }
 
 goal Export_limit_D_Jones {  ! Prevents Non-Pulse portion of month from being greater than Physical Capacity

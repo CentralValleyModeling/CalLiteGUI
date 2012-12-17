@@ -64,12 +64,12 @@ goal setJonesminpump {
     case Joneslowshasta {
         condition S_Shsta(-1) < 1500.
     rhs Jonesminpump
-        lhs>rhs penalty 65*taf_cfs + 1
+        lhs>rhs penalty 0 !65*taf_cfs + 1
         lhs<rhs penalty 2700 }
     case Joneslowshastafolsom {
         condition S_Folsm(-1) < 400. .and. S_Shsta(-1) < 2000. !Better reflection of actual operations by trying to keep
         rhs Jonesminpump                                                       !water from being released for SL storage during low storage
-        lhs>rhs penalty 65*taf_cfs + 1                                         !conditions in the NOD.
+        lhs>rhs penalty 0 !65*taf_cfs + 1                                         !conditions in the NOD.
         lhs<rhs penalty 2700 }
     case Joneshighshasta   {
         condition always

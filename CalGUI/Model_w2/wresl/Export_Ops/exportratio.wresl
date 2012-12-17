@@ -7,13 +7,15 @@ Export-Inflow Ratio restriction on exports
 
 Z.Q. Richard Chen, DWR 02/07/2011 
 Set EI_DLTSW switch to control the ExpRatio which changes with month.
+Hao Xie, DWR 09/11/2011
+Modify Inflow by considering Hood dicu
 **************************************/
 
 ! Delta Export defined as in DWRSIM Algorithm Description for Export Ratio
 define ExportActual {alias  D_Jones+D_Banks KIND 'EXPORT-PRJ' units 'CFS'  }
 
 ! Delta Inflow defined as in DWRSIM Algorithm Description for Export Ratio
-define Inflow {alias C_Hood_ANN+AD_Mokelumne+C_YoloBP+AD_SJR+AD_Calaveras+I_MarshCr kind 'INFLOW-DELTA' UNITS 'CFS'   }
+define Inflow {alias C_Hood_ANN+D_Hood_NP-I_HOOD+AD_Mokelumne+C_YoloBP+AD_SJR+AD_Calaveras+I_MarshCr kind 'INFLOW-DELTA' UNITS 'CFS'   }
 
 ! EI allowable export variable - MAXIMUM ALLOWABLE EXPORT due to EXPORT RATIO
 define EiExpCtrl {std kind 'EXPORT-CTRL-EI' units 'CFS'}
