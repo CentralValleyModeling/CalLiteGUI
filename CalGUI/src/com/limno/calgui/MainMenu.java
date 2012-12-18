@@ -3131,7 +3131,7 @@ public class MainMenu implements ActionListener, ItemListener, MouseListener, Ta
 				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, EndYr);
 				
 				Map<String,String> configMap = new HashMap<String, String>();
-				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main_bo.wresl");
+				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main.wresl");
 				configMap.put("DvarFile", newtext[6] );
 				configMap.put("SvarFile", newtext[5] );
 				configMap.put("SvarFPart", newtext[12] );
