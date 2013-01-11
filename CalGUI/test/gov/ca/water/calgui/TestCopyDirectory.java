@@ -41,21 +41,15 @@ public class TestCopyDirectory {
 
 	@Test
 	
-	// Test recursive copy of subfolders to target directory
-	public void testRecursiveCopy() {
+	// Test recursive copy of subfolders and files to target directory
+	// Preserves directory structure
+	public void testRecursiveCopy1() {
 		
-		// Create src directory subfolder, then put a file in it.
-		subFolder = new File(src,"subfolder");
-		subFolder.mkdir();
-		testFile = new File(subFolder,"test.txt");				
+		writeContents(true);
+
 		
 		try {
 		    
-			// Write something to the test file
-			BufferedWriter bw = new BufferedWriter(new FileWriter(testFile)); 
-			bw.write("this is a test file...");
-			bw.close();
-
 			// Run the test
 			GUIUtils.copyDirectory(src, dest, true);
 		} 
@@ -67,8 +61,117 @@ public class TestCopyDirectory {
 		
 		String destFilePath = dest.getAbsolutePath(); 
 		
-		assertTrue(new File(destFilePath + "\\subfolder\\test.txt").exists());
+		assertTrue(new File(destFilePath + "/subfolder/test.txt").exists());
 
+	}
+	
+	@Test
+	
+	// Test recursive copy of subfolders and files to target directory
+	// Only files are copied to target directory; source subfolders are not preserved
+	
+	public void testRecursiveCopy2()	{
+		
+
+		writeContents(true);
+		
+		try {
+		    
+			// Run the test
+			GUIUtils.copyDirectory(src, dest, false);
+		} 
+		
+		catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		String destFilePath = dest.getAbsolutePath(); 
+		
+		assertTrue(new File(destFilePath + "/test.txt").exists());
+			
+	}
+	
+	
+	@Test
+	public void testShallowCopy1()	{
+		
+		// Copy a file from source folder to target folder; no subfolders
+		
+		writeContents(false);
+		
+		try    {
+			
+			GUIUtils.copyDirectory(src, dest, false);
+			
+		}
+		
+		
+		catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		assertTrue(new File(dest.getAbsolutePath() + "/test.txt").exists());
+		
+	}
+	
+	@Test
+	public void testShallowCopy2()	{
+		
+		
+		// Repeat test using recursion algorithm
+		// Should work. If it does, refactor to exclude boolean parameter, blow away helper method.
+		
+		writeContents(false);
+		
+		try    {
+			
+			GUIUtils.copyDirectory(src, dest, true);
+			
+		}
+		
+		
+		catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		assertTrue(new File(dest.getAbsolutePath() + "/test.txt").exists());
+		
+	}
+	
+	
+		
+	private void writeContents(boolean hasSubfolders)	{
+		
+		
+		if (hasSubfolders)	{
+			
+			// Create src directory subfolder, then put a file in it.
+			subFolder = new File(src,"subfolder");
+			subFolder.mkdir();
+			testFile = new File(subFolder,"test.txt");
+		}
+		
+		else    {testFile = new File(src,"test.txt");}
+		
+		
+		try    {
+			
+			BufferedWriter bw = new BufferedWriter(new FileWriter(testFile)); 
+			bw.write("this is a test file...");
+			bw.close();
+			
+		}
+		
+		
+		catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+					
+		
 	}
 		
 
