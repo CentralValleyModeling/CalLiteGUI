@@ -79,8 +79,8 @@ public class FileAction implements ActionListener {
 			Integer EndYr = (Integer) spn.getValue();
 
 			// Determine Month/Count
-			Integer iSMon = GUIUtils.MonthStr2int(StartMon);
-			Integer iEMon = GUIUtils.MonthStr2int(EndMon);
+			Integer iSMon = UnitsUtils.monthToInt(StartMon);
+			Integer iEMon = UnitsUtils.monthToInt(EndMon);
 
 			// Find Main Panels
 			JPanel runsettings = (JPanel) swix.find("runsettings");
@@ -181,7 +181,7 @@ public class FileAction implements ActionListener {
 									((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0,
 									        scenFilename.length() - 4) + "_DV.DSS");
 
-									GUIUtils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+									GUIUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 									f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 									try {
 										FileWriter fstream = new FileWriter(f);
@@ -677,8 +677,8 @@ public class FileAction implements ActionListener {
 
 				// Determine Month/Count
 				Integer dayct = GUIUtils.DaysinMonth(StartMon);
-				Integer iSMon = GUIUtils.MonthStr2int(StartMon);
-				Integer iEMon = GUIUtils.MonthStr2int(EndMon);
+				Integer iSMon = UnitsUtils.monthToInt(StartMon);
+				Integer iEMon = UnitsUtils.monthToInt(EndMon);
 
 				Integer numMon;
 				numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
@@ -727,7 +727,7 @@ public class FileAction implements ActionListener {
 				LineNum[13] = 34;
 				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
-				GUIUtils.ReplaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
+				GUIUtils.replaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
 				pFrame.setText("Writing WRIMSv2 Batchfile.");
 
@@ -979,7 +979,7 @@ public class FileAction implements ActionListener {
 		}
 		sb.append("END USERDEFINEDFLAGS" + NL);
 
-		GUIUtils.CreateNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		GUIUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 
 		try {

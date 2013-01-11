@@ -19,6 +19,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,6 +44,8 @@ import org.swixml.SwingEngine;
 
 public class GUIUtils {
 
+	
+	
 	// If targetLocation does not exist, it will be created.
 	/**
 	 * Method copies a directory and its contents
@@ -116,7 +119,7 @@ public class GUIUtils {
 		}
 	}
 
-	public static void ReplaceLineInFile(String filename, Integer LineNum, String newText) {
+	public static void replaceLineInFile(String filename, Integer LineNum, String newText) {
 		final String NL = System.getProperty("line.separator");
 		File f = new File(filename);
 
@@ -170,7 +173,8 @@ public class GUIUtils {
 		}
 	}
 
-	public static void ReplaceLinesInFile(String filename, Integer[] LineNum, String[] newText) {
+	public static void replaceLinesInFile(String filename, Integer[] LineNum, String[] newText) {
+		
 		final String NL = System.getProperty("line.separator");
 
 		File f = new File(filename);
@@ -227,7 +231,8 @@ public class GUIUtils {
 		}
 	}
 
-	public static void ReplaceTextInFile(String filename, String textToReplace, String newText) {
+	public static void replaceTextInFile(String filename, String textToReplace, String newText) {
+		
 		final String NL = System.getProperty("line.separator");
 		File f = new File(filename);
 
@@ -289,7 +294,7 @@ public class GUIUtils {
 		return dir.delete();
 	}
 
-	public static void CreateNewFile(String filename) {
+	public static void createNewFile(String filename) {
 		File f;
 		f = new File(filename);
 		if (!f.exists()) {
@@ -849,38 +854,6 @@ public class GUIUtils {
 
 	}
 
-	public static int MonthStr2int(String mon) {
-		int iMon = 0;
-
-		if (mon.equals("Apr")) {
-			iMon = 4;
-		} else if (mon.equals("Jun")) {
-			iMon = 6;
-		} else if (mon.equals("Sep")) {
-			iMon = 9;
-		} else if (mon.equals("Nov")) {
-			iMon = 11;
-		} else if (mon.equals("Feb")) {
-			iMon = 2;
-		} else if (mon.equals("Jan")) {
-			iMon = 1;
-		} else if (mon.equals("Mar")) {
-			iMon = 3;
-		} else if (mon.equals("May")) {
-			iMon = 5;
-		} else if (mon.equals("Jul")) {
-			iMon = 7;
-		} else if (mon.equals("Aug")) {
-			iMon = 8;
-		} else if (mon.equals("Oct")) {
-			iMon = 10;
-		} else if (mon.equals("Dec")) {
-			iMon = 12;
-		}
-		return iMon;
-
-	}
-
 	public static int DaysinMonth(String mon) {
 		int dayct = 0;
 
@@ -1012,36 +985,5 @@ public class GUIUtils {
 		}
 		return retval;
 
-	}
-
-	public static int monthToInt(String EndMon) {
-		int iEMon = 0;
-
-		if (EndMon.equals("Apr")) {
-			iEMon = 4;
-		} else if (EndMon.equals("Jun")) {
-			iEMon = 6;
-		} else if (EndMon.equals("Sep")) {
-			iEMon = 9;
-		} else if (EndMon.equals("Nov")) {
-			iEMon = 11;
-		} else if (EndMon.equals("Feb")) {
-			iEMon = 2;
-		} else if (EndMon.equals("Jan")) {
-			iEMon = 1;
-		} else if (EndMon.equals("Mar")) {
-			iEMon = 3;
-		} else if (EndMon.equals("May")) {
-			iEMon = 5;
-		} else if (EndMon.equals("Jul")) {
-			iEMon = 7;
-		} else if (EndMon.equals("Aug")) {
-			iEMon = 8;
-		} else if (EndMon.equals("Oct")) {
-			iEMon = 10;
-		} else if (EndMon.equals("Dec")) {
-			iEMon = 12;
-		}
-		return iEMon;
 	}
 }
