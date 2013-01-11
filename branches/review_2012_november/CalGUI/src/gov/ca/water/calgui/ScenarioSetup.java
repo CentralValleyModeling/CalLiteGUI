@@ -99,7 +99,7 @@ public class ScenarioSetup {
 
 					if (scensave = true) {
 
-						GUIUtils.CreateNewFile(filename);
+						GUIUtils.createNewFile(filename);
 						f = new File(filename);
 						try {
 							FileWriter fstream = new FileWriter(f);

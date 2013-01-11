@@ -731,8 +731,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// Constrain run times to [10/1921,9/2003]
 			int syr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
 			int eyr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
-			int smo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
-			int emo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
+			int smo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
+			int emo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnRunStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
@@ -742,8 +742,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			syr = (Integer) ((JSpinner) swix.find("spnStartYear")).getValue();
 			eyr = (Integer) ((JSpinner) swix.find("spnEndYear")).getValue();
-			smo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
-			emo = GUIUtils.monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
+			smo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
+			emo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
