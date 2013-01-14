@@ -325,7 +325,7 @@ public class FileAction implements ActionListener {
 	 * 
 	 * @param runDirName
 	 */
-	private static void setupScenarioDirectory(String runDirName) {
+	public static void setupScenarioDirectory(String runDirName) {
 
 		File ft = new File(System.getProperty("user.dir") + runDirName);
 		// First delete existing Run directory.
