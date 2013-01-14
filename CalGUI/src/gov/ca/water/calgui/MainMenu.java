@@ -434,7 +434,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 			ClassLoader cl = MainMenu.class.getClassLoader();
 			URL url = HelpSet.findHelpSet(null, "helpset.hs");
-			helpViewer = new JHelp(new HelpSet(cl, url));
+			helpViewer = new JHelp(new HelpSet(cl,url));
 			helpViewer.setCurrentID("Introduction");
 		} catch (Exception e) {
 			System.err.println("API Help Set not found");
