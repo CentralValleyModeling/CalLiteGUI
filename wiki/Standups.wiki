@@ -1,0 +1,19 @@
+#Standups
+
+= 1/14/2013 =
+
+Attending: Tad, Michael, Idrissa
+
+Tad: Merged local changes with Michael's latest commits, made writeScenarioFiles tests.
+
+Michael: Met with Tad; refactored GUIUtils.copydirectories, consolidated month-to-integer into UnitUtils. Will work on tests, 
+
+Idrissa: Sent links on ant. Will work with Tad on continuous integration.
+
+== Followup ==
+
+Tad meet with Dan and look at package organization.
+Tad meet with Michael to update on SVN, discuss copydirectories
+Tad to talk with Idrissa about continuous integration
+
+= 1/16/2013 =
