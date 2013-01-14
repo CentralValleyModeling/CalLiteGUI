@@ -37,7 +37,14 @@ import org.swixml.SwingEngine;
 
 import wrimsv2.evaluator.TimeOperation;
 
+/**
+ * The FileAction class is the action listener for menubar "menu" and panel "runsettings" in the GUI.
+ * 
+ * @author drucinski, tslawecki
+ * 
+ */
 public class FileAction implements ActionListener {
+
 	private final JFrame desktop;
 	private final SwingEngine swix;
 	private Boolean[] RegUserEdits;
@@ -446,6 +453,7 @@ public class FileAction implements ActionListener {
 
 					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + openFileName);
 					FileInputStream fin = new FileInputStream(f);
+					System.out.println(tableFileName + ":" + openFileName);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					StringBuffer header = new StringBuffer();
 					String aLine = br.readLine();
@@ -613,7 +621,7 @@ public class FileAction implements ActionListener {
 				String runDirName = "\\Run";
 
 				String hydDSSSVName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
-				String hydDSSInitName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
+				String hydDSSInitName = ((JTextField) swix.find("hyd_DSS_Init")).getText();
 
 				// Copy Run directory
 
@@ -621,7 +629,7 @@ public class FileAction implements ActionListener {
 
 				setupScenarioDirectory(runDirName);
 				copyDSSFileToScenarioDirectory(runDirName, hydDSSSVName);
-				copyDSSFileToScenarioDirectory(runDirName, hydDSSInitName);
+				copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
 
 				publish("Writing GUI tables.");
 				ArrayList<String> links2Lines = new ArrayList<String>();
