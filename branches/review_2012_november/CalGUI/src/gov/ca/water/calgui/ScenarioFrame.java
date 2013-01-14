@@ -16,7 +16,6 @@ import javax.swing.*;
 
 import org.swixml.SwingEngine;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import rma.awt.JButtonGroup;
 
