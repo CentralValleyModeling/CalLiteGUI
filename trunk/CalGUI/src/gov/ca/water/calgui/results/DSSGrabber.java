@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.results;
 
 import gov.ca.water.calgui.Prefix;
+import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.heclib.dss.HecDss;
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
@@ -101,23 +102,23 @@ public class DSSGrabber {
 		try {
 			HecTime ht = new HecTime();
 
-			int m = monthToInt(dateRange.substring(0, 3));
+			int m = UnitsUtils.monthToInt(dateRange.substring(0, 3));
 			int y = new Integer(dateRange.substring(3, 7));
 			ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0); // TODO: confirm why this wraps?
 			startTime = ht.value();
 			startWY = (m < 10) ? y : y + 1; // Water year
 
-			m = monthToInt(dateRange.substring(8, 11));
+			m = UnitsUtils.monthToInt(dateRange.substring(8, 11));
 			y = new Integer(dateRange.substring(11, 15));
 			ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
 			endTime = ht.value();
 			endWY = ((m < 10) ? y : y + 1);
 		} catch (IndexOutOfBoundsException e) {
-			
+
 			startTime = -1;
 			log.debug(e.getMessage());
 		}
-		
+
 	}
 
 	/**
@@ -128,7 +129,7 @@ public class DSSGrabber {
 	 *            name of scenario/DSS file to use as base.
 	 */
 	public void setBase(String string) {
-		
+
 		baseName = string;
 	}
 
@@ -350,7 +351,7 @@ public class DSSGrabber {
 			}
 
 		} catch (Exception e) {
-			
+
 			log.debug(e.getMessage());
 
 		}
@@ -521,7 +522,8 @@ public class DSSGrabber {
 
 					ht.set(primaryResults[i].times[j]);
 					calendar.set(ht.year(), ht.month() - 1, 1);
-					double monthlyTAF = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * CFS_2_TAF_DAY;
+					double monthlyTAF = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+					        * CFS_2_TAF_DAY;
 					int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
 					if (wy >= 0)
 						annualTAFs[i][wy] += monthlyTAF;
@@ -742,47 +744,6 @@ public class DSSGrabber {
 			}
 		}
 		return results;
-	}
-
-	/**
-	 * Converts three-letter month abbreviation to integer index
-	 * 
-	 * @param EndMon
-	 *            three-letter abbreviation for month name
-	 * @return month index ("Jan" = 1, ... "Dec" = 12)
-	 */
-	public int monthToInt(String EndMon) {
-
-		int iEMon = 0;
-
-		if (EndMon.equals("Jan")) {
-			iEMon = 1;
-		} else if (EndMon.equals("Feb")) {
-			iEMon = 2;
-		} else if (EndMon.equals("Mar")) {
-			iEMon = 3;
-		} else if (EndMon.equals("Apr")) {
-			iEMon = 4;
-		} else if (EndMon.equals("May")) {
-			iEMon = 5;
-		} else if (EndMon.equals("Jun")) {
-			iEMon = 6;
-		} else if (EndMon.equals("Jul")) {
-			iEMon = 7;
-		} else if (EndMon.equals("Aug")) {
-			iEMon = 8;
-		} else if (EndMon.equals("Sep")) {
-			iEMon = 9;
-		} else if (EndMon.equals("Oct")) {
-			iEMon = 10;
-		} else if (EndMon.equals("Nov")) {
-			iEMon = 11;
-		} else if (EndMon.equals("Dec")) {
-			iEMon = 12;
-		} else
-			throw new IndexOutOfBoundsException("monthToInt does not recognize EndMon value of '" + EndMon + "'.");
-
-		return iEMon;
 	}
 
 	public String getOriginalUnits() {
