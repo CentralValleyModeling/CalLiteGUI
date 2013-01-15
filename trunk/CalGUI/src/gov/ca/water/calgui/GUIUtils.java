@@ -19,7 +19,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -44,8 +43,6 @@ import org.swixml.SwingEngine;
 
 public class GUIUtils {
 
-	
-	
 	// If targetLocation does not exist, it will be created.
 	/**
 	 * Method copies a directory and its contents
@@ -174,7 +171,7 @@ public class GUIUtils {
 	}
 
 	public static void replaceLinesInFile(String filename, Integer[] LineNum, String[] newText) {
-		
+
 		final String NL = System.getProperty("line.separator");
 
 		File f = new File(filename);
@@ -232,7 +229,7 @@ public class GUIUtils {
 	}
 
 	public static void replaceTextInFile(String filename, String textToReplace, String newText) {
-		
+
 		final String NL = System.getProperty("line.separator");
 		File f = new File(filename);
 
