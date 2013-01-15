@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="**/.svn/|.svn/" kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/pdf-renderer.jar"/>
 	<classpathentry kind="lib" path="lib/vista.jar"/>
@@ -40,7 +41,6 @@
 	<classpathentry kind="lib" path="lib/batik-transcoder.jar"/>
 	<classpathentry kind="lib" path="lib/batik-util.jar"/>
 	<classpathentry kind="lib" path="lib/batik-xml.jar"/>
-	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/xulrunner-windows.jar"/>
@@ -55,5 +55,7 @@
 	<classpathentry kind="lib" path="lib/jxbrowser-2.9.jar"/>
 	<classpathentry kind="lib" path="lib/runtime.jar"/>
 	<classpathentry kind="lib" path="lib/WRIMSv2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
