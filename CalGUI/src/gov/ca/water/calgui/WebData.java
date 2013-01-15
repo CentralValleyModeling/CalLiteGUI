@@ -5,6 +5,7 @@ import gov.ca.water.calgui.results.ChartPanel1;
 import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.MonthlyTablePanel;
 import gov.ca.water.calgui.results.SummaryTablePanel;
+import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.io.TimeSeriesContainer;
 
 import java.awt.Color;

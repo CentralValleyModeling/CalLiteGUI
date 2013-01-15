@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.UnitsUtils;
+
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;

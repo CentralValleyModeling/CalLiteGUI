@@ -5,6 +5,7 @@ import gov.ca.water.calgui.results.ChartPanel1;
 import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.MonthlyTablePanel;
 import gov.ca.water.calgui.results.SummaryTablePanel;
+import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.io.TimeSeriesContainer;
 
 import java.awt.Component;
@@ -148,7 +149,8 @@ public class DisplayFrame {
 				Date lower = new Date();
 				JSpinner m = (JSpinner) swix.find("spnStartMonth");
 				JSpinner y = (JSpinner) swix.find("spnStartYear");
-				lower.setTime((new Month(UnitsUtils.monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
+				lower.setTime((new Month(UnitsUtils.monthToInt((String) m.getValue()), (Integer) y.getValue()))
+				        .getFirstMillisecond());
 
 				Date upper = new Date();
 				m = (JSpinner) swix.find("spnEndMonth");
