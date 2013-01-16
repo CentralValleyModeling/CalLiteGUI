@@ -1,13 +1,30 @@
 package gov.ca.water.calgui;
 
-import javax.swing.*;
+import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
 
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import org.swixml.SwingEngine;
 
@@ -19,7 +36,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 	private static final long serialVersionUID = -6485279690935542779L;
 	private JTable scentable;
 	private JScrollPane scrollingtable;
-	private ScenarioPanel sPanel1;
+	private final ScenarioPanel sPanel1;
 	private ScenarioPanel sPanel2;
 	private ScenarioPanel sPanel3;
 
@@ -44,7 +61,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 		StringBuffer[] sbScen = new StringBuffer[selected.length];
 		for (int i = 0; i < selected.length; i++) {
 			File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + selected[i].toString());
-			sbScen[i] = GUIUtils.ReadScenarioFile(f);
+			sbScen[i] = FileUtils.readScenarioFile(f);
 		}
 
 		// Populate Cross Tab Matrix (control info columns first)
@@ -79,9 +96,9 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			String value = tokens[1];
 			JComponent component = (JComponent) swix.find(comp);
 			StringBuffer sbparents = new StringBuffer();
-			sbparents = GUIUtils.GetControlParents(component, sbparents);
+			sbparents = GUIUtils.getControlParents(component, sbparents);
 
-			sbparents = GUIUtils.ReverseStringBuffer(sbparents, "[|]");
+			sbparents = FileUtils.reverseStringBuffer(sbparents, "[|]");
 
 			controls[i] = comp;
 
@@ -156,9 +173,9 @@ public class ScenarioTable extends JFrame implements ItemListener {
 			String fileName = gl.tableNameForCtrl(cName);
 			JComponent component = (JComponent) swix.find(cName);
 			StringBuffer sbparents = new StringBuffer();
-			sbparents = GUIUtils.GetControlParents(component, sbparents);
+			sbparents = GUIUtils.getControlParents(component, sbparents);
 
-			sbparents = GUIUtils.ReverseStringBuffer(sbparents, "[|]");
+			sbparents = FileUtils.reverseStringBuffer(sbparents, "[|]");
 
 			controls[ii] = fileName;
 			comptext = fileName;
@@ -198,8 +215,8 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				if (component instanceof JCheckBox) {
 					JCheckBox jab = (JCheckBox) component;
 					StringBuffer sbparents = new StringBuffer();
-					sbparents = GUIUtils.GetControlParents(component, sbparents);
-					sbparents = GUIUtils.ReverseStringBuffer(sbparents, "[|]");
+					sbparents = GUIUtils.getControlParents(component, sbparents);
+					sbparents = FileUtils.reverseStringBuffer(sbparents, "[|]");
 
 					if (value.equals("false"))
 						value = "Turned off";
@@ -219,7 +236,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				}
 
 				// Search for control index
-				int index = GUIUtils.FindInArray(controls, comp);
+				int index = FileUtils.findInArray(controls, comp);
 				System.out.println(index);
 
 				scenmatrix[index][i + 2] = value;
@@ -243,7 +260,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 					String fileName = gl.tableNameForCtrl(cName);
 
 					// Search for control index
-					int index = GUIUtils.FindInArray(controls, fileName);
+					int index = FileUtils.findInArray(controls, fileName);
 					// System.out.println(index);
 
 					ii = index;
@@ -269,7 +286,8 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				scenmatrix1[ito] = scenmatrix[i];
 				if (scenmatrix[i][0].equals("Scenario Directory")) {
 					for (j = 1; j <= selected.length; j++)
-						scenmatrix1[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios"; // "\\Scenarios\\ + scenmatrix[i][j + 1];
+						scenmatrix1[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios"; // "\\Scenarios\\ +
+																								  // scenmatrix[i][j + 1];
 				} else if (scenmatrix[i][0].equals("spnRunStartMonth")) {
 					scenmatrix1[ito][0] = "  Run Start";
 					for (j = 1; j <= selected.length; j++)
@@ -379,13 +397,14 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 			// Whenever the dashboard changes, always add a new row
 			CurDash = parArr[0].toUpperCase();
-			
+
 			// !TODO - replace hardcoded exclusion of operations controls with appropriate logic in GUI.xml and code
-			
+
 			if (!CurDash.equals("FACILITIES") && !scenmatrix[i][1].contains("op_pan2")
-					&& !scenmatrix[i][0].equals("Use Forecast Allocation Model for SWP") && !scenmatrix[i][0].equals("SWP Allocation (%)")
-					&& !scenmatrix[i][0].equals("Use Forecast Allocation Model for CVP") && !scenmatrix[i][0].equals("CVP System (%)")
-					&& !scenmatrix[i][0].equals("CVP SOD (%)")) {
+			        && !scenmatrix[i][0].equals("Use Forecast Allocation Model for SWP")
+			        && !scenmatrix[i][0].equals("SWP Allocation (%)")
+			        && !scenmatrix[i][0].equals("Use Forecast Allocation Model for CVP")
+			        && !scenmatrix[i][0].equals("CVP System (%)") && !scenmatrix[i][0].equals("CVP SOD (%)")) {
 
 				if (!CurDash.equals(PrevDash)) {
 					procscenmatrix[ii][0] = parArr[0].toUpperCase();
@@ -504,14 +523,14 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				if (procscenmatrix[i][0] == null) {
 					break;
 				}
-				//;
+				// ;
 				String[] scenariovals = new String[selected.length];
 				for (j = 0; j < selected.length; j++) {
 					scenariovals[j] = procscenmatrix[i][j + 1];
 					if (scenariovals[j] == null) {
 						nullct++;
 					}
-					
+
 				}
 				for (j = 0; j < scenariovals.length - 1; j++) {
 					if (scenariovals[j] != null) {
@@ -526,12 +545,12 @@ public class ScenarioTable extends JFrame implements ItemListener {
 							break;
 						}
 					} else {
-						if (nullct==selected.length) {
+						if (nullct == selected.length) {
 							scenmatrixdiff[k][0] = procscenmatrix[i][0];
 							k++;
 							break;
 						}
-						
+
 					}
 				}
 			}

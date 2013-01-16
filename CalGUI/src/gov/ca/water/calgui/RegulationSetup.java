@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -33,7 +35,7 @@ public class RegulationSetup {
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
 		if (isSelect) {
 
-			GUIUtils.ToggleEnComponentAndChildren(pan, true);
+			GUIUtils.toggleEnComponentAndChildren(pan, true);
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
@@ -95,7 +97,7 @@ public class RegulationSetup {
 
 		} else {
 
-			GUIUtils.ToggleEnComponentAndChildren(pan, false);
+			GUIUtils.toggleEnComponentAndChildren(pan, false);
 
 			JCheckBox ckb = (JCheckBox) swix.find(cName);
 			String ckbtext = ckb.getText();

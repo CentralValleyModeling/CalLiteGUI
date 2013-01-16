@@ -1,5 +1,6 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
 import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.SchematicMain;
 import gov.ca.water.calgui.utils.UnitsUtils;
@@ -166,7 +167,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Read Schematic_DSS_link4.table and place in Table5
 		ArrayList GUILinks5 = new ArrayList();
-		GUILinks5 = GUIUtils.GetGUILinks("Config\\Schematic_DSS_link4.table");
+		GUILinks5 = GUIUtils.getGUILinks("Config\\Schematic_DSS_link4.table");
 		table5 = new String[GUILinks5.size()][6];
 		for (int i = 0; i < GUILinks5.size(); i++) {
 			String tokens[] = ((String) GUILinks5.get(i)).split("\t");
@@ -181,7 +182,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 		// init file, etc.)
 		ArrayList GUILinks4 = new ArrayList();
-		GUILinks4 = GUIUtils.GetGUILinks("Config\\GUI_Links4.table");
+		GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
 		table4 = new String[GUILinks4.size()][5];
 		for (int i = 0; i < GUILinks4.size(); i++) {
 			String tokens[] = ((String) GUILinks4.get(i)).split("\t");
@@ -260,7 +261,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		action_WSIDI = 0;
-		RegUserEdits = GUIUtils.SetControlValues(file, swix, dTableModels, gl);
+		RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 		action_WSIDI = 1;
 
 		JPanel pan = (JPanel) swix.find("op_panTab");
@@ -363,41 +364,41 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Set Listeners
 		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
-		GUIUtils.SetMenuListener(menu, this);
+		GUIUtils.setMenuListener(menu, this);
 
 		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1));
-		GUIUtils.SetMouseListener(regulations, this);
-		GUIUtils.SetChangeListener(regulations, this);
+		GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1));
+		GUIUtils.setMouseListener(regulations, this);
+		GUIUtils.setChangeListener(regulations, this);
 
 		swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
 		swix.setActionListener(hydroclimate, new HydAction(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels, gl,
+		GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
 		swix.setActionListener(demands, this);
 
 		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
-		GUIUtils.SetRadioButtonItemListener(dem_SWP, new DemListener(swix));
-		GUIUtils.SetRadioButtonItemListener(dem_CVP, new DemListener(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
+		GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
+		GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
 
 		swix.setActionListener(facilities, this);
 		FacilitiesSetup.SetFacilitiesTables(swix);
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
 		// GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria,
 		// this);
-		GUIUtils.SetMouseListener(presets, this);
-		GUIUtils.SetMouseListener(shortage, this);
+		GUIUtils.setMouseListener(presets, this);
+		GUIUtils.setMouseListener(shortage, this);
 		// GUI_Utils.SetMouseListener(delta_flow_criteria, this);
-		GUIUtils.SetMouseListener(facilities, this);
+		GUIUtils.setMouseListener(facilities, this);
 
 		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
-		GUIUtils.SetCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
+		GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
 		swix.setActionListener(schematics, this);
@@ -468,7 +469,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} else if (e.getActionCommand().startsWith("Sch_Load")) {
 
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new DSSFileFilter());
+			fc.setFileFilter(new SimpleFileFilter(".dss.", "DSS File (*.dss)"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 
 			String dirname = ".//Scenarios";
@@ -576,12 +577,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				if (e.getButton() == MouseEvent.BUTTON3) {
 					JPanel panel = (JPanel) swix.find("fac_pan" + cName.substring(7));
 					// set all "data" panels to invisible
-					GUIUtils.ToggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
+					GUIUtils.toggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
 					// set specified "data" panel to active
-					GUIUtils.ToggleVisComponent(panel, true);
+					GUIUtils.toggleVisComponent(panel, true);
 
 					JCheckBox ckb = (JCheckBox) component;
-					GUIUtils.ToggleEnComponentAndChildren(panel, ckb.isSelected());
+					GUIUtils.toggleEnComponentAndChildren(panel, ckb.isSelected());
 				}
 			}
 		}

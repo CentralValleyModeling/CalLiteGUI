@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -38,8 +40,8 @@ public class OpListener implements ItemListener {
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
 				} else if (cName.startsWith("op_rdb2")) {
 					JPanel pan2 = (JPanel) swix.find("op_pan2");
-					GUIUtils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JRadioButton.class);
-					GUIUtils.ToggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JCheckBox.class);
+					GUIUtils.toggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JRadioButton.class);
+					GUIUtils.toggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JCheckBox.class);
 				} else if (cName.startsWith("op_rdb3")) {
 					JButton btn = (JButton) swix.find("op_btn3");
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));

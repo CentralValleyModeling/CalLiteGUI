@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class TestWriteGUIFiles extends TestCase {
 
 		// Read GUI_Links2
 
-		GUILinks = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
+		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 
 		// Create UI
 

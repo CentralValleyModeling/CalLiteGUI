@@ -1,26 +1,21 @@
-package gov.ca.water.calgui;
+package gov.ca.water.calgui.GUIUtils;
+
+import gov.ca.water.calgui.DataFileTableModel;
+import gov.ca.water.calgui.GUILinks;
+import gov.ca.water.calgui.NumericTextField;
 
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -43,298 +38,16 @@ import org.swixml.SwingEngine;
 
 public class GUIUtils {
 
-	// If targetLocation does not exist, it will be created.
-	/**
-	 * Method copies a directory and its contents
-	 * 
-	 * @param sourceLocation
-	 *            Path to sourcedirectory
-	 * @param targetLocation
-	 *            Path to target directory
-	 * @param subdir
-	 *            If true, copy source directory to a subdirectory under the target directory; otherwise copy source contents to
-	 *            target.
-	 * @throws IOException
-	 */
-	public static void copyDirectory(File sourceLocation, File targetLocation, Boolean subdir) throws IOException {
-
-		if (sourceLocation.isDirectory()) {
-			if (!targetLocation.exists()) {
-				targetLocation.mkdir();
-			}
-
-			String[] children = sourceLocation.list();
-
-			List<String> list = new ArrayList<String>(Arrays.asList(children));
-			list.removeAll(Arrays.asList(".svn"));
-			children = list.toArray(new String[0]);
-
-			if (subdir == true) {
-				for (int i = 0; i < children.length; i++) {
-					copyDirectory(new File(sourceLocation, children[i]), new File(targetLocation, children[i]), subdir);
-				}
-			} else {
-				for (int i = 0; i < children.length; i++) {
-					copyOnlyFilesinDir(new File(sourceLocation, children[i]), new File(targetLocation, children[i]));
-				}
-			}
-
-		} else {
-
-			InputStream in = new FileInputStream(sourceLocation);
-			OutputStream out = new FileOutputStream(targetLocation);
-
-			// Copy the bits from instream to outstream
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-			in.close();
-			out.close();
-		}
-	}
-
-	// If targetLocation does not exist, it will be created.
-	public static void copyOnlyFilesinDir(File sourceLocation, File targetLocation) throws IOException {
-
-		if (sourceLocation.isDirectory()) {
-
-		} else {
-
-			InputStream in = new FileInputStream(sourceLocation);
-			OutputStream out = new FileOutputStream(targetLocation);
-
-			// Copy the bits from instream to outstream
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
-			in.close();
-			out.close();
-		}
-	}
-
-	public static void replaceLineInFile(String filename, Integer LineNum, String newText) {
-		final String NL = System.getProperty("line.separator");
-		File f = new File(filename);
-
-		Integer LineCt;
-
-		FileInputStream fs = null;
-		InputStreamReader in = null;
-		BufferedReader br = null;
-
-		StringBuffer sb = new StringBuffer();
-
-		String textinLine;
-
-		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
-			br = new BufferedReader(in);
-
-			LineCt = 0;
-			while (true) {
-				LineCt = LineCt + 1;
-				textinLine = br.readLine();
-				if (LineCt == LineNum) {
-					sb.append(newText + NL);
-				} else {
-					;
-					if (textinLine == null)
-						break;
-					sb.append(textinLine + NL);
-				}
-			}
-
-			fs.close();
-			in.close();
-			br.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			FileWriter fstream = new FileWriter(f);
-			BufferedWriter outobj = new BufferedWriter(fstream);
-			outobj.write(sb.toString());
-			outobj.close();
-
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-
-	public static void replaceLinesInFile(String filename, Integer[] LineNum, String[] newText) {
-
-		final String NL = System.getProperty("line.separator");
-
-		File f = new File(filename);
-
-		Integer LineCt;
-
-		FileInputStream fs = null;
-		InputStreamReader in = null;
-		BufferedReader br = null;
-
-		StringBuffer sb = new StringBuffer();
-
-		String textinLine;
-		Integer n = 0;
-
-		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
-			br = new BufferedReader(in);
-
-			LineCt = 0;
-			while (true) {
-				LineCt = LineCt + 1;
-				textinLine = br.readLine();
-				if (LineCt == LineNum[n]) {
-					sb.append(newText[n] + NL);
-					n = n + 1;
-				} else {
-					;
-					if (textinLine == null)
-						break;
-					sb.append(textinLine + NL);
-				}
-			}
-
-			fs.close();
-			in.close();
-			br.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			FileWriter fstream = new FileWriter(f);
-			BufferedWriter outobj = new BufferedWriter(fstream);
-			outobj.write(sb.toString());
-			outobj.close();
-
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-
-	public static void replaceTextInFile(String filename, String textToReplace, String newText) {
-
-		final String NL = System.getProperty("line.separator");
-		File f = new File(filename);
-
-		FileInputStream fs = null;
-		InputStreamReader in = null;
-		BufferedReader br = null;
-
-		StringBuffer sb = new StringBuffer();
-
-		String textinLine;
-
-		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
-			br = new BufferedReader(in);
-
-			while (true) {
-				textinLine = br.readLine();
-				if (textinLine == null)
-					break;
-				sb.append(textinLine + NL);
-			}
-			int cnt1 = sb.indexOf(textToReplace);
-			sb.replace(cnt1, cnt1 + textToReplace.length(), newText);
-
-			fs.close();
-			in.close();
-			br.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			FileWriter fstream = new FileWriter(f);
-			BufferedWriter outobj = new BufferedWriter(fstream);
-			outobj.write(sb.toString());
-			outobj.close();
-
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-
-	public static boolean deleteDir(File dir) {
-		if (dir.isDirectory()) {
-			String[] children = dir.list();
-			for (int i = 0; i < children.length; i++) {
-				boolean success = deleteDir(new File(dir, children[i]));
-				if (!success) {
-					return false;
-				}
-			}
-		}
-
-		// The directory is now empty so delete it
-		return dir.delete();
-	}
-
-	public static void createNewFile(String filename) {
-		File f;
-		f = new File(filename);
-		if (!f.exists()) {
-			try {
-				f.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public static void WriteNewLinesInFile(String filename, String[] newText) {
-
-		File f = new File(filename);
-		final String NL = System.getProperty("line.separator");
-		StringBuffer sb = new StringBuffer();
-
-		for (int i = 0; i < newText.length; i++) {
-			sb.append(newText[i] + NL);
-		}
-
-		try {
-			FileWriter fstream = new FileWriter(f);
-			BufferedWriter outobj = new BufferedWriter(fstream);
-			outobj.write(sb.toString());
-			outobj.close();
-
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
-		}
-	}
-
-	public static void SetMouseListener(Component component, Object obj) {
+	public static void setMouseListener(Component component, Object obj) {
 
 		component.addMouseListener((MouseListener) obj);
 
 		for (Component child : ((Container) component).getComponents()) {
-			SetMouseListener(child, obj);
+			setMouseListener(child, obj);
 		}
 	}
 
-	public static void SetMenuListener(Component component, Object obj) {
+	public static void setMenuListener(Component component, Object obj) {
 
 		if (component instanceof JMenu) {
 			JMenu m = (JMenu) component;
@@ -342,22 +55,22 @@ public class GUIUtils {
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			SetMenuListener(child, obj);
+			setMenuListener(child, obj);
 		}
 	}
 
-	public static void SetChangeListener(Component component, Object obj) {
+	public static void setChangeListener(Component component, Object obj) {
 
 		if (component instanceof JTabbedPane) {
 			JTabbedPane tp = (JTabbedPane) component;
 			tp.addChangeListener((ChangeListener) obj);
 		}
 		for (Component child : ((Container) component).getComponents()) {
-			SetChangeListener(child, obj);
+			setChangeListener(child, obj);
 		}
 	}
 
-	public static void SetCheckBoxItemListener(Component component, Object obj) {
+	public static void setCheckBoxItemListener(Component component, Object obj) {
 
 		if (component instanceof JCheckBox) {
 			JCheckBox c = (JCheckBox) component;
@@ -365,11 +78,11 @@ public class GUIUtils {
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			SetCheckBoxItemListener(child, obj);
+			setCheckBoxItemListener(child, obj);
 		}
 	}
 
-	public static void SetRadioButtonItemListener(Component component, Object obj) {
+	public static void setRadioButtonItemListener(Component component, Object obj) {
 
 		if (component instanceof JRadioButton) {
 			JRadioButton r = (JRadioButton) component;
@@ -377,11 +90,11 @@ public class GUIUtils {
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			SetRadioButtonItemListener(child, obj);
+			setRadioButtonItemListener(child, obj);
 		}
 	}
 
-	public static void SetCheckBoxorRadioButtonItemListener(Component component, Object obj) {
+	public static void setCheckBoxorRadioButtonItemListener(Component component, Object obj) {
 
 		if (component instanceof JCheckBox || component instanceof JRadioButton) {
 			((AbstractButton) component).addItemListener((ItemListener) obj);
@@ -389,48 +102,48 @@ public class GUIUtils {
 
 		for (Component child : ((Container) component).getComponents()) {
 
-			SetCheckBoxorRadioButtonItemListener(child, obj);
+			setCheckBoxorRadioButtonItemListener(child, obj);
 		}
 	}
 
-	public static void ToggleEnComponentAndChildren(Component component, Boolean b) {
+	public static void toggleEnComponentAndChildren(Component component, Boolean b) {
 
 		component.setEnabled(b);
 
 		for (Component child : ((Container) component).getComponents()) {
-			ToggleEnComponentAndChildren(child, b);
+			toggleEnComponentAndChildren(child, b);
 		}
 	}
 
-	public static void ToggleEnComponentAndChildren(Component component, Boolean b, Object obj) {
+	public static void toggleEnComponentAndChildren(Component component, Boolean b, Object obj) {
 
 		if (component.getClass() == obj) {
 			component.setEnabled(b);
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			ToggleEnComponentAndChildren(child, b, obj);
+			toggleEnComponentAndChildren(child, b, obj);
 		}
 	}
 
-	public static void ToggleVisComponentAndChildren(Component component, Boolean b) {
+	public static void toggleVisComponentAndChildren(Component component, Boolean b) {
 
 		component.setVisible(b);
 
 		for (Component child : ((Container) component).getComponents()) {
-			ToggleVisComponentAndChildren(child, b);
+			toggleVisComponentAndChildren(child, b);
 		}
 	}
 
-	public static void ToggleEnComponent(Component component, Boolean b) {
+	public static void toggleEnComponent(Component component, Boolean b) {
 		component.setEnabled(b);
 	}
 
-	public static void ToggleVisComponent(Component component, Boolean b) {
+	public static void toggleVisComponent(Component component, Boolean b) {
 		component.setVisible(b);
 	}
 
-	public static void ToggleVisComponents(Component[] components, Boolean b) {
+	public static void toggleVisComponents(Component[] components, Boolean b) {
 
 		for (int i = 0; i < components.length; i++) {
 			components[i].setVisible(b);
@@ -438,7 +151,7 @@ public class GUIUtils {
 
 	}
 
-	public static void ToggleVisComponentAndChildrenCrit(Component component, String crit, Boolean b) {
+	public static void toggleVisComponentAndChildrenCrit(Component component, String crit, Boolean b) {
 		String cName = component.getName();
 		if (cName != null) {
 			if (cName.startsWith(crit)) {
@@ -446,22 +159,22 @@ public class GUIUtils {
 			}
 		}
 		for (Component child : ((Container) component).getComponents()) {
-			ToggleVisComponentAndChildrenCrit(child, crit, b);
+			toggleVisComponentAndChildrenCrit(child, crit, b);
 		}
 	}
 
-	public static void ToggleSelComponentAndChildren(Component component, Boolean b, Object obj) {
+	public static void toggleSelComponentAndChildren(Component component, Boolean b, Object obj) {
 
 		if (component.getClass() == obj) {
 			((AbstractButton) component).setSelected(b);
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			ToggleSelComponentAndChildren(child, b, obj);
+			toggleSelComponentAndChildren(child, b, obj);
 		}
 	}
 
-	public static int CountSelectedButtons(Component component, Object obj, int ct) {
+	public static int countSelectedButtons(Component component, Object obj, int ct) {
 
 		if (component.getClass() == obj) {
 			if (((AbstractButton) component).isSelected()) {
@@ -470,13 +183,13 @@ public class GUIUtils {
 		}
 
 		for (Component child : ((Container) component).getComponents()) {
-			ct = CountSelectedButtons(child, obj, ct);
+			ct = countSelectedButtons(child, obj, ct);
 		}
 
 		return ct;
 	}
 
-	public static StringBuffer GetControlValues(Component component, StringBuffer sb) {
+	public static StringBuffer setControlValues(Component component, StringBuffer sb) {
 		// System.out.println(component.getName());
 		String comp = "";
 		String value = "";
@@ -509,13 +222,13 @@ public class GUIUtils {
 
 		} else {
 			for (Component child : ((Container) component).getComponents()) {
-				GetControlValues(child, sb);
+				setControlValues(child, sb);
 			}
 		}
 		return sb;
 	}
 
-	public static StringBuffer GetTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,
+	public static StringBuffer getTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,
 	        StringBuffer sb, SwingEngine swix) {
 		final String NL = System.getProperty("line.separator");
 
@@ -562,40 +275,7 @@ public class GUIUtils {
 		return sb;
 	}
 
-	public static StringBuffer ReadScenarioFile(File f) {
-		StringBuffer sb = new StringBuffer();
-
-		FileInputStream fs = null;
-		InputStreamReader in = null;
-		BufferedReader br = null;
-		String textinLine;
-		final String NL = System.getProperty("line.separator");
-
-		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
-			br = new BufferedReader(in);
-
-			while (true) {
-				textinLine = br.readLine();
-				if (textinLine == null)
-					break;
-
-				sb.append(textinLine + NL);
-
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return sb;
-
-	}
-
-	public static Boolean[] SetControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl) {
+	public static Boolean[] setControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl) {
 
 		FileInputStream fs = null;
 		InputStreamReader in = null;
@@ -748,7 +428,7 @@ public class GUIUtils {
 	 *            Name of file to read
 	 * @return ArrayList of strings - one per line
 	 */
-	public static ArrayList<String> GetGUILinks(String filename) {
+	public static ArrayList<String> getGUILinks(String filename) {
 		ArrayList<String> GUILinks = new ArrayList<String>();
 
 		Scanner input;
@@ -778,7 +458,7 @@ public class GUIUtils {
 		return GUILinks;
 	}
 
-	public static String GetControls(Component component, String str) {
+	public static String getControls(Component component, String str) {
 		// System.out.println(component.getName());
 		String comp = "";
 		String type = "";
@@ -814,13 +494,13 @@ public class GUIUtils {
 
 		} else {
 			for (Component child : ((Container) component).getComponents()) {
-				GetControls(child, str);
+				getControls(child, str);
 			}
 		}
 		return str;
 	}
 
-	public static ArrayList GetGUITables(ArrayList arr, String board) {
+	public static ArrayList getGUITables(ArrayList arr, String board) {
 		String cName = "";
 		String line = "";
 		String switchID = "", TID = "", datatable = "";
@@ -851,39 +531,7 @@ public class GUIUtils {
 
 	}
 
-	public static int DaysinMonth(String mon) {
-		int dayct = 0;
-
-		if (mon.equals("Apr")) {
-			dayct = 30;
-		} else if (mon.equals("Jun")) {
-			dayct = 30;
-		} else if (mon.equals("Sep")) {
-			dayct = 30;
-		} else if (mon.equals("Nov")) {
-			dayct = 30;
-		} else if (mon.equals("Feb")) {
-			dayct = 28;
-		} else if (mon.equals("Jan")) {
-			dayct = 31;
-		} else if (mon.equals("Mar")) {
-			dayct = 31;
-		} else if (mon.equals("May")) {
-			dayct = 31;
-		} else if (mon.equals("Jul")) {
-			dayct = 31;
-		} else if (mon.equals("Aug")) {
-			dayct = 31;
-		} else if (mon.equals("Oct")) {
-			dayct = 31;
-		} else if (mon.equals("Dec")) {
-			dayct = 31;
-		}
-		return dayct;
-
-	}
-
-	public static StringBuffer GetControlParents(Component component, StringBuffer sb) {
+	public static StringBuffer getControlParents(Component component, StringBuffer sb) {
 		// System.out.println(component.getName());
 		Container c = (Container) component;
 		String desc = "";
@@ -932,55 +580,4 @@ public class GUIUtils {
 		return sb;
 	}
 
-	public static StringBuffer ReverseStringBuffer(StringBuffer sb, String delim) {
-		String[] strArray = sb.toString().split(delim);
-		List result = new LinkedList();
-
-		for (int i = 0; i < strArray.length; i++) {
-			result.add(strArray[i]);
-		}
-
-		Collections.reverse(result);
-		StringBuffer sb1 = new StringBuffer();
-		for (int i = 0; i < result.size(); i++) {
-			sb1.append(result.toArray()[i].toString() + "|");
-		}
-
-		sb = sb1.deleteCharAt(sb1.length() - 1);
-		return sb;
-	}
-
-	public static int FindInArray(String[] arr, String targ) {
-		int idx = 0;
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] != null) {
-				if (arr[i].equals(targ)) {
-					idx = i;
-					break;
-				}
-			}
-		}
-		return idx;
-	}
-
-	public static int copyWSIDItoLookup(String index, String where) {
-
-		int retval = 0;
-		try {
-			File fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_cvp_sys_" + index + ".table");
-			File ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_cvp_sys.table");
-			GUIUtils.copyDirectory(fs, ft, false);
-
-			fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_swp_" + index + ".table");
-			ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_swp.table");
-			GUIUtils.copyDirectory(fs, ft, false);
-
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			retval = -1;
-		}
-		return retval;
-
-	}
 }

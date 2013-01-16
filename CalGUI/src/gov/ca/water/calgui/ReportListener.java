@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -29,10 +31,10 @@ public class ReportListener implements ItemListener {
 				// Checkbox in Reporting page changed
 				if (cName.startsWith("RepckbExceedancePlot")) {
 					JPanel controls2 = (JPanel) swix.find("controls2");
-					GUIUtils.ToggleEnComponentAndChildren(controls2, e.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(controls2, e.getStateChange() == ItemEvent.SELECTED);
 				} else if (cName.startsWith("RepckbSummaryTable")) {
 					JPanel controls3 = (JPanel) swix.find("controls3");
-					GUIUtils.ToggleEnComponentAndChildren(controls3, e.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(controls3, e.getStateChange() == ItemEvent.SELECTED);
 				}
 			}
 		}

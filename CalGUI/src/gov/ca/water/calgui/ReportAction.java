@@ -262,7 +262,7 @@ public class ReportAction implements ActionListener {
 			Vector<String> data = new Vector<String>();
 
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new CGRFileFilter());
+			fc.setFileFilter(new SimpleFileFilter(".cgr", "CalLite Report File (*.cgr)"));
 			fc.setCurrentDirectory(new File(".//Config"));
 
 			String dirname = ".//Config";
@@ -307,7 +307,7 @@ public class ReportAction implements ActionListener {
 		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
 
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new CGRFileFilter());
+			fc.setFileFilter(new SimpleFileFilter(".cgr", "CalLite Report File (*.cgr)"));
 			fc.setCurrentDirectory(new File(".//Config"));
 
 			File file = null;

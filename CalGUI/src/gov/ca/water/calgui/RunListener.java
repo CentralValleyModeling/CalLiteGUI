@@ -1,5 +1,8 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -121,7 +124,7 @@ public class RunListener implements ItemListener {
 						// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 						// init file, etc.)
 						ArrayList GUILinks4 = new ArrayList();
-						GUILinks4 = GUIUtils.GetGUILinks("Config\\GUI_Links4.table");
+						GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
 						table4 = new String[GUILinks4.size()][5];
 						for (int i = 0; i < GUILinks4.size(); i++) {
 							String tokens[] = ((String) GUILinks4.get(i)).split("\t");
@@ -149,7 +152,7 @@ public class RunListener implements ItemListener {
 							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
 							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
 
-							GUIUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
+							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
