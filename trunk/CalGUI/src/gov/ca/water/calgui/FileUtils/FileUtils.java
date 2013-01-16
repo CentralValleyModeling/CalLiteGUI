@@ -322,6 +322,10 @@ public class FileUtils {
 
 				sb.append(textinLine + NL);
 
+				br.close();
+				in.close();
+				fs.close();
+
 			}
 
 		} catch (FileNotFoundException e) {
