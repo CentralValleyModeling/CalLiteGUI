@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -32,10 +34,10 @@ public class FacListener implements ItemListener {
 				if (panel != null) {
 					// set all "data" panels to invisible
 					JPanel facilities = (JPanel) swix.find("facilities");
-					GUIUtils.ToggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
+					GUIUtils.toggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
 					// set specified "data" panel to active
-					GUIUtils.ToggleVisComponent(panel, true);
-					GUIUtils.ToggleEnComponentAndChildren(panel, e.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleVisComponent(panel, true);
+					GUIUtils.toggleEnComponentAndChildren(panel, e.getStateChange() == ItemEvent.SELECTED);
 
 				}
 			}

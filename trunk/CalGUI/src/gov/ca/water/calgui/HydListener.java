@@ -1,5 +1,8 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -124,7 +127,7 @@ public class HydListener implements ItemListener {
 						// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 						// init file, etc.)
 						ArrayList GUILinks4 = new ArrayList();
-						GUILinks4 = GUIUtils.GetGUILinks("Config\\GUI_Links4.table");
+						GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
 						table4 = new String[GUILinks4.size()][5];
 						for (int i = 0; i < GUILinks4.size(); i++) {
 							String tokens[] = ((String) GUILinks4.get(i)).split("\t");
@@ -152,7 +155,7 @@ public class HydListener implements ItemListener {
 							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
 							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
 
-							GUIUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
+							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
@@ -181,8 +184,8 @@ public class HydListener implements ItemListener {
 				int selct = 0;
 				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1");
 				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
-				selct = GUIUtils.CountSelectedButtons(hyd_CC1, JCheckBox.class, selct);
-				selct = GUIUtils.CountSelectedButtons(hyd_CC2, JCheckBox.class, selct);
+				selct = GUIUtils.countSelectedButtons(hyd_CC1, JCheckBox.class, selct);
+				selct = GUIUtils.countSelectedButtons(hyd_CC2, JCheckBox.class, selct);
 
 				JLabel lab = (JLabel) swix.find("hydlab_selected");
 				if (selct == 0) {
@@ -200,14 +203,14 @@ public class HydListener implements ItemListener {
 				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
 
 				if (cName.startsWith("hyd_rdbHis")) {
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, ie.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.ToggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
-					GUIUtils.ToggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class);
+					GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() != ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
+					GUIUtils.toggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
+					GUIUtils.toggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class);
 				} else if (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.ToggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
+					GUIUtils.toggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED);
 				}
 			}
 		}

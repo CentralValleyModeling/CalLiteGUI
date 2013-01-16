@@ -1,5 +1,8 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -29,23 +32,23 @@ public class ScenarioSetup {
 
 		// Store selections
 		StringBuffer sb = new StringBuffer();
-		sb = GUIUtils.GetControlValues(runsettings, sb);
-		sb = GUIUtils.GetControlValues(regulations, sb);
-		sb = GUIUtils.GetControlValues(hydroclimate, sb);
-		sb = GUIUtils.GetControlValues(demands, sb);
-		sb = GUIUtils.GetControlValues(operations, sb);
-		sb = GUIUtils.GetControlValues(facilities, sb);
+		sb = GUIUtils.setControlValues(runsettings, sb);
+		sb = GUIUtils.setControlValues(regulations, sb);
+		sb = GUIUtils.setControlValues(hydroclimate, sb);
+		sb = GUIUtils.setControlValues(demands, sb);
+		sb = GUIUtils.setControlValues(operations, sb);
+		sb = GUIUtils.setControlValues(facilities, sb);
 
 		// get table values.
 		final String NL = System.getProperty("line.separator");
 		sb.append("DATATABLEMODELS" + NL);
 		ArrayList GUILinks = new ArrayList();
 		ArrayList GUITables = new ArrayList();
-		GUILinks = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
-		GUITables = GUIUtils.GetGUITables(GUILinks, "Regulations");
-		sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
-		GUITables = GUIUtils.GetGUITables(GUILinks, "Operations");
-		sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
+		GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
+		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
+		GUITables = GUIUtils.getGUITables(GUILinks, "Operations");
+		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
 		sb.append("END DATATABLEMODELS" + NL);
 		sb.append("USERDEFINEDFLAGS" + NL);
 		for (int i = 0; i < RegUserEdits.length; i++) {
@@ -59,7 +62,7 @@ public class ScenarioSetup {
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-		StringBuffer sbExisting = GUIUtils.ReadScenarioFile(f);
+		StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
 		Boolean scensave = false;
 
@@ -77,7 +80,7 @@ public class ScenarioSetup {
 			if (n == JOptionPane.YES_OPTION) {
 
 				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new CLSFileFilter());
+				fc.setFileFilter(new SimpleFileFilter(".cls", "CalLite Scenario File (*.cls)"));
 				fc.setCurrentDirectory(new File(".//Scenarios"));
 
 				String dirname = ".//Scenarios";
@@ -99,7 +102,7 @@ public class ScenarioSetup {
 
 					if (scensave = true) {
 
-						GUIUtils.createNewFile(filename);
+						FileUtils.createNewFile(filename);
 						f = new File(filename);
 						try {
 							FileWriter fstream = new FileWriter(f);

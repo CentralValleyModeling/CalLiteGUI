@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.GUIUtils.GUIUtils;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
 import java.awt.Component;
@@ -122,23 +124,23 @@ public class FileAction implements ActionListener {
 
 					// Store selections
 					StringBuffer sb = new StringBuffer();
-					sb = GUIUtils.GetControlValues(runsettings, sb);
-					sb = GUIUtils.GetControlValues(regulations, sb);
-					sb = GUIUtils.GetControlValues(hydroclimate, sb);
-					sb = GUIUtils.GetControlValues(demands, sb);
-					sb = GUIUtils.GetControlValues(operations, sb);
-					sb = GUIUtils.GetControlValues(facilities, sb);
+					sb = GUIUtils.setControlValues(runsettings, sb);
+					sb = GUIUtils.setControlValues(regulations, sb);
+					sb = GUIUtils.setControlValues(hydroclimate, sb);
+					sb = GUIUtils.setControlValues(demands, sb);
+					sb = GUIUtils.setControlValues(operations, sb);
+					sb = GUIUtils.setControlValues(facilities, sb);
 
 					// get table values.
 					final String NL = System.getProperty("line.separator");
 					sb.append("DATATABLEMODELS" + NL);
 					ArrayList GUILinks = new ArrayList();
 					ArrayList GUITables = new ArrayList();
-					GUILinks = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
-					GUITables = GUIUtils.GetGUITables(GUILinks, "Regulations");
-					sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
-					GUITables = GUIUtils.GetGUITables(GUILinks, "Operations");
-					sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+					GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
+					GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
+					sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
+					GUITables = GUIUtils.getGUITables(GUILinks, "Operations");
+					sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
 					sb.append("END DATATABLEMODELS" + NL);
 					sb.append("USERDEFINEDFLAGS" + NL);
 					for (int i = 0; i < RegUserEdits.length; i++) {
@@ -150,7 +152,7 @@ public class FileAction implements ActionListener {
 
 					// Read existing file
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					StringBuffer sbExisting = GUIUtils.ReadScenarioFile(f);
+					StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
 					Boolean scensave = false;
 
@@ -190,7 +192,7 @@ public class FileAction implements ActionListener {
 									((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0,
 									        scenFilename.length() - 4) + "_DV.DSS");
 
-									GUIUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+									FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 									f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 									try {
 										FileWriter fstream = new FileWriter(f);
@@ -263,7 +265,7 @@ public class FileAction implements ActionListener {
 
 		} else if (ae.getActionCommand().startsWith("AC_LoadScen")) {
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new ScenarioFileFilter());
+			fc.setFileFilter(new SimpleFileFilter(".cls", "CalLite Scenario File (*.cls)"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 			int retval = fc.showOpenDialog(mainmenu);
@@ -277,8 +279,8 @@ public class FileAction implements ActionListener {
 				                                          // next Save As
 
 				action_WSIDI = 0;
-				RegUserEdits = GUIUtils.SetControlValues(file, swix, dTableModels, gl);
-				RegUserEdits = GUIUtils.SetControlValues(file, swix, dTableModels, gl);
+				RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+				RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 				action_WSIDI = 1;
 				String scenFilename;
 				scenFilename = file.getName();
@@ -318,7 +320,7 @@ public class FileAction implements ActionListener {
 			sTableFrame.setVisible(true);
 			// Delete temp file
 			File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario");
-			GUIUtils.deleteDir(ft);
+			FileUtils.deleteDir(ft);
 		}
 	}
 
@@ -331,14 +333,14 @@ public class FileAction implements ActionListener {
 
 		File ft = new File(System.getProperty("user.dir") + runDirName);
 		// First delete existing Run directory.
-		GUIUtils.deleteDir(ft);
+		FileUtils.deleteDir(ft);
 		ft.mkdirs();
 
 		// Copy wrims2 wresl directory to Run directory
 		File wreslDir = new File(System.getProperty("user.dir") + "\\Model_w2\\wresl");
 
 		try {
-			GUIUtils.copyDirectory(wreslDir, ft, true);
+			FileUtils.copyDirectory(wreslDir, ft, true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -347,7 +349,7 @@ public class FileAction implements ActionListener {
 		// wresl's copy
 		File fs = new File(System.getProperty("user.dir") + "\\Default");
 		try {
-			GUIUtils.copyDirectory(fs, ft, false);
+			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -357,7 +359,7 @@ public class FileAction implements ActionListener {
 		fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup");
 		ft = new File(System.getProperty("user.dir") + runDirName + "\\Lookup");
 		try {
-			GUIUtils.copyDirectory(fs, ft, false);
+			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -381,7 +383,7 @@ public class FileAction implements ActionListener {
 		ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS\\" + dssFileName);
 
 		try {
-			GUIUtils.copyDirectory(fs, ft, false);
+			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -467,7 +469,7 @@ public class FileAction implements ActionListener {
 					// Close existing table file and delete
 
 					br.close();
-					GUIUtils.deleteDir(f);
+					FileUtils.deleteDir(f);
 
 					// Create a new file with the same name and write the header comments
 
@@ -635,7 +637,7 @@ public class FileAction implements ActionListener {
 
 				publish("Writing GUI tables.");
 				ArrayList<String> links2Lines = new ArrayList<String>();
-				links2Lines = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
+				links2Lines = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 
 				try {
 					writeScenarioTables(links2Lines, RegUserEdits, swix);
@@ -663,11 +665,11 @@ public class FileAction implements ActionListener {
 
 				// Copy proper WSIDI table AFTER future/variable demand copy
 
-				GUIUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Run\\Lookup");
+				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Run\\Lookup");
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
 
-				GUIUtils.copyDirectory(fsDem, fsLookup, true);
+				FileUtils.copyDirectory(fsDem, fsLookup, true);
 
 				publish("Creating study.sty.");
 
@@ -686,7 +688,7 @@ public class FileAction implements ActionListener {
 				Integer EndYr = (Integer) spn.getValue();
 
 				// Determine Month/Count
-				Integer dayct = GUIUtils.DaysinMonth(StartMon);
+				Integer dayct = FileUtils.getDaysinMonth(StartMon);
 				Integer iSMon = UnitsUtils.monthToInt(StartMon);
 				Integer iEMon = UnitsUtils.monthToInt(EndMon);
 
@@ -737,7 +739,7 @@ public class FileAction implements ActionListener {
 				LineNum[13] = 34;
 				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
-				GUIUtils.replaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
+				FileUtils.replaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
 
 				pFrame.setText("Writing WRIMSv2 Batchfile.");
 
@@ -810,7 +812,7 @@ public class FileAction implements ActionListener {
 					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
 				}
 				try {
-					GUIUtils.copyDirectory(fsAnnS, fsAnnO, true);
+					FileUtils.copyDirectory(fsAnnS, fsAnnO, true);
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -831,7 +833,7 @@ public class FileAction implements ActionListener {
 					fsAnnO_wrims2 = new File(System.getProperty("user.dir") + "\\Run\\External\\Ann7inp_CA.dll");
 				}
 				try {
-					GUIUtils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
+					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -840,7 +842,7 @@ public class FileAction implements ActionListener {
 
 				// Write regulations table files
 				ArrayList<String> GUITables = new ArrayList<String>();
-				GUITables = GUIUtils.GetGUITables(links2Lines, "Regulations");
+				GUITables = GUIUtils.getGUITables(links2Lines, "Regulations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
 					System.out.println(i);
@@ -906,7 +908,7 @@ public class FileAction implements ActionListener {
 
 				// Write operations table files
 				GUITables = new ArrayList();
-				GUITables = GUIUtils.GetGUITables(links2Lines, "Operations");
+				GUITables = GUIUtils.getGUITables(links2Lines, "Operations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
 					String line = GUITables.get(i).toString();
@@ -963,23 +965,23 @@ public class FileAction implements ActionListener {
 		JPanel facilities = (JPanel) swix.find("facilities");
 
 		StringBuffer sb = new StringBuffer();
-		sb = GUIUtils.GetControlValues(runsettings, sb);
-		sb = GUIUtils.GetControlValues(hydroclimate, sb);
-		sb = GUIUtils.GetControlValues(demands, sb);
-		sb = GUIUtils.GetControlValues(facilities, sb);
-		sb = GUIUtils.GetControlValues(regulations, sb);
-		sb = GUIUtils.GetControlValues(operations, sb);
+		sb = GUIUtils.setControlValues(runsettings, sb);
+		sb = GUIUtils.setControlValues(hydroclimate, sb);
+		sb = GUIUtils.setControlValues(demands, sb);
+		sb = GUIUtils.setControlValues(facilities, sb);
+		sb = GUIUtils.setControlValues(regulations, sb);
+		sb = GUIUtils.setControlValues(operations, sb);
 
 		// get table values.
 		final String NL = System.getProperty("line.separator");
 		sb.append("DATATABLEMODELS" + NL);
 		ArrayList GUITables = new ArrayList();
 		ArrayList GUILinks = new ArrayList();
-		GUILinks = GUIUtils.GetGUILinks("Config\\GUI_Links2.table");
-		GUITables = GUIUtils.GetGUITables(GUILinks, "Regulations");
-		sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
-		GUITables = GUIUtils.GetGUITables(GUILinks, "Operations");
-		sb = GUIUtils.GetTableModelData(dTableModels, GUITables, gl, sb, swix);
+		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
+		GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
+		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
+		GUITables = GUIUtils.getGUITables(GUILinks, "Operations");
+		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
 		sb.append("END DATATABLEMODELS" + NL);
 		sb.append("USERDEFINEDFLAGS" + NL);
 		for (int i = 0; i < RegUserEdits.length; i++) {
@@ -989,7 +991,7 @@ public class FileAction implements ActionListener {
 		}
 		sb.append("END USERDEFINEDFLAGS" + NL);
 
-		GUIUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 
 		try {
