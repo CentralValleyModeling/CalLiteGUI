@@ -15,7 +15,7 @@ public class TestUnitsUtils {
 
 		String months[] = { "jan", "feb", "mar", "apr", "may", "jun", "july", "aug", "sep", "oct", "nov", "dec" };
 
-		for (int i = 1; i < 12; i++) {
+		for (int i = 0; i < 12; i++) {
 
 			int monthCode = UnitsUtils.monthToInt(months[i]);
 			if (monthCode == i + 1) {
