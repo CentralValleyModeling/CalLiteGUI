@@ -1,6 +1,6 @@
 package gov.ca.water.calgui.results;
 
-import gov.ca.water.calgui.Prefix;
+import gov.ca.water.calgui.utils.Prefix;
 import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.heclib.dss.HecDss;
 import hec.heclib.util.HecTime;

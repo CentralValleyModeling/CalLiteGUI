@@ -1,7 +1,7 @@
 package gov.ca.water.calgui;
 
 import static org.junit.Assert.assertTrue;
-import gov.ca.water.calgui.FileUtils.FileUtils;
+import gov.ca.water.calgui.utils.FileUtils;
 
 import java.io.BufferedWriter;
 import java.io.File;

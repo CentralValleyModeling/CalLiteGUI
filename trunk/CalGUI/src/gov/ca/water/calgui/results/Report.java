@@ -3,7 +3,8 @@ package gov.ca.water.calgui.results;
 import gov.ca.dsm2.input.parser.InputTable;
 import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
-import gov.ca.water.calgui.ProgressFrame;
+import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Cursor;
 import java.io.FileInputStream;
@@ -432,8 +433,8 @@ public class Report extends SwingWorker<Void, String> {
 		String report_type;
 		String pathBase;
 		String pathAlt;
-		String var_category;
-		String var_name;
+		public String var_category;
+		public String var_name;
 		String row_type;
 		String units;
 		boolean plot;
