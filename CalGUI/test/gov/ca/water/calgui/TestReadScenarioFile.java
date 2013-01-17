@@ -1,6 +1,7 @@
 package gov.ca.water.calgui;
 
 import static org.junit.Assert.assertTrue;
+import gov.ca.water.calgui.utils.FileUtils;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -44,7 +45,7 @@ public class TestReadScenarioFile {
 
 		StringBuffer stringBuffer = new StringBuffer();
 
-		stringBuffer = GUIUtils.ReadScenarioFile(testFile);
+		stringBuffer = FileUtils.readScenarioFile(testFile);
 
 		String myString = stringBuffer.toString();
 

@@ -1,7 +1,14 @@
 package gov.ca.water.calgui;
 
-import gov.ca.water.calgui.FileUtils.FileUtils;
-import gov.ca.water.calgui.GUIUtils.GUIUtils;
+import gov.ca.water.calgui.dashboards.ScenarioFrame;
+import gov.ca.water.calgui.dashboards.ScenarioTable;
+import gov.ca.water.calgui.utils.DataFileTableModel;
+import gov.ca.water.calgui.utils.FileUtils;
+import gov.ca.water.calgui.utils.GUILinks;
+import gov.ca.water.calgui.utils.GUIUtils;
+import gov.ca.water.calgui.utils.NumericTextField;
+import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
 import java.awt.Component;

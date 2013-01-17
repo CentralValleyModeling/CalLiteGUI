@@ -8,7 +8,6 @@ package gov.ca.water.calgui.results;
  *
  */
 
-import gov.ca.water.calgui.DisplayFrame;
 import gov.ca.water.calgui.MainMenu;
 
 import java.awt.Toolkit;

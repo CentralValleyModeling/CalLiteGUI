@@ -1,6 +1,7 @@
 package gov.ca.water.calgui;
 
-import gov.ca.water.calgui.GUIUtils.GUIUtils;
+import gov.ca.water.calgui.utils.GUIUtils;
+import gov.ca.water.calgui.utils.NumericTextField;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,5 +1,8 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.DataFileTableModel;
+import gov.ca.water.calgui.utils.GUILinks;
+
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
