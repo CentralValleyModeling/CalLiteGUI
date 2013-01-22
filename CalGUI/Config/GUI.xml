@@ -128,11 +128,13 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</label>
-							<spinner id="spnRunStartMonth" name="spnRunStartMonth" enabled="false">
+							<spinner id="spnRunStartMonth" name="spnRunStartMonth"
+								enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
 							</spinner>
-							<spinner id="spnRunStartYear" name="spnRunStartYear" enabled="false">
+							<spinner id="spnRunStartYear" name="spnRunStartYear"
+								enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="1" />
 							</spinner>
@@ -761,8 +763,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0"
 								gridheight="3" />
-							<label id="fac_txf1_t"
-							text="NODOS Reservoir Maximum Capacity (TAF)">
+							<label id="fac_txf1_t" text="NODOS Reservoir Maximum Capacity (TAF)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</label>
@@ -786,7 +787,8 @@
 										anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0" />
 								</label>
 							</panel>
-							<label id="fac_txf2_t" text="GCID Canal Maximum Diversion Capacity for NODOS (cfs)">
+							<label id="fac_txf2_t"
+								text="GCID Canal Maximum Diversion Capacity for NODOS (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</label>
@@ -794,7 +796,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
 							</textfield>
-							<label id="fac_txf3_t" text="TC Canal Maximum Diversion Capacity for NODOS (cfs)">
+							<label id="fac_txf3_t"
+								text="TC Canal Maximum Diversion Capacity for NODOS (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="" gridy="4" />
 							</label>
@@ -802,7 +805,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
 							</textfield>
-							<label id="fac_txf4_t" text="Capacity of New Pipeline at Maxwell Diversion (cfs)">
+							<label id="fac_txf4_t"
+								text="Capacity of New Pipeline at Maxwell Diversion (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="5" />
 							</label>
@@ -810,7 +814,7 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
 							</textfield>
-							<label id="fac_txf5_t" 
+							<label id="fac_txf5_t"
 								text="Minimum Bypass Flow at Red Bluff before NODOS Diversion (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="6" />
@@ -819,7 +823,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
 							</textfield>
-							<label id="fac_txf6_t"  text="Oroville Storage Trigger for SWP NODOS Releases (TAF)">
+							<label id="fac_txf6_t"
+								text="Oroville Storage Trigger for SWP NODOS Releases (TAF)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="7" />
 							</label>
@@ -827,7 +832,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
 							</textfield>
-							<label id="fac_txf7_t" text="Shasta Storage Trigger for CVP NODOS Releases (TAF)">
+							<label id="fac_txf7_t"
+								text="Shasta Storage Trigger for CVP NODOS Releases (TAF)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="8" />
 							</label>
@@ -879,7 +885,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="0" />
 							</textfield>
-							<label id="fac_txf9_t" text="CCWD Alternate Intake Project Diversion Capacity (cfs)">
+							<label id="fac_txf9_t"
+								text="CCWD Alternate Intake Project Diversion Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</label>
@@ -918,7 +925,7 @@
 							<gridbagconstraints insets="0,0,5,5"
 								gridheight="3" anchor="GridBagConstraints.NORTHWEST" gridx="1"
 								gridy="0" />
-							<label id="fac_txf13_t" 
+							<label id="fac_txf13_t"
 								text="In-lieu groundwater pumping (Fraction in % of 173 TAF/yr)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
@@ -1234,6 +1241,10 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="2" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
+							<checkbox text="A checkbox">
+								<gridbagconstraints insets="0,0,5,5" gridx="1"
+									gridy="3" anchor="GridBagConstraints.NORTHWEST" />
+							</checkbox>
 							<separator orientation="HORIZONTAL" preferredsize="5,2">
 								<gridbagconstraints gridx="0" gridy="6"
 									insets="0,5,0,5" gridwidth="5" anchor="GridBagConstraints.W"
@@ -1415,6 +1426,7 @@
 									gridy="20" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 						</panel>
+					<panel name="test"></panel>
 					</tabbedpane>
 					<button text="Help" id="RegHelp" ActionCommand="AC_Help">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
@@ -1674,8 +1686,8 @@
 								<button id="btnClearScenario" name="btnClearScenario"
 									text="Clear All" />
 								<label text="       "></label>
-								<button id="btnCompareScenarios" name="btnCompareScenarios" ActionCommand="AC_CompScen"
-									text="Compare Scenarios" />
+								<button id="btnCompareScenarios" name="btnCompareScenarios"
+									ActionCommand="AC_CompScen" text="Compare Scenarios" />
 							</hbox>
 
 							<scrollpane name="spsl" id="spsl" minimumsize="410,90"
@@ -1720,13 +1732,13 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</label>
-							<spinner id="spnStartMonth" name="spnStartMonth" preferredsize="75,25"
-								minimumsize="50,20" >
+							<spinner id="spnStartMonth" name="spnStartMonth"
+								preferredsize="75,25" minimumsize="50,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
 							</spinner>
-							<spinner id="spnStartYear" name="spnStartYear" preferredsize="75,25"
-								minimumsize="50,20">
+							<spinner id="spnStartYear" name="spnStartYear"
+								preferredsize="75,25" minimumsize="50,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="1" />
 							</spinner>
@@ -1734,8 +1746,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</label>
-							<spinner id="spnEndMonth" name="spnEndMonth" preferredsize="75,25"
-								minimumsize="50,20">
+							<spinner id="spnEndMonth" name="spnEndMonth"
+								preferredsize="75,25" minimumsize="50,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
 							</spinner>
@@ -2538,15 +2550,17 @@
 
 					<panel layout="FlowLayout(FlowLayout.Left)">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="1" insets="-40,0,0,0"/>
+							gridx="0" gridy="1" insets="-40,0,0,0" />
 						<label
-							text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in" font="Tahoma-BOLD-13" foreground="CC3333" />
+							text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
+							font="Tahoma-BOLD-13" foreground="CC3333" />
 					</panel>
 					<panel layout="FlowLayout(FlowLayout.Left)">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="2" insets="-40,0,0,0"/>
+							gridx="0" gridy="2" insets="-40,0,0,0" />
 						<label
-							text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic" font="Tahoma-BOLD-13" foreground="CC3333" />
+							text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
+							font="Tahoma-BOLD-13" foreground="CC3333" />
 					</panel>
 					<panel layout="FlowLayout(FlowLayout.Right)">
 						<gridbagconstraints anchor="GridBagConstraints.EAST"
