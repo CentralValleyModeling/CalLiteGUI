@@ -304,15 +304,14 @@ public class FileUtils {
 	public static StringBuffer readScenarioFile(File f) {
 		StringBuffer sb = new StringBuffer();
 
-		FileInputStream fs = null;
 		InputStreamReader in = null;
 		BufferedReader br = null;
 		String textinLine;
 		final String NL = System.getProperty("line.separator");
 
 		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
+
+			in = new InputStreamReader(new FileInputStream(f));
 			br = new BufferedReader(in);
 
 			while (true) {
@@ -320,18 +319,25 @@ public class FileUtils {
 				if (textinLine == null)
 					break;
 
-				sb.append(textinLine + NL);
-
-				br.close();
-				in.close();
-				fs.close();
+				sb.append(textinLine).append(NL);
 
 			}
 
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+
+		}
+
+		finally {
+
+			try {
+				br.close();
+				in.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 		return sb;
