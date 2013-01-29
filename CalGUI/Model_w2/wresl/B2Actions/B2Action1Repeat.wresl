@@ -3,6 +3,7 @@ B2Action1Repeat.wresl
 
 Nazrul Islam, DWR, 10/13/2010
 Tom FitzHugh, BOR, 11/9/10  edited file to add Clear Creek BO requirement and stability criteria, and code to conserve Shasta storage for NMFS RPAs.
+Tom FitzHugh  BOR 9/30/2011, edited definition of C_Wkytn_MIF to include stability criteria for non BO condition.
 
 This file imposes all the (b)(2) upstream actions that are taken in the (b)(2) run.
 If this code is active, Keswick, Clear Cr and Nimbus minflow goal have to be inactive.
@@ -67,7 +68,7 @@ goal b2action1Whi_1 {
         lhs<rhs   penalty 99 } 
     case NO_BO {
         condition int(ClearCrkBOswitch) == 0    
-            rhs       max(C_Wkytn_MIF_b2, ClearCrk_min)   !when BO switch = 0, BO target not used, no stability target   
+            rhs	      max(C_Wkytn_adj, minflow_C_Wkytn_b2, C_Wkytn_MIF_b2, ClearCrk_min)   !when BO switch = 0, BO target not used  
         lhs>rhs   constrain
         lhs<rhs   penalty 99 }  
     }
