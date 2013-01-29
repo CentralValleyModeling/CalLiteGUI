@@ -3,18 +3,24 @@
 ! 5/18/10 Added logic for two cycles to accomodate daily weir flows Tom FitzHugh BOR
 ! comment out daily weir flows for corroboration study; Richard Chen DWR
 ! 4/25/11 Cleanup Codes to remove CS2CL,CL, and change Ave to AVG. Richard Chen, DWR
+! 9/28/12 Add shortage code, Z.Q. Richard Chen, DWR
 
 SEQUENCE CYCLE1 {
-    model   BASE
+    model   Upstream
     order   1
     }
 
 SEQUENCE CYCLE2 {
-    model   B2_BO_DailyWeir
+    model   BASE
     order   2
     }
+
+SEQUENCE CYCLE3 {
+    model   B2_BO_DailyWeir
+    order   3
+    }
     
-MODEL BASE {         !CYCLE 1
+MODEL Upstream {         !CYCLE 1
 !Include external FUNS and DLL information
 define getFinalMrdo {EXTERNAL f90}  ! OBJ code file must be located in run\external directory for compilation
 INCLUDE  'Delta\DeltaExtFuncs_7inpANN.wresl'
@@ -43,17 +49,30 @@ INCLUDE 'Export_Ops\export_ops.wresl'
 INCLUDE 'Wheeling\WheelOpsVarDefines.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
-INCLUDE 'COA\coa.wresl'
-INCLUDE[LOCAL]'Delta\Ann\ExportEstimate1.wresl'
+INCLUDE [LOCAL]'COA\coa_Up.wresl'
+INCLUDE[LOCAL]'Delta\Ann\ExportEstimate1_up.wresl'
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 INCLUDE 'B2Actions\BaseStudyResults.wresl' 
 INCLUDE 'B2Actions\B2Action1Repeat.wresl'
 
+INCLUDE 'Shortage\shortage.wresl'
+
 INCLUDE 'system\weight-table.wresl'
 }
 
-MODEL B2_BO_DailyWeir {         !CYCLE 2
+MODEL BASE {         !CYCLE 2
+INCLUDE[LOCAL] 'hydrology\WEIRS\weir_steps_monthops.wresl' 
+INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
+INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
+INCLUDE [LOCAL]'COA\coa.wresl'
+INCLUDE[LOCAL]'Delta\Ann\ExportEstimate1.wresl'
+INCLUDE [LOCAL] 'Delta\Delta.wresl'
+INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
+}
+
+
+MODEL B2_BO_DailyWeir {         !CYCLE 3
 
 INCLUDE[LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_SETUP.wresl'  
 INCLUDE[LOCAL] 'B2Actions\B2SetBaseline.wresl'                    
@@ -73,12 +92,13 @@ INCLUDE [LOCAL] 'Export_Ops\NMFS_SALMON_BO_SJR.wresl'
 INCLUDE[LOCAL] 'Export_Ops\OMR\FWS_SMELT_BO.wresl' 
 INCLUDE[LOCAL] 'Export_Ops\OMR\EXP_constraint.wresl'
 INCLUDE[LOCAL] 'Export_Ops\OMR\OMR_constraint.wresl'
+INCLUDE[LOCAL]'COA\coa_BO.wresl'
 
 INCLUDE[LOCAL] 'Delta\xc-gates.wresl'                 
 INCLUDE[LOCAL] 'Wheeling\Wheelcap.wresl'
 INCLUDE[LOCAL] 'Wheeling\wheelfixes.wresl'
 INCLUDE[LOCAL] 'output\cycle_output.wresl'
-!INCLUDE[LOCAL] 'Shortage\ShortWarning.wresl'
+INCLUDE[LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE[LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
 INCLUDE 'output\DV_ouput.wresl'

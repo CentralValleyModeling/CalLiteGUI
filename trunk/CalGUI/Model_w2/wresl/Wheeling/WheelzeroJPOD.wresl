@@ -12,4 +12,5 @@ goal wheel_Ks_2 {C_Kswck_whljp = 0.0}
 goal wheel_Nm_2 {C_Nimbus_whljp = 0.0}
 
 goal zeroBanksJPOD {D_Banks_cvpwhl = 0.}
+goal zeroCarriageJPOD {C_Delta_whljp = 0.}
 

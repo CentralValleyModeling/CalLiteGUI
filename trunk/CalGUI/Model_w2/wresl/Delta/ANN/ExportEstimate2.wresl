@@ -8,6 +8,8 @@ Estimates are based on current month delivery and San Luis rule-curve.
 
 Add a switch to turn off vamp
 Z.Q. Richard Chen DWR (02/07/2011)
+Add Estimate Tot Exp through Delta
+Hao Xie (9/22/2011)
 ***********************************/
 
 
@@ -46,6 +48,12 @@ define EstTotExp {
     condition always
     value EstSWPSodExp + EstCVPSodExp}
 }
+
+define EstTotExpTD {
+    value     EstTotExp 
+}
+
 define exp_est_total {alias EstTotExp kind 'EXPORT-ESTIMATE' units 'CFS'}
+define exp_est_TD    {alias EstTotExpTD kind 'EXPORT-ESTIMATE' units 'CFS'}
 
 !*********************************************************************************************

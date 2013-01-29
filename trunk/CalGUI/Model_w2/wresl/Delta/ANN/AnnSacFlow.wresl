@@ -6,18 +6,11 @@ Required sac flow for estimated exports considering all ann stations:
 define AnnSacReq {value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExp/0.65+6000.)}
 
 *************************************************/
-define AnnSacReq {
-!/* Don't use this goal if IF is available as alternate export pathway
-    case JunSep {
-    condition month>=Jun.and.month<=Sep
-    value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExp/0.65+7000.)}
-    case other {
-    condition always
-    value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
 
-}
+define AnnSacReq_max {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
+define AnnSacReqmaxdv {alias AnnSacReq_max kind 'FLOW' units 'CFS'}
 
-!define AnnSacReq {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
+define AnnSacReq {value min(AnnSacReq_max,EstTotExpTD/0.65+7000.)}
 define AnnSacReqdv {alias AnnSacReq kind 'FLOW' units 'CFS'}
 
 !split C_Hood & C_YoloBP:

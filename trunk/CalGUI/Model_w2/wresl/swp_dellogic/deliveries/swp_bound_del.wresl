@@ -1,6 +1,7 @@
 /****
 swp_bound_del.wresl
 Z.Q. Richard Chen, Hao Xie 6/03/2010 
+Z.Q. Richard Chen, 9/28/2012
 
 Codes in this file are used to ensure the SWP Project Diversion 
 amounts at each node is less than the amount allocated by the Contract
@@ -56,7 +57,7 @@ define con_d7b_pwr   {select contract from swpcontract where contractor=5}
 define con_d7b_pag   {select contract from swpcontract where contractor=6}
 define con_d7b_prf   {select contract from swpcontract where contractor=7}
 define con_d206a_pag {select contract from swpcontract where contractor=8}
-define con_d206b_pwr {select contract from swpcontract where contractor=9}
+define con_d206b_pwr {select contract from swpcontract where contractor=9}  !5.13 TAF/month
 define con_d206b_pag {select contract from swpcontract where contractor=10}
 define con_d206c_pwr {select contract from swpcontract where contractor=11}
 define con_d206c_pag {select contract from swpcontract where contractor=12}
@@ -94,7 +95,8 @@ define target_d206a_pag {value min(ad_d206a_pag, demand_prj_69*con_d206a_pag/con
 goal limit_d206a_pag {d206a_pag < target_d206a_pag}
 
 define target_d206b_pwr {value min(ad_d206b_pwr, demand_prj_69*con_d206b_pwr/con_69_total)}
-goal limit_d206b_pwr {d206b_pwr < ad_d206b_pwr}
+!goal limit_d206b_pwr {d206b_pwr < ad_d206b_pwr}       
+goal limit_d206b_pwr {d206b_pwr < target_d206b_pwr}   !Richard 9/28/2012
 
 define target_d206b_pag {value min(ad_d206b_pag, demand_prj_69*con_d206b_pag/con_69_total)}
 goal limit_d206b_pag {d206b_pag < target_d206b_pag}
@@ -103,7 +105,8 @@ define target_d206c_pwr {value min(ad_d206c_pwr, demand_prj_69*con_d206c_pwr/con
 goal limit_d206c_pwr {d206c_pwr < ad_d206c_pwr}
 
 define target_d206c_pag {value min(ad_d206c_pag, demand_prj_69*con_d206c_pag/con_69_total)}
-goal limit_d206c_pag {d206c_pag < target_d206c_pag}
+!goal limit_d206c_pag {d206c_pag < ad_d206c_pag}
+goal limit_d206c_pag {d206c_pag < target_d206c_pag}   !Richard 9/28/2012
 
 define target_d201_pimi {value ad_d201_pimi}
 goal limit_d201_pimi {d201_pimi < target_d201_pimi}
