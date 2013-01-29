@@ -717,7 +717,7 @@ public class FileAction implements ActionListener {
 				LineNum[2] = 7;
 				newtext[3] = System.getProperty("user.dir") + "\\Run\\CALLITE_BO_FUTURE.STY";
 				LineNum[3] = 8;
-				newtext[4] = System.getProperty("user.dir") + "\\Run\\MAIN_BO.WRESL";
+				newtext[4] = System.getProperty("user.dir") + "\\Run\\MAIN.WRESL";
 				LineNum[4] = 9;
 				if (oDSS.toUpperCase().endsWith(".DSS")) {
 					newtext[6] = System.getProperty("user.dir") + "\\Scenarios\\" + oDSS;
@@ -759,7 +759,7 @@ public class FileAction implements ActionListener {
 				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, EndYr);
 
 				Map<String, String> configMap = new HashMap<String, String>();
-				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main_bo.wresl");
+				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main.wresl");
 				configMap.put("DvarFile", newtext[6]);
 				configMap.put("SvarFile", newtext[5]);
 				configMap.put("SvarFPart", newtext[12]);
