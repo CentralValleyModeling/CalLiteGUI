@@ -1,0 +1,101 @@
+<?xml version ="1.0" ?>
+<project default="main">
+	
+	<!--taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/-->
+
+	<property file = "build.properties"/>
+
+	<target name="main" depends="make-build-dir">
+		<echo>
+			${message}
+		</echo>	
+
+	</target>
+	
+	<target name = "make-build-dir">
+		
+		<!--Blow away old directory if it exists-->
+		<delete>
+			<fileset dir = "${build.dir}" />
+		</delete>
+		
+		<!--Now make a new one -->
+		<mkdir dir = "${build.dir}"/>
+		
+		<!--Add jre dir -->
+		<mkdir dir = "${build.dir}/jre}"/>
+		
+		<!--Copy contents of log directory to build directory -->
+		<!--copy todir = "${build.dir}">
+			
+			<fileset dir = "${config.dir}" />
+			<fileset dir = "${default.dir}" />
+			<fileset dir = "${docs.dir}" />
+			<fileset dir = "${lib.dir}" />
+			<fileset dir = "${logs.dir}" />
+			<fileset dir = "${model.dir}" />
+			<fileset dir = "${model-w2.dir}" />
+			<fileset dir = "${scenario.dir}" />
+			
+		</copy-->
+				
+	</target>
+		
+		
+	<!-- Set configuration parameters using xml replacement-->
+	<!--target name="set-config">
+		
+        <xmltask source="${temp.dir}/WEB-INF/web.xml" dest="${temp.dir}/WEB-INF/web.xml" failWithoutMatch="true">            
+        	<copy path="boolean(/:web-app/:filter[1]/:init-param[2]/:param-value)" property="domain.ip" />    
+        	<replace path="/:web-app/:filter[1]/:init-param[2]/:param-value/text()" withText="${domain.ip}" if="domain.ip" />    
+        </xmltask>
+		
+        <xmltask source="${temp.dir}/WEB-INF/classes/hibernate.cfg.xml" dest="${temp.dir}/WEB-INF/classes/hibernate.cfg.xml" failWithoutMatch="true">            
+        	<replace path="/hibernate-configuration/session-factory/property[1]/text()" withText="${abhc.db.ip}" />       	
+        </xmltask>
+		
+        <xmltask source="${temp.dir}/WEB-INF/classes/securityContext.xml" dest="${temp.dir}/WEB-INF/classes/securityContext.xml" failWithoutMatch="true">            
+        	<replace path="/:beans/:bean[7]/:property[3]/@value" withText="${domain.ip}" />     	
+        </xmltask>
+		
+		<replaceregexp file = "${temp.dir}/WEB-INF/classes/swap_datasource.properties" 
+			match  = "jdbc:oracle:thin:@(.+):swap" 
+			replace = "${swap.db.ip}">
+		</replaceregexp>
+		
+		<replaceregexp file = "${temp.dir}/WEB-INF/classes/swap_datasource.properties" 
+			match  = "jdbc:oracle:thin:@(.+):abhc" 
+			replace = "${abhc.db.ip}">
+		</replaceregexp>
+					
+		<echo>Found configuration files; inserted staging server parameters.</echo> 
+	</target>
+	
+	
+	<target name="delete-from-ftp">
+			<ftp action="del"
+				server="ftp.djws3.com" binary="true" verbose="true"
+				userid="${name}" password="${password}" remotedir="/mikes">
+				<fileset>
+					<include name="swap.war"/>
+				</fileset>
+			</ftp>		
+		</target>
+
+		<target name="do-war">
+			<war destfile="${war}/swap.war" update="true">
+				<fileset dir="${temp.dir}" />
+				<classes dir="${temp.dir}/WEB-INF/classes" />
+			</war>
+		</target>
+		
+		<target name="deploy">
+			<ftp server="ftp.djws3.com" binary="true" verbose="true"
+				userid="${name}" password="${password}" remotedir="/mikes">
+				<fileset dir="${war}">
+					<include name="swap.war"/>
+				</fileset>
+			</ftp>
+		</target-->
+	
+</project>
