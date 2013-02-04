@@ -1,0 +1,12 @@
+#summary How do we integrate GUI and WRIMS engine
+#labels Phase-Design
+
+= Introduction =
+
+GUI receives scenario options and data and has to pass this information to the WRIMS engine
+
+= Details =
+
+ * GUI write to scenario directory
+ * WRIMS engine copies over to Run directory ?
+ * WRIMS updates progress to GUI ?
