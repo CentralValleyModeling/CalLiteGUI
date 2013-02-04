@@ -671,6 +671,10 @@ public class FileAction implements ActionListener {
 
 				// Copy proper WSIDI table AFTER future/variable demand copy
 
+				((JTextField) swix.find("hyd_DSS_Index")).setText(GUIUtils.makeHydDSSIndex(swix));
+				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
+				// issues 98/99.
+
 				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Run\\Lookup");
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
@@ -871,7 +875,8 @@ public class FileAction implements ActionListener {
 							// CASE 1: 1 file specified
 							System.out.println("Output to " + tableName);
 							String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
-
+							System.out.println(dTableModels == null);
+							System.out.println(dTableModels.length);
 							if (dTableModels[tID] == null) {
 								System.out.println("Table not initialized - " + tableName);
 							} else {

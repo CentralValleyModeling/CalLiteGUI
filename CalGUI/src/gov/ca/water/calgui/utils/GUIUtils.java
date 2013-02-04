@@ -1,6 +1,5 @@
 package gov.ca.water.calgui.utils;
 
-
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemListener;
@@ -575,6 +574,25 @@ public class GUIUtils {
 
 		sb = sb.deleteCharAt(sb.length() - 1);
 		return sb;
+
 	}
 
+	/**
+	 * Calculates value for lookup to use with default wsi-di tables. Value is generally stored in the GUI textfield named
+	 * hyd_DSS_Index, which is hidden from user view.
+	 * 
+	 * @param swix
+	 *            - link to GUI/model
+	 * @return - Calculated value for hyd_DSS_Index in GUI
+	 */
+	public static String makeHydDSSIndex(SwingEngine swix) {
+		String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
+		lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
+		if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
+			lookup = lookup + "10";
+		else {
+			lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+		}
+		return lookup;
+	}
 }
