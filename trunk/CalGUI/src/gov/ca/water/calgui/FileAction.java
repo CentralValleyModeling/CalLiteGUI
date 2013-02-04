@@ -462,9 +462,8 @@ public class FileAction implements ActionListener {
 
 					// Open existing table file and read in all header comments (lines that start with a "!")
 
-					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + openFileName);
+					f = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableFileName);
 					FileInputStream fin = new FileInputStream(f);
-					System.out.println(tableFileName + ":" + openFileName);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					StringBuffer header = new StringBuffer();
 					String aLine = br.readLine();
@@ -801,28 +800,10 @@ public class FileAction implements ActionListener {
 				cfgFile.flush();
 				cfgFile.close();
 
-				pFrame.setText("Copying WRIMSv1 DLL.");
-
-				// Sea Level Selections
 				File fsAnnO;
 				File fsAnnS;
 				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
 				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
-				if (rdbSLR45.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
-				} else if (rdbSLR15.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
-				} else {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
-					fsAnnO = new File(System.getProperty("user.dir") + "\\Model\\Ann.dll");
-				}
-				try {
-					FileUtils.copyDirectory(fsAnnS, fsAnnO, true);
-				} catch (IOException e1) { // TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 
 				pFrame.setText("Copying WRIMSv2 DLL.");
 
