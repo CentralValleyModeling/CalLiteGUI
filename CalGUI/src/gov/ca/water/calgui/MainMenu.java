@@ -16,7 +16,6 @@ import gov.ca.water.calgui.dashboards.ScenarioSetup;
 import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.SchematicMain;
-import gov.ca.water.calgui.results.WebData;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
@@ -89,7 +88,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
-
 	JFrame desktop;
 	static JFrame help;
 	JPanel runsettings;
@@ -117,6 +115,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	String desktopTitle;
 	String scenFilename;
 	GetDSSFilename getScenFilename;
+	DataFileTableModel[] dTableModels;
+	Boolean[] RegUserEdits;
 
 	static public String lookups[][];
 	static String table4[][]; // Holds GUI_links4.table values that control
@@ -136,9 +136,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	JMenuBar menu;
 	ProgressMonitor pMon;
 	public JList lstScenarios;
-
-	public DataFileTableModel[] dTableModels = null;
-	public Boolean[] RegUserEdits = null;
 
 	/**
 	 * @wbp.parser.entryPoint
@@ -290,8 +287,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		component1.setVisible(true);
 		component1.setEnabled(true);
-		PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl);
-		PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl);
+		dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl);
+		dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl);
 
 		// pan.setBorder(title);
 		component1.setVisible(false);
@@ -438,7 +435,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		lstScenarios = (JList) swix.find("SelectedList");
 		DSSGrabber dss_Grabber;
 		dss_Grabber = new DSSGrabber(lstScenarios);
-		new WebData(jtp, this, swix, dss_Grabber, lstReports, desktop, 0);
+		// DANRcommented this out: new WebData(jtp, this, swix, dss_Grabber, lstReports, desktop, 0);
 
 	}
 
@@ -783,10 +780,23 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				rdb.setVisible(true);
 				rdb = (JRadioButton) swix.find("reg_rdbUD");
 				rdb.setVisible(true);
+				rdb = (JRadioButton) swix.find("reg_rdbD1485");
+				rdb.setVisible(true);
+			} else if (cName.startsWith("D-1485")) {
+				JButton btn = (JButton) swix.find("btnRegDef");
+				btn.setVisible(false);
+				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				rdb.setVisible(true);
+				rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				rdb.setVisible(true);
+				rdb = (JRadioButton) swix.find("reg_rdbUD");
+				rdb.setVisible(true);
 			} else {
 				JButton btn = (JButton) swix.find("btnRegDef");
 				btn.setVisible(true);
 				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				rdb.setVisible(false);
+				rdb = (JRadioButton) swix.find("reg_rdbD1485");
 				rdb.setVisible(false);
 				rdb = (JRadioButton) swix.find("reg_rdbUD");
 				rdb.setVisible(false);
