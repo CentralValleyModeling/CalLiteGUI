@@ -1,6 +1,5 @@
 package gov.ca.water.calgui.utils;
 
-
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,7 +14,7 @@ import javax.swing.event.TableModelListener;
 import org.swixml.SwingEngine;
 
 public class PopulateDTable {
-	public static void populate(String cID, final JTable t, JComponent container, final SwingEngine swix,
+	public static DataFileTableModel[] populate(String cID, final JTable t, JComponent container, final SwingEngine swix,
 	        final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
 
 		boolean exists = false;
@@ -142,5 +141,6 @@ public class PopulateDTable {
 			ExcelAdapter myAd = new ExcelAdapter(t);
 
 		}
+		return dTableModels;
 	}
 }
