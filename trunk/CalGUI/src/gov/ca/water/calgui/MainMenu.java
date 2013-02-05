@@ -320,50 +320,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 		}
 
-		/*
-		 * String cName = gl.CtrlFortableID(tokens[0]); JCheckBox comp1 = (JCheckBox) swix.find("cName"); comp1.setSelected(true);
-		 * RegUserEdits=GUI_Utils.SetControlValues(file, swix, dTableModels, gl);
-		 */
-
 		// Schematic view
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
 		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir")
 		        + "/Config/callite.svg", this, swix);
-		// schemView.setAffineTransform(0.5716912122078099, 0.0, 0.0,
-		// 0.5716912122078099, -114.55489341333396,
-		// 0.5477924346923828);
-		// schemView.setAffineTransform(9.1666667, 0.0, 0.0, 0.1666667, 320.0,
-		// 0.0);
-
-		// // Load in WRIMS functionality
-
-		// java.net.URL imgURL =
-		// getClass().getResource("/images/CalLITE_08_30corrected10-21-10.jpg");
-		// if (imgURL != null) {
-		// // ImageIcon image = new ImageIcon(imgURL, null);
-		// // System.out.println(image.getIconHeight());
-		//
-		// BufferedImage img;
-		// img = ImageIO.read(imgURL);
-		// Font defaultFont = new Font("Serif", Font.PLAIN, 20);
-		// SymbolCanvas symbols = new SymbolCanvas(defaultFont, 0x2500, 207,
-		// img);
-		// symbols.paint(img.getGraphics());
-		//
-		// ImageIcon image = new ImageIcon(img, null);
-		//
-		// ScrollablePicture picture = new ScrollablePicture(image, 100);
-		// picture.setName("schem_map");
-		// JScrollPane scrollpane = (JScrollPane) swix.find("schem_scr");
-		// scrollpane.add(picture);
-		// scrollpane.setViewportView(picture);
-		// scrollpane.setPreferredSize(new Dimension(800, 700));
-		// scrollpane.setOpaque(true);
-		// scrollpane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		//
-		// GUI_Utils.SetMouseListener(scrollpane, this);
-		//
-		// }
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -407,11 +367,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		GUIUtils.setCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
-		// GUI_Utils.SetCheckBoxorRadioButtonItemListener(delta_flow_criteria,
-		// this);
 		GUIUtils.setMouseListener(presets, this);
 		GUIUtils.setMouseListener(shortage, this);
-		// GUI_Utils.SetMouseListener(delta_flow_criteria, this);
 		GUIUtils.setMouseListener(facilities, this);
 
 		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
