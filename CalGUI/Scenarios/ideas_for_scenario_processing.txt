@@ -1,10 +1,13 @@
 Proposal
 
-(1) User cannot run an unsaved scenario.
+(1) policy for unsaved scenario:
+	
+	option 1. Don't allow user to run an unsaved scenario
+	option 2. Allow user to run unsaved scenario, but save it automatically with a temporary name, e.g., using date and time, 
 
 (2) When a scenario, e.g., “example1.cls” is saved,
 
-	1. A folder named “example1” is created in the “scenario” folder
+	1. A folder with the same name as the .cls file “example1” is created in the “scenario” folder
 	2. In the “example1” folder, a file named “example1.config” and a “Run” folder are created
 	3. In the “Run” folder, “Lookup” and “External” folders are created
 	4. CalGUI generates the table files for this scenario and place them in the lookup folder
