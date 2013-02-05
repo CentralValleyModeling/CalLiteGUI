@@ -336,7 +336,15 @@ public class FileAction implements ActionListener {
 	 * 
 	 * @param runDirName
 	 */
-	public static void setupScenarioDirectory(String runDirName) {
+	/**
+	 * Creates a scenario directory, then copies contents of Default and Default\Lookup to new directory
+	 * 
+	 * @param runDirName
+	 * @return true if successful, false if not
+	 */
+	public static boolean setupScenarioDirectory(String runDirName) {
+
+		boolean success = true;
 
 		File ft = new File(System.getProperty("user.dir") + runDirName);
 		// First delete existing Run directory.
@@ -350,6 +358,7 @@ public class FileAction implements ActionListener {
 			FileUtils.copyDirectory(wreslDir, ft, true);
 		} catch (IOException e) {
 			e.printStackTrace();
+			success = false;
 		}
 
 		// Copy Default dir to Run dir. This may overwrite wrims2
@@ -360,6 +369,7 @@ public class FileAction implements ActionListener {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			success = false;
 		}
 
 		// Copy lookup files.
@@ -370,18 +380,22 @@ public class FileAction implements ActionListener {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			success = false;
 		}
-
+		return success;
 	}
 
 	/**
 	 * Copies indicates DSS file from \Default\DSS to run directory
 	 * 
-	 * @param runDirName
+	 * * @param runDirName
+	 * 
 	 * @param dssFileName
+	 * @return true if successful, false if not
 	 */
-	private static void copyDSSFileToScenarioDirectory(String runDirName, String dssFileName) {
+	private static boolean copyDSSFileToScenarioDirectory(String runDirName, String dssFileName) {
 
+		boolean success = true;
 		File ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS");
 		ft.mkdir();
 
@@ -394,8 +408,9 @@ public class FileAction implements ActionListener {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			success = false;
 		}
-
+		return success;
 	}
 
 	/**
@@ -626,20 +641,28 @@ public class FileAction implements ActionListener {
 				pFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 				desktop.setEnabled(false);
 
-				// Extract "model" values from "view"
+				boolean success = true;
 
-				String runDirName = "\\Run";
-
-				String hydDSSSVName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
-				String hydDSSInitName = ((JTextField) swix.find("hyd_DSS_Init")).getText();
-
-				// Copy Run directory
+				// ========== Copy Run directory
 
 				publish("Creating new Run directory.");
 
-				setupScenarioDirectory(runDirName);
-				copyDSSFileToScenarioDirectory(runDirName, hydDSSSVName);
-				copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				String runDirName = "\\Run";
+				System.out.println(success);
+				success = success || setupScenarioDirectory(runDirName);
+				System.out.println(success);
+				success = success || copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				System.out.println(success);
+				success = success || copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				System.out.println(success);
+
+				// ==========
+
+				File checkFile = new File(System.getProperty("user.dir") + runDirName + File.separator + "check.text");
+				if (checkFile.exists())
+					checkFile.delete();
+
+				// ==========
 
 				publish("Writing GUI tables.");
 				ArrayList<String> links2Lines = new ArrayList<String>();
@@ -650,26 +673,22 @@ public class FileAction implements ActionListener {
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					success = false;
 				}
+
+				// ==========
 
 				publish("Copying demand tables.");
 
 				File fsDem;
-				/*
-				 * rdb = (JRadioButton) swix.find("dem_rdbCurSWP"); if (rdb.isSelected()) { fsDem = new
-				 * File(System.getProperty("user.dir") + "\\Run\\Lookup\\FutureDemand"); } else { fsDem = new
-				 * File(System.getProperty("user.dir") + "\\Run\\Lookup\\VariableDemand"); } GUI_Utils.deleteDir(fsDem);
-				 */
-
-				JRadioButton rdb = (JRadioButton) swix.find("dem_rdbCurSWP");
-
-				if (rdb.isSelected()) {
+				if (((JRadioButton) swix.find("dem_rdbCurSWP")).isSelected()) {
 					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\VariableDemand");
 				} else {
 					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\FutureDemand");
 				}
 
 				// Copy proper WSIDI table AFTER future/variable demand copy
+				// TODO: WHY IS THIS ORDER NECESSARY?? IT DOESN'T LOOK LIKE WE'RE DOING THAT NOW?
 
 				((JTextField) swix.find("hyd_DSS_Index")).setText(GUIUtils.makeHydDSSIndex(swix));
 				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
@@ -678,36 +697,29 @@ public class FileAction implements ActionListener {
 				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Run\\Lookup");
 
 				File fsLookup = new File(System.getProperty("user.dir") + "\\Run\\Lookup");
-
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
+
+				// ==========
 
 				publish("Creating study.sty.");
 
-				// Write study.sty
 				Calendar cal = Calendar.getInstance();
 
-				JSpinner spn = (JSpinner) swix.find("spnRunStartMonth");
-				String StartMon = (String) spn.getValue();
-				StartMon = StartMon.trim();
-				spn = (JSpinner) swix.find("spnRunEndMonth");
-				String EndMon = (String) spn.getValue();
-				EndMon = EndMon.trim();
-				spn = (JSpinner) swix.find("spnRunStartYear");
-				Integer StartYr = (Integer) spn.getValue();
-				spn = (JSpinner) swix.find("spnRunEndYear");
-				Integer EndYr = (Integer) spn.getValue();
+				String test = (String) ((JSpinner) swix.find("spnRunStartMonth")).getValue();
+				System.out.println(test);
+
+				String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim().toUpperCase();
+				String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim().toUpperCase();
+				Integer startYr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
+				Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
 
 				// Determine Month/Count
-				Integer dayct = FileUtils.getDaysinMonth(StartMon);
-				Integer iSMon = UnitsUtils.monthToInt(StartMon);
-				Integer iEMon = UnitsUtils.monthToInt(EndMon);
+				Integer dayct = FileUtils.getDaysinMonth(startMon);
+				Integer iSMon = UnitsUtils.monthToInt(startMon);
+				Integer iEMon = UnitsUtils.monthToInt(endMon);
+				Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
 
-				Integer numMon;
-				numMon = (EndYr - StartYr) * 12 + (iEMon - iSMon) + 1;
-				StartMon = StartMon.toUpperCase();
-
-				JTextField tf = (JTextField) swix.find("run_txfoDSS");
-				String oDSS = tf.getText().trim();
+				String oDSS = ((JTextField) swix.find("run_txfoDSS")).getText().trim();
 
 				String[] newtext = new String[20];
 				Integer[] LineNum = new Integer[20];
@@ -739,9 +751,9 @@ public class FileAction implements ActionListener {
 				LineNum[8] = 14;
 				newtext[9] = dayct.toString();
 				LineNum[9] = 15;
-				newtext[10] = StartMon;
+				newtext[10] = startMon;
 				LineNum[10] = 16;
-				newtext[11] = StartYr.toString();
+				newtext[11] = startYr.toString();
 				LineNum[11] = 17;
 
 				LineNum[12] = 33;
@@ -750,16 +762,17 @@ public class FileAction implements ActionListener {
 				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
 				FileUtils.replaceLinesInFile(System.getProperty("user.dir") + "\\Run\\study.sty", LineNum, newtext);
+				System.out.println(checkFile);
+
+				// ==========
 
 				pFrame.setText("Writing WRIMSv2 Batchfile.");
 
-				// wrims2 configuration
-
 				// configuration file for wrims v2
-				Integer iStartMonth = TimeOperation.monthValue(StartMon.toLowerCase());
-				Integer iEndMonth = TimeOperation.monthValue(EndMon.toLowerCase());
-				Integer iStartDay = TimeOperation.numberOfDays(iStartMonth, StartYr);
-				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, EndYr);
+				Integer iStartMonth = TimeOperation.monthValue(startMon.toLowerCase());
+				Integer iEndMonth = TimeOperation.monthValue(endMon.toLowerCase());
+				Integer iStartDay = TimeOperation.numberOfDays(iStartMonth, startYr);
+				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, endYr);
 
 				Map<String, String> configMap = new HashMap<String, String>();
 				configMap.put("MainFile", System.getProperty("user.dir") + "\\Run\\main.wresl");
@@ -768,10 +781,10 @@ public class FileAction implements ActionListener {
 				configMap.put("SvarFPart", newtext[12]);
 				configMap.put("InitFile", newtext[7]);
 				configMap.put("InitFPart", newtext[13]);
-				configMap.put("StartYear", StartYr.toString());
+				configMap.put("StartYear", startYr.toString());
 				configMap.put("StartMonth", iStartMonth.toString());
 				configMap.put("StartDay", iStartDay.toString());
-				configMap.put("EndYear", EndYr.toString());
+				configMap.put("EndYear", endYr.toString());
 				configMap.put("EndMonth", iEndMonth.toString());
 				configMap.put("EndDay", iEndDay.toString());
 
@@ -793,9 +806,8 @@ public class FileAction implements ActionListener {
 				batchText = batchText.replace("{StartDay}", configMap.get("StartDay"));
 				batchText = batchText.replace("{EndDay}", configMap.get("EndDay"));
 
-				// System.out.println(batchText);
-
 				// write WRIMSv2 batch file
+
 				File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
 
 				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
@@ -803,16 +815,18 @@ public class FileAction implements ActionListener {
 				cfgFile.print(batchText);
 				cfgFile.flush();
 				cfgFile.close();
+				System.out.println(checkFile);
 
-				File fsAnnO;
-				File fsAnnS;
-				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
-				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
+				// ==========
 
 				pFrame.setText("Copying WRIMSv2 DLL.");
 
 				// wrims2 ANN file name is different from wrims1
+				File fsAnnS;
 				File fsAnnO_wrims2;
+
+				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
+				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
 
 				if (rdbSLR45.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
@@ -828,7 +842,12 @@ public class FileAction implements ActionListener {
 					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
+					success = false;
 				}
+
+				System.out.println(checkFile);
+
+				// ==========
 
 				publish("Writing GUI option tables.");
 
@@ -837,19 +856,13 @@ public class FileAction implements ActionListener {
 				GUITables = GUIUtils.getGUITables(links2Lines, "Regulations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
+
 					System.out.println(i);
 					String line = GUITables.get(i).toString();
 					String[] parts = line.split("[|]");
-					String cName = parts[0].trim(); // Get name of controlling
-					                                // checkbox;
-					String tableName = gl.tableNameForCtrl(cName); // Find the
-					                                               // corresponding
-					                                               // table
-					String switchID = gl.switchIDForCtrl(cName); // Get the
-					                                             // switchID
-					                                             // (index in
-					                                             // .table
-					                                             // file)
+					String cName = parts[0].trim(); // Get name of controlling checkbox;
+					String tableName = gl.tableNameForCtrl(cName); // Find the corresponding table
+					String switchID = gl.switchIDForCtrl(cName); // Get the switchID (index in .table file)
 
 					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
@@ -875,8 +888,6 @@ public class FileAction implements ActionListener {
 							// CASE 1: 1 file specified
 							System.out.println("Output to " + tableName);
 							String fo = System.getProperty("user.dir") + "\\Run\\Lookup\\" + tableName + ".table";
-							System.out.println(dTableModels == null);
-							System.out.println(dTableModels.length);
 							if (dTableModels[tID] == null) {
 								System.out.println("Table not initialized - " + tableName);
 							} else {
@@ -893,9 +904,7 @@ public class FileAction implements ActionListener {
 							} else {
 								dTableModels[tID].writeToFile2(files[0], files[1]);
 							}
-
 						}
-
 					}
 				}
 
@@ -922,6 +931,9 @@ public class FileAction implements ActionListener {
 					}
 
 				}
+
+				if (success)
+					checkFile.createNewFile();
 
 				desktop.setVisible(false);
 

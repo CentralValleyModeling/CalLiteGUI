@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.DataFileTableModel;
+import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 
@@ -7,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 
 import junit.framework.TestCase;
@@ -17,6 +20,10 @@ public class TestWriteGUIFiles extends TestCase {
 
 	private ArrayList<String> GUILinks;
 	private SwingEngine swix;
+	JFrame desktop;
+	private final Boolean[] RegUserEdits = null;
+	private final DataFileTableModel[] dTableModels = null;
+	private GUILinks gl;
 
 	public TestWriteGUIFiles() {
 	}
@@ -100,5 +107,11 @@ public class TestWriteGUIFiles extends TestCase {
 			fail("WriteGUITables raised an exception");
 
 		}
+	}
+
+	public void testSetupAndRun() {
+		FileAction.setupAndRun("default.cls", desktop, swix, RegUserEdits, dTableModels, gl);
+		File checkFile = new File(System.getProperty("user.dir") + "\\Run" + File.separator + "check.text");
+		assertTrue(checkFile.exists());
 	}
 }

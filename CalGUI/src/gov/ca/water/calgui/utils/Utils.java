@@ -1,6 +1,5 @@
 package gov.ca.water.calgui.utils;
 
-import gov.ca.water.calgui.results.Report;
 import gov.ca.water.calgui.results.Report.PathnameMap;
 
 import java.util.ArrayList;
