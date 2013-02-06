@@ -24,7 +24,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
-import javax.swing.JButton;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
@@ -52,35 +51,35 @@ public class GetDSSFilename implements ActionListener {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
-		Setup(aList);
+		setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField) {
 		theLabel = null;
 		theFileExt = "DSS";
 		theTextField = aTextField;
-		Setup(aList);
+		setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JTextField aTextField, String aFileExt) {
 		theLabel = null;
 		theTextField = aTextField;
 		theFileExt = aFileExt;
-		Setup(aList);
+		setup(aList);
 	}
 
 	public GetDSSFilename(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
-		Setup(aList);
+		setup(aList);
 		rdbopt1 = rdb1;
 		rdbopt2 = rdb2;
 	}
 
 	public int dialogRC;
 
-	private void Setup(JList aList) {
+	private void setup(JList aList) {
 
 		if (theFileExt.equals("DSS")) {
 			fc.setFileFilter(new DSSFileFilter());
@@ -104,6 +103,7 @@ public class GetDSSFilename implements ActionListener {
 			// Add a mouse listener to handle changing selection
 
 			theList.addMouseListener(new MouseAdapter() {
+				@Override
 				public void mouseClicked(MouseEvent event) {
 					JList list = (JList) event.getSource();
 
@@ -134,10 +134,12 @@ public class GetDSSFilename implements ActionListener {
 	}
 
 	class MyListDataListener implements ListDataListener {
+		@Override
 		public void contentsChanged(ListDataEvent e) {
 			// System.out.println("Changed");
 		}
 
+		@Override
 		public void intervalAdded(ListDataEvent e) {
 			// System.out.println(lmScenNames.getSize());
 			if (rdbopt1 != null && rdbopt2 != null) {
@@ -146,6 +148,7 @@ public class GetDSSFilename implements ActionListener {
 			}
 		}
 
+		@Override
 		public void intervalRemoved(ListDataEvent e) {
 			// System.out.println(lmScenNames.getSize());
 			if (rdbopt1 != null && rdbopt2 != null) {
@@ -155,6 +158,7 @@ public class GetDSSFilename implements ActionListener {
 		}
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 
@@ -197,8 +201,8 @@ public class GetDSSFilename implements ActionListener {
 						lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
 				}
 				if (match) {
-					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"+
-							"and will not be added. It is already in the Scenarios list.","Alert",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"
+					        + "and will not be added. It is already in the Scenarios list.", "Alert", JOptionPane.ERROR_MESSAGE);
 				} else {
 					if (theList == null || lmScenNames.getSize() == 1) {
 						if (theList != null)
@@ -224,23 +228,24 @@ public class GetDSSFilename implements ActionListener {
 		return;
 	}
 
-	class FileNameRenderer extends DefaultListCellRenderer {
+	private class FileNameRenderer extends DefaultListCellRenderer {
 		/**
 * 
 */
 		private static final long serialVersionUID = -3040003845509293885L;
 
-		private JFileChooser2 theOwner;
-		private Map<String, String> theToolTips = new HashMap<String, String>();
+		private final JFileChooser2 theOwner;
+		private final Map<String, String> theToolTips = new HashMap<String, String>();
 
-		public FileNameRenderer(JFileChooser2 jFileChooser) {
+		private FileNameRenderer(JFileChooser2 jFileChooser) {
 			// TODO Auto-generated constructor stub
 			theOwner = jFileChooser;
 		}
 
+		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 			JLabel lbl = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-			if (!theOwner.ToolTipFlag) {
+			if (!theOwner.toolTipFlag) {
 				theToolTips.clear();
 				File folder = new File(System.getProperty("user.dir") + "\\Scenarios"); // change
 				// to
@@ -265,7 +270,7 @@ public class GetDSSFilename implements ActionListener {
 
 						}
 					}
-					theOwner.ToolTipFlag = true;// need to flag when dierctory
+					theOwner.toolTipFlag = true;// need to flag when dierctory
 					// changes
 				}
 			}
@@ -281,13 +286,13 @@ public class GetDSSFilename implements ActionListener {
 		}
 	}
 
-	class JFileChooser2 extends javax.swing.JFileChooser {
+	private class JFileChooser2 extends javax.swing.JFileChooser {
 		/**
 * 
 */
 		private static final long serialVersionUID = -150877374751505363L;
 
-		public boolean ToolTipFlag = false;
+		public boolean toolTipFlag = false;
 
 		private Component findJList(Component comp) {
 
@@ -308,28 +313,31 @@ public class GetDSSFilename implements ActionListener {
 			return null;
 		}
 
+		@Override
 		public int showOpenDialog(Component c) {
 			JList myList = (JList) findJList(this);
 			myList.setCellRenderer(new FileNameRenderer(this));
-			ToolTipFlag = false;
+			toolTipFlag = false;
 			return super.showOpenDialog(c);
 		}
 	}
 
-	class DSSFileFilter extends javax.swing.filechooser.FileFilter {
+	private class DSSFileFilter extends javax.swing.filechooser.FileFilter {
+		@Override
 		public boolean accept(File file) {
 			// Convert to lower case before checking extension
 			return (file.getName().toLowerCase().endsWith(".dss") || file.isDirectory());
 		}
 
+		@Override
 		public String getDescription() {
 			return "DSS File (*.dss)";
 		}
 	}
 
-	class GeneralFileFilter extends javax.swing.filechooser.FileFilter {
-		private String extension;
-		private String description;
+	private class GeneralFileFilter extends javax.swing.filechooser.FileFilter {
+		private final String extension;
+		private final String description;
 
 		GeneralFileFilter(String extension) {
 			this.extension = "." + extension.toLowerCase();
@@ -337,19 +345,21 @@ public class GetDSSFilename implements ActionListener {
 
 		}
 
+		@Override
 		public boolean accept(File file) {
 			// Convert to lower case before checking extension
 			return (file.getName().toLowerCase().endsWith(extension) || file.isDirectory());
 		}
 
+		@Override
 		public String getDescription() {
 			return description;
 		}
 	}
 
-	public class RBListItem {
-		private String label;
-		private String fullname;
+	private class RBListItem {
+		private final String label;
+		private final String fullname;
 		private boolean isSelected = false;
 
 		public RBListItem(String label, String label2) {
@@ -365,6 +375,7 @@ public class GetDSSFilename implements ActionListener {
 			this.isSelected = isSelected;
 		}
 
+		@Override
 		public String toString() {
 			return fullname;
 		}
@@ -377,6 +388,7 @@ public class GetDSSFilename implements ActionListener {
 	// Handles rendering cells in the list using a check box
 
 	class RBListRenderer extends JRadioButton implements ListCellRenderer {
+		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
 			setEnabled(list.isEnabled());
 			setSelected(((RBListItem) value).isSelected());
