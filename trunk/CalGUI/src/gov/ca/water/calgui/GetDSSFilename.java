@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.results.RBListItem;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -354,34 +356,6 @@ public class GetDSSFilename implements ActionListener {
 		@Override
 		public String getDescription() {
 			return description;
-		}
-	}
-
-	private class RBListItem {
-		private final String label;
-		private final String fullname;
-		private boolean isSelected = false;
-
-		public RBListItem(String label, String label2) {
-			this.label = label2;
-			this.fullname = label;
-		}
-
-		public boolean isSelected() {
-			return isSelected;
-		}
-
-		public void setSelected(boolean isSelected) {
-			this.isSelected = isSelected;
-		}
-
-		@Override
-		public String toString() {
-			return fullname;
-		}
-
-		public String toString2() {
-			return label;
 		}
 	}
 
