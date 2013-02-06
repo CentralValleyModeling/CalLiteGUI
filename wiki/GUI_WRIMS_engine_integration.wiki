@@ -22,6 +22,14 @@ GUI receives scenario options and data and has to pass this information to the W
 
  * CALGUI to save results from new Run subdir (config file)
 
+== OUTCOME ==
+
+  - Generated/custom files are easy to find and inspect in Runfiles subdir
+
+  - All output available for inspection in Run subdir
+
+
+
 == Preceding discussion: ==
 
 1. CALGUI will write scenario-specific files to a scenario-specific directory
