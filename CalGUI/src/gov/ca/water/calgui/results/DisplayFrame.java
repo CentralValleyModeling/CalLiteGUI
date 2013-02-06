@@ -1,7 +1,5 @@
 package gov.ca.water.calgui.results;
 
-import gov.ca.water.calgui.GetDSSFilename;
-import gov.ca.water.calgui.GetDSSFilename.RBListItem;
 import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.io.TimeSeriesContainer;
 
