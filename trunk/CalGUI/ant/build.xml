@@ -5,7 +5,7 @@
 
 	<property file="build.properties" />
 
-	<target name="main" depends="make-build-dir, make-manifest">
+	<target name="main" depends="make-deploy-dir, make-jar">
 
 		<echo>
 			${message}
@@ -13,81 +13,85 @@
 
 	</target>
 
-	<target name="make-build-dir">
+	<target name="make-deploy-dir">
 
 
 		<!--Blow away old directory if it exists-->
-		<delete dir="${build.dir}" />
+		<delete dir="${deploy.dir}" />
 
-		<mkdir dir="${build.dir}" />
+		<mkdir dir="${deploy.dir}" />
 
 		<!--Add dirs -->
-		<mkdir dir="${build.dir}/Config" />
-		<mkdir dir="${build.dir}/Default" />
-		<mkdir dir="${build.dir}/docs" />
-		<mkdir dir="${build.dir}/jre" />
-		<mkdir dir="${build.dir}/logs" />
-		<mkdir dir="${build.dir}/Scenarios" />
-		<mkdir dir="${build.dir}/Model_w2" />
+		<mkdir dir="${deploy.dir}/Config" />
+		<mkdir dir="${deploy.dir}/Default" />
+		<mkdir dir="${deploy.dir}/docs" />
+		<mkdir dir="${deploy.dir}/jre" />
+		<mkdir dir="${deploy.dir}/logs" />
+		<mkdir dir="${deploy.dir}/Scenarios" />
+		<mkdir dir="${deploy.dir}/Model_w2" />
 
 
-		<copy todir="${build.dir}">
+		<copy todir="${deploy.dir}">
 
 			<fileset dir="${bin.dir}" />
 			<fileset dir="${lib.dir}" />
 
 		</copy>
 
-		<copy todir="${build.dir/Config}">
+		<copy todir="${deploy.dir/Config}">
 
 			<fileset dir="${config.dir}" />
 
 		</copy>
-		
-		<copy todir="${build.dir/docs}">
+
+		<copy todir="${deploy.dir/docs}">
 
 			<fileset dir="${docs.dir}" />
-			
+
 		</copy>
 
 
-		<copy todir="${build.dir/jre}">
+		<copy todir="${deploy.dir/jre}">
 
 			<fileset dir="${jre.dir}" />
 		</copy>
-		
-		<copy todir="${build.dir/logs}">
+
+		<copy todir="${deploy.dir/logs}">
 
 			<fileset dir="${logs.dir}" />
-			
+
 		</copy>
-		
-		<copy todir="${build.dir/Scenarios}">
+
+		<copy todir="${deploy.dir/Scenarios}">
 
 			<fileset dir="${scenario.dir}" />
-			
+
 		</copy>
-		
-		<copy todir="${build.dir/Model_w2}">
+
+		<copy todir="${deploy.dir/Model_w2}">
 
 			<fileset dir="${model.dir}" />
-			
+
 		</copy>
 
 
 	</target>
-	
-	
-	<target name="make-manifest">
-		
-		  <manifest file="${build.dir}/MANIFEST.MF">
-		    <attribute name="Manifest-Version" value="1.0"/>
-		    <attribute name="Main-Class" value="gov.water.ca.calgui.MainMenu"/>
-		  	<attribute name="Class-Path" value="hec.jar,blah.jar"/>
-		  	
-		    <attribute name="Sealed" value="false"/>
-		  </manifest>
-		  	
+
+	<target name="make-jar">
+
+		<jar destfile="${deploy.dir}/calgui.jar" basedir="${bin.dir}">
+
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
+				<attribute name="Class-Path" value="hec.jar jh.jar swixml.jar log4j-1.2.17.jar" />
+				<attribute name="Sealed" value="false" />
+			</manifest>
+
+		</jar>
+
+
+
 	</target>
 
 
