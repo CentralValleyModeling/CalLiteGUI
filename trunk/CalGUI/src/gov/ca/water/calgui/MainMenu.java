@@ -324,7 +324,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 		}
 
-
 		// Schematic view
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
 		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir")

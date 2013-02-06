@@ -389,6 +389,10 @@ public class FileAction implements ActionListener {
 		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
 		ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS\\" + dssFileName);
 
+		System.out.println(fs);
+		System.out.println(ft);
+		System.out.println(dssFileName + ";");
+
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
@@ -630,16 +634,13 @@ public class FileAction implements ActionListener {
 
 				String runDirName = "\\Run";
 
-				String hydDSSSVName = ((JTextField) swix.find("hyd_DSS_SV")).getText();
-				String hydDSSInitName = ((JTextField) swix.find("hyd_DSS_Init")).getText();
-
 				// Copy Run directory
 
 				publish("Creating new Run directory.");
 
 				setupScenarioDirectory(runDirName);
-				copyDSSFileToScenarioDirectory(runDirName, hydDSSSVName);
 				copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_Init")).getText());
 
 				publish("Writing GUI tables.");
 				ArrayList<String> links2Lines = new ArrayList<String>();
