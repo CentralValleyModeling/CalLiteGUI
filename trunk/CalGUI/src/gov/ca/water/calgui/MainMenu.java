@@ -79,11 +79,15 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.varia.NullAppender;
 import org.swixml.SwingEngine;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         KeyEventDispatcher {
+
+	static Logger log = Logger.getLogger(MainMenu.class.getName());
+
 	private final SwingEngine swix;
 
 	// Declare public Objects
@@ -320,6 +324,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 		}
 
+
 		// Schematic view
 		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
 		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir")
@@ -413,7 +418,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			helpViewer = new JHelp(new HelpSet(cl, url));
 			helpViewer.setCurrentID("Introduction");
 		} catch (Exception e) {
-			System.err.println("API Help Set not found");
+
+			log.debug("helpset not found: " + e.getMessage());
+
 		}
 		help = new JFrame("CalLite 2.0 GUI Help");
 		help.getContentPane().add(helpViewer);
@@ -426,7 +433,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			log.debug("Problem loading main menu: " + e.getMessage());
 		}
 
 	}
@@ -770,7 +777,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 			input = new Scanner(new FileReader("Config\\GUI_Links3.table"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Cannot open input file Config\\GUI_Links3.table");
+			log.debug("Cannot open input file Config\\GUI_Links3.table: " + e.getMessage());
 			return -1;
 		}
 
