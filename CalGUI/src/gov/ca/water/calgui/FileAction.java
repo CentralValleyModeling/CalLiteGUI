@@ -829,8 +829,6 @@ public class FileAction implements ActionListener {
 					success = false;
 				}
 
-				System.out.println(checkFile);
-
 				// ==========
 
 				publish("Writing GUI option tables.");
