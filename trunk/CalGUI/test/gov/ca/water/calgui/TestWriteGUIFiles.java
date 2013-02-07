@@ -78,7 +78,7 @@ public class TestWriteGUIFiles extends TestCase {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			fail("WriteGUITables raised an exception");
+			fail("WriteScenario raised an exception");
 
 		}
 	}
@@ -97,16 +97,24 @@ public class TestWriteGUIFiles extends TestCase {
 			assert (true);
 			File f1 = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\GUI_SODdemand.table");
 			File f2 = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\GUI_SODdemand.table");
-			junitx.framework.FileAssert.assertEquals(f1, f2);
+			try {
+				junitx.framework.FileAssert.assertEquals(f1, f2);
+				fail("Test fails - Default and Run GUI_SODdemand tables should NOT be equal.");
+			} catch (Exception e) {
+				return;
+			}
 
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			fail("WriteGUITables raised an exception");
+			fail("WriteSecnario raised an exception");
 
 		}
 	}
 
+	/**
+	 * Tests FileAction.setupAndRun by looking for check.text in the Run directory. This file is created immediately before the run.
+	 */
 	public void testSetupAndRun() {
 
 		Boolean[] RegUserEdits = null;
