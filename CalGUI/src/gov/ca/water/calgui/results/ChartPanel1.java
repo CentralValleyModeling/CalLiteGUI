@@ -28,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -56,6 +57,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
 	private String buffer;
+	private Logger log;
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
 	        Date lower, Date upper, String sLabel) {
@@ -434,6 +436,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 				job.print(set);
 			} catch (PrinterException e) {
 				JOptionPane.showMessageDialog(this, e);
+				log.debug(e.getMessage());
 			}
 		}
 

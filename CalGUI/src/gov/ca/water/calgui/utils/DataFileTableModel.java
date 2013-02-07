@@ -18,6 +18,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
+import org.apache.log4j.Logger;
+
 public class DataFileTableModel extends AbstractTableModel {
 
 	protected Vector<Object> data;
@@ -30,6 +32,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	public int tID;
 	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
+	private Logger log;
 
 	String wyts[] = { "Wet", "Above Normal", "Below Normal", "Dry", "Critical" };
 
@@ -203,7 +206,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				log.debug(e.getMessage());
 			}
 		}
 	}
@@ -542,7 +545,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			String OFileName = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName + ".table";
 			outputStream = new FileOutputStream(OFileName);
 		} catch (FileNotFoundException e2) {
-			System.out.println("Cannot open output file");
+			log.debug(e2.getMessage());
 			return;
 		}
 
@@ -585,8 +588,8 @@ public class DataFileTableModel extends AbstractTableModel {
 			output.close();
 			outputStream.close();
 
-		} catch (IOException ioe) {
-			System.out.println("IOException");
+		} catch (IOException e) {
+			log.debug(e.getMessage());
 		}
 
 	}
@@ -670,9 +673,9 @@ public class DataFileTableModel extends AbstractTableModel {
 			outputStream1.close();
 			output2.close();
 			outputStream2.close();
-		} catch (IOException ioe) {
-			JOptionPane.showMessageDialog(null, ioe.getMessage());
-			System.out.println("IOException");
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			log.debug(e.getMessage());
 		}
 
 	}

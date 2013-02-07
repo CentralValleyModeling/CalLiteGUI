@@ -430,7 +430,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 			new MainMenu();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			log.debug("Problem loading main menu: " + e.getMessage());
 		}

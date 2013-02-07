@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class OpAction implements ActionListener {
@@ -23,6 +24,7 @@ public class OpAction implements ActionListener {
 	private final Boolean[] RegUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
+	private Logger log;
 
 	public OpAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
 		this.swix = swix;
@@ -101,7 +103,7 @@ public class OpAction implements ActionListener {
 					}
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				log.debug(ex.getMessage());
 			}
 		}
 	}

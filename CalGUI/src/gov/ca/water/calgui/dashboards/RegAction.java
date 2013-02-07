@@ -10,11 +10,13 @@ import java.util.StringTokenizer;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class RegAction implements ActionListener {
 	private final SwingEngine swix;
 	private Boolean[] RegUserEdits;
+	private Logger log;
 
 	public RegAction(SwingEngine swix, Boolean[] RegUserEdits) {
 		this.swix = swix;
@@ -62,7 +64,7 @@ public class RegAction implements ActionListener {
 					}
 				}
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				log.debug(ex.getMessage());
 			}
 
 		} else if (ae.getActionCommand().startsWith("Reg_Default")) {
