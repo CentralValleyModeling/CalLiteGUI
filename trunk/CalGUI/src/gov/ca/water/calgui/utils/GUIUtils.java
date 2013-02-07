@@ -30,9 +30,12 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.MenuListener;
 import javax.swing.text.JTextComponent;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class GUIUtils {
+
+	private static Logger log;
 
 	public static void setMouseListener(Component component, Object obj) {
 
@@ -409,9 +412,9 @@ public class GUIUtils {
 			// br.close();
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		}
 		return RegUserEdits;
 
@@ -431,7 +434,7 @@ public class GUIUtils {
 		try {
 			input = new Scanner(new FileReader(filename));
 		} catch (FileNotFoundException e) {
-			System.out.println("Cannot open input file " + filename);
+			log.debug(e.getMessage());
 			return null;
 		}
 

@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class FileUtils {
 
 	// If targetLocation does not exist, it will be created.
@@ -32,6 +34,9 @@ public class FileUtils {
 	 *            target.
 	 * @throws IOException
 	 */
+
+	private static Logger log;
+
 	public static void copyDirectory(File sourceLocation, File targetLocation, Boolean subdir) throws IOException {
 
 		if (sourceLocation.isDirectory()) {
@@ -130,9 +135,9 @@ public class FileUtils {
 			br.close();
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		}
 
 		try {
@@ -142,7 +147,7 @@ public class FileUtils {
 			outobj.close();
 
 		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
+			log.debug(e.getMessage());
 		}
 	}
 
@@ -188,9 +193,9 @@ public class FileUtils {
 			br.close();
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		}
 
 		try {
@@ -200,7 +205,7 @@ public class FileUtils {
 			outobj.close();
 
 		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
+			log.debug(e.getMessage());
 		}
 	}
 
@@ -236,9 +241,9 @@ public class FileUtils {
 			br.close();
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 		}
 
 		try {
@@ -248,7 +253,7 @@ public class FileUtils {
 			outobj.close();
 
 		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
+			log.debug(e.getMessage());
 		}
 	}
 
@@ -275,7 +280,7 @@ public class FileUtils {
 				f.createNewFile();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.debug(e.getMessage());
 			}
 		}
 	}
@@ -297,7 +302,7 @@ public class FileUtils {
 			outobj.close();
 
 		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
+			log.debug(e.getMessage());
 		}
 	}
 
@@ -324,7 +329,7 @@ public class FileUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.debug(e.getMessage());
 
 		}
 
@@ -335,7 +340,7 @@ public class FileUtils {
 				in.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.debug(e.getMessage());
 			}
 
 		}
@@ -429,7 +434,7 @@ public class FileUtils {
 
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			log.debug(e1.getMessage());
 			retval = -1;
 		}
 		return retval;

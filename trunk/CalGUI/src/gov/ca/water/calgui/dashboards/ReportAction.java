@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class ReportAction implements ActionListener {
@@ -36,6 +37,7 @@ public class ReportAction implements ActionListener {
 	private final SwingEngine swix;
 	private final DSSGrabber dss_Grabber;
 	private final JList lstScenarios;
+	private Logger log;
 
 	public ReportAction(JFrame desktop, SwingEngine swix) {
 		this.desktop = desktop;
@@ -144,12 +146,12 @@ public class ReportAction implements ActionListener {
 						report.execute();
 						// report = new Report(bs);
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+
+						log.debug(e1.getMessage());
 					}
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
+					log.debug(e1.getMessage());
 				}
 
 			}
@@ -297,7 +299,7 @@ public class ReportAction implements ActionListener {
 					}
 					br.close();
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					log.debug(e1.getMessage());
 				}
 
 				JList lstReports = (JList) swix.find("lstReports");
@@ -338,7 +340,9 @@ public class ReportAction implements ActionListener {
 						// "\\Config\\reportlist.cgr");
 						outputStream = new FileOutputStream(filename);
 					} catch (FileNotFoundException e2) {
-						System.out.println("Cannot open " + filename);
+
+						log.debug(e2.getMessage());
+
 						return;
 					}
 
@@ -364,8 +368,8 @@ public class ReportAction implements ActionListener {
 
 						output.close();
 						outputStream.close();
-					} catch (IOException ioe) {
-						System.out.println("IOException");
+					} catch (IOException ex) {
+						log.debug(ex.getMessage());
 					}
 				}
 			}

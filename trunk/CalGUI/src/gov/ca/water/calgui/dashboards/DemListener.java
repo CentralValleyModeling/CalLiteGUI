@@ -20,7 +20,7 @@ public class DemListener implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stu
+
 		JComponent component = (JComponent) e.getItem();
 		// TODO: EXTERNALIZE
 

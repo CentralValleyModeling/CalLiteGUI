@@ -16,9 +16,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class ScenarioSetup {
+
+	private static Logger log;
+
 	public static void CheckForScenarioChange(SwingEngine swix, DataFileTableModel[] dTableModels, Boolean[] RegUserEdits,
 	        GUILinks gl) {
 
@@ -114,7 +118,7 @@ public class ScenarioSetup {
 							outobj.close();
 
 						} catch (Exception e1) {
-							System.err.println("Error: " + e1.getMessage());
+							log.debug(e1.getMessage());
 						}
 
 					}

@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import org.swixml.SwingEngine;
 
 public class FacilitiesSetup {
+
 	public static void SetFacilitiesTables(SwingEngine swix) {
 
 		JTable table = (JTable) swix.find("tblBanks");
