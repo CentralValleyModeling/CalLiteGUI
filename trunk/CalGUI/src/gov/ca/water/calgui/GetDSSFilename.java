@@ -361,7 +361,7 @@ public class GetDSSFilename implements ActionListener {
 
 	// Handles rendering cells in the list using a check box
 
-	class RBListRenderer extends JRadioButton implements ListCellRenderer {
+	private class RBListRenderer extends JRadioButton implements ListCellRenderer {
 		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
 			setEnabled(list.isEnabled());
