@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 import org.swixml.SwingEngine;
@@ -90,26 +91,35 @@ public class TestWriteGUIFiles extends TestCase {
 		// Change a RadioButton
 
 		JRadioButton c = (JRadioButton) swix.find("dem_rdbUD1");
-		c.setSelected(true);
+		// c.setSelected(true);
 
 		try {
+
 			FileAction.writeScenarioTables(GUILinks, null, swix);
+
 			assert (true);
+
 			File f1 = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\GUI_SODdemand.table");
+
 			File f2 = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\GUI_SODdemand.table");
+			boolean f1DifferentFromf2 = false;
+
 			try {
 				junitx.framework.FileAssert.assertEquals(f1, f2);
-				fail("Test fails - Default and Run GUI_SODdemand tables should NOT be equal.");
-			} catch (Exception e) {
-				return;
+			} catch (AssertionFailedError e) {
+				f1DifferentFromf2 = true;
+				assertTrue(true);
 			}
-
+			if (!f1DifferentFromf2)
+				fail("Test fails - Default and Run GUI_SODdemand tables should NOT be equal.");
 		} catch (IOException e1) {
+
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			fail("WriteSecnario raised an exception");
+			fail("WriteScenario raised an exception");
 
 		}
+
 	}
 
 	/**
