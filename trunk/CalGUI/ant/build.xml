@@ -1,40 +1,49 @@
 <?xml version ="1.0" ?>
 <project default="main">
 
-	<!--taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/-->
-
 	<property file="build.properties" />
 
-	<target name="main" depends="make-deploy-dir, make-jar">
+	<path id="build.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" excludes="junit.jar" />
+	</path>
+	
+	<path id="deploy.classpath">
+		<fileset dir="${deploy.dir}/lib" includes="**/*.jar" />
+	</path>
+
+
+	<target name="main" depends="make-jar" />
+
+	<target name="clean">
 
 		<echo>
-			${message}
+			Cleaning up previous build...
 		</echo>
+
+		<delete dir="${deploy.dir}" />
 
 	</target>
 
-	<target name="make-deploy-dir">
-
-
-		<!--Blow away old directory if it exists-->
-		<delete dir="${deploy.dir}" />
+	<target name="make-deploy-dir" depends="clean">
 
 		<mkdir dir="${deploy.dir}" />
 
 		<!--Add dirs -->
+		<mkdir dir="${deploy.dir}/classes" />
 		<mkdir dir="${deploy.dir}/Config" />
 		<mkdir dir="${deploy.dir}/Default" />
 		<mkdir dir="${deploy.dir}/docs" />
-		<mkdir dir="${deploy.dir}/jre" />
+		<mkdir dir="${deploy.dir}/lib" />
 		<mkdir dir="${deploy.dir}/logs" />
 		<mkdir dir="${deploy.dir}/Scenarios" />
 		<mkdir dir="${deploy.dir}/Model_w2" />
 
 
-		<copy todir="${deploy.dir}">
+		<copy todir="${deploy.dir}/lib">
 
-			<fileset dir="${bin.dir}" />
-			<fileset dir="${lib.dir}" />
+			<fileset dir="${lib.dir}">
+				<exclude name="junit.jar" />
+			</fileset>
 
 		</copy>
 
@@ -73,82 +82,44 @@
 			<fileset dir="${model.dir}" />
 
 		</copy>
+		
+		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
+
 
 
 	</target>
 
-	<target name="make-jar">
+	<target name="compile" depends="make-deploy-dir">
 
-		<jar destfile="${deploy.dir}/calgui.jar" basedir="${bin.dir}">
+		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on">
+
+			<classpath refid="build.classpath" />
+
+		</javac>
+
+
+	</target>
+
+
+	<target name="make-jar" depends="compile">
+
+		<manifestclasspath property="jar.classpath" jarfile="${deploy.dir}/calgui.jar">
+			<classpath refid="build.classpath"/>
+				
+		</manifestclasspath>
+		
+		
+		<jar destfile="${deploy.dir}/calgui.jar" basedir="${deploy.dir}/classes">
 
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
-				<attribute name="Class-Path" value="hec.jar jh.jar swixml.jar log4j-1.2.17.jar" />
-				<attribute name="Sealed" value="false" />
+				<attribute name="Class-Path" value=". ${jar.classpath}"/>
 			</manifest>
 
 		</jar>
 
-
-
 	</target>
 
-
-	<!-- Set configuration parameters using xml replacement-->
-	<!--target name="set-config">
-		
-        <xmltask source="${temp.dir}/WEB-INF/web.xml" dest="${temp.dir}/WEB-INF/web.xml" failWithoutMatch="true">            
-        	<copy path="boolean(/:web-app/:filter[1]/:init-param[2]/:param-value)" property="domain.ip" />    
-        	<replace path="/:web-app/:filter[1]/:init-param[2]/:param-value/text()" withText="${domain.ip}" if="domain.ip" />    
-        </xmltask>
-		
-        <xmltask source="${temp.dir}/WEB-INF/classes/hibernate.cfg.xml" dest="${temp.dir}/WEB-INF/classes/hibernate.cfg.xml" failWithoutMatch="true">            
-        	<replace path="/hibernate-configuration/session-factory/property[1]/text()" withText="${abhc.db.ip}" />       	
-        </xmltask>
-		
-        <xmltask source="${temp.dir}/WEB-INF/classes/securityContext.xml" dest="${temp.dir}/WEB-INF/classes/securityContext.xml" failWithoutMatch="true">            
-        	<replace path="/:beans/:bean[7]/:property[3]/@value" withText="${domain.ip}" />     	
-        </xmltask>
-		
-		<replaceregexp file = "${temp.dir}/WEB-INF/classes/swap_datasource.properties" 
-			match  = "jdbc:oracle:thin:@(.+):swap" 
-			replace = "${swap.db.ip}">
-		</replaceregexp>
-		
-		<replaceregexp file = "${temp.dir}/WEB-INF/classes/swap_datasource.properties" 
-			match  = "jdbc:oracle:thin:@(.+):abhc" 
-			replace = "${abhc.db.ip}">
-		</replaceregexp>
-					
-		<echo>Found configuration files; inserted staging server parameters.</echo> 
-	</target>
-	
-	
-	<target name="delete-from-ftp">
-			<ftp action="del"
-				server="ftp.djws3.com" binary="true" verbose="true"
-				userid="${name}" password="${password}" remotedir="/mikes">
-				<fileset>
-					<include name="swap.war"/>
-				</fileset>
-			</ftp>		
-		</target>
-
-		<target name="do-war">
-			<war destfile="${war}/swap.war" update="true">
-				<fileset dir="${temp.dir}" />
-				<classes dir="${temp.dir}/WEB-INF/classes" />
-			</war>
-		</target>
-		
-		<target name="deploy">
-			<ftp server="ftp.djws3.com" binary="true" verbose="true"
-				userid="${name}" password="${password}" remotedir="/mikes">
-				<fileset dir="${war}">
-					<include name="swap.war"/>
-				</fileset>
-			</ftp>
-		</target-->
 
 </project>
