@@ -14,7 +14,7 @@ GUI receives scenario options and data and has to pass this information to the W
 
   * CALGUI code modified to write generated files to RunFiles subdir
 
-  * CALGUI to generate RunFiles on save operation
+  * CALGUI to generate RunFiles on save operation ( what if the cls file to be loaded has the same name as one cls file in the .\Scenarios folder? )
 
  * CALGUI or WRIMS2 to create new Run subdir and copy generated files over from RunFiles
 
