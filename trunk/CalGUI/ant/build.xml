@@ -33,6 +33,7 @@
 		<mkdir dir="${deploy.dir}/Config" />
 		<mkdir dir="${deploy.dir}/Default" />
 		<mkdir dir="${deploy.dir}/docs" />
+		<mkdir dir="${deploy.dir}/jre" />
 		<mkdir dir="${deploy.dir}/lib" />
 		<mkdir dir="${deploy.dir}/logs" />
 		<mkdir dir="${deploy.dir}/Scenarios" />
@@ -47,37 +48,37 @@
 
 		</copy>
 
-		<copy todir="${deploy.dir/Config}">
+		<copy todir="${deploy.dir}/Config">
 
 			<fileset dir="${config.dir}" />
 
 		</copy>
 
-		<copy todir="${deploy.dir/docs}">
+		<copy todir="${deploy.dir}/docs">
 
 			<fileset dir="${docs.dir}" />
 
 		</copy>
 
 
-		<copy todir="${deploy.dir/jre}">
+		<copy todir="${deploy.dir}/jre">
 
 			<fileset dir="${jre.dir}" />
 		</copy>
 
-		<copy todir="${deploy.dir/logs}">
+		<copy todir="${deploy.dir}/logs">
 
 			<fileset dir="${logs.dir}" />
 
 		</copy>
 
-		<copy todir="${deploy.dir/Scenarios}">
+		<copy todir="${deploy.dir}/Scenarios">
 
 			<fileset dir="${scenario.dir}" />
 
 		</copy>
 
-		<copy todir="${deploy.dir/Model_w2}">
+		<copy todir="${deploy.dir}/Model_w2">
 
 			<fileset dir="${model.dir}" />
 
@@ -91,7 +92,7 @@
 
 	<target name="compile" depends="make-deploy-dir">
 
-		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on">
+		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on" compiler="${build.compiler}">
 
 			<classpath refid="build.classpath" />
 
