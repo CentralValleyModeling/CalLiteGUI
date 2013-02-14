@@ -33,7 +33,7 @@
 		<mkdir dir="${deploy.dir}/Config" />
 		<mkdir dir="${deploy.dir}/Default" />
 		<mkdir dir="${deploy.dir}/docs" />
-		<mkdir dir="${deploy.dir}/jre" />
+		<mkdir dir="${deploy.dir}/jre6" />
 		<mkdir dir="${deploy.dir}/lib" />
 		<mkdir dir="${deploy.dir}/logs" />
 		<mkdir dir="${deploy.dir}/Scenarios" />
@@ -61,7 +61,7 @@
 		</copy>
 
 
-		<copy todir="${deploy.dir}/jre">
+		<copy todir="${deploy.dir}/jre6">
 
 			<fileset dir="${jre.dir}" />
 		</copy>
@@ -85,8 +85,9 @@
 		</copy>
 		
 		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
-
-
+		<copy file="../cb.dll" todir="${deploy.dir}"/>
+		<copy file="../javaHeclib.dll" todir="${deploy.dir}"/>
+		<copy file="../rmaUtil.dll" todir="${deploy.dir}"/>
 
 	</target>
 
