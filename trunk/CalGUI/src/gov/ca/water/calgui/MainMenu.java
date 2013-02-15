@@ -411,20 +411,24 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public static void main(String[] args) {
 
 		// Load help
+		ClassLoader cl = null;
+		URL url = null;
+
 		try {
-			ClassLoader cl = MainMenu.class.getClassLoader();
-			URL url = HelpSet.findHelpSet(null, "helpset.hs");
+			cl = MainMenu.class.getClassLoader();
+			url = HelpSet.findHelpSet(null, "helpset.hs");
 			helpViewer = new JHelp(new HelpSet(cl, url));
 			helpViewer.setCurrentID("Introduction");
+			help = new JFrame("CalLite 2.0 GUI Help");
+		    help.getContentPane().add(helpViewer);
+		    help.pack();
+		    help.setVisible(false);
+
 		} catch (Exception e) {
 
 			log.debug("helpset not found: " + e.getMessage());
 
 		}
-		help = new JFrame("CalLite 2.0 GUI Help");
-		help.getContentPane().add(helpViewer);
-		help.pack();
-		help.setVisible(false);
 
 		// Load menu
 		try {
