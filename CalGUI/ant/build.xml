@@ -106,7 +106,7 @@
 	<target name="make-jar" depends="compile">
 
 		<manifestclasspath property="jar.classpath" jarfile="${deploy.dir}/calgui.jar">
-			<classpath refid="build.classpath"/>
+			<classpath refid="deploy.classpath"/>
 				
 		</manifestclasspath>
 		
@@ -116,7 +116,7 @@
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
-				<attribute name="Class-Path" value=". ${jar.classpath}"/>
+				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs"/>
 			</manifest>
 
 		</jar>
