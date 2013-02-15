@@ -386,9 +386,10 @@ public class FileAction implements ActionListener {
 		boolean success = true;
 		File ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS");
 		ft.mkdir();
-
+		System.out.println(":" + dssFileName + ":");
 		// TODO: Files are assumed to be in Default\DSS
 		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
+
 		ft = new File(System.getProperty("user.dir") + runDirName + "\\DSS\\" + dssFileName);
 
 		try {
@@ -636,9 +637,9 @@ public class FileAction implements ActionListener {
 				publish("Creating new Run directory.");
 
 				String runDirName = "\\Run";
-				success = success || setupScenarioDirectory(runDirName);
-				success = success || copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
-				success = success || copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				success = success & setupScenarioDirectory(runDirName);
+				success = success & copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				success = success & copyDSSFileToScenarioDirectory(runDirName, ((JTextField) swix.find("hyd_DSS_Init")).getText());
 
 				// ==========
 
