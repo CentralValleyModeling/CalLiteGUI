@@ -1,6 +1,8 @@
 <?xml version ="1.0" ?>
 <project default="main">
 
+	<tstamp/>
+	
 	<property file="build.properties" />
 
 	<path id="build.classpath">
@@ -12,7 +14,7 @@
 	</path>
 
 
-	<target name="main" depends="make-jar" />
+	<target name="main" depends="deploy" />
 
 	<target name="clean">
 
@@ -84,6 +86,14 @@
 
 		</copy>
 		
+		<copy todir="${deploy.dir}/img/images">
+
+			<fileset dir="${img.dir}" />
+
+		</copy>
+		
+		
+		
 		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
 		<copy file="../cb.dll" todir="${deploy.dir}"/>
 		<copy file="../javaHeclib.dll" todir="${deploy.dir}"/>
@@ -118,10 +128,33 @@
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
 				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs"/>
 			</manifest>
+			
+			<fileset dir="${deploy.dir}/img/"/>
 
 		</jar>
 
 	</target>
-
+	
+	
+	<target name="create-shell-script" depends="make-jar">
+		
+		<echo file="${deploy.dir}/run-calgui.bat">@echo off
+		PATH =.;./jre6/bin;%PATH%
+		java -version
+		java -jar calgui.jar
+		</echo>
+	
+	</target>
+	
+	<target name="deploy" depends="create-shell-script">
+		
+		<zip destfile="../${DSTAMP}_calgui_deploy.zip"
+			 basedir="${deploy.dir}"
+			 update="true"
+			>
+		</zip>
+	
+	
+	</target>
 
 </project>
