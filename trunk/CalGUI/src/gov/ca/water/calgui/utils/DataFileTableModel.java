@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -538,11 +539,11 @@ public class DataFileTableModel extends AbstractTableModel {
 		}
 	}
 
-	public void writeToFile(String outputFileName) {
+	public void writeToFile(final String runDir, String outputFileName) {
 
 		OutputStream outputStream;
 		try {
-			String OFileName = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName + ".table";
+			String OFileName = new File(runDir, outputFileName + ".table").getAbsolutePath();
 			outputStream = new FileOutputStream(OFileName);
 		} catch (FileNotFoundException e2) {
 			log.debug(e2.getMessage());
@@ -594,14 +595,14 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	}
 
-	public void writeToFile2(String outputFileName1, String outputFileName2) {
+	public void writeToFile2(final String runDir, String outputFileName1, String outputFileName2) {
 
 		OutputStream outputStream1;
 		OutputStream outputStream2;
 		try {
 			// outputStream = new
-			String OFileName1 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName1 + ".table";
-			String OFileName2 = System.getProperty("user.dir") + "\\Run\\Lookup\\" + outputFileName2 + ".table";
+			String OFileName1 = new File(runDir, outputFileName1 + ".table").getAbsolutePath();
+			String OFileName2 = new File(runDir, outputFileName2 + ".table").getAbsolutePath();
 			outputStream1 = new FileOutputStream(OFileName1);
 			outputStream2 = new FileOutputStream(OFileName2);
 		} catch (FileNotFoundException e2) {
