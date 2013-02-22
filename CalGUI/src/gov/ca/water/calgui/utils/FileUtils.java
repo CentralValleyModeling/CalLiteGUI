@@ -425,11 +425,11 @@ public class FileUtils {
 		int retval = 0;
 		try {
 			File fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_cvp_sys_" + index + ".table");
-			File ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_cvp_sys.table");
+			File ft = new File(where, "wsi_di_cvp_sys.table");
 			FileUtils.copyDirectory(fs, ft, false);
 
 			fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\WSIDI\\wsi_di_swp_" + index + ".table");
-			ft = new File(System.getProperty("user.dir") + where + "\\wsi_di_swp.table");
+			ft = new File(where, "wsi_di_swp.table");
 			FileUtils.copyDirectory(fs, ft, false);
 
 		} catch (IOException e1) {
