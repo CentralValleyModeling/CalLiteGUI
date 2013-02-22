@@ -16,9 +16,11 @@ set EndDay={EndDay}
 
 REM ----------------------------------------------------------
 REM set wrims v2 lib
+set UserPath={UserPath}
+set RunPath={RunPath}
 
-set lib=Model_w2\lib
-set ExternalDir=Run\External
+set lib=%UserPath%\Model_w2\lib
+set ExternalDir=%RunPath%\External
 
 set path=%lib%;%ExternalDir%
 
