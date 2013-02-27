@@ -184,7 +184,7 @@ public class FileAction implements ActionListener {
 									                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
 									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
-								if (scensave = true) {
+								if (scensave == true) {
 									String scenFilename;
 									scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 									String desktopTitle;
