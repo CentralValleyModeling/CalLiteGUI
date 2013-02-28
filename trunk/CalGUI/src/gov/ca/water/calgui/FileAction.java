@@ -639,16 +639,16 @@ public class FileAction implements ActionListener {
 				publish("Creating new Run directory.");
 
 				String scenWithoutExt = FilenameUtils.removeExtension(scen);
-				String scenRunDir = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt + "\\Run")
+				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt + "\\Run")
 				        .getAbsolutePath();
 
-				success = success & setupScenarioDirectory(scenRunDir);
-				success = success & copyDSSFileToScenarioDirectory(scenRunDir, ((JTextField) swix.find("hyd_DSS_SV")).getText());
-				success = success & copyDSSFileToScenarioDirectory(scenRunDir, ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				success = success & setupScenarioDirectory(scenRunDir_absPath);
+				success = success & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				success = success & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_Init")).getText());
 
 				// ==========
 
-				File checkFile = new File(scenRunDir, "check.text");
+				File checkFile = new File(scenRunDir_absPath, "check.text");
 				if (checkFile.exists())
 					checkFile.delete();
 
@@ -659,7 +659,7 @@ public class FileAction implements ActionListener {
 				links2Lines = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 
 				try {
-					writeScenarioTables(scenRunDir + "\\Lookup", links2Lines, regUserEdits, swix);
+					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -684,9 +684,9 @@ public class FileAction implements ActionListener {
 				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
 				// issues 98/99.
 
-				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), scenRunDir + "\\Lookup");
+				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), scenRunDir_absPath + "\\Lookup");
 
-				File fsLookup = new File(scenRunDir, "Lookup");
+				File fsLookup = new File(scenRunDir_absPath, "Lookup");
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
 
 				// ==========
@@ -718,11 +718,11 @@ public class FileAction implements ActionListener {
 				LineNum[0] = 2;
 				newtext[1] = cal.getTime().toString();
 				LineNum[1] = 4;
-				newtext[2] = scenRunDir;
+				newtext[2] = scenRunDir_absPath;
 				LineNum[2] = 7;
-				newtext[3] = scenRunDir + "\\CALLITE_BO_FUTURE.STY";
+				newtext[3] = scenRunDir_absPath + "\\CALLITE_BO_FUTURE.STY";
 				LineNum[3] = 8;
-				newtext[4] = scenRunDir + "\\MAIN.WRESL";
+				newtext[4] = scenRunDir_absPath + "\\MAIN.WRESL";
 				LineNum[4] = 9;
 				if (oDSS.toUpperCase().endsWith(".DSS")) {
 					newtext[6] = System.getProperty("user.dir") + "\\Scenarios\\" + oDSS;
@@ -733,9 +733,9 @@ public class FileAction implements ActionListener {
 				}
 
 				LineNum[5] = 10;
-				newtext[5] = scenRunDir + "\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText();
+				newtext[5] = scenRunDir_absPath + "\\DSS\\" + ((JTextField) swix.find("hyd_DSS_SV")).getText();
 				LineNum[7] = 12;
-				newtext[7] = scenRunDir + "\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText();
+				newtext[7] = scenRunDir_absPath + "\\DSS\\" + ((JTextField) swix.find("hyd_DSS_Init")).getText();
 
 				newtext[8] = numMon.toString();
 				LineNum[8] = 14;
@@ -751,7 +751,7 @@ public class FileAction implements ActionListener {
 				LineNum[13] = 34;
 				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
-				FileUtils.replaceLinesInFile(scenRunDir + "\\study.sty", LineNum, newtext);
+				FileUtils.replaceLinesInFile(scenRunDir_absPath + "\\study.sty", LineNum, newtext);
 				System.out.println(checkFile);
 
 				// ==========
@@ -765,7 +765,7 @@ public class FileAction implements ActionListener {
 				Integer iEndDay = TimeOperation.numberOfDays(iEndMonth, endYr);
 
 				Map<String, String> configMap = new HashMap<String, String>();
-				configMap.put("MainFile", scenRunDir + "\\main.wresl");
+				configMap.put("MainFile", scenRunDir_absPath + "\\main.wresl");
 				configMap.put("DvarFile", newtext[6]);
 				configMap.put("SvarFile", newtext[5]);
 				configMap.put("SvarFPart", newtext[12]);
@@ -778,7 +778,7 @@ public class FileAction implements ActionListener {
 				configMap.put("EndMonth", iEndMonth.toString());
 				configMap.put("EndDay", iEndDay.toString());
 				configMap.put("UserPath", System.getProperty("user.dir"));
-				configMap.put("RunPath", scenRunDir);
+				configMap.put("RunPath", scenRunDir_absPath);
 
 				// replace vars in batch file
 
@@ -824,13 +824,13 @@ public class FileAction implements ActionListener {
 
 				if (rdbSLR45.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
-					fsAnnO_wrims2 = new File(scenRunDir, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 				} else if (rdbSLR15.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
-					fsAnnO_wrims2 = new File(scenRunDir, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 				} else {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
-					fsAnnO_wrims2 = new File(scenRunDir, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 				}
 				try {
 					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
@@ -879,22 +879,22 @@ public class FileAction implements ActionListener {
 						if (size == 1) {
 							// CASE 1: 1 file specified
 							System.out.println("Output to " + tableName);
-							String fo = scenRunDir + "\\Lookup\\" + tableName + ".table";
+							String fo = scenRunDir_absPath + "\\Lookup\\" + tableName + ".table";
 							if (dTableModels[tID] == null) {
 								System.out.println("Table not initialized - " + tableName);
 							} else {
-								dTableModels[tID].writeToFile(scenRunDir + "\\Lookup", tableName);
+								dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup", tableName);
 							}
 						} else if (size == 2) {
 							// CASE 2: 2 files specified
 							System.out.println("Output to " + files[0]);
-							String fo1 = scenRunDir + "\\Lookup\\" + files[0] + ".table";
-							String fo2 = scenRunDir + "\\Lookup\\" + files[1] + ".table";
+							String fo1 = scenRunDir_absPath + "\\Lookup\\" + files[0] + ".table";
+							String fo2 = scenRunDir_absPath + "\\Lookup\\" + files[1] + ".table";
 
 							if (dTableModels[tID] == null) {
 								System.out.println("Table not initialized");
 							} else {
-								dTableModels[tID].writeToFile2(scenRunDir + "\\Lookup", files[0], files[1]);
+								dTableModels[tID].writeToFile2(scenRunDir_absPath + "\\Lookup", files[0], files[1]);
 							}
 						}
 					}
@@ -914,12 +914,12 @@ public class FileAction implements ActionListener {
 					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
 					System.out.println("Output to " + tableName);
-					String fo = scenRunDir + "\\Lookup\\" + tableName + ".table";
+					String fo = scenRunDir_absPath + "\\Lookup\\" + tableName + ".table";
 
 					if (dTableModels[tID] == null) {
 						System.out.println("Table not initialized - " + tableName);
 					} else {
-						dTableModels[tID].writeToFile(scenRunDir + "\\Lookup\\", tableName);
+						dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup\\", tableName);
 					}
 
 				}
