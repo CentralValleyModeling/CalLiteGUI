@@ -157,7 +157,9 @@ public class HydListener implements ItemListener {
 							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
 							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
 
-							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), "\\Default\\Lookup");
+							// TODO: ? is this call needed?
+							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(),
+							        System.getProperty("user.dir") + "\\Default\\Lookup");
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
