@@ -42,49 +42,33 @@ public class RegulationSetup {
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
-			populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl);
+			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl);
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 
 			if (scr.isVisible()) {
-				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				if (rdb.isVisible()) {
-					if (RegUserEdits != null && dTableModels != null) {
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID = tm.tID;
-						if (RegUserEdits[tID] != null) {
-							reg_btng1.clearSelection();
-							if (RegUserEdits[tID] == true) {
-								rdb = (JRadioButton) swix.find("reg_rdbUD");
-								rdb.setSelected(true);
-							} else {
-								rdb = (JRadioButton) swix.find("reg_rdbD1641");
-								rdb.setSelected(true);
-							}
-						} else {
-							reg_btng1.clearSelection();
-							rdb = (JRadioButton) swix.find("reg_rdbD1641");
-							rdb.setSelected(true);
-						}
-					} else {
-						reg_btng1.clearSelection();
-						rdb = (JRadioButton) swix.find("reg_rdbD1641");
-						rdb.setSelected(true);
-					}
-				} else {
-					if (RegUserEdits == null) {
-						RegUserEdits = new Boolean[20];
-					}
-					String fileName = gl.tableNameForCtrl(cID);
-					if (!fileName.trim().equals("")) {
-						int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
-						RegUserEdits[tID] = true;
-					}
-
-					table.setCellSelectionEnabled(true);
-					table.setEnabled(true);
+				/*
+				 * JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641"); if (rdb.isVisible()) { if (RegUserEdits != null &&
+				 * dTableModels != null) { DataFileTableModel tm = (DataFileTableModel) table.getModel(); int tID = tm.tID; if
+				 * (RegUserEdits[tID] != null) { reg_btng1.clearSelection(); if (RegUserEdits[tID] == true) { rdb = (JRadioButton)
+				 * swix.find("reg_rdbUD"); rdb.setSelected(true); } else { rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				 * rdb.setSelected(true); } } else { reg_btng1.clearSelection(); rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				 * rdb.setSelected(true); } } else { reg_btng1.clearSelection(); rdb = (JRadioButton) swix.find("reg_rdbD1641");
+				 * rdb.setSelected(true); } } else {
+				 */
+				if (RegUserEdits == null) {
+					RegUserEdits = new Boolean[20];
 				}
+				String fileName = gl.tableNameForCtrl(cID);
+				if (!fileName.trim().equals("")) {
+					int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
+					RegUserEdits[tID] = true;
+				}
+
+				table.setCellSelectionEnabled(true);
+				table.setEnabled(true);
+				// }
 			}
 
 			String ckbtext = selcomp.getText();
@@ -119,13 +103,19 @@ public class RegulationSetup {
 
 	}
 
-	protected static void populateRegDTable(String cID, final JTable t, JComponent container, final SwingEngine swix,
-	        final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
+	protected static DataFileTableModel[] populateRegDTable(String cID, final JTable t, JComponent container,
+	        final SwingEngine swix, final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
 
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
+		String iDReg = gl.DRegForCtrl(cID);
 
 		if (fileName != null && fileName.length() != 0) {
+
+			// Revert to base file if different values for D1641 and D1485 exist
+			if (iDReg != null) {
+				fileName = fileName.replace("gui_", "");
+			}
 
 			String[] files = fileName.split("[|]");
 			int size = files.length;
@@ -164,9 +154,24 @@ public class RegulationSetup {
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
 			}
-			if (dTableModels[tID] == null) {
-				dTableModels[tID] = new DataFileTableModel(fileName, tID);
+
+			if (iDReg == null) {
+				if (dTableModels[tID] == null) {
+					dTableModels[tID] = new DataFileTableModel(fileName, tID);
+				}
+			} else {
+				int iOpt;
+				String sRegPlan;
+				JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_D1485");
+				Boolean b = btn.isSelected();
+				if (b == true) {
+					iOpt = 2;
+				} else {
+					iOpt = 1;
+				}
+				dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
 			}
+
 			// dTableModels[tID].addTableModelListener(this);
 
 			t.setModel(dTableModels[tID]);
@@ -246,6 +251,7 @@ public class RegulationSetup {
 			ExcelAdapter myAd = new ExcelAdapter(t);
 
 		}
+		return dTableModels;
 
 	}
 

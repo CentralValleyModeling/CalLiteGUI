@@ -44,7 +44,6 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingWorker;
 import javax.swing.text.JTextComponent;
 
-import org.apache.commons.io.FilenameUtils;
 import org.swixml.SwingEngine;
 
 import wrimsv2.evaluator.TimeOperation;
@@ -144,9 +143,11 @@ public class FileAction implements ActionListener {
 					sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
 					sb.append("END DATATABLEMODELS" + NL);
 					sb.append("USERDEFINEDFLAGS" + NL);
-					for (int i = 0; i < regUserEdits.length; i++) {
-						if (regUserEdits[i] != null) {
-							sb.append(i + "|" + regUserEdits[i] + NL);
+					if (regUserEdits != null) {
+						for (int i = 0; i < regUserEdits.length; i++) {
+							if (regUserEdits[i] != null) {
+								sb.append(i + "|" + regUserEdits[i] + NL);
+							}
 						}
 					}
 					sb.append("END USERDEFINEDFLAGS" + NL);
@@ -525,24 +526,57 @@ public class FileAction implements ActionListener {
 					if (!value.startsWith("true")) {
 
 						// If it's not selected, set option to "0" - false
-
-						option = "0";
+						// Check for N/A Flag
+						String NAFlag = linkParts[11].trim();
+						if (NAFlag == "1") {
+							option = "NA";
+						} else {
+							option = "0";
+						}
 
 					} else {
 
-						// If it is selected, set option to "1" - true ...
-						option = "1";
+						// If it is selected, set option to "1" - true pr check d1485/D1641 options
+						if (swixControlName.startsWith("ckbReg")) {
+							JRadioButton c1 = (JRadioButton) swix.find("rdbRegQS_D1485");
+							if (c1.isSelected()) {
+								// Check for N/A Flag
+								String NAFlag = linkParts[13].trim();
+								if (NAFlag == "1") {
+									option = "NA";
+								} else {
+									option = "3";
+								}
+							} else {
+								// Check for N/A Flag
+								String NAFlag = linkParts[10].trim();
+								if (NAFlag == "1") {
+									option = "NA";
+								} else {
+									option = "1";
+								}
+							}
+						} else {
+							option = "1";
+						}
 
 						// ... but check if "user defined" flag is turned on - only for inputs that will be stored as separate data
 						// tables. Those separate tables are written elsewhere
 
-						if (linkParts.length > 8) {
+						// if (linkParts.length > 8) {
+						if (!linkParts[8].trim().equals("n/a")) {
 							cID = linkParts[8];
 							tID = Integer.parseInt(cID);
 							if (UDFlags != null) {
 								if (UDFlags[tID] != null) {
 									if (UDFlags[tID] == true) {
-										option = "2";
+										// Check for N/A Flag
+										String NAFlag = linkParts[12].trim();
+										if (NAFlag == "1") {
+											option = "NA";
+										} else {
+											option = "2";
+										}
 									}
 								}
 							}
@@ -573,7 +607,7 @@ public class FileAction implements ActionListener {
 				} else if (c == null) { // control not found
 
 					// TODDO: Action TBD if there is no matching control - we should raise an alert of some sort.
-
+					option = "0";
 					outstring = (index + "\t" + option + "\t" + descr + NL);
 					tableFile_BufferedWriter_.write(outstring);
 				}
@@ -858,6 +892,7 @@ public class FileAction implements ActionListener {
 
 					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 
+					// Find Selected Option
 					int option = 0;
 					AbstractButton buttonC = (AbstractButton) swix.find(cName);
 					if (buttonC == null || !(buttonC instanceof JToggleButton)) {

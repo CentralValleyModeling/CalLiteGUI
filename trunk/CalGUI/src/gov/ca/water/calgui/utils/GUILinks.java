@@ -23,6 +23,7 @@ public class GUILinks {
 	private Map<String, String> mapCtrlToTID;
 	private Map<String, String> mapCtrlToswitchID;
 	private Map<String, String> mapTIDToCtrl;
+	private Map<String, String> mapCtrlToDReg;
 	private Logger log;
 
 	/*
@@ -47,8 +48,14 @@ public class GUILinks {
 		return mapTIDToCtrl.get(tID);
 	}
 
+	public String DRegForCtrl(String ctrlID) {
+		return mapCtrlToDReg.get(ctrlID);
+	}
+
 	/*
-	 * GUILinks.readIn: Method to look read control-to-switch, control-to-table information
+	 * =======
+	 * 
+	 * /* >>>>>>> .r446 GUILinks.readIn: Method to look read control-to-switch, control-to-table information
 	 * 
 	 * 12/3/2010
 	 */
@@ -60,6 +67,7 @@ public class GUILinks {
 		Scanner input;
 		try {
 			input = new Scanner(new FileReader(inputFileName));
+
 		} catch (FileNotFoundException e) {
 			log.debug(e.getMessage());
 			return -1;
@@ -69,6 +77,7 @@ public class GUILinks {
 		mapCtrlToTID = new HashMap<String, String>();
 		mapCtrlToswitchID = new HashMap<String, String>();
 		mapTIDToCtrl = new HashMap<String, String>();
+		mapCtrlToDReg = new HashMap<String, String>();
 
 		int lineCount = 0;
 		while (input.hasNextLine()) {
@@ -83,6 +92,7 @@ public class GUILinks {
 					String switchID = "";
 					String TableID = "";
 					String tableName = "";
+					String sDReg = "";
 					if (parts.length > 6) {
 						tableName = parts[6];
 						if (parts.length > 7) {
@@ -90,6 +100,9 @@ public class GUILinks {
 						}
 						if (parts.length > 8) {
 							TableID = parts[8];
+						}
+						if (parts.length > 9) {
+							sDReg = parts[9];
 						}
 					}
 					mapCtrlToTable.put(ctrlName, tableName);
@@ -99,6 +112,9 @@ public class GUILinks {
 					if (TableID != "") {
 						mapCtrlToTID.put(ctrlName, TableID);
 						mapTIDToCtrl.put(TableID, ctrlName);
+					}
+					if (sDReg != "") {
+						mapCtrlToDReg.put(ctrlName, sDReg);
 					}
 				}
 			}
