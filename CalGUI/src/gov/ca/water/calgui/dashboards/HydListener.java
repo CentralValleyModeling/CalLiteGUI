@@ -113,15 +113,14 @@ public class HydListener implements ItemListener {
 
 						String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
 						lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-						if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
-							lookup = lookup + "10";
-						else {
-							lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
-
-							// TODO: Finish off with CCModelID? Move to batch
-							// processing?
-
-						}
+						/*
+						 * if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected()) lookup = lookup + "10"; else { lookup = lookup
+						 * + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+						 * 
+						 * // TODO: Finish off with CCModelID? Move to batch // processing?
+						 * 
+						 * }
+						 */
 
 						String table4[][]; // Holds GUI_links4.table values that control
 						// selection of SV and Init DSS as well as

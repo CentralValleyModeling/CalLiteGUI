@@ -241,7 +241,12 @@ public class GUIUtils {
 				String cName = parts[0].trim();
 				String tableName = gl.tableNameForCtrl(cName);
 				String switchID = gl.switchIDForCtrl(cName);
-				int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+				int tID;
+				if (switchID.equals("n/a")) {
+					tID = 0;
+				} else {
+					tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+				}
 				AbstractButton ckb = (AbstractButton) swix.find(cName);
 
 				// int tID = Integer.parseInt(cID);
@@ -325,8 +330,10 @@ public class GUIUtils {
 					}
 
 				} else {
-					((JTextComponent) component).setText(value);
-					// System.out.println(comp +": " + value);
+					if (component != null) {
+						((JTextComponent) component).setText(value);
+						// System.out.println(comp +": " + value);
+					}
 				}
 
 			}
@@ -513,7 +520,8 @@ public class GUIUtils {
 			line = arr.get(i).toString();
 			String[] parts = line.split("[\t]+");
 
-			if (parts.length > 6) {
+			// if (parts.length > 6) {
+			if (parts[6].trim() != "n/a") {
 				cName = parts[0].trim();
 				datatable = parts[6].trim();
 				switchID = parts[7].trim();

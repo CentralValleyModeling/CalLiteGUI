@@ -57,6 +57,16 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	}
 
+	public DataFileTableModel(String f, int ID, int iOpt) {
+		tID = ID;
+
+		header = new StringBuffer();
+		datafile = f;
+		columnTitle = "NOT HANDLED";
+		initVectorsReg(iOpt);
+
+	}
+
 	public void initVectors2() {
 
 		String aLine;
@@ -413,6 +423,132 @@ public class DataFileTableModel extends AbstractTableModel {
 						}
 
 					}
+				}
+
+				br.close();
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void initVectorsReg(int iOpt) {
+
+		String aLine;
+		data = new Vector<Object>();
+		Vector<Object> data1 = new Vector<Object>();
+		columnNames = new Vector<String>();
+
+		try {
+
+			FileInputStream fin = new FileInputStream(datafile);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+
+			// Read until first non-comment line
+			if (header != null)
+				header.delete(0, header.length());
+			aLine = br.readLine();
+			while (aLine.startsWith("!") && aLine != null) {
+				header.append(aLine + NL);
+				aLine = br.readLine();
+			}
+
+			aLine = br.readLine();// Skip title line;
+			columnTitle = aLine;
+
+			if (aLine != null) {
+				// Parse only data from selected reg option.
+				aLine = br.readLine();
+				StringTokenizer st1 = new StringTokenizer(aLine, "\t| ");
+				int iColCt = st1.countTokens();
+				int iSkipCol;
+				if (iOpt == 1) {
+					iSkipCol = iColCt;
+				} else {
+					iSkipCol = iColCt - 1;
+				}
+				String dum;
+				while (aLine != null) {
+					st1 = new StringTokenizer(aLine, "\t| ");
+					for (int j = 0; j < iColCt; j++) {
+						dum = st1.nextToken();
+						if (j + 1 != iSkipCol) {
+							data1.addElement(dum);
+						}
+					}
+					aLine = br.readLine();
+				}
+
+				// Extract column names from second line
+
+				st1 = new StringTokenizer(columnTitle, "\t| ");
+				for (int j = 0; j < iColCt; j++) {
+					if (j + 1 != iSkipCol) {
+						columnNames.addElement(st1.nextToken());
+					}
+				}
+				// while (st1.hasMoreTokens())
+				// columnNames.addElement(st1.nextToken());
+
+				// Extract data - first pass. Assumes we are reading in
+				// column-major order
+				if (st1.countTokens() < 3) {
+
+					// CASE 1: TWO COLUMNS (month, value)
+					data = data1;
+				}
+
+				else if (st1.countTokens() == 3) {
+
+					// CASE 2: THREE COLUMNS (year type, month, value)
+
+					String firstColumnName = columnNames.get(0);
+					String secondColumnName = columnNames.get(1);
+					columnNames.clear();
+					columnNames.addElement(firstColumnName);
+
+					String lastColID = "-1";
+					int rowCount = 0;
+
+					ArrayList<String> allValues = new ArrayList<String>();
+					while (aLine != null) {
+
+						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+						if (st2.countTokens() >= 3) {
+
+							st2.nextToken();
+							String aColID = st2.nextToken();
+							String aValue = st2.nextToken();
+							// System.out.println(Boolean.toString(lastColID ==
+							// aColID)+" " + lastColID + ":" + aColID + ":" +
+							// aRowID + " " + aValue+ " " +
+							// Integer.toString(rowCount)+ " " +
+							// Integer.toString(columnNames.size()));
+							if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
+								if (secondColumnName.toLowerCase().startsWith("wyt"))
+									columnNames.addElement(wyts[Integer.parseInt(aColID) - 1]);
+								else
+									columnNames.addElement(secondColumnName + aColID);
+								lastColID = aColID;
+								rowCount = 0;
+							}
+
+							rowCount++;
+							allValues.add(aValue);
+						}
+						aLine = br.readLine();
+					}
+					for (int r = 0; r < rowCount; r++) {
+
+						data.addElement(Integer.toString(r + 1));
+						for (int c = 0; c < columnNames.size() - 1; c++) {
+							// System.out.println(Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount)+"="+Integer.toString(allValues.size()));
+
+							data.addElement(allValues.get(c * rowCount + r));
+						}
+					}
+
 				}
 
 				br.close();
