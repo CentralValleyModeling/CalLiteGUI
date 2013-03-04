@@ -811,7 +811,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			output2.close();
 			outputStream2.close();
 		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage(), "DataFileTableModel", JOptionPane.ERROR_MESSAGE);
 			log.debug(e.getMessage());
 		}
 

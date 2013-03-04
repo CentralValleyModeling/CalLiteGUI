@@ -255,7 +255,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		btnClearAll.addActionListener(this);
 
 		JButton btnReport = (JButton) swix.find("btnReport");
-		// btnReport.addActionListener(this);
 
 		// Set up month spinners
 		JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
@@ -420,9 +419,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			helpViewer = new JHelp(new HelpSet(cl, url));
 			helpViewer.setCurrentID("Introduction");
 			help = new JFrame("CalLite 2.0 GUI Help");
-		    help.getContentPane().add(helpViewer);
-		    help.pack();
-		    help.setVisible(false);
+			help.getContentPane().add(helpViewer);
+			help.pack();
+			help.setVisible(false);
 
 		} catch (Exception e) {
 
@@ -435,7 +434,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			new MainMenu();
 		} catch (Exception e) {
 
-			JOptionPane.showMessageDialog(null, e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Main menu error", JOptionPane.ERROR_MESSAGE);
 			log.debug("Problem loading main menu: " + e.getMessage());
 		}
 
