@@ -3,11 +3,6 @@
  */
 package gov.ca.water.calgui.results;
 
-/**
- * @author tslawecki
- *
- */
-
 import gov.ca.water.calgui.MainMenu;
 
 import java.awt.Toolkit;
@@ -34,6 +29,14 @@ import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 
+/**
+ * SchematicMain: Class to handle display of SVG-formatted schematic view.
+ * 
+ * @author tslawecki
+ * 
+ * 
+ * 
+ */
 public class SchematicMain {
 
 	JSVGCanvas canvas;
@@ -42,6 +45,8 @@ public class SchematicMain {
 	MainMenu mainMenu;
 	SwingEngine swix;
 
+	AffineTransform theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
+
 	public void setAffineTransform(double m0, double m1, double m2, double m3, double m4, double m5) {
 
 		AffineTransform t = new AffineTransform(m0, m1, m2, m3, m4, m5);
@@ -49,8 +54,17 @@ public class SchematicMain {
 
 	}
 
-	AffineTransform theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
-
+	/**
+	 * 
+	 * @param p
+	 *            Housing panel
+	 * @param url
+	 *            URL for SVG file
+	 * @param mainMenuIn
+	 *            Handle to main panel - used to access information about loaded scenarios
+	 * @param swix
+	 *            Handle to UI
+	 */
 	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn, SwingEngine swix) {
 
 		mainMenu = mainMenuIn;
@@ -64,6 +78,8 @@ public class SchematicMain {
 		canvas.setEnablePanInteractor(true);
 		canvas.setEnableZoomInteractor(true);
 		canvas.setURI(url);
+
+		System.out.println(canvas.getURI());
 
 		canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
 			@Override
@@ -90,10 +106,6 @@ public class SchematicMain {
 
 		});
 
-		// setAffineTransform(0.1666666716337204, 0.0, 0.0, 0.1666666716337204, 320.60350483467664, -0.0); // Default
-		// values in ViewboxTransform
-		// setAffineTransform(0.76, 0.0, 0.0, 0.76, -143, -187); //Desired values to start up with focus on fragment
-		// theAT = new AffineTransform(6.0, 0, 0.0, 6.0, -1400.0, -200.0);
 		p.add("Center", new JSVGScrollPane(canvas));
 
 	}

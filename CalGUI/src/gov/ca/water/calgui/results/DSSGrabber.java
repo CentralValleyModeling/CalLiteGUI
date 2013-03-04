@@ -422,8 +422,9 @@ public class DSSGrabber {
 
 				int j = 0;
 				for (int i = 0; i < scenarios; i++) {
-					String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
-					// String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
+					// TODO: Not sure why this changed?
+					// String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
+					String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 					if (!baseName.equals(scenarioName)) {
 						j = j + 1;
 						results[j] = getOneSeries(scenarioName, primaryDSSName);
@@ -457,7 +458,9 @@ public class DSSGrabber {
 
 			int j = 0;
 			for (int i = 0; i < scenarios; i++) {
-				String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
+				// String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
+				String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
+
 				if (!baseName.equals(scenarioName)) {
 					j = j + 1;
 					results[j] = getOneSeries(scenarioName, secondaryDSSName);

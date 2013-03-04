@@ -44,6 +44,7 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingWorker;
 import javax.swing.text.JTextComponent;
 
+import org.apache.commons.io.FilenameUtils;
 import org.swixml.SwingEngine;
 
 import wrimsv2.evaluator.TimeOperation;
@@ -677,8 +678,10 @@ public class FileAction implements ActionListener {
 				        .getAbsolutePath();
 
 				success = success & setupScenarioDirectory(scenRunDir_absPath);
-				success = success & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
-				success = success & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_Init")).getText());
+				success = success
+				        & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				success = success
+				        & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_Init")).getText());
 
 				// ==========
 
@@ -714,6 +717,7 @@ public class FileAction implements ActionListener {
 				// Copy proper WSIDI table AFTER future/variable demand copy
 				// TODO: WHY IS THIS ORDER NECESSARY?? IT DOESN'T LOOK LIKE WE'RE DOING THAT NOW?
 
+				JTextField small = (JTextField) swix.find("hyd_DSS_Index");
 				((JTextField) swix.find("hyd_DSS_Index")).setText(GUIUtils.makeHydDSSIndex(swix));
 				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
 				// issues 98/99.
@@ -976,7 +980,7 @@ public class FileAction implements ActionListener {
 					int exitVal = proc.waitFor();
 					System.out.println("Process exitValue: " + exitVal);
 				} catch (Throwable t) {
-					JOptionPane.showMessageDialog(null, t.getMessage());
+					JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
 					t.printStackTrace();
 				}
 				return null;
