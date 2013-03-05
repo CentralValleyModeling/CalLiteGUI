@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.results;
 
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.utils.Prefix;
 import gov.ca.water.calgui.utils.UnitsUtils;
 import hec.heclib.dss.HecDss;
@@ -68,15 +69,7 @@ public class DSSGrabber {
 
 	public DSSGrabber(JList list) {
 
-		lstScenarios = list;
-
-		// Initialize key privates to known values
-
-		isCFS = false;
-		startTime = -1;
-		baseName = null;
-		locationName = null;
-		primaryDSSName = null;
+		this.lstScenarios = list;
 
 	}
 
@@ -113,7 +106,7 @@ public class DSSGrabber {
 			ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
 			endTime = ht.value();
 			endWY = ((m < 10) ? y : y + 1);
-		} catch (IndexOutOfBoundsException e) {
+		} catch (Exception e) {
 
 			startTime = -1;
 			log.debug(e.getMessage());
@@ -128,9 +121,9 @@ public class DSSGrabber {
 	 * @param string
 	 *            name of scenario/DSS file to use as base.
 	 */
-	public void setBase(String string) {
+	public void setBase(String baseName) {
 
-		baseName = string;
+		this.baseName = baseName;
 	}
 
 	/**
@@ -140,13 +133,23 @@ public class DSSGrabber {
 	 */
 	public String getBase() {
 
-		if (baseName == null)
-			return null;
-		else {
-			File file = new File(baseName);
-			int dot = file.getName().lastIndexOf(".");
-			return file.getName().substring(0, dot);
+		String delimiter;
+
+		// Windows
+		if (baseName.contains("\\")) {
+
+			delimiter = "\\\\";
 		}
+
+		// The rest of the world
+		else {
+			delimiter = "/";
+		}
+
+		String[] pathParts = baseName.split(delimiter);
+		String fullFileName = pathParts[pathParts.length - 1];
+		String fileName = fullFileName.substring(0, fullFileName.lastIndexOf("."));
+		return fileName;
 	}
 
 	/**
@@ -157,34 +160,32 @@ public class DSSGrabber {
 	 * @param string
 	 *            index into GUI_Links3.table or Schematic_DSS_Link4.table
 	 */
-	public void setLocation(String string) {
+	public void setLocation(String locationName) {
 
-		locationName = string;
-		primaryDSSName = null;
-		secondaryDSSName = null;
+		this.locationName = locationName;
 
 		// TODO: Combine lookup tables AND review use of complex names
 
-		if (string.startsWith("SchVw")) {
+		if (locationName.startsWith("SchVw")) {
 			// Schematic view uses Table5 in mainMenu; this should be combined with GUI_Links3 table
-			for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookups5Length(); i++) {
-				if (string.toUpperCase().endsWith(gov.ca.water.calgui.MainMenu.getLookups5(i, 0))) {
-					primaryDSSName = gov.ca.water.calgui.MainMenu.getLookups5(i, 1);
-					secondaryDSSName = gov.ca.water.calgui.MainMenu.getLookups5(i, 2);
-					yLabel = gov.ca.water.calgui.MainMenu.getLookups5(i, 3);
-					title = gov.ca.water.calgui.MainMenu.getLookups5(i, 4);
-					sLabel = gov.ca.water.calgui.MainMenu.getLookups5(i, 5);
+			for (int i = 0; i < MainMenu.getLookups5Length(); i++) {
+				if (locationName.toUpperCase().endsWith(MainMenu.getLookups5(i, 0))) {
+					primaryDSSName = MainMenu.getLookups5(i, 1);
+					secondaryDSSName = MainMenu.getLookups5(i, 2);
+					yLabel = MainMenu.getLookups5(i, 3);
+					title = MainMenu.getLookups5(i, 4);
+					sLabel = MainMenu.getLookups5(i, 5);
 				}
 			}
 		} else
 
-			for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookupsLength(); i++) {
-				if (string.endsWith(gov.ca.water.calgui.MainMenu.getLookups(i, 0))) {
-					primaryDSSName = gov.ca.water.calgui.MainMenu.getLookups(i, 1);
-					secondaryDSSName = gov.ca.water.calgui.MainMenu.getLookups(i, 2);
-					yLabel = gov.ca.water.calgui.MainMenu.getLookups(i, 3);
-					title = gov.ca.water.calgui.MainMenu.getLookups(i, 4);
-					sLabel = gov.ca.water.calgui.MainMenu.getLookups(i, 5);
+			for (int i = 0; i < MainMenu.getLookupsLength(); i++) {
+				if (locationName.endsWith(MainMenu.getLookups(i, 0))) {
+					primaryDSSName = MainMenu.getLookups(i, 1);
+					secondaryDSSName = MainMenu.getLookups(i, 2);
+					yLabel = MainMenu.getLookups(i, 3);
+					title = MainMenu.getLookups(i, 4);
+					sLabel = MainMenu.getLookups(i, 5);
 				}
 			}
 	}
@@ -195,30 +196,16 @@ public class DSSGrabber {
 	 * @param string
 	 *            coded location string passed
 	 */
-	public void setLocationWeb(String string) {
+	public void setLocationWeb(String locationName) {
 
-		locationName = string;
+		this.locationName = locationName;
 		Prefix prefix = new Prefix();
-		String type = prefix.getType(string);
-		primaryDSSName = string + "/" + type;
+		String type = prefix.getType(locationName);
+		primaryDSSName = locationName + "/" + type;
 		secondaryDSSName = "";
 		yLabel = type;
-		title = string;
+		title = locationName;
 		sLabel = "";
-
-		// TODO: Confirm that new code works the same as original code
-		// locationName = string;
-		// primaryDSSName = null;
-		// secondaryDSSName = null;
-		// for (int i = 0; i < gov.ca.water.calgui.MainMenu.getLookupsLength(); i++) {
-		// Prefix prefix = new Prefix();
-		// String type = prefix.getType(string);
-		// primaryDSSName = string + "/" + type;
-		// secondaryDSSName = "";
-		// yLabel = type;
-		// title = string;
-		// sLabel = "";
-		// }
 	}
 
 	/**
@@ -283,9 +270,6 @@ public class DSSGrabber {
 			String[] temp = aPath.split("/");
 			String hecAPart = temp[1];
 			String hecFPart = temp[6] + "/";
-
-			// System.out.println(aPath);
-			// System.out.println(hecFPart);
 
 			String delims = "[+]";
 			String[] dssNames = dssName.split(delims);
