@@ -13,6 +13,8 @@ import gov.ca.water.calgui.dashboards.RegulationSetup;
 import gov.ca.water.calgui.dashboards.ReportAction;
 import gov.ca.water.calgui.dashboards.RunListener;
 import gov.ca.water.calgui.dashboards.ScenarioSetup;
+import gov.ca.water.calgui.dashboards.SchematicAction;
+import gov.ca.water.calgui.dashboards.SchematicListener;
 import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.SchematicMain;
@@ -323,10 +325,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 		}
 
-		// Schematic view
-		JPanel schematicPanel = (JPanel) swix.find("schematic_holder");
-		SchematicMain schemView = new SchematicMain(schematicPanel, "file:///" + System.getProperty("user.dir")
-		        + "/Config/callite.svg", this, swix);
+		// Schematic views
+		SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
+		        + System.getProperty("user.dir") + "/Config/callite.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0, -200.0);
+		SchematicMain schemView2 = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///"
+		        + System.getProperty("user.dir") + "/Config/callite-massbalance.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -378,7 +381,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
-		swix.setActionListener(schematics, this);
+		swix.setActionListener(schematics, new SchematicAction(swix));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
 
 		swix.setActionListener(externalPDF, this);
 

@@ -44,15 +44,8 @@ public class SchematicMain {
 	Window window;
 	MainMenu mainMenu;
 	SwingEngine swix;
-
-	AffineTransform theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
-
-	public void setAffineTransform(double m0, double m1, double m2, double m3, double m4, double m5) {
-
-		AffineTransform t = new AffineTransform(m0, m1, m2, m3, m4, m5);
-		canvas.setRenderingTransform(t);
-
-	}
+	AffineTransform theAT;
+	JSVGScrollPane scrollPane;
 
 	/**
 	 * 
@@ -64,12 +57,18 @@ public class SchematicMain {
 	 *            Handle to main panel - used to access information about loaded scenarios
 	 * @param swix
 	 *            Handle to UI
+	 * @param m0
+	 *            -m5 Affine Transformation values
+	 * 
 	 */
-	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn, SwingEngine swix) {
+
+	public SchematicMain(JPanel p, String url, final MainMenu mainMenuIn, SwingEngine swix, double m0, double m1, double m2,
+	        double m3, double m4, double m5) {
 
 		mainMenu = mainMenuIn;
 		this.swix = swix;
 		canvas = new JSVGCanvas();
+		theAT = new AffineTransform(m0, m1, m2, m3, m4, m5);
 
 		// Forces the canvas to always be dynamic even if the current
 		// document does not contain scripting or animation.
@@ -79,7 +78,7 @@ public class SchematicMain {
 		canvas.setEnableZoomInteractor(true);
 		canvas.setURI(url);
 
-		System.out.println(canvas.getURI());
+		// System.out.println(canvas.getURI());
 
 		canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
 			@Override
@@ -106,7 +105,8 @@ public class SchematicMain {
 
 		});
 
-		p.add("Center", new JSVGScrollPane(canvas));
+		scrollPane = new JSVGScrollPane(canvas);
+		p.add("Center", scrollPane);
 
 	}
 
@@ -126,7 +126,7 @@ public class SchematicMain {
 		@Override
 		public void handleEvent(Event evt) {
 			// Perform some actions here...
-			theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
+			// theAT = new AffineTransform(4.0, 0, 0.0, 4.0, -1400.0, -200.0);
 			evt.stopPropagation();
 			// ...for example schedule an action for later:
 			window.setTimeout(new DisplayClickedLabelTask(evt), 500);
@@ -190,25 +190,6 @@ public class SchematicMain {
 
 			System.out.println("Title: " + label);
 
-			// if (tag.startsWith("polygon") || tag.startsWith("line")) {
-			// NodeList childNodes = el.getParentNode().getChildNodes();
-			// for (int i = 0; i < childNodes.getLength(); i++) {
-			// Node item = childNodes.item(i);
-			// if (item instanceof Element) {
-			// Element ce = (Element) item;
-			// if (ce.getTagName().equals("text")) {
-			// label = ce.getTextContent();
-			// }
-			// }
-			// }
-			// } else if (tag.startsWith("text")) {
-			// label = el.getTextContent();
-			// } else if (tag.startsWith("tspan")) {
-			// label = el.getParentNode().getTextContent();
-			// }
-			// if (label != null) {
-			// window.alert(tag + ":" + label);
-			// }
 		}
 	}
 

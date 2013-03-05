@@ -1183,11 +1183,13 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
-							<radiobutton text="D-1641 plus BO RPAs" name="rdbRegQS_1641BO" id="rdbRegQS_1641BO">
+							<radiobutton text="D-1641 plus BO RPAs" name="rdbRegQS_1641BO"
+								id="rdbRegQS_1641BO">
 								<gridbagconstraints insets="0,0,5,5" gridx="2"
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
-							<radiobutton text="User Defined" name="rdbRegQS_UD" id="rdbRegQS_UD">
+							<radiobutton text="User Defined" name="rdbRegQS_UD"
+								id="rdbRegQS_UD">
 								<gridbagconstraints insets="0,0,5,5" gridx="3"
 									gridy="5" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
@@ -1199,8 +1201,8 @@
 						<gridbagconstraints insets="0,5,0,5" gridx="0"
 							gridy="1" anchor="GridBagConstraints.NORTHWEST" />
 
-						<panel name="D-1641/D-1485" id="regpan1" resizeable="false" border="TitledBorder()"
-							minimumsize="450,380" layout="GridBagLayout">
+						<panel name="D-1641/D-1485" id="regpan1" resizeable="false"
+							border="TitledBorder()" minimumsize="450,380" layout="GridBagLayout">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 							<panel layout="GridBagLayout">
@@ -1241,8 +1243,7 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="7" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
-							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY"
-								text="Trinity Minimum FLows">
+							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY" text="Trinity Minimum FLows">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="8" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
@@ -1268,7 +1269,8 @@
 										gridy="12" gridwidth="1" anchor="GridBagConstraints.WEST" />
 								</label>
 							</panel>
-							<checkbox name="ckbReg_NDO" id="ckbReg_NDO" text="Minimum Net Delta Outflow">
+							<checkbox name="ckbReg_NDO" id="ckbReg_NDO"
+								text="Minimum Net Delta Outflow">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="11" anchor="GridBagConstraints.WEST" />
 							</checkbox>
@@ -1307,7 +1309,8 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="17" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg_PUMP" id="ckbReg_PUMP" text="Pumping Limits (Jones and Banks)">
+							<checkbox name="ckbReg_PUMP" id="ckbReg_PUMP"
+								text="Pumping Limits (Jones and Banks)">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="18" anchor="GridBagConstraints.WEST" />
 							</checkbox>
@@ -1328,7 +1331,8 @@
 										gridy="22" gridwidth="1" anchor="GridBagConstraints.WEST" />
 								</label>
 							</panel>
-							<checkbox name="ckbReg_EM" id="ckbReg_EM" text="Agricultural (at Emmaton)">
+							<checkbox name="ckbReg_EM" id="ckbReg_EM"
+								text="Agricultural (at Emmaton)">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="21" gridwidth="2" anchor="GridBagConstraints.WEST" />
 							</checkbox>
@@ -1346,14 +1350,16 @@
 								text=" Fish and Wildlife (at Collinsville)">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="24" gridwidth="2" anchor="GridBagConstraints.WEST" />
-							</checkbox> 
-							<checkbox name="ckbReg_AN" id="ckbReg_AN" text="D-1485 Fish and Wildlife (at Antioch and Chipps)">
+							</checkbox>
+							<checkbox name="ckbReg_AN" id="ckbReg_AN"
+								text="D-1485 Fish and Wildlife (at Antioch and Chipps)">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="25" gridwidth="2" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 						</panel>
-						<panel name="Biological Opinion RPAs" id="regpan2" resizeable="false"
-							border="TitledBorder()" minimumsize="400,170" layout="GridBagLayout">
+						<panel name="Biological Opinion RPAs" id="regpan2"
+							resizeable="false" border="TitledBorder()" minimumsize="400,170"
+							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="10" anchor="GridBagConstraints.WEST" />
 							<checkbox name="ckbRegbo1" id="ckbRegbo1"
@@ -1384,8 +1390,8 @@
 									preferredsize="340,20" />
 							</checkbox>
 						</panel>
-						<panel name="Others" id="regpan3" resizeable="false" border="TitledBorder()"
-							preferredsize="350,480" layout="GridBagLayout">
+						<panel name="Others" id="regpan3" resizeable="false"
+							border="TitledBorder()" preferredsize="350,480" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="20" anchor="GridBagConstraints.WEST" />
 							<checkBox name="ckbReg1" id="ckbReg1"
@@ -1462,8 +1468,8 @@
 						<gridbagconstraints insets="0,0,5,5"
 							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
 							gridwidth="1" />
-						<checkbox text="Payback Wheeling (D-1485 environment only)" id="op_rdb9"
-							name="op_rdb9">
+						<checkbox text="Payback Wheeling (D-1485 environment only)"
+							id="op_rdb9" name="op_rdb9">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
 						</checkbox>
@@ -2524,7 +2530,13 @@
 					<panel id="schematic_holder" preferredsize="950,600"
 						maximumsize="950,600" layout="BorderLayout">
 						<gridbagconstraints gridx="0" gridy="0"
-							gridwidth="2" insets="0,0,20,60" />
+							gridwidth="3" insets="0,0,20,60" />
+					</panel>
+
+					<panel id="schematic_holder2" preferredsize="950,600"
+						maximumsize="950,600" layout="BorderLayout">
+						<gridbagconstraints gridx="0" gridy="0"
+							gridwidth="3" insets="0,0,20,60" />
 					</panel>
 
 					<panel layout="FlowLayout(FlowLayout.Left)">
@@ -2534,6 +2546,7 @@
 							text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
 							font="Tahoma-BOLD-13" foreground="CC3333" />
 					</panel>
+
 					<panel layout="FlowLayout(FlowLayout.Left)">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
 							gridx="0" gridy="2" insets="-40,0,0,0" />
@@ -2541,11 +2554,26 @@
 							text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
 							font="Tahoma-BOLD-13" foreground="CC3333" />
 					</panel>
+
 					<panel layout="FlowLayout(FlowLayout.Right)">
 						<gridbagconstraints anchor="GridBagConstraints.EAST"
-							gridx="1" gridy="1" insets="0,0,0,60" />
-						<button text="Help" ActionCommand="AC_Help">
+							gridx="1" gridy="1" gridheight="2" insets="0,0,0,60" />
+						<buttongroup id="schembg">
+							<radiobutton id="rdbSchemNormal" name="rdbSchemNormal"
+								text="Normal" selected="true" />
+							<gridbagconstraints anchor="GridBagConstraints.WEST"
+								gridx="0" gridy="0" insets="-40,0,0,0" />
+							<radiobutton id="rdbSchemMB" name="rdbSchemMB" text="Mass balance" />
+							<gridbagconstraints anchor="GridBagConstraints.WEST"
+								gridx="0" gridy="1" insets="-40,0,0,0" />
+						</buttongroup>
 
+
+					</panel>
+					<panel layout="FlowLayout(FlowLayout.Right)">
+						<gridbagconstraints anchor="GridBagConstraints.EAST"
+							gridx="2" gridy="1" insets="0,0,0,60" />
+						<button text="Help" ActionCommand="AC_Help">
 						</button>
 					</panel>
 
