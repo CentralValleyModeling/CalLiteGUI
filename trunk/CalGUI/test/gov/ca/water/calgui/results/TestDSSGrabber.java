@@ -1,10 +1,10 @@
 package gov.ca.water.calgui.results;
 
-import hec.io.TimeSeriesContainer;
-
 import javax.swing.JList;
 
 import junit.framework.TestCase;
+
+import org.junit.Test;
 
 public class TestDSSGrabber extends TestCase {
 
@@ -24,14 +24,25 @@ public class TestDSSGrabber extends TestCase {
 	protected void tearDown() {
 	}
 
+	@Test
+	public void testBaseName() {
+
+		// Windoze
+		String testString = "c:\\temp\\blah.dss";
+		grabber.setBase(testString);
+		String result = grabber.getBase();
+		assertTrue(result.equals("blah"));
+
+		// Rest of the world
+		testString = "c:/temp/blah.dss";
+		grabber.setBase(testString);
+		result = grabber.getBase();
+		assertTrue(result.equals("blah"));
+
+	}
+
 	public void testDateRangeErrorHandling() {
 		grabber.setDateRange("Apr2001-MAN2011");
 	}
 
-	public void testOrderOfCalls() {
-		// grabber.setBase("base");
-		TimeSeriesContainer[] primarySeries = grabber.getPrimarySeries();
-		assertNotNull(primarySeries);
-		assertEquals("title", grabber.getTitle());
-	}
 }
