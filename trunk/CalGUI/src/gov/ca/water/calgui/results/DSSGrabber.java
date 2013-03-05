@@ -46,7 +46,6 @@ public class DSSGrabber {
 
 	private final JList lstScenarios;
 	private String baseName;
-	private String locationName;
 	private String primaryDSSName;
 	private String secondaryDSSName;
 
@@ -162,8 +161,6 @@ public class DSSGrabber {
 	 */
 	public void setLocation(String locationName) {
 
-		this.locationName = locationName;
-
 		// TODO: Combine lookup tables AND review use of complex names
 
 		if (locationName.startsWith("SchVw")) {
@@ -198,7 +195,6 @@ public class DSSGrabber {
 	 */
 	public void setLocationWeb(String locationName) {
 
-		this.locationName = locationName;
 		Prefix prefix = new Prefix();
 		String type = prefix.getType(locationName);
 		primaryDSSName = locationName + "/" + type;
@@ -354,11 +350,9 @@ public class DSSGrabber {
 			result = "Date range is not set in DSSGrabber.";
 		else if (baseName == null)
 			result = "Base scenario is not set in DSSGrabber.";
-		else if (locationName == null)
-			result = "Location is not set in DSSGrabber.";
 		else if (primaryDSSName == null)
 			result = "Base scenario is not set in DSSGrabber.";
-		System.out.println(result);
+		log.debug(result);
 		return result;
 	}
 
@@ -368,7 +362,7 @@ public class DSSGrabber {
 	 * 
 	 * @return Array of HEC TimeSeriesContainer - one TSC for each scenario
 	 */
-	public TimeSeriesContainer[] getPrimarySeries() {
+	public TimeSeriesContainer[] getPrimarySeries(String locationName) {
 
 		TimeSeriesContainer[] results = null;
 
@@ -747,14 +741,6 @@ public class DSSGrabber {
 
 	private void setPrimaryDSSName(String primaryDSSName) {
 		this.primaryDSSName = primaryDSSName;
-	}
-
-	public String getLocationName() {
-		return locationName;
-	}
-
-	private void setLocationName(String locationName) {
-		this.locationName = locationName;
 	}
 
 }

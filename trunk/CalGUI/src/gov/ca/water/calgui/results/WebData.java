@@ -185,7 +185,7 @@ public class WebData {
 			dss_Grabber.setLocationWeb(locationNames[i]);
 			dss_Grabber.setDateRange(dateRange);
 
-			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
+			TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries(locationNames[i]);
 			TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
 
 			dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);

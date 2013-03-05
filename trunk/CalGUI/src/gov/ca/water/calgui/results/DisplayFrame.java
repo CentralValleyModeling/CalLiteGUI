@@ -124,7 +124,7 @@ public class DisplayFrame {
 
 				dss_Grabber.setDateRange(dateRange);
 
-				TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries();
+				TimeSeriesContainer[] primary_Results = dss_Grabber.getPrimarySeries(locationNames[i]);
 				TimeSeriesContainer[] secondary_Results = dss_Grabber.getSecondarySeries();
 
 				dss_Grabber.calcTAFforCFS(primary_Results, secondary_Results);
@@ -222,7 +222,7 @@ public class DisplayFrame {
 				ChartPanel1 cp2;
 
 				if (doTimeSeries) {
-					if (dss_Grabber.getLocationName().contains("SchVw") && dss_Grabber.getPrimaryDSSName().contains(",")) {
+					if (locationNames[i].contains("SchVw") && dss_Grabber.getPrimaryDSSName().contains(",")) {
 						cp2 = new ChartPanel1("SchVw" + dss_Grabber.getTitle(), dss_Grabber.getYLabel(), primary_Results,
 						        secondary_Results, false, upper, lower, dss_Grabber.getPrimaryDSSName(), false); // abuse
 						// slabel to
