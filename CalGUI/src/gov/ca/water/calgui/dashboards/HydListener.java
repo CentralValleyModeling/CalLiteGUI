@@ -185,10 +185,10 @@ public class HydListener implements ItemListener {
 			} else if (cName.startsWith("hyd_ckb")) {
 				// Checkbox in Climate Scenarios page changed
 				int selct = 0;
-				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1");
-				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
+				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC");
+				// JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
 				selct = GUIUtils.countSelectedButtons(hyd_CC1, JCheckBox.class, selct);
-				selct = GUIUtils.countSelectedButtons(hyd_CC2, JCheckBox.class, selct);
+				// selct = GUIUtils.countSelectedButtons(hyd_CC2, JCheckBox.class, selct);
 
 				JLabel lab = (JLabel) swix.find("hydlab_selected");
 				if (selct == 0) {
@@ -201,20 +201,20 @@ public class HydListener implements ItemListener {
 
 			} else if (cName.startsWith("hyd_rdb")) {
 				// Radio in Hydroclimate
-				JPanel hyd_CC = (JPanel) swix.find("hyd_CC");
-				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1");
-				JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
 
-				if (cName.startsWith("hyd_rdbHis")) {
-					GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
-					GUIUtils.toggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
-					GUIUtils.toggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class);
-				} else if (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
-					GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
-					GUIUtils.toggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED);
-				}
+				/*
+				 * JPanel hyd_CC = (JPanel) swix.find("hyd_CC"); JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1"); JPanel hyd_CC2 =
+				 * (JPanel) swix.find("hyd_CC2");
+				 * 
+				 * if (cName.startsWith("hyd_rdbHis")) { GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() !=
+				 * ItemEvent.SELECTED); GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
+				 * GUIUtils.toggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
+				 * GUIUtils.toggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class); } else if
+				 * (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
+				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
+				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
+				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED); }
+				 */
 			}
 		}
 
