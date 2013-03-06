@@ -618,7 +618,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					JCheckBox chk = (JCheckBox) component;
 					DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
-					        swix, dss_Grabber, lstScenarios, desktop, 0);
+					        swix, lstScenarios, desktop, 0);
 					menu.setCursor(normalCursor);
 				}
 			}
@@ -647,12 +647,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 								if (y < 200)
 									DisplayFrame.displayFrame(DisplayFrame.QuickState(swix)
-									        + ";Locs-Shasta Storage,;Index-ckbp104,", swix, dss_Grabber, lstScenarios, desktop, 0);
+									        + ";Locs-Shasta Storage,;Index-ckbp104,", swix, lstScenarios, desktop, 0);
 
 								else
 									DisplayFrame.displayFrame(
 									        DisplayFrame.QuickState(swix) + ";Locs-Keswick Flows,;Index-ckbp206,", swix,
-									        dss_Grabber, lstScenarios, desktop, 0);
+									        lstScenarios, desktop, 0);
 							}
 
 							else

@@ -182,10 +182,8 @@ public class SchematicMain {
 				else
 					desktop = (JFrame) swix.find("desktop");
 				lstScenarios = (JList) swix.find("SelectedList");
-				DSSGrabber dss_Grabber;
-				dss_Grabber = new DSSGrabber(lstScenarios);
 				DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + label + ";Index-" + "SchVw" + label, swix,
-				        dss_Grabber, lstScenarios, desktop, 0);
+				        lstScenarios, desktop, 0);
 			}
 
 			System.out.println("Title: " + label);

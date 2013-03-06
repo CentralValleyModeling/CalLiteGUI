@@ -1,6 +1,5 @@
 package gov.ca.water.calgui.dashboards;
 
-import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.Report;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
@@ -35,7 +34,6 @@ import org.swixml.SwingEngine;
 public class ReportAction implements ActionListener {
 	private final JFrame desktop;
 	private final SwingEngine swix;
-	private final DSSGrabber dss_Grabber;
 	private final JList lstScenarios;
 	private Logger log;
 
@@ -44,7 +42,6 @@ public class ReportAction implements ActionListener {
 		this.swix = swix;
 
 		lstScenarios = (JList) swix.find("SelectedList");
-		dss_Grabber = new DSSGrabber(lstScenarios);
 	}
 
 	@Override
@@ -383,8 +380,8 @@ public class ReportAction implements ActionListener {
 				displayCount = 0;
 				JList list = (JList) swix.find("lstReports");
 				for (int i = 0; i < list.getModel().getSize(); i++)
-					DisplayFrame.displayFrame((String) (list.getModel().getElementAt(i)), swix, dss_Grabber, lstScenarios, desktop,
-					        displayCount);
+					DisplayFrame
+					        .displayFrame((String) (list.getModel().getElementAt(i)), swix, lstScenarios, desktop, displayCount);
 
 			}
 		}
@@ -397,8 +394,8 @@ public class ReportAction implements ActionListener {
 				JOptionPane.showMessageDialog(null, "No display group selected", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				displayCount = 0;
-				DisplayFrame.displayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue(), swix, dss_Grabber,
-				        lstScenarios, desktop, displayCount);
+				DisplayFrame.displayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue(), swix, lstScenarios,
+				        desktop, displayCount);
 			}
 		}
 	}
