@@ -48,7 +48,14 @@
 				<exclude name="junit.jar" />
 			</fileset>
 
+			</copy>
+
+		<copy todir="${deploy.dir}/Donfig">
+
+			<fileset dir="${default.dir}" />
+
 		</copy>
+		
 
 		<copy todir="${deploy.dir}/Config">
 
