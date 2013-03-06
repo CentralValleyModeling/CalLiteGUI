@@ -50,7 +50,7 @@
 
 			</copy>
 
-		<copy todir="${deploy.dir}/Donfig">
+		<copy todir="${deploy.dir}/Default">
 
 			<fileset dir="${default.dir}" />
 
