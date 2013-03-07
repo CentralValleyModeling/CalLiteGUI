@@ -158,7 +158,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.setResizable(false);
 
 		// Set Icon
-		java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
+		URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 		desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
 		// Title
@@ -397,9 +397,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		});
 
 		lstScenarios = (JList) swix.find("SelectedList");
-		DSSGrabber dss_Grabber;
-		dss_Grabber = new DSSGrabber(lstScenarios);
-		// DANRcommented this out: new WebData(jtp, this, swix, dss_Grabber, lstReports, desktop, 0);
 
 	}
 
@@ -413,14 +410,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public static void main(String[] args) {
 
-		// Load help
-		ClassLoader cl = null;
-		URL url = null;
-
 		try {
-			cl = MainMenu.class.getClassLoader();
-			url = HelpSet.findHelpSet(null, "helpset.hs");
-			helpViewer = new JHelp(new HelpSet(cl, url));
+			ClassLoader classLoader = MainMenu.class.getClassLoader();
+			URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
+			helpViewer = new JHelp(new HelpSet(classLoader, url));
 			helpViewer.setCurrentID("Introduction");
 			help = new JFrame("CalLite 2.0 GUI Help");
 			help.getContentPane().add(helpViewer);
