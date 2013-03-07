@@ -15,7 +15,6 @@ import gov.ca.water.calgui.dashboards.RunListener;
 import gov.ca.water.calgui.dashboards.ScenarioSetup;
 import gov.ca.water.calgui.dashboards.SchematicAction;
 import gov.ca.water.calgui.dashboards.SchematicListener;
-import gov.ca.water.calgui.results.DSSGrabber;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.SchematicMain;
 import gov.ca.water.calgui.utils.DataFileTableModel;
@@ -606,9 +605,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				} else {
 
 					lstScenarios = (JList) swix.find("SelectedList");
-					DSSGrabber dss_Grabber;
-					dss_Grabber = new DSSGrabber(lstScenarios);
-
 					JCheckBox chk = (JCheckBox) component;
 					DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
 					        swix, lstScenarios, desktop, 0);
@@ -635,8 +631,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 							        || ((x - 339) * (x - 339) + (y - 250) * (y - 250) < 100)) {
 
 								lstScenarios = (JList) swix.find("SelectedList");
-								DSSGrabber dss_Grabber;
-								dss_Grabber = new DSSGrabber(lstScenarios);
 
 								if (y < 200)
 									DisplayFrame.displayFrame(DisplayFrame.QuickState(swix)
