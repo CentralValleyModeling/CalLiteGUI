@@ -189,11 +189,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		LogManager.getRootLogger().addAppender(new NullAppender());
 
 		// Read Schematic_DSS_link4.table and place in Table5
-		ArrayList GUILinks5 = new ArrayList();
-		GUILinks5 = GUIUtils.getGUILinks("Config\\Schematic_DSS_link4.table");
-		table5 = new String[GUILinks5.size()][6];
-		for (int i = 0; i < GUILinks5.size(); i++) {
-			String tokens[] = ((String) GUILinks5.get(i)).split("\t");
+		ArrayList<String> guiLinks5 = new ArrayList<String>();
+		guiLinks5 = GUIUtils.getGUILinks("Config\\Schematic_DSS_link4.table");
+		table5 = new String[guiLinks5.size()][6];
+		for (int i = 0; i < guiLinks5.size(); i++) {
+			String tokens[] = guiLinks5.get(i).split("\t");
 			table5[i][0] = tokens[0];
 			table5[i][1] = tokens[1];
 			table5[i][2] = tokens[2];
@@ -204,11 +204,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 		// init file, etc.)
-		ArrayList GUILinks4 = new ArrayList();
-		GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
-		table4 = new String[GUILinks4.size()][5];
-		for (int i = 0; i < GUILinks4.size(); i++) {
-			String tokens[] = ((String) GUILinks4.get(i)).split("\t");
+		ArrayList<String> guiLinks4 = new ArrayList<String>();
+		guiLinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
+		table4 = new String[guiLinks4.size()][5];
+		for (int i = 0; i < guiLinks4.size(); i++) {
+			String tokens[] = guiLinks4.get(i).split("\t");
 			table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
 			table4[i][1] = tokens[4];
 			table4[i][2] = tokens[5];
