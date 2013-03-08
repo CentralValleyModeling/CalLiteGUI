@@ -283,7 +283,7 @@ public class DisplayFrame {
 		return;
 	}
 
-	public static String QuickState(SwingEngine swix) {
+	public static String quickState(SwingEngine swix) {
 
 		String cAdd;
 		cAdd = "";

@@ -75,7 +75,7 @@ public class WebData {
 						String[] subtitles = title.split(":");
 						if (subtitles.length == 2) {
 							if (!subtitles[1].startsWith("AD_") && !subtitles[1].startsWith("I_"))
-								displayFrameWeb(DisplayFrame.QuickState(swix) + ";Locs-" + subtitles[1] + ";Index-" + subtitles[1],
+								displayFrameWeb(DisplayFrame.quickState(swix) + ";Locs-" + subtitles[1] + ";Index-" + subtitles[1],
 								        swix, dss_Grabber, lstScenarios, desktop, displayCount);
 						}
 					}
