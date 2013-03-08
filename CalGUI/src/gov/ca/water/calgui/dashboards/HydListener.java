@@ -55,12 +55,11 @@ public class HydListener implements ItemListener {
 				// Confirm CWP/SWP overwrite;
 				if (((JRadioButton) component).isSelected() && action_WSIDI != 2) {
 
-					// Actions are only performed if selection is being set to
-					// true
+					// Actions are only performed if selection is being set to true
 
-					int option = JOptionPane.YES_OPTION; // default is to
-					                                     // overwrite
-					                                     // everything
+					GUIUtils.toggleEnComponentAndChildren(swix.find("hyd_CC"), false);
+
+					int option = JOptionPane.YES_OPTION; // default is to overwrite everything
 					boolean isntDefault = false;
 					if (RegUserEdits != null) {
 						if (RegUserEdits[Integer.parseInt(gl.tableIDForCtrl("op_btn1"))] != null)
@@ -122,9 +121,8 @@ public class HydListener implements ItemListener {
 						 * }
 						 */
 
-						String table4[][]; // Holds GUI_links4.table values that control
-						// selection of SV and Init DSS as well as
-						// WSI_DI
+						String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as
+						                   // WSIDI
 						// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 						// init file, etc.)
 						ArrayList GUILinks4 = new ArrayList();
@@ -162,8 +160,7 @@ public class HydListener implements ItemListener {
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
-								// Force CVP and SWP tables to be reset from
-								// files
+								// Force CVP and SWP tables to be reset from files
 
 								String fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\"
 								        + gl.tableNameForCtrl("op_btn1") + ".table";
@@ -182,7 +179,12 @@ public class HydListener implements ItemListener {
 						}
 					}
 				}
+			} else if (cName.startsWith("hyd_rdbCC")) {
+
+				GUIUtils.toggleEnComponentAndChildren(swix.find("hyd_CC"), true);
+
 			} else if (cName.startsWith("hyd_ckb")) {
+
 				// Checkbox in Climate Scenarios page changed
 				int selct = 0;
 				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC");
