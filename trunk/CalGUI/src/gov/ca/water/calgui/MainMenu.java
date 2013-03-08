@@ -30,7 +30,6 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -325,10 +324,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		// Schematic views
-		SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
-		        + System.getProperty("user.dir") + "/Config/callite.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0, -200.0);
-		SchematicMain schemView2 = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///"
-		        + System.getProperty("user.dir") + "/Config/callite-massbalance.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
+		SchematicMain schemView;
+		schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
+		        + "/Config/callite.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0, -200.0);
+		schemView = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
+		        + "/Config/callite-massbalance.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
@@ -413,6 +413,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			ClassLoader classLoader = MainMenu.class.getClassLoader();
 			URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
 			helpViewer = new JHelp(new HelpSet(classLoader, url));
+
 			helpViewer.setCurrentID("Introduction");
 			help = new JFrame("CalLite 2.0 GUI Help");
 			help.getContentPane().add(helpViewer);
@@ -606,7 +607,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					lstScenarios = (JList) swix.find("SelectedList");
 					JCheckBox chk = (JCheckBox) component;
-					DisplayFrame.displayFrame(DisplayFrame.QuickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
+					DisplayFrame.displayFrame(DisplayFrame.quickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
 					        swix, lstScenarios, desktop, 0);
 					menu.setCursor(normalCursor);
 				}
@@ -618,34 +619,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if (iClickCount == 2) {
 				if (cName != null) {
 
-					if (cName.startsWith("schem_map")) {
-						if (((JTextField) swix.find("schem_tfload")).getText().equals("")) {
-							JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-						} else {
-							Point b = e.getPoint();
-							int x = (int) b.getX();
-							int y = (int) b.getY();
+					// Placeholder for future handling of double-clicks
 
-							if (((x - 111) * (x - 111) + (y - 150) * (y - 150) < 100)
-							        || ((x - 339) * (x - 339) + (y - 157) * (y - 157) < 100)
-							        || ((x - 339) * (x - 339) + (y - 250) * (y - 250) < 100)) {
-
-								lstScenarios = (JList) swix.find("SelectedList");
-
-								if (y < 200)
-									DisplayFrame.displayFrame(DisplayFrame.QuickState(swix)
-									        + ";Locs-Shasta Storage,;Index-ckbp104,", swix, lstScenarios, desktop, 0);
-
-								else
-									DisplayFrame.displayFrame(
-									        DisplayFrame.QuickState(swix) + ";Locs-Keswick Flows,;Index-ckbp206,", swix,
-									        lstScenarios, desktop, 0);
-							}
-
-							else
-								JOptionPane.showMessageDialog(null, "X = " + x + "; Y = " + y);
-						}
-					}
 				}
 			}
 		}
