@@ -77,8 +77,6 @@ public class FileAction implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
-		// TODO: Break out individual actions for readability?
 
 		if ("AC_RUN".equals(ae.getActionCommand())) {
 
@@ -135,8 +133,8 @@ public class FileAction implements ActionListener {
 					// get table values.
 					final String NL = System.getProperty("line.separator");
 					sb.append("DATATABLEMODELS" + NL);
-					ArrayList guiLinks = new ArrayList();
-					ArrayList guiTables = new ArrayList();
+					ArrayList<String> guiLinks = new ArrayList<String>();
+					ArrayList<String> guiTables = new ArrayList<String>();
 					guiLinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 					guiTables = GUIUtils.getGUITables(guiLinks, "Regulations");
 					sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
@@ -389,7 +387,7 @@ public class FileAction implements ActionListener {
 		boolean success = true;
 		File ft = new File(runDir, "\\DSS");
 		ft.mkdir();
-		System.out.println(":" + dssFileName + ":");
+
 		// TODO: Files are assumed to be in Default\DSS
 		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
 
@@ -716,13 +714,11 @@ public class FileAction implements ActionListener {
 
 				// Copy proper WSIDI table AFTER future/variable demand copy
 				// TODO: WHY IS THIS ORDER NECESSARY?? IT DOESN'T LOOK LIKE WE'RE DOING THAT NOW?
-
-				JTextField small = (JTextField) swix.find("hyd_DSS_Index");
-				((JTextField) swix.find("hyd_DSS_Index")).setText(GUIUtils.makeHydDSSIndex(swix));
 				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
 				// issues 98/99.
 
-				FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(), scenRunDir_absPath + "\\Lookup");
+				String result[] = GUIUtils.getHydDSSStrings(swix);
+				FileUtils.copyWSIDItoLookup(result[7], scenRunDir_absPath + "\\Lookup");
 
 				File fsLookup = new File(scenRunDir_absPath, "Lookup");
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
@@ -732,9 +728,6 @@ public class FileAction implements ActionListener {
 				publish("Creating study.sty.");
 
 				Calendar cal = Calendar.getInstance();
-
-				String test = (String) ((JSpinner) swix.find("spnRunStartMonth")).getValue();
-				System.out.println(test);
 
 				String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim().toUpperCase();
 				String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim().toUpperCase();
@@ -790,7 +783,6 @@ public class FileAction implements ActionListener {
 				newtext[13] = ((JTextField) swix.find("hyd_DSS_Init_F")).getText();
 
 				FileUtils.replaceLinesInFile(scenRunDir_absPath + "\\study.sty", LineNum, newtext);
-				System.out.println(checkFile);
 
 				// ==========
 
@@ -847,7 +839,6 @@ public class FileAction implements ActionListener {
 				cfgFile.print(batchText);
 				cfgFile.flush();
 				cfgFile.close();
-				System.out.println(checkFile);
 
 				// ==========
 
@@ -887,7 +878,7 @@ public class FileAction implements ActionListener {
 
 				for (int i = 0; i < GUITables.size(); i++) {
 
-					System.out.println(i);
+					System.out.println("GUI Option Table " + i);
 					String line = GUITables.get(i).toString();
 					String[] parts = line.split("[|]");
 					String cName = parts[0].trim(); // Get name of controlling checkbox;
@@ -909,6 +900,7 @@ public class FileAction implements ActionListener {
 							option = 1;
 						}
 					}
+
 					System.out.println(switchID + " " + option);
 
 					if ((option == 2) || (option == 1)) {
@@ -940,7 +932,8 @@ public class FileAction implements ActionListener {
 				}
 
 				// Write operations table files
-				GUITables = new ArrayList();
+
+				GUITables = new ArrayList<String>();
 				GUITables = GUIUtils.getGUITables(links2Lines, "Operations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
@@ -1011,8 +1004,8 @@ public class FileAction implements ActionListener {
 		// get table values.
 		final String NL = System.getProperty("line.separator");
 		sb.append("DATATABLEMODELS" + NL);
-		ArrayList GUITables = new ArrayList();
-		ArrayList GUILinks = new ArrayList();
+		ArrayList<String> GUITables = new ArrayList<String>();
+		ArrayList<String> GUILinks = new ArrayList<String>();
 		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 		GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
 		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);

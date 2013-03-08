@@ -284,7 +284,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 		action_WSIDI = 1;
 
-		JPanel pan = (JPanel) swix.find("op_panTab");
 		JComponent component1 = (JComponent) swix.find("scrOpValues");
 		JTable table1 = (JTable) swix.find("tblOpValues");
 

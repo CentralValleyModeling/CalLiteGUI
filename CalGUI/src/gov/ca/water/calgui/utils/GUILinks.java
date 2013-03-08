@@ -1,5 +1,5 @@
 /*
- * GUILinks: creates a dictionary that relates GUI elements to switchtable order and daat table file/DSS location
+ * GUILinks: creates a dictionary that relates GUI elements to switchtable order and data table file/DSS location
  * 
  * Version 1.0
  * 

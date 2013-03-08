@@ -135,6 +135,7 @@ public class ReportAction implements ActionListener {
 						theText = theText + aLine + "\n";
 						aLine = br.readLine();
 					}
+					br.close();
 					theText = theText + "\n";
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
 					try {
