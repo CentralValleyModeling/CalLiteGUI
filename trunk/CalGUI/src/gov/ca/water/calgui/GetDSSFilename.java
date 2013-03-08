@@ -265,6 +265,7 @@ public class GetDSSFilename implements ActionListener {
 								String theKey = br.readLine().toLowerCase();
 								String theValue = br.readLine() + "\n" + br.readLine() + "\n" + br.readLine();
 								theToolTips.put(theKey.toLowerCase(), theValue);
+								br.close();
 							} catch (IOException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();

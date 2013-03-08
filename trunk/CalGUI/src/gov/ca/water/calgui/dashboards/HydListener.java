@@ -7,7 +7,6 @@ import gov.ca.water.calgui.utils.GUIUtils;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -53,6 +52,7 @@ public class HydListener implements ItemListener {
 				// Handling for update of DSS files
 
 				// Confirm CWP/SWP overwrite;
+
 				if (((JRadioButton) component).isSelected() && action_WSIDI != 2) {
 
 					// Actions are only performed if selection is being set to true
@@ -70,8 +70,7 @@ public class HydListener implements ItemListener {
 					}
 					if ((action_WSIDI == 1) && (isntDefault))
 
-						// Prompt is needed only in "regular" processing
-						// (action_WSIDI = 1) with non-default table
+						// Prompt is needed only in "regular" processing (action_WSIDI = 1) with non-default table
 
 						option = JOptionPane
 						        .showConfirmDialog(
@@ -87,6 +86,7 @@ public class HydListener implements ItemListener {
 					if (option == JOptionPane.CANCEL_OPTION) {
 
 						// Cancel: undo change by selecting "other" radio button
+						// TODO: ISSUE 116 - this logic won't quite be right.
 
 						String newcName = null;
 						if (cName.equals("hyd_rdb2005"))
@@ -107,56 +107,22 @@ public class HydListener implements ItemListener {
 
 					} else {
 
-						// Yes or no: first determine which GUI_link4.table row
-						// to use
+						// Yes or no: first determine which GUI_link4.table row to use
 
-						String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
-						lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-						/*
-						 * if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected()) lookup = lookup + "10"; else { lookup = lookup
-						 * + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
-						 * 
-						 * // TODO: Finish off with CCModelID? Move to batch // processing?
-						 * 
-						 * }
-						 */
+						String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
 
-						String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as
-						                   // WSIDI
-						// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
-						// init file, etc.)
-						ArrayList GUILinks4 = new ArrayList();
-						GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
-						table4 = new String[GUILinks4.size()][5];
-						for (int i = 0; i < GUILinks4.size(); i++) {
-							String tokens[] = ((String) GUILinks4.get(i)).split("\t");
-							table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-							table4[i][1] = tokens[4];
-							table4[i][2] = tokens[5];
-							table4[i][3] = tokens[6];
-							table4[i][4] = tokens[7];
-						}
+						if (hydDSSStrings[1] != null) {
 
-						int l = -1;
-						for (int i = 0; i < table4.length; i++) {
-							if (lookup.equals(table4[i][0]))
-								l = i;
-						}
+							// Then update GUI values, files in Default\Lookup\directory
 
-						if (l != -1) {
-
-							// Then update GUI values, files in Default\Lookup
-							// directory
-
-							((JTextField) swix.find("hyd_DSS_Index")).setText(lookup);
-							((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
-							((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
-							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
-							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
+							((JTextField) swix.find("hyd_DSS_Index")).setText(hydDSSStrings[0]);
+							((JTextField) swix.find("hyd_DSS_SV")).setText(hydDSSStrings[1]);
+							((JTextField) swix.find("hyd_DSS_SV_F")).setText(hydDSSStrings[2]);
+							((JTextField) swix.find("hyd_DSS_Init")).setText(hydDSSStrings[3]);
+							((JTextField) swix.find("hyd_DSS_Init_F")).setText(hydDSSStrings[4]);
 
 							// TODO: ? is this call needed?
-							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(),
-							        System.getProperty("user.dir") + "\\Default\\Lookup");
+							FileUtils.copyWSIDItoLookup(hydDSSStrings[7], System.getProperty("user.dir") + "\\Default\\Lookup");
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 

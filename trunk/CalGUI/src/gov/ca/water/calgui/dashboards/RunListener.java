@@ -7,7 +7,6 @@ import gov.ca.water.calgui.utils.GUIUtils;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -87,11 +86,7 @@ public class RunListener implements ItemListener {
 						// Cancel: undo change by selecting "other" radio button
 
 						String newcName = null;
-						if (cName.equals("hyd_rdb2005"))
-							newcName = "hyd_rdb2030";
-						else if (cName.equals("hyd_rdb2030"))
-							newcName = "hyd_rdb2005";
-						else if (cName.equals("run_rdbD1641"))
+						if (cName.equals("run_rdbD1641"))
 							newcName = "run_rdbBO";
 						else if (cName.equals("run_rdbBO"))
 							newcName = "run_rdbD1641";
@@ -108,60 +103,24 @@ public class RunListener implements ItemListener {
 						// Yes or no: first determine which GUI_link4.table row
 						// to use
 
-						String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
-						lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-						if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
-							lookup = lookup + "10";
-						else {
-							lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+						String result[] = GUIUtils.getHydDSSStrings(swix);
 
-							// TODO: Finish off with CCModelID? Move to batch
-							// processing?
+						if (!(result[1] == null)) {
 
-						}
+							// Then update GUI values, files in Default\Lookup directory
 
-						String table4[][]; // Holds GUI_links4.table values that control
-						// selection of SV and Init DSS as well as
-						// WSI_DI
-						// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
-						// init file, etc.)
-						ArrayList GUILinks4 = new ArrayList();
-						GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
-						table4 = new String[GUILinks4.size()][5];
-						for (int i = 0; i < GUILinks4.size(); i++) {
-							String tokens[] = ((String) GUILinks4.get(i)).split("\t");
-							table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-							table4[i][1] = tokens[4];
-							table4[i][2] = tokens[5];
-							table4[i][3] = tokens[6];
-							table4[i][4] = tokens[7];
-						}
-
-						int l = -1;
-						for (int i = 0; i < table4.length; i++) {
-							if (lookup.equals(table4[i][0]))
-								l = i;
-						}
-
-						if (l != -1) {
-
-							// Then update GUI values, files in Default\Lookup
-							// directory
-
-							((JTextField) swix.find("hyd_DSS_Index")).setText(lookup);
-							((JTextField) swix.find("hyd_DSS_SV")).setText(table4[l][1]);
-							((JTextField) swix.find("hyd_DSS_SV_F")).setText(table4[l][2]);
-							((JTextField) swix.find("hyd_DSS_Init")).setText(table4[l][3]);
-							((JTextField) swix.find("hyd_DSS_Init_F")).setText(table4[l][4]);
+							((JTextField) swix.find("hyd_DSS_Index")).setText(result[0]);
+							((JTextField) swix.find("hyd_DSS_SV")).setText(result[1]);
+							((JTextField) swix.find("hyd_DSS_SV_F")).setText(result[2]);
+							((JTextField) swix.find("hyd_DSS_Init")).setText(result[3]);
+							((JTextField) swix.find("hyd_DSS_Init_F")).setText(result[4]);
 
 							// TODO: ? Is this call needed?
-							FileUtils.copyWSIDItoLookup(((JTextField) swix.find("hyd_DSS_Index")).getText(),
-							        System.getProperty("user.dir") + "\\Default\\Lookup");
+							FileUtils.copyWSIDItoLookup(result[7], System.getProperty("user.dir") + "\\Default\\Lookup");
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
-								// Force CVP and SWP tables to be reset from
-								// files
+								// Force CVP and SWP tables to be reset from files
 
 								String fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1") + ".table";
 								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
@@ -182,5 +141,4 @@ public class RunListener implements ItemListener {
 		}
 
 	}
-
 }

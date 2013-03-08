@@ -49,10 +49,9 @@ public class ScenarioSetup {
 		// get table values.
 		final String NL = System.getProperty("line.separator");
 		sb.append("DATATABLEMODELS" + NL);
-		ArrayList GUILinks = new ArrayList();
-		ArrayList GUITables = new ArrayList();
-		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
-		GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
+
+		ArrayList<String> GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
+		ArrayList<String> GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
 		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
 		GUITables = GUIUtils.getGUITables(GUILinks, "Operations");
 		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
@@ -70,8 +69,6 @@ public class ScenarioSetup {
 		String scen = tf.getText();
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		StringBuffer sbExisting = FileUtils.readScenarioFile(f);
-
-		Boolean scensave = false;
 
 		if (!sb.toString().equals(sbExisting.toString())) {
 
@@ -101,6 +98,7 @@ public class ScenarioSetup {
 
 				if (filename != null) {
 
+					boolean scensave = false;
 					if (new File(filename).exists())
 						scensave = (JOptionPane
 						        .showConfirmDialog(mainmenu, "The scenario file '" + filename

@@ -227,7 +227,7 @@ public class GUIUtils {
 		return sb;
 	}
 
-	public static StringBuffer getTableModelData(DataFileTableModel[] dTableModels, ArrayList GUITables, GUILinks gl,
+	public static StringBuffer getTableModelData(DataFileTableModel[] dTableModels, ArrayList<String> GUITables, GUILinks gl,
 	        StringBuffer sb, SwingEngine swix) {
 		final String NL = System.getProperty("line.separator");
 
@@ -239,7 +239,6 @@ public class GUIUtils {
 				String line = GUITables.get(i).toString();
 				String[] parts = line.split("[|]");
 				String cName = parts[0].trim();
-				String tableName = gl.tableNameForCtrl(cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID;
 				if (switchID.equals("n/a")) {
@@ -414,9 +413,9 @@ public class GUIUtils {
 				}
 			}
 
-			// fs.close();
-			// in.close();
-			// br.close();
+			fs.close();
+			in.close();
+			br.close();
 
 		} catch (FileNotFoundException e) {
 			log.debug(e.getMessage());
@@ -506,15 +505,13 @@ public class GUIUtils {
 		return str;
 	}
 
-	public static ArrayList getGUITables(ArrayList arr, String board) {
+	public static ArrayList<String> getGUITables(ArrayList<String> arr, String board) {
 		String cName = "";
 		String line = "";
 		String switchID = "", TID = "", datatable = "";
-		Boolean val;
 		String board1 = "";
-		int index;
 
-		ArrayList arr1 = new ArrayList();
+		ArrayList<String> arr1 = new ArrayList<String>();
 
 		for (int i = 0; i < arr.size(); i++) {
 			line = arr.get(i).toString();
@@ -542,12 +539,10 @@ public class GUIUtils {
 		// System.out.println(component.getName());
 		Container c = (Container) component;
 		String desc = "";
-		String text = "";
 
 		while (c.getParent() != null) {
 			c = c.getParent();
 			JComponent jc = (JComponent) c;
-			Object oc = c;
 
 			String cName = jc.getName();
 			if (cName != null) {
@@ -594,16 +589,63 @@ public class GUIUtils {
 	 * 
 	 * @param swix
 	 *            - link to GUI/model
-	 * @return - Calculated value for hyd_DSS_Index in GUI
+	 * @return file names, f-parts from row in GUI_Links4.table corresponding to lookup
 	 */
-	public static String makeHydDSSIndex(SwingEngine swix) {
+	public static String[] getHydDSSStrings(SwingEngine swix) {
+
+		String result[] = new String[8];
+
+		// Start with run type
+
 		String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
-		lookup = lookup + (((JRadioButton) swix.find("hyd_rdb2005")).isSelected() ? "1" : "2");
-		if (((JRadioButton) swix.find("hyd_rdbHis")).isSelected())
-			lookup = lookup + "10";
+
+		// Then add in Level of Development/Climate Change
+
+		if (((JRadioButton) swix.find("hyd_rdb2005")).isSelected())
+			lookup = lookup + "110";
+		else if (((JRadioButton) swix.find("hyd_rdb2030")).isSelected())
+			lookup = lookup + "210";
 		else {
-			lookup = lookup + (((JRadioButton) swix.find("hyd_rdbMid")).isSelected() ? "2" : "3");
+
+			// Select FIRST available climate change scenario
+
+			if (((JRadioButton) swix.find("hyd_rdbCCEL")).isSelected())
+				lookup = lookup + "31";
+			else if (((JRadioButton) swix.find("hyd_rdb2005")).isSelected())
+				lookup = lookup + "41";
+			if (((JRadioButton) swix.find("hyd_ckb1")).isSelected())
+				lookup = lookup + "1";
+			else if (((JRadioButton) swix.find("hyd_ckb2")).isSelected())
+				lookup = lookup + "2";
+			else if (((JRadioButton) swix.find("hyd_ckb3")).isSelected())
+				lookup = lookup + "3";
+			else if (((JRadioButton) swix.find("hyd_ckb4")).isSelected())
+				lookup = lookup + "4";
+			else if (((JRadioButton) swix.find("hyd_ckb5")).isSelected())
+				lookup = lookup + "5";
 		}
-		return lookup;
+
+		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV, init file, etc.)
+
+		ArrayList<String> GUILinks4 = new ArrayList<String>();
+		GUILinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
+
+		for (int i = 0; i < GUILinks4.size(); i++) {
+			String tokens[] = GUILinks4.get(i).split("\t");
+
+			String check = tokens[0] + tokens[1] + tokens[2] + tokens[3]; // Lookup value
+			if (check.equals(lookup)) {
+				result[0] = lookup;
+				result[1] = tokens[4]; // Hydrology DSS
+				result[2] = tokens[5]; // Hydrology f-part
+				result[3] = tokens[6]; // Init file
+				result[4] = tokens[7]; // Init F-part
+				result[5] = tokens[8]; // CVP file
+				result[6] = tokens[9]; // SWP file
+				result[7] = tokens[10]; // Suffix for CVP/SWP files in WSI_DI directory
+			}
+		}
+
+		return result;
 	}
 }
