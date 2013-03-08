@@ -221,7 +221,7 @@ public class ReportAction implements ActionListener {
 					}
 				}
 
-				lstArray1[n] = DisplayFrame.QuickState(swix) + cSTOR + cSTORIdx;
+				lstArray1[n] = DisplayFrame.quickState(swix) + cSTOR + cSTORIdx;
 
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
@@ -241,7 +241,7 @@ public class ReportAction implements ActionListener {
 					}
 				}
 
-				lstArray1[n] = DisplayFrame.QuickState(swix) + cSTOR + cSTORIdx;
+				lstArray1[n] = DisplayFrame.quickState(swix) + cSTOR + cSTORIdx;
 
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
