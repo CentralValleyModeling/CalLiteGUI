@@ -870,7 +870,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Writing GUI option tables.");
+				publish("Writing GUI regulations table files.");
 
 				// Write regulations table files
 				ArrayList<String> GUITables = new ArrayList<String>();
@@ -878,80 +878,67 @@ public class FileAction implements ActionListener {
 
 				for (int i = 0; i < GUITables.size(); i++) {
 
-					System.out.println("GUI Option Table " + i);
-					String line = GUITables.get(i).toString();
-					String[] parts = line.split("[|]");
+					String[] parts = GUITables.get(i).toString().split("[|]");
 					String cName = parts[0].trim(); // Get name of controlling checkbox;
 					String tableName = gl.tableNameForCtrl(cName); // Find the corresponding table
-					String switchID = gl.switchIDForCtrl(cName); // Get the switchID (index in .table file)
 
-					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+					System.out.println("GUI Option Table " + i + ": " + cName);
 
-					// Find Selected Option
-					int option = 0;
-					AbstractButton buttonC = (AbstractButton) swix.find(cName);
-					if (buttonC == null || !(buttonC instanceof JToggleButton)) {
-						option = 0;
-					} else {
-						JToggleButton cb = (JToggleButton) swix.find(cName);
-						if (!cb.isSelected()) {
-							option = 0;
+					if (!tableName.equals("n/a")) {
+
+						// Is the controlling checkbox selected?
+						AbstractButton buttonC = (AbstractButton) swix.find(cName);
+						if (buttonC == null || !(buttonC instanceof JToggleButton)) {
 						} else {
-							option = 1;
-						}
-					}
-
-					System.out.println(switchID + " " + option);
-
-					if ((option == 2) || (option == 1)) {
-
-						String[] files = tableName.split("[|]");
-						int size = files.length;
-						if (size == 1) {
-							// CASE 1: 1 file specified
-							System.out.println("Output to " + tableName);
-							String fo = scenRunDir_absPath + "\\Lookup\\" + tableName + ".table";
-							if (dTableModels[tID] == null) {
-								System.out.println("Table not initialized - " + tableName);
+							if (!((JToggleButton) buttonC).isSelected()) {
 							} else {
-								dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup", tableName);
-							}
-						} else if (size == 2) {
-							// CASE 2: 2 files specified
-							System.out.println("Output to " + files[0]);
-							String fo1 = scenRunDir_absPath + "\\Lookup\\" + files[0] + ".table";
-							String fo2 = scenRunDir_absPath + "\\Lookup\\" + files[1] + ".table";
+								int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+								String[] files = tableName.split("[|]");
+								int size = files.length;
+								if (size == 1) {
+									if (dTableModels[tID] == null) {
+										System.out.println("Table not initialized - " + tableName);
+									} else {
+										dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup", tableName);
+									}
+								} else if (size == 2) {
+									if (dTableModels[tID] == null) {
+										System.out.println("Table not initialized - nothing written");
+									} else {
+										dTableModels[tID].writeToFile2(scenRunDir_absPath + "\\Lookup", files[0], files[1]);
+									}
+								} else {
+									System.out.println("Unhandled files.length case in FileAction.setupAndRun");
+								}
 
-							if (dTableModels[tID] == null) {
-								System.out.println("Table not initialized");
-							} else {
-								dTableModels[tID].writeToFile2(scenRunDir_absPath + "\\Lookup", files[0], files[1]);
 							}
 						}
+
 					}
 				}
 
-				// Write operations table files
+				System.out.println("Done");
+
+				// =====
+
+				publish("Writing GUI operations table files.");
 
 				GUITables = new ArrayList<String>();
 				GUITables = GUIUtils.getGUITables(links2Lines, "Operations");
 
 				for (int i = 0; i < GUITables.size(); i++) {
-					String line = GUITables.get(i).toString();
-					String[] parts = line.split("[|]");
+					String[] parts = GUITables.get(i).toString().split("[|]");
 					String cName = parts[0].trim();
 					String tableName = gl.tableNameForCtrl(cName);
-					String switchID = gl.switchIDForCtrl(cName);
+					if (!tableName.equals("n/a")) {
+						System.out.println("Output to " + tableName);
+						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+						if (dTableModels[tID] == null) {
+							System.out.println("Table not initialized - " + tableName);
+						} else {
+							dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup\\", tableName);
+						}
 
-					int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
-
-					System.out.println("Output to " + tableName);
-					String fo = scenRunDir_absPath + "\\Lookup\\" + tableName + ".table";
-
-					if (dTableModels[tID] == null) {
-						System.out.println("Table not initialized - " + tableName);
-					} else {
-						dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup\\", tableName);
 					}
 
 				}

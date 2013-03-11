@@ -675,6 +675,12 @@ public class DataFileTableModel extends AbstractTableModel {
 		}
 	}
 
+	/**
+	 * Writes table data to a single .table file
+	 * 
+	 * @param runDir
+	 * @param outputFileName
+	 */
 	public void writeToFile(final String runDir, String outputFileName) {
 
 		OutputStream outputStream;
