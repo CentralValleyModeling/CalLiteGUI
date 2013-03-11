@@ -29,7 +29,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
-import com.lowagie.text.HeaderFooter;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
@@ -47,7 +46,6 @@ public class ReportPDFWriter implements Writer {
 	Document document;
 	private PdfWriter writer;
 	private PdfPTable summaryTable;
-	private HeaderFooter footer;
 	private Font bigFont;
 	private Font smallFont;
 	private Font subtitleFont;
@@ -252,14 +250,14 @@ public class ReportPDFWriter implements Writer {
 					cell.setBorderWidthTop(2);
 				}
 			}
-			ArrayList rows = summaryTable.getRows();
+			ArrayList<PdfPRow> rows = summaryTable.getRows();
 			for (int i = 1; i < rows.size() - 1; i++) {
-				PdfPCell[] dataCells = ((PdfPRow) rows.get(i)).getCells();
+				PdfPCell[] dataCells = rows.get(i).getCells();
 				setRightAndLeftBorders(dataCells);
 				setColumnBoundaries(dataCells, 4);
 				setCellPadding(dataCells, 3, 2);
 			}
-			PdfPRow lastRow = (PdfPRow) rows.get(rows.size() - 1);
+			PdfPRow lastRow = rows.get(rows.size() - 1);
 			cells = lastRow.getCells();
 			setRightAndLeftBorders(cells);
 			setColumnBoundaries(cells, 4);
