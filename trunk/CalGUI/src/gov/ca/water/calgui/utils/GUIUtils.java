@@ -357,20 +357,20 @@ public class GUIUtils {
 
 					if (size == 1) {
 						// CASE 1: 1 file specified
-						fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + fileName + ".table";
+						fileName = System.getProperty("user.dir") + "/Default/Lookup/" + fileName + ".table";
 						File fn = new File(fileName);
 						Boolean exists = fn.exists();
 					} else if (size == 2) {
 						// CASE 2: 2 files specified
-						fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table";
+						fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[0] + ".table";
 						File fn = new File(fileName);
 						Boolean exists = fn.exists();
 						if (exists) {
-							fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+							fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[1] + ".table";
 							fn = new File(fileName);
 							exists = fn.exists();
-							fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-							        + System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+							fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[0] + ".table" + "|"
+							        + System.getProperty("user.dir") + "/Default/Lookup/" + files[1] + ".table";
 						}
 					}
 
