@@ -419,7 +419,7 @@ public class FileAction implements ActionListener {
 
 		boolean success = true;
 		File ft = new File(runDir, "\\DSS");
-		ft.mkdir();
+		ft.mkdirs();
 
 		// TODO: Files are assumed to be in Default\DSS
 		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
@@ -709,6 +709,20 @@ public class FileAction implements ActionListener {
 				        .getAbsolutePath();
 
 				success = success & setupScenarioDirectory(scenRunDir_absPath);
+
+				// ========== Copy DSS files to "Generated" folder
+
+				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt
+				        + "\\Generated").getAbsolutePath();
+
+				success = success
+				        & copyDSSFileToScenarioDirectory(scenGeneratedDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
+				success = success
+				        & copyDSSFileToScenarioDirectory(scenGeneratedDir_absPath,
+				                ((JTextField) swix.find("hyd_DSS_Init")).getText());
+
+				// ========== Copy DSS files to "Run" folder
+
 				success = success
 				        & copyDSSFileToScenarioDirectory(scenRunDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
 				success = success
