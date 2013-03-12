@@ -501,7 +501,7 @@ public class FileAction implements ActionListener {
 
 					// Open existing table file and read in all header comments (lines that start with a "!")
 
-					f = new File(runDir, tableFileName);
+					f = new File(System.getProperty("user.dir") + "\\Default\\Lookup", tableFileName);
 					FileInputStream fin = new FileInputStream(f);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					StringBuffer header = new StringBuffer();
@@ -511,14 +511,15 @@ public class FileAction implements ActionListener {
 						aLine = br.readLine();
 					}
 
-					// Close existing table file and delete
+					// Close table file in "Default" folder
 
 					br.close();
-					FileUtils.deleteDir(f);
+					// FileUtils.deleteDir(f);
 
 					// Create a new file with the same name and write the header comments
 
-					FileWriter fstream = new FileWriter(f);
+					File ft = new File(runDir, tableFileName);
+					FileWriter fstream = new FileWriter(ft);
 					tableFile_BufferedWriter_ = new BufferedWriter(fstream);
 					if (header != null) {
 						tableFile_BufferedWriter_.write(header.toString());
@@ -699,27 +700,43 @@ public class FileAction implements ActionListener {
 				desktop.setEnabled(false);
 
 				boolean success = true;
-
-				// ========== Copy Run directory
-
-				publish("Creating new Run directory.");
-
 				String scenWithoutExt = FilenameUtils.removeExtension(scen);
-				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt + "\\Run")
-				        .getAbsolutePath();
 
-				success = success & setupScenarioDirectory(scenRunDir_absPath);
-
-				// ========== Copy DSS files to "Generated" folder
+				// ========== Prepare "Generated" folder
+				publish("Creating new Generated directory.");
 
 				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt
 				        + "\\Generated").getAbsolutePath();
+
+				// delete "Generated" folder to cleanup files from previous actions
+
+				File ft = new File(scenGeneratedDir_absPath);
+				ft.setWritable(true);
+				ft.delete();
+
+				// create DSS and Lookup folders
+
+				ft = new File(scenGeneratedDir_absPath, "DSS");
+				ft.mkdirs();
+				ft = new File(scenGeneratedDir_absPath, "Lookup");
+				ft.mkdirs();
+
+				// Copy DSS files to "Generated" folder
 
 				success = success
 				        & copyDSSFileToScenarioDirectory(scenGeneratedDir_absPath, ((JTextField) swix.find("hyd_DSS_SV")).getText());
 				success = success
 				        & copyDSSFileToScenarioDirectory(scenGeneratedDir_absPath,
 				                ((JTextField) swix.find("hyd_DSS_Init")).getText());
+
+				// ========== Copy Run directory
+
+				publish("Creating new Run directory.");
+
+				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt + "\\Run")
+				        .getAbsolutePath();
+
+				success = success & setupScenarioDirectory(scenRunDir_absPath);
 
 				// ========== Copy DSS files to "Run" folder
 
@@ -741,6 +758,9 @@ public class FileAction implements ActionListener {
 				links2Lines = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 
 				try {
+					// write to "Generated" folder
+					writeScenarioTables(scenGeneratedDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix);
+					// write to "Run" folder
 					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
