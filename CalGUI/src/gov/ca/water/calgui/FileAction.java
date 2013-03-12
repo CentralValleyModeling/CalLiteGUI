@@ -714,11 +714,13 @@ public class FileAction implements ActionListener {
 				ft.setWritable(true);
 				ft.delete();
 
-				// create DSS and Lookup folders
+				// create DSS, Lookup, and external folders
 
 				ft = new File(scenGeneratedDir_absPath, "DSS");
 				ft.mkdirs();
 				ft = new File(scenGeneratedDir_absPath, "Lookup");
+				ft.mkdirs();
+				ft = new File(scenGeneratedDir_absPath, "External");
 				ft.mkdirs();
 
 				// Copy DSS files to "Generated" folder
@@ -785,9 +787,18 @@ public class FileAction implements ActionListener {
 				// issues 98/99.
 
 				String result[] = GUIUtils.getHydDSSStrings(swix);
+
+				// copy WSIDI to "Generated" folder
+				FileUtils.copyWSIDItoLookup(result[7], scenGeneratedDir_absPath + "\\Lookup");
+				// copy WSIDI to "Run" folder
 				FileUtils.copyWSIDItoLookup(result[7], scenRunDir_absPath + "\\Lookup");
 
-				File fsLookup = new File(scenRunDir_absPath, "Lookup");
+				// copy either variableDemand or futureDemand lookup tables to "Generated" folder
+				File fsLookup = new File(scenGeneratedDir_absPath, "Lookup");
+				FileUtils.copyDirectory(fsDem, fsLookup, true);
+
+				// copy either variableDemand or futureDemand lookup tables to "Run" folder
+				fsLookup = new File(scenRunDir_absPath, "Lookup");
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
 
 				// ==========
@@ -947,6 +958,7 @@ public class FileAction implements ActionListener {
 				// wrims2 ANN file name is different from wrims1
 				File fsAnnS;
 				File fsAnnO_wrims2;
+				File fsAnnO_wrims2_generated;
 
 				JRadioButton rdbSLR45 = (JRadioButton) swix.find("hyd_rdb1");
 				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
@@ -954,15 +966,22 @@ public class FileAction implements ActionListener {
 				if (rdbSLR45.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BDCP_LLT_45cm.dll");
 				} else if (rdbSLR15.isSelected()) {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BDCP_ELT_15cm.dll");
 				} else {
 					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
+					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BST_noSLR_111709.dll");
 				}
 				try {
+					// copy dll to "Run" folder
 					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2, true);
+					// copy dll to "Generated" folder
+					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2_generated, true);
+
 				} catch (IOException e1) { // TODO Auto-generated catch block
 					e1.printStackTrace();
 					success = false;
@@ -999,12 +1018,18 @@ public class FileAction implements ActionListener {
 									if (dTableModels[tID] == null) {
 										System.out.println("Table not initialized - " + tableName);
 									} else {
+										// Write regulations table files to "Generated" Folder
+										dTableModels[tID].writeToFile(scenGeneratedDir_absPath + "\\Lookup", tableName);
+										// Write regulations table files to "Run" Folder
 										dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup", tableName);
 									}
 								} else if (size == 2) {
 									if (dTableModels[tID] == null) {
 										System.out.println("Table not initialized - nothing written");
 									} else {
+										// Write regulations table files to "Generated" Folder
+										dTableModels[tID].writeToFile2(scenGeneratedDir_absPath + "\\Lookup", files[0], files[1]);
+										// Write regulations table files to "Run" Folder
 										dTableModels[tID].writeToFile2(scenRunDir_absPath + "\\Lookup", files[0], files[1]);
 									}
 								} else {
@@ -1036,6 +1061,9 @@ public class FileAction implements ActionListener {
 						if (dTableModels[tID] == null) {
 							System.out.println("Table not initialized - " + tableName);
 						} else {
+							// WriteGUI operations table files to "Generated" Folder
+							dTableModels[tID].writeToFile(scenGeneratedDir_absPath + "\\Lookup\\", tableName);
+							// WriteGUI operations table files to "Run" Folder
 							dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup\\", tableName);
 						}
 
