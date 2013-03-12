@@ -23,12 +23,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.help.HelpSet;
+import javax.help.JHelp;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -38,6 +41,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
@@ -45,6 +49,7 @@ import javax.swing.SwingWorker;
 import javax.swing.text.JTextComponent;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 import wrimsv2.evaluator.TimeOperation;
@@ -63,6 +68,7 @@ public class FileAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private int action_WSIDI;
+	static Logger log = Logger.getLogger(FileAction.class.getName());
 
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        int action_WSIDI) {
@@ -322,6 +328,33 @@ public class FileAction implements ActionListener {
 			// Delete temp file
 			File ft = new File(System.getProperty("user.dir") + "\\Scenarios\\Current_Scenario");
 			FileUtils.deleteDir(ft);
+		}
+
+		else if (ae.getActionCommand().equals("AC_Help")) {
+
+			JHelp helpViewer;
+			JFrame help;
+			try {
+				ClassLoader classLoader = FileAction.class.getClassLoader();
+				URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
+				helpViewer = new JHelp(new HelpSet(classLoader, url));
+
+				help = new JFrame("CalLite 2.0 GUI Help");
+				help.getContentPane().add(helpViewer);
+
+				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+				int selIndex = jtp.getSelectedIndex();
+				String label = jtp.getTitleAt(selIndex);
+				helpViewer.setCurrentID(label);
+				help.pack();
+				help.setVisible(true);
+
+			} catch (Exception e) {
+
+				log.debug("helpset not found: " + e.getMessage());
+
+			}
+
 		}
 	}
 
@@ -813,8 +846,6 @@ public class FileAction implements ActionListener {
 				configMap.put("RunPath", scenRunDir_absPath);
 				configMap.put("ConfigFilePath",
 				        new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName") + ".config").getAbsolutePath());
-
-
 
 				// replace vars in batch file
 
