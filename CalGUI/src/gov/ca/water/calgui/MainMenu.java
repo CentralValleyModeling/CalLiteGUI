@@ -47,7 +47,6 @@ import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.Vector;
 
-import javax.help.HelpSet;
 import javax.help.JHelp;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -78,9 +77,7 @@ import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.varia.NullAppender;
 import org.swixml.SwingEngine;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
@@ -149,7 +146,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Read GUI configuration
 		swix = new SwingEngine(this);
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
-		swix.render(new File(System.getProperty("user.dir") + "\\Config\\GUI.xml")).setVisible(true);
+		swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml")).setVisible(true);
 
 		// Set GUI visuals
 		desktopTitle = desktop.getTitle() + ";  Scenario";
@@ -181,14 +178,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		jtp.setBackgroundAt(8, Color.WHITE);
 		jtp.setBackgroundAt(9, Color.WHITE);
 
-		// Code added to disable logger
-		System.setProperty("log4j.defaultInitOverride", "true");
-		LogManager.resetConfiguration();
-		LogManager.getRootLogger().addAppender(new NullAppender());
-
 		// Read Schematic_DSS_link4.table and place in Table5
 		ArrayList<String> guiLinks5 = new ArrayList<String>();
-		guiLinks5 = GUIUtils.getGUILinks("Config\\Schematic_DSS_link4.table");
+		guiLinks5 = GUIUtils.getGUILinks("Config/Schematic_DSS_link4.table");
 		table5 = new String[guiLinks5.size()][6];
 		for (int i = 0; i < guiLinks5.size(); i++) {
 			String tokens[] = guiLinks5.get(i).split("\t");
@@ -203,7 +195,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
 		// init file, etc.)
 		ArrayList<String> guiLinks4 = new ArrayList<String>();
-		guiLinks4 = GUIUtils.getGUILinks("Config\\GUI_Links4.table");
+		guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
 		table4 = new String[guiLinks4.size()][5];
 		for (int i = 0; i < guiLinks4.size(); i++) {
 			String tokens[] = guiLinks4.get(i).split("\t");
@@ -228,7 +220,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Read switch lookup
 		gl = new GUILinks();
-		gl.readIn("Config\\GUI_Links2.table");
+		gl.readIn("Config/GUI_Links2.table");
 
 		readInLookups(); // Temporary access to quick reports info from
 		                 // gui_Links3.table
@@ -279,7 +271,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		JTextField tf = (JTextField) swix.find("run_txfScen");
 		String scen = tf.getText();
 
-		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
 		action_WSIDI = 0;
 		RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 		action_WSIDI = 1;
@@ -408,30 +400,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public static void main(String[] args) {
 
-		try {
-			ClassLoader classLoader = MainMenu.class.getClassLoader();
-			URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
-			helpViewer = new JHelp(new HelpSet(classLoader, url));
-
-			helpViewer.setCurrentID("Introduction");
-			help = new JFrame("CalLite 2.0 GUI Help");
-			help.getContentPane().add(helpViewer);
-			help.pack();
-			help.setVisible(false);
-
-		} catch (Exception e) {
-
-			log.debug("helpset not found: " + e.getMessage());
-
-		}
-
 		// Load menu
 		try {
 			new MainMenu();
 		} catch (Exception e) {
 
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Main menu error", JOptionPane.ERROR_MESSAGE);
 			log.debug("Problem loading main menu: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Main menu error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -450,8 +425,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			JFileChooser fc = new JFileChooser();
 			fc.setFileFilter(new SimpleFileFilter(".dss.", "DSS File (*.dss)"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
-
-			String dirname = ".//Scenarios";
 
 			int retval = fc.showOpenDialog(mainmenu);
 			if (retval == JFileChooser.APPROVE_OPTION) {
@@ -480,12 +453,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
 			// verticalScrollBar.setValue(verticalScrollBar.getMaximum());
 
-		} else if (e.getActionCommand().startsWith("AC_Help")) {
-			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
-			int selIndex = jtp.getSelectedIndex();
-			String label = jtp.getTitleAt(selIndex);
-			helpViewer.setCurrentID(label);
-			help.setVisible(true);
 		} else {
 			JComponent component = (JComponent) e.getSource();
 			String cName = component.getName();
@@ -742,9 +709,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		Scanner input;
 		try {
-			input = new Scanner(new FileReader("Config\\GUI_Links3.table"));
+			input = new Scanner(new FileReader("Config/GUI_Links3.table"));
 		} catch (FileNotFoundException e) {
-			log.debug("Cannot open input file Config\\GUI_Links3.table: " + e.getMessage());
+			log.debug("Cannot open input file Config/GUI_Links3.table: " + e.getMessage());
 			return -1;
 		}
 
