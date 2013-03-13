@@ -791,11 +791,6 @@ public class FileAction implements ActionListener {
 
 				String result[] = GUIUtils.getHydDSSStrings(swix);
 
-				// copy WSIDI to "Generated" folder
-				FileUtils.copyWSIDItoLookup(result[7], scenGeneratedDir_absPath + "\\Lookup");
-				// copy WSIDI to "Run" folder
-				FileUtils.copyWSIDItoLookup(result[7], scenRunDir_absPath + "\\Lookup");
-
 				// copy either variableDemand or futureDemand lookup tables to "Generated" folder
 				File fsLookup = new File(scenGeneratedDir_absPath, "Lookup");
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
@@ -803,6 +798,11 @@ public class FileAction implements ActionListener {
 				// copy either variableDemand or futureDemand lookup tables to "Run" folder
 				fsLookup = new File(scenRunDir_absPath, "Lookup");
 				FileUtils.copyDirectory(fsDem, fsLookup, true);
+
+				// copy WSIDI to "Generated" folder
+				FileUtils.copyWSIDItoLookup(result[7], scenGeneratedDir_absPath + "\\Lookup");
+				// copy WSIDI to "Run" folder
+				FileUtils.copyWSIDItoLookup(result[7], scenRunDir_absPath + "\\Lookup");
 
 				// ==========
 
