@@ -107,56 +107,24 @@ public class HydListener implements ItemListener {
 
 					} else {
 
-						// Yes or no: first determine which GUI_link4.table row to use
-
-						String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
-
-						if (hydDSSStrings[1] != null) {
-
-							// Then update GUI values, files in Default\Lookup\directory
-
-							((JTextField) swix.find("hyd_DSS_Index")).setText(hydDSSStrings[0]);
-							((JTextField) swix.find("hyd_DSS_SV")).setText(hydDSSStrings[1]);
-							((JTextField) swix.find("hyd_DSS_SV_F")).setText(hydDSSStrings[2]);
-							((JTextField) swix.find("hyd_DSS_Init")).setText(hydDSSStrings[3]);
-							((JTextField) swix.find("hyd_DSS_Init_F")).setText(hydDSSStrings[4]);
-
-							// TODO: ? is this call needed?
-							FileUtils.copyWSIDItoLookup(hydDSSStrings[7], System.getProperty("user.dir") + "\\Default\\Lookup");
-
-							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
-
-								// Force CVP and SWP tables to be reset from files
-
-								String fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\"
-								        + gl.tableNameForCtrl("op_btn1") + ".table";
-								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
-								dTableModels[tID] = new DataFileTableModel(fileName, tID);
-
-								fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2")
-								        + ".table";
-								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
-								dTableModels[tID] = new DataFileTableModel(fileName, tID);
-
-								JTable table = (JTable) swix.find("tblOpValues");
-								table.setModel(dTableModels[tID]);
-
-							}
-						}
+						updateHydrology(option);
 					}
 				}
 			} else if (cName.startsWith("hyd_rdbCC")) {
 
-				GUIUtils.toggleEnComponentAndChildren(swix.find("hyd_CC"), true);
+				if (((JRadioButton) component).isSelected()) {
+					GUIUtils.toggleEnComponentAndChildren(swix.find("hyd_CC"), true);
+					updateHydrology(JOptionPane.NO_OPTION);
+
+				}
 
 			} else if (cName.startsWith("hyd_ckb")) {
 
 				// Checkbox in Climate Scenarios page changed
+
 				int selct = 0;
 				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC");
-				// JPanel hyd_CC2 = (JPanel) swix.find("hyd_CC2");
 				selct = GUIUtils.countSelectedButtons(hyd_CC1, JCheckBox.class, selct);
-				// selct = GUIUtils.countSelectedButtons(hyd_CC2, JCheckBox.class, selct);
 
 				JLabel lab = (JLabel) swix.find("hydlab_selected");
 				if (selct == 0) {
@@ -166,6 +134,8 @@ public class HydListener implements ItemListener {
 				} else {
 					lab.setText(selct + " realizations selected - Probabilistic mode required");
 				}
+
+				updateHydrology(JOptionPane.NO_OPTION);
 
 			} else if (cName.startsWith("hyd_rdb")) {
 				// Radio in Hydroclimate
@@ -186,6 +156,52 @@ public class HydListener implements ItemListener {
 			}
 		}
 
+	}
+
+	/**
+	 * Updates hydrology inputs and CVP/SWP files according to hydrology lookup settings.
+	 * 
+	 * @param option
+	 *            JOPtionPane.YES_Option - force CVP and SWP tables to be reset from defaults for hydrology
+	 */
+	private void updateHydrology(int option) {
+
+		// Yes or no: first determine which GUI_link4.table row to use
+
+		String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
+
+		if (hydDSSStrings[1] != null) {
+
+			// Then update GUI values, files in Default\Lookup\directory
+
+			((JTextField) swix.find("hyd_DSS_SV")).setText(hydDSSStrings[1]);
+			((JTextField) swix.find("hyd_DSS_SV_F")).setText(hydDSSStrings[2]);
+			((JTextField) swix.find("hyd_DSS_Init")).setText(hydDSSStrings[3]);
+			((JTextField) swix.find("hyd_DSS_Init_F")).setText(hydDSSStrings[4]);
+
+			// JTextField tf = (JTextField) swix.find("hyd_DSS_Index");
+			// tf.setText(hydDSSStrings[0]);
+			// ((JTextField) swix.find("hyd_DSS_Index")).setText(hydDSSStrings[0]);
+
+			if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
+
+				// Force CVP and SWP tables to be reset from files
+
+				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], System.getProperty("user.dir") + "\\Default\\Lookup");
+				String fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1")
+				        + ".table";
+				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
+				dTableModels[tID] = new DataFileTableModel(fileName, tID);
+
+				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+				tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
+				dTableModels[tID] = new DataFileTableModel(fileName, tID);
+
+				JTable table = (JTable) swix.find("tblOpValues");
+				table.setModel(dTableModels[tID]);
+
+			}
+		}
 	}
 
 }
