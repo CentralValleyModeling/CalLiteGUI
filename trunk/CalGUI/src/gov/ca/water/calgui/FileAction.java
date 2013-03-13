@@ -48,6 +48,7 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingWorker;
 import javax.swing.text.JTextComponent;
 
+import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
@@ -711,8 +712,10 @@ public class FileAction implements ActionListener {
 				// delete "Generated" folder to cleanup files from previous actions
 
 				File ft = new File(scenGeneratedDir_absPath);
-				ft.setWritable(true);
-				ft.delete();
+
+				for (File file : ft.listFiles()) {
+					FileDeleteStrategy.FORCE.delete(file);
+				}
 
 				// create DSS, Lookup, and external folders
 
