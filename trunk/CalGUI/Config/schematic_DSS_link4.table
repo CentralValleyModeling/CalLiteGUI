@@ -227,3 +227,4 @@ AD_CASTAIC	AD_CASTAIC_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at C
 AD_MOKELUMNE	AD_MOKELUMNE_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at Mokelumne River	null
 AD_SJR	SJR_ANN_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at San Joaquin River	null
 AD_JAMESBP	AD_JAMESBP_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at James Bifurcation Point	null
+YOLO	D_FREWEIR/FLOW-DELIVERY,D_SACWEIR/FLOW-DELIVERY,AD_YOLOBP_ACTUAL/FLOW-ACCRDEPL,C_YOLOBP/FLOW-CHANNEL	null	Flow	Flows at Yolo Bypass	null

@@ -235,12 +235,12 @@
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="0" gridy="3" insets="0,0,5,5" />
 								</label>
-								<radiobutton name="hyd_rdbCCEL" id="hyd_rdbEL"
+								<radiobutton name="hyd_rdbCCEL" id="hyd_rdbCCEL"
 									text="Early Long-Term 2025 (2011-2040)" minimumsize="240,20">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 								</radiobutton>
-								<radiobutton name="hyd_rdbCCLL" id="hyd_rdbLL"
+								<radiobutton name="hyd_rdbCCLL" id="hyd_rdbCCLL"
 									text="Late Long Term 2060 (2046-2075)" minimumsize="240,20">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="5" />
@@ -355,7 +355,7 @@
 
 							<!-- Following used to store the WSI/DI index used to identify the 
 								appropriate CWP and SWP curve tables -->
-							<textfield id="hyd_DSS_Index" visible="false">
+							<textfield name="hyd_DSS_Index" id="hyd_DSS_Index" visible="false">
 								<gridbagconstraints gridx="1" gridy="4" />
 							</textfield>
 
