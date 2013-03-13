@@ -1,2 +1,2 @@
 
-start %~dp0\Model_w2\runConfig_limitedXA {ConfigFilePath}
+%~dp0\Model_w2\runConfig_limitedXA {ConfigFilePath}
