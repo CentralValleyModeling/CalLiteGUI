@@ -607,22 +607,25 @@ public class GUIUtils {
 			lookup = lookup + "210";
 		else {
 
-			// Select FIRST available climate change scenario
-
 			if (((JRadioButton) swix.find("hyd_rdbCCEL")).isSelected())
 				lookup = lookup + "31";
-			else if (((JRadioButton) swix.find("hyd_rdb2005")).isSelected())
+			else if (((JRadioButton) swix.find("hyd_rdbCCLL")).isSelected())
 				lookup = lookup + "41";
-			if (((JRadioButton) swix.find("hyd_ckb1")).isSelected())
+
+			// Select FIRST available climate change scenario
+
+			if (((JCheckBox) swix.find("hyd_ckb1")).isSelected())
 				lookup = lookup + "1";
-			else if (((JRadioButton) swix.find("hyd_ckb2")).isSelected())
+			else if (((JCheckBox) swix.find("hyd_ckb2")).isSelected())
 				lookup = lookup + "2";
-			else if (((JRadioButton) swix.find("hyd_ckb3")).isSelected())
+			else if (((JCheckBox) swix.find("hyd_ckb3")).isSelected())
 				lookup = lookup + "3";
-			else if (((JRadioButton) swix.find("hyd_ckb4")).isSelected())
+			else if (((JCheckBox) swix.find("hyd_ckb4")).isSelected())
 				lookup = lookup + "4";
-			else if (((JRadioButton) swix.find("hyd_ckb5")).isSelected())
+			else if (((JCheckBox) swix.find("hyd_ckb5")).isSelected())
 				lookup = lookup + "5";
+			else
+				lookup = lookup + "0";
 		}
 
 		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV, init file, etc.)

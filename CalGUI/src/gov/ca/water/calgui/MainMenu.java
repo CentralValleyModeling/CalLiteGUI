@@ -319,7 +319,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
 		        + "/Config/callite.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0, -200.0);
 		schemView = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
-		        + "/Config/callite-massbalance.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
+		        + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
 
 		// PDF Report
 		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
