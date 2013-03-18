@@ -13,11 +13,11 @@ B2 Action 7: CVP Export Reductions (Feb1-Mar31)
 goal b2action7_1 {
   lhs D_Jones_cvp + D_Banks_cvp
   case Feb {
-    condition month==FEB .and. int(B2Action7On)==1
+    condition month==FEB .and. int(B2Action7On)==1 .and. int(B2Action7)==1
     rhs       max(800.,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base)! - (ResAction7/2.)*taf_cfs)
     lhs<rhs   penalty 0 }
   case Mar {
-    condition month==MAR .and. int(B2Action7On)==1
+    condition month==MAR .and. int(B2Action7On)==1 .and. int(B2Action7)==1
     rhs       max(800.,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base)! - (ResAction7/2.)*taf_cfs)
     lhs<rhs   penalty 0 }
 }
@@ -27,12 +27,12 @@ define b2_7_1cap {std kind 'OUTPUT' units 'CFS'}
 goal setb2_7_1 {
   lhs b2_7_1cap
   case Feb {
-    condition  month==FEB .and. int(B2Action7On)==1
+    condition  month==FEB .and. int(B2Action7On)==1 .and. int(B2Action7)==1
     rhs        max(800.,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base)! - (ResAction7/2.)*taf_cfs)
     lhs>rhs    constrain
     lhs<rhs    constrain}
   case Mar {
-    condition  month==MAR .and. int(B2Action7On)==1
+    condition  month==MAR .and. int(B2Action7On)==1 .and. int(B2Action7)==1
     rhs        max(800.,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base)! - (ResAction7/2.)*taf_cfs)
     lhs>rhs    constrain
     lhs<rhs    constrain}
