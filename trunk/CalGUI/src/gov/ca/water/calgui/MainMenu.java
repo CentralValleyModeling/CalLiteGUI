@@ -666,41 +666,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if ((eyr == 2003) && (emo > 9))
 				((JSpinner) swix.find("spnEndMonth")).setValue("Sep");
 
-		} else {
-
-			JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-			int index = sourceTabbedPane.getSelectedIndex();
-			String cName = sourceTabbedPane.getTitleAt(index);
-			if (cName.startsWith("D-1641")) {
-				JButton btn = (JButton) swix.find("btnRegDef");
-				btn.setVisible(false);
-				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				rdb.setVisible(true);
-				rdb = (JRadioButton) swix.find("reg_rdbUD");
-				rdb.setVisible(true);
-				rdb = (JRadioButton) swix.find("reg_rdbD1485");
-				rdb.setVisible(true);
-			} else if (cName.startsWith("D-1485")) {
-				JButton btn = (JButton) swix.find("btnRegDef");
-				btn.setVisible(false);
-				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				rdb.setVisible(true);
-				rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				rdb.setVisible(true);
-				rdb = (JRadioButton) swix.find("reg_rdbUD");
-				rdb.setVisible(true);
-			} else {
-				JButton btn = (JButton) swix.find("btnRegDef");
-				btn.setVisible(true);
-				JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				rdb.setVisible(false);
-				rdb = (JRadioButton) swix.find("reg_rdbD1485");
-				rdb.setVisible(false);
-				rdb = (JRadioButton) swix.find("reg_rdbUD");
-				rdb.setVisible(false);
-			}
 		}
-
 	}
 
 	private int readInLookups() {
