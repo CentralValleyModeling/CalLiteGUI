@@ -68,7 +68,7 @@ define JunePumpRestdv {alias JunePumpRest_b2 kind 'Jun-Export-Restrict' units 'c
 goal b2action5_1 {
   lhs D_Jones_cvp + D_Banks_cvp
   case Jun {
-    condition   month==JUN .and. int(B2Action5On)==1
+    condition   month==JUN .and. int(B2Action5On)==1 .and. int(B2Action5)==1
     rhs     JunePumpRest_b2
 !    rhs         D418_CVP_TD(-1)*0.5 + D419_CVP_TD(-1)*0.5 + ExpRatio*Inflow*0.5*0.5
     lhs<rhs     penalty 0 }
@@ -77,7 +77,7 @@ goal b2action5_1 {
 goal b2action5_2 {
   lhs D_Jones_cvp + D_Banks_cvp
   case Jun {
-    condition   month==JUN .and. int(B2Action5On)==1
+    condition   month==JUN .and. int(B2Action5On)==1 .and. int(B2Action5)==1
     rhs         3000.
     lhs<rhs     penalty 0 }
 }
@@ -87,7 +87,7 @@ define b2_5_1cap {std kind 'OUTPUT' units 'CFS'}
 goal setb2_5_1 {
   lhs b2_5_1cap
   case Jun {
-    condition  month==JUN .and. int(B2Action5On)==1
+    condition  month==JUN .and. int(B2Action5On)==1 .and. int(B2Action5)==1
     rhs JunePumpRest_b2
     !    rhs        D418_CVP_TD(-1)*0.5 + D419_CVP_TD(-1)*0.5 + ExpRatio*Inflow*0.5*0.5
     lhs>rhs    constrain
@@ -102,7 +102,7 @@ define b2_5_2cap {std kind 'OUTPUT' units 'CFS'}
 goal setb2_5_2 {
   lhs b2_5_2cap
   case Jun {
-    condition  month==JUN .and. int(B2Action5On)==1
+    condition  month==JUN .and. int(B2Action5On)==1 .and. int(B2Action5)==1
     rhs        3000.
     lhs>rhs    constrain
     lhs<rhs    constrain}

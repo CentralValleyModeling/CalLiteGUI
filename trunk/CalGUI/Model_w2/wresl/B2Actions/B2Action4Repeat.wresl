@@ -39,7 +39,7 @@ define MayExportRestdv {alias MayExportRest_b2 kind 'May-Export-Restrict' units 
 goal b2action4_1 {
   lhs D_Jones_cvp + D_Banks_cvp
   case May {
-    condition    month==MAY .and. int(B2Action4On)==1
+    condition    month==MAY .and. int(B2Action4On)==1 .and. int(B2Action4)==1
     rhs         MayExportRest_b2
     lhs<rhs     penalty 0 }
 }
@@ -49,7 +49,7 @@ define b2_4_1cap {std kind 'OUTPUT' units 'CFS'}
 goal setb2_4_1 {
   lhs b2_4_1cap
   case May {
-    condition    month==MAY .and. int(B2Action4On)==1
+    condition    month==MAY .and. int(B2Action4On)==1 .and. int(B2Action4)==1
     rhs         MayExportRest_b2
     lhs>rhs     constrain
     lhs<rhs     constrain}

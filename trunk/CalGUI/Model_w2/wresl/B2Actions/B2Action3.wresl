@@ -46,16 +46,15 @@ define cvp_unused_VAMP_exp {
 	}
 }
 
-
 ! Monthly VAMP export restriction for CVP
 goal b2action3_1 {
   lhs D_Jones_cvp + D_Banks_cvp
   case Apr {
-    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs        NonPulseExpCtrl*0.5*14.0/daysin + PulseExpRes*0.5*16.0/daysin + swp_unused_VAMP_exp
     lhs<rhs    penalty 0 }
   case May {
-    condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
 !    rhs        NonPulseExpCtrl*0.5*16.0/daysin + PulseExpRes*0.5*15.0/daysin
     rhs        3000.*16.0/daysin + PulseExpRes*0.5*15.0/daysin + swp_unused_VAMP_exp
     lhs<rhs    penalty 0 }
@@ -65,11 +64,11 @@ goal b2action3_1 {
 goal b2action3_MaxCap {    ! Prevents Non-Pulse portion of month to be greater than Physical Capacity
   lhs    D_Jones_cvp + D_Banks_cvp
   case April {
-    condition     month == APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition     month == APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs           JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin
     lhs<rhs       penalty 0 }
   case May {
-    condition     month == MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition     month == MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs           JonesCapPermit*16.0/daysin + PulseExpRes*0.5*15.0/daysin
     lhs<rhs       penalty 0 }
 }
@@ -78,11 +77,11 @@ goal b2action3_MaxCap {    ! Prevents Non-Pulse portion of month to be greater t
 goal b2action3_1_swp {
   lhs D_Banks_swp
   case Apr {
-    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs        NonPulseExpCtrl*0.5*14.0/daysin + PulseExpRes*0.5*16.0/daysin + cvp_unused_VAMP_exp
     lhs<rhs    penalty 0 }
   case May {
-    condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
 !    rhs        NonPulseExpCtrl*0.5*16.0/daysin + PulseExpRes*0.5*15.0/daysin
     rhs        3000.*16.0/daysin + PulseExpRes*0.5*15.0/daysin + cvp_unused_VAMP_exp
     lhs<rhs    penalty 0 }
@@ -92,11 +91,11 @@ goal b2action3_1_swp {
 goal b2action3_MaxCap_swp {    ! Prevents Non-Pulse portion of month to be greater than Physical Capacity
   lhs    D_Banks_swp
   case April {
-    condition     month == APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition     month == APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs           BanksMaxAllow*14.0/daysin + PulseExpRes*0.5*16.0/daysin
     lhs<rhs       penalty 0 }
   case May {
-    condition     month == MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 
+    condition     month == MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs           BanksMaxAllow*16.0/daysin + PulseExpRes*0.5*15.0/daysin
     lhs<rhs       penalty 0 }
 }
@@ -107,12 +106,12 @@ define b2_3_1cap {std kind 'OUTPUT' units 'CFS'}
 goal setb2_3_1 {
   lhs b2_3_1cap
   case Apr {
-    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1
+    condition  month==APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
     rhs        NonPulseExpCtrl*0.5*14.0/daysin + PulseExpRes*0.5*16.0/daysin
     lhs>rhs    constrain
     lhs<rhs    constrain}
     case May {
-  condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1
+  condition  month==MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
 !    rhs        NonPulseExpCtrl*0.5*16.0/daysin + PulseExpRes*0.5*15.0/daysin
     rhs        min(3000.,3000.*16.0/daysin + PulseExpRes*0.5*15.0/daysin)
     lhs>rhs    constrain
