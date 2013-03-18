@@ -1,6 +1,6 @@
 GUI id	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID	D1485/D1641	N/A_D1641	N/A_NOREGULATION	N/A_USER_DEFINED	N/A_D1485
-hyd_rdb2005	GUI_HydroClimate.table	1	0	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdb2030	GUI_HydroClimate.table	1	1	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdb2005	GUI_HydroClimate.table	1	0	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdb2030	GUI_HydroClimate.table	1	1	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2	GUI_HydroClimate.table	2	2	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb3	GUI_HydroClimate.table	2	1	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -40,15 +40,22 @@ ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	NMFS BO Action 4.1.2: No action: value=0;
 ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	NMFS BO Action 4.2.1: No action: value=0; Action: value =1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	FWS BO Action: No action: value=0; Action: value =1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1; 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-n/a	GUI_RPAsOtherRegs.table	6	-1	"CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-n/a	GUI_RPAsOtherRegs.table	7	-1	"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+n/a	GUI_RPAsOtherRegs.table	6	-1	CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+n/a	GUI_RPAsOtherRegs.table	7	-1	SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbReg2	GUI_RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a
 ckbReg1	GUI_RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a
 ckbReg10	GUI_RPAsOtherRegs.table	10	-2	   EISJR_DLTSW; user defined  2	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a
 ckbReg16	n/a	n/a	n/a	Edit the fraction of unimpaired flow as flow criteria	Regulations	perc_UnimparedFlow	16	16	n/a	n/a	n/a	n/a	n/a
-op_rdb9	GUI_Operations.table	4	-1	"Payback Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+op_rdb9	GUI_Operations.table	4	-1	Payback Wheeling:  0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+op_rdb6	GUI_Operations.table	1	-1	Cross Valley Wheeling:  0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+op_rdb7	GUI_Operations.table	2	-1	Joint Point of diversion Wheeling:  0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+op_rdb8	GUI_Operations.table	3	-1	Intertie: 0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9	n/a	n/a	n/a	n/a	n/a
 op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR1	GUI_SJR.table	1	-1	VAMP_Flow -  VAMP pulse flows (Apr 15-May 15). 1=on, 0=off	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR2	GUI_SJR.table	2	-1	ckbRegSJR2	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR3	GUI_SJR.table	3	-1	ckbRegSJR3	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR4	GUI_SJR.table	4	-1	ckbRegSJR4	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR5	GUI_SJR.table	5	-1	ckbRegSJR5	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR6	GUI_SJR.table	6	-1	ckbRegSJR6	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR7	GUI_SJR.table	7	-1	ckbRegSJR7	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a

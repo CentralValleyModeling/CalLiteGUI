@@ -89,6 +89,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 518	null	null	null	null	null
 519	null	null	null	null	null
 520	null	null	null	null	null
+521	EM_EC_MONTH/SALINITY	null	Y-axis	A SJR PLACEHOLDER FOR JUN	null
 801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
 802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
 803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
