@@ -39,12 +39,12 @@ this replicates how it was set in the Apr BO Calsim study (though there it was r
 there is no limit from this Index for BO conditions (though a different limit is still set in delcar_cvp_south_B2BO.wresl).  */
 
 define Export_Index_CVP_south {
-    case MartoMaypreBO {
+    case D1485_MartoMaypreBO {
            condition  month >= MAR .and. month <= MAY .and. int(BOExportEst_switch) == 0
            select     Exp_Idx
            from       dltidx_expidx_cvp_s
            given      Dlt_Idx=Delta_Index_CVP_south
-           use        linear }
+           use        linear }   
     case MartoMayBO {
            condition  month >= MAR .and. month <= MAY .and. int(BOExportEst_switch) == 1
            value 9999 }

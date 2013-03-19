@@ -15,7 +15,7 @@ goal setCO_EC_MON {CO_EC_Month = CO_EC_Month_sv}
 
 !****************************************************************************************
 
-! define the EC standard for Jersey Point (millimhos/cm)
+! define the EC standard for Collinsville (millimhos/cm)
 define CO_EC_STD {std kind 'SALINITY' units 'UMHOS/CM'}
 define CO_EC_STD_sv {value CO_EC_STD[BASE]}
 goal COECstandout {CO_EC_STD = CO_EC_STD_sv}

@@ -9,22 +9,22 @@ Emmaton salinity standard:
 14-day running average EC may not exceed the standard for the periods listed below (mmhos):
 water-year-type:    0.45 EC April 1 to:    Ec from date shown to Aug 15:
 Wet                 Aug 15                 --
-Above Normal        Aug 15                 --
-Below Normal        Jun 20                 0.74
-Dry                 Jun15                  1.35
-Critical            --                     2.20
+Above Normal        Jul 1                  0.63
+Below Normal        Jun 20                 1.14
+Dry                 Jun15                  1.67
+Critical            --                     2.78
 
 These standards are modified to account to the monthly time-step.
 Modified values are derived from an exponential weighting function.
 Modified values are in salinity_std_emt_new.table.
 
-Add a switch to turn off D1641 constrain at Emmaton
+Add a switch to turn off D1641/D1485 constrain at Emmaton
 Z.Q. Richard Chen; DWR; (02/07/2011)
 ************************************/
 
 ! calculate previous month's value of salinity
 define EM_EC_Month_sv {
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     value 99000.}
   case lastWaterYear {
@@ -62,7 +62,7 @@ goal setEMMonprv {EM_EC_Month = EM_EC_Month_sv}
 
 ! define the EC standard
 define EM_EC_STD_lookup {
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     value 99.0}
   case AprToAug {
@@ -82,7 +82,7 @@ goal EMECstandout {EM_EC_std = EM_EC_std_sv}
 !get slope and intercept for constraint exp<=m*sac+b
 
 define EM_b_sv {
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     value 999999.}
   case control{
@@ -103,7 +103,7 @@ define EM_b_sv {
     value 999999.}
 }
 define EM_m_sv {
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     value 0.}
   case reducecalls {
@@ -133,7 +133,7 @@ goal setEM_b {EM_b = EM_b_sv}
 
 !********************************************************************
 define EM_Sac_ZeroExp_sv1 {
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     value 0.}
   case NoSalinityControlPossible{

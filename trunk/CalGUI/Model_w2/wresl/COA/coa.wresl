@@ -152,7 +152,11 @@ goal COA_SWP { D_Banks_EXP1 + 2./3.*D_Napa + 2./3.* D_Solano + Surp2Terms = SWPD
 goal setUNUSED_FS { D_Banks_EXP2 < UNUSED_FS }
 goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
+
+
   
+if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {
+
 ! The projects share available export capacity when EI is controlling.
 
 
@@ -169,6 +173,7 @@ define EI_control_on {
 		value		0.
 	}
 }
+
 
 goal EI_split_swp {
     lhs     D_Banks_EXP1
@@ -229,7 +234,8 @@ goal No_EI_split_cvp2 {
 goal AprMay_split_swp {
     lhs     D_Banks_EXP1
      case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
+        condition      range(month,apr,may) .and. VAMP_DLTSW == 1  .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
+
      rhs        0.5*AprMayExpCtrl
      lhs>rhs    penalty 1290
      lhs<rhs    penalty 0
@@ -243,4 +249,7 @@ goal AprMay_split_cvp {
      lhs>rhs    penalty 1290
      lhs<rhs        penalty 0
      }
+}
+
+
 }

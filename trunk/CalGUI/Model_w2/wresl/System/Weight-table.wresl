@@ -180,7 +180,6 @@ Objective obj = {[S_Trnty_1,40000*taf_cfs],
 [D6,5000],
 [D7A,5000],
 [D7B,5000],
-
 [D802A_PAG,1265],
 [D803_PLS,1285],
 [D810_PIN,20],
@@ -298,9 +297,9 @@ Objective obj = {[S_Trnty_1,40000*taf_cfs],
 [AprMayJonesCtrl,0.01],
 [AprMayBanksCtrl,0.01],
 [D_Banks_cvcsurp1, -0.01],
-[D_Banks_cvcsurp2, -0.02],
-[D_Banks_whlsurp1, -0.03],
-[D_Banks_whlsurp2, -0.04]}
+[D_Banks_cvcsurp2, -0.02]}
+![D_Banks_whlsurp1, -0.03],
+![D_Banks_whlsurp2, -0.04]}
 
 
 

@@ -222,4 +222,7 @@ define[local] C_Orovl_EXP_B	{alias C_Orovl_EXP[BASE] kind 'debug' units 'cfs'}
 define[local] C_Orovl_IBU_U 	{alias C_Orovl_IBU[UPSTREAM] kind 'debug' units 'cfs'}
 define[local] C_Orovl_EXP_U	{alias C_Orovl_EXP[UPSTREAM] kind 'debug' units 'cfs'}
 
+define[local] dxc_daysopenUP	{alias dxc_daysopen [UPSTREAM] kind 'debug' units 'NONE'}
+define[local] C_SacSJRUP	{alias C_SacSJR [UPSTREAM] kind 'debug' units 'CFS'}
+
 

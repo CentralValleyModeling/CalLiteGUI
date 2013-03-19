@@ -16,13 +16,13 @@ month       ECstandard
 7           11.0
 8           11.0
 
-Add a switch to turn off D1641 constrain at Collins
+Add a switch to turn off D1641/D1485 constrain at Collins
 Z.Q. Richard Chen; DWR; (02/07/2011)
 ************************************/
 
 ! calculate previous month's value of salinity
 define CO_EC_Month_sv {
-          case D1641Off{
+          case DRegsOff{
             condition CO_DLTSW == 0
             value 99000.}
   case lastWaterYear {
@@ -55,12 +55,12 @@ goal setCO_EC_MON {CO_EC_Month = CO_EC_Month_sv}
 
 !****************************************************************************************
 
-! define the EC standard for Jersey Point (millimhos/cm)
+! define the EC standard for Collinsville (millimhos/cm)
 define CO_EC_STD_lookup {
-          case D1641Off{
+          case DRegsOff{
             condition CO_DLTSW == 0
             value 99.}
-  case AprToAug {
+  case OctToMay {
     condition  month >=OCT .and. month <=MAY
     select     ECstandard1
     from       salinity_std_col
@@ -77,7 +77,7 @@ goal COECstandout {CO_EC_STD = CO_EC_STD_sv}
 !get slope and intercept for constraint exp<=m*sac+b
 
 define CO_b_sv {
-          case D1641Off{
+          case DRegsOff{
             condition CO_DLTSW == 0
             value 999999.}
   case control{
@@ -98,7 +98,7 @@ define CO_b_sv {
     value 999999.}
 }
 define CO_m_sv {
-          case D1641Off{
+          case DRegsOff{
             condition CO_DLTSW == 0
             value 0.}
   case reducecalls {
@@ -129,7 +129,7 @@ goal setCO_b {CO_b = CO_b_sv}
 !********************************************************************
 !Get the required Sac flow for ZERO exports
 define CO_Sac_ZeroExp_sv1 {
-          case D1641Off{
+          case DRegsOff{
             condition CO_DLTSW == 0
             value 0.}
   case NoSalinityControlPossible{

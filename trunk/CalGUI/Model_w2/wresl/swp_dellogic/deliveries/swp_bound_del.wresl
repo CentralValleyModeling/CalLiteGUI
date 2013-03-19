@@ -95,7 +95,7 @@ define target_d206a_pag {value min(ad_d206a_pag, demand_prj_69*con_d206a_pag/con
 goal limit_d206a_pag {d206a_pag < target_d206a_pag}
 
 define target_d206b_pwr {value min(ad_d206b_pwr, demand_prj_69*con_d206b_pwr/con_69_total)}
-!goal limit_d206b_pwr {d206b_pwr < ad_d206b_pwr}       
+!goal limit_d206b_pwr {d206b_pwr < ad_d206b_pwr}
 goal limit_d206b_pwr {d206b_pwr < target_d206b_pwr}   !Richard 9/28/2012
 
 define target_d206b_pag {value min(ad_d206b_pag, demand_prj_69*con_d206b_pag/con_69_total)}

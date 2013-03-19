@@ -5,6 +5,7 @@ Z.Q. Richard Chen DWR 5/06/2010
 
 Special Feather River Flow Requirments
 
+
 **************************************/
 
 !=========================================================================
@@ -194,7 +195,6 @@ goal lim_C_Orovl_PP135 {
     rhs C_Orovl_PP135_max_
     lhs<rhs penalty 0
     lhs>rhs penalty 99999}
-
 
 define C_Orovl_Rem_max {alias C_Orovl_Rem_max_ kind 'upper-bound' units 'cfs'}
 define C_Orovl_PP135_max {alias C_Orovl_PP135_max_ kind 'upper-bound' units 'cfs'}

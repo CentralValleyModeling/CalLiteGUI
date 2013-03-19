@@ -11,7 +11,7 @@ Z.Q. Richard Chen; DWR; (02/07/2011)
 define EM_MaxExport {lower unbounded upper unbounded kind 'FLOW' units 'CFS'}
 goal setEMMax {
   lhs EM_MaxExport
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     rhs 999999.}
   case NoSalinityControlPossible{
@@ -38,7 +38,7 @@ goal setEMMax {
 define EM_MRDO {lower unbounded upper unbounded kind 'FLOW' units 'CFS'}
 goal setEMmrdo {
   lhs EM_MRDO
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     rhs 0.}  
   case NoSalinityControlPossible{
@@ -65,7 +65,7 @@ goal setEMmrdo {
 define EM_ReqSac {lower unbounded upper unbounded kind 'FLOW' units 'cfs'}
 goal set_EM_ReqSac {
   lhs EM_ReqSac
-  case D1641Off{
+  case DRegsOff{
     condition EM_DLTSW == 0
     rhs 0.}  
   case NoSalinityControlPossible{

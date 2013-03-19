@@ -3,7 +3,7 @@ JerseyPoint_output.wresl
 
 Nazrul Islam; DWR; (06/27/2010)
 
-Add a switch to turn off D1641 constrain at JerseyPoint
+Add a switch to turn off D1641/D1485 constrain at JerseyPoint
 Z.Q. Richard Chen; DWR; (02/07/2011)
 **************************/
 
@@ -14,7 +14,7 @@ define netDeltaInflow {alias AD_SJR + AD_Calaveras + AD_Mokelumne /* + C_YoloBP*
 define JP_MaxExport {lower unbounded upper unbounded kind 'FLOW' units 'CFS'}
 goal setJPMax {
   lhs JP_MaxExport
-          case D1641Off{
+          case DRegsOff{
             condition JP_DLTSW == 0
           rhs 999999. }
   case NoSalinityControlPossible{
@@ -42,7 +42,7 @@ goal setJPMax {
 define JP_MRDO {lower unbounded upper unbounded kind 'FLOW' units 'CFS'}
 goal setJPmrdo {
   lhs JP_MRDO
-           case D1641Off{
+           case DRegsOff{
             condition JP_DLTSW == 0
           rhs 0.} 
   case NoSalinityControlPossible{
@@ -69,7 +69,7 @@ goal setJPmrdo {
 define JP_ReqSac {lower unbounded upper unbounded kind 'FLOW' units 'cfs'}
 goal set_JP_ReqSac {
   lhs JP_ReqSac
-           case D1641Off{
+           case DRegsOff{
             condition JP_DLTSW == 0
             rhs 0.}   
   case NoSalinityControlPossible{

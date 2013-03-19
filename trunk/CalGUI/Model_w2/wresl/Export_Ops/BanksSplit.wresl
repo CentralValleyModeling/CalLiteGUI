@@ -11,7 +11,6 @@ and CVP dedicated export.
 define D_Banks_swp {std KIND 'FLOW-DELIVERY' UNITS 'CFS'} ! SWP Banks
 
 define D_Banks_cvp {std kind 'FLOW-DELIVERY' UNITS 'CFS'} ! Total CVP wheeling at Banks
-
 define D_Banks_cvc {std kind 'FLOW-DELIVERY' UNITS 'CFS'} ! CVC wheeling at Banks
 define D_Banks_cvcrels {std kind 'FLOW-DELIVERY' UNITS 'CFS'} ! CVC - Released Water
 define D_Banks_cvcsurp {std kind 'FLOW-DELIVERY' UNITS 'CFS'} ! CVC - Surplus Only
@@ -36,18 +35,24 @@ define SurpTerms {std kind 'FLOW-CHANNEL' units 'CFS'}
 
 goal totalBanks {D_Banks = D_Banks_swp + D_Banks_cvp} 
 
-goal totalcvpWheel {D_Banks_cvp = D_Banks_cvc + D_Banks_cvpwhl /*+ D_Banks_cvpded*/} ! Total Wheeling at Banks for CVP.
+if int(PBwheel_ON)==1{
+	define D_Banks_whlpb {std kind 'FLOW-DELIVERY' UNITS 'CFS'} ! CVP payback wheeling at Banks (D-1485)	
+	goal totalcvpWheel {D_Banks_cvp = D_Banks_whlpb + D_Banks_cvc + D_Banks_cvpwhl}	 ! Total Wheeling at banks (payback + CVC + CVP wheeling to CVP San Luis).
+}
 
-!goal totalcvpded {D_Banks_cvpded = D_Banks_cvpded_exp1 + D_Banks_cvpded_exp2}
-
-goal totalcvcwhl {D_Banks_cvc = D_Banks_cvcrels + D_Banks_cvcsurp}
-goal totalcvcsurp {D_Banks_cvcsurp = D_Banks_cvcsurp1 + D_Banks_cvcsurp2}
+if int(PBwheel_ON)==0{
+	goal totalcvpWheel {D_Banks_cvp = D_Banks_cvc + D_Banks_cvpwhl}	 ! Total Wheeling at banks (CVC + CVP wheeling to CVP San Luis).
+}
 
 goal totaljpodwhl {D_Banks_cvpwhl = D_Banks_whlrels + D_Banks_whlsurp}
 goal totalcvpwhlsurp {D_Banks_whlsurp = D_Banks_whlsurp1 + D_Banks_whlsurp2}
+goal SetSurp1Terms {Surp1Terms = D_Banks_cvcsurp1 + D_Banks_whlsurp1}
+goal SetSurp2Terms {Surp2Terms = D_Banks_cvcsurp2 + D_Banks_whlsurp2}
+objective ObjWhlsurp {
+	[D_Banks_whlsurp1, -0.03]
+	[D_Banks_whlsurp2, -0.04]
+}
+goal totalcvcwhl {D_Banks_cvc = D_Banks_cvcrels + D_Banks_cvcsurp}
+goal totalcvcsurp {D_Banks_cvcsurp = D_Banks_cvcsurp1 + D_Banks_cvcsurp2}
 
-goal SetSurp1Terms {Surp1Terms = D_Banks_cvcsurp1 + D_Banks_whlsurp1 }
-goal SetSurp2Terms {Surp2Terms = D_Banks_cvcsurp2 + D_Banks_whlsurp2 }
 goal SetSurpTerms {SurpTerms = Surp1Terms + Surp2Terms}
-
-

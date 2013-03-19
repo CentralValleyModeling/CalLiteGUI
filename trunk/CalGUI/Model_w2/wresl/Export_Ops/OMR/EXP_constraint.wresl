@@ -43,7 +43,6 @@ define Comb_exp_dec_RPA_ {alias Comb_exp_dec_RPA kind 'temp' units 'cfs'}
 define MAXEXP_RPA_CVP {value max(jonesminpump,d_jones[BASE] - CVP_exp_dec_RPA - 0.5*Comb_exp_dec_RPA) }
 define MAXEXP_RPA_SWP {value max(banksminpump,d_banks[base] - SWP_exp_dec_RPA - 0.5*Comb_exp_dec_RPA) }
 
-
 goal set_MAXEXP_RPA_SWP {
     lhs     D_Banks_swp
     case BOSWITCHON {
@@ -73,7 +72,7 @@ goal set_MAXEXP_RPA {
     }
 
 define MAXEXP_RPAdv {alias MAXEXP_RPA kind 'EXPORT-LIMIT' units 'CFS'}
-    
+
 /***
 goal set_MAXEXP_RPA_SWP {
     lhs     D_Banks

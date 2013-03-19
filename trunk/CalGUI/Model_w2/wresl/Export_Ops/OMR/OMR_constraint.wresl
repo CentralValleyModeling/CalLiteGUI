@@ -35,7 +35,6 @@ define OMR_RPA {value  OMR_RPA_FWS }!{value max(OMR_RPA_FWS,OMR_RPA_LF)}
 define CCWDFraction {value (D408_OR_max + D408_VC_max)/(D408_RS_max + D408_OR_max + D408_VC_max)}
 define Qsod_noExp { value 0. + D408D416_est*CCWDFraction + netDICU_SOD}
 
-
 ! Action triggers
 define C408_limit_init {
      case DEC_MAR{
@@ -96,6 +95,8 @@ define Qomr_Udef   {
 ! Split arcs and Goals to force impacts of actions at pumps
 !*********************************************************************************************
 ! C408_Base represents the OMR flow not including COA related pumping at Banks or jones
+
+
 /***
 define D_Banks_CVPDEDEX1TD {std kind 'FLOW-DELIVERY' UNITS 'CFS'}  !it orginally defined in Split_IFTD.wresl
 goal setD_Banks_CVP_TD  {                                          !it is used in OMR_constraint_CL.wresl
@@ -137,6 +138,7 @@ define SWP_exp_dec_ {alias SWP_exp_dec kind 'temp' units 'cfs'}
 define CVP_exp_dec_ {alias CVP_exp_dec kind 'temp' units 'cfs'}
 define Comb_exp_dec_ {alias Comb_exp_dec kind 'temp' units 'cfs'}
 
+
 goal set_C408NoEXP1 {                        
      lhs C408_NoEXP1 
     case BOSWITCHON {
@@ -144,6 +146,7 @@ goal set_C408NoEXP1 {
      rhs C_OMR + D_Banks_EXP1 + D_Jones_EXP1 !+ D_Banks_CVPDEDEX1TD
      }
      }
+
 /*
 goal bound_D419 {
   lhs     D_Banks_EXP1
@@ -163,6 +166,7 @@ goal bound_D418 {
     lhs<rhs penalty    0}
 }
 */
+
 !Implement shared export capacity under the OMR constraint for SWP exports.
 goal bound_D419 {
   lhs     D_Banks_swp
@@ -182,3 +186,7 @@ goal bound_D418 {
     lhs>rhs    penalty 1285
     lhs<rhs penalty    0}
 }
+
+
+ 
+

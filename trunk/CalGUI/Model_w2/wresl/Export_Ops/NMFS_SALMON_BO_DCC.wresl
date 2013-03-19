@@ -10,7 +10,7 @@ NMFS BO Action 4.1.2
 !define Action_4_1_2 {select Option from options where Index=2}
 
 ! get D1641 days open
-define D1641_days_open   {select days_open from xchanneldays where month=month}
+define D1641_days_open   {select days_open_D1641 from xchanneldays where month=month}
 
 ! check Wilkins Slough flow for likelihood of flushing flows > 7500 cfs on a daily basis
 define WlknSlFlush_prob {value min( max( 0.0064 * C_Wilkns[Base] / daysin - 36.175 / daysin, 0.), 1.) }
@@ -29,7 +29,7 @@ define NMFSdaysopentarg {
         value 0. }
     case otherwise {
         condition always
-        value D1641_days_open }   ! no added restrictions
+        value daysin }   ! no added restrictions
 }
 define NMFSdaysopentgdv  {alias NMFSdaysopentarg kind 'DCC-DAYS-OPEN' UNITS 'NONE'}  !for output only
 
@@ -100,7 +100,7 @@ define NMFS_days_open {
         value NMFSdaysopentarg }
     case otherwiseALL {
         condition always
-        value D1641_days_open }
+        value daysin }
 }
 define NMFSdaysopendv  {alias NMFS_days_open kind 'DCC-DAYS-OPEN' UNITS 'NONE'}  !for output only
 

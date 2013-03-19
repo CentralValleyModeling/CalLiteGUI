@@ -7,9 +7,13 @@ Sets minimum flow on Trinity River below Lewiston.
 *************************************/
 
 define minflow_C_Lewiston { 
-       select       river_q
-       from         Trinitymin
-       where        month=month, wyt_TRIN=wyt_TRIN}
+	case LowerMinFlows{
+		condition Trnty_DLTSW == 3
+		select river_q_low from Trinitymin where month=month, wyt_TRIN=wyt_TRIN}
+	case HigherMinFlows{
+		condition always
+		select river_q_high from Trinitymin where month=month, wyt_TRIN=wyt_TRIN}
+}
 
 goal TrinityMin {C_Lwstn_MIF < minflow_C_Lewiston }
 
