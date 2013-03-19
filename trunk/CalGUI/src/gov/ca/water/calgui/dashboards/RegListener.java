@@ -49,6 +49,7 @@ public class RegListener implements ItemListener {
 		// was "e.getItemSelected"
 		String cName = component.getName();
 		if (cName != null) {
+			System.out.println(cName);
 
 			if (cName.startsWith("rdbRegQS")) {
 				// Quick Select Radio Button Selected

@@ -713,9 +713,10 @@ public class FileAction implements ActionListener {
 
 				File ft = new File(scenGeneratedDir_absPath);
 
-				for (File file : ft.listFiles()) {
-					FileDeleteStrategy.FORCE.delete(file);
-				}
+				if (ft.listFiles() != null)
+					for (File file : ft.listFiles()) {
+						FileDeleteStrategy.FORCE.delete(file);
+					}
 
 				// create DSS, Lookup, and external folders
 

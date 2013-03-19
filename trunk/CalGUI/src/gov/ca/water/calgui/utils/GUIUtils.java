@@ -305,36 +305,42 @@ public class GUIUtils {
 					break;
 				String[] tokens = textinLine.split(delims);
 
-				// System.out.println(textinLine);
 				comp = tokens[0];
-				value = tokens[1];
+				if (tokens.length > 1)
+					value = tokens[1];
+				else
+					value = null;
+
+				System.out.println(comp);
 				JComponent component = (JComponent) swix.find(comp);
 
-				// System.out.println(component.getName());
-
-				if (component instanceof JCheckBox || component instanceof JRadioButton) {
-					if (value.toLowerCase().equals("true")) {
-						val = true;
-					} else if (value.toLowerCase().equals("false")) {
-						val = false;
-					}
-					((AbstractButton) component).setSelected(val);
-				} else if (component instanceof JSpinner) {
-					JSpinner spn = (JSpinner) component;
-					if (value.matches("((-|\\+)?[0-9])+")) {
-						val1 = Integer.parseInt(value);
-						spn.setValue(val1);
-					} else {
-						spn.setValue(value);
-					}
-
+				if (component == null) {
+					System.out.println("Not found: " + comp);
 				} else {
-					if (component != null) {
-						((JTextComponent) component).setText(value);
-						// System.out.println(comp +": " + value);
+
+					if (component instanceof JCheckBox || component instanceof JRadioButton) {
+						if (value.toLowerCase().equals("true")) {
+							val = true;
+						} else if (value.toLowerCase().equals("false")) {
+							val = false;
+						}
+						((AbstractButton) component).setSelected(val);
+					} else if (component instanceof JSpinner) {
+						JSpinner spn = (JSpinner) component;
+						if (value.matches("((-|\\+)?[0-9])+")) {
+							val1 = Integer.parseInt(value);
+							spn.setValue(val1);
+						} else {
+							spn.setValue(value);
+						}
+
+					} else {
+						if (component != null) {
+							System.out.println(comp + "<-" + value + ">");
+							((JTextComponent) component).setText(value);
+						}
 					}
 				}
-
 			}
 
 			// Read in tablemodel data
@@ -354,23 +360,19 @@ public class GUIUtils {
 
 					String[] files = fileName.split("[|]");
 					int size = files.length;
+					String prefix = System.getProperty("user.dir") + "/Default/Lookup/";
 
 					if (size == 1) {
 						// CASE 1: 1 file specified
-						fileName = System.getProperty("user.dir") + "/Default/Lookup/" + fileName + ".table";
-						File fn = new File(fileName);
-						Boolean exists = fn.exists();
+						fileName = prefix + fileName + ".table";
 					} else if (size == 2) {
 						// CASE 2: 2 files specified
-						fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[0] + ".table";
+						fileName = prefix + files[0] + ".table";
 						File fn = new File(fileName);
-						Boolean exists = fn.exists();
-						if (exists) {
-							fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[1] + ".table";
+						if (fn.exists()) {
+							fileName = prefix + files[1] + ".table";
 							fn = new File(fileName);
-							exists = fn.exists();
-							fileName = System.getProperty("user.dir") + "/Default/Lookup/" + files[0] + ".table" + "|"
-							        + System.getProperty("user.dir") + "/Default/Lookup/" + files[1] + ".table";
+							fileName = prefix + files[0] + ".table" + "|" + fileName;
 						}
 					}
 
