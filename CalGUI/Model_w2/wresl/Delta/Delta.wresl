@@ -9,9 +9,13 @@ Richard Chen 4/20/2011 add User Defined Qwest constrain (C_SJRVI-Venice Island)
 *************************************/
 
 Include 'SpecProjects.wresl'
-Include 'vallejo.wresl'  
-define nmfs_days_open {value daysin}
-Include 'xc-gates.wresl'                 
+Include 'vallejo.wresl'
+
+if int(AN_DLTSW)==0 .and. int(CH_DLTSW)==0 {
+	define nmfs_days_open {value daysin}
+	Include 'xc-gates.wresl' 
+}
+
 Include 'delta-outflow.wresl' 
 ! MRDO
 include 'Delta_ANN.wresl'

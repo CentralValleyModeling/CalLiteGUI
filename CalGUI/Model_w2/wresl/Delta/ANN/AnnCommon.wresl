@@ -181,9 +181,12 @@ define VernWQfinalsv {
     case VAMPon {
         condition VAMP_DLTSW == 1
         value VernWQfinal_v}
+    case VAMPD1485on {
+    	condition VAMP_DLTSW == 3
+    	value VernWQfinal_v}
     case otherwise {
         condition always
-        value VernWQfinal_vo}
+        value VernWQfinal_vo}  !take VAMP "off" hydrology
 }
 define VernWQfinal     {std kind 'Salinity-EC' units 'umhos/cm'}
 goal setVernWQfinal {VernWQfinal = VernWQfinalsv}
@@ -194,6 +197,9 @@ define SJR_ann_est {
     case VAMPon {
         condition VAMP_DLTSW == 1
         value SJR_ann_est_v}
+    case VAMPD1485on {
+    	condition VAMP_DLTSW == 3
+    	value SJR_ann_est_v}
     case otherwise {
         condition always
         value SJR_ann_est_vo}

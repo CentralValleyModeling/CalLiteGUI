@@ -9,22 +9,22 @@ Jersey Point salinity standard:
 14-day running average EC may not exceed the standard for the periods listed below (mmhos):
 water-year-type:    0.45 EC April 1 to:    Ec from date shown to Aug 15:
 Wet                 Aug 15                 --
-Above Normal        Jul 1                  0.63
-Below Normal        Jun 20                 1.14
-Dry                 Jun15                  1.67
-Critical            --                     2.78
+Above Normal        Aug 15                 --
+Below Normal        Jun 20                 0.74
+Dry                 Jun 15                 1.35
+Critical            --                     2.20
 
 These standards are modified to account to the monthly time-step.
 Modified values are derived from an exponential weighting function.
 Modified values are in salinity_std_jpt_new.table.
 
-Add a switch to turn off D1641 constrain at JerseyPoint
+Add a switch to turn off D1641/D1485 constrain at JerseyPoint
 Z.Q. Richard Chen; DWR; (02/07/2011)
 ************************************/
 
 ! calculate previous month's value of salinity
 define JP_EC_Month_sv {
-         case D1641Off{
+         case DRegsOff{
           condition JP_DLTSW == 0
           value 99000.} 
   case lastWaterYear {
@@ -62,7 +62,7 @@ goal setJP_EC_MON {JP_EC_Month = JP_EC_Month_sv}
 
 ! define the EC standard for Jersey Point (millimhos/cm)
 define JP_EC_STD_lookup {
-         case D1641Off{
+         case DRegsOff{
           condition JP_DLTSW == 0
           value 99.0} 
   case AprToAug {
@@ -82,7 +82,7 @@ goal JPECstandout {JP_EC_STD = JP_EC_STD_sv}
 !get slope and intercept for constraint exp<=m*sac+b
 
 define JP_b_sv {
-         case D1641Off{
+         case DRegsOff{
           condition JP_DLTSW == 0
           value 999999.} 
   case control{
@@ -103,7 +103,7 @@ define JP_b_sv {
     value 999999.}
 }
 define JP_m_sv {
-         case D1641Off{
+         case DRegsOff{
           condition JP_DLTSW == 0
           value 0.} 
   case reducecalls {
@@ -134,7 +134,7 @@ goal setJP_b {JP_b = JP_b_sv}
 !****************************************************************************************
 !Get the required Sac flow for ZERO exports
 define JP_Sac_ZeroExp_sv1 {
-         case D1641Off{
+         case DRegsOff{
           condition JP_DLTSW == 0
           value 0.} 
   case NoSalinityControlPossible{

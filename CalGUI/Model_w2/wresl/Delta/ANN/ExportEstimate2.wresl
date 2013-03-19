@@ -25,28 +25,60 @@ define pulse_cap {
 			value min(EstSWPSodExp+EstCVPSodExp, max(1500.0, AD_SJR_Pulse))}
 }
 
-define EstTotExp {
-  case NoSalinityControlPossible{
-    condition abs(JP_m_sv) <= 0.001 .and. int(JP_b_sv) == 0 .or.
-              abs(EM_m_sv) <= 0.001 .and. int(EM_b_sv) == 0 .or.
-              abs(CO_m_sv) <= 0.001 .and. int(CO_b_sv) == 0 .or.
-              abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0
-    value ExportCap}
-  case HighCost{
-    condition JP_Sac_ZeroExp_sv2 >= ANNcap .or.
-              EM_Sac_ZeroExp_sv2 >= ANNcap .or.
-              CO_Sac_ZeroExp_sv2 >= ANNcap .or.
-              RS_Sac_ZeroExp_sv2 >= ANNcap
-    value ExportCap}
-  case vamp_apr{
-    condition month == APR
-    value (EstSWPSodExp+EstCVPSodExp)*14.0/daysin + pulse_cap*16.0/daysin}
-  case vamp_may{
-    condition month == MAY
-    value (EstSWPSodExp+EstCVPSodExp)*16.0/daysin + pulse_cap*15.0/daysin}
-  case normal{
-    condition always
-    value EstSWPSodExp + EstCVPSodExp}
+if int(AN_DLTSW)==3 .and. int(CH_DLTSW)==3 {
+	define EstTotExp {
+	  case NoSalinityControlPossible{
+	    condition abs(JP_m_sv) <= 0.001 .and. int(JP_b_sv) == 0 .or.
+		      abs(EM_m_sv) <= 0.001 .and. int(EM_b_sv) == 0 .or.
+		      abs(CO_m_sv) <= 0.001 .and. int(CO_b_sv) == 0 .or.
+		      abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0 .or.
+		      abs(AN_m_sv) <= 0.001 .and. int(AN_b_sv) == 0 .or.
+		      abs(CH_m_sv) <= 0.001 .and. int(CH_b_sv) == 0
+	    value ExportCap}
+	  case HighCost{
+	    condition JP_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      EM_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      CO_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      RS_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      AN_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      CH_Sac_ZeroExp_sv2 >= ANNcap
+	    value ExportCap}
+	  case vamp_apr{
+	    condition month == APR
+	    value (EstSWPSodExp+EstCVPSodExp)*14.0/daysin + pulse_cap*16.0/daysin}
+	  case vamp_may{
+	    condition month == MAY
+	    value (EstSWPSodExp+EstCVPSodExp)*16.0/daysin + pulse_cap*15.0/daysin}
+	  case normal{
+	    condition always
+	    value EstSWPSodExp + EstCVPSodExp}
+	}
+}
+
+else {
+	define EstTotExp {
+	  case NoSalinityControlPossible{
+	    condition abs(JP_m_sv) <= 0.001 .and. int(JP_b_sv) == 0 .or.
+		      abs(EM_m_sv) <= 0.001 .and. int(EM_b_sv) == 0 .or.
+		      abs(CO_m_sv) <= 0.001 .and. int(CO_b_sv) == 0 .or.
+		      abs(RS_m_1_sv) <= 0.001 .and. int(RS_b_1_sv) == 0
+	    value ExportCap}
+	  case HighCost{
+	    condition JP_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      EM_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      CO_Sac_ZeroExp_sv2 >= ANNcap .or.
+		      RS_Sac_ZeroExp_sv2 >= ANNcap
+	    value ExportCap}
+	  case vamp_apr{
+	    condition month == APR
+	    value (EstSWPSodExp+EstCVPSodExp)*14.0/daysin + pulse_cap*16.0/daysin}
+	  case vamp_may{
+	    condition month == MAY
+	    value (EstSWPSodExp+EstCVPSodExp)*16.0/daysin + pulse_cap*15.0/daysin}
+	  case normal{
+	    condition always
+	    value EstSWPSodExp + EstCVPSodExp}
+	}
 }
 
 define EstTotExpTD {

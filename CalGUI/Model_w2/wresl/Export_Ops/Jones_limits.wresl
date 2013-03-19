@@ -8,7 +8,14 @@ Nazrul Islam DWR (04/27/2010)
 **************************************/
 
 ! Jones Permitted Pumping Amount
-define JonesCapPermit {select PermitCap from JonesLimits where month=month}
+define JonesCapPermit {
+	case D1485 {
+		condition PUMP_DLTSW == 3
+		select PermitCap_D1485 from JonesLimits where month=month}	
+	case D1641 {
+		condition always
+		select PermitCap_D1641 from JonesLimits where month=month}
+}
 
 ! Jones Physical Capactiy
 define JonesCapPhys {select PhysCap from JonesLimits where month=month }

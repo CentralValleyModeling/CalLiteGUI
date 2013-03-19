@@ -297,7 +297,7 @@ goal setswp_alloc {swp_alloc_ = swp_alloc}
 
 !Percent delivery
 define swp_perdel {value max(0.0,(swp_allocation_final-tableA_loss)/SWP_TableA)}
-define swp_perdeldv {alias swp_perdel kind 'swp-delivery' units 'none'}
+define swp_perdeldv {alias swp_perdel kind 'swp-delivery' units 'percent'}
 
 ! Read in user-defined percent of maximum interruptible demands to use
 define perdel_swp_int 
@@ -344,5 +344,3 @@ define deltar_drymn_dv	{alias deltar_drymin	 kind 'swp_debug' units 'taf'}
 define swp_alloc_1dv    {alias swp_allocation_1 kind 'swp_debug' units 'taf'}
 define swp_alloc_2dv    {alias swp_allocation_2 kind 'swp_debug' units 'taf'}
 define swp_alloc_3dv    {alias swp_allocation_3 kind 'swp_debug' units 'taf'}
-
-

@@ -33,6 +33,7 @@ define est_oro_release{
 	value 0.75*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
 }
 
+
 define EstSWPSodExp {value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300., est_oro_release))}
 
 define exp_est_SWP {alias EstSWPSodExp kind 'EXPORT-ESTIMATE' units 'CFS'}
@@ -71,11 +72,12 @@ define JonesMinPumpLevel {
                 value 800.0 }
 }
 ! export for south-of-delta CVP: demand + rulecurve
-define maxJonescalc1 {value min(JonesMaxAllow,
+if int(PBwheel_ON)==0{
+	define maxJonescalc1 {value min(JonesMaxAllow,
                      4400+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs,
                      4200+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs+perdel_cvpag_s*CVP_pag_ratio_s*dem_D701_pag*taf_cfs+dem_D702_pls*taf_cfs) }
-
-define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
+	define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
+}
 
 define CVPexportcap {value maxJonescalc + CVPDedBanksSwitch*BanksMaxAllowCVP}
 

@@ -6,8 +6,9 @@ Required sac flow for estimated exports considering all ann stations:
 define AnnSacReq {value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExp/0.65+6000.)}
 
 *************************************************/
+if int (AN_DLTSW)==3 {define AnnSacReq_max {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac)}}
+else {define AnnSacReq_max {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}}
 
-define AnnSacReq_max {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
 define AnnSacReqmaxdv {alias AnnSacReq_max kind 'FLOW' units 'CFS'}
 
 define AnnSacReq {value min(AnnSacReq_max,EstTotExpTD/0.65+7000.)}

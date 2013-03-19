@@ -143,7 +143,7 @@ define acvpdel_rf_s { value perdel_cvprf_s * acvpdem_prf_s * CVP_prf_ratio_s}
 define acvpdel_tot_s { value acvpdel_ag_s + acvpdel_mi_s + acvpdel_ex_s + acvpdel_rf_s + acvpdem_pls_s }
 
 ! Final Percent Delivery for output
-define perdv_cvpag_s { alias  perdel_cvpag_s kind 'percent-delivery' units 'none'}
+define perdv_cvpag_s { alias  perdel_cvpag_s kind 'percent-delivery' units 'percent'}
 define perdv_cvpmi_s { alias  perdel_cvpmi_s kind 'percent-delivery' units 'none'}
 define perdv_cvpex_s { alias  perdel_cvpex_s kind 'percent-delivery' units 'none'}
 define perdv_cvprf_s { alias  perdel_cvprf_s kind 'percent-delivery' units 'none'}

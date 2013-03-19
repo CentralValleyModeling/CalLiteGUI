@@ -28,6 +28,33 @@ define est_req_sac_rs {
 }
 define req_sac_est_rs {alias est_req_sac_RS kind 'ESTIMATE' units 'CFS'}
 
+!Antioch
+if int(AN_DLTSW)==3 {
+	define est_req_sac_an {
+	  case NegCarriage{
+	    condition an_m_sv >= 1.0
+	    value (est_exp_2-an_b_sv)/an_m_sv}
+	  case Normal {
+	    condition always
+	    value 0.}
+	}
+	define req_sac_est_an {alias est_req_sac_an kind 'ESTIMATE' units 'CFS'}
+}
+
+
+!Chipps
+if int(CH_DLTSW)==3 {
+	define est_req_sac_ch {
+	  case NegCarriage{
+	    condition ch_m_sv >= 1.0
+	    value (est_exp_2-ch_b_sv)/ch_m_sv}
+	  case Normal {
+	    condition always
+	    value 0.}
+	}
+	define req_sac_est_ch {alias est_req_sac_ch kind 'ESTIMATE' units 'CFS'}
+}
+
 goal target_sac{
   lhs C_Hood_ANN 
 !/* Don't use this goal if IF is available as alternate export pathway

@@ -152,6 +152,9 @@ goal COA_SWP { D_Banks_EXP1 + 2./3.*D_Napa + 2./3.* D_Solano + Surp2Terms = SWPD
 goal setUNUSED_FS { D_Banks_EXP2 < UNUSED_FS }
 goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
+
+
+if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {
   
 ! The projects share available export capacity when EI is controlling.
 
@@ -245,4 +248,6 @@ goal AprMay_split_cvp {
      lhs>rhs    penalty 1290
      lhs<rhs        penalty 0
      }
+}
+
 }

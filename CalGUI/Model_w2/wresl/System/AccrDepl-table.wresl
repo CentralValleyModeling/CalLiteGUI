@@ -386,6 +386,9 @@ define AD_SJR {
 	case VAMPon {
 		condition VAMP_DLTSW == 1
 		value AD_SJR_v}
+    	case VAMPD1485on {
+    		condition VAMP_DLTSW == 3
+    		value AD_SJR_v}
 	case otherwise {
 		condition always
 		value AD_SJR_vo}
@@ -394,7 +397,10 @@ define AD_SJR_VAMP {
 	case VAMPon {
 		condition VAMP_DLTSW == 1
 		value AD_SJR_VAMP_v}
-	case otherwise {
+    	case VAMPD1485on {
+    		condition VAMP_DLTSW == 3
+    		value AD_SJR_VAMP_v}
+    	case otherwise {
 		condition always
 		value AD_SJR_VAMP_vo}
 }
@@ -402,7 +408,10 @@ define AD_SJR_Pulse {
 	case VAMPon {
 		condition VAMP_DLTSW == 1
 		value AD_SJR_Pulse_v}
-	case otherwise {
+    	case VAMPD1485on {
+    		condition VAMP_DLTSW == 3
+    		value AD_SJR_Pulse_v}
+    	case otherwise {
 		condition always
 		value AD_SJR_Pulse_vo}
 }

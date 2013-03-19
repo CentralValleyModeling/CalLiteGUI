@@ -9,7 +9,7 @@ ARTIFICIAL NEURAL NETWORK IMPLEMENTATION - CONTRA COSTA-ROCK SLOUGH CORRELATION
 
 ! calculate previous month's value of salinity (using ann directly)
 define RS_EC_Month_sv {
-                  case D1641Off{
+                  case DRegsOff{
                     condition RS_DLTSW == 0
                     value 99000.0}
   case lastWaterYear {
@@ -99,7 +99,7 @@ define RS_EC_STD_225 {value (225. + 50)/0.285}
 
 !*****Linearization #1***************************************************************
 define RS_b_1_sv {
-                  case D1641Off{
+                  case DRegsOff{
                     condition RS_DLTSW == 0
                     value 999990.0}
   case D1641 {
@@ -118,7 +118,7 @@ define RS_b_1_sv {
                      }
 }
 define RS_m_1_sv {
-  case D1641Off{
+  case DRegsOff{
      condition RS_DLTSW == 0
      value 0.0}
   case reducecalls {
@@ -145,7 +145,7 @@ goal setRS_b_1 {RS_b_1 = RS_b_1_sv}
 
 !*****Linearization #2***************************************************************
 define RS_b_2_sv {
-  case D1641Off{
+  case DRegsOff{
     condition RS_DLTSW == 0
     value 0.0}
   case line1infeas {
@@ -176,7 +176,7 @@ define RS_b_2_sv {
                     int(RS),int(intercept),int(ann_type),month,wateryear,2)}
 }
 define RS_m_2_sv {
-  case D1641Off{
+  case DRegsOff{
     condition RS_DLTSW == 0
     value 0.0}
 
@@ -217,7 +217,7 @@ goal setRS_b_2 {RS_b_2 = RS_b_2_sv}
 
 !*****Linearization #3***************************************************************
 define RS_b_3_sv {
-   case D1641Off{
+   case DRegsOff{
     condition RS_DLTSW == 0
     value 999999.0}
   case Linear1And2Fail {
@@ -261,7 +261,7 @@ define RS_b_3_sv {
                     int(RS),int(intercept),int(ann_type),month,wateryear,3)}
 }
 define RS_m_3_sv {
-                  case D1641Off{
+                  case DRegsOff{
                     condition RS_DLTSW == 0
                     value 0.0}
   case reducecalls {
@@ -315,7 +315,7 @@ goal setRS_b_3 {RS_b_3 = RS_b_3_sv}
 !********************************************************************
 !Get the required Sac flow for ZERO exports
 define RS_Sac_ZeroExp_sv1 {
-  case D1641Off{
+  case DRegsOff{
     condition RS_DLTSW == 0
     value 0.0}
   case LowCL {

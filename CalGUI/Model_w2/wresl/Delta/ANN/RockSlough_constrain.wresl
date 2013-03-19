@@ -7,7 +7,7 @@ Set constraints for exports not to exceed the limit
 !*****Linearization #1***************************************************************
 goal meetRS_1 {
   lhs D_ExpTD - exp_ann_relax
-                 case D1641Off{
+                 case DRegsOff{
                    condition RS_DLTSW == 0
                    rhs ExportCapacity
                    lhs<rhs penalty 0}  
@@ -28,7 +28,6 @@ goal meetRS_1 {
     rhs ExportCap
     lhs<rhs penalty 0}
   case LargeNegInt{
-!    condition abs(RS_m_1_sv) >= 1.0
     condition RS_b_1_sv < -10000.0
     rhs 999999.
     lhs<rhs penalty 0}
@@ -41,7 +40,7 @@ goal meetRS_1 {
 !*****Linearization #2***************************************************************
 goal meetRS_2 {
   lhs D_ExpTD - exp_ann_relax
-                   case D1641Off{
+                   case DRegsOff{
                      condition RS_DLTSW == 0
                      rhs ExportCapacity
                      lhs<rhs penalty 0}    
@@ -64,7 +63,7 @@ goal meetRS_2 {
   case LargeNegInt{
     condition RS_b_2_sv < -10000.0
     rhs 999999.
-  	lhs<rhs penalty 0}
+    lhs<rhs penalty 0}
   case NegCarriage{
     condition RS_m_2_sv >= 1.0
     rhs 999999.
@@ -78,7 +77,7 @@ goal meetRS_2 {
 !*****Linearization #3***************************************************************
 goal meetRS_3 {
   lhs D_ExpTD - exp_ann_relax
-                     case D1641Off{
+                     case DRegsOff{
                        condition RS_DLTSW == 0
                        rhs ExportCapacity
                      lhs<rhs penalty 0}  
@@ -102,7 +101,7 @@ goal meetRS_3 {
   case LargeNegInt{
     condition RS_b_3_sv < -10000.0
     rhs 999999.
-    lhs<rhs penalty 0}  
+    lhs<rhs penalty 0}
   case NegCarriage{
     condition RS_m_3_sv >= 1.0
     rhs 999999.
