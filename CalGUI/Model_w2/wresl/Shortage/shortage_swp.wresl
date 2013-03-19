@@ -212,8 +212,8 @@ define short_swp_pag   {alias short_swp_pag_n + short_swp_pag_s kind  'delivery-
 define short_swp_pmi   {alias short_swp_pmi_n + short_swp_pmi_s kind  'delivery-shortage-swp' units 'cfs'}
 define short_swp_total {alias short_swp_pwr + short_swp_pag + short_swp_pmi + short_swp_pls kind  'delivery-shortage-swp' units 'cfs'}
 
-define del_swp_tot_north {alias del_swp_pwr + del_swp_pag_n + del_swp_pmi_n kind  'delivery-swp' units 'cfs'}  !defined in swpcvpdeloutput.wresl
-define del_swp_tot_south {alias del_swp_pag_s + del_swp_pmi_s + del_swp_pls kind  'delivery-swp' units 'cfs'} !defined in swpcvpdeloutput.wresl
+define del_swp_other_north {alias del_swp_pwr + del_swp_pag_n + del_swp_pmi_n kind  'delivery-swp' units 'cfs'}  !Other SWP Deliveries in the North (water rights, agricultural, and M&I)
+define del_swp_other_south {alias del_swp_pag_s + del_swp_pmi_s + del_swp_pls kind  'delivery-swp' units 'cfs'} !Other SWP Deliveries in the South (agricultural, M&I, and losses)
 define del_swp_pag   {alias del_swp_pag_n + del_swp_pag_s kind  'delivery-swp' units 'cfs'}
 define del_swp_pmi   {alias del_swp_pmi_n + del_swp_pmi_s kind  'delivery-swp' units 'cfs'}
 define del_swp_total {alias del_swp_pag   + del_swp_pmi + del_swp_pls kind 'delivery-swp' units 'cfs'}
