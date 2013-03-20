@@ -18,7 +18,7 @@ echo off
 
 :-------------------------------------------------------:
 : dir for sty file generation (read by groundwater.dll) :
-:-------------------------------------------------------:
+:-------------------------------------------------------:  
 
 set t=%ConfigFilePath%
 set t=%t::=@%
@@ -73,6 +73,6 @@ set PATH=%ExternalDir%;%JarDir%
 
 
 
-%Java_Bin%/../../../jre6/bin/java -Xmx1472m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% wrimsv2.components.ControllerBatch -config="%configFilePath%"
+%Java_Bin%/../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% wrimsv2.components.ControllerBatch -config="%configFilePath%"
 
 pause
