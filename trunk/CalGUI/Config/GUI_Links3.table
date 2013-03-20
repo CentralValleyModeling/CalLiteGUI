@@ -89,7 +89,6 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 518	null	null	null	null	null
 519	null	null	null	null	null
 520	null	null	null	null	null
-521	EM_EC_MONTH/SALINITY	null	Y-axis	A SJR PLACEHOLDER FOR JUN	null
 801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
 802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
 803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
@@ -106,3 +105,17 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 904	EXTRAWATER_NDO/EXTRAWATER	null	Extra Water Needed	Net_Delta_Outflow	null
 905	EXTRAWATER_RIOVISTA/EXTRAWATER	null	Extra Water Needed	Sacramento_River_at_Rio_Vista	null
 906	EXTRAWATER_SJR/EXTRAWATER	null	Extra Water Needed	San_Joaquin_River_at_Vernalis	null
+600	S_MELON/STORAGE	null	Storage	New Melones Reservoir Storage	null
+601	S_PEDRO/STORAGE	null	Storage	New Don Pedro Reservoir Storage	null
+602	S_MCLRE/STORAGE	null	Storage	Mclure Reservoir Storage	null
+603	S_MLRTN/STORAGE	null	Storage	Millerton Reservoir Storage	null
+604	C_VRNLIS/FLOW-CHANNEL	null	Flow	Flow from SJR to Vernalis 	null
+605	C_STANRIPON/FLOW-CHANNEL	null	Flow	Flow of Ripon river to SJR	null
+606	C_TUOL/FLOW-CHANNEL	null	Flow	Flow of Tuolumne River to SJR	null
+607	C_MERCED3/FLOW-CHANNEL	null	Flow	Flow of Merced river to SJR	null
+608	C_SJRMS/FLOW-CHANNEL	null	Flow	Flow of SJR at Mud Slough 	null
+609	C_MDOTA/FLOW-CHANNEL	null	Flow	Flow of Mendota	null
+610	D_STANRIPN/FLOW-DELIVERY	null	Deliveries	Delivery of Stanripon	null
+611	D_TUOL2/FLOW-DELIVERY	null	Deliveries	Delivery of Tuolumne	null
+612	D_MERCED3/FLOW-DELIVERY	null	Deliveries	Delivery of Merced	null
+613	D_GRAVF/FLOW-DELIVERY	null	Deliveries	Delivery of Stanripon	null
