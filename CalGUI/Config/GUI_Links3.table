@@ -115,7 +115,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 607	C_MERCED3/FLOW-CHANNEL	null	Flow	Flow of Merced river to SJR	null
 608	C_SJRMS/FLOW-CHANNEL	null	Flow	Flow of SJR at Mud Slough 	null
 609	C_MDOTA/FLOW-CHANNEL	null	Flow	Flow of Mendota	null
-610	D_STANRIPN/FLOW-DELIVERY	null	Deliveries	Delivery of Stanripon	null
-611	D_TUOL2/FLOW-DELIVERY	null	Deliveries	Delivery of Tuolumne	null
-612	D_MERCED3/FLOW-DELIVERY	null	Deliveries	Delivery of Merced	null
-613	D_GRAVF/FLOW-DELIVERY	null	Deliveries	Delivery of Stanripon	null
+610	D_STANRIPN/FLOW-DELIVERY+D_STANGDWN/FLOW-DELIVERY	null	Deliveries	Deliveries of Stanislaus	null
+611	D_TUOL1A/FLOW-DELIVERY+D_TUOL1B/FLOW-DELIVERY+D_TUOL2/FLOW-DELIVERY	null	Deliveries	Deliveries of Tuolumne	null
+612	D_MERCED1/FLOW-DELIVERY+D_MERCED2/FLOW-DELIVERY+D_MERCED3/FLOW-DELIVERY	null	Deliveries	Deliveries of Merced	null
+613	D_MDRCNL/FLOW-DELIVERY+D_FKCNL/FLOW-DELIVERY	null	Deliveries	Deliveries of Friant	null
