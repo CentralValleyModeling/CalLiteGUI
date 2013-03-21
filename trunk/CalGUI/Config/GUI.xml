@@ -2400,7 +2400,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="17" />
 									</checkbox>
-									<checkbox name="ckbp608" id="ckbp608" text="SJR at Mud, Salt slough">
+									<checkbox name="ckbp608" id="ckbp608" text="SJR at Merced">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="18" />
 									</checkbox>
@@ -2425,7 +2425,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="27" />
 									</checkbox>
-									<checkbox name="ckbp613" id="ckbp613" text="Millerton">
+									<checkbox name="ckbp613" id="ckbp613" text="Friant">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="28" />
 									</checkbox>
