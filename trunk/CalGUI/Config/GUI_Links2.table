@@ -1,4 +1,4 @@
-GUI id	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID	D1485/D1641	N/A_D1641	N/A_NOREGULATION	N/A_USER_DEFINED	N/A_D1485
+GUIid	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID	D1485/D1641	N/A_D1641	N/A_NOREGULATION	N/A_USER_DEFINED	N/A_D1485
 hyd_rdb2005	GUI_HydroClimate.table	1	0	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2030	GUI_HydroClimate.table	1	1	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -45,6 +45,13 @@ n/a	GUI_RPAsOtherRegs.table	7	-1	SWP export estimate method: pre-BO estimate: va
 ckbReg2	GUI_RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a
 ckbReg1	GUI_RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a
 ckbReg10	GUI_RPAsOtherRegs.table	10	-2	   EISJR_DLTSW; user defined  2	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	11	-1	B2 Action 1: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	12	-1	B2 Action 2: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	13	-1	B2 Action 3: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	14	-1	B2 Action 4: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	15	-1	B2 Action 5: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	16	-1	B2 Action 6: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbReg10	GUI_RPAsOtherRegs.table	17	-1	B2 Action 7: No action: value=0; Action: value =1	Regulations		n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbReg16	n/a	n/a	n/a	Edit the fraction of unimpaired flow as flow criteria	Regulations	perc_UnimparedFlow	16	16	n/a	n/a	n/a	n/a	n/a
 op_rdb9	GUI_Operations.table	4	-1	Payback Wheeling:  0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 op_rdb6	GUI_Operations.table	1	-1	Cross Valley Wheeling:  0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -52,9 +59,8 @@ op_rdb7	GUI_Operations.table	2	-1	Joint Point of diversion Wheeling:  0 = off, 1
 op_rdb8	GUI_Operations.table	3	-1	Intertie: 0 = off, 1 = on	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9	n/a	n/a	n/a	n/a	n/a
 op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10	n/a	n/a	n/a	n/a	n/a
-<<<<<<< .mine
 VAMP_Flow	GUI_SJR.table	1	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-Vern_RPA 	GUI_SJR.table	2	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+Vern_RPA	GUI_SJR.table	2	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 D1641_Base	GUI_SJR.table	3	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 D1641_SALINITY	GUI_SJR.table	4	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 STAN_RPA	GUI_SJR.table	5	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -67,4 +73,3 @@ ckbRegSJR4	GUI_SJR.table	4	-1	ckbRegSJR4	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR5	GUI_SJR.table	5	-1	ckbRegSJR5	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR6	GUI_SJR.table	6	-1	ckbRegSJR6	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR7	GUI_SJR.table	7	-1	ckbRegSJR7	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
->>>>>>> .r520
