@@ -108,7 +108,7 @@ public class RegulationSetup {
 
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
-		String iDReg = gl.DRegForCtrl(cID);
+		String iDReg = gl.dRegForCtrl(cID);
 
 		if (fileName != null && fileName.length() != 0) {
 
