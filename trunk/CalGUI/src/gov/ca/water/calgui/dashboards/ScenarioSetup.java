@@ -23,7 +23,7 @@ public class ScenarioSetup {
 
 	private static Logger log;
 
-	public static void CheckForScenarioChange(SwingEngine swix, DataFileTableModel[] dTableModels, Boolean[] RegUserEdits,
+	public static void checkForScenarioChange(SwingEngine swix, DataFileTableModel[] dTableModels, Boolean[] RegUserEdits,
 	        GUILinks gl) {
 
 		// *** Determine if scenario has changed.

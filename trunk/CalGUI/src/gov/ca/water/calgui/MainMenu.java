@@ -291,7 +291,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if (RegUserEdits[i] != null) {
 
 				String cID = Integer.toString(i);
-				String cName = gl.CtrlFortableID(cID);
+				String cName = gl.ctrlFortableID(cID);
 
 				JComponent c = (JComponent) swix.find(cName);
 

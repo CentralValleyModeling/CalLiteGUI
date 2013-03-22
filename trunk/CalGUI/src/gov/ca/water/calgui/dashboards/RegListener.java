@@ -177,7 +177,7 @@ public class RegListener implements ItemListener {
 						}
 						RegUserEdits[tID] = true;
 
-						String cName1 = gl.CtrlFortableID(Integer.toString(tID));
+						String cName1 = gl.ctrlFortableID(Integer.toString(tID));
 						JCheckBox ckb = (JCheckBox) swix.find(cName1);
 						String ckbtext = ckb.getText();
 						String[] ckbtext1 = ckbtext.split(" - ");

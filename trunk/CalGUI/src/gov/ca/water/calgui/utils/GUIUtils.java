@@ -234,11 +234,10 @@ public class GUIUtils {
 		if (dTableModels == null) {
 			System.out.println("Tables not initialized");
 		} else {
-			// for (int switchIdx = 1; switchIdx <= 14; switchIdx++) {
 			for (int i = 0; i < GUITables.size(); i++) {
-				String line = GUITables.get(i).toString();
-				String[] parts = line.split("[|]");
+				String[] parts = GUITables.get(i).toString().split("[|]");
 				String cName = parts[0].trim();
+				System.out.println("Table not initialized: " + cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID;
 				if (switchID.equals("n/a")) {
@@ -250,9 +249,9 @@ public class GUIUtils {
 
 				// int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
-					System.out.println("Table not initialized");
+					System.out.println("Table not initialized: " + cName);
 				} else if (!ckb.isSelected() && !cName.startsWith("op_btn")) { // option checked off
-					System.out.println("Table not selected");
+					System.out.println("Table not selected: + cName");
 				} else {
 					Object[][] dataArr;
 					dataArr = dTableModels[tID].getTableData();
@@ -354,7 +353,7 @@ public class GUIUtils {
 
 				String[] tokens = textinLine.split(delims);
 				String cID = tokens[0];
-				String cName = gl.CtrlFortableID(cID);
+				String cName = gl.ctrlFortableID(cID);
 				String fileName = gl.tableNameForCtrl(cName);
 				if (fileName != null) {
 

@@ -41,24 +41,18 @@ public class GUILinks {
 	}
 
 	public String switchIDForCtrl(String ctrlID) {
+		if (mapCtrlToswitchID.get(ctrlID) == null)
+			System.out.println("Couldn't match control '" + ctrlID + "' in GUILinks.java");
 		return mapCtrlToswitchID.get(ctrlID);
 	}
 
-	public String CtrlFortableID(String tID) {
+	public String ctrlFortableID(String tID) {
 		return mapTIDToCtrl.get(tID);
 	}
 
-	public String DRegForCtrl(String ctrlID) {
+	public String dRegForCtrl(String ctrlID) {
 		return mapCtrlToDReg.get(ctrlID);
 	}
-
-	/*
-	 * =======
-	 * 
-	 * /* >>>>>>> .r446 GUILinks.readIn: Method to look read control-to-switch, control-to-table information
-	 * 
-	 * 12/3/2010
-	 */
 
 	public int readIn(String inputFileName) {
 

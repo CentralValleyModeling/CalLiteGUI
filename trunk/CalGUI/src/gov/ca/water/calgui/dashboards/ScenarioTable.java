@@ -171,7 +171,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 			String value = tokens[1];
 			String cID = tokens[0];
-			String cName = gl.CtrlFortableID(cID);
+			String cName = gl.ctrlFortableID(cID);
 			String fileName = gl.tableNameForCtrl(cName);
 			JComponent component = (JComponent) swix.find(cName);
 			StringBuffer sbparents = new StringBuffer();
@@ -258,7 +258,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 					String value = tokens[1];
 					String cID = tokens[0];
-					String cName = gl.CtrlFortableID(cID);
+					String cName = gl.ctrlFortableID(cID);
 					String fileName = gl.tableNameForCtrl(cName);
 
 					// Search for control index
