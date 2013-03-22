@@ -379,7 +379,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			@Override
 			public void windowClosing(WindowEvent we) {
 				System.out.println("Exiting");
-				ScenarioSetup.CheckForScenarioChange(swix, dTableModels, RegUserEdits, gl);
+				ScenarioSetup.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl);
 				System.exit(0);
 			}
 		});
