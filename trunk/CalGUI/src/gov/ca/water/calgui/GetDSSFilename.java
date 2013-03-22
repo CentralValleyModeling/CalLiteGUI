@@ -29,15 +29,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
-class FileListModel extends DefaultListModel {
-
-	/**
-	 * FileListModel class shows file name with full path as tooltip
-	 */
-	private static final long serialVersionUID = 3394317320429362812L;
-
-}
-
 public class GetDSSFilename implements ActionListener {
 
 	public DefaultListModel lmScenNames;
@@ -135,7 +126,7 @@ public class GetDSSFilename implements ActionListener {
 		}
 	}
 
-	class MyListDataListener implements ListDataListener {
+	private class MyListDataListener implements ListDataListener {
 		@Override
 		public void contentsChanged(ListDataEvent e) {
 			// System.out.println("Changed");
@@ -273,7 +264,7 @@ public class GetDSSFilename implements ActionListener {
 
 						}
 					}
-					theOwner.toolTipFlag = true;// need to flag when dierctory
+					theOwner.toolTipFlag = true; // need to flag when dierctory
 					// changes
 				}
 			}
