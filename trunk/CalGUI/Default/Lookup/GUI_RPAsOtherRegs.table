@@ -21,10 +21,11 @@ Index	Option
 8	0	!QOMR_DLTSW; user defined  2
 9	0	!QWEST_DLTSW; user defined  2
 10	0	!EISJR_DLTSW; user defined  2
-11   0   !B2 Action 1: No action: value=0; Action: value =1
-12   0   !B2 Action 2: No action: value=0; Action: value =1
-13   0   !B2 Action 3: No action: value=0; Action: value =1
-14   0   !B2 Action 4: No action: value=0; Action: value =1
-15   0   !B2 Action 5: No action: value=0; Action: value =1
-16   0   !B2 Action 6: No action: value=0; Action: value =1
-17   0   !B2 Action 7: No action: value=0; Action: value =1
+11   1   !B2 Action 1: No action: value=0; Action: value =1
+12   1   !B2 Action 2: No action: value=0; Action: value =1
+13   1   !B2 Action 3: No action: value=0; Action: value =1
+14   1   !B2 Action 4: No action: value=0; Action: value =1
+15   1   !B2 Action 5: No action: value=0; Action: value =1
+16   1   !B2 Action 6: No action: value=0; Action: value =1
+17   1   !B2 Action 7: No action: value=0; Action: value =1
+
