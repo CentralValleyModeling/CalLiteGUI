@@ -374,6 +374,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		swix.setActionListener(externalPDF, this);
 
+		((JButton) swix.find("run_btnRun")).setEnabled(true);
+
 		// Check for scenario changes on Exit.
 		desktop.addWindowListener(new WindowAdapter() {
 			@Override
