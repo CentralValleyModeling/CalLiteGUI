@@ -35,13 +35,9 @@ public class RegAction implements ActionListener {
 
 		} else if (ae.getActionCommand().startsWith("Reg_Paste")) {
 
-			// System.out.println("Clipboard contains:" +
-			// TextTransfer.getClipboardContents() );
 			JTable table = (JTable) swix.find("tblRegValues");
 			int startRow = (table.getSelectedRows())[0];
 			int startCol = (table.getSelectedColumns())[0];
-			// int RowCt=table.getSelectedRows().length;
-			// int ColCt=table.getSelectedColumns().length;
 			try {
 				String trstring = (TextTransfer.getClipboardContents());
 				trstring = trstring.replaceAll("(?sm)\t\t", "\t \t");

@@ -48,6 +48,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import javax.help.JHelp;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -646,6 +647,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 		Component c = (Component) changeEvent.getSource();
+		if (c.getName().toLowerCase().equals("reg_tabbedpane")) {
+			// Hide table on Regulations dashboard when moving between tabbed panes on Regulation dashboard
+			((JComponent) swix.find("scrRegValues")).setVisible(false);
+			((JPanel) swix.find("reg_panTab")).setBorder(BorderFactory.createTitledBorder("Values"));
+		}
 		if (c.getName().toLowerCase().substring(0, 3).equals("spn")) {
 
 			// Constrain run times to [10/1921,9/2003]
