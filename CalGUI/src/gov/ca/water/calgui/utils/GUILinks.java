@@ -82,21 +82,21 @@ public class GUILinks {
 				String[] parts = line.split("[\t]+");
 				if (parts.length > 0) {
 
-					String ctrlName = parts[0];
+					String ctrlName = parts[0].trim();
 					String switchID = "";
 					String TableID = "";
 					String tableName = "";
 					String sDReg = "";
 					if (parts.length > 6) {
-						tableName = parts[6];
+						tableName = parts[6].trim();
 						if (parts.length > 7) {
-							switchID = parts[7];
+							switchID = parts[7].trim();
 						}
 						if (parts.length > 8) {
-							TableID = parts[8];
+							TableID = parts[8].trim();
 						}
 						if (parts.length > 9) {
-							sDReg = parts[9];
+							sDReg = parts[9].trim();
 						}
 					}
 					mapCtrlToTable.put(ctrlName, tableName);
