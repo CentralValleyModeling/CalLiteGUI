@@ -120,12 +120,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	Boolean[] RegUserEdits;
 
 	static public String lookups[][];
-	static String table4[][]; // Holds GUI_links4.table values that control
-	                          // selection of SV and Init DSS as well as
-	                          // WSI_DI
-	// files
+	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
 	static String table5[][]; // Holds DSS Schematic link values
-	// files
 
 	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO
 
@@ -143,10 +139,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public MainMenu() throws Exception {
 
+		long startSetupTime = System.currentTimeMillis();
+
 		// Read GUI configuration
 		swix = new SwingEngine(this);
 		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
-		swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml")).setVisible(true);
+		swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml"));
+		desktop.setVisible(false);
 
 		// Set GUI visuals
 		desktopTitle = desktop.getTitle() + ";  Scenario";
@@ -374,8 +373,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		swix.setActionListener(externalPDF, this);
 
-		((JButton) swix.find("run_btnRun")).setEnabled(true);
-
 		// Check for scenario changes on Exit.
 		desktop.addWindowListener(new WindowAdapter() {
 			@Override
@@ -387,6 +384,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		});
 
 		lstScenarios = (JList) swix.find("SelectedList");
+
+		long totalSetupTime = System.currentTimeMillis() - startSetupTime;
+		if (totalSetupTime < 3000)
+			Thread.sleep(3000 - totalSetupTime);
+
+		desktop.setVisible(true);
 
 	}
 
