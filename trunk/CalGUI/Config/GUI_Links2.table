@@ -60,13 +60,14 @@ op_rdb8	GUI_Operations.table	3	-1	Intertie: 0 = off, 1 = on	Operations	n/a	n/a	n
 op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9	n/a	n/a	n/a	n/a	n/a
 op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10	n/a	n/a	n/a	n/a	n/a
 VAMP_Flow	GUI_SJR.table	1	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-Vern_RPA	GUI_SJR.table	2	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+Vern_RPA 	GUI_SJR.table	2	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 D1641_Base	GUI_SJR.table	3	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 D1641_SALINITY	GUI_SJR.table	4	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 STAN_RPA	GUI_SJR.table	5	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-REST_REQ	GUI_SJR.table	6	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-Dynamic_SJR	GUI_SJR.table	7	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a=======
-ckbRegSJR1	GUI_SJR.table	1	-1	VAMP_Flow -  VAMP pulse flows (Apr 15-May 15). 1=on, 0=off	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+SJR_interim	GUI_SJR.table	6	0	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+SJR_full	GUI_SJR.table	6	1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+Dynamic_SJR	GUI_SJR.table	7	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+ckbRegSJR1	GUI_SJR.table	1	-1	ckbRegSJR1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR2	GUI_SJR.table	2	-1	ckbRegSJR2	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR3	GUI_SJR.table	3	-1	ckbRegSJR3	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbRegSJR4	GUI_SJR.table	4	-1	ckbRegSJR4	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a

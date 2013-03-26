@@ -119,3 +119,4 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 611	D_TUOL1A/FLOW-DELIVERY+D_TUOL1B/FLOW-DELIVERY+D_TUOL2/FLOW-DELIVERY	null	Deliveries	Deliveries of Tuolumne	null
 612	D_MERCED1/FLOW-DELIVERY+D_MERCED2/FLOW-DELIVERY+D_MERCED3/FLOW-DELIVERY	null	Deliveries	Deliveries of Merced	null
 613	D_MDRCNL/FLOW-DELIVERY+D_FKCNL/FLOW-DELIVERY	null	Deliveries	Deliveries of Friant	null
+614	VERNWQFINAL/SALINITY-EC	null	Electrical Conductivity	Vernalis Salinity	Salinity Standard
