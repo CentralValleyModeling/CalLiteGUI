@@ -237,7 +237,7 @@ public class GUIUtils {
 			for (int i = 0; i < GUITables.size(); i++) {
 				String[] parts = GUITables.get(i).toString().split("[|]");
 				String cName = parts[0].trim();
-				System.out.println("Table not initialized: " + cName);
+				// System.out.println("Table not initialized: " + cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID;
 				if (switchID.equals("n/a")) {
@@ -249,9 +249,9 @@ public class GUIUtils {
 
 				// int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
-					System.out.println("Table not initialized: " + cName);
+					// System.out.println("Table not initialized: " + cName);
 				} else if (!ckb.isSelected() && !cName.startsWith("op_btn")) { // option checked off
-					System.out.println("Table not selected: + cName");
+					// System.out.println("Table not selected: + cName");
 				} else {
 					Object[][] dataArr;
 					dataArr = dTableModels[tID].getTableData();
@@ -310,7 +310,6 @@ public class GUIUtils {
 				else
 					value = null;
 
-				System.out.println(comp);
 				JComponent component = (JComponent) swix.find(comp);
 
 				if (component == null) {
@@ -335,7 +334,6 @@ public class GUIUtils {
 
 					} else {
 						if (component != null) {
-							System.out.println(comp + "<-" + value + ">");
 							((JTextComponent) component).setText(value);
 						}
 					}

@@ -999,13 +999,15 @@ public class FileAction implements ActionListener {
 				ArrayList<String> GUITables = new ArrayList<String>();
 				GUITables = GUIUtils.getGUITables(links2Lines, "Regulations");
 
+				// TODO: investigate similar code inGUIUtils.java:getTableModelData
+
 				for (int i = 0; i < GUITables.size(); i++) {
 
 					String[] parts = GUITables.get(i).toString().split("[|]");
 					String cName = parts[0].trim(); // Get name of controlling checkbox;
 					String tableName = gl.tableNameForCtrl(cName); // Find the corresponding table
 
-					System.out.println("GUI Option Table " + i + ": " + cName);
+					// System.out.println("GUI Option Table " + i + ": " + cName);
 
 					if (!tableName.equals("n/a")) {
 
@@ -1020,7 +1022,7 @@ public class FileAction implements ActionListener {
 								int size = files.length;
 								if (size == 1) {
 									if (dTableModels[tID] == null) {
-										System.out.println("Table not initialized - " + tableName);
+										// System.out.println("Table not initialized - " + tableName);
 									} else {
 										// Write regulations table files to "Generated" Folder
 										dTableModels[tID].writeToFile(scenGeneratedDir_absPath + "\\Lookup", tableName);
@@ -1029,7 +1031,7 @@ public class FileAction implements ActionListener {
 									}
 								} else if (size == 2) {
 									if (dTableModels[tID] == null) {
-										System.out.println("Table not initialized - nothing written");
+										// System.out.println("Table not initialized - nothing written");
 									} else {
 										// Write regulations table files to "Generated" Folder
 										dTableModels[tID].writeToFile2(scenGeneratedDir_absPath + "\\Lookup", files[0], files[1]);
@@ -1063,7 +1065,7 @@ public class FileAction implements ActionListener {
 						System.out.println("Output to " + tableName);
 						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 						if (dTableModels[tID] == null) {
-							System.out.println("Table not initialized - " + tableName);
+							// System.out.println("Table not initialized - " + tableName);
 						} else {
 							// WriteGUI operations table files to "Generated" Folder
 							dTableModels[tID].writeToFile(scenGeneratedDir_absPath + "\\Lookup\\", tableName);
