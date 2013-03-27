@@ -161,6 +161,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
+		// Tooltips with scenario directory
+		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
+		        + ((JTextField) swix.find("run_txfoDSS")).getText());
+
+		((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
+		        + ((JTextField) swix.find("run_txfScen")).getText());
+
 		// Help hotkey
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		manager.addKeyEventDispatcher(this);

@@ -192,13 +192,7 @@ public class FileAction implements ActionListener {
 									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
 
 								if (scensave == true) {
-									String scenFilename;
-									scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-									String desktopTitle;
-									desktopTitle = desktop.getTitle() + ";  Scenario";
-									desktop.setTitle(desktopTitle + " - " + scenFilename);
-									((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0,
-									        scenFilename.length() - 4) + "_DV.DSS");
+									setFilenameTooltips();
 
 									FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 									f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -242,13 +236,7 @@ public class FileAction implements ActionListener {
 				if (getScenFilename.dialogRC != 0)
 					proceed = false;
 				else {
-					String scenFilename;
-					scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-					String desktopTitle;
-					desktopTitle = desktop.getTitle() + ";  Scenario";
-					desktop.setTitle(desktopTitle + " - " + scenFilename);
-					((JTextField) swix.find("run_txfoDSS")).setText(scenFilename.substring(0, scenFilename.length() - 4)
-					        + "_DV.DSS");
+					setFilenameTooltips();
 				}
 			}
 			if (proceed) {
@@ -290,14 +278,7 @@ public class FileAction implements ActionListener {
 				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 				action_WSIDI = 1;
-				String scenFilename;
-				scenFilename = file.getName();
-				String desktopTitle;
-				desktopTitle = desktop.getTitle() + ";  Scenario";
-				desktop.setTitle(desktopTitle + " - " + scenFilename);
-				JTextField tf = (JTextField) swix.find("run_txfScen");
-				tf.setText(scenFilename);
-
+				setFilenameTooltips();
 			}
 
 		} else if (ae.getActionCommand().startsWith("AC_CompScen")) {
@@ -357,6 +338,18 @@ public class FileAction implements ActionListener {
 			}
 
 		}
+	}
+
+	/**
+	 * Sets value of DV DSS file name and tooltips for scenario and DSS textfields
+	 */
+	private void setFilenameTooltips() {
+		String scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+		((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\" + scenFilename);
+		desktop.setTitle(desktop.getTitle() + ";  Scenario - " + scenFilename);
+		String dvDSSFilename = scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS";
+		((JTextField) swix.find("run_txfoDSS")).setText(dvDSSFilename);
+		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\" + dvDSSFilename);
 	}
 
 	/**
