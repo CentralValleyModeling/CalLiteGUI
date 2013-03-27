@@ -8,7 +8,6 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.ProgressFrame;
-import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
 import java.awt.Component;
@@ -46,6 +45,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SwingWorker;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.JTextComponent;
 
 import org.apache.commons.io.FileDeleteStrategy;
@@ -261,7 +261,7 @@ public class FileAction implements ActionListener {
 
 		} else if (ae.getActionCommand().startsWith("AC_LoadScen")) {
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter(".cls", "CalLite Scenario File (*.cls)"));
+			fc.setFileFilter(new FileNameExtensionFilter("CalLite Scenario Files", "cls"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 			int retval = fc.showOpenDialog(mainmenu);
