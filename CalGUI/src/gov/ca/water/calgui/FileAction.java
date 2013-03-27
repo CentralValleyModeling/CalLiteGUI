@@ -261,7 +261,7 @@ public class FileAction implements ActionListener {
 
 		} else if (ae.getActionCommand().startsWith("AC_LoadScen")) {
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new FileNameExtensionFilter("CalLite Scenario Files", "cls"));
+			fc.setFileFilter(new FileNameExtensionFilter("CalLite Scenario Files *.cls", "cls"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 			int retval = fc.showOpenDialog(mainmenu);
