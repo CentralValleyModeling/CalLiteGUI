@@ -24,13 +24,13 @@ set t=%ConfigFilePath%
 set t=%t::=@%
 set t=%t:\=$%
 
-set Java_Bin=%~dp0_temp\%t%\
+set temp_wrims2=%~dp0_temp\%t%\
 
-rem IF EXIST %Java_Bin% (
-rem 	rmdir /s /q %Java_Bin%
+rem IF EXIST %temp_wrims2% (
+rem 	rmdir /s /q %temp_wrims2%
 rem )
  
-mkdir %Java_Bin%
+mkdir %temp_wrims2%
 
 
 :------------------:
@@ -73,6 +73,6 @@ set PATH=%ExternalDir%;%JarDir%
 
 
 
-%Java_Bin%/../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% wrimsv2.components.ControllerBatch -config="%configFilePath%"
+%temp_wrims2%/../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% wrimsv2.components.ControllerBatch -config="%configFilePath%"
 
 pause
