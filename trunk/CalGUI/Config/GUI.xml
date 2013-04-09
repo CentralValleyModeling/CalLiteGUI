@@ -740,7 +740,7 @@
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
 							</textfield>
 							<label id="fac_txf3_t"
-								text="TC Canal Maximum Diversion Capacity for NODOS (cfs)">
+								text="TC Canal Maximum Diversion Capacity for NODOS (cfs) ">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="" gridy="4" />
 							</label>
