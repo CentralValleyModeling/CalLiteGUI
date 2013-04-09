@@ -614,29 +614,29 @@
 							preferredsize="260,160" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
-							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="false"
+							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="true"
 								text="North of Delta Offstream Storage" minimumsize="240,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb2" id="fac_ckb2" text="Shasta Enlargement"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
 							<checkbox name="fac_ckb3" id="fac_ckb3" text="Los Vaqueros Enlargement"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 							<checkbox name="fac_ckb4" id="fac_ckb4" text="Temperance Flat"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
 								text="Sacramento Valley Conunctive Use" minimumsize="240,20"
-								enabled="false">
+								enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 							</checkbox>
@@ -647,12 +647,12 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							<checkbox name="fac_ckb6" id="fac_ckb6" text="Isolated Facility"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb7" id="fac_ckb7" text="Banks Pumping Plant"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
@@ -663,17 +663,17 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							<checkbox name="fac_ckb8" id="fac_ckb8"
-								text="Fremont Weir - Yolo Bypass" minimumsize="240,20" enabled="false">
+								text="Fremont Weir - Yolo Bypass" minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb9" id="fac_ckb9" text="DWSC East Bypass"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
 							<checkbox name="fac_ckb10" id="fac_ckb10" text="Stone Lakes Bypass"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
