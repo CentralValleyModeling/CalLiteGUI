@@ -813,6 +813,7 @@
 								</radiobutton>
 							</buttongroup>
 						</panel>
+						<!--
 						<panel name="fac_pan3" id="fac_pan3" resizeable="false"
 							visible="false" enabled="false"
 							border="TitledBorder(Los Vaqueros Revervoir Enlargement Options)"
@@ -861,7 +862,9 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
 							</textfield>
+							
 						</panel>
+						-->
 						<panel name="fac_pan5" id="fac_pan5" resizeable="false"
 							border="TitledBorder(Conjunctive Use Options)" visible="false"
 							enabled="false" preferredsize="500,180" layout="GridBagLayout">
