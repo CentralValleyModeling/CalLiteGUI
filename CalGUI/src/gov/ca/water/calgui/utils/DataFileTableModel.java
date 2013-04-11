@@ -25,6 +25,7 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	protected Vector<Object> data;
 	protected Vector<String> columnNames;
+	protected Vector<String> columnNames1;
 	protected String datafile;
 	public String[] datafiles;
 	protected StringBuffer header;
@@ -439,6 +440,7 @@ public class DataFileTableModel extends AbstractTableModel {
 		data = new Vector<Object>();
 		Vector<Object> data1 = new Vector<Object>();
 		columnNames = new Vector<String>();
+		columnNames1 = new Vector<String>();
 
 		try {
 
@@ -482,74 +484,68 @@ public class DataFileTableModel extends AbstractTableModel {
 
 				// Extract column names from second line
 
-				st1 = new StringTokenizer(columnTitle, "\t| ");
+				st1 = new StringTokenizer(columnTitle, "\t ");
+				columnTitle = "";
 				for (int j = 0; j < iColCt; j++) {
 					if (j + 1 != iSkipCol) {
-						columnNames.addElement(st1.nextToken());
+
+						// parse option out of column title
+						String sCol = st1.nextToken();
+						int left = sCol.indexOf("_D");
+						if (left > -1) {
+							sCol = sCol.substring(0, left);
+						}
+						columnNames1.addElement(sCol);
+						if (j < iColCt - 1) {
+							columnTitle = columnTitle + sCol + "\t ";
+						} else {
+							columnTitle = columnTitle + sCol;
+						}
 					}
 				}
+
+				columnNames = columnNames1;
 				// while (st1.hasMoreTokens())
 				// columnNames.addElement(st1.nextToken());
 
 				// Extract data - first pass. Assumes we are reading in
 				// column-major order
-				if (st1.countTokens() < 3) {
+				if (columnNames.size() <= 3) {
 
 					// CASE 1: TWO COLUMNS (month, value)
 					data = data1;
 				}
 
-				else if (st1.countTokens() == 3) {
-
-					// CASE 2: THREE COLUMNS (year type, month, value)
-
-					String firstColumnName = columnNames.get(0);
-					String secondColumnName = columnNames.get(1);
-					columnNames.clear();
-					columnNames.addElement(firstColumnName);
-
-					String lastColID = "-1";
-					int rowCount = 0;
-
-					ArrayList<String> allValues = new ArrayList<String>();
-					while (aLine != null) {
-
-						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
-						if (st2.countTokens() >= 3) {
-
-							st2.nextToken();
-							String aColID = st2.nextToken();
-							String aValue = st2.nextToken();
-							// System.out.println(Boolean.toString(lastColID ==
-							// aColID)+" " + lastColID + ":" + aColID + ":" +
-							// aRowID + " " + aValue+ " " +
-							// Integer.toString(rowCount)+ " " +
-							// Integer.toString(columnNames.size()));
-							if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
-								if (secondColumnName.toLowerCase().startsWith("wyt"))
-									columnNames.addElement(wyts[Integer.parseInt(aColID) - 1]);
-								else
-									columnNames.addElement(secondColumnName + aColID);
-								lastColID = aColID;
-								rowCount = 0;
-							}
-
-							rowCount++;
-							allValues.add(aValue);
-						}
-						aLine = br.readLine();
-					}
-					for (int r = 0; r < rowCount; r++) {
-
-						data.addElement(Integer.toString(r + 1));
-						for (int c = 0; c < columnNames.size() - 1; c++) {
-							// System.out.println(Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount)+"="+Integer.toString(allValues.size()));
-
-							data.addElement(allValues.get(c * rowCount + r));
-						}
-					}
-
-				}
+				/*
+				 * else if (columnNames.size() == 3) {
+				 * 
+				 * // CASE 2: THREE COLUMNS (year type, month, value)
+				 * 
+				 * String firstColumnName = columnNames.get(0); String secondColumnName = columnNames.get(1); columnNames.clear();
+				 * columnNames.addElement(firstColumnName);
+				 * 
+				 * String lastColID = "-1"; int rowCount = 0;
+				 * 
+				 * ArrayList<String> allValues = new ArrayList<String>(); while (aLine != null) {
+				 * 
+				 * StringTokenizer st2 = new StringTokenizer(aLine, "\t| "); if (st2.countTokens() >= 3) {
+				 * 
+				 * st2.nextToken(); String aColID = st2.nextToken(); String aValue = st2.nextToken(); //
+				 * System.out.println(Boolean.toString(lastColID == // aColID)+" " + lastColID + ":" + aColID + ":" + // aRowID +
+				 * " " + aValue+ " " + // Integer.toString(rowCount)+ " " + // Integer.toString(columnNames.size())); if
+				 * (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) { if (secondColumnName.toLowerCase().startsWith("wyt"))
+				 * columnNames.addElement(wyts[Integer.parseInt(aColID) - 1]); else columnNames.addElement(secondColumnName +
+				 * aColID); lastColID = aColID; rowCount = 0; }
+				 * 
+				 * rowCount++; allValues.add(aValue); } aLine = br.readLine(); } for (int r = 0; r < rowCount; r++) {
+				 * 
+				 * data.addElement(Integer.toString(r + 1)); for (int c = 0; c < columnNames.size() - 1; c++) { //
+				 * System.out.println
+				 * (Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount
+				 * )+"="+Integer.toString(allValues.size()));
+				 * 
+				 * data.addElement(allValues.get(c * rowCount + r)); } } }
+				 */
 
 				br.close();
 
@@ -707,6 +703,10 @@ public class DataFileTableModel extends AbstractTableModel {
 			if (columnNames.size() == 2) {
 				for (int i = 1; i <= data.size() / 2; i++) {
 					output.println(data.elementAt(i * 2 - 2) + " " + data.elementAt(i * 2 - 1));
+				}
+			} else if (columnNames.size() == 3) {
+				for (int i = 1; i <= data.size() / 3; i++) {
+					output.println(data.elementAt(i * 3 - 3) + " " + data.elementAt(i * 3 - 2) + " " + data.elementAt(i * 3 - 1));
 				}
 			} else if (columnNames.size() == 4) {
 				// 12 Months x 3 values

@@ -113,7 +113,7 @@ public class RegulationSetup {
 		if (fileName != null && fileName.length() != 0) {
 
 			// Revert to base file if different values for D1641 and D1485 exist
-			if (iDReg != null) {
+			if (!iDReg.equals("n/a")) {
 				fileName = fileName.replace("gui_", "");
 			}
 
@@ -155,7 +155,7 @@ public class RegulationSetup {
 				dTableModels = new DataFileTableModel[20];
 			}
 
-			if (iDReg == null) {
+			if (iDReg.equals("n/a")) {
 				if (dTableModels[tID] == null) {
 					dTableModels[tID] = new DataFileTableModel(fileName, tID);
 				}
