@@ -12,7 +12,7 @@ run_rdbD1641|false
 run_rdbBO|true
 rdbRegQS_D1485|false
 rdbRegQS_D1641|false
-rdbRegQS_1641BO|false
+rdbRegQS_1641BO|true
 rdbRegQS_UD|false
 ckbReg_DCC|false
 ckbReg_RV|false
@@ -34,6 +34,14 @@ ckbRegbo2|true
 ckbRegbo3|true
 ckbRegbo4|true
 ckbRegbo5|true
+Dynamic_SJR|true
+D1641_Base|false
+D1641_SALINITY|false
+VAMP_Flow|false
+Vern_RPA|false
+STAN_RPA|false
+SJR_interim|true
+SJR_full|false
 ckbReg1|false
 ckbReg2|false
 ckbReg10|false
@@ -52,6 +60,7 @@ hyd_DSS_SV|CL_FUTURE_BO_080911_SV.DSS
 hyd_DSS_SV_F|2020D09E
 hyd_DSS_Init|CL_INIT.dss
 hyd_DSS_Init_F|INITIAL
+hyd_DSS_Index|
 hyd_ckb1|false
 hyd_ckb2|false
 hyd_ckb3|false
