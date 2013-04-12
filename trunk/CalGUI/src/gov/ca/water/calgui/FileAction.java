@@ -8,6 +8,7 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
 import java.awt.Component;
@@ -129,34 +130,7 @@ public class FileAction implements ActionListener {
 					// *** Determine if scenario has changed.
 
 					// Store selections
-					StringBuffer sb = new StringBuffer();
-					sb = GUIUtils.setControlValues(runsettings, sb);
-					sb = GUIUtils.setControlValues(regulations, sb);
-					sb = GUIUtils.setControlValues(hydroclimate, sb);
-					sb = GUIUtils.setControlValues(demands, sb);
-					sb = GUIUtils.setControlValues(operations, sb);
-					sb = GUIUtils.setControlValues(facilities, sb);
-
-					// get table values.
-					final String NL = System.getProperty("line.separator");
-					sb.append("DATATABLEMODELS" + NL);
-					ArrayList<String> guiLinks = new ArrayList<String>();
-					ArrayList<String> guiTables = new ArrayList<String>();
-					guiLinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
-					guiTables = GUIUtils.getGUITables(guiLinks, "Regulations");
-					sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
-					guiTables = GUIUtils.getGUITables(guiLinks, "Operations");
-					sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
-					sb.append("END DATATABLEMODELS" + NL);
-					sb.append("USERDEFINEDFLAGS" + NL);
-					if (regUserEdits != null) {
-						for (int i = 0; i < regUserEdits.length; i++) {
-							if (regUserEdits[i] != null) {
-								sb.append(i + "|" + regUserEdits[i] + NL);
-							}
-						}
-					}
-					sb.append("END USERDEFINEDFLAGS" + NL);
+					StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 
 					// Read existing file
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -166,13 +140,8 @@ public class FileAction implements ActionListener {
 
 					if (!sb.toString().equals(sbExisting.toString())) {
 
-						/*
-						 * int n = JOptionPane.showConfirmDialog(mainmenu,
-						 * "Would you like to save the scenario definition? \nScenario information " + "will be saved to '" +
-						 * System.getProperty("user.dir") + "\\Scenarios\\" + scen + "'", "CalLite Gui", JOptionPane.YES_NO_OPTION);
-						 */
 						int n = JOptionPane.showConfirmDialog(mainmenu,
-						        "Scenario selections have changed. Would you like to save the changes?", "CalLite Gui",
+						        "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
 						        JOptionPane.YES_NO_OPTION);
 
 						if (n == JOptionPane.YES_OPTION) {
@@ -1097,42 +1066,10 @@ public class FileAction implements ActionListener {
 		worker.execute();
 	}
 
-	public static void saveFile(String scen, SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
+	public static void saveFile(String scen, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels,
 	        GUILinks gl) {
 
-		JPanel runsettings = (JPanel) swix.find("runsettings");
-		JPanel regulations = (JPanel) swix.find("regulations");
-		JPanel hydroclimate = (JPanel) swix.find("hydroclimate");
-		JPanel demands = (JPanel) swix.find("demands");
-		JPanel operations = (JPanel) swix.find("operations");
-		JPanel facilities = (JPanel) swix.find("facilities");
-
-		StringBuffer sb = new StringBuffer();
-		sb = GUIUtils.setControlValues(runsettings, sb);
-		sb = GUIUtils.setControlValues(hydroclimate, sb);
-		sb = GUIUtils.setControlValues(demands, sb);
-		sb = GUIUtils.setControlValues(facilities, sb);
-		sb = GUIUtils.setControlValues(regulations, sb);
-		sb = GUIUtils.setControlValues(operations, sb);
-
-		// get table values.
-		final String NL = System.getProperty("line.separator");
-		sb.append("DATATABLEMODELS" + NL);
-		ArrayList<String> GUITables = new ArrayList<String>();
-		ArrayList<String> GUILinks = new ArrayList<String>();
-		GUILinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
-		GUITables = GUIUtils.getGUITables(GUILinks, "Regulations");
-		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
-		GUITables = GUIUtils.getGUITables(GUILinks, "Operations");
-		sb = GUIUtils.getTableModelData(dTableModels, GUITables, gl, sb, swix);
-		sb.append("END DATATABLEMODELS" + NL);
-		sb.append("USERDEFINEDFLAGS" + NL);
-		for (int i = 0; i < RegUserEdits.length; i++) {
-			if (RegUserEdits[i] != null) {
-				sb.append(i + "|" + RegUserEdits[i] + NL);
-			}
-		}
-		sb.append("END USERDEFINEDFLAGS" + NL);
+		StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 
 		FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -1147,6 +1084,138 @@ public class FileAction implements ActionListener {
 			System.err.println("Error: " + e1.getMessage());
 		}
 
+	}
+
+	/**
+	 * Creates a StringBuffer that represents the current settings for the scenario in memory.
+	 * 
+	 * @param swix
+	 * @param RegUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 * @return
+	 */
+	private static StringBuffer buildScenarioString(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
+	        GUILinks gl) {
+
+		StringBuffer sb = new StringBuffer();
+
+		// Get control values from UI
+
+		sb = GUIUtils.setControlValues(swix.find("runsettings"), sb);
+		sb = GUIUtils.setControlValues(swix.find("hydroclimate"), sb);
+		sb = GUIUtils.setControlValues(swix.find("demands"), sb);
+		sb = GUIUtils.setControlValues(swix.find("facilities"), sb);
+		sb = GUIUtils.setControlValues(swix.find("regulations"), sb);
+		sb = GUIUtils.setControlValues(swix.find("operations"), sb);
+
+		// Get table values
+
+		final String NL = System.getProperty("line.separator");
+		sb.append("DATATABLEMODELS" + NL);
+
+		ArrayList<String> guiLinks = new ArrayList<String>();
+		guiLinks = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
+
+		ArrayList<String> guiTables = new ArrayList<String>();
+		guiTables = GUIUtils.getGUITables(guiLinks, "Regulations");
+		sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
+
+		guiTables = GUIUtils.getGUITables(guiLinks, "Operations");
+		sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
+
+		sb.append("END DATATABLEMODELS" + NL);
+
+		// Get flags marking user-defined tables
+
+		sb.append("USERDEFINEDFLAGS" + NL);
+		for (int i = 0; i < RegUserEdits.length; i++) {
+			if (RegUserEdits[i] != null) {
+				sb.append(i + "|" + RegUserEdits[i] + NL);
+			}
+		}
+		sb.append("END USERDEFINEDFLAGS" + NL);
+		return sb;
+	}
+
+	/**
+	 * Checks if there are differences between in-memory scenario settings and the settings in the currently referenced scenario
+	 * file.
+	 * 
+	 * @param swix
+	 * @param dTableModels
+	 * @param regUserEdits
+	 * @param gl
+	 */
+	public static Boolean checkForScenarioChange(SwingEngine swix, DataFileTableModel[] dTableModels, Boolean[] regUserEdits,
+	        GUILinks gl) {
+
+		Boolean result = true;
+
+		StringBuffer sbInMemory = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+
+		// Read existing file specified in UI
+
+		String scen = ((JTextField) swix.find("run_txfScen")).getText();
+		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+		StringBuffer sbExisting = FileUtils.readScenarioFile(f);
+
+		if (!sbInMemory.toString().equals(sbExisting.toString())) {
+
+			JPanel mainmenu = (JPanel) swix.find("mainmenu");
+			int n = JOptionPane.showConfirmDialog(mainmenu,
+			        "Scenario selections have changed. Would you like to save the changes?", "CalLite Gui",
+			        JOptionPane.YES_NO_OPTION);
+
+			if (n == JOptionPane.YES_OPTION) {
+
+				JFileChooser fc = new JFileChooser();
+				fc.setFileFilter(new SimpleFileFilter("cls", "CalLite Scenario File (*.cls)"));
+				fc.setCurrentDirectory(new File(".//Scenarios"));
+
+				File file = null;
+				String filename = null;
+				int retval = fc.showSaveDialog(mainmenu);
+				if (retval == JFileChooser.CANCEL_OPTION) {
+					result = false;
+				}
+
+				else {
+					if (retval == JFileChooser.APPROVE_OPTION) {
+
+						file = fc.getSelectedFile();
+						filename = file.toString();
+					}
+
+					if (filename != null) {
+
+						boolean scensave = false;
+						if (new File(filename).exists())
+							scensave = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + filename
+							        + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
+							        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+
+						if (scensave == true) {
+
+							FileUtils.createNewFile(filename);
+							f = new File(filename);
+							try {
+								FileWriter fstream = new FileWriter(f);
+								BufferedWriter outobj = new BufferedWriter(fstream);
+								outobj.write(sbInMemory.toString());
+								outobj.close();
+
+							} catch (Exception e1) {
+								log.debug(e1.getMessage());
+							}
+
+						}
+					}
+				}
+			}
+
+		}
+		return result;
 	}
 
 }

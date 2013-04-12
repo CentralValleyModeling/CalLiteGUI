@@ -12,7 +12,6 @@ import gov.ca.water.calgui.dashboards.RegListener;
 import gov.ca.water.calgui.dashboards.RegulationSetup;
 import gov.ca.water.calgui.dashboards.ReportAction;
 import gov.ca.water.calgui.dashboards.RunListener;
-import gov.ca.water.calgui.dashboards.ScenarioSetup;
 import gov.ca.water.calgui.dashboards.SchematicAction;
 import gov.ca.water.calgui.dashboards.SchematicListener;
 import gov.ca.water.calgui.results.DisplayFrame;
@@ -133,6 +132,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	JMenuBar menu;
 	ProgressMonitor pMon;
+
 	public JList lstScenarios;
 
 	/**
@@ -161,7 +161,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
 		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
-		// Tooltips with scenario directory
+		// Set initial Tooltips with scenario directory
 		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
 		        + ((JTextField) swix.find("run_txfoDSS")).getText());
 
@@ -385,9 +385,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				System.out.println("Exiting");
-				ScenarioSetup.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl);
-				System.exit(0);
+				if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl)) {
+					System.exit(0);
+				}
+
 			}
 		});
 
@@ -398,11 +399,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			Thread.sleep(3000 - totalSetupTime);
 
 		desktop.setVisible(true);
-
-	}
-
-	private void setIconImage(java.awt.Image img) {
-		// TODO Auto-generated method stub
 
 	}
 
