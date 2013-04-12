@@ -630,7 +630,7 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 							<checkbox name="fac_ckb4" id="fac_ckb4" text="Temperance Flat"
-								minimumsize="240,20" enabled="true">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
@@ -717,7 +717,7 @@
 							<panel layout="GridBagLayout">
 								<gridbagconstraints insets="0,15,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
-								<label text="CVP (xx%)">
+								<label text="CVP (50%)">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
 								</label>
@@ -725,7 +725,7 @@
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0" />
 								</slider>
-								<label text="SWP (xx%)">
+								<label text="SWP (50%)">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0" />
 								</label>
@@ -787,36 +787,39 @@
 						</panel>
 						<panel name="fac_pan2" id="fac_pan2" resizeable="false"
 							visible="false" enabled="false"
-							border="TitledBorder(Shasta Enlargement Operations)"
-							preferredsize="500,100" layout="GridBagLayout">
+							border="TitledBorder(Shasta Enlargement Options)" preferredsize="500,250"
+							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0"
 								gridheight="3" />
 							<buttongroup>
 								<radiobutton name="fac_rdb1" id="fac_rdb1"
-									text="Shasta Dam Raise of 6.5 feet (additional 256 TAF)"
+									text="Shasta Dam raise of 6.5 feet (additional 256 TAF)"
 									minimumsize="340,20">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
 								</radiobutton>
 								<radiobutton name="fac_rdb2" id="fac_rdb2"
-									text="Shasta Dam Raise of 12.5 feet (additional 443 TAF)"
+									text="Shasta Dam raise of 12.5 feet (additional 443 TAF)"
 									minimumsize="340,20">
 									<gridbagconstraints insets="0,0,5,5"
-										anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 								</radiobutton>
 								<radiobutton name="fac_rdb3" id="fac_rdb3"
-									text="Shasta Dam Raise of 18.5 feet (additional 634 TAF)"
+									text="Shasta Dam raise of 18.5 feet (additional 634 TAF)"
 									minimumsize="340,20">
 									<gridbagconstraints insets="0,0,5,5"
-										anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
 								</radiobutton>
 							</buttongroup>
+							<label icon="images/shastaDam.jpg">
+								<gridbagconstraints insets="0,0,5,5"
+									anchor="GridBagConstraints.WEST" gridx="1" gridy="0" gridheight="3" />
+							</label>
 						</panel>
-						<!--
 						<panel name="fac_pan3" id="fac_pan3" resizeable="false"
 							visible="false" enabled="false"
-							border="TitledBorder(Los Vaqueros Revervoir Enlargement Options)"
+							border="TitledBorder(Los Vaqueros Reservoir Enlargement Options)"
 							preferredsize="500,180" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								gridheight="3" anchor="GridBagConstraints.NORTHWEST" gridx="1"
@@ -862,9 +865,8 @@
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
 							</textfield>
-							
+
 						</panel>
-						-->
 						<panel name="fac_pan5" id="fac_pan5" resizeable="false"
 							border="TitledBorder(Conjunctive Use Options)" visible="false"
 							enabled="false" preferredsize="500,180" layout="GridBagLayout">
@@ -1159,7 +1161,7 @@
 					<panel preferredsize="300,400">
 						<gridbagconstraints insets="0,0,0,0"
 							anchor="GridBagConstraints.NORTH" gridx="2" gridy="0" />
-						<label id="map3" icon="images/Banks_pumping_Plant.jpg" />
+						<label id="map3" name="map3" icon="images/Banks_pumping_Plant.jpg" />
 					</panel>
 				</panel>
 
@@ -1191,7 +1193,7 @@
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
 							<radiobutton text="D-1641 plus BO RPAs" name="rdbRegQS_1641BO"
-								id="rdbRegQS_1641BO">
+								id="rdbRegQS_1641BO" selected="true">
 								<gridbagconstraints insets="0,0,5,5" gridx="2"
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
@@ -2456,7 +2458,7 @@
 											anchor="GridBagConstraints.WEST" gridx="10" gridy="3" />
 									</checkbox>
 								</panel>
-		
+
 								<panel id="shortage" name="Shortages/Flow Objectives"
 									layout="GridBagLayout">
 									<label text="Flow Shortage " font="Tahoma-BOLD-14"

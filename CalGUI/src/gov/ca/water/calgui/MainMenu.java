@@ -173,6 +173,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		manager.addKeyEventDispatcher(this);
 
 		// Recolor results tabs
+
 		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
 
 		jtp.setForegroundAt(6, Color.blue);
@@ -229,8 +230,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		gl = new GUILinks();
 		gl.readIn("Config/GUI_Links2.table");
 
-		readInLookups(); // Temporary access to quick reports info from
-		                 // gui_Links3.table
+		readInLookups(); // Temporary access to quick reports info from gui_Links3.table
 
 		// Setup for Reporting page
 
@@ -530,7 +530,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect);
 				}
 			} else if (cName.startsWith("fac_ckb")) {
-				// Right Click only
+				// Right click on a facility checkbox makes a subpanel visible
 				if (e.getButton() == MouseEvent.BUTTON3) {
 					JPanel panel = (JPanel) swix.find("fac_pan" + cName.substring(7));
 					// set all "data" panels to invisible
@@ -540,6 +540,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					JCheckBox ckb = (JCheckBox) component;
 					GUIUtils.toggleEnComponentAndChildren(panel, ckb.isSelected());
+					((JLabel) swix.find("map3")).setVisible(false);
 				}
 			}
 		}
