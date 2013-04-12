@@ -470,17 +470,6 @@ public class DataFileTableModel extends AbstractTableModel {
 				} else {
 					iSkipCol = iColCt - 1;
 				}
-				String dum;
-				while (aLine != null) {
-					st1 = new StringTokenizer(aLine, "\t| ");
-					for (int j = 0; j < iColCt; j++) {
-						dum = st1.nextToken();
-						if (j + 1 != iSkipCol) {
-							data1.addElement(dum);
-						}
-					}
-					aLine = br.readLine();
-				}
 
 				// Extract column names from second line
 
@@ -510,42 +499,77 @@ public class DataFileTableModel extends AbstractTableModel {
 
 				// Extract data - first pass. Assumes we are reading in
 				// column-major order
-				if (columnNames.size() <= 3) {
+				if (columnNames.size() < 3) {
 
 					// CASE 1: TWO COLUMNS (month, value)
-					data = data1;
-				}
 
-				/*
-				 * else if (columnNames.size() == 3) {
-				 * 
-				 * // CASE 2: THREE COLUMNS (year type, month, value)
-				 * 
-				 * String firstColumnName = columnNames.get(0); String secondColumnName = columnNames.get(1); columnNames.clear();
-				 * columnNames.addElement(firstColumnName);
-				 * 
-				 * String lastColID = "-1"; int rowCount = 0;
-				 * 
-				 * ArrayList<String> allValues = new ArrayList<String>(); while (aLine != null) {
-				 * 
-				 * StringTokenizer st2 = new StringTokenizer(aLine, "\t| "); if (st2.countTokens() >= 3) {
-				 * 
-				 * st2.nextToken(); String aColID = st2.nextToken(); String aValue = st2.nextToken(); //
-				 * System.out.println(Boolean.toString(lastColID == // aColID)+" " + lastColID + ":" + aColID + ":" + // aRowID +
-				 * " " + aValue+ " " + // Integer.toString(rowCount)+ " " + // Integer.toString(columnNames.size())); if
-				 * (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) { if (secondColumnName.toLowerCase().startsWith("wyt"))
-				 * columnNames.addElement(wyts[Integer.parseInt(aColID) - 1]); else columnNames.addElement(secondColumnName +
-				 * aColID); lastColID = aColID; rowCount = 0; }
-				 * 
-				 * rowCount++; allValues.add(aValue); } aLine = br.readLine(); } for (int r = 0; r < rowCount; r++) {
-				 * 
-				 * data.addElement(Integer.toString(r + 1)); for (int c = 0; c < columnNames.size() - 1; c++) { //
-				 * System.out.println
-				 * (Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount
-				 * )+"="+Integer.toString(allValues.size()));
-				 * 
-				 * data.addElement(allValues.get(c * rowCount + r)); } } }
-				 */
+					String dum;
+					while (aLine != null) {
+						st1 = new StringTokenizer(aLine, "\t| ");
+						for (int j = 0; j < iColCt; j++) {
+							dum = st1.nextToken();
+							if (j + 1 != iSkipCol) {
+								data1.addElement(dum);
+							}
+						}
+						aLine = br.readLine();
+					}
+
+					data = data1;
+
+				} else if (columnNames.size() == 3) {
+
+					// CASE 2: THREE COLUMNS (year type, month, value)
+
+					String firstColumnName = columnNames.get(0);
+					String secondColumnName = columnNames.get(1);
+					columnNames.clear();
+					columnNames.addElement(firstColumnName);
+
+					String lastColID = "-1";
+					int rowCount = 0;
+
+					ArrayList<String> allValues = new ArrayList<String>();
+					while (aLine != null) {
+
+						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+						if (st2.countTokens() >= 3) {
+
+							st2.nextToken();
+
+							String aColID = st2.nextToken();
+							String aValue;
+							if (iSkipCol == 3) {
+								st2.nextToken();
+								aValue = st2.nextToken();
+							} else {
+								aValue = st2.nextToken();
+							}
+
+							if (Integer.parseInt(lastColID) < Integer.parseInt(aColID)) {
+								if (secondColumnName.toLowerCase().startsWith("wyt"))
+									columnNames.addElement(wyts[Integer.parseInt(aColID) - 1]);
+								else
+									columnNames.addElement(secondColumnName + aColID);
+								lastColID = aColID;
+								rowCount = 0;
+							}
+
+							rowCount++;
+							allValues.add(aValue);
+						}
+						aLine = br.readLine();
+					}
+					for (int r = 0; r < rowCount; r++) {
+
+						data.addElement(Integer.toString(r + 1));
+						for (int c = 0; c < columnNames.size() - 1; c++) {
+							// System.out.println(Integer.toString(r)+":"+Integer.toString(c)+":"+Integer.toString(r)+":"+Integer.toString(c*rowCount)+"="+Integer.toString(allValues.size()));
+
+							data.addElement(allValues.get(c * rowCount + r));
+						}
+					}
+				}
 
 				br.close();
 

@@ -385,7 +385,7 @@ public class GUIUtils {
 					dTableModels[tID] = new DataFileTableModel(fileName, tID);
 				}
 
-				dTableModels[tID].setVectors(tokens[1]);
+				// dTableModels[tID].setVectors(tokens[1]);
 
 				// JTable table = (JTable) swix.find("tblRegValues");
 				// table.setModel(dTableModels[tID]);
