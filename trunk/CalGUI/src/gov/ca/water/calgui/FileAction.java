@@ -863,28 +863,12 @@ public class FileAction implements ActionListener {
 				String batchText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
 				        + "\\Model_w2\\CalLite_w2.bat.template");
 
-				// batchText = batchText.replace("{MainFile}", configMap.get("MainFile"));
-				// batchText = batchText.replace("{SvarFile}", configMap.get("SvarFile"));
-				// batchText = batchText.replace("{SvarFPart}", configMap.get("SvarFPart"));
-				// batchText = batchText.replace("{InitFile}", configMap.get("InitFile"));
-				// batchText = batchText.replace("{InitFPart}", configMap.get("InitFPart"));
-				// batchText = batchText.replace("{DvarFile}", configMap.get("DvarFile"));
-				// batchText = batchText.replace("{StartYear}", configMap.get("StartYear"));
-				// batchText = batchText.replace("{StartMonth}", configMap.get("StartMonth"));
-				// batchText = batchText.replace("{EndYear}", configMap.get("EndYear"));
-				// batchText = batchText.replace("{EndMonth}", configMap.get("EndMonth"));
-				// batchText = batchText.replace("{StartDay}", configMap.get("StartDay"));
-				// batchText = batchText.replace("{EndDay}", configMap.get("EndDay"));
-				// batchText = batchText.replace("{UserPath}", configMap.get("UserPath"));
-				// batchText = batchText.replace("{RunPath}", configMap.get("RunPath"));
-
 				batchText = batchText.replace("{ConfigFilePath}", configMap.get("ConfigFilePath"));
 
 				File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
-
 				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 
-				cfgFile.print("cmd /c " + batchText);
+				cfgFile.print(batchText);
 				cfgFile.flush();
 				cfgFile.close();
 
