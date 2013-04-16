@@ -385,7 +385,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl)) {
+				if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl) == true) {
 					System.exit(0);
 				}
 

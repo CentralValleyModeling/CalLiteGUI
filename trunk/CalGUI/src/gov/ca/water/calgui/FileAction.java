@@ -884,7 +884,7 @@ public class FileAction implements ActionListener {
 
 				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 
-				cfgFile.print(batchText);
+				cfgFile.print("cmd /c " + batchText);
 				cfgFile.flush();
 				cfgFile.close();
 
