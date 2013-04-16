@@ -1037,8 +1037,8 @@ public class FileAction implements ActionListener {
 
 					Runtime rt = Runtime.getRuntime();
 					Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
-					int exitVal = proc.waitFor();
-					System.out.println("Process exitValue: " + exitVal);
+					// int exitVal = proc.waitFor();
+					// System.out.println("Process exitValue: " + exitVal);
 				} catch (Throwable t) {
 					JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
 					t.printStackTrace();
