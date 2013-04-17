@@ -187,13 +187,12 @@ public class HydListener implements ItemListener {
 
 				// Force CVP and SWP tables to be reset from files
 
-				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], System.getProperty("user.dir") + "\\Default\\Lookup");
-				String fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1")
-				        + ".table";
+				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString());
+				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + gl.tableNameForCtrl("op_btn1") + ".table";
 				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+				fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + gl.tableNameForCtrl("op_btn2") + ".table";
 				tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 

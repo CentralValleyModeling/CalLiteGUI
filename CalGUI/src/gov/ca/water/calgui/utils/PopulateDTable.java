@@ -27,20 +27,20 @@ public class PopulateDTable {
 
 			if (size == 1) {
 				// CASE 1: 1 file specified
-				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + fileName + ".table";
+				fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + fileName + ".table";
 				File f = new File(fileName);
 				exists = f.exists();
 			} else if (size == 2) {
 				// CASE 2: 2 files specified
-				fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table";
+				fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[0] + ".table";
 				File f = new File(fileName);
 				exists = f.exists();
 				if (exists) {
-					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+					fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[1] + ".table";
 					f = new File(fileName);
 					exists = f.exists();
-					fileName = System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[0] + ".table" + "|"
-					        + System.getProperty("user.dir") + "\\Default\\Lookup\\" + files[1] + ".table";
+					fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[0] + ".table" + "|"
+					        + GUIUtils.defaultLookupDirectoryString() + "\\" + files[1] + ".table";
 				}
 			}
 

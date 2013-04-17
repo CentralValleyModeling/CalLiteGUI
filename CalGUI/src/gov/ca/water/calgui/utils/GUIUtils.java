@@ -358,19 +358,18 @@ public class GUIUtils {
 
 					String[] files = fileName.split("[|]");
 					int size = files.length;
-					String prefix = System.getProperty("user.dir") + "/Default/Lookup/";
 
 					if (size == 1) {
 						// CASE 1: 1 file specified
-						fileName = prefix + fileName + ".table";
+						fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + fileName + ".table";
 					} else if (size == 2) {
 						// CASE 2: 2 files specified
-						fileName = prefix + files[0] + ".table";
+						fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[0] + ".table";
 						File fn = new File(fileName);
 						if (fn.exists()) {
-							fileName = prefix + files[1] + ".table";
+							fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[1] + ".table";
 							fn = new File(fileName);
-							fileName = prefix + files[0] + ".table" + "|" + fileName;
+							fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + files[0] + ".table" + "|" + fileName;
 						}
 					}
 
@@ -650,5 +649,23 @@ public class GUIUtils {
 		}
 
 		return result;
+	}
+
+	/**
+	 * 
+	 * @return string containing the full directory name for default lookup tables
+	 */
+	public static String defaultLookupDirectoryString() {
+		return System.getProperty("user.dir") + "\\Model_w2\\wresl\\Lookup";
+
+	}
+
+	/**
+	 * 
+	 * @return string containing the full directory name for root of default inputs
+	 */
+	public static String defaultDirectoryString() {
+		return System.getProperty("user.dir") + "\\Model_w2\\wresl";
+
 	}
 }
