@@ -348,7 +348,7 @@ public class FileAction implements ActionListener {
 
 		// Copy Default dir to Run dir. This may overwrite wrims2
 		// wresl's copy
-		File fs = new File(System.getProperty("user.dir") + "\\Default");
+		File fs = new File(GUIUtils.defaultDirectoryString());
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
@@ -358,7 +358,7 @@ public class FileAction implements ActionListener {
 		}
 
 		// Copy lookup files.
-		fs = new File(System.getProperty("user.dir") + "\\Default\\Lookup");
+		fs = new File(GUIUtils.defaultLookupDirectoryString());
 		ft = new File(runDir, "Lookup");
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
@@ -371,7 +371,7 @@ public class FileAction implements ActionListener {
 	}
 
 	/**
-	 * Copies indicated DSS file from \Default\DSS to run directory
+	 * Copies indicated DSS file from default DSS directoryto run directory
 	 * 
 	 * @param runDirName
 	 * 
@@ -384,8 +384,7 @@ public class FileAction implements ActionListener {
 		File ft = new File(runDir, "\\DSS");
 		ft.mkdirs();
 
-		// TODO: Files are assumed to be in Default\DSS
-		File fs = new File(System.getProperty("user.dir") + "\\Default\\DSS\\" + dssFileName);
+		File fs = new File(GUIUtils.defaultDirectoryString() + "\\DSS\\" + dssFileName);
 
 		ft = new File(runDir, "\\DSS\\" + dssFileName);
 
@@ -464,7 +463,7 @@ public class FileAction implements ActionListener {
 
 					// Open existing table file and read in all header comments (lines that start with a "!")
 
-					f = new File(System.getProperty("user.dir") + "\\Default\\Lookup", tableFileName);
+					f = new File(GUIUtils.defaultLookupDirectoryString(), tableFileName);
 					FileInputStream fin = new FileInputStream(f);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					StringBuffer header = new StringBuffer();
@@ -742,9 +741,9 @@ public class FileAction implements ActionListener {
 
 				File fsDem;
 				if (((JRadioButton) swix.find("dem_rdbCurSWP")).isSelected()) {
-					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\VariableDemand");
+					fsDem = new File(GUIUtils.defaultLookupDirectoryString() + "\\VariableDemand");
 				} else {
-					fsDem = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\FutureDemand");
+					fsDem = new File(GUIUtils.defaultLookupDirectoryString() + "\\FutureDemand");
 				}
 
 				// Copy proper WSIDI table AFTER future/variable demand copy
@@ -914,15 +913,15 @@ public class FileAction implements ActionListener {
 				JRadioButton rdbSLR15 = (JRadioButton) swix.find("hyd_rdb2");
 
 				if (rdbSLR45.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_LLT_45cm.dll");
+					fsAnnS = new File(GUIUtils.defaultDirectoryString() + "\\External\\Ann7inp_BDCP_LLT_45cm.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BDCP_LLT_45cm.dll");
 				} else if (rdbSLR15.isSelected()) {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BDCP_ELT_15cm.dll");
+					fsAnnS = new File(GUIUtils.defaultDirectoryString() + "\\External\\Ann7inp_BDCP_ELT_15cm.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BDCP_ELT_15cm.dll");
 				} else {
-					fsAnnS = new File(System.getProperty("user.dir") + "\\Default\\External\\Ann7inp_BST_noSLR_111709.dll");
+					fsAnnS = new File(GUIUtils.defaultDirectoryString() + "\\External\\Ann7inp_BST_noSLR_111709.dll");
 					fsAnnO_wrims2 = new File(scenRunDir_absPath, "External\\Ann7inp_CA.dll");
 					fsAnnO_wrims2_generated = new File(scenGeneratedDir_absPath, "External\\Ann7inp_BST_noSLR_111709.dll");
 				}

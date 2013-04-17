@@ -116,7 +116,7 @@ public class RunListener implements ItemListener {
 							((JTextField) swix.find("hyd_DSS_Init_F")).setText(result[4]);
 
 							// TODO: ? Is this call needed?
-							FileUtils.copyWSIDItoLookup(result[7], System.getProperty("user.dir") + "\\Default\\Lookup");
+							FileUtils.copyWSIDItoLookup(result[7], GUIUtils.defaultLookupDirectoryString());
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
