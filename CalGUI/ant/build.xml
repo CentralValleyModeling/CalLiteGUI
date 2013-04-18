@@ -33,7 +33,6 @@
 		<!--Add dirs -->
 		<mkdir dir="${deploy.dir}/classes" />
 		<mkdir dir="${deploy.dir}/Config" />
-		<mkdir dir="${deploy.dir}/Default" />
 		<mkdir dir="${deploy.dir}/docs" />
 		<mkdir dir="${deploy.dir}/jre6" />
 		<mkdir dir="${deploy.dir}/lib" />
@@ -49,12 +48,6 @@
 			</fileset>
 
 			</copy>
-
-		<copy todir="${deploy.dir}/Default">
-
-			<fileset dir="${default.dir}" />
-
-		</copy>
 		
 
 		<copy todir="${deploy.dir}/Config">
