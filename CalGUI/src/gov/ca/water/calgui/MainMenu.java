@@ -67,6 +67,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
+import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -382,6 +383,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		swix.setActionListener(externalPDF, this);
 
 		// Check for scenario changes on Exit.
+		desktop.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		desktop.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {

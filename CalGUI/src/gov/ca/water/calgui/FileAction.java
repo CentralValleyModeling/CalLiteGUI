@@ -1134,6 +1134,7 @@ public class FileAction implements ActionListener {
 	        GUILinks gl) {
 
 		Boolean result = true;
+		JPanel mainmenu = (JPanel) swix.find("mainmenu");
 
 		StringBuffer sbInMemory = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 
@@ -1143,14 +1144,25 @@ public class FileAction implements ActionListener {
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
-		if (!sbInMemory.toString().equals(sbExisting.toString())) {
+		if (sbInMemory.toString().equals(sbExisting.toString())) {
+			result = JOptionPane.showConfirmDialog(mainmenu, "Are you sure you want to exit?", "CalLite Gui",
+			        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+		} else {
 
-			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 			int n = JOptionPane.showConfirmDialog(mainmenu,
-			        "Scenario selections have changed. Would you like to save the changes?", "CalLite Gui",
-			        JOptionPane.YES_NO_OPTION);
+			        "Scenario selections have changed. Would you like to save the changes before exiting?", "CalLite Gui",
+			        JOptionPane.YES_NO_CANCEL_OPTION);
 
-			if (n == JOptionPane.YES_OPTION) {
+			switch (n) {
+			case JOptionPane.CANCEL_OPTION:
+				result = false;
+				break;
+
+			case JOptionPane.NO_OPTION:
+				result = true;
+				break;
+
+			case JOptionPane.YES_OPTION:
 
 				JFileChooser fc = new JFileChooser();
 				fc.setFileFilter(new SimpleFileFilter("cls", "CalLite Scenario File (*.cls)"));
@@ -1173,11 +1185,13 @@ public class FileAction implements ActionListener {
 					if (filename != null) {
 
 						boolean scensave = false;
-						if (new File(filename).exists())
-							scensave = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + filename
-							        + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
-							        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
-
+						if (new File(filename).exists()) {
+							n = JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + filename
+							        + "' already exists. Press OK to overwrite and then exit.", "CalLite GUI - " + scen,
+							        JOptionPane.OK_CANCEL_OPTION);
+							scensave = (n == JOptionPane.OK_OPTION);
+							result = scensave;
+						}
 						if (scensave == true) {
 
 							FileUtils.createNewFile(filename);
@@ -1195,6 +1209,7 @@ public class FileAction implements ActionListener {
 						}
 					}
 				}
+				break;
 			}
 
 		}
