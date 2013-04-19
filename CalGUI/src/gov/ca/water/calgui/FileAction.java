@@ -510,7 +510,7 @@ public class FileAction implements ActionListener {
 
 						// If it is selected, set option to "1" - true pr check d1485/D1641 options
 						if (swixControlName.startsWith("ckbReg")) {
-							JRadioButton c1 = (JRadioButton) swix.find("rdbRegQS_D1485");
+							JRadioButton c1 = ((JRadioButton) swix.find("rdbRegQS_D1485"));
 							if (c1.isSelected()) {
 								// Check for N/A Flag
 								String NAFlag = linkParts[13].trim();
