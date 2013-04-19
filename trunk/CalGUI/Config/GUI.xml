@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <frame id="desktop" size="1024,768"
 	title="CalLite 2.00 - The Central Valley Water Management Screening Model"
-	defaultCloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
+	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
 
 	<menubar id="menu">
 		<menu text="File" mnemonic="VK_F">
@@ -926,10 +926,16 @@
 						</panel>
 						<panel name="fac_pan6" id="fac_pan6" resizeable="false"
 							border="TitledBorder(Isolated Facility)" visible="false" enabled="false"
-							size="300,500" preferredsize="550,500" layout="GridBagLayout">
+							layout="GridBagLayout">
+							
 							<gridbagconstraints insets="0,0,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0"
+								anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0"
 								gridheight="4" />
+
+							<label icon="images/Facilities_IF.jpg" >
+								<gridbagconstraints insets="0,5,5,5"
+									anchor="GridBagConstraints.EAST" gridx="2" gridy="0" gridheight="99" />
+							</label>
 							<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
@@ -948,11 +954,15 @@
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5" />
 							</button>
+							<panel layout="GridBagLayout">>
+								<gridbagconstraints insets="0,0,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10"
+									gridwidth="2" />
 							<label text="Monthly Pumping Limit">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 							</label>
-							<scrollpane preferredsize="150,215" layout="BorderLayout">
+							<scrollpane size="150,215" preferredsize="150,215" layout="BorderLayout">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
 								<table id="tblIF1" minimumsize="150,215">
@@ -967,12 +977,13 @@
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
 							</label>
-							<scrollpane preferredsize="250,215" layout="BorderLayout">
+							<scrollpane size="250,215" preferredsize="250,215" layout="BorderLayout">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
 								<table id="tblIF2" minimumsize="250,215">
 								</table>
 							</scrollpane>
+							</panel>
 							<label text="Service Areas for Isolated Facility">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="25" />
