@@ -86,15 +86,15 @@ public class FileAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 
+		JPanel mainmenu = (JPanel) swix.find("mainmenu");
+		String scen = ((JTextField) swix.find("run_txfScen")).getText();
+
 		if ("AC_RUN".equals(ae.getActionCommand())) {
 
 			// Check if selections are valid
-			JTextField tf = (JTextField) swix.find("run_txfScen");
-			String scen = tf.getText();
 
 			String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim();
 			String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim();
-			;
 			Integer startYr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
 			Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
 
@@ -102,15 +102,6 @@ public class FileAction implements ActionListener {
 			Integer iSMon = UnitsUtils.monthToInt(startMon);
 			Integer iEMon = UnitsUtils.monthToInt(endMon);
 			Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
-
-			// Find Main Panels
-			JPanel runsettings = (JPanel) swix.find("runsettings");
-			JPanel regulations = (JPanel) swix.find("regulations");
-			JPanel hydroclimate = (JPanel) swix.find("hydroclimate");
-			JPanel demands = (JPanel) swix.find("demands");
-			JPanel operations = (JPanel) swix.find("operations");
-			JPanel facilities = (JPanel) swix.find("facilities");
-			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 
 			if (!scen.equals("")) {
 
@@ -151,8 +142,7 @@ public class FileAction implements ActionListener {
 							if (getScenFilename.dialogRC != 0)
 								scensave = false;
 							else {
-								tf = (JTextField) swix.find("run_txfScen");
-								scen = tf.getText();
+								scen = ((JTextField) swix.find("run_txfScen")).getText();
 
 								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
 									scensave = (JOptionPane.showConfirmDialog(mainmenu,
@@ -209,9 +199,7 @@ public class FileAction implements ActionListener {
 				}
 			}
 			if (proceed) {
-				JPanel mainmenu = (JPanel) swix.find("mainmenu");
-				JTextField tf = (JTextField) swix.find("run_txfScen");
-				String scen = tf.getText();
+				scen = ((JTextField) swix.find("run_txfScen")).getText();
 				if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
 					proceed = (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + System.getProperty("user.dir")
 					        + "\\Scenarios\\" + scen + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
@@ -221,10 +209,7 @@ public class FileAction implements ActionListener {
 					saveFile(scen, swix, regUserEdits, dTableModels, gl);
 				} else {
 					JFrame frame = new JFrame("Error");
-
-					// show a joptionpane dialog using showMessageDialog
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
-
 				}
 			}
 
@@ -232,16 +217,15 @@ public class FileAction implements ActionListener {
 			JFileChooser fc = new JFileChooser();
 			fc.setFileFilter(new FileNameExtensionFilter("CalLite Scenario Files *.cls", "cls"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
-			JPanel mainmenu = (JPanel) swix.find("mainmenu");
 			int retval = fc.showOpenDialog(mainmenu);
 			if (retval == JFileChooser.APPROVE_OPTION) {
+
 				// ... The user selected a file, get it, use it.
 
 				File file = fc.getSelectedFile();
 				GetDSSFilename getScenFilename;
 				getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
-				getScenFilename.fc.setSelectedFile(file); // Use this name for
-				                                          // next Save As
+				getScenFilename.fc.setSelectedFile(file); // Use this name for next Save As
 
 				action_WSIDI = 0;
 				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
@@ -256,14 +240,7 @@ public class FileAction implements ActionListener {
 			saveFile("Current_Scenario", swix, regUserEdits, dTableModels, gl);
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
 			ScenFrame.setVisible(true);
-			// Set Icon
-			// java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
-			// ScenFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 			ScenFrame.setVisible(true);
-			// Delete temp file
-			// File ft = new File(System.getProperty("user.dir") +
-			// "\\Scenarios\\Current_Scenario.cls");
-			// GUI_Utils.deleteDir(ft);
 
 		} else if (ae.getActionCommand().startsWith("AC_ViewScen")) {
 
