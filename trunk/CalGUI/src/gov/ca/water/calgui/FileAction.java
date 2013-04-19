@@ -120,57 +120,94 @@ public class FileAction implements ActionListener {
 
 					// *** Determine if scenario has changed.
 
-					// Store selections
+					// Get current scenario settings
 					StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 
 					// Read existing file
+
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
-					Boolean scensave = false;
-
+					Boolean okToRun = false;
 					if (!sb.toString().equals(sbExisting.toString())) {
+
+						// Scenario settings have changed - check if they should be saved before running
 
 						int n = JOptionPane.showConfirmDialog(mainmenu,
 						        "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
-						        JOptionPane.YES_NO_OPTION);
+						        JOptionPane.YES_NO_CANCEL_OPTION);
 
-						if (n == JOptionPane.YES_OPTION) {
+						switch (n) {
+
+						case JOptionPane.CANCEL_OPTION:
+
+							// CANCEL - do not save changes to disk, do not run, return
+
+							okToRun = false;
+							break;
+
+						case JOptionPane.NO_OPTION:
+
+							// NO - do not save changes to disk, check if OK to revert and run
+
+							if (JOptionPane.showConfirmDialog(mainmenu,
+							        "Press OK to run with the last saved version of " + f.getPath()
+							                + "; your changes will be lost.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+								okToRun = true;
+
+								action_WSIDI = 0;
+								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
+								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
+								action_WSIDI = 1;
+
+							} else {
+								okToRun = false;
+							}
+							break;
+
+						case JOptionPane.YES_OPTION:
+
+							// YES - get file name
+
 							GetDSSFilename getScenFilename;
 							getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
 							getScenFilename.actionPerformed(ae);
-							if (getScenFilename.dialogRC != 0)
-								scensave = false;
-							else {
-								scen = ((JTextField) swix.find("run_txfScen")).getText();
+							if (getScenFilename.dialogRC != 0) {
+								// Cancel?
+								okToRun = false;
+							} else {
 
-								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen)).exists())
-									scensave = (JOptionPane.showConfirmDialog(mainmenu,
+								okToRun = true;
+								String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
+								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
+
+									if (JOptionPane.showConfirmDialog(mainmenu,
 									        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
 									                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
-									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+										// Existing file, do overwrite
+										okToRun = true;
 
-								if (scensave == true) {
-									setFilenameTooltips();
-
-									FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-									f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-									try {
-										FileWriter fstream = new FileWriter(f);
-										BufferedWriter outobj = new BufferedWriter(fstream);
-										outobj.write(sb.toString());
-										outobj.close();
-
-									} catch (Exception e1) {
-										System.err.println("Error: " + e1.getMessage());
+									} else {
+										// Existing file, do not overwrite -> cancel run
+										okToRun = false;
 									}
 								}
-
+								if (okToRun) {
+									((JTextField) swix.find("run_txfScen")).setText(scen2);
+									setFilenameTooltips();
+									saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
+								} else {
+									((JTextField) swix.find("run_txfScen")).setText(scen);
+									setFilenameTooltips();
+								}
 							}
+							break;
 						}
-
 					}
-					setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
+					if (okToRun) {
+						setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
+					}
 					btn.setEnabled(true);
 					mainmenu.revalidate();
 				}
@@ -290,12 +327,16 @@ public class FileAction implements ActionListener {
 	 * Sets value of DV DSS file name and tooltips for scenario and DSS textfields
 	 */
 	private void setFilenameTooltips() {
+
 		String scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\" + scenFilename);
-		desktop.setTitle(desktop.getTitle() + ";  Scenario - " + scenFilename);
+
 		String dvDSSFilename = scenFilename.substring(0, scenFilename.length() - 4) + "_DV.DSS";
 		((JTextField) swix.find("run_txfoDSS")).setText(dvDSSFilename);
 		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\" + dvDSSFilename);
+
+		desktop.setTitle(desktop.getTitle().split(";")[0] + ";  Scenario - " + scenFilename);
+
 	}
 
 	/**
@@ -1170,19 +1211,7 @@ public class FileAction implements ActionListener {
 							result = scensave;
 						}
 						if (scensave == true) {
-
-							FileUtils.createNewFile(filename);
-							f = new File(filename);
-							try {
-								FileWriter fstream = new FileWriter(f);
-								BufferedWriter outobj = new BufferedWriter(fstream);
-								outobj.write(sbInMemory.toString());
-								outobj.close();
-
-							} catch (Exception e1) {
-								log.debug(e1.getMessage());
-							}
-
+							saveScenarioFile(sbInMemory, filename);
 						}
 					}
 				}
@@ -1191,6 +1220,28 @@ public class FileAction implements ActionListener {
 
 		}
 		return result;
+	}
+
+	/**
+	 * Saves scenario as stored in sb into a scenario file
+	 * 
+	 * @param sb
+	 *            StringBuffer contains all control settings from GUI along with ancillary data.
+	 * @param filename
+	 */
+	private static void saveScenarioFile(StringBuffer sb, String filename) {
+		File f;
+		FileUtils.createNewFile(filename);
+		f = new File(filename);
+		try {
+			FileWriter fstream = new FileWriter(f);
+			BufferedWriter outobj = new BufferedWriter(fstream);
+			outobj.write(sb.toString());
+			outobj.close();
+
+		} catch (Exception e1) {
+			log.debug(e1.getMessage());
+		}
 	}
 
 }
