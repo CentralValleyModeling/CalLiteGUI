@@ -180,7 +180,6 @@ public class FileAction implements ActionListener {
 								okToRun = true;
 								String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
 								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
-
 									if (JOptionPane.showConfirmDialog(mainmenu,
 									        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
 									                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
@@ -196,6 +195,7 @@ public class FileAction implements ActionListener {
 								if (okToRun) {
 									((JTextField) swix.find("run_txfScen")).setText(scen2);
 									setFilenameTooltips();
+									sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 									saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
 									scen = scen2;
 								} else {
@@ -389,7 +389,7 @@ public class FileAction implements ActionListener {
 	}
 
 	/**
-	 * Copies indicated DSS file from default DSS directoryto run directory
+	 * Copies indicated DSS file from default DSS directory to run directory
 	 * 
 	 * @param runDirName
 	 * 
@@ -402,7 +402,7 @@ public class FileAction implements ActionListener {
 		File ft = new File(runDir, "\\DSS");
 		ft.mkdirs();
 
-		File fs = new File(GUIUtils.defaultDirectoryString() + "\\DSS\\" + dssFileName);
+		File fs = new File(GUIUtils.defaultDSSDirectoryString() + "\\" + dssFileName);
 
 		ft = new File(runDir, "\\DSS\\" + dssFileName);
 
@@ -685,8 +685,8 @@ public class FileAction implements ActionListener {
 				// ========== Prepare "Generated" folder
 				publish("Creating new Generated directory.");
 
-				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt
-				        + "\\Generated").getAbsolutePath();
+				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\Run_Records\\"
+				        + scenWithoutExt + "\\Generated").getAbsolutePath();
 
 				// delete "Generated" folder to cleanup files from previous actions
 
@@ -718,8 +718,8 @@ public class FileAction implements ActionListener {
 
 				publish("Creating new Run directory.");
 
-				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenWithoutExt + "\\Run")
-				        .getAbsolutePath();
+				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\Run_Records\\" + scenWithoutExt
+				        + "\\Run").getAbsolutePath();
 
 				success = success & setupScenarioDirectory(scenRunDir_absPath);
 
