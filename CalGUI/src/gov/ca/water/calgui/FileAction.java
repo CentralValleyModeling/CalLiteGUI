@@ -197,6 +197,7 @@ public class FileAction implements ActionListener {
 									((JTextField) swix.find("run_txfScen")).setText(scen2);
 									setFilenameTooltips();
 									saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
+									scen = scen2;
 								} else {
 									((JTextField) swix.find("run_txfScen")).setText(scen);
 									setFilenameTooltips();
@@ -364,8 +365,7 @@ public class FileAction implements ActionListener {
 			success = false;
 		}
 
-		// Copy Default dir to Run dir. This may overwrite wrims2
-		// wresl's copy
+		// Copy Default dir to Run dir. This may overwrite wrims2 wresl's copy
 		File fs = new File(GUIUtils.defaultDirectoryString());
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
