@@ -668,4 +668,13 @@ public class GUIUtils {
 		return System.getProperty("user.dir") + "\\Model_w2\\wresl";
 
 	}
+
+	/**
+	 * 
+	 * @return string containing the full directory name for DSS Files directory.
+	 */
+	public static String defaultDSSDirectoryString() {
+		return System.getProperty("user.dir") + "\\Model_w2\\DSS_Files";
+
+	}
 }
