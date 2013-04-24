@@ -1179,10 +1179,10 @@
 
 				<panel id="regulations" name="Regulations" constraints="BorderLayout.LEFT"
 					layout="GridBagLayout">
-					<panel name="Quick Select" resizeable="false" border="TitledBorder()"
-						minimumsize="400,170" layout="GridBagLayout">
-						<gridbagconstraints insets="5,5,5,5" gridx="0"
-							gridy="0" anchor="GridBagConstraints.WEST" />
+					<panel name="Quick Select" resizeable="false" border="TitledBorder(Quick Select)"
+						minimumsize="450,100" preferredsize="450,100" layout="GridBagLayout">
+						<gridbagconstraints insets="5,5,25,5" gridx="0"
+							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
 						<Label
 							text="Select a regulation basis below to run with a default regulatory environment."
 							enabled="false">
@@ -1217,7 +1217,7 @@
 							</radiobutton>
 						</buttongroup>
 					</panel>
-					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER" preferredsize="450,500"
+					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER" preferredsize="425,500"
 						id="reg_tabbedPane">
 						<gridbagconstraints insets="0,5,0,5" gridx="0"
 							gridy="1" anchor="GridBagConstraints.NORTHWEST" />
@@ -1498,30 +1498,30 @@
 					</tabbedpane>
 					<button text="Help" id="RegHelp" ActionCommand="AC_Help">
 						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="99" gridwidth="2" insets="5,5,5,0" />
+							gridx="0" gridy="99" gridwidth="2" insets="22,5,5,0" />
 					</button>
 					<panel id="reg_panTab" border="TitledBorder(Values)" enabled="false"
-						resizeable="false" minimumsize="600,450" layout="GridBagLayout">
-						<gridbagconstraints insets="0,5,0,5" gridx="1"
+						resizeable="false" minimumsize="555,450" layout="GridBagLayout">
+						<gridbagconstraints insets="13,5,0,5" gridx="1"
 							gridy="1" gridheight="30" gridwidth="6"
 							anchor="GridBagConstraints.NORTHWEST" />
 						<button text="Copy" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Copy">
-							<gridbagconstraints insets="0,0,5,5" gridx="0"
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button text="Paste" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Paste">
-							<gridbagconstraints insets="0,0,5,5" gridx="1"
+							<gridbagconstraints insets="0,5,5,5" gridx="1"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<button id="btnRegDef" text="Default" minimumsize="100,20"
 							enabled="false" ActionCommand="Reg_Default" visible="false">
-							<gridbagconstraints insets="0,0,5,5" gridx="2"
+							<gridbagconstraints insets="0,5,5,5" gridx="2"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<HBox id="regBOX" name="regBOX" preferredsize="550,350">
-							<gridbagconstraints insets="0,0,5,5" gridx="0"
+						<HBox id="regBOX" name="regBOX" preferredsize="555,423">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
 							<scrollpane id="scrRegValues" layout="BorderLayout"
 								resizeable="false">
@@ -1532,7 +1532,7 @@
 						<label
 							text="Access regulation table by selecting or right-clicking on item at left"
 							font="Tahoma-BOLD-13" foreground="CC3333">
-							<gridbagconstraints insets="0,0,5,5" gridx="0"
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="3" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 					</panel>
