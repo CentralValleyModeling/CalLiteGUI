@@ -128,8 +128,8 @@ public class FileAction implements ActionListener {
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
-					Boolean okToRun = false;
-					if (!sb.toString().equals(sbExisting.toString())) {
+					Boolean okToRun = sb.toString().equals(sbExisting.toString());
+					if (!okToRun) {
 
 						// Scenario settings have changed - check if they should be saved before running
 
