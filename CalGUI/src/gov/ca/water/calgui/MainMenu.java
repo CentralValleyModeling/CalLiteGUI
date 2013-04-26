@@ -380,7 +380,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		swix.setActionListener(schematics, new SchematicAction(swix));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
 
-		swix.setActionListener(externalPDF, this);
+		swix.setActionListener(externalPDF, new ReportAction(desktop, swix));
 
 		// Check for scenario changes on Exit.
 		desktop.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
