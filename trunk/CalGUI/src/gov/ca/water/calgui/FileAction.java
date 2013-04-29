@@ -767,7 +767,7 @@ public class FileAction implements ActionListener {
 				// Copy proper WSIDI table AFTER future/variable demand copy
 				// TODO: WHY IS THIS ORDER NECESSARY?? IT DOESN'T LOOK LIKE WE'RE DOING THAT NOW?
 				// TODO: This kludge (forcing the value of hyd_DSS_Index to be calculated before accessing it) is a temporary fix to
-				// issues 98/99.
+				// issues 98/99. THIS MAY NOT BE NECESSARY - CHECK LOGIC!!
 
 				String result[] = GUIUtils.getHydDSSStrings(swix);
 

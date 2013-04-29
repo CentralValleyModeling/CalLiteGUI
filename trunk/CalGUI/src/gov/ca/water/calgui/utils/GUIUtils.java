@@ -353,7 +353,7 @@ public class GUIUtils {
 				String cID = tokens[0];
 				String cName = gl.ctrlFortableID(cID);
 				String fileName = gl.tableNameForCtrl(cName);
-				System.out.println(cName + ":" + fileName);
+				// System.out.println(cName + ":" + fileName);
 				if (fileName != null) {
 
 					String[] files = fileName.split("[|]");

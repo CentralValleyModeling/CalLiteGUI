@@ -75,7 +75,7 @@ public class HydListener implements ItemListener {
 						option = JOptionPane
 						        .showConfirmDialog(
 						                desktop,
-						                "You have made changes to the SWP and/or CVP WSI/DI curves. \n"
+						                "You have previously made changes to the SWP and/or CVP WSI/DI curves. \n"
 						                        + "Do you want to overwrite these changes with the default values for the configuration ("
 						                        + ((JRadioButton) component).getText()
 						                        + " ) you have selected?\n\n"
@@ -187,12 +187,15 @@ public class HydListener implements ItemListener {
 
 				// Force CVP and SWP tables to be reset from files
 
-				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString());
-				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + gl.tableNameForCtrl("op_btn1") + ".table";
+				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString()); // TODO: CONFIRM THIS IS NOW
+																										// SUPERFLUOUS
+
+				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + hydDSSStrings[7]
+				        + ".table";
 				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-				fileName = GUIUtils.defaultLookupDirectoryString() + "\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+				fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + hydDSSStrings[7] + ".table";
 				tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
