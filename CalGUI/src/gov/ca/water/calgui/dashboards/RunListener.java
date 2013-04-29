@@ -100,6 +100,8 @@ public class RunListener implements ItemListener {
 
 					} else {
 
+						// TODO: REPLACE WITH CALL TO updateHydrology?
+
 						// Yes or no: first determine which GUI_link4.table row
 						// to use
 
@@ -122,11 +124,12 @@ public class RunListener implements ItemListener {
 
 								// Force CVP and SWP tables to be reset from files
 
-								String fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn1") + ".table";
+								String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + result[7]
+								        + ".table";
 								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-								fileName = "Default\\Lookup\\" + gl.tableNameForCtrl("op_btn2") + ".table";
+								fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + result[7] + ".table";
 								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
