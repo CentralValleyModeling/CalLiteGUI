@@ -595,7 +595,7 @@ public class FileAction implements ActionListener {
 							}
 
 						} else {
-							option = "1"; // TODO: Check if this is removable
+							// option = "1"; // TODO: Check if this is removable
 						}
 					}
 

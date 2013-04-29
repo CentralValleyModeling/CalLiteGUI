@@ -1,13 +1,13 @@
 GUIid	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID	D1485/D1641	N/A_D1641	N/A_NOREGULATION	N/A_USER_DEFINED	N/A_D1485
 hyd_rdb2005	GUI_HydroClimate.table	1	0	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2030	GUI_HydroClimate.table	1	1	Level of Development, LOD_Future = 1 for future and 0 for existing	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdbCCEL	GUI_HydroClimate.table	1	2	Climate Change - ELT2025 = 2, LLT2060 = 3	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdbCCLL	GUI_HydroClimate.table	1	3	Climate Change - ELT2025 = 2, LLT2060 = 3	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2	GUI_HydroClimate.table	2	2	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb3	GUI_HydroClimate.table	2	1	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb4	GUI_HydroClimate.table	2	0	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdbHis	GUI_HydroClimate.table	3	0	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdbMid	GUI_HydroClimate.table	3	1	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdbEnd	GUI_HydroClimate.table	3	2	Climate projection period; Historical Hydrology = 0 and others 1  2. 	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_null	GUI_HydroClimate.table	3	0	Placeholder for Climate Projection Period	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbCurSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbFutSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbUD1	GUI_SODdemand.table	0	2	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -31,8 +31,8 @@ ckbReg_EM	GUI_Regs.table	8	-1	EM_DLTSW -  Emmaton	Regulations	n/a	n/a	n/a	n/a	n/
 ckbReg_JP	GUI_Regs.table	9	-1	JP_DLTSW -  Jersey Point	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a
 ckbReg_RS	GUI_Regs.table	10	-1	RS_DLTSW -  Rock Slough	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a
 ckbReg_CO	GUI_Regs.table	11	-1	CO_DLTSW -  Collinsville	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a
-ckbReg_AN	GUI_Regs.table	12	-1	AN_DLTSW -  Antioch for D-1485	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a
-ckbReg_CH	GUI_Regs.table	13	-1	CH_DLTSW -  Chipps Island for D-1485	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a
+ckbReg_AN	GUI_Regs.table	12	-1	AN_DLTSW -  Antioch for D-1485 (shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a
+ckbReg_AN	GUI_Regs.table	13	-1	CH_DLTSW -  Chipps Island for D-1485(shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a
 ckbReg_TRNTY	GUI_Regs.table	14	-1	TRNTY_DLTSW -  Trinity Minimum Flows	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a
 ckbReg_PUMP	GUI_Regs.table	15	-1	PUMP_DLTSW -  Permitted pumping limits at Jones and Banks	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a
 ckbRegbo2	GUI_RPAsOtherRegs.table	1	-1	FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
