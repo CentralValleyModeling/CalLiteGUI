@@ -1,6 +1,6 @@
 run_txfDir|.\Scenarios
-run_txfScen|DEFAULT.cls
-run_txfoDSS|DEFAULT_DV.DSS
+run_txfScen|d1641.CLS
+run_txfoDSS|d1641_DV.DSS
 run_txaScenDesc|The default scenario contains Future Land Use, Base ANN Sea Level Rise, Historical Hydrology, SWP Full Table A, CVP Full Contract, D1641 regulation along with BO RPAs, Wheeling and Intertie.
 spnRunStartMonth|Oct
 spnRunStartYear|1921
@@ -106,8 +106,8 @@ fac_ckb30|true
 fac_ckb31|true
 fac_ckb32|true
 rdbRegQS_D1485|false
-rdbRegQS_D1641|false
-rdbRegQS_1641BO|true
+rdbRegQS_D1641|true
+rdbRegQS_1641BO|false
 rdbRegQS_UD|false
 ckbReg_DCC|true
 ckbReg_RV|true
@@ -124,11 +124,11 @@ ckbReg_JP|true
 ckbReg_RS|true
 ckbReg_CO|true
 ckbReg_AN|false
-ckbRegbo1|true
-ckbRegbo2|true
-ckbRegbo3|true
-ckbRegbo4|true
-ckbRegbo5|true
+ckbRegbo1|false
+ckbRegbo2|false
+ckbRegbo3|false
+ckbRegbo4|false
+ckbRegbo5|false
 Dynamic_SJR|true
 D1641_Base|false
 D1641_SALINITY|false
