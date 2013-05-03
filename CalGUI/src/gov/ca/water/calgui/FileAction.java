@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,6 +30,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
@@ -70,6 +72,9 @@ public class FileAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private int action_WSIDI;
+	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
+	                                           // run
+
 	static Logger log = Logger.getLogger(FileAction.class.getName());
 
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
@@ -80,6 +85,23 @@ public class FileAction implements ActionListener {
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.action_WSIDI = action_WSIDI;
+
+		// create and load default properties
+		runRecordFolderName = "Run_Records";
+		Properties defaultProps = new Properties();
+		FileInputStream in;
+		try {
+			in = new FileInputStream("CalLiteGUI.properties");
+			defaultProps.load(in);
+			in.close();
+			runRecordFolderName = defaultProps.getProperty("RunRecordFolderName", "Run_Records");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -685,8 +707,8 @@ public class FileAction implements ActionListener {
 				// ========== Prepare "Generated" folder
 				publish("Creating new Generated directory.");
 
-				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\Run_Records\\"
-				        + scenWithoutExt + "\\Generated").getAbsolutePath();
+				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName
+				        + "\\" + scenWithoutExt + "\\Generated").getAbsolutePath();
 
 				// delete "Generated" folder to cleanup files from previous actions
 
@@ -718,8 +740,8 @@ public class FileAction implements ActionListener {
 
 				publish("Creating new Run directory.");
 
-				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\Run_Records\\" + scenWithoutExt
-				        + "\\Run").getAbsolutePath();
+				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+				        + scenWithoutExt + "\\Run").getAbsolutePath();
 
 				success = success & setupScenarioDirectory(scenRunDir_absPath);
 
