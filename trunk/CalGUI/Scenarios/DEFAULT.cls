@@ -140,7 +140,14 @@ SJR_full|false
 ckbReg1|false
 ckbReg2|false
 ckbReg10|false
-ckbReg16|false
+ckbReg11|true
+ckbReg12|true
+ckbReg13|true
+ckbReg14|true
+ckbReg15|true
+ckbReg16|true
+ckbReg17|true
+ckbReg18|false
 op_rdb9|false
 op_rdb6|true
 op_rdb7|true
