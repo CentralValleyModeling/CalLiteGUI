@@ -927,14 +927,15 @@
 						<panel name="fac_pan6" id="fac_pan6" resizeable="false"
 							border="TitledBorder(Isolated Facility)" visible="false" enabled="false"
 							layout="GridBagLayout">
-							
+
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0"
 								gridheight="4" />
 
-							<label icon="images/Facilities_IF.jpg" >
+							<label icon="images/Facilities_IF.jpg">
 								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.EAST" gridx="2" gridy="0" gridheight="99" />
+									anchor="GridBagConstraints.EAST" gridx="2" gridy="0"
+									gridheight="99" />
 							</label>
 							<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
@@ -954,35 +955,38 @@
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5" />
 							</button>
-							<panel layout="GridBagLayout">>
+							<panel layout="GridBagLayout">
+								>
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10"
 									gridwidth="2" />
-							<label text="Monthly Pumping Limit">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
-							</label>
-							<scrollpane size="150,215" preferredsize="150,215" layout="BorderLayout">
-								<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
-								<table id="tblIF1" minimumsize="150,215">
-								</table>
-							</scrollpane>
-							<checkbox enabled="false" selected="true" name="fac_ckb12"
-								id="fac_ckb12" text="Prefer Isolated Facility">
-								<gridbagconstraints insets="10,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="9" />
-							</checkbox>
-							<label text="Dual Conveyance">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
-							</label>
-							<scrollpane size="250,215" preferredsize="250,215" layout="BorderLayout">
-								<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
-								<table id="tblIF2" minimumsize="250,215">
-								</table>
-							</scrollpane>
+								<label text="Monthly Pumping Limit">
+									<gridbagconstraints insets="0,5,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
+								</label>
+								<scrollpane size="150,215" preferredsize="150,215"
+									layout="BorderLayout">
+									<gridbagconstraints insets="0,10,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
+									<table id="tblIF1" minimumsize="150,215">
+									</table>
+								</scrollpane>
+								<checkbox enabled="false" selected="true" name="fac_ckb12"
+									id="fac_ckb12" text="Prefer Isolated Facility">
+									<gridbagconstraints insets="10,5,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="9" />
+								</checkbox>
+								<label text="Dual Conveyance">
+									<gridbagconstraints insets="0,5,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
+								</label>
+								<scrollpane size="250,215" preferredsize="250,215"
+									layout="BorderLayout">
+									<gridbagconstraints insets="0,10,5,5"
+										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
+									<table id="tblIF2" minimumsize="250,215">
+									</table>
+								</scrollpane>
 							</panel>
 							<label text="Service Areas for Isolated Facility">
 								<gridbagconstraints insets="0,5,5,5"
@@ -1179,8 +1183,9 @@
 
 				<panel id="regulations" name="Regulations" constraints="BorderLayout.LEFT"
 					layout="GridBagLayout">
-					<panel name="Quick Select" resizeable="false" border="TitledBorder(Quick Select)"
-						minimumsize="450,100" preferredsize="450,100" layout="GridBagLayout">
+					<panel name="Quick Select" resizeable="false"
+						border="TitledBorder(Quick Select)" minimumsize="450,100"
+						preferredsize="450,100" layout="GridBagLayout">
 						<gridbagconstraints insets="5,5,25,5" gridx="0"
 							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
 						<Label
@@ -1217,8 +1222,8 @@
 							</radiobutton>
 						</buttongroup>
 					</panel>
-					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER" preferredsize="425,500"
-						id="reg_tabbedPane">
+					<tabbedpane name="reg_tabbedPane" constraints="Borderlayout.CENTER"
+						preferredsize="425,500" id="reg_tabbedPane">
 						<gridbagconstraints insets="0,5,0,5" gridx="0"
 							gridy="1" anchor="GridBagConstraints.NORTHWEST" />
 
@@ -1489,10 +1494,50 @@
 									insets="0,0,5,5" gridwidth="5" anchor="GridBagConstraints.CENTER"
 									fill="GridBagConstraints.BOTH" />
 							</separator>
+							<checkbox name="ckbReg11" id="ckbReg11"
+								text="B2 Action 1">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="21" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<checkbox name="ckbReg12" id="ckbReg12"
+								text="B2 Action 2">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="22" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<checkbox name="ckbReg13" id="ckbReg13"
+								text="B2 Action 3">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="23" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<checkbox name="ckbReg14" id="ckbReg14"
+								text="B2 Action 4">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="24" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<checkbox name="ckbReg15" id="ckbReg15"
+								text="B2 Action 5">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="25" anchor="GridBagConstraints.WEST" />
+							</checkbox>
 							<checkbox name="ckbReg16" id="ckbReg16"
+								text="B2 Action 6">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="26" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<checkbox name="ckbReg17" id="ckbReg17"
+								text="B2 Action 7">
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="27" anchor="GridBagConstraints.WEST" />
+							</checkbox>
+							<separator orientation="HORIZONTAL" preferredsize="5,2">
+								<gridbagconstraints gridx="0" gridy="30"
+									insets="0,0,5,5" gridwidth="5" anchor="GridBagConstraints.CENTER"
+									fill="GridBagConstraints.BOTH" />
+							</separator>
+							<checkbox name="ckbReg18" id="ckbReg18"
 								text="Fraction of Unimpaired Flow for Delta Flow Criteria">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="20" anchor="GridBagConstraints.WEST" />
+									gridy="31" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 						</panel>
 					</tabbedpane>

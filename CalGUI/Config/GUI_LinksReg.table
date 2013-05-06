@@ -21,7 +21,14 @@ ckbRegbo5	SJR Inflow to Export Ratio	FALSE	TRUE	FALSE
 ckbReg1	QWEST	FALSE	FALSE	FALSE
 ckbReg2	OMR	FALSE	FALSE	FALSE
 ckbReg10	SJR EI ratio with Offset	FALSE	FALSE	FALSE
-ckbReg16	Fraction Unimpaired	FALSE	FALSE	FALSE
+ckbReg11	B2 Action 1	TRUE	TRUE	FALSE
+ckbReg12	B2 Action 2	TRUE	TRUE	FALSE
+ckbReg13	B2 Action 3	TRUE	TRUE	FALSE
+ckbReg14	B2 Action 4	TRUE	TRUE	FALSE
+ckbReg15	B2 Action 5	TRUE	TRUE	FALSE
+ckbReg16	B2 Action 6	TRUE	TRUE	FALSE
+ckbReg17	B2 Action 7	TRUE	TRUE	FALSE
+ckbReg18	Fraction Unimpaired	FALSE	FALSE	FALSE
 op_rdb6	CVC Wheeling	TRUE	TRUE	TRUE
 op_rdb9	Payback Wheeling	FALSE	FALSE	TRUE
 op_rdb7	JPOD	TRUE	TRUE	FALSE
