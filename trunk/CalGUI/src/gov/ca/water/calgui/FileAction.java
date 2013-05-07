@@ -272,6 +272,7 @@ public class FileAction implements ActionListener {
 
 				if (proceed) {
 					saveFile(scen, swix, regUserEdits, dTableModels, gl);
+					setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl);
 				} else {
 					JFrame frame = new JFrame("Error");
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
