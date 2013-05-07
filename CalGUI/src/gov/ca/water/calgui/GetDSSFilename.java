@@ -77,6 +77,10 @@ public class GetDSSFilename implements ActionListener {
 		if (theFileExt.equals("DSS")) {
 			fc.setFileFilter(new DSSFileFilter());
 			fc.setCurrentDirectory(new File(".//Scenarios"));
+		} else if (theFileExt.equals("DSS2")) {
+			theFileExt = "DSS";
+			fc.setFileFilter(new DSSFileFilter());
+			fc.setCurrentDirectory(new File(".//Model_w2/DSS_Files"));
 		} else {
 			fc.setFileFilter(new GeneralFileFilter(theFileExt));
 			if (theFileExt.equals("PDF") || theFileExt.equals("CLS"))

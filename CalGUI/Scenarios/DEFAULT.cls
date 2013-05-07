@@ -25,6 +25,10 @@ hyd_DSS_SV_F|2020D09E
 hyd_DSS_Init|CL_INIT.dss
 hyd_DSS_Init_F|INITIAL
 hyd_DSS_Index|2210
+txf_Manual_SV|CL_ELT_CC4_SV.dss
+txf_Manual_SV_F|2020D09E
+txf_Manual_Init|CL_INIT.dss
+txf_Manual_Init_F|INITIAL
 hyd_ckb1|false
 hyd_ckb2|false
 hyd_ckb3|false

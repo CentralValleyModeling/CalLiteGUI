@@ -291,7 +291,7 @@
 										text="DSS files based on hydroclimate and run basis selections  "
 										selected="true" enabled="true" />
 									<radiobutton id="btnDSS_Manual" name="btnDSS_Manual"
-										text="DSS files selected by user" enabled="false" />
+										text="DSS files selected by user" enabled="true" />
 								</buttongroup>
 							</hbox>
 
@@ -313,7 +313,8 @@
 								<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="3" gridy="1" />
 							</textfield>
-							<button text="Select..." minimumsize="100,25" enabled="false">
+							<button id="hyd_DSS_Select" name="hyd_DSS_Select" text="Select..."
+								ActionCommand="AC_Select_DSS_SV" minimumsize="100,25" enabled="false">
 								<gridbagconstraints anchor="GridBagConstraints.EAST"
 									insets="0,20,0,0" gridx="4" gridy="1" />
 							</button>
@@ -344,7 +345,9 @@
 									gridx="3" gridy="3" />
 							</textfield>
 
-							<button text="Select..." minimumsize="100,25" enabled="false">
+							<button id="hyd_DSS_Init_Select" name="hyd_Init_Select"
+								ActionCommand="AC_Select_DSS_Init" text="Select..." minimumsize="100,25"
+								enabled="false">
 								<gridbagconstraints anchor="GridBagConstraints.EAST"
 									insets="0,20,0,0" gridx="4" gridy="3" />
 							</button>
@@ -359,6 +362,16 @@
 								visible="false">
 								<gridbagconstraints gridx="1" gridy="4" />
 							</textfield>
+
+							<!-- Following used to store manually-defined DSS files and F-parts -->
+							<textfield name="txf_Manual_SV" id="txf_Manual_SV"
+								text="" visible="false" />
+							<textfield name="txf_Manual_SV_F" id="txf_Manual_SV_F"
+								text="" visible="false" />
+							<textfield name="txf_Manual_Init" id="txf_Manual_Init"
+								text="" visible="false" />
+							<textfield name="txf_Manual_Init_F" id="txf_Manual_Init_F"
+								text="" visible="false" />
 
 						</panel>
 
@@ -1494,38 +1507,31 @@
 									insets="0,0,5,5" gridwidth="5" anchor="GridBagConstraints.CENTER"
 									fill="GridBagConstraints.BOTH" />
 							</separator>
-							<checkbox name="ckbReg11" id="ckbReg11"
-								text="B2 Action 1">
+							<checkbox name="ckbReg11" id="ckbReg11" text="B2 Action 1">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="21" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg12" id="ckbReg12"
-								text="B2 Action 2">
+							<checkbox name="ckbReg12" id="ckbReg12" text="B2 Action 2">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="22" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg13" id="ckbReg13"
-								text="B2 Action 3">
+							<checkbox name="ckbReg13" id="ckbReg13" text="B2 Action 3">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="23" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg14" id="ckbReg14"
-								text="B2 Action 4">
+							<checkbox name="ckbReg14" id="ckbReg14" text="B2 Action 4">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="24" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg15" id="ckbReg15"
-								text="B2 Action 5">
+							<checkbox name="ckbReg15" id="ckbReg15" text="B2 Action 5">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="25" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg16" id="ckbReg16"
-								text="B2 Action 6">
+							<checkbox name="ckbReg16" id="ckbReg16" text="B2 Action 6">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="26" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg17" id="ckbReg17"
-								text="B2 Action 7">
+							<checkbox name="ckbReg17" id="ckbReg17" text="B2 Action 7">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="27" anchor="GridBagConstraints.WEST" />
 							</checkbox>
