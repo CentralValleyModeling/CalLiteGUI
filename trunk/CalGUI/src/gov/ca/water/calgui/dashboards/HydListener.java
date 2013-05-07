@@ -137,23 +137,45 @@ public class HydListener implements ItemListener {
 
 				updateHydrology(JOptionPane.NO_OPTION);
 
-			} else if (cName.startsWith("hyd_rdb")) {
-				// Radio in Hydroclimate
+			} else if (cName.equals("btnDSS_Manual")) {
 
-				/*
-				 * JPanel hyd_CC = (JPanel) swix.find("hyd_CC"); JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC1"); JPanel hyd_CC2 =
-				 * (JPanel) swix.find("hyd_CC2");
-				 * 
-				 * if (cName.startsWith("hyd_rdbHis")) { GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() !=
-				 * ItemEvent.SELECTED); GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() != ItemEvent.SELECTED);
-				 * GUIUtils.toggleSelComponentAndChildren(hyd_CC1, false, JCheckBox.class);
-				 * GUIUtils.toggleSelComponentAndChildren(hyd_CC2, false, JCheckBox.class); } else if
-				 * (cName.startsWith("hyd_rdbMid") || cName.startsWith("hyd_rdbEnd")) {
-				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC, ie.getStateChange() == ItemEvent.SELECTED);
-				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC1, ie.getStateChange() == ItemEvent.SELECTED);
-				 * GUIUtils.toggleEnComponentAndChildren(hyd_CC2, ie.getStateChange() == ItemEvent.SELECTED); }
-				 */
-			}
+				boolean b = ((JRadioButton) swix.find("btnDSS_Manual")).isSelected();
+
+				swix.find("hyd_DSS_SV_t").setEnabled(b);
+				swix.find("hyd_DSS_SV_F_t").setEnabled(b);
+				swix.find("hyd_DSS_Select").setEnabled(b);
+
+				swix.find("hyd_DSS_Init_t").setEnabled(b);
+				swix.find("hyd_DSS_Init_F_t").setEnabled(b);
+				swix.find("hyd_DSS_Init_Select").setEnabled(b);
+
+				if (b) {
+
+					// When moving to manual hydrology, retrieve previous values, if any
+
+					if (((JTextField) swix.find("txf_Manual_SV")).getText().length() > 0) {
+
+						((JTextField) swix.find("hyd_DSS_SV")).setText(((JTextField) swix.find("txf_Manual_SV")).getText());
+						((JTextField) swix.find("hyd_DSS_SV_F")).setText(((JTextField) swix.find("txf_Manual_SV_F")).getText());
+						((JTextField) swix.find("hyd_DSS_Init")).setText(((JTextField) swix.find("txf_Manual_Init")).getText());
+						((JTextField) swix.find("hyd_DSS_Init_F")).setText(((JTextField) swix.find("txf_Manual_Init_F")).getText());
+					}
+				} else {
+
+					// / When moving to default, store manual choices
+
+					((JTextField) swix.find("txf_Manual_SV")).setText(((JTextField) swix.find("hyd_DSS_SV")).getText());
+					((JTextField) swix.find("txf_Manual_SV_F")).setText(((JTextField) swix.find("hyd_DSS_SV_F")).getText());
+					((JTextField) swix.find("txf_Manual_Init")).setText(((JTextField) swix.find("hyd_DSS_Init")).getText());
+					((JTextField) swix.find("txf_Manual_Init_F")).setText(((JTextField) swix.find("hyd_DSS_Init_F")).getText());
+
+					// Then reset according to run type, LOD and CC
+					updateHydrology(JOptionPane.NO_OPTION);
+				}
+
+			} else
+				System.out.println(cName + "! HydListener unhandled ItemState change");
+
 		}
 
 	}
@@ -188,7 +210,7 @@ public class HydListener implements ItemListener {
 				// Force CVP and SWP tables to be reset from files
 
 				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString()); // TODO: CONFIRM THIS IS NOW
-																										// SUPERFLUOUS
+				                                                                                        // SUPERFLUOUS
 
 				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + hydDSSStrings[7]
 				        + ".table";
