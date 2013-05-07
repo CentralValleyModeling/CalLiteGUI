@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import javax.help.HelpSet;
 import javax.help.JHelp;
@@ -76,6 +77,7 @@ public class FileAction implements ActionListener {
 	                                           // run
 
 	static Logger log = Logger.getLogger(FileAction.class.getName());
+	private static SwingWorker<Void, String> worker_setupScenario = null;
 
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        int action_WSIDI) {
@@ -229,7 +231,10 @@ public class FileAction implements ActionListener {
 						}
 					}
 					if (okToRun) {
-						setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
+						// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
+						setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl);
+						setupBatchFile(scen, false);
+						runBatch();
 					}
 					btn.setEnabled(true);
 					mainmenu.revalidate();
@@ -667,12 +672,80 @@ public class FileAction implements ActionListener {
 	 * @param dTableModels
 	 * @param gl
 	 */
-	public static void setupAndRun(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
+
+	public static void runBatch() {
+
+		// "Run" model
+
+		try {
+
+			pFrame.setCursor(null);
+			pFrame.dispose();
+
+			Runtime rt = Runtime.getRuntime();
+			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
+			int exitVal = proc.waitFor();
+			System.out.println("Process exitValue: " + exitVal);
+		} catch (Throwable t) {
+			JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
+			t.printStackTrace();
+		}
+
+	}
+
+	public static void setupBatchFile(final String scen, final boolean isAppend) {
+
+		// Wait for Swing worker to complete
+
+		try {
+			worker_setupScenario.get();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// find config file path
+
+		String scenarioName = FilenameUtils.removeExtension(scen);
+
+		String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\" + scenarioName)
+		        .getAbsolutePath();
+
+		String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
+
+		// replace vars in batch file
+
+		String batchText_template = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
+		        + "\\Model_w2\\CalLite_w2.bat.template");
+
+		String batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
+
+		File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
+
+		PrintWriter batchFile;
+		try {
+			batchFile = new PrintWriter(new BufferedWriter(new FileWriter(f, isAppend)));
+			batchFile.print(batchText);
+			batchFile.flush();
+			batchFile.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void setupScenario(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
 	        final DataFileTableModel[] dTableModels, final GUILinks gl) {
 
 		pFrame = new ProgressFrame("CalLite 2.0 GUI - Setting Up Run");
 
-		SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
+		// SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
+		worker_setupScenario = new SwingWorker<Void, String>() {
 
 			@Override
 			protected void done() {
@@ -899,17 +972,17 @@ public class FileAction implements ActionListener {
 
 				// replace vars in batch file
 
-				String batchText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
-				        + "\\Model_w2\\CalLite_w2.bat.template");
-
-				batchText = batchText.replace("{ConfigFilePath}", configMap.get("ConfigFilePath"));
-
-				File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
-				PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
-
-				cfgFile.print(batchText);
-				cfgFile.flush();
-				cfgFile.close();
+				// String batchText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
+				// + "\\Model_w2\\CalLite_w2.bat.template");
+				//
+				// batchText = batchText.replace("{ConfigFilePath}", configMap.get("ConfigFilePath"));
+				//
+				// File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
+				// PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
+				//
+				// cfgFile.print(batchText);
+				// cfgFile.flush();
+				// cfgFile.close();
 
 				// write scenario config file
 
@@ -1069,24 +1142,24 @@ public class FileAction implements ActionListener {
 
 				// "Run" model
 
-				try {
-
-					pFrame.setCursor(null);
-					pFrame.dispose();
-
-					Runtime rt = Runtime.getRuntime();
-					Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
-					int exitVal = proc.waitFor();
-					System.out.println("Process exitValue: " + exitVal);
-				} catch (Throwable t) {
-					JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
-					t.printStackTrace();
-				}
+				// try {
+				//
+				// pFrame.setCursor(null);
+				// pFrame.dispose();
+				//
+				// Runtime rt = Runtime.getRuntime();
+				// Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
+				// int exitVal = proc.waitFor();
+				// System.out.println("Process exitValue: " + exitVal);
+				// } catch (Throwable t) {
+				// JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
+				// t.printStackTrace();
+				// }
 				return null;
 			}
 		};
 
-		worker.execute();
+		worker_setupScenario.execute();
 	}
 
 	public static void saveFile(String scen, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels,

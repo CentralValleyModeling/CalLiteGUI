@@ -54,7 +54,7 @@ public class TestWriteGUIFiles extends TestCase {
 		// Test to make sure we can write a working test!
 
 		try {
-			FileAction.writeScenarioTables(System.getProperty("user.dir")+"\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
 			assert (true);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -69,7 +69,7 @@ public class TestWriteGUIFiles extends TestCase {
 		// Test of base functionality - checks that one particular .table file is copied into the Run\Lookup directory.
 
 		try {
-			FileAction.writeScenarioTables(System.getProperty("user.dir")+"\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
 			assert (true);
 			File f1 = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\GUI_HydroClimate.table");
 			File f2 = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\GUI_HydroClimate.table");
@@ -95,7 +95,7 @@ public class TestWriteGUIFiles extends TestCase {
 
 		try {
 
-			FileAction.writeScenarioTables(System.getProperty("user.dir")+"\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
 
 			assert (true);
 
@@ -131,7 +131,9 @@ public class TestWriteGUIFiles extends TestCase {
 		DataFileTableModel[] dTableModels = null;
 		GUILinks gl = null;
 
-		FileAction.setupAndRun("default.cls", desktop, swix, RegUserEdits, dTableModels, gl);
+		FileAction.setupScenario("default.cls", desktop, swix, RegUserEdits, dTableModels, gl);
+		FileAction.setupBatchFile("default.cls", false);
+		FileAction.runBatch();
 		File checkFile = new File(System.getProperty("user.dir") + "\\Run" + File.separator + "check.text");
 		assertTrue(checkFile.exists());
 	}
