@@ -95,6 +95,7 @@
 		
 		
 		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
+		<copy file="../CalLiteGUI.properties" todir="${deploy.dir}"/>
 		<copy file="../cb.dll" todir="${deploy.dir}"/>
 		<copy file="../javaHeclib.dll" todir="${deploy.dir}"/>
 		<copy file="../rmaUtil.dll" todir="${deploy.dir}"/>
