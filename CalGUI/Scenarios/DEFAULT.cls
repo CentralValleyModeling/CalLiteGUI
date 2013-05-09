@@ -10,6 +10,7 @@ run_rdbDet|true
 run_rdbProb|false
 run_rdbD1641|false
 run_rdbBO|true
+txfGUIRev|$Rev: 602 $
 hyd_rdb2005|false
 hyd_rdb2030|true
 hyd_rdbCCEL|false
@@ -77,13 +78,10 @@ fac_txf16| 0.04
 fac_txf17| 4 
 fac_txf18| 0.65 
 fac_txf19| 0.6 
-fac_txf20| 15000 
-fac_ckb11|false
-fac_ckb12|true
-fac_ckb34|true
-fac_ckb35|true
-fac_ckb36|true
-fac_ckb37|true
+fac_ckb42|false
+fac_ckb43|false
+fac_ckb44|false
+fac_ckb45|false
 fac_ckb13|false
 fac_ckb33|false
 fac_txf23| 3500 
