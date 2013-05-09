@@ -346,7 +346,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
 		GUIUtils.setMenuListener(menu, this);
 
-		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits));
+		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1));
 		GUIUtils.setMouseListener(regulations, this);
 		GUIUtils.setChangeListener(regulations, this);
@@ -546,7 +546,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
 					Boolean isSelect = selcomp.isSelected();
-					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect);
+					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null");
 				}
 			} else if (cName.startsWith("fac_ckb")) {
 				// Right click on a facility checkbox makes a subpanel visible
