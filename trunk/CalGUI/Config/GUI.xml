@@ -199,7 +199,7 @@
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="99" gridwidth="1" insets="5,5,5,0" />
 						</button>
-						<textfield id="txfGUIRev" name="txfGUIRev" text="$Revision$"
+						<textfield id="txfGUIRev" name="txfGUIRev" text="$Rev$"
 							enabled="false" minimumsize="80,20">
 							<gridbagconstraints anchor="GridBagConstraints.SOUTHEAST"
 								gridx="1" gridy="99" gridwidth="1" insets="5,5,5,0" />
