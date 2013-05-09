@@ -53,31 +53,32 @@ public class RegListener implements ItemListener {
 			System.out.println(cName);
 
 			if (cName.startsWith("rdbRegQS")) {
+
 				// Quick Select Radio Button Selected
-				Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
-				if (isSelect) {
 
-					int iSel;
+				if (ie.getStateChange() == ItemEvent.SELECTED) {
 
-					// Find which option is selected.
-					if (cName.startsWith("rdbRegQS_D1641")) {
-						iSel = 1;
-					} else if (cName.startsWith("rdbRegQS_1641BO")) {
-						iSel = 2;
-					} else if (cName.startsWith("rdbRegQS_D1485")) {
-						iSel = 3;
-					} else {
-						iSel = 0;
-					}
+					boolean enabled = (cName.equals("rdbRegQS_UD"));
 
-					if (iSel > 0) {
-						// D1485 or D1641 options
-						JPanel pan = (JPanel) swix.find("regpan1");
-						GUIUtils.toggleEnComponentAndChildren(pan, false);
-						pan = (JPanel) swix.find("regpan2");
-						GUIUtils.toggleEnComponentAndChildren(pan, false);
-						pan = (JPanel) swix.find("regpan3");
-						GUIUtils.toggleEnComponentAndChildren(pan, false);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), enabled);
+					((JButton) swix.find("btnReg1641")).setEnabled(enabled);
+					((JButton) swix.find("btnReg1485")).setEnabled(enabled);
+					((JButton) swix.find("btnRegCopy")).setEnabled(enabled);
+					((JButton) swix.find("btnRegPaste")).setEnabled(enabled);
+
+					if (!cName.startsWith("rdbRegQS_UD")) {
+
+						int iSel = 0;
+
+						if (cName.startsWith("rdbRegQS_D1641")) {
+							iSel = 1;
+						} else if (cName.startsWith("rdbRegQS_1641BO")) {
+							iSel = 2;
+						} else if (cName.startsWith("rdbRegQS_D1485")) {
+							iSel = 3;
+						}
 
 						Scanner input = null;
 						try {
@@ -96,6 +97,7 @@ public class RegListener implements ItemListener {
 							lineCount++;
 						}
 						input.close();
+
 						String lookups[][];
 						lookups = new String[lineCount][5];
 						for (int i = 0; i < lineCount; i++) {
@@ -112,74 +114,21 @@ public class RegListener implements ItemListener {
 						for (int i = 0; i < lineCount; i++) {
 							ckbName = lookups[i][0];
 							JCheckBox ckb = (JCheckBox) swix.find(ckbName);
-
 							b = Boolean.valueOf(lookups[i][iSel + 1]);
 							ckb.setSelected(b);
 						}
-
-						// JTable tbl = (JTable) swix.find("tblRegValues");
-						JButton btn = (JButton) swix.find("btnReg1641");
-						btn.setEnabled(false);
-						btn = (JButton) swix.find("btnReg1485");
-						btn.setEnabled(false);
-						btn = (JButton) swix.find("Reg_Copy");
-						btn.setEnabled(false);
-						btn = (JButton) swix.find("Reg_Paste");
-						btn.setEnabled(false);
-
-					} else {
-						// User Defined Options
-						JPanel pan = (JPanel) swix.find("regpan1");
-						GUIUtils.toggleEnComponentAndChildren(pan, true);
-						pan = (JPanel) swix.find("regpan2");
-						GUIUtils.toggleEnComponentAndChildren(pan, true);
-						pan = (JPanel) swix.find("regpan3");
-						GUIUtils.toggleEnComponentAndChildren(pan, true);
-						// JTable tbl = (JTable) swix.find("tblRegValues");
-						JButton btn = (JButton) swix.find("btnReg1641");
-						btn.setEnabled(true);
-						btn = (JButton) swix.find("btnReg1485");
-						btn.setEnabled(true);
-						btn = (JButton) swix.find("Reg_Copy");
-						btn.setEnabled(true);
-						btn = (JButton) swix.find("Reg_Paste");
-						btn.setEnabled(true);
-
 					}
+
 				}
 
 			} else if (cName.startsWith("ckbReg")) {
 				// CheckBox in Regulations panel changed
 				Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
-
 				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null");
-
-				/*
-				 * } else if (cName.startsWith("reg_rdbD1641")) { // do not allow user edits to tables JTable table = (JTable)
-				 * swix.find("tblRegValues"); JRadioButton rdb = (JRadioButton) ie.getItem(); if (ie.getStateChange() ==
-				 * ItemEvent.SELECTED) { if (dTableModels != null) {
-				 * 
-				 * DataFileTableModel tm = (DataFileTableModel) table.getModel(); int size = tm.datafiles.length; if (size == 1) {
-				 * tm.initVectors(); } else if (size == 2) { tm.initVectors2(); } table.repaint();
-				 * 
-				 * table.setCellSelectionEnabled(false); table.setEnabled(false); if (table.isEditing()) {
-				 * table.getCellEditor().stopCellEditing(); }
-				 * 
-				 * JComponent scr = (JComponent) swix.find("scrRegValues"); if (scr.isVisible()) { int tID = tm.tID; if
-				 * (RegUserEdits == null) { RegUserEdits = new Boolean[20]; } RegUserEdits[tID] = false;
-				 * 
-				 * String cName1 = gl.CtrlFortableID(Integer.toString(tID)); JCheckBox ckb = (JCheckBox) swix.find(cName1); String
-				 * ckbtext = ckb.getText(); String[] ckbtext1 = ckbtext.split(" - "); ckbtext = ckbtext1[0]; ckb.setText(ckbtext +
-				 * " -  Default"); } else { // JOptionPane.showMessageDialog(mainmenu, //
-				 * "There is currently a simulation running at this time."); } }
-				 * 
-				 * }
-				 */
 
 			} else if (cName.startsWith("reg_rdbUD")) {
 				// do not allow user edits to tables
 				JTable table = (JTable) swix.find("tblRegValues");
-				JRadioButton rdb = (JRadioButton) ie.getItem();
 
 				if (ie.getStateChange() == ItemEvent.SELECTED) {
 					JComponent scr = (JComponent) swix.find("scrRegValues");
@@ -201,11 +150,11 @@ public class RegListener implements ItemListener {
 						ckbtext = ckbtext1[0];
 						ckb.setText(ckbtext + " - User Def.");
 
-						JButton btn = (JButton) swix.find("btnReg1641");
-						btn.setEnabled(true);
-						btn = (JButton) swix.find("btnReg1485");
-						btn.setEnabled(true);
+						((JButton) swix.find("btnReg1641")).setEnabled(true);
+						((JButton) swix.find("btnReg1485")).setEnabled(true);
+
 					} else {
+
 						JPanel pan = (JPanel) swix.find("reg_panTab");
 						TitledBorder b = (TitledBorder) pan.getBorder();
 						String title = b.getTitle();

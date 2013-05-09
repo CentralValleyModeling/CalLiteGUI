@@ -79,6 +79,16 @@ public class FileAction implements ActionListener {
 	static Logger log = Logger.getLogger(FileAction.class.getName());
 	private static SwingWorker<Void, String> worker_setupScenario = null;
 
+	/**
+	 * Constructor for FileAction
+	 * 
+	 * @param desktop
+	 * @param swix
+	 * @param regUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 * @param action_WSIDI
+	 */
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        int action_WSIDI) {
 		this.desktop = desktop;
