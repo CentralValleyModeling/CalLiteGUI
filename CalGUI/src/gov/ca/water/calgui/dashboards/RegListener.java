@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -117,6 +118,14 @@ public class RegListener implements ItemListener {
 						}
 
 						// JTable tbl = (JTable) swix.find("tblRegValues");
+						JButton btn = (JButton) swix.find("btnReg1641");
+						btn.setEnabled(false);
+						btn = (JButton) swix.find("btnReg1485");
+						btn.setEnabled(false);
+						btn = (JButton) swix.find("Reg_Copy");
+						btn.setEnabled(false);
+						btn = (JButton) swix.find("Reg_Paste");
+						btn.setEnabled(false);
 
 					} else {
 						// User Defined Options
@@ -127,6 +136,14 @@ public class RegListener implements ItemListener {
 						pan = (JPanel) swix.find("regpan3");
 						GUIUtils.toggleEnComponentAndChildren(pan, true);
 						// JTable tbl = (JTable) swix.find("tblRegValues");
+						JButton btn = (JButton) swix.find("btnReg1641");
+						btn.setEnabled(true);
+						btn = (JButton) swix.find("btnReg1485");
+						btn.setEnabled(true);
+						btn = (JButton) swix.find("Reg_Copy");
+						btn.setEnabled(true);
+						btn = (JButton) swix.find("Reg_Paste");
+						btn.setEnabled(true);
 
 					}
 				}
@@ -135,7 +152,7 @@ public class RegListener implements ItemListener {
 				// CheckBox in Regulations panel changed
 				Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
 
-				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect);
+				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null");
 
 				/*
 				 * } else if (cName.startsWith("reg_rdbD1641")) { // do not allow user edits to tables JTable table = (JTable)
@@ -183,6 +200,11 @@ public class RegListener implements ItemListener {
 						String[] ckbtext1 = ckbtext.split(" - ");
 						ckbtext = ckbtext1[0];
 						ckb.setText(ckbtext + " - User Def.");
+
+						JButton btn = (JButton) swix.find("btnReg1641");
+						btn.setEnabled(true);
+						btn = (JButton) swix.find("btnReg1485");
+						btn.setEnabled(true);
 					} else {
 						JPanel pan = (JPanel) swix.find("reg_panTab");
 						TitledBorder b = (TitledBorder) pan.getBorder();

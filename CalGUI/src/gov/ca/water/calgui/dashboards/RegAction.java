@@ -1,12 +1,14 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.utils.DataFileTableModel;
+import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.TextTransfer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.StringTokenizer;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -17,10 +19,16 @@ public class RegAction implements ActionListener {
 	private final SwingEngine swix;
 	private Boolean[] RegUserEdits;
 	private Logger log;
+	private final DataFileTableModel[] dTableModels;
+	private final GUILinks gl;
+	private final ButtonGroup reg_btng1;
 
-	public RegAction(SwingEngine swix, Boolean[] RegUserEdits) {
+	public RegAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, ButtonGroup reg_btng1) {
 		this.swix = swix;
 		this.RegUserEdits = RegUserEdits;
+		this.dTableModels = dTableModels;
+		this.gl = gl;
+		this.reg_btng1 = reg_btng1;
 	}
 
 	@Override
@@ -82,6 +90,26 @@ public class RegAction implements ActionListener {
 
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
+		} else if (ae.getActionCommand().startsWith("Reg_1641")) {
+
+			JTable table = (JTable) swix.find("tblRegValues");
+			DataFileTableModel tm = (DataFileTableModel) table.getModel();
+			int tID = tm.tID;
+			String strI = String.valueOf(tID);
+			String cName = gl.ctrlFortableID(strI);
+
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641");
+
+		} else if (ae.getActionCommand().startsWith("Reg_1485")) {
+
+			JTable table = (JTable) swix.find("tblRegValues");
+			DataFileTableModel tm = (DataFileTableModel) table.getModel();
+			int tID = tm.tID;
+			String strI = String.valueOf(tID);
+			String cName = gl.ctrlFortableID(strI);
+
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485");
+
 		}
 	}
 }
