@@ -26,7 +26,7 @@ import org.swixml.SwingEngine;
 
 public class RegulationSetup {
 	public static void SetRegCheckBoxes(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
-	        ButtonGroup reg_btng1, String cName, Boolean isSelect) {
+	        ButtonGroup reg_btng1, String cName, Boolean isSelect, String sReset) {
 
 		JPanel pan = (JPanel) swix.find("reg_panTab");
 		TitledBorder title;
@@ -38,14 +38,22 @@ public class RegulationSetup {
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
 		if (isSelect) {
 
-			GUIUtils.toggleEnComponentAndChildren(pan, true);
+			JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
+			Boolean b = btn.isSelected();
+			if (b == true) {
+				GUIUtils.toggleEnComponentAndChildren(pan, true);
+			} else {
+				GUIUtils.toggleEnComponentAndChildren(pan, false);
+			}
+
+			// GUIUtils.toggleEnComponentAndChildren(pan, true);
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
-			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl);
+			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl, sReset);
 
-			JButton btn = (JButton) swix.find("btnRegDef");
-			btn.setEnabled(false);
+			// JButton btn = (JButton) swix.find("btnRegDef");
+			// btn.setEnabled(false);
 
 			if (scr.isVisible()) {
 				/*
@@ -104,7 +112,7 @@ public class RegulationSetup {
 	}
 
 	protected static DataFileTableModel[] populateRegDTable(String cID, final JTable t, JComponent container,
-	        final SwingEngine swix, final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
+	        final SwingEngine swix, final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, String sReset) {
 
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
@@ -138,8 +146,11 @@ public class RegulationSetup {
 					        + GUIUtils.defaultLookupDirectoryString() + "\\" + files[1] + ".table";
 				}
 			}
+
 		}
 
+		// File f = new File("Default\\Lookup\\" + fileName + ".table");
+		// boolean exists = f.exists();
 		if (!exists) {
 			// t.setVisible(false);
 			container.setVisible(false);
@@ -159,12 +170,20 @@ public class RegulationSetup {
 			} else {
 				int iOpt;
 				String sRegPlan;
-				JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_D1485");
-				Boolean b = btn.isSelected();
-				if (b == true) {
-					iOpt = 2;
-				} else {
+
+				if (sReset.equals("null")) {
+
+					JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_D1485");
+					Boolean b = btn.isSelected();
+					if (b == true) {
+						iOpt = 2;
+					} else {
+						iOpt = 1;
+					}
+				} else if (sReset.equals("1641")) {
 					iOpt = 1;
+				} else {
+					iOpt = 2;
 				}
 				dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
 			}
@@ -196,8 +215,8 @@ public class RegulationSetup {
 					 * RegUserEdits[tID] = true;
 					 */
 					RegUserEdits[tID] = true;
-					JButton btn = (JButton) swix.find("btnRegDef");
-					btn.setEnabled(true);
+					// JButton btn = (JButton) swix.find("btnRegDef");
+					// btn.setEnabled(true);
 
 				}
 			});
@@ -251,4 +270,5 @@ public class RegulationSetup {
 		return dTableModels;
 
 	}
+
 }

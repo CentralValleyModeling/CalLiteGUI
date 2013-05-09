@@ -947,10 +947,9 @@
 							layout="GridBagLayout">
 
 							<gridbagconstraints insets="0,0,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="0"
+								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0"
 								gridheight="4" />
-
-							<label icon="images/Facilities_IF.jpg">
+							<!--<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.EAST" gridx="2" gridy="0"
 									gridheight="99" />
@@ -967,45 +966,99 @@
 								text="Hood Bypass Requirement before usage of Isolated Facility">
 								<gridbagconstraints insets="10,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4"
-									gridwidth="2" />
+									/>
 							</checkbox>
-							<button text="Hood Bypass Assumptions">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5" />
+							-->
+							<label id="fac_txf20_t" text="Isolated Facility Switches">
+								<gridbagconstraints insets="0,0,0,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"/>
+							</label>
+							<checkbox name="fac_ckb42" id="fac_ckb42"
+									text="Jones IF Export"
+									minimumsize="340,20">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"/>
+							</checkbox>
+							<checkbox name="fac_ckb43" id="fac_ckb43"
+									text="Banks IF Export"
+									minimumsize="340,20">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
+							</checkbox>
+							<checkbox name="fac_ckb44" id="fac_ckb44"
+									text="CCWD IF Export"
+									minimumsize="340,20">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3" />
+							</checkbox>
+							<checkbox name="fac_ckb45" id="fac_ckb45"
+									text="TD Export"
+									minimumsize="340,20">
+									<gridbagconstraints insets="0,0,0,0"
+										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" />
+							</checkbox>
+							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits">
+								<gridbagconstraints insets="15,5,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 							</button>
-							<panel layout="GridBagLayout">
-								>
-								<gridbagconstraints insets="0,0,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10"
-									gridwidth="2" />
-								<label text="Monthly Pumping Limit">
-									<gridbagconstraints insets="0,5,5,5"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
-								</label>
-								<scrollpane size="150,215" preferredsize="150,215"
-									layout="BorderLayout">
-									<gridbagconstraints insets="0,10,5,5"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="20" />
-									<table id="tblIF1" minimumsize="150,215">
-									</table>
-								</scrollpane>
-								<checkbox enabled="false" selected="true" name="fac_ckb12"
-									id="fac_ckb12" text="Prefer Isolated Facility">
-									<gridbagconstraints insets="10,5,5,5"
-										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="9" />
-								</checkbox>
-								<label text="Dual Conveyance">
-									<gridbagconstraints insets="0,5,5,5"
-										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
-								</label>
-								<scrollpane size="250,215" preferredsize="250,215"
-									layout="BorderLayout">
-									<gridbagconstraints insets="0,10,5,5"
-										anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
-									<table id="tblIF2" minimumsize="250,215">
-									</table>
-								</scrollpane>
-							</panel>
+							
+							<button text="Hood Bypass Assumptions" name="btnFacHood" id="btnFacHood">
+								<gridbagconstraints insets="15,5,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="11" />
+							</button>
+							
+							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse">
+								<gridbagconstraints insets="15,5,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="12" />
+							</button>
+							
+							<hbox preferredsize="600,500">
+							<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+							<scrollpane id="fac_scr1" preferredsize="600,500" layout="BorderLayout">
+								<table id="tblIF1" minimumsize="600,500">
+								</table>
+							</scrollpane>
+							</hbox>
+							
+							<hbox preferredsize="600,500">
+							<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+							<scrollpane id="fac_scr2" preferredsize="600,500" layout="BorderLayout">
+								<table id="tblIF2" minimumsize="600,500">
+								</table>
+							</scrollpane>
+							</hbox>
+							
+							<hbox preferredsize="600,500">
+							<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+							<scrollpane id="fac_scr3" preferredsize="600,500" layout="BorderLayout">
+								<table id="tblIF3" minimumsize="600,500">
+								</table>
+							</scrollpane>
+							</hbox>
+					
+							<!--
+							<checkbox enabled="false" selected="true" name="fac_ckb12"
+								id="fac_ckb12" text="Prefer Isolated Facility">
+								<gridbagconstraints insets="10,5,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="9" />
+							</checkbox>
+							-->
+							<!--
+							<label text="Dual Conveyance">
+								<gridbagconstraints insets="0,5,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
+							</label>
+							<scrollpane preferredsize="250,215" layout="BorderLayout">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
+								<table id="tblIF2" minimumsize="250,215">
+								</table>
+							</scrollpane>
+							-->
+							<!--
 							<label text="Service Areas for Isolated Facility">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="25" />
@@ -1023,6 +1076,7 @@
 								<checkbox name="fac_ckb37" id="fac_ckb37" selected="true"
 									enabled="false" text="Delta ag"></checkbox>
 							</panel>
+							-->
 						</panel>
 						<panel name="fac_pan7" id="fac_pan7" resizeable="false"
 							border="TitledBorder(Banks Pumping Plant)" visible="false" size="500,350"
@@ -1206,7 +1260,7 @@
 						preferredsize="450,100" layout="GridBagLayout">
 						<gridbagconstraints insets="5,5,25,5" gridx="0"
 							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
-						<Label
+													<Label
 							text="Select a regulation basis below to run with a default regulatory environment."
 							enabled="false">
 							<gridbagconstraints insets="0,0,5,5"
@@ -1561,19 +1615,24 @@
 						<gridbagconstraints insets="13,5,0,5" gridx="1"
 							gridy="1" gridheight="30" gridwidth="6"
 							anchor="GridBagConstraints.NORTHWEST" />
-						<button text="Copy" minimumsize="100,20" enabled="false"
+						<button id="btnRegCopy" name="btnRegCopy" text="Copy" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Copy">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button text="Paste" minimumsize="100,20" enabled="false"
+						<button id="btnRegPaste" name="btnRegPaste" text="Paste" minimumsize="100,20" enabled="false"
 							ActionCommand="Reg_Paste">
 							<gridbagconstraints insets="0,5,5,5" gridx="1"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button id="btnRegDef" text="Default" minimumsize="100,20"
-							enabled="false" ActionCommand="Reg_Default" visible="false">
+						<button id="btnReg1641" text="D1641" minimumsize="100,20"
+							enabled="false" ActionCommand="Reg_1641" visible="true">
 							<gridbagconstraints insets="0,5,5,5" gridx="2"
+								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
+						</button>
+						<button id="btnReg1485" text="D1485" minimumsize="100,20"
+							enabled="false" ActionCommand="Reg_1485" visible="true">
+							<gridbagconstraints insets="0,0,5,5" gridx="3"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<HBox id="regBOX" name="regBOX" preferredsize="555,423">
