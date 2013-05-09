@@ -62,6 +62,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -487,7 +488,27 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 					 * getClass().getResource("/images/CalLiteIcon.png"); sTableFrame
 					 * .setIconImage(Toolkit.getDefaultToolkit().getImage (imgURL)); sTableFrame.setVisible(true);
 					 */
-
+				} else if (component.getName().equals("btnFacLimits")) {
+					JScrollPane scr = (JScrollPane) swix.find("fac_scr1");
+					scr.setVisible(true);
+					scr = (JScrollPane) swix.find("fac_scr2");
+					scr.setVisible(false);
+					scr = (JScrollPane) swix.find("fac_scr3");
+					scr.setVisible(false);
+				} else if (component.getName().equals("btnFacHood")) {
+					JScrollPane scr = (JScrollPane) swix.find("fac_scr2");
+					scr.setVisible(true);
+					scr = (JScrollPane) swix.find("fac_scr1");
+					scr.setVisible(false);
+					scr = (JScrollPane) swix.find("fac_scr3");
+					scr.setVisible(false);
+				} else if (component.getName().equals("btnFacPulse")) {
+					JScrollPane scr = (JScrollPane) swix.find("fac_scr3");
+					scr.setVisible(true);
+					scr = (JScrollPane) swix.find("fac_scr1");
+					scr.setVisible(false);
+					scr = (JScrollPane) swix.find("fac_scr2");
+					scr.setVisible(false);
 				}
 			}
 
