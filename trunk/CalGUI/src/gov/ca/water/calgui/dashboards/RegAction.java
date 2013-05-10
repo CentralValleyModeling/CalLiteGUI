@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
@@ -92,23 +93,30 @@ public class RegAction implements ActionListener {
 			btn.setEnabled(false);
 		} else if (ae.getActionCommand().startsWith("Reg_1641")) {
 
-			JTable table = (JTable) swix.find("tblRegValues");
-			DataFileTableModel tm = (DataFileTableModel) table.getModel();
-			int tID = tm.tID;
-			String strI = String.valueOf(tID);
-			String cName = gl.ctrlFortableID(strI);
+			JComponent scr = (JComponent) swix.find("scrRegValues");
+			if (scr.isVisible() == true) {
 
-			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641");
+				JTable table = (JTable) swix.find("tblRegValues");
+				DataFileTableModel tm = (DataFileTableModel) table.getModel();
+				int tID = tm.tID;
+				String strI = String.valueOf(tID);
+				String cName = gl.ctrlFortableID(strI);
+
+				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641");
+			}
 
 		} else if (ae.getActionCommand().startsWith("Reg_1485")) {
 
-			JTable table = (JTable) swix.find("tblRegValues");
-			DataFileTableModel tm = (DataFileTableModel) table.getModel();
-			int tID = tm.tID;
-			String strI = String.valueOf(tID);
-			String cName = gl.ctrlFortableID(strI);
+			JComponent scr = (JComponent) swix.find("scrRegValues");
+			if (scr.isVisible() == true) {
+				JTable table = (JTable) swix.find("tblRegValues");
+				DataFileTableModel tm = (DataFileTableModel) table.getModel();
+				int tID = tm.tID;
+				String strI = String.valueOf(tID);
+				String cName = gl.ctrlFortableID(strI);
 
-			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485");
+				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485");
+			}
 
 		}
 	}
