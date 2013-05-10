@@ -753,7 +753,7 @@ public class FileAction implements ActionListener {
 	public static void setupScenario(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
 	        final DataFileTableModel[] dTableModels, final GUILinks gl) {
 
-		pFrame = new ProgressFrame("CalLite 2.0 GUI - Setting Up Run");
+		pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
 
 		// SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
 		worker_setupScenario = new SwingWorker<Void, String>() {
