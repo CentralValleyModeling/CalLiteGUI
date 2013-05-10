@@ -21,6 +21,7 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
+import gov.ca.water.calgui.utils.SVNVersion;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
@@ -151,7 +152,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.setVisible(false);
 
 		// Set GUI visuals
-		desktopTitle = desktop.getTitle() + ";  Scenario";
+		desktopTitle = desktop.getTitle() + " (" + SVNVersion.versionString + ");  Scenario";
 		desktop.setResizable(false);
 
 		// Set Icon
