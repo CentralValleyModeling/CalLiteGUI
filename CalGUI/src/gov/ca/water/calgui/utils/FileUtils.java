@@ -35,7 +35,7 @@ public class FileUtils {
 	 * @throws IOException
 	 */
 
-	private static Logger log;
+	private static Logger log = Logger.getLogger(FileUtils.class.getName());;
 
 	public static void copyDirectory(File sourceLocation, File targetLocation, Boolean subdir) throws IOException {
 
