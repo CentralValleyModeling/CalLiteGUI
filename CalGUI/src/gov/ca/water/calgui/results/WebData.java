@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 
+import org.apache.log4j.Logger;
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
@@ -35,6 +36,9 @@ import com.teamdev.jxbrowser.events.TitleChangedEvent;
 import com.teamdev.jxbrowser.events.TitleListener;
 
 public class WebData {
+
+	private static Logger log = Logger.getLogger(WebData.class.getName());
+
 	public WebData(JTabbedPane jtp, final MainMenu mainMenu, final SwingEngine swix, final DSSGrabber dss_Grabber,
 	        final JList lstScenarios, final JFrame desktop, final int displayCount) {
 		final Browser browser = BrowserFactory.createBrowser(BrowserType.Mozilla);
@@ -90,8 +94,10 @@ public class WebData {
 			HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
 			Object objData = urlConnect.getContent();
 		} catch (UnknownHostException e) {
+			log.debug(e.getMessage());
 			return false;
 		} catch (IOException e) {
+			log.debug(e.getMessage());
 			return false;
 		}
 		return true;

@@ -76,7 +76,7 @@ public class FileAction implements ActionListener {
 	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
 	                                           // run
 
-	static Logger log = Logger.getLogger(FileAction.class.getName());
+	private static Logger log = Logger.getLogger(FileAction.class.getName());
 	private static SwingWorker<Void, String> worker_setupScenario = null;
 
 	/**

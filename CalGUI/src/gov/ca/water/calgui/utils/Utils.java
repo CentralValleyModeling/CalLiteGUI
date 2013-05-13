@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.TimeZone;
 
+import org.apache.log4j.Logger;
+
 import vista.db.dss.DSSUtil;
 import vista.report.TSMath;
 import vista.set.Constants;
@@ -27,6 +29,8 @@ import vista.time.TimeFactory;
 import vista.time.TimeWindow;
 
 public class Utils {
+
+	private static Logger log = Logger.getLogger(Utils.class.getName());
 	static StringBuffer messages = new StringBuffer();
 
 	public static void clearMessages() {
@@ -116,6 +120,7 @@ public class Utils {
 				return ref;
 			} catch (Exception ex) {
 				Utils.addMessage(ex.getMessage());
+				log.debug(ex.getMessage());
 				return null;
 			}
 		} else {
@@ -133,6 +138,7 @@ public class Utils {
 				String msg = "Exception while trying to retrieve " + path + " from " + group;
 				System.err.println(msg);
 				addMessage(msg);
+				log.debug(msg);
 				return null;
 			}
 		}
@@ -286,6 +292,7 @@ public class Utils {
 		try {
 			return Stats.avg(data.createSlice(tw)) * 12;
 		} catch (Exception ex) {
+			log.debug(ex.getMessage());
 			return Double.NaN;
 		}
 	}

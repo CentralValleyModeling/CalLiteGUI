@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.apache.log4j.Logger;
+
 /**
  * 
  * ProgressFrame - simple frame to show progress passed by method setText();
@@ -19,6 +21,7 @@ import javax.swing.SwingConstants;
  */
 public class ProgressFrame extends JFrame {
 	private final JLabel label;
+	private static Logger log = Logger.getLogger(ProgressFrame.class.getName());
 
 	public ProgressFrame(String title) {
 
@@ -48,6 +51,7 @@ public class ProgressFrame extends JFrame {
 			Robot robot = new Robot();
 			robot.mouseMove(dim.width / 2, dim.height / 2 + 40);
 		} catch (AWTException e) {
+			log.debug(e);
 
 		}
 

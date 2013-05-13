@@ -35,7 +35,7 @@ import org.swixml.SwingEngine;
 
 public class GUIUtils {
 
-	private static Logger log;
+	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
 	public static void setMouseListener(Component component, Object obj) {
 
