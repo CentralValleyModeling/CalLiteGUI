@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
@@ -54,6 +54,7 @@ public class ReportPDFWriter implements Writer {
 
 	private Font tableFont;
 	private Font tableBoldFont;
+	private static Logger log = Logger.getLogger(ReportPDFWriter.class.getName());
 
 	public ReportPDFWriter() {
 
@@ -219,7 +220,7 @@ public class ReportPDFWriter implements Writer {
 			document.newPage();
 			document.add(new Paragraph(title, bigFont));
 		} catch (DocumentException ex) {
-			Logger.getLogger(this.getClass().getName()).severe(ex.getMessage());
+			log.debug(ex.getMessage());
 			throw new RuntimeException("Write Error: Close the PDF report file");
 		}
 	}
@@ -229,7 +230,7 @@ public class ReportPDFWriter implements Writer {
 		try {
 			document.add(new Paragraph(subtitle + "\n", subtitleFont));
 		} catch (DocumentException ex) {
-			Logger.getLogger(this.getClass().getName()).severe(ex.getMessage());
+			log.debug(ex.getMessage());
 			throw new RuntimeException(ex);
 		}
 	}
@@ -269,7 +270,7 @@ public class ReportPDFWriter implements Writer {
 			}
 			document.add(summaryTable);
 		} catch (DocumentException ex) {
-			Logger.getLogger(this.getClass().getName()).severe(ex.getMessage());
+			log.debug(ex.getMessage());
 			throw new RuntimeException(ex);
 		}
 	}

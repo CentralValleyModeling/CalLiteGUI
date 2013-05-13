@@ -24,7 +24,7 @@ public class GUILinks {
 	private Map<String, String> mapCtrlToswitchID;
 	private Map<String, String> mapTIDToCtrl;
 	private Map<String, String> mapCtrlToDReg;
-	private Logger log;
+	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
 	/*
 	 * GUILinks.tableNameForCtrl: Method to look up table name to use for a given control

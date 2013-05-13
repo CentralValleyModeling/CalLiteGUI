@@ -25,7 +25,7 @@ public class ExcelAdapter implements ActionListener {
 	private Clipboard system;
 	private StringSelection stsel;
 	private JTable jTable1;
-	private Logger log;
+	private static Logger log = Logger.getLogger(ExcelAdapter.class.getName());
 
 	/**
 	 * The Excel Adapter is constructed with a JTable on which it enables Copy-Paste and acts as a Clipboard listener.

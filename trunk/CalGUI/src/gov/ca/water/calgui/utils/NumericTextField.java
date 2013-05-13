@@ -14,7 +14,7 @@ public class NumericTextField extends JTextField {
 
 	private float minimum;
 	private float maximum;
-	private Logger log;
+	private static Logger log = Logger.getLogger(NumericTextField.class.getName());
 
 	public NumericTextField() {
 	}

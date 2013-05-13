@@ -24,7 +24,7 @@ public class OpAction implements ActionListener {
 	private final Boolean[] RegUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
-	private Logger log;
+	private static Logger log = Logger.getLogger(OpAction.class.getName());
 
 	public OpAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
 		this.swix = swix;

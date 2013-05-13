@@ -57,7 +57,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 	 */
 	private static final long serialVersionUID = 7398804723681056388L;
 	private String buffer;
-	private Logger log;
+	private static Logger log = Logger.getLogger(ChartPanel.class.getName());
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
 	        Date lower, Date upper, String sLabel) {

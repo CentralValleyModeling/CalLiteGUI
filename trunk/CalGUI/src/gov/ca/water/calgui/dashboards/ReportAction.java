@@ -35,7 +35,7 @@ public class ReportAction implements ActionListener {
 	private final JFrame desktop;
 	private final SwingEngine swix;
 	private final JList lstScenarios;
-	private Logger log;
+	private static Logger log = Logger.getLogger(ReportAction.class.getName());
 
 	public ReportAction(JFrame desktop, SwingEngine swix) {
 		this.desktop = desktop;

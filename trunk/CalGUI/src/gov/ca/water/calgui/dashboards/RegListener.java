@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 
+import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class RegListener implements ItemListener {
@@ -30,6 +31,7 @@ public class RegListener implements ItemListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private final ButtonGroup reg_btng1;
+	private static Logger log = Logger.getLogger(RegListener.class.getName());
 
 	public RegListener(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        ButtonGroup reg_btng1) {
@@ -84,7 +86,7 @@ public class RegListener implements ItemListener {
 						try {
 							input = new Scanner(new FileReader("Config\\GUI_LinksReg.table"));
 						} catch (FileNotFoundException e) {
-							System.out.println("Cannot open input file Config\\GUI_LinksReg.table");
+							log.debug("Cannot open input file Config\\GUI_LinksReg.table " + e.getMessage());
 						}
 
 						Vector<String> allLookups = new Vector<String>();

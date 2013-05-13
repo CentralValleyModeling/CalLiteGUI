@@ -29,6 +29,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
+import org.apache.log4j.Logger;
+
 public class GetDSSFilename implements ActionListener {
 
 	public DefaultListModel lmScenNames;
@@ -39,6 +41,8 @@ public class GetDSSFilename implements ActionListener {
 	String theFileExt = null;
 	JRadioButton rdbopt1;
 	JRadioButton rdbopt2;
+
+	private static Logger log = Logger.getLogger(GetDSSFilename.class.getName());
 
 	public GetDSSFilename(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
@@ -262,8 +266,8 @@ public class GetDSSFilename implements ActionListener {
 								theToolTips.put(theKey.toLowerCase(), theValue);
 								br.close();
 							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
+								log.debug(e1.getMessage());
+
 							}
 
 						}

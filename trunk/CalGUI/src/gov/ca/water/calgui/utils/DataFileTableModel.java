@@ -34,7 +34,7 @@ public class DataFileTableModel extends AbstractTableModel {
 	public int tID;
 	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
-	private Logger log;
+	private static Logger log = Logger.getLogger(DataFileTableModel.class.getName());
 
 	String wyts[] = { "Wet", "Above Normal", "Below Normal", "Dry", "Critical" };
 

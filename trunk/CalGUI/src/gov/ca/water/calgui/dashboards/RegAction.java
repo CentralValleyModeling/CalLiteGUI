@@ -19,7 +19,7 @@ import org.swixml.SwingEngine;
 public class RegAction implements ActionListener {
 	private final SwingEngine swix;
 	private Boolean[] RegUserEdits;
-	private Logger log;
+	private static Logger log = Logger.getLogger(RegAction.class.getName());
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private final ButtonGroup reg_btng1;

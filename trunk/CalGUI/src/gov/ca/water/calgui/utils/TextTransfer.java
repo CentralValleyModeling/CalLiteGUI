@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 public final class TextTransfer implements ClipboardOwner {
 
-	private static Logger log;
+	private static Logger log = Logger.getLogger(TextTransfer.class.getName());
 
 	public static void main(String... aArguments) {
 		TextTransfer textTransfer = new TextTransfer();
