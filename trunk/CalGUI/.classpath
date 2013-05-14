@@ -55,7 +55,7 @@
 	<classpathentry kind="lib" path="lib/jh.jar"/>
 	<classpathentry kind="lib" path="lib/jxbrowser-2.9.jar"/>
 	<classpathentry kind="lib" path="lib/runtime.jar"/>
-	<classpathentry kind="lib" path="lib/WRIMSv2.jar"/>
+	<classpathentry kind="lib" path="lib/WRIMSv2.jar" sourcepath="/wrims_v2/src"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/junit-addons-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.1.jar"/>
