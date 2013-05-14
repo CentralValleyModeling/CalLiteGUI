@@ -127,6 +127,7 @@
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
+				<attribute name="SplashScreen-Image" value="images/splash.gif" />
 				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs"/>
 			</manifest>
 			
