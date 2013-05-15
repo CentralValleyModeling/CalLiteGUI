@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -192,6 +193,11 @@ public class RegListener implements ItemListener {
 				jbtn.setEnabled(false);
 				jbtn = (JCheckBox) swix.find("ckbReg_PUMP");
 				jbtn.setEnabled(false);
+
+				JPanel pan = (JPanel) swix.find("reg_panTab");
+				TitledBorder title = BorderFactory.createTitledBorder("");
+
+				pan.setBorder(title);
 
 			} else if (cName.startsWith("ckbReg")) {
 				// CheckBox in Regulations panel changed
