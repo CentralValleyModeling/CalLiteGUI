@@ -323,6 +323,7 @@ public class GUIUtils {
 							val = false;
 						}
 						((AbstractButton) component).setSelected(val);
+						component.firePropertyChange("isSelected", val, val);
 					} else if (component instanceof JSpinner) {
 						JSpinner spn = (JSpinner) component;
 						if (value.matches("((-|\\+)?[0-9])+")) {
@@ -425,6 +426,131 @@ public class GUIUtils {
 
 	}
 
+	public static int[] setControlValues(File f, SwingEngine swix, GUILinks gl) {
+
+		FileInputStream fs = null;
+		InputStreamReader in = null;
+		BufferedReader br = null;
+
+		String textinLine;
+		String comp;
+		String value;
+		Integer val1;
+		Boolean val = false;
+		String delims = "[|]";
+		int QSel = 0;
+		final int[] RegFlags = new int[40];
+
+		try {
+			fs = new FileInputStream(f);
+			in = new InputStreamReader(fs);
+			br = new BufferedReader(in);
+
+			while (true) {
+				textinLine = br.readLine();
+				if (textinLine == null)
+					break;
+				if (textinLine.equals("DATATABLEMODELS"))
+					break;
+				String[] tokens = textinLine.split(delims);
+
+				comp = tokens[0];
+				if (tokens.length > 1)
+					value = tokens[1];
+				else
+					value = null;
+
+				if (comp.startsWith("rdbRegQS")) {
+
+					// final int tID = Integer.parseInt(gl.tableIDForCtrl(comp));
+					// String stID = String.valueOf(tID);
+					// int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+
+					if (comp.startsWith("rdbRegQS_D1641") && value.startsWith("true")) {
+						QSel = 1;
+						// for (int i = 0; i < RegFlags.length; i++) {
+						// RegFlags[rID] = 1;
+						// }
+					} else if (comp.startsWith("rdbRegQS_1641") && value.startsWith("true")) {
+						QSel = 1;
+						// for (int i = 0; i < RegFlags.length; i++) {
+						// RegFlags[rID] = 1;
+						// }
+					} else if (comp.startsWith("rdbRegQS_D1485") && value.startsWith("true")) {
+						// for (int i = 0; i < RegFlags.length; i++) {
+						// RegFlags[rID] = 3;
+						// }
+						QSel = 3;
+					} else if (comp.startsWith("rdbRegQS_UD") && value.startsWith("true")) {
+						// if (comp.equals("ckbReg_TRNTY")) {
+						// } else if (comp.equals("ckbReg_PUMP")) {
+						// } else {
+						// RegFlags[rID] = 2;
+						// }
+						// RegFlags[rID] = 1;
+						QSel = 2;
+					}
+				}
+			}
+
+			fs.close();
+			in.close();
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			log.debug(e.getMessage());
+		} catch (IOException e) {
+			log.debug(e.getMessage());
+		}
+
+		try {
+			fs = new FileInputStream(f);
+			in = new InputStreamReader(fs);
+			br = new BufferedReader(in);
+
+			while (true) {
+				textinLine = br.readLine();
+				if (textinLine == null)
+					break;
+				if (textinLine.equals("DATATABLEMODELS"))
+					break;
+				String[] tokens = textinLine.split(delims);
+
+				comp = tokens[0];
+				if (tokens.length > 1)
+					value = tokens[1];
+				else
+					value = null;
+
+				if (comp.startsWith("ckbReg")) {
+
+					String srID = gl.RIDForCtrl(comp);
+					if (isInteger(srID)) {
+						int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+						if (comp.equals("ckbReg_TRNTY") || (comp.equals("ckbReg_PUMP"))) {
+							RegFlags[rID] = 1;
+						} else {
+							RegFlags[rID] = QSel;
+						}
+					}
+
+				}
+			}
+
+			fs.close();
+			in.close();
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			log.debug(e.getMessage());
+		} catch (IOException e) {
+			log.debug(e.getMessage());
+		}
+
+		return RegFlags;
+
+	}
+
 	/**
 	 * Returns ArrayList containing lines from a text file such as GUI_Links2.table
 	 * 
@@ -432,6 +558,15 @@ public class GUIUtils {
 	 *            Name of file to read
 	 * @return ArrayList of strings - one per line
 	 */
+	public static boolean isInteger(String str) {
+		try {
+			Integer.parseInt(str);
+			return true;
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+	}
+
 	public static ArrayList<String> getGUILinks(String filename) {
 		ArrayList<String> GUILinks = new ArrayList<String>();
 

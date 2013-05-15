@@ -73,6 +73,7 @@ public class FileAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private int action_WSIDI;
+	private final int[] RegFlags;
 	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
 	                                           // run
 
@@ -90,13 +91,14 @@ public class FileAction implements ActionListener {
 	 * @param action_WSIDI
 	 */
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
-	        int action_WSIDI) {
+	        int action_WSIDI, int[] RegFlags) {
 		this.desktop = desktop;
 		this.swix = swix;
 		this.regUserEdits = regUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.action_WSIDI = action_WSIDI;
+		this.RegFlags = RegFlags;
 
 		// create and load default properties
 		runRecordFolderName = "Run_Records";
@@ -242,7 +244,7 @@ public class FileAction implements ActionListener {
 					}
 					if (okToRun) {
 						// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
-						setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl);
+						setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 						setupBatchFile(scen, false);
 						runBatch();
 					}
@@ -282,7 +284,7 @@ public class FileAction implements ActionListener {
 
 				if (proceed) {
 					saveFile(scen, swix, regUserEdits, dTableModels, gl);
-					setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl);
+					setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 				} else {
 					JFrame frame = new JFrame("Error");
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
@@ -465,8 +467,8 @@ public class FileAction implements ActionListener {
 	 *            Pointer to UI for retrieval of GUI selections made by user
 	 * @throws IOException
 	 */
-	public static void writeScenarioTables(final String runDir, ArrayList<String> links, Boolean[] UDFlags, SwingEngine swix)
-	        throws IOException {
+	public static void writeScenarioTables(final String runDir, ArrayList<String> links, Boolean[] UDFlags, SwingEngine swix,
+	        int[] RegFlags) throws IOException {
 
 		String openFileName = "";
 		File f = null;
@@ -589,33 +591,27 @@ public class FileAction implements ActionListener {
 
 						// If it is selected, set option to "1" - true pr check d1485/D1641 options
 						if (swixControlName.startsWith("ckbReg")) {
-							JRadioButton c1 = ((JRadioButton) swix.find("rdbRegQS_D1485"));
-							JRadioButton c2 = ((JRadioButton) swix.find("rdbRegQS_UD"));
-							if (c2.isSelected()) {
-								// Check for N/A Flag
-								String NAFlag = linkParts[13].trim();
-								if (NAFlag == "1") {
-									option = "NA";
-								} else {
-									option = "2";
-								}
-							} else if (c1.isSelected()) {
-								// Check for N/A Flag
-								String NAFlag = linkParts[13].trim();
-								if (NAFlag == "1") {
-									option = "NA";
-								} else {
-									option = "3";
-								}
-							} else {
-								// Check for N/A Flag
-								String NAFlag = linkParts[10].trim();
-								if (NAFlag == "1") {
-									option = "NA";
-								} else {
-									option = "1";
-								}
+
+							if (!linkParts[14].trim().equals("n/a")) {
+								String rID = linkParts[14];
+								tID = Integer.parseInt(rID);
+								option = String.valueOf(RegFlags[tID]);
 							}
+
+							/*
+							 * JRadioButton c1 = ((JRadioButton) swix.find("rdbRegQS_D1485")); JRadioButton c2 = ((JRadioButton)
+							 * swix.find("rdbRegQS_UD"));
+							 * 
+							 * 
+							 * if (c2.isSelected()) { // DAN: Need to tweak this so that each ckk is tagged with with selection //
+							 * similar to RegUserEdits
+							 * 
+							 * // Check for N/A Flag String NAFlag = linkParts[13].trim(); if (NAFlag == "1") { option = "NA"; }
+							 * else { option = "2"; } } else if (c1.isSelected()) { // Check for N/A Flag String NAFlag =
+							 * linkParts[13].trim(); if (NAFlag == "1") { option = "NA"; } else { option = "3"; } } else { // Check
+							 * for N/A Flag String NAFlag = linkParts[10].trim(); if (NAFlag == "1") { option = "NA"; } else {
+							 * option = "1"; } }
+							 */
 						} else {
 							option = "1";
 						}
@@ -760,7 +756,7 @@ public class FileAction implements ActionListener {
 	}
 
 	public static void setupScenario(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
-	        final DataFileTableModel[] dTableModels, final GUILinks gl) {
+	        final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
 		pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
 
@@ -859,9 +855,9 @@ public class FileAction implements ActionListener {
 
 				try {
 					// write to "Generated" folder
-					writeScenarioTables(scenGeneratedDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix);
+					writeScenarioTables(scenGeneratedDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags);
 					// write to "Run" folder
-					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix);
+					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

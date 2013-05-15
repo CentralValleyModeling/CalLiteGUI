@@ -25,12 +25,14 @@ public class OpAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private static Logger log = Logger.getLogger(OpAction.class.getName());
+	private final int[] RegFlags;
 
-	public OpAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
+	public OpAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, int[] RegFlags) {
 		this.swix = swix;
 		this.RegUserEdits = RegUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
+		this.RegFlags = RegFlags;
 	}
 
 	@Override
@@ -55,7 +57,7 @@ public class OpAction implements ActionListener {
 			component.setVisible(true);
 			component.setEnabled(true);
 			// String cID = cName.substring(6);
-			PopulateDTable.populate(cName, table, component, swix, RegUserEdits, dTableModels, gl);
+			PopulateDTable.populate(cName, table, component, swix, RegUserEdits, dTableModels, gl, RegFlags);
 
 			// pan.setBorder(title);
 			// JComponent box = (JComponent) swix.find("Op_Box");

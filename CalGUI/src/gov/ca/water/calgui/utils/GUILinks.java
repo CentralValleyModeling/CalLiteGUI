@@ -24,6 +24,10 @@ public class GUILinks {
 	private Map<String, String> mapCtrlToswitchID;
 	private Map<String, String> mapTIDToCtrl;
 	private Map<String, String> mapCtrlToDReg;
+	private Map<String, String> mapCtrltoRID;
+	private Map<String, String> mapCtrltoD1641;
+	private Map<String, String> mapCtrltoD1485;
+	private Map<String, String> mapCtrltoUD;
 	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
 	/*
@@ -50,8 +54,24 @@ public class GUILinks {
 		return mapTIDToCtrl.get(tID);
 	}
 
+	public String RIDForCtrl(String tID) {
+		return mapCtrltoRID.get(tID);
+	}
+
 	public String dRegForCtrl(String ctrlID) {
 		return mapCtrlToDReg.get(ctrlID);
+	}
+
+	public String D1641ForCtrl(String ctrlID) {
+		return mapCtrltoD1641.get(ctrlID);
+	}
+
+	public String D1485ForCtrl(String ctrlID) {
+		return mapCtrltoD1485.get(ctrlID);
+	}
+
+	public String UDForCtrl(String ctrlID) {
+		return mapCtrltoUD.get(ctrlID);
 	}
 
 	public int readIn(String inputFileName) {
@@ -72,6 +92,10 @@ public class GUILinks {
 		mapCtrlToswitchID = new HashMap<String, String>();
 		mapTIDToCtrl = new HashMap<String, String>();
 		mapCtrlToDReg = new HashMap<String, String>();
+		mapCtrltoRID = new HashMap<String, String>();
+		mapCtrltoD1641 = new HashMap<String, String>();
+		mapCtrltoD1485 = new HashMap<String, String>();
+		mapCtrltoUD = new HashMap<String, String>();
 
 		int lineCount = 0;
 		while (input.hasNextLine()) {
@@ -87,6 +111,10 @@ public class GUILinks {
 					String TableID = "";
 					String tableName = "";
 					String sDReg = "";
+					String rID = "";
+					String D1641 = "";
+					String D1485 = "";
+					String UD = "";
 					if (parts.length > 6) {
 						tableName = parts[6].trim();
 						if (parts.length > 7) {
@@ -97,6 +125,12 @@ public class GUILinks {
 						}
 						if (parts.length > 9) {
 							sDReg = parts[9].trim();
+						}
+						if (parts.length > 13) {
+							rID = parts[14].trim();
+							D1641 = parts[10].trim();
+							D1485 = parts[13].trim();
+							UD = parts[12].trim();
 						}
 					}
 					mapCtrlToTable.put(ctrlName, tableName);
@@ -109,6 +143,18 @@ public class GUILinks {
 					}
 					if (sDReg != "") {
 						mapCtrlToDReg.put(ctrlName, sDReg);
+					}
+					if (rID != "") {
+						mapCtrltoRID.put(ctrlName, rID);
+					}
+					if (D1641 != "") {
+						mapCtrltoD1641.put(ctrlName, D1641);
+					}
+					if (D1485 != "") {
+						mapCtrltoD1485.put(ctrlName, D1485);
+					}
+					if (UD != "") {
+						mapCtrltoUD.put(ctrlName, UD);
 					}
 				}
 			}

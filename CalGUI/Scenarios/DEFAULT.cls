@@ -52,7 +52,7 @@ fac_ckb2|false
 fac_ckb3|false
 fac_ckb4|false
 fac_ckb5|false
-fac_ckb6|true
+fac_ckb6|false
 fac_ckb7|false
 fac_ckb8|false
 fac_ckb9|false
@@ -131,7 +131,7 @@ ckbRegbo2|true
 ckbRegbo3|true
 ckbRegbo4|true
 ckbRegbo5|true
-Dynamic_SJR|true
+Dynamic_SJR|false
 D1641_Base|false
 D1641_SALINITY|false
 VAMP_Flow|false

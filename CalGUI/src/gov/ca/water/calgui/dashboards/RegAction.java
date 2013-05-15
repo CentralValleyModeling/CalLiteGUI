@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import org.apache.log4j.Logger;
@@ -23,13 +24,16 @@ public class RegAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private final ButtonGroup reg_btng1;
+	private int[] RegFlags;
 
-	public RegAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, ButtonGroup reg_btng1) {
+	public RegAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
+	        ButtonGroup reg_btng1, int[] RegFlags) {
 		this.swix = swix;
 		this.RegUserEdits = RegUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.reg_btng1 = reg_btng1;
+		this.RegFlags = RegFlags;
 	}
 
 	@Override
@@ -92,7 +96,7 @@ public class RegAction implements ActionListener {
 			JButton btn = (JButton) swix.find("btnRegDef");
 			btn.setEnabled(false);
 		} else if (ae.getActionCommand().startsWith("Reg_1641")) {
-
+			String cName = "";
 			JComponent scr = (JComponent) swix.find("scrRegValues");
 			if (scr.isVisible() == true) {
 
@@ -100,23 +104,45 @@ public class RegAction implements ActionListener {
 				DataFileTableModel tm = (DataFileTableModel) table.getModel();
 				int tID = tm.tID;
 				String strI = String.valueOf(tID);
-				String cName = gl.ctrlFortableID(strI);
-
-				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641");
+				cName = gl.ctrlFortableID(strI);
+			} else {
+				JPanel pan = (JPanel) swix.find("reg_panTab");
+				cName = pan.getToolTipText();
 			}
+			if (RegFlags == null) {
+				RegFlags = new int[40];
+			}
+			// String stID = String.valueOf(tID);
+			int rID = Integer.parseInt(gl.RIDForCtrl(cName));
+			RegFlags[rID] = 1;
+
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641", RegFlags);
 
 		} else if (ae.getActionCommand().startsWith("Reg_1485")) {
 
 			JComponent scr = (JComponent) swix.find("scrRegValues");
+			String cName = "";
 			if (scr.isVisible() == true) {
 				JTable table = (JTable) swix.find("tblRegValues");
 				DataFileTableModel tm = (DataFileTableModel) table.getModel();
+
 				int tID = tm.tID;
 				String strI = String.valueOf(tID);
-				String cName = gl.ctrlFortableID(strI);
+				cName = gl.ctrlFortableID(strI);
+			} else {
+				JPanel pan = (JPanel) swix.find("reg_panTab");
+				cName = pan.getToolTipText();
 
-				RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485");
 			}
+
+			if (RegFlags == null) {
+				RegFlags = new int[20];
+			}
+			// String stID = String.valueOf(tID);
+			int rID = Integer.parseInt(gl.RIDForCtrl(cName));
+			RegFlags[rID] = 3;
+
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485", RegFlags);
 
 		}
 	}
