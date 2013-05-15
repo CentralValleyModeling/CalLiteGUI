@@ -121,6 +121,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GetDSSFilename getScenFilename;
 	DataFileTableModel[] dTableModels;
 	Boolean[] RegUserEdits;
+	int[] RegFlags;
 
 	static public String lookups[][];
 	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
@@ -282,6 +283,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
 		action_WSIDI = 0;
 		RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+		RegFlags = GUIUtils.setControlValues(file, swix, gl);
 		action_WSIDI = 1;
 
 		JComponent component1 = (JComponent) swix.find("scrOpValues");
@@ -289,14 +291,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		component1.setVisible(true);
 		component1.setEnabled(true);
-		dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl);
-		dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl);
+		dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
+		dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
 
 		// pan.setBorder(title);
 		component1.setVisible(false);
 		table1.setVisible(false);
 
 		// Refresh checkbox labels
+
 		for (int i = 0; i < RegUserEdits.length; i++) {
 			if (RegUserEdits[i] != null) {
 
@@ -344,11 +347,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		btnFile3.addActionListener(getDSSFilename3);
 
 		// Set Listeners
-		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
+		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
 		GUIUtils.setMenuListener(menu, this);
 
-		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1));
+		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1, RegFlags));
+		GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1,
+		        RegFlags));
 		GUIUtils.setMouseListener(regulations, this);
 		GUIUtils.setChangeListener(regulations, this);
 
@@ -360,7 +364,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		swix.setActionListener(demands, this);
 
-		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl));
+		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
 		GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
 		GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
@@ -375,7 +379,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		GUIUtils.setMouseListener(shortage, this);
 		GUIUtils.setMouseListener(facilities, this);
 
-		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI));
+		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
 		GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
 		        action_WSIDI));
 
@@ -547,7 +551,18 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
 					Boolean isSelect = selcomp.isSelected();
-					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null");
+					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null",
+					        RegFlags);
+
+					// JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
+					// boolean enabled = btn.isEnabled();
+
+					/*
+					 * ((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled); ((JRadioButton)
+					 * swix.find("btnReg1485")).setEnabled(enabled); ((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
+					 * ((JRadioButton) swix.find("btnReg1641")).setVisible(enabled); ((JRadioButton)
+					 * swix.find("btnReg1485")).setVisible(enabled); ((JRadioButton) swix.find("btnRegUD")).setVisible(enabled);
+					 */
 				}
 			} else if (cName.startsWith("fac_ckb")) {
 				// Right click on a facility checkbox makes a subpanel visible
