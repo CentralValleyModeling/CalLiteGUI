@@ -1,35 +1,35 @@
-GUI id	Description	D-1641	D-1641 plus BO RPAs	D-1485
-ckbReg_DCC	Delta Cross Channel	TRUE	TRUE	TRUE
-ckbReg_RV	Rio Vista	TRUE	TRUE	TRUE
-ckbReg_TRNTY	Trinity Min.	TRUE	TRUE	TRUE
-ckbReg_NDO	Min. Net Delta Outflow	TRUE	TRUE	TRUE
-ckbReg_X2	X2 requirements	TRUE	TRUE	FALSE
-ckbReg_X2ROE	Roe Trigger	TRUE	TRUE	FALSE
-ckbReg_EI	Export Inflow Ratio	TRUE	TRUE	FALSE
-ckbReg_VAMP	VAMP	TRUE	TRUE	FALSE
-ckbReg_PUMP	Pumping Limits	TRUE	TRUE	TRUE
-ckbReg_EM	Emmaton	TRUE	TRUE	TRUE
-ckbReg_JP	Jersey Point	TRUE	TRUE	TRUE
-ckbReg_RS	Rock Slough	TRUE	TRUE	TRUE
-ckbReg_CO	Collinsville	TRUE	TRUE	TRUE
-ckbReg_AN	Antioch and Chipps	FALSE	FALSE	TRUE
-ckbRegbo1	Old and Middle River	FALSE	TRUE	FALSE
-ckbRegbo2	Fall X2	FALSE	TRUE	FALSE
-ckbRegbo3	Clear Creek	FALSE	TRUE	FALSE
-ckbRegbo4	Delta Cross Channel	FALSE	TRUE	FALSE
-ckbRegbo5	SJR Inflow to Export Ratio	FALSE	TRUE	FALSE
-ckbReg1	QWEST	FALSE	FALSE	FALSE
-ckbReg2	OMR	FALSE	FALSE	FALSE
-ckbReg10	SJR EI ratio with Offset	FALSE	FALSE	FALSE
-ckbReg11	B2 Action 1	TRUE	TRUE	FALSE
-ckbReg12	B2 Action 2	TRUE	TRUE	FALSE
-ckbReg13	B2 Action 3	TRUE	TRUE	FALSE
-ckbReg14	B2 Action 4	TRUE	TRUE	FALSE
-ckbReg15	B2 Action 5	TRUE	TRUE	FALSE
-ckbReg16	B2 Action 6	TRUE	TRUE	FALSE
-ckbReg17	B2 Action 7	TRUE	TRUE	FALSE
-ckbReg18	Fraction Unimpaired	FALSE	FALSE	FALSE
-op_rdb6	CVC Wheeling	TRUE	TRUE	TRUE
-op_rdb9	Payback Wheeling	FALSE	FALSE	TRUE
-op_rdb7	JPOD	TRUE	TRUE	FALSE
-op_rdb8	Intertie	TRUE	TRUE	TRUE
+GUI id	Description	D-1641	D-1641 plus BO RPAs	D-1485	UserDefined
+ckbReg_DCC	Delta Cross Channel	TRUE	TRUE	TRUE	TRUE
+ckbReg_RV	Rio Vista	TRUE	TRUE	TRUE	TRUE
+ckbReg_TRNTY	Trinity Min.	TRUE	TRUE	TRUE	FALSE
+ckbReg_NDO	Min. Net Delta Outflow	TRUE	TRUE	TRUE	TRUE
+ckbReg_X2	X2 requirements	TRUE	TRUE	FALSE	TRUE
+ckbReg_X2ROE	Roe Trigger	TRUE	TRUE	FALSE	FALSE
+ckbReg_EI	Export Inflow Ratio	TRUE	TRUE	FALSE	TRUE
+ckbReg_VAMP	VAMP	TRUE	TRUE	FALSE	FALSE
+ckbReg_PUMP	Pumping Limits	TRUE	TRUE	TRUE	FALSE
+ckbReg_EM	Emmaton	TRUE	TRUE	TRUE	FALSE
+ckbReg_JP	Jersey Point	TRUE	TRUE	TRUE	FALSE
+ckbReg_RS	Rock Slough	TRUE	TRUE	TRUE	FALSE
+ckbReg_CO	Collinsville	TRUE	TRUE	TRUE	FALSE
+ckbReg_AN	Antioch and Chipps	FALSE	FALSE	TRUE	FALSE
+ckbRegbo1	Old and Middle River	FALSE	TRUE	FALSE	FALSE
+ckbRegbo2	Fall X2	FALSE	TRUE	FALSE	FALSE
+ckbRegbo3	Clear Creek	FALSE	TRUE	FALSE	FALSE
+ckbRegbo4	Delta Cross Channel	FALSE	TRUE	FALSE	FALSE
+ckbRegbo5	SJR Inflow to Export Ratio	FALSE	TRUE	FALSE	FALSE
+ckbReg1	QWEST	FALSE	FALSE	FALSE	TRUE
+ckbReg2	OMR	FALSE	FALSE	FALSE	TRUE
+ckbReg10	SJR EI ratio with Offset	FALSE	FALSE	FALSE	TRUE
+ckbReg11	B2 Action 1	TRUE	TRUE	FALSE	FALSE
+ckbReg12	B2 Action 2	TRUE	TRUE	FALSE	FALSE
+ckbReg13	B2 Action 3	TRUE	TRUE	FALSE	FALSE
+ckbReg14	B2 Action 4	TRUE	TRUE	FALSE	FALSE
+ckbReg15	B2 Action 5	TRUE	TRUE	FALSE	FALSE
+ckbReg16	B2 Action 6	TRUE	TRUE	FALSE	FALSE
+ckbReg17	B2 Action 7	TRUE	TRUE	FALSE	FALSE
+ckbReg18	Fraction Unimpaired	FALSE	FALSE	FALSE	FALSE
+op_rdb6	CVC Wheeling	TRUE	TRUE	TRUE	FALSE
+op_rdb9	Payback Wheeling	FALSE	FALSE	TRUE	FALSE
+op_rdb7	JPOD	TRUE	TRUE	FALSE	FALSE
+op_rdb8	Intertie	TRUE	TRUE	TRUE	FALSE
