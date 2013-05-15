@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -25,7 +26,7 @@ import org.swixml.SwingEngine;
 
 public class RegulationSetup {
 	public static void SetRegCheckBoxes(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
-	        ButtonGroup reg_btng1, String cName, Boolean isSelect, String sReset) {
+	        ButtonGroup reg_btng1, String cName, Boolean isSelect, String sReset, int[] RegFlags) {
 
 		JPanel pan = (JPanel) swix.find("reg_panTab");
 		TitledBorder title;
@@ -35,21 +36,79 @@ public class RegulationSetup {
 			scr.setEnabled((isSelect));
 
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
+
+		// Togle radio buttons above tables
+		String D1641 = gl.D1641ForCtrl(cName);
+		String D1485 = gl.D1485ForCtrl(cName);
+		String UD = gl.UDForCtrl(cName);
+		boolean b1;
+		boolean b2;
+		boolean b3;
+		if (D1641.equals("1")) {
+			b1 = false;
+		} else {
+			b1 = true;
+		}
+		if (D1485.equals("1")) {
+			b2 = false;
+		} else {
+			b2 = true;
+		}
+
+		// Special Handling for Vernalis.
+		if (cName.equals("ckbReg_VAMP")) {
+			b2 = true;
+			String sLab = "If D1485 is selected, take VAMP D1641 hydrology with a D1485 run.";
+			JLabel lab = (JLabel) swix.find("labReg");
+			lab.setText(sLab);
+		} else {
+			String sLab = "Access regulation table by selecting or right-clicking on item at left";
+			JLabel lab = (JLabel) swix.find("labReg");
+			lab.setText(sLab);
+		}
+
+		if (UD.equals("1")) {
+			b3 = false;
+		} else {
+			b3 = true;
+		}
+
+		((JRadioButton) swix.find("btnReg1641")).setVisible(b1);
+		((JRadioButton) swix.find("btnReg1485")).setVisible(b2);
+		((JRadioButton) swix.find("btnRegUD")).setVisible(b3);
+
+		// Select which button based on RegFlag
+		int rID = Integer.parseInt(gl.RIDForCtrl(cName));
+		int iFlag = RegFlags[rID];
+		if (iFlag == 1) {
+			((JRadioButton) swix.find("btnReg1641")).setSelected(true);
+		} else if (iFlag == 3) {
+			((JRadioButton) swix.find("btnReg1485")).setSelected(true);
+		} else {
+			((JRadioButton) swix.find("btnRegUD")).setSelected(true);
+		}
+
 		if (isSelect) {
 
 			JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
 			Boolean b = btn.isSelected();
 			if (b == true) {
 				GUIUtils.toggleEnComponentAndChildren(pan, true);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), true);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), true);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), true);
 			} else {
 				GUIUtils.toggleEnComponentAndChildren(pan, false);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
+				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 			}
 
 			// GUIUtils.toggleEnComponentAndChildren(pan, true);
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
-			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl, sReset);
+			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl, sReset, RegFlags);
 
 			// JButton btn = (JButton) swix.find("btnRegDef");
 			// btn.setEnabled(false);
@@ -82,8 +141,10 @@ public class RegulationSetup {
 			String[] ckbtext1 = ckbtext.split(" - ");
 			ckbtext = ckbtext1[0];
 			title = BorderFactory.createTitledBorder(ckbtext);
+			String sNote = cName;
 
 			pan.setBorder(title);
+			pan.setToolTipText(sNote);
 			pan.setEnabled(true);
 			scr.setEnabled(true);
 			table.setVisible(true);
@@ -111,7 +172,8 @@ public class RegulationSetup {
 	}
 
 	protected static DataFileTableModel[] populateRegDTable(String cID, final JTable t, JComponent container,
-	        final SwingEngine swix, final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, String sReset) {
+	        final SwingEngine swix, final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, final GUILinks gl,
+	        String sReset, final int[] RegFlags) {
 
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
@@ -151,9 +213,20 @@ public class RegulationSetup {
 		// File f = new File("Default\\Lookup\\" + fileName + ".table");
 		// boolean exists = f.exists();
 		if (!exists) {
-			// t.setVisible(false);
+			t.setVisible(false);
 			container.setVisible(false);
+			// ((JRadioButton) swix.find("btnRegUD")).setVisible(false);
 		} else {
+
+			JRadioButton btn1 = (JRadioButton) swix.find("rdbRegQS_UD");
+			boolean enabled = btn1.isEnabled();
+
+			/*
+			 * ((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled); ((JRadioButton)
+			 * swix.find("btnReg1485")).setEnabled(enabled); ((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
+			 * ((JRadioButton) swix.find("btnReg1641")).setVisible(enabled); ((JRadioButton)
+			 * swix.find("btnReg1485")).setVisible(enabled); ((JRadioButton) swix.find("btnRegUD")).setVisible(enabled);
+			 */
 
 			// int tID = Integer.parseInt(cID);
 			// t.setVisible(true);
@@ -214,6 +287,11 @@ public class RegulationSetup {
 					 * RegUserEdits[tID] = true;
 					 */
 					RegUserEdits[tID] = true;
+
+					String stID = String.valueOf(tID);
+					String comp = gl.ctrlFortableID(stID);
+					int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+					RegFlags[rID] = 2;
 					// JButton btn = (JButton) swix.find("btnRegDef");
 					// btn.setEnabled(true);
 
