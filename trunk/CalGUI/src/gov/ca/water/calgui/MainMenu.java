@@ -402,6 +402,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		lstScenarios = (JList) swix.find("SelectedList");
 
+		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
+		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
+		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
+
 		long totalSetupTime = System.currentTimeMillis() - startSetupTime;
 		if (totalSetupTime < 3000)
 			Thread.sleep(3000 - totalSetupTime);
