@@ -18,12 +18,13 @@ public class TestFileAction extends TestCase {
 		JFrame desktop = new JFrame("TestFileAction");
 		SwingEngine swix = new SwingEngine();
 		Boolean[] regUserEdits = new Boolean[] { Boolean.TRUE };
+		int[] RegFlags = new int[] { 1 };
 		String dataFilePath = "\\dataFileDir";
 		int tID = 77777;
 		DataFileTableModel[] dataTableModels = new DataFileTableModel[] { new DataFileTableModel(dataFilePath, tID) };
 		GUILinks guiLinks = new GUILinks();
 		int actionWSIDI = 0;
-		FileAction action = new FileAction(desktop, swix, regUserEdits, dataTableModels, guiLinks, actionWSIDI);
+		FileAction action = new FileAction(desktop, swix, regUserEdits, dataTableModels, guiLinks, actionWSIDI, RegFlags);
 		int id = 99999;
 		action.actionPerformed(new ActionEvent(desktop, id, "AC_RUN"));
 		assertTrue(true); // test passes if we get to here without an exception

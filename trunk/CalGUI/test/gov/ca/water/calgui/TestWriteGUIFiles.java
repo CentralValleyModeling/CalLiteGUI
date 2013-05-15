@@ -22,6 +22,7 @@ public class TestWriteGUIFiles extends TestCase {
 	private ArrayList<String> GUILinks;
 	private SwingEngine swix;
 	JFrame desktop;
+	private int[] RegFlags;
 
 	public TestWriteGUIFiles() {
 	}
@@ -54,7 +55,7 @@ public class TestWriteGUIFiles extends TestCase {
 		// Test to make sure we can write a working test!
 
 		try {
-			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix, RegFlags);
 			assert (true);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -69,7 +70,7 @@ public class TestWriteGUIFiles extends TestCase {
 		// Test of base functionality - checks that one particular .table file is copied into the Run\Lookup directory.
 
 		try {
-			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix, RegFlags);
 			assert (true);
 			File f1 = new File(System.getProperty("user.dir") + "\\Default\\Lookup\\GUI_HydroClimate.table");
 			File f2 = new File(System.getProperty("user.dir") + "\\Run\\Lookup\\GUI_HydroClimate.table");
@@ -95,7 +96,7 @@ public class TestWriteGUIFiles extends TestCase {
 
 		try {
 
-			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix);
+			FileAction.writeScenarioTables(System.getProperty("user.dir") + "\\Run\\Lookup", GUILinks, null, swix, RegFlags);
 
 			assert (true);
 
@@ -130,8 +131,9 @@ public class TestWriteGUIFiles extends TestCase {
 		Boolean[] RegUserEdits = null;
 		DataFileTableModel[] dTableModels = null;
 		GUILinks gl = null;
+		int[] RegFlags = null;
 
-		FileAction.setupScenario("default.cls", desktop, swix, RegUserEdits, dTableModels, gl);
+		FileAction.setupScenario("default.cls", desktop, swix, RegUserEdits, dTableModels, gl, RegFlags);
 		FileAction.setupBatchFile("default.cls", false);
 		FileAction.runBatch();
 		File checkFile = new File(System.getProperty("user.dir") + "\\Run" + File.separator + "check.text");
