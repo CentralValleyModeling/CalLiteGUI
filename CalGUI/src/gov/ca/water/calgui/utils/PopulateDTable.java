@@ -15,7 +15,7 @@ import org.swixml.SwingEngine;
 
 public class PopulateDTable {
 	public static DataFileTableModel[] populate(String cID, final JTable t, JComponent container, final SwingEngine swix,
-	        final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl) {
+	        final Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
 		boolean exists = false;
 		String fileName = gl.tableNameForCtrl(cID);
@@ -91,6 +91,11 @@ public class PopulateDTable {
 					RegUserEdits[tID] = true;
 					JButton btn = (JButton) swix.find("btnRegDef");
 					btn.setEnabled(true);
+
+					String stID = String.valueOf(tID);
+					String comp = gl.tableIDForCtrl(stID);
+					int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+					RegFlags[rID] = 2;
 
 				}
 			});
