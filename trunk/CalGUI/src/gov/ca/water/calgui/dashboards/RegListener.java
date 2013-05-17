@@ -141,6 +141,10 @@ public class RegListener implements ItemListener {
 							}
 
 						}
+
+						// Special Handling for Antioch and Chips
+						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
+						RegFlags[rID - 1] = RegFlags[rID];
 					} else {
 
 						Scanner input = null;
@@ -182,9 +186,13 @@ public class RegListener implements ItemListener {
 							if (NAFlag.equals("FALSE") || ckbName.equals("ckbReg_TRNTY") || ckbName.equals("ckbReg_PUMP")) {
 
 							} else {
-								RegFlags[rID] = 2;
+								// RegFlags[rID] = 2;
 							}
 						}
+
+						// Special Handling for Antioch and Chips
+						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
+						RegFlags[rID] = 3;
 
 					}
 

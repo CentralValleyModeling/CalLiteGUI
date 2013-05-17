@@ -22,15 +22,15 @@ demtxt5	GUI_SODdemand.table	7	-1	CVP MI user-defined demands	Demands	n/a	n/a	n/a
 demtxt6	GUI_SODdemand.table	8	-1	CVP Refuge user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 ckbReg_DCC	GUI_Regs.table	1	-2	DCC_DLTSW -  Delta Cross Channel	Regulations	gui_xchanneldays	3	1	1	n/a	n/a	n/a	n/a	1
 ckbReg_EI	GUI_Regs.table	2	-2	EI_DLTSW -  Export-Inflow Ratio	Regulations	gui_EIRatio	8	2	n/a	n/a	n/a	n/a	1	2
-ckbReg_NDO	GUI_Regs.table	3	-2	NDO_DLTSW -  Minimum Net Delta Outflow	Regulations	GUI_NDO_Flow	6	3	n/a	n/a	n/a	n/a	1	3
+ckbReg_NDO	GUI_Regs.table	3	-2	NDO_DLTSW -  Minimum Net Delta Outflow	Regulations	GUI_NDO_Flow	6	3	n/a	n/a	n/a	n/a	n/a	3
 ckbReg_RV	GUI_Regs.table	4	-2	RV_DLTSW -  Sacramento River at Rio Vista Minimum Flow	Regulations	gui_RioVista	4	4	1	n/a	n/a	n/a	n/a	4
 ckbReg_X2	GUI_Regs.table	5	-2	X2_DLTSW -  X2 Requirements	Regulations	gui_x2active|gui_x2km	7	5	n/a	n/a	n/a	n/a	1	5
 ckbReg_X2ROE	GUI_Regs.table	6	-1	X2ROE_DLTSW -  Roe Trigger	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	1	6
 ckbReg_VAMP	GUI_Regs.table	7	-1	VAMP_DLTSW -  Vernalis	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	1	7
-ckbReg_EM	GUI_Regs.table	8	-1	EM_DLTSW -  Emmaton	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	8
-ckbReg_JP	GUI_Regs.table	9	-1	JP_DLTSW -  Jersey Point	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	9
-ckbReg_RS	GUI_Regs.table	10	-1	RS_DLTSW -  Rock Slough	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	10
-ckbReg_CO	GUI_Regs.table	11	-1	CO_DLTSW -  Collinsville	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	11
+ckbReg_EM	GUI_Regs.table	8	-1	EM_DLTSW -  Emmaton	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	1	8
+ckbReg_JP	GUI_Regs.table	9	-1	JP_DLTSW -  Jersey Point	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	1	9
+ckbReg_RS	GUI_Regs.table	10	-1	RS_DLTSW -  Rock Slough	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	1	10
+ckbReg_CO	GUI_Regs.table	11	-1	CO_DLTSW -  Collinsville	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	1	11
 ckbReg_AN	GUI_Regs.table	12	-1	AN_DLTSW -  Antioch for D-1485 (shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a	12
 ckbReg_AN	GUI_Regs.table	13	-1	CH_DLTSW -  Chipps Island for D-1485(shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a	13
 ckbReg_TRNTY	GUI_Regs.table	14	-1	TRNTY_DLTSW -  Trinity Minimum Flows	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a	14
