@@ -31,7 +31,7 @@ import javax.swing.event.ListDataListener;
 
 import org.apache.log4j.Logger;
 
-public class GetDSSFilename implements ActionListener {
+public class FileDialog implements ActionListener {
 
 	public DefaultListModel lmScenNames;
 	public JFileChooser fc = new JFileChooser2();
@@ -42,30 +42,30 @@ public class GetDSSFilename implements ActionListener {
 	JRadioButton rdbopt1;
 	JRadioButton rdbopt2;
 
-	private static Logger log = Logger.getLogger(GetDSSFilename.class.getName());
+	private static Logger log = Logger.getLogger(FileDialog.class.getName());
 
-	public GetDSSFilename(JList aList, JLabel aLabel) {
+	public FileDialog(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
 		setup(aList);
 	}
 
-	public GetDSSFilename(JList aList, JTextField aTextField) {
+	public FileDialog(JList aList, JTextField aTextField) {
 		theLabel = null;
 		theFileExt = "DSS";
 		theTextField = aTextField;
 		setup(aList);
 	}
 
-	public GetDSSFilename(JList aList, JTextField aTextField, String aFileExt) {
+	public FileDialog(JList aList, JTextField aTextField, String aFileExt) {
 		theLabel = null;
 		theTextField = aTextField;
 		theFileExt = aFileExt;
 		setup(aList);
 	}
 
-	public GetDSSFilename(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
+	public FileDialog(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
