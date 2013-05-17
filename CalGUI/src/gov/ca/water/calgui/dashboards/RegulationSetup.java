@@ -210,6 +210,13 @@ public class RegulationSetup {
 
 		}
 
+		// Special Handling for Delta Outflows.
+		JRadioButton rdb = (JRadioButton) swix.find("btnReg1485");
+		boolean isSel = rdb.isSelected();
+		if (cID.equals("ckbReg_NDO") && isSel == true) {
+			exists = false;
+		}
+
 		// File f = new File("Default\\Lookup\\" + fileName + ".table");
 		// boolean exists = f.exists();
 		if (!exists) {

@@ -619,27 +619,14 @@ public class FileAction implements ActionListener {
 						// ... but check if "user defined" flag is turned on - only for inputs that will be stored as separate data
 						// tables. Those separate tables are written elsewhere
 
-						// if (linkParts.length > 8) {
-						if (!linkParts[8].trim().equals("n/a")) {
-							cID = linkParts[8];
-							tID = Integer.parseInt(cID);
-							if (UDFlags != null) {
-								if (UDFlags[tID] != null) {
-									if (UDFlags[tID] == true) {
-										// Check for N/A Flag
-										String NAFlag = linkParts[12].trim();
-										if (NAFlag == "1") {
-											option = "NA";
-										} else {
-											option = "2";
-										}
-									}
-								}
-							}
-
-						} else {
-							// option = "1"; // TODO: Check if this is removable
-						}
+						/*
+						 * if (linkParts.length > 8) { if (!linkParts[8].trim().equals("n/a")) { cID = linkParts[8]; tID =
+						 * Integer.parseInt(cID); if (UDFlags != null) { if (UDFlags[tID] != null) { if (UDFlags[tID] == true) { //
+						 * Check for N/A Flag String NAFlag = linkParts[12].trim(); if (NAFlag == "1") { option = "NA"; } else {
+						 * option = "2"; } } } }
+						 * 
+						 * } else { // option = "1"; // TODO: Check if this is removable }
+						 */
 					}
 
 					// Finally write the checkbox status to the file
