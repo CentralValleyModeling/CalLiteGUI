@@ -8,6 +8,7 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.SVNVersion;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
@@ -205,10 +206,10 @@ public class FileAction implements ActionListener {
 
 							// YES - get file name
 
-							GetDSSFilename getScenFilename;
-							getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
-							getScenFilename.actionPerformed(ae);
-							if (getScenFilename.dialogRC != 0) {
+							FileDialog scenFileDialog;
+							scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+							scenFileDialog.actionPerformed(ae);
+							if (scenFileDialog.dialogRC != 0) {
 								// Cancel?
 								okToRun = false;
 							} else {
@@ -266,10 +267,10 @@ public class FileAction implements ActionListener {
 			if (ae.getActionCommand().equals("AC_SaveScenAs")) {
 
 				// Save scenario as ...
-				GetDSSFilename getScenFilename;
-				getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
-				getScenFilename.actionPerformed(ae);
-				if (getScenFilename.dialogRC != 0)
+				FileDialog scenFileDialog;
+				scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+				scenFileDialog.actionPerformed(ae);
+				if (scenFileDialog.dialogRC != 0)
 					proceed = false;
 				else {
 					setFilenameTooltips();
@@ -301,9 +302,9 @@ public class FileAction implements ActionListener {
 				// ... The user selected a file, get it, use it.
 
 				File file = fc.getSelectedFile();
-				GetDSSFilename getScenFilename;
-				getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
-				getScenFilename.fc.setSelectedFile(file); // Use this name for next Save As
+				FileDialog scenFileDialog;
+				scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+				scenFileDialog.fc.setSelectedFile(file); // Use this name for next Save As
 
 				action_WSIDI = 0;
 				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
@@ -361,6 +362,10 @@ public class FileAction implements ActionListener {
 
 			}
 
+		} else if (ae.getActionCommand().equals("AC_About")) {
+			String guiRevision = ((JTextField) swix.find("txfGUIRev")).getText();
+			JOptionPane.showMessageDialog(null, "CalLite 2.1 (alpha)\nCode revision " + SVNVersion.revisionString
+			        + "\nGUI xml revision " + guiRevision, "About CalLite", JOptionPane.OK_OPTION, null);
 		}
 	}
 

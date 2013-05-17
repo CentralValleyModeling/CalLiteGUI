@@ -118,7 +118,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GUILinks gl;
 	String desktopTitle;
 	String scenFilename;
-	GetDSSFilename getScenFilename;
+	FileDialog scenFileDialog;
 	DataFileTableModel[] dTableModels;
 	Boolean[] RegUserEdits;
 	int[] RegFlags;
@@ -153,7 +153,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		desktop.setVisible(false);
 
 		// Set GUI visuals
-		desktopTitle = desktop.getTitle() + " (" + SVNVersion.versionString + ");  Scenario";
+		desktopTitle = desktop.getTitle() + " (" + SVNVersion.revisionString + ");  Scenario";
 		desktop.setResizable(false);
 
 		// Set Icon
@@ -163,7 +163,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Title
 		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		desktop.setTitle(desktopTitle + " - " + scenFilename);
-		getScenFilename = new GetDSSFilename(null, (JTextField) swix.find("run_txfScen"), "CLS");
+		scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
 		// Set initial Tooltips with scenario directory
 		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
@@ -244,15 +244,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
 		JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
-		GetDSSFilename getDSSFilename = new GetDSSFilename(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
-		lstScenarios.setModel(getDSSFilename.lmScenNames);
+		FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
+		lstScenarios.setModel(fileDialog.lmScenNames);
 		lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 
 		JButton btnScenario = (JButton) swix.find("btnAddScenario");
-		btnScenario.addActionListener(getDSSFilename);
+		btnScenario.addActionListener(fileDialog);
 
 		JButton btnScenarioDel = (JButton) swix.find("btnDelScenario");
-		btnScenarioDel.addActionListener(getDSSFilename);
+		btnScenarioDel.addActionListener(fileDialog);
 
 		JButton btnClearAll = (JButton) swix.find("btnClearScenario");
 		btnClearAll.addActionListener(this);
@@ -333,18 +333,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		        + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
 
 		// PDF Report
-		GetDSSFilename getDSSFilename0 = new GetDSSFilename(null, (JTextField) swix.find("tfTemplateFILE"), "inp");
-		JButton btnFile0 = (JButton) swix.find("btnGetTemplateFile");
-		btnFile0.addActionListener(getDSSFilename0);
-		GetDSSFilename getDSSFilename1 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE1"));
-		JButton btnFile1 = (JButton) swix.find("btnGetReportFile1");
-		btnFile1.addActionListener(getDSSFilename1);
-		GetDSSFilename getDSSFilename2 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE2"));
-		JButton btnFile2 = (JButton) swix.find("btnGetReportFile2");
-		btnFile2.addActionListener(getDSSFilename2);
-		GetDSSFilename getDSSFilename3 = new GetDSSFilename(null, (JTextField) swix.find("tfReportFILE3"), "PDF");
-		JButton btnFile3 = (JButton) swix.find("btnGetReportFile3");
-		btnFile3.addActionListener(getDSSFilename3);
+		((JButton) swix.find("btnGetTemplateFile")).addActionListener(new FileDialog(null,
+		        (JTextField) swix.find("tfTemplateFILE"), "inp"));
+		((JButton) swix.find("btnGetReportFile1")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE1")));
+		((JButton) swix.find("btnGetReportFile2")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE2")));
+		((JButton) swix.find("btnGetReportFile3")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE3"),
+		        "PDF"));
 
 		// Set Listeners
 		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));

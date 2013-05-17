@@ -1,6 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
-import gov.ca.water.calgui.GetDSSFilename;
+import gov.ca.water.calgui.FileDialog;
 import hec.heclib.dss.HecDss;
 
 import java.awt.event.ActionEvent;
@@ -29,7 +29,7 @@ public class HydAction implements ActionListener {
 
 			JTextField txfDSSFilename;
 			JTextField txfDSSFPart;
-			GetDSSFilename getDSSFilename;
+			FileDialog fileDialog;
 
 			if (ae.getActionCommand().endsWith("SV")) {
 				txfDSSFilename = (JTextField) swix.find("hyd_DSS_SV");
@@ -39,8 +39,8 @@ public class HydAction implements ActionListener {
 				txfDSSFPart = (JTextField) swix.find("hyd_DSS_Init_F");
 			}
 
-			getDSSFilename = new GetDSSFilename(null, txfDSSFilename, "DSS2");
-			getDSSFilename.actionPerformed(ae);
+			fileDialog = new FileDialog(null, txfDSSFilename, "DSS2");
+			fileDialog.actionPerformed(ae);
 
 			String fPartResult = "NOT FOUND";
 			try {
