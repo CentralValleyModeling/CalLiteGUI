@@ -24,7 +24,7 @@
 			<menuitem text="View Help" mnemonic="VK_H" enabled="true"
 				ActionCommand="AC_Help" />
 			<separator />
-			<menuitem text="About CalLite GUI" mnemonic="VK_A" enabled="false" />
+			<menuitem text="About CalLite GUI" mnemonic="VK_A" enabled="true" ActionCommand="AC_About"/>
 		</menu>
 	</menubar>
 
