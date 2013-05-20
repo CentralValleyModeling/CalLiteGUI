@@ -22,14 +22,14 @@ public class CalLiteHelp {
 	public void showHelp(String label) {
 
 		try {
-			properties.load(CalLiteHelp.class.getClassLoader().getResourceAsStream("CalLiteGUI.properties"));
+			properties.load(CalLiteHelp.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
 		} catch (IOException e1) {
 
 			log.debug(e1);
 
 		}
 
-		String path = System.getProperty("user.dir") + File.separator + properties.getProperty("help.dir");
+		String path = new File(properties.getProperty("help.dir")).getAbsolutePath();
 
 		try {
 
