@@ -26,24 +26,45 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
 import org.apache.log4j.Logger;
 
+/**
+ * *
+ * 
+ * @author tslawecki
+ * 
+ *         Supports selection of different types of CalLite files from customized JFileChoosers.
+ * 
+ */
 public class FileDialog implements ActionListener {
 
 	public DefaultListModel lmScenNames;
 	public JFileChooser fc = new JFileChooser2();
+	public int dialogRC;
+
 	JList theList;
 	JLabel theLabel;
 	JTextField theTextField;
+	boolean theMultipleFlag = false;
 	String theFileExt = null;
 	JRadioButton rdbopt1;
 	JRadioButton rdbopt2;
 
 	private static Logger log = Logger.getLogger(FileDialog.class.getName());
 
+	/**
+	 * Basic constructor for use with DSS files. Result is appended to aList.
+	 * 
+	 * @param aList
+	 *            - JList containing selected DSS files.
+	 * @param aLabel
+	 *            - not currently used
+	 * 
+	 */
 	public FileDialog(JList aList, JLabel aLabel) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
@@ -51,6 +72,12 @@ public class FileDialog implements ActionListener {
 		setup(aList);
 	}
 
+	/**
+	 * Constructor for use with DSS files, result is appended to list and placed in textfield.
+	 * 
+	 * @param aList
+	 * @param aTextField
+	 */
 	public FileDialog(JList aList, JTextField aTextField) {
 		theLabel = null;
 		theFileExt = "DSS";
@@ -58,6 +85,13 @@ public class FileDialog implements ActionListener {
 		setup(aList);
 	}
 
+	/**
+	 * Constructor for use with arbitrary files, result is appended to list and placed in textfield.
+	 * 
+	 * @param aList
+	 * @param aTextField
+	 * @param aFileExt
+	 */
 	public FileDialog(JList aList, JTextField aTextField, String aFileExt) {
 		theLabel = null;
 		theTextField = aTextField;
@@ -65,6 +99,30 @@ public class FileDialog implements ActionListener {
 		setup(aList);
 	}
 
+	/**
+	 * Constructor for use with arbitrary files, result is appended to list and placed in textfield.
+	 * 
+	 * @param aList
+	 * @param aTextField
+	 * @param aFileExt
+	 * @param isMultiple
+	 */
+	public FileDialog(JList aList, JTextField aTextField, String aFileExt, boolean isMultiple) {
+		theLabel = null;
+		theTextField = aTextField;
+		theFileExt = aFileExt;
+		theMultipleFlag = isMultiple;
+		setup(aList);
+	}
+
+	/**
+	 * Constructor used for DSS files, result is appended to list, radiobuttons are enabled when list length > 1
+	 * 
+	 * @param aList
+	 * @param aLabel
+	 * @param rdb1
+	 * @param rdb2
+	 */
 	public FileDialog(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
@@ -74,9 +132,14 @@ public class FileDialog implements ActionListener {
 		rdbopt2 = rdb2;
 	}
 
-	public int dialogRC;
-
+	/**
+	 * Common code for all constructors
+	 * 
+	 * @param aList
+	 */
 	private void setup(JList aList) {
+
+		// Set up file chooser
 
 		if (theFileExt.equals("DSS")) {
 			fc.setFileFilter(new DSSFileFilter());
@@ -92,6 +155,9 @@ public class FileDialog implements ActionListener {
 			else
 				fc.setCurrentDirectory(new File(".//Config"));
 		}
+
+		// If a list is specified, create customized JList for handling of files.
+
 		if (aList != null) {
 
 			lmScenNames = new DefaultListModel();
@@ -134,15 +200,19 @@ public class FileDialog implements ActionListener {
 		}
 	}
 
+	/**
+	 * Custom ListDataListener to enable/disable controls based on number of files in list.
+	 * 
+	 * @author tslawecki
+	 * 
+	 */
 	private class MyListDataListener implements ListDataListener {
 		@Override
 		public void contentsChanged(ListDataEvent e) {
-			// System.out.println("Changed");
 		}
 
 		@Override
 		public void intervalAdded(ListDataEvent e) {
-			// System.out.println(lmScenNames.getSize());
 			if (rdbopt1 != null && rdbopt2 != null) {
 				rdbopt1.setEnabled(lmScenNames.getSize() > 1);
 				rdbopt2.setEnabled(lmScenNames.getSize() > 1);
@@ -164,6 +234,9 @@ public class FileDialog implements ActionListener {
 		Object obj = e.getSource();
 
 		if ((((Component) obj).getName() != null) && ((Component) obj).getName().equals("btnDelScenario")) {
+
+			// If invoked by QR DelScenario button, delete a scenario from Quick Results scenario list
+
 			if ((theList != null) && lmScenNames.getSize() > 0) {
 				int todel = -1;
 				for (int i = 0; i < lmScenNames.getSize(); i++)
@@ -176,70 +249,86 @@ public class FileDialog implements ActionListener {
 				lmScenNames.remove(todel);
 			}
 		} else {
+
+			// Otherwise, show dialog
 			int rc;
-			if (theFileExt == null)
-				rc = fc.showOpenDialog(null);
-			else
-				rc = fc.showDialog(null, theFileExt.equals("DSS") ? "Open" : "Save");
 
-			dialogRC = rc;
-			File file;
-			if (rc == 0) {
-				file = fc.getSelectedFile();
-				if (theFileExt.equals("PDF") && !file.getName().toLowerCase().endsWith(".pdf")) {
-					file = new File(file.getPath() + ".PDF");
-				}
-				if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
-					file = new File(file.getPath() + ".CLS");
-				}
-				boolean match = false;
-				if (theList != null) {
-					for (int i = 0; i < lmScenNames.getSize(); i++) {
-						RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
-						match = match | (rbli.toString().equals(file.getPath()));
+			if (theMultipleFlag) {
+				UIManager.put("FileChooser.openDialogTitleText", "Select Scenarios");
+				fc.setMultiSelectionEnabled(true);
+				dialogRC = fc.showDialog(null, "Select");
+			} else {
+
+				if (theFileExt == null)
+					rc = fc.showOpenDialog(null);
+				else
+					rc = fc.showDialog(null, theFileExt.equals("DSS") ? "Open" : "Save");
+
+				dialogRC = rc;
+
+				File file;
+				if (rc == 0) {
+					file = fc.getSelectedFile();
+					if (theFileExt.equals("PDF") && !file.getName().toLowerCase().endsWith(".pdf")) {
+						file = new File(file.getPath() + ".PDF");
 					}
-					if (!match)
-						lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
-				}
-				if (match) {
-					JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"
-					        + "and will not be added. It is already in the Scenarios list.", "Alert", JOptionPane.ERROR_MESSAGE);
-				} else {
-					if (theList == null || lmScenNames.getSize() == 1) {
-						if (theList != null)
-							((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
-						if (theLabel != null) {
-							// theLabel.setText(file.getName());
-							// theLabel.setToolTipText(file.getPath());
-						} else if (theTextField != null) {
-							theTextField.setText(file.getName());
-							theTextField.setToolTipText(file.getPath());
-						}
+					if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
+						file = new File(file.getPath() + ".CLS");
 					}
+					boolean match = false;
 					if (theList != null) {
-						theList.ensureIndexIsVisible(lmScenNames.getSize() - 1);
-						theList.revalidate();
-						theList.validate();
-						theList.getParent().invalidate();
+						for (int i = 0; i < lmScenNames.getSize(); i++) {
+							RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
+							match = match | (rbli.toString().equals(file.getPath()));
+						}
+						if (!match)
+							lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
 					}
+					if (match) {
+						JOptionPane
+						        .showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"
+						                + "and will not be added. It is already in the Scenarios list.", "Alert",
+						                JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (theList == null || lmScenNames.getSize() == 1) {
+							if (theList != null)
+								((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
+							if (theLabel != null) {
+								// theLabel.setText(file.getName());
+								// theLabel.setToolTipText(file.getPath());
+							} else if (theTextField != null) {
+								theTextField.setText(file.getName());
+								theTextField.setToolTipText(file.getPath());
+							}
+						}
+						if (theList != null) {
+							theList.ensureIndexIsVisible(lmScenNames.getSize() - 1);
+							theList.revalidate();
+							theList.validate();
+							theList.getParent().invalidate();
+						}
 
+					}
 				}
 			}
 		}
 		return;
 	}
 
+	/**
+	 * Custom class shows scenario description in tooltip
+	 * 
+	 * @author tslawecki
+	 * 
+	 */
 	private class FileNameRenderer extends DefaultListCellRenderer {
-		/**
-* 
-*/
+
 		private static final long serialVersionUID = -3040003845509293885L;
 
 		private final JFileChooser2 theOwner;
 		private final Map<String, String> theToolTips = new HashMap<String, String>();
 
 		private FileNameRenderer(JFileChooser2 jFileChooser) {
-			// TODO Auto-generated constructor stub
 			theOwner = jFileChooser;
 		}
 
@@ -248,11 +337,7 @@ public class FileDialog implements ActionListener {
 			JLabel lbl = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 			if (!theOwner.toolTipFlag) {
 				theToolTips.clear();
-				File folder = new File(System.getProperty("user.dir") + "\\Scenarios"); // change
-				// to
-				// read
-				// current
-				// directory
+				File folder = new File(System.getProperty("user.dir") + "\\Scenarios"); // change to read current directory
 				File[] listOfFiles = folder.listFiles();
 
 				for (int i = 0; i < listOfFiles.length; i++) {
@@ -272,8 +357,7 @@ public class FileDialog implements ActionListener {
 
 						}
 					}
-					theOwner.toolTipFlag = true; // need to flag when dierctory
-					// changes
+					theOwner.toolTipFlag = true; // need to flag when directory changes
 				}
 			}
 			File file = new File(String.valueOf(value));
@@ -288,10 +372,13 @@ public class FileDialog implements ActionListener {
 		}
 	}
 
+	/**
+	 * Custom FileChooser that puts scenario description for *.cls (assumedin *.txt) in tooltip
+	 * 
+	 * @author tslawecki
+	 * 
+	 */
 	private class JFileChooser2 extends javax.swing.JFileChooser {
-		/**
-* 
-*/
 		private static final long serialVersionUID = -150877374751505363L;
 
 		public boolean toolTipFlag = false;
@@ -303,10 +390,6 @@ public class FileDialog implements ActionListener {
 			if (comp instanceof Container) {
 				Component[] components = ((Container) comp).getComponents();
 				for (int i = 0; i < components.length; i++) {
-					// System.out.println(((Component) components[i]).getName()
-					// +
-					// " " + Integer.toString(i) + " "
-					// + ((Component) components[i]).toString());
 					Component child = findJList(components[i]);
 					if (child != null)
 						return child;
@@ -359,8 +442,12 @@ public class FileDialog implements ActionListener {
 		}
 	}
 
-	// Handles rendering cells in the list using a check box
-
+	/**
+	 * Custom class to show radiobutton items in place of textfields in a list
+	 * 
+	 * @author tslawecki
+	 * 
+	 */
 	private class RBListRenderer extends JRadioButton implements ListCellRenderer {
 		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {

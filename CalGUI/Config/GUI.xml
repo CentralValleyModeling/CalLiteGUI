@@ -24,7 +24,8 @@
 			<menuitem text="View Help" mnemonic="VK_H" enabled="true"
 				ActionCommand="AC_Help" />
 			<separator />
-			<menuitem text="About CalLite GUI" mnemonic="VK_A" enabled="true" ActionCommand="AC_About"/>
+			<menuitem text="About CalLite GUI" mnemonic="VK_A" enabled="true"
+				ActionCommand="AC_About" />
 		</menu>
 	</menubar>
 
@@ -185,10 +186,12 @@
 								</radiobutton>
 							</buttongroup>
 						</panel>
-						<panel border="TitledBorder(Batch runs)" enabled="False">
+						<panel border="TitledBorder(Batch runs)" enabled="True">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="70" gridwidth="2" />
-							<label text="Under Construction" enabled="False"></label>
+							<button text=" Select Scenarios ... " ActionCommand="AC_BATCH"
+								name="run_btnBatchSel" id="run_btnBatchSel">
+							</button>
 						</panel>
 						<button text=" Run Scenario " ActionCommand="AC_RUN" name="run_btnRun"
 							id="run_btnRun">
@@ -949,134 +952,103 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0"
 								gridheight="4" />
-							<!--<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.EAST" gridx="2" gridy="0"
-									gridheight="99" />
-							</label>
-							<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
-							</label>
-							<textfield text=" 15000 " name="fac_txf20" id="fac_txf20">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0" />
-							</textfield>
-							<checkbox name="fac_ckb11" id="fac_ckb11"
-								text="Hood Bypass Requirement before usage of Isolated Facility">
-								<gridbagconstraints insets="10,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4"
-									/>
-							</checkbox>
-							-->
+							<!--<label id="fac_txf20_t" text="Isolated Facility Capacity (cfs)"> 
+								<gridbagconstraints insets="0,5,5,5" anchor="GridBagConstraints.EAST" gridx="2" 
+								gridy="0" gridheight="99" /> </label> <label id="fac_txf20_t" text="Isolated 
+								Facility Capacity (cfs)"> <gridbagconstraints insets="0,5,5,5" anchor="GridBagConstraints.NORTHWEST" 
+								gridx="0" gridy="0" /> </label> <textfield text=" 15000 " name="fac_txf20" 
+								id="fac_txf20"> <gridbagconstraints insets="0,5,5,5" anchor="GridBagConstraints.NORTHWEST" 
+								gridx="1" gridy="0" /> </textfield> <checkbox name="fac_ckb11" id="fac_ckb11" 
+								text="Hood Bypass Requirement before usage of Isolated Facility"> <gridbagconstraints 
+								insets="10,5,5,5" anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" 
+								/> </checkbox> -->
 							<label id="fac_txf20_t" text="Isolated Facility Switches">
 								<gridbagconstraints insets="0,0,0,0"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"/>
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
 							</label>
-							<checkbox name="fac_ckb42" id="fac_ckb42"
-									text="Jones IF Export"
-									minimumsize="340,20">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"/>
+							<checkbox name="fac_ckb42" id="fac_ckb42" text="Jones IF Export"
+								minimumsize="340,20">
+								<gridbagconstraints insets="0,0,0,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 							</checkbox>
-							<checkbox name="fac_ckb43" id="fac_ckb43"
-									text="Banks IF Export"
-									minimumsize="340,20">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
+							<checkbox name="fac_ckb43" id="fac_ckb43" text="Banks IF Export"
+								minimumsize="340,20">
+								<gridbagconstraints insets="0,0,0,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
 							</checkbox>
-							<checkbox name="fac_ckb44" id="fac_ckb44"
-									text="CCWD IF Export"
-									minimumsize="340,20">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3" />
+							<checkbox name="fac_ckb44" id="fac_ckb44" text="CCWD IF Export"
+								minimumsize="340,20">
+								<gridbagconstraints insets="0,0,0,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3" />
 							</checkbox>
-							<checkbox name="fac_ckb45" id="fac_ckb45"
-									text="TD Export"
-									minimumsize="340,20">
-									<gridbagconstraints insets="0,0,0,0"
-										anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" />
+							<checkbox name="fac_ckb45" id="fac_ckb45" text="TD Export"
+								minimumsize="340,20">
+								<gridbagconstraints insets="0,0,0,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" />
 							</checkbox>
 							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 							</button>
-							
-							<button text="Hood Bypass Assumptions" name="btnFacHood" id="btnFacHood">
+
+							<button text="Hood Bypass Assumptions" name="btnFacHood"
+								id="btnFacHood">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="11" />
 							</button>
-							
+
 							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="12" />
 							</button>
-							
+
 							<hbox preferredsize="600,500">
-							<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
-							<scrollpane id="fac_scr1" preferredsize="600,500" layout="BorderLayout">
-								<table id="tblIF1" minimumsize="600,500">
-								</table>
-							</scrollpane>
-							</hbox>
-							
-							<hbox preferredsize="600,500">
-							<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
-							<scrollpane id="fac_scr2" preferredsize="600,500" layout="BorderLayout">
-								<table id="tblIF2" minimumsize="600,500">
-								</table>
-							</scrollpane>
-							</hbox>
-							
-							<hbox preferredsize="600,500">
-							<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
-							<scrollpane id="fac_scr3" preferredsize="600,500" layout="BorderLayout">
-								<table id="tblIF3" minimumsize="600,500">
-								</table>
-							</scrollpane>
-							</hbox>
-					
-							<!--
-							<checkbox enabled="false" selected="true" name="fac_ckb12"
-								id="fac_ckb12" text="Prefer Isolated Facility">
-								<gridbagconstraints insets="10,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="9" />
-							</checkbox>
-							-->
-							<!--
-							<label text="Dual Conveyance">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
-							</label>
-							<scrollpane preferredsize="250,215" layout="BorderLayout">
 								<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" />
-								<table id="tblIF2" minimumsize="250,215">
-								</table>
-							</scrollpane>
-							-->
-							<!--
-							<label text="Service Areas for Isolated Facility">
-								<gridbagconstraints insets="0,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="25" />
-							</label>
-							<panel>
-								<gridbagconstraints insets="0,0,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="30"
-									gridwidth="2" />
-								<checkbox name="fac_ckb34" id="fac_ckb34" selected="true"
-									enabled="false" text="SWP"></checkbox>
-								<checkbox name="fac_ckb35" id="fac_ckb35" selected="true"
-									enabled="false" text="CVP"></checkbox>
-								<checkbox name="fac_ckb36" id="fac_ckb36" selected="true"
-									enabled="false" text="CCWD"></checkbox>
-								<checkbox name="fac_ckb37" id="fac_ckb37" selected="true"
-									enabled="false" text="Delta ag"></checkbox>
-							</panel>
-							-->
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+								<scrollpane id="fac_scr1" preferredsize="600,500"
+									layout="BorderLayout">
+									<table id="tblIF1" minimumsize="600,500">
+									</table>
+								</scrollpane>
+							</hbox>
+
+							<hbox preferredsize="600,500">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+								<scrollpane id="fac_scr2" preferredsize="600,500"
+									layout="BorderLayout">
+									<table id="tblIF2" minimumsize="600,500">
+									</table>
+								</scrollpane>
+							</hbox>
+
+							<hbox preferredsize="600,500">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
+								<scrollpane id="fac_scr3" preferredsize="600,500"
+									layout="BorderLayout">
+									<table id="tblIF3" minimumsize="600,500">
+									</table>
+								</scrollpane>
+							</hbox>
+
+							<!-- <checkbox enabled="false" selected="true" name="fac_ckb12" id="fac_ckb12" 
+								text="Prefer Isolated Facility"> <gridbagconstraints insets="10,5,5,5" anchor="GridBagConstraints.NORTHWEST" 
+								gridx="1" gridy="9" /> </checkbox> -->
+							<!-- <label text="Dual Conveyance"> <gridbagconstraints insets="0,5,5,5" 
+								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" /> </label> <scrollpane 
+								preferredsize="250,215" layout="BorderLayout"> <gridbagconstraints insets="0,10,5,5" 
+								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="20" /> <table id="tblIF2" 
+								minimumsize="250,215"> </table> </scrollpane> -->
+							<!-- <label text="Service Areas for Isolated Facility"> <gridbagconstraints 
+								insets="0,5,5,5" anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="25" 
+								/> </label> <panel> <gridbagconstraints insets="0,0,5,5" anchor="GridBagConstraints.NORTHWEST" 
+								gridx="0" gridy="30" gridwidth="2" /> <checkbox name="fac_ckb34" id="fac_ckb34" 
+								selected="true" enabled="false" text="SWP"></checkbox> <checkbox name="fac_ckb35" 
+								id="fac_ckb35" selected="true" enabled="false" text="CVP"></checkbox> <checkbox 
+								name="fac_ckb36" id="fac_ckb36" selected="true" enabled="false" text="CCWD"></checkbox> 
+								<checkbox name="fac_ckb37" id="fac_ckb37" selected="true" enabled="false" 
+								text="Delta ag"></checkbox> </panel> -->
 						</panel>
 						<panel name="fac_pan7" id="fac_pan7" resizeable="false"
 							border="TitledBorder(Banks Pumping Plant)" visible="false" size="500,350"
@@ -1260,7 +1232,7 @@
 						preferredsize="450,100" layout="GridBagLayout">
 						<gridbagconstraints insets="5,5,25,5" gridx="0"
 							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
-													<Label
+						<Label
 							text="Select a regulation basis below to run with a default regulatory environment."
 							enabled="false">
 							<gridbagconstraints insets="0,0,5,5"
@@ -1341,7 +1313,8 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="7" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
-							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY" text="Trinity Minimum FLows" seleted="true" enabled="false">
+							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY" text="Trinity Minimum FLows"
+								seleted="true" enabled="false">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="8" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
@@ -1407,8 +1380,8 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="17" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg_PUMP" id="ckbReg_PUMP" seleted="true" enabled="false"
-								text="Pumping Limits (Jones and Banks)">
+							<checkbox name="ckbReg_PUMP" id="ckbReg_PUMP" seleted="true"
+								enabled="false" text="Pumping Limits (Jones and Banks)">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="18" anchor="GridBagConstraints.WEST" />
 							</checkbox>
@@ -1615,32 +1588,35 @@
 						<gridbagconstraints insets="13,5,0,5" gridx="1"
 							gridy="1" gridheight="30" gridwidth="6"
 							anchor="GridBagConstraints.NORTHWEST" />
-						<button id="btnRegCopy" name="btnRegCopy" text="Copy" minimumsize="100,20" enabled="false"
-							ActionCommand="Reg_Copy">
+						<button id="btnRegCopy" name="btnRegCopy" text="Copy"
+							minimumsize="100,20" enabled="false" ActionCommand="Reg_Copy">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
-						<button id="btnRegPaste" name="btnRegPaste" text="Paste" minimumsize="100,20" enabled="false"
-							ActionCommand="Reg_Paste">
+						<button id="btnRegPaste" name="btnRegPaste" text="Paste"
+							minimumsize="100,20" enabled="false" ActionCommand="Reg_Paste">
 							<gridbagconstraints insets="0,5,5,5" gridx="1"
 								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 						</button>
 						<buttongroup>
-						<radiobutton id="btnReg1641" text="D1641" minimumsize="100,20"
-							enabled="false" ActionCommand="Reg_1641" visible="false">
-							<gridbagconstraints insets="0,5,5,5" gridx="2"
-								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
-						</radiobutton>
-						<radiobutton id="btnReg1485" text="D1485" minimumsize="100,20"
-							enabled="false" ActionCommand="Reg_1485" visible="false">
-							<gridbagconstraints insets="0,0,5,5" gridx="3"
-								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
-						</radiobutton>
-						<radiobutton id="btnRegUD" text="User-Defined" minimumsize="100,20"
-							enabled="false" ActionCommand="Reg_UD" visible="false">
-							<gridbagconstraints insets="0,0,5,5" gridx="4"
-								gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
-						</radiobutton>
+							<radiobutton id="btnReg1641" text="D1641"
+								minimumsize="100,20" enabled="false" ActionCommand="Reg_1641"
+								visible="false">
+								<gridbagconstraints insets="0,5,5,5" gridx="2"
+									gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
+							</radiobutton>
+							<radiobutton id="btnReg1485" text="D1485"
+								minimumsize="100,20" enabled="false" ActionCommand="Reg_1485"
+								visible="false">
+								<gridbagconstraints insets="0,0,5,5" gridx="3"
+									gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
+							</radiobutton>
+							<radiobutton id="btnRegUD" text="User-Defined"
+								minimumsize="100,20" enabled="false" ActionCommand="Reg_UD"
+								visible="false">
+								<gridbagconstraints insets="0,0,5,5" gridx="4"
+									gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
+							</radiobutton>
 						</buttongroup>
 						<HBox id="regBOX" name="regBOX" preferredsize="555,423">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
