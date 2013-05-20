@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
+import gov.ca.water.calgui.CalLiteHelp;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.PopulateDTable;
@@ -13,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 
@@ -106,6 +108,17 @@ public class OpAction implements ActionListener {
 				}
 			} catch (Exception ex) {
 				log.debug(ex.getMessage());
+			}
+		}
+
+		else {
+
+			if (ae.getActionCommand().equals("AC_Help")) {
+
+				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+				String label = jtp.getTitleAt(jtp.getSelectedIndex());
+				CalLiteHelp calLiteHelp = new CalLiteHelp();
+				calLiteHelp.showHelp(label);
 			}
 		}
 	}
