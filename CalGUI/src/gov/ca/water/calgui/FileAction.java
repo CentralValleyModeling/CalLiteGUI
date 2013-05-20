@@ -20,12 +20,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,8 +32,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
-import javax.help.HelpSet;
-import javax.help.JHelp;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -78,6 +74,7 @@ public class FileAction implements ActionListener {
 	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
 	                                           // run
 
+	private static Properties properties = new Properties();
 	private static Logger log = Logger.getLogger(FileAction.class.getName());
 	private static SwingWorker<Void, String> worker_setupScenario = null;
 
@@ -102,20 +99,14 @@ public class FileAction implements ActionListener {
 		this.RegFlags = RegFlags;
 
 		// create and load default properties
-		runRecordFolderName = "Run_Records";
-		Properties defaultProps = new Properties();
-		FileInputStream in;
 		try {
-			in = new FileInputStream("CalLiteGUI.properties");
-			defaultProps.load(in);
-			in.close();
-			runRecordFolderName = defaultProps.getProperty("RunRecordFolderName", "Run_Records");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			properties.load(FileAction.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
+
+			runRecordFolderName = properties.getProperty("RunRecordFolderName", "Run_Records");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			log.debug("Problem loading properties. " + e.getMessage());
 		}
 
 	}
@@ -354,26 +345,16 @@ public class FileAction implements ActionListener {
 
 		else if (ae.getActionCommand().equals("AC_Help")) {
 
-			JHelp helpViewer;
-			JFrame help;
 			try {
-				ClassLoader classLoader = FileAction.class.getClassLoader();
-				URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
-				helpViewer = new JHelp(new HelpSet(classLoader, url));
-
-				help = new JFrame("CalLite 2.0 GUI Help");
-				help.getContentPane().add(helpViewer);
 
 				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
-				int selIndex = jtp.getSelectedIndex();
-				String label = jtp.getTitleAt(selIndex);
-				helpViewer.setCurrentID(label);
-				help.pack();
-				help.setVisible(true);
+				String label = jtp.getTitleAt(jtp.getSelectedIndex());
+				CalLiteHelp calLiteHelp = new CalLiteHelp();
+				calLiteHelp.showHelp(label);
 
 			} catch (Exception e) {
 
-				log.debug("helpset not found: " + e.getMessage());
+				log.debug("Problem with CalLite Help " + e.getMessage());
 
 			}
 
