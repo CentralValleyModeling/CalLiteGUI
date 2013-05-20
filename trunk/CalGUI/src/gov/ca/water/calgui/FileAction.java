@@ -126,133 +126,148 @@ public class FileAction implements ActionListener {
 		JPanel mainmenu = (JPanel) swix.find("mainmenu");
 		String scen = ((JTextField) swix.find("run_txfScen")).getText();
 
-		if ("AC_RUN".equals(ae.getActionCommand())) {
+		if ("AC_BATCH".equals(ae.getActionCommand())) {
 
-			// Check if selections are valid
+			FileDialog batchScenFileDialog = new FileDialog(null, null, "CLS", true);
+			batchScenFileDialog.actionPerformed(ae);
+			if (batchScenFileDialog.dialogRC == 0) {
+				JOptionPane.showMessageDialog(null, "Files selected: " + batchScenFileDialog.fc.getSelectedFiles().length,
+				        "Batch select result", JOptionPane.INFORMATION_MESSAGE);
+				// Results in File[] batchScenFileDialog.fc.getSelectedFiles();
+			}
 
-			String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim();
-			String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim();
-			Integer startYr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
-			Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
-
-			// Determine Month/Count
-			Integer iSMon = UnitsUtils.monthToInt(startMon);
-			Integer iEMon = UnitsUtils.monthToInt(endMon);
-			Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
+		} else if ("AC_RUN".equals(ae.getActionCommand())) {
 
 			if (!scen.equals("")) {
 
-				// Make sure current run isnt in background.
+				// Make sure there isn't a current run in background.
+
 				if ((new File(System.getProperty("user.dir") + "\\Run\\running.txt")).exists()) {
 					JOptionPane.showMessageDialog(mainmenu, "There is currently a simulation running at this time.");
 
-				} else if (numMon < 1) {
-					JOptionPane.showMessageDialog(mainmenu, "The specified start date must be before the end date.");
 				} else {
+					// Check if selections are valid
 
-					// Disable run button
-					JButton btn = (JButton) swix.find("run_btnRun");
-					btn.setEnabled(false);
-					mainmenu.revalidate();
+					String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim();
+					String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim();
+					Integer startYr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
+					Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
 
-					// *** Determine if scenario has changed.
+					// Determine Month/Count
+					Integer iSMon = UnitsUtils.monthToInt(startMon);
+					Integer iEMon = UnitsUtils.monthToInt(endMon);
+					Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
 
-					// Get current scenario settings
-					StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+					if (numMon < 1) {
 
-					// Read existing file
+						JOptionPane.showMessageDialog(mainmenu, "The specified start date must be before the end date.");
 
-					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
-					StringBuffer sbExisting = FileUtils.readScenarioFile(f);
+					} else {
 
-					Boolean okToRun = sb.toString().equals(sbExisting.toString());
-					if (!okToRun) {
+						// Disable run button
+						JButton btn = (JButton) swix.find("run_btnRun");
+						btn.setEnabled(false);
+						mainmenu.revalidate();
 
-						// Scenario settings have changed - check if they should be saved before running
+						// *** Determine if scenario has changed.
 
-						int n = JOptionPane.showConfirmDialog(mainmenu,
-						        "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
-						        JOptionPane.YES_NO_CANCEL_OPTION);
+						// Get current scenario settings
+						StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 
-						switch (n) {
+						// Read existing file
 
-						case JOptionPane.CANCEL_OPTION:
+						File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
+						StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
-							// CANCEL - do not save changes to disk, do not run, return
+						Boolean okToRun = sb.toString().equals(sbExisting.toString());
+						if (!okToRun) {
 
-							okToRun = false;
-							break;
+							// Scenario settings have changed - check if they should be saved before running
 
-						case JOptionPane.NO_OPTION:
+							int n = JOptionPane.showConfirmDialog(mainmenu,
+							        "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
+							        JOptionPane.YES_NO_CANCEL_OPTION);
 
-							// NO - do not save changes to disk, check if OK to revert and run
+							switch (n) {
 
-							if (JOptionPane.showConfirmDialog(mainmenu,
-							        "Press OK to run with the last saved version of " + f.getPath()
-							                + "; your changes will be lost.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-								okToRun = true;
+							case JOptionPane.CANCEL_OPTION:
 
-								action_WSIDI = 0;
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
-								action_WSIDI = 1;
+								// CANCEL - do not save changes to disk, do not run, return
 
-							} else {
 								okToRun = false;
-							}
-							break;
+								break;
 
-						case JOptionPane.YES_OPTION:
+							case JOptionPane.NO_OPTION:
 
-							// YES - get file name
+								// NO - do not save changes to disk, check if OK to revert and run
 
-							FileDialog scenFileDialog;
-							scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
-							scenFileDialog.actionPerformed(ae);
-							if (scenFileDialog.dialogRC != 0) {
-								// Cancel?
-								okToRun = false;
-							} else {
+								if (JOptionPane.showConfirmDialog(mainmenu,
+								        "Press OK to run with the last saved version of " + f.getPath()
+								                + "; your changes will be lost.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+									okToRun = true;
 
-								okToRun = true;
-								String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
-								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
-									if (JOptionPane.showConfirmDialog(mainmenu,
-									        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-									                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
-									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-										// Existing file, do overwrite
-										okToRun = true;
+									action_WSIDI = 0;
+									regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
+									regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
+									action_WSIDI = 1;
 
+								} else {
+									okToRun = false;
+								}
+								break;
+
+							case JOptionPane.YES_OPTION:
+
+								// YES - get file name
+
+								FileDialog scenFileDialog;
+								scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+								scenFileDialog.actionPerformed(ae);
+								if (scenFileDialog.dialogRC != 0) {
+									// Cancel?
+									okToRun = false;
+								} else {
+
+									okToRun = true;
+									String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
+									if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
+										if (JOptionPane.showConfirmDialog(mainmenu,
+										        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
+										                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
+										        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+											// Existing file, do overwrite
+											okToRun = true;
+
+										} else {
+											// Existing file, do not overwrite -> cancel run
+											okToRun = false;
+										}
+									}
+									if (okToRun) {
+										((JTextField) swix.find("run_txfScen")).setText(scen2);
+										setFilenameTooltips();
+										sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+										saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
+										scen = scen2;
 									} else {
-										// Existing file, do not overwrite -> cancel run
-										okToRun = false;
+										((JTextField) swix.find("run_txfScen")).setText(scen);
+										setFilenameTooltips();
 									}
 								}
-								if (okToRun) {
-									((JTextField) swix.find("run_txfScen")).setText(scen2);
-									setFilenameTooltips();
-									sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
-									saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
-									scen = scen2;
-								} else {
-									((JTextField) swix.find("run_txfScen")).setText(scen);
-									setFilenameTooltips();
-								}
+								break;
 							}
-							break;
 						}
+						if (okToRun) {
+							// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
+							setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+							setupBatchFile(scen, false);
+							runBatch();
+						}
+						btn.setEnabled(true);
+						mainmenu.revalidate();
 					}
-					if (okToRun) {
-						// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
-						setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
-						setupBatchFile(scen, false);
-						runBatch();
-					}
-					btn.setEnabled(true);
-					mainmenu.revalidate();
-				}
 
+				}
 			} else {
 				JFrame frame = new JFrame("Error");
 
