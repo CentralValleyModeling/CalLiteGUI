@@ -21,7 +21,6 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
-import gov.ca.water.calgui.utils.SVNVersion;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
@@ -145,266 +144,321 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public MainMenu() throws Exception {
 
 		long startSetupTime = System.currentTimeMillis();
-
-		// Read GUI configuration
 		swix = new SwingEngine(this);
-		swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
-		swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml"));
-		desktop.setVisible(false);
 
-		// Set GUI visuals
-		desktopTitle = desktop.getTitle() + " (" + SVNVersion.revisionString + ");  Scenario";
-		desktop.setResizable(false);
+		// Read GUI configuration, set UI elements
+		try {
 
-		// Set Icon
-		URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
-		desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+			swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
+			swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml"));
+			desktop.setVisible(false);
 
-		// Title
-		scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-		desktop.setTitle(desktopTitle + " - " + scenFilename);
-		scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+			// Set GUI visuals
+			desktopTitle = desktop.getTitle() + " blah";
+			desktop.setResizable(false);
 
-		// Set initial Tooltips with scenario directory
-		((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-		        + ((JTextField) swix.find("run_txfoDSS")).getText());
+			// Set Icon
+			URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
+			desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
-		((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-		        + ((JTextField) swix.find("run_txfScen")).getText());
+			// Title
+			scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
+			desktop.setTitle(desktopTitle + " - " + scenFilename);
+			scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
-		// Help hotkey
-		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-		manager.addKeyEventDispatcher(this);
+			// Set initial Tooltips with scenario directory
+			((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
+			        + ((JTextField) swix.find("run_txfoDSS")).getText());
 
-		// Recolor results tabs
+			((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
+			        + ((JTextField) swix.find("run_txfScen")).getText());
 
-		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+			// Help hotkey
+			KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+			manager.addKeyEventDispatcher(this);
 
-		jtp.setForegroundAt(6, Color.blue);
-		jtp.setForegroundAt(7, Color.blue);
-		jtp.setForegroundAt(8, Color.blue);
-		jtp.setForegroundAt(9, Color.blue);
+			// Recolor results tabs
 
-		jtp.setBackgroundAt(6, Color.WHITE);
-		jtp.setBackgroundAt(7, Color.WHITE);
-		jtp.setBackgroundAt(8, Color.WHITE);
-		jtp.setBackgroundAt(9, Color.WHITE);
+			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+
+			jtp.setForegroundAt(6, Color.blue);
+			jtp.setForegroundAt(7, Color.blue);
+			jtp.setForegroundAt(8, Color.blue);
+			jtp.setForegroundAt(9, Color.blue);
+
+			jtp.setBackgroundAt(6, Color.WHITE);
+			jtp.setBackgroundAt(7, Color.WHITE);
+			jtp.setBackgroundAt(8, Color.WHITE);
+			jtp.setBackgroundAt(9, Color.WHITE);
+
+		}
+
+		catch (Exception e) {
+			log.debug("Could not build UI. )" + e);
+		}
 
 		// Read Schematic_DSS_link4.table and place in Table5
 		ArrayList<String> guiLinks5 = new ArrayList<String>();
-		guiLinks5 = GUIUtils.getGUILinks("Config/Schematic_DSS_link4.table");
-		table5 = new String[guiLinks5.size()][6];
-		for (int i = 0; i < guiLinks5.size(); i++) {
-			String tokens[] = guiLinks5.get(i).split("\t");
-			table5[i][0] = tokens[0];
-			table5[i][1] = tokens[1];
-			table5[i][2] = tokens[2];
-			table5[i][3] = tokens[3];
-			table5[i][4] = tokens[4];
-			table5[i][5] = tokens[5];
+
+		try {
+			guiLinks5 = GUIUtils.getGUILinks("Config/Schematic_DSS_link4.table");
+			table5 = new String[guiLinks5.size()][6];
+
+			for (int i = 0; i < guiLinks5.size(); i++) {
+				String tokens[] = guiLinks5.get(i).split("\t");
+				table5[i][0] = tokens[0];
+				table5[i][1] = tokens[1];
+				table5[i][2] = tokens[2];
+				table5[i][3] = tokens[3];
+				table5[i][4] = tokens[4];
+				table5[i][5] = tokens[5];
+			}
+
+			// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
+			// init file, etc.)
+			ArrayList<String> guiLinks4 = new ArrayList<String>();
+			guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
+			table4 = new String[guiLinks4.size()][5];
+			for (int i = 0; i < guiLinks4.size(); i++) {
+				String tokens[] = guiLinks4.get(i).split("\t");
+				table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
+				table4[i][1] = tokens[4];
+				table4[i][2] = tokens[5];
+				table4[i][3] = tokens[6];
+				table4[i][4] = tokens[7];
+			}
+
+			// Set up month spinners
+			JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
+			SpinnerSetup.SetMonthModelAndIndex(spnSM1, 9, this, true);
+			JSpinner spnEM1 = (JSpinner) swix.find("spnRunEndMonth");
+			SpinnerSetup.SetMonthModelAndIndex(spnEM1, 8, this, true);
+
+			// Set up year spinners
+			JSpinner spnSY1 = (JSpinner) swix.find("spnRunStartYear");
+			SpinnerSetup.SetNumberModelAndIndex(spnSY1, 1921, 1921, 2003, 1, "####", this, true);
+			JSpinner spnEY1 = (JSpinner) swix.find("spnRunEndYear");
+			SpinnerSetup.SetNumberModelAndIndex(spnEY1, 2003, 1921, 2003, 1, "####", this, true);
+
+			// Read switch lookup
+			gl = new GUILinks();
+			gl.readIn("Config/GUI_Links2.table");
+
+			readInLookups(); // Temporary access to quick reports info from gui_Links3.table
 		}
 
-		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
-		// init file, etc.)
-		ArrayList<String> guiLinks4 = new ArrayList<String>();
-		guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
-		table4 = new String[guiLinks4.size()][5];
-		for (int i = 0; i < guiLinks4.size(); i++) {
-			String tokens[] = guiLinks4.get(i).split("\t");
-			table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-			table4[i][1] = tokens[4];
-			table4[i][2] = tokens[5];
-			table4[i][3] = tokens[6];
-			table4[i][4] = tokens[7];
+		catch (Exception e) {
+			log.debug("Problem reading table files. " + e);
 		}
-
-		// Set up month spinners
-		JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
-		SpinnerSetup.SetMonthModelAndIndex(spnSM1, 9, this, true);
-		JSpinner spnEM1 = (JSpinner) swix.find("spnRunEndMonth");
-		SpinnerSetup.SetMonthModelAndIndex(spnEM1, 8, this, true);
-
-		// Set up year spinners
-		JSpinner spnSY1 = (JSpinner) swix.find("spnRunStartYear");
-		SpinnerSetup.SetNumberModelAndIndex(spnSY1, 1921, 1921, 2003, 1, "####", this, true);
-		JSpinner spnEY1 = (JSpinner) swix.find("spnRunEndYear");
-		SpinnerSetup.SetNumberModelAndIndex(spnEY1, 2003, 1921, 2003, 1, "####", this, true);
-
-		// Read switch lookup
-		gl = new GUILinks();
-		gl.readIn("Config/GUI_Links2.table");
-
-		readInLookups(); // Temporary access to quick reports info from gui_Links3.table
 
 		// Setup for Reporting page
 
 		// Set up scenario list
-		lstScenarios = (JList) swix.find("SelectedList");
+		try {
+			lstScenarios = (JList) swix.find("SelectedList");
+		} catch (Exception e) {
+			log.debug("Problem setting scenario list. " + e);
+		}
 
-		JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
-		JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
+		// Set up additional UI elements
 
-		FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
-		lstScenarios.setModel(fileDialog.lmScenNames);
-		lstScenarios.setBorder(new LineBorder(Color.gray, 1));
+		try {
+			JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
+			JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
-		JButton btnScenario = (JButton) swix.find("btnAddScenario");
-		btnScenario.addActionListener(fileDialog);
+			FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
+			lstScenarios.setModel(fileDialog.lmScenNames);
+			lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 
-		JButton btnScenarioDel = (JButton) swix.find("btnDelScenario");
-		btnScenarioDel.addActionListener(fileDialog);
+			JButton btnScenario = (JButton) swix.find("btnAddScenario");
+			btnScenario.addActionListener(fileDialog);
 
-		JButton btnClearAll = (JButton) swix.find("btnClearScenario");
-		btnClearAll.addActionListener(this);
+			JButton btnScenarioDel = (JButton) swix.find("btnDelScenario");
+			btnScenarioDel.addActionListener(fileDialog);
 
-		// Set up month spinners
-		JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
-		SpinnerSetup.SetMonthModelAndIndex(spnSM, 9, this, true);
-		JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
-		SpinnerSetup.SetMonthModelAndIndex(spnEM, 8, this, true);
+			JButton btnClearAll = (JButton) swix.find("btnClearScenario");
+			btnClearAll.addActionListener(this);
 
-		// Set up year spinners
-		// TODO - Get years from scenarios rather than fixed
-		// TODO (?) - Control spinner so end year >= start year
-		JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
-		SpinnerSetup.SetNumberModelAndIndex(spnSY, 1921, 1921, 2003, 1, "####", this, true);
-		JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
-		SpinnerSetup.SetNumberModelAndIndex(spnEY, 2003, 1921, 2003, 1, "####", this, true);
+			// Set up month spinners
+			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
+			SpinnerSetup.SetMonthModelAndIndex(spnSM, 9, this, true);
+			JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
+			SpinnerSetup.SetMonthModelAndIndex(spnEM, 8, this, true);
 
-		// Set up report list
-		JList lstReports = (JList) swix.find("lstReports");
-		lstReports.setBorder(new LineBorder(Color.gray, 1));
-		lstReports.setVisible(true);
+			// Set up year spinners
+			// TODO - Get years from scenarios rather than fixed
+			// TODO (?) - Control spinner so end year >= start year
+			JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
+			SpinnerSetup.SetNumberModelAndIndex(spnSY, 1921, 1921, 2003, 1, "####", this, true);
+			JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
+			SpinnerSetup.SetNumberModelAndIndex(spnEY, 2003, 1921, 2003, 1, "####", this, true);
 
-		// Load Default Scenario
-		JTextField tf = (JTextField) swix.find("run_txfScen");
-		String scen = tf.getText();
+			// Set up report list
+			JList lstReports = (JList) swix.find("lstReports");
+			lstReports.setBorder(new LineBorder(Color.gray, 1));
+			lstReports.setVisible(true);
 
-		File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
-		action_WSIDI = 0;
-		RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
-		RegFlags = GUIUtils.setControlValues(file, swix, gl);
-		action_WSIDI = 1;
+			// Load Default Scenario
+			JTextField tf = (JTextField) swix.find("run_txfScen");
+			String scen = tf.getText();
 
-		JComponent component1 = (JComponent) swix.find("scrOpValues");
-		JTable table1 = (JTable) swix.find("tblOpValues");
+			File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
+			action_WSIDI = 0;
+			RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+			RegFlags = GUIUtils.setControlValues(file, swix, gl);
+			action_WSIDI = 1;
 
-		component1.setVisible(true);
-		component1.setEnabled(true);
-		dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
-		dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
+			JComponent component1 = (JComponent) swix.find("scrOpValues");
+			JTable table1 = (JTable) swix.find("tblOpValues");
 
-		// pan.setBorder(title);
-		component1.setVisible(false);
-		table1.setVisible(false);
+			component1.setVisible(true);
+			component1.setEnabled(true);
+			dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
+			dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
+
+			// pan.setBorder(title);
+			component1.setVisible(false);
+			table1.setVisible(false);
+		}
+
+		catch (Exception e) {
+			log.debug("Exception at line 323 in contructor." + e);
+		}
 
 		// Refresh checkbox labels
+		try {
+			for (int i = 0; i < RegUserEdits.length; i++) {
+				if (RegUserEdits[i] != null) {
 
-		for (int i = 0; i < RegUserEdits.length; i++) {
-			if (RegUserEdits[i] != null) {
+					String cID = Integer.toString(i);
+					String cName = gl.ctrlFortableID(cID);
 
-				String cID = Integer.toString(i);
-				String cName = gl.ctrlFortableID(cID);
+					JComponent c = (JComponent) swix.find(cName);
 
-				JComponent c = (JComponent) swix.find(cName);
+					if (c instanceof JCheckBox) {
+						JCheckBox ckb = (JCheckBox) c;
+						String ckbtext = ckb.getText();
+						String[] ckbtext1 = ckbtext.split(" - ");
+						ckbtext = ckbtext1[0];
+						if (ckbtext1.length > 0) {
+							if (RegUserEdits[i] == true)
+								ckb.setText(ckbtext + " - User Def.");
+							else
+								ckb.setText(ckbtext + " -  Default");
 
-				if (c instanceof JCheckBox) {
-					JCheckBox ckb = (JCheckBox) c;
-					String ckbtext = ckb.getText();
-					String[] ckbtext1 = ckbtext.split(" - ");
-					ckbtext = ckbtext1[0];
-					if (ckbtext1.length > 0) {
-						if (RegUserEdits[i] == true)
-							ckb.setText(ckbtext + " - User Def.");
-						else
-							ckb.setText(ckbtext + " -  Default");
-
-					} else
-						ckb.setText(ckbtext);
+						} else
+							ckb.setText(ckbtext);
+					}
 				}
 			}
 		}
 
+		catch (Exception e) {
+			log.debug("Problem setting checkbox lables. " + e);
+		}
+
 		// Schematic views
-		SchematicMain schemView;
-		schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
-		        + "/Config/callite_merged.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0, -200.0);
-		schemView = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
-		        + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
+
+		try {
+
+			SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
+			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0,
+			        -200.0);
+			schemView = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
+			        + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
+		} catch (Exception e) {
+			log.debug("Could not load schematic views. " + e);
+		}
 
 		// PDF Report
-		((JButton) swix.find("btnGetTemplateFile")).addActionListener(new FileDialog(null,
-		        (JTextField) swix.find("tfTemplateFILE"), "inp"));
-		((JButton) swix.find("btnGetReportFile1")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE1")));
-		((JButton) swix.find("btnGetReportFile2")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE2")));
-		((JButton) swix.find("btnGetReportFile3")).addActionListener(new FileDialog(null, (JTextField) swix.find("tfReportFILE3"),
-		        "PDF"));
+
+		try {
+
+			((JButton) swix.find("btnGetTemplateFile")).addActionListener(new FileDialog(null, (JTextField) swix
+			        .find("tfTemplateFILE"), "inp"));
+			((JButton) swix.find("btnGetReportFile1")).addActionListener(new FileDialog(null, (JTextField) swix
+			        .find("tfReportFILE1")));
+			((JButton) swix.find("btnGetReportFile2")).addActionListener(new FileDialog(null, (JTextField) swix
+			        .find("tfReportFILE2")));
+			((JButton) swix.find("btnGetReportFile3")).addActionListener(new FileDialog(null, (JTextField) swix
+			        .find("tfReportFILE3"), "PDF"));
+		} catch (Exception e) {
+			log.debug("Could not load report controls." + e);
+		}
 
 		// Set Listeners
-		swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
-		GUIUtils.setMenuListener(menu, this);
+		try {
+			swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
+			GUIUtils.setMenuListener(menu, this);
 
-		swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1, RegFlags));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl, reg_btng1,
-		        RegFlags));
-		GUIUtils.setMouseListener(regulations, this);
-		GUIUtils.setChangeListener(regulations, this);
+			swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1, RegFlags));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl,
+			        reg_btng1, RegFlags));
+			GUIUtils.setMouseListener(regulations, this);
+			GUIUtils.setChangeListener(regulations, this);
 
-		swix.setActionListener(Reporting, new ReportAction(desktop, swix));
+			swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
-		swix.setActionListener(hydroclimate, new HydAction(swix));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels, gl,
-		        action_WSIDI));
+			swix.setActionListener(hydroclimate, new HydAction(swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels,
+			        gl, action_WSIDI));
 
-		swix.setActionListener(demands, this);
+			swix.setActionListener(demands, this);
 
-		swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
-		GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
-		GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
+			swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
+			GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
+			GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
 
-		swix.setActionListener(facilities, this);
-		FacilitiesSetup.SetFacilitiesTables(swix);
-		GUIUtils.setCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
-		GUIUtils.setMouseListener(presets, this);
-		GUIUtils.setMouseListener(shortage, this);
-		GUIUtils.setMouseListener(facilities, this);
+			swix.setActionListener(facilities, this);
+			FacilitiesSetup.SetFacilitiesTables(swix);
+			GUIUtils.setCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
+			GUIUtils.setMouseListener(presets, this);
+			GUIUtils.setMouseListener(shortage, this);
+			GUIUtils.setMouseListener(facilities, this);
 
-		swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels, gl,
-		        action_WSIDI));
+			swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI,
+			        RegFlags));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels,
+			        gl, action_WSIDI));
 
-		swix.setActionListener(schematics, new SchematicAction(swix));
-		GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
+			swix.setActionListener(schematics, new SchematicAction(swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
 
-		swix.setActionListener(externalPDF, new ReportAction(desktop, swix));
+			swix.setActionListener(externalPDF, new ReportAction(desktop, swix));
 
-		// Check for scenario changes on Exit.
-		desktop.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		desktop.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent we) {
-				if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl) == true) {
-					System.exit(0);
+			// Check for scenario changes on Exit.
+			desktop.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			desktop.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent we) {
+					if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl) == true) {
+						System.exit(0);
+					}
+
 				}
+			});
 
-			}
-		});
+			lstScenarios = (JList) swix.find("SelectedList");
 
-		lstScenarios = (JList) swix.find("SelectedList");
+			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
+			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
+			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 
-		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
-		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
-		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
+			long totalSetupTime = System.currentTimeMillis() - startSetupTime;
+			if (totalSetupTime < 3000)
+				Thread.sleep(3000 - totalSetupTime);
 
-		long totalSetupTime = System.currentTimeMillis() - startSetupTime;
-		if (totalSetupTime < 3000)
-			Thread.sleep(3000 - totalSetupTime);
+			desktop.setVisible(true);
 
-		desktop.setVisible(true);
+		}
+
+		catch (Exception e) {
+			log.debug("Problem with setting listeners " + e);
+		}
 
 	}
 
@@ -414,12 +468,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public static void main(String[] args) {
 
 		// Load menu
+
 		try {
 			new MainMenu();
 		} catch (Exception e) {
+			// catch exception within constructor
 
-			log.debug("Problem loading main menu: " + e.getMessage());
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Main menu error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
