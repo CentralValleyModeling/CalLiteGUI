@@ -103,8 +103,8 @@ public class FileAction implements ActionListener {
 
 			properties.load(FileAction.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
 
-			runRecordFolderName = properties.getProperty("RunRecordFolderName", "Run_Records");
-		} catch (IOException e) {
+			runRecordFolderName = properties.getProperty("runrecord.dir", "Run_Records");
+		} catch (Exception e) {
 
 			log.debug("Problem loading properties. " + e.getMessage());
 		}
