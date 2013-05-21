@@ -231,9 +231,12 @@ public class FileDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object obj = e.getSource();
 
-		if ((((Component) obj).getName() != null) && ((Component) obj).getName().equals("btnDelScenario")) {
+		Object obj = null;
+		if (e != null)
+			obj = e.getSource();
+
+		if ((obj != null) && (((Component) obj).getName() != null) && ((Component) obj).getName().equals("btnDelScenario")) {
 
 			// If invoked by QR DelScenario button, delete a scenario from Quick Results scenario list
 
