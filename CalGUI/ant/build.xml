@@ -19,10 +19,12 @@
 	<target name="clean">
 
 		<echo>
-			Cleaning up previous build...
+			Cleaning up previous build, purging logs...
 		</echo>
 
 		<delete dir="${deploy.dir}" />
+		<delete file="${logs.dir}/callite-debug.log" />
+		
 
 	</target>
 
@@ -91,9 +93,7 @@
 			<fileset dir="${img.dir}" />
 
 		</copy>
-		
-		
-		
+			
 		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
 		<copy file="../bin/callite-gui.properties" todir="${deploy.dir}"/>
 		<copy file="../cb.dll" todir="${deploy.dir}"/>
@@ -101,8 +101,16 @@
 		<copy file="../rmaUtil.dll" todir="${deploy.dir}"/>
 
 	</target>
+	
+	<target name="update-properties" depends="make-deploy-dir">
+	    <propertyfile file="${deploy.dir}/callite-gui.properties">
+	        <entry key="build.date" value="${DSTAMP}" />
+	        <entry key="version.id" value="blah" />
+	    </propertyfile>
+	    
+	</target>
 
-	<target name="compile" depends="make-deploy-dir">
+	<target name="compile" depends="update-properties">
 
 		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on" compiler="${build.compiler}">
 
