@@ -155,7 +155,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			desktop.setVisible(false);
 
 			// Set GUI visuals
-			desktopTitle = desktop.getTitle() + " blah";
+			desktopTitle = desktop.getTitle();
 			desktop.setResizable(false);
 
 			// Set Icon
