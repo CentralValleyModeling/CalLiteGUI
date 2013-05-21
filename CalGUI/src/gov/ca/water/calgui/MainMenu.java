@@ -416,10 +416,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels,
 			        gl, action_WSIDI));
 
-			swix.setActionListener(demands, this);
-
 			swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
+
+			swix.setActionListener(demands, this);
+			GUIUtils.setMouseListener(demands, this);
 			GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
 			GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
 
