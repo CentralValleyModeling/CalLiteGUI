@@ -117,7 +117,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GUILinks gl;
 	String desktopTitle;
 	String scenFilename;
-	FileDialog scenFileDialog;
 	DataFileTableModel[] dTableModels;
 	Boolean[] RegUserEdits;
 	int[] RegFlags;
@@ -164,7 +163,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// Title
 			scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 			desktop.setTitle(desktopTitle + " - " + scenFilename);
-			scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
 
 			// Set initial Tooltips with scenario directory
 			((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
@@ -303,6 +301,21 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			String scen = tf.getText();
 
 			File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
+			if (!file.exists()) {
+				if (JOptionPane.CANCEL_OPTION == JOptionPane.showConfirmDialog(null, "Default scenario \"" + scen
+				        + "\" not found. Press OK to select a scenario to load or Cancel to exit", "Default Scenario Not Found!",
+				        JOptionPane.OK_CANCEL_OPTION)) {
+					return;
+				}
+				FileDialog scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+				scenFileDialog.actionPerformed(null);
+				if (scenFileDialog.dialogRC != 0)
+					return;
+				tf = (JTextField) swix.find("run_txfScen");
+				scen = tf.getText();
+				file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
+
+			}
 			action_WSIDI = 0;
 			RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
 			RegFlags = GUIUtils.setControlValues(file, swix, gl);
@@ -322,7 +335,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		catch (Exception e) {
-			log.debug("Exception at line 323 in contructor." + e);
+			log.debug("Exception reading in scenario file in constructor." + e);
 		}
 
 		// Refresh checkbox labels
