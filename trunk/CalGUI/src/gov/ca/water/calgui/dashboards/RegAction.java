@@ -1,21 +1,17 @@
 package gov.ca.water.calgui.dashboards;
 
-import gov.ca.water.calgui.FileAction;
+import gov.ca.water.calgui.CalLiteHelp;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.TextTransfer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import java.util.StringTokenizer;
 
-import javax.help.HelpSet;
-import javax.help.JHelp;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -152,28 +148,11 @@ public class RegAction implements ActionListener {
 
 		} else if (ae.getActionCommand().equals("AC_Help")) {
 
-			JHelp helpViewer;
-			JFrame help;
-			try {
-				ClassLoader classLoader = FileAction.class.getClassLoader();
-				URL url = HelpSet.findHelpSet(classLoader, "../docs/helpset.hs");
-				helpViewer = new JHelp(new HelpSet(classLoader, url));
+			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+			String label = jtp.getTitleAt(jtp.getSelectedIndex());
+			CalLiteHelp calLiteHelp = new CalLiteHelp();
+			calLiteHelp.showHelp(label);
 
-				help = new JFrame("CalLite 2.0 GUI Help");
-				help.getContentPane().add(helpViewer);
-
-				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
-				int selIndex = jtp.getSelectedIndex();
-				String label = jtp.getTitleAt(selIndex);
-				helpViewer.setCurrentID(label);
-				help.pack();
-				help.setVisible(true);
-
-			} catch (Exception e) {
-
-				log.debug("helpset not found: " + e.getMessage());
-
-			}
 		}
 	}
 }
