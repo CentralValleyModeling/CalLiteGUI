@@ -11,14 +11,28 @@ import javax.swing.JFrame;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Generates help window allowing search of Cal-Lite user's manual.
+ * 
+ */
+
 public class CalLiteHelp {
 
 	private static Logger log = Logger.getLogger(CalLiteHelp.class.getName());
 	private static Properties properties = new Properties();
 
+	/**
+	 * Default constructor.
+	 */
 	public CalLiteHelp() {
-	} // Default constructor
+	}
 
+	/**
+	 * Renders help dialog
+	 * 
+	 * @param label
+	 *            Takes calling dashboard's title which is mapped to help html docs via docs/map.xml
+	 */
 	public void showHelp(String label) {
 
 		try {
