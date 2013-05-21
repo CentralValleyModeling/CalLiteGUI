@@ -1,5 +1,6 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.dashboards.DemAction;
 import gov.ca.water.calgui.dashboards.DemListener;
 import gov.ca.water.calgui.dashboards.FacListener;
 import gov.ca.water.calgui.dashboards.FacilitiesSetup;
@@ -419,7 +420,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
 
-			swix.setActionListener(demands, this);
+			swix.setActionListener(demands, new DemAction(swix));
 			GUIUtils.setMouseListener(demands, this);
 			GUIUtils.setRadioButtonItemListener(dem_SWP, new DemListener(swix));
 			GUIUtils.setRadioButtonItemListener(dem_CVP, new DemListener(swix));
