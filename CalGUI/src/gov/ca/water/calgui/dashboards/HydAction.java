@@ -16,7 +16,7 @@ import org.swixml.SwingEngine;
 
 public class HydAction implements ActionListener {
 	private final SwingEngine swix;
-	static Logger log = Logger.getLogger(HydAction.class.getName());
+	private static Logger log = Logger.getLogger(HydAction.class.getName());
 
 	public HydAction(SwingEngine swix) {
 		this.swix = swix;
