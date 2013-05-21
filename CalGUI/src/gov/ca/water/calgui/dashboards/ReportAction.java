@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
+import gov.ca.water.calgui.CalLiteHelp;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.Report;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
@@ -25,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -398,6 +400,15 @@ public class ReportAction implements ActionListener {
 				DisplayFrame.displayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue(), swix, lstScenarios,
 				        desktop, displayCount);
 			}
+		}
+
+		else if (e.getActionCommand().equals("AC_Help")) {
+
+			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+			String label = jtp.getTitleAt(jtp.getSelectedIndex());
+			CalLiteHelp calLiteHelp = new CalLiteHelp();
+			calLiteHelp.showHelp(label);
+
 		}
 	}
 
