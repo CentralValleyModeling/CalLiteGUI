@@ -20,7 +20,7 @@ public class FacilitiesAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 
-		if (actionEvent.equals("AC_Help")) {
+		if (actionEvent.getActionCommand().equals("AC_Help")) {
 
 			JTabbedPane jtp = (JTabbedPane) SWIX.find("tabbedPane1");
 			String label = jtp.getTitleAt(jtp.getSelectedIndex());
