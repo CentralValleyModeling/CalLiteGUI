@@ -746,8 +746,10 @@ public class FileAction implements ActionListener {
 
 		try {
 
-			pFrame.setCursor(null);
-			pFrame.dispose();
+			if (pFrame != null) {
+				pFrame.setCursor(null);
+				pFrame.dispose();
+			}
 
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
@@ -1044,7 +1046,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				pFrame.setText("Writing WRIMSv2 Batchfile.");
+				publish("Writing WRIMSv2 Batchfile.");
 
 				// configuration file for wrims v2
 				Integer iStartMonth = TimeOperation.monthValue(startMon.toLowerCase());
@@ -1072,7 +1074,7 @@ public class FileAction implements ActionListener {
 				configMap.put("ConfigFilePath",
 				        new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName") + ".config").getAbsolutePath());
 
-				pFrame.setText("Writing Scenario Config.");
+				publish("Writing Scenario Config.");
 
 				// replace vars in config template file
 
@@ -1102,7 +1104,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				pFrame.setText("Copying WRIMSv2 DLL.");
+				publish("Copying WRIMSv2 DLL.");
 
 				// wrims2 ANN file name is different from wrims1
 				File fsAnnS;
