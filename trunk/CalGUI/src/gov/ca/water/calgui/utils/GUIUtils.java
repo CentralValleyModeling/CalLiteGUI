@@ -426,6 +426,14 @@ public class GUIUtils {
 
 	}
 
+	/**
+	 * Sets control values for Regulations tab display flags (???)
+	 * 
+	 * @param f
+	 * @param swix
+	 * @param gl
+	 * @return
+	 */
 	public static int[] setControlValues(File f, SwingEngine swix, GUILinks gl) {
 
 		FileInputStream fs = null;
@@ -435,11 +443,8 @@ public class GUIUtils {
 		String textinLine;
 		String comp;
 		String value;
-		Integer val1;
-		Boolean val = false;
 		String delims = "[|]";
 		int QSel = 0;
-		final int[] RegFlags = new int[40];
 
 		try {
 			fs = new FileInputStream(f);
@@ -502,6 +507,8 @@ public class GUIUtils {
 		} catch (IOException e) {
 			log.debug(e.getMessage());
 		}
+
+		final int[] RegFlags = new int[40];
 
 		try {
 			fs = new FileInputStream(f);
