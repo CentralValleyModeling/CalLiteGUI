@@ -121,10 +121,73 @@ public class FileAction implements ActionListener {
 
 			FileDialog batchScenFileDialog = new FileDialog(null, null, "CLS", true);
 			batchScenFileDialog.actionPerformed(ae);
+
 			if (batchScenFileDialog.dialogRC == 0) {
-				JOptionPane.showMessageDialog(null, "Files selected: " + batchScenFileDialog.fc.getSelectedFiles().length,
-				        "Batch select result", JOptionPane.INFORMATION_MESSAGE);
-				// Results in File[] batchScenFileDialog.fc.getSelectedFiles();
+
+				// check date selection
+				if (!dateSelectionIsValid(swix)) {
+					JOptionPane.showMessageDialog(null, "Date selection is not valid.", "Batch select result",
+					        JOptionPane.INFORMATION_MESSAGE);
+					return;
+
+				} else {
+
+					JOptionPane.showMessageDialog(null, "Files selected: " + batchScenFileDialog.fc.getSelectedFiles().length
+					        + ".\nBatch run will start after study files are generated.", "Batch select result",
+					        JOptionPane.INFORMATION_MESSAGE);
+					// Results in File[] batchScenFileDialog.fc.getSelectedFiles();
+
+					// delete previous generated batch file
+					deleteBatchFile();
+
+					// load scenario, generate study files, generate batch file
+					for (File sf : batchScenFileDialog.fc.getSelectedFiles()) {
+
+						System.out.println("loading scenario file: " + sf.getAbsolutePath());
+
+						// load scenario file
+						FileDialog scenFileDialog;
+						scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
+						scenFileDialog.fc.setSelectedFile(sf); // Use this name for next Save As
+
+						action_WSIDI = 0;
+						regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
+						regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
+						action_WSIDI = 1;
+						setFilenameTooltips();
+
+						// generate study files
+						setupScenario(sf.getName(), desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+
+						// put timeout of 3 secs between each run
+						setupBatchFile(sf.getName(), true);
+
+						// System.err.println("finished setup scen:" + sf.getAbsolutePath());
+
+						// Wait for Swing worker to complete.
+						try {
+							worker_setupScenario.get();
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+						}
+
+						// dispose pFrame
+						try {
+							pFrame.setCursor(null);
+							pFrame.dispose();
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+						}
+
+					}
+
+					// run all scenarios with 3 secs delay between jvm initialization
+					runBatch();
+
+					// RunScenarios rs = new RunScenarios();
+
+				}
+
 			}
 
 		} else if ("AC_RUN".equals(ae.getActionCommand())) {
@@ -697,7 +760,16 @@ public class FileAction implements ActionListener {
 
 	}
 
-	public static void setupBatchFile(final String scen, final boolean isAppend) {
+	public static void deleteBatchFile() {
+
+		File batchFile = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
+		batchFile.delete();
+
+	}
+
+	public static void setupBatchFile(final String scen, final boolean isParallel) {
+
+		boolean isAppend = isParallel;
 
 		// Wait for Swing worker to complete
 
@@ -720,21 +792,32 @@ public class FileAction implements ActionListener {
 
 		String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
 
-		// replace vars in batch file
+		String batchText_template = "";
+		String batchText = "";
 
-		String batchText_template = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
-		        + "\\Model_w2\\CalLite_w2.bat.template");
+		File batchFile = null;
 
-		String batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
+		batchFile = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
 
-		File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
-
-		PrintWriter batchFile;
+		PrintWriter batchFilePW;
 		try {
-			batchFile = new PrintWriter(new BufferedWriter(new FileWriter(f, isAppend)));
-			batchFile.print(batchText);
-			batchFile.flush();
-			batchFile.close();
+			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile, isAppend)));
+
+			if (isParallel) {
+				// this writes progress to .\Run\progress.txt
+				batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
+				batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
+				batchFilePW.println("start " + batchText);
+				batchFilePW.println("timeout 3");
+			} else {
+				// this doesn't writes progress.
+				batchText_template = "%~dp0\\Model_w2\\runConfig_limitedXA {ConfigFilePath}";
+				batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
+				batchFilePW.println(batchText);
+				batchFilePW.println();
+			}
+			batchFilePW.flush();
+			batchFilePW.close();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -1340,6 +1423,31 @@ public class FileAction implements ActionListener {
 
 		} catch (Exception e1) {
 			log.debug(e1.getMessage());
+		}
+	}
+
+	/**
+	 * Check if date selection is valid
+	 * 
+	 * @param swix
+	 */
+	private static boolean dateSelectionIsValid(final SwingEngine swix) {
+		// Check if selections are valid
+
+		String startMon = ((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim();
+		String endMon = ((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim();
+		Integer startYr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
+		Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
+
+		// Determine Month/Count
+		Integer iSMon = UnitsUtils.monthToInt(startMon);
+		Integer iEMon = UnitsUtils.monthToInt(endMon);
+		Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
+
+		if (numMon < 1) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 
