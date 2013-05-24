@@ -27,8 +27,6 @@ public class ProgressFrame extends JFrame {
 
 		super();
 
-		// setUndecorated(true);
-		// getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		setPreferredSize(new Dimension(400, 100));

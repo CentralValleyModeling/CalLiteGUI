@@ -826,12 +826,23 @@ public class FileAction implements ActionListener {
 
 	}
 
+	/**
+	 * Builds a detail directory for a scenario with subdirectories for generated files and for all run files.
+	 * 
+	 * @param scen
+	 * @param desktop
+	 * @param swix
+	 * @param regUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 * @param RegFlags
+	 */
 	public static void setupScenario(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
 	        final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
-		pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
+		// pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
+		pFrame = null;
 
-		// SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
 		worker_setupScenario = new SwingWorker<Void, String>() {
 
 			@Override
@@ -851,20 +862,24 @@ public class FileAction implements ActionListener {
 			@Override
 			protected void process(List<String> status) {
 
-				pFrame.setText(status.get(status.size() - 1));
+				if (pFrame != null)
+					pFrame.setText(status.get(status.size() - 1));
 				return;
 			}
 
 			@Override
 			protected Void doInBackground() throws Exception {
 
-				pFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 				desktop.setEnabled(false);
+
+				if (pFrame != null)
+					pFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
 				boolean success = true;
 				String scenWithoutExt = FilenameUtils.removeExtension(scen);
 
 				// ========== Prepare "Generated" folder
+
 				publish("Creating new Generated directory.");
 
 				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName
@@ -1057,23 +1072,8 @@ public class FileAction implements ActionListener {
 				configMap.put("ConfigFilePath",
 				        new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName") + ".config").getAbsolutePath());
 
-				// replace vars in batch file
-
-				// String batchText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
-				// + "\\Model_w2\\CalLite_w2.bat.template");
-				//
-				// batchText = batchText.replace("{ConfigFilePath}", configMap.get("ConfigFilePath"));
-				//
-				// File f = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
-				// PrintWriter cfgFile = new PrintWriter(new BufferedWriter(new FileWriter(f)));
-				//
-				// cfgFile.print(batchText);
-				// cfgFile.flush();
-				// cfgFile.close();
-
-				// write scenario config file
-
 				pFrame.setText("Writing Scenario Config.");
+
 				// replace vars in config template file
 
 				String configText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
@@ -1227,28 +1227,24 @@ public class FileAction implements ActionListener {
 
 				desktop.setVisible(false);
 
-				// "Run" model
-
-				// try {
-				//
-				// pFrame.setCursor(null);
-				// pFrame.dispose();
-				//
-				// Runtime rt = Runtime.getRuntime();
-				// Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
-				// int exitVal = proc.waitFor();
-				// System.out.println("Process exitValue: " + exitVal);
-				// } catch (Throwable t) {
-				// JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
-				// t.printStackTrace();
-				// }
 				return null;
+
 			}
 		};
 
 		worker_setupScenario.execute();
 	}
 
+	/**
+	 * Saves current scenario in UI to a specified CalLite scenario file.
+	 * 
+	 * @param scen
+	 *            - Name of scenario file.
+	 * @param swix
+	 * @param regUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 */
 	public static void saveFile(String scen, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels,
 	        GUILinks gl) {
 

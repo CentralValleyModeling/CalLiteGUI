@@ -1,5 +1,7 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.GUIUtils;
+
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
@@ -10,9 +12,18 @@ import org.junit.Test;
 
 public class TestScenario {
 
+	MainMenu mm = null;
+
 	@Before
 	public void setUp() {
-		// setup ability to run a scenario here
+
+		try {
+			mm = new MainMenu(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@After
@@ -22,11 +33,21 @@ public class TestScenario {
 
 	@Test
 	public void runAndCompare() {
-		// run the scenario here
+
+		// generate (not run) the scenario here
+
+		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\default.cls");
+
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, mm.swix, mm.dTableModels, mm.gl);
+		mm.regFlags = GUIUtils.setControlValues(file, mm.swix, mm.gl);
+
+		FileAction.setupScenario("default.cls", mm.desktop, mm.swix, mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
+
 		// now check generated files vs baselined generated files for this scenario
 		File directory1 = new File("test-resources/default_scenario/Generated/Lookup");
+
 		// fix this to the actual directory generated
-		File directory2 = new File("test???");
+		File directory2 = new File(System.getProperty("user.dir") + "\\Scenarios\\default\\Generated\\Lookup");
 		assertDirectoryAllFilesWithSameNameHaveSameContent("Default scenario comparison", directory1, directory2);
 	}
 

@@ -89,11 +89,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	static Logger log = Logger.getLogger(MainMenu.class.getName());
 
-	private final SwingEngine swix;
+	public final SwingEngine swix;
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
-	JFrame desktop;
+	public JFrame desktop;
 	static JFrame help;
 	JPanel runsettings;
 	JPanel mainmenu;
@@ -119,9 +119,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GUILinks gl;
 	String desktopTitle;
 	String scenFilename;
-	DataFileTableModel[] dTableModels;
-	Boolean[] RegUserEdits;
-	int[] RegFlags;
+	public DataFileTableModel[] dTableModels;
+	public Boolean[] regUserEditFlags;
+	public int[] regFlags;
 
 	static public String lookups[][];
 	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
@@ -140,9 +140,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public JList lstScenarios;
 
 	/**
-	 * @wbp.parser.entryPoint
+	 * Main constructor for CalLite GUI
+	 * 
+	 * @param makeVisible
+	 *            - set to true if UI should be visible, false to keep hidden (for use in unit tests)
+	 * @throws Exception
 	 */
-	public MainMenu() throws Exception {
+	public MainMenu(boolean makeVisible) throws Exception {
 
 		long startSetupTime = System.currentTimeMillis();
 		swix = new SwingEngine(this);
@@ -319,8 +323,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			}
 			action_WSIDI = 0;
-			RegUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
-			RegFlags = GUIUtils.setControlValues(file, swix, gl);
+			regUserEditFlags = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+			regFlags = GUIUtils.setControlValues(file, swix, gl);
 			action_WSIDI = 1;
 
 			JComponent component1 = (JComponent) swix.find("scrOpValues");
@@ -328,8 +332,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			component1.setVisible(true);
 			component1.setEnabled(true);
-			dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
-			dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, RegUserEdits, dTableModels, gl, RegFlags);
+			dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, regUserEditFlags, dTableModels, gl,
+			        regFlags);
+			dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, regUserEditFlags, dTableModels, gl,
+			        regFlags);
 
 			// pan.setBorder(title);
 			component1.setVisible(false);
@@ -342,8 +348,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Refresh checkbox labels
 		try {
-			for (int i = 0; i < RegUserEdits.length; i++) {
-				if (RegUserEdits[i] != null) {
+			for (int i = 0; i < regUserEditFlags.length; i++) {
+				if (regUserEditFlags[i] != null) {
 
 					String cID = Integer.toString(i);
 					String cName = gl.ctrlFortableID(cID);
@@ -356,7 +362,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 						String[] ckbtext1 = ckbtext.split(" - ");
 						ckbtext = ckbtext1[0];
 						if (ckbtext1.length > 0) {
-							if (RegUserEdits[i] == true)
+							if (regUserEditFlags[i] == true)
 								ckb.setText(ckbtext + " - User Def.");
 							else
 								ckb.setText(ckbtext + " -  Default");
@@ -403,22 +409,22 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Set Listeners
 		try {
-			swix.setActionListener(menu, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI, RegFlags));
+			swix.setActionListener(menu, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags));
 			GUIUtils.setMenuListener(menu, this);
 
-			swix.setActionListener(regulations, new RegAction(swix, RegUserEdits, dTableModels, gl, reg_btng1, RegFlags));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, RegUserEdits, dTableModels, gl,
-			        reg_btng1, RegFlags));
+			swix.setActionListener(regulations, new RegAction(swix, regUserEditFlags, dTableModels, gl, reg_btng1, regFlags));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, regUserEditFlags, dTableModels, gl,
+			        reg_btng1, regFlags));
 			GUIUtils.setMouseListener(regulations, this);
 			GUIUtils.setChangeListener(regulations, this);
 
 			swix.setActionListener(Reporting, new ReportAction(desktop, swix));
 
 			swix.setActionListener(hydroclimate, new HydAction(swix));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, RegUserEdits, dTableModels,
-			        gl, action_WSIDI));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, regUserEditFlags,
+			        dTableModels, gl, action_WSIDI));
 
-			swix.setActionListener(operations, new OpAction(swix, RegUserEdits, dTableModels, gl, RegFlags));
+			swix.setActionListener(operations, new OpAction(swix, regUserEditFlags, dTableModels, gl, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
 
 			swix.setActionListener(demands, new DemAction(swix));
@@ -436,10 +442,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setMouseListener(facilities, this);
 			swix.setActionListener(facilities, new FacilitiesAction(swix));
 
-			swix.setActionListener(runsettings, new FileAction(desktop, swix, RegUserEdits, dTableModels, gl, action_WSIDI,
-			        RegFlags));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, RegUserEdits, dTableModels,
-			        gl, action_WSIDI));
+			swix.setActionListener(runsettings, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
+			        regFlags));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, regUserEditFlags,
+			        dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(schematics, new SchematicAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
@@ -451,7 +457,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			desktop.addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent we) {
-					if (FileAction.checkForScenarioChange(swix, dTableModels, RegUserEdits, gl) == true) {
+					if (FileAction.checkForScenarioChange(swix, dTableModels, regUserEditFlags, gl) == true) {
 						System.exit(0);
 					}
 
@@ -468,7 +474,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if (totalSetupTime < 3000)
 				Thread.sleep(3000 - totalSetupTime);
 
-			desktop.setVisible(true);
+			desktop.setVisible(makeVisible);
 
 		}
 
@@ -486,7 +492,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Load menu
 
 		try {
-			new MainMenu();
+			new MainMenu(true);
 		} catch (Exception e) {
 			// catch exception within constructor
 
@@ -619,8 +625,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
 					Boolean isSelect = selcomp.isSelected();
-					RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null",
-					        RegFlags);
+					RegulationSetup.SetRegCheckBoxes(swix, regUserEditFlags, dTableModels, gl, reg_btng1, cName, isSelect, "null",
+					        regFlags);
 
 					// JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
 					// boolean enabled = btn.isEnabled();
