@@ -6,6 +6,12 @@ public class SimpleFileFilter extends javax.swing.filechooser.FileFilter {
 	private final String fileExt;
 	private final String desc;
 
+	public SimpleFileFilter(String aFileExt) {
+		fileExt = aFileExt.toLowerCase();
+		this.desc = aFileExt.toUpperCase() + " File (*." + aFileExt.toLowerCase() + ")";
+		;
+	}
+
 	public SimpleFileFilter(String aFileExt, String aDesc) {
 		fileExt = aFileExt.toLowerCase();
 		this.desc = aDesc;

@@ -1,6 +1,7 @@
 package gov.ca.water.calgui;
 
 import gov.ca.water.calgui.results.RBListItem;
+import gov.ca.water.calgui.utils.SimpleFileFilter;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -142,14 +143,14 @@ public class FileDialog implements ActionListener {
 		// Set up file chooser
 
 		if (theFileExt.equals("DSS")) {
-			fc.setFileFilter(new DSSFileFilter());
+			fc.setFileFilter(new SimpleFileFilter("DSS"));
 			fc.setCurrentDirectory(new File(".//Scenarios"));
 		} else if (theFileExt.equals("DSS2")) {
 			theFileExt = "DSS";
-			fc.setFileFilter(new DSSFileFilter());
+			fc.setFileFilter(new SimpleFileFilter("DSS"));
 			fc.setCurrentDirectory(new File(".//Model_w2/DSS_Files"));
 		} else {
-			fc.setFileFilter(new GeneralFileFilter(theFileExt));
+			fc.setFileFilter(new SimpleFileFilter(theFileExt));
 			if (theFileExt.equals("PDF") || theFileExt.equals("CLS"))
 				fc.setCurrentDirectory(new File(".//Scenarios"));
 			else
@@ -407,41 +408,6 @@ public class FileDialog implements ActionListener {
 			myList.setCellRenderer(new FileNameRenderer(this));
 			toolTipFlag = false;
 			return super.showOpenDialog(c);
-		}
-	}
-
-	private class DSSFileFilter extends javax.swing.filechooser.FileFilter {
-		@Override
-		public boolean accept(File file) {
-			// Convert to lower case before checking extension
-			return (file.getName().toLowerCase().endsWith(".dss") || file.isDirectory());
-		}
-
-		@Override
-		public String getDescription() {
-			return "DSS File (*.dss)";
-		}
-	}
-
-	private class GeneralFileFilter extends javax.swing.filechooser.FileFilter {
-		private final String extension;
-		private final String description;
-
-		GeneralFileFilter(String extension) {
-			this.extension = "." + extension.toLowerCase();
-			this.description = extension.toUpperCase() + " File (*." + extension.toLowerCase() + ")";
-
-		}
-
-		@Override
-		public boolean accept(File file) {
-			// Convert to lower case before checking extension
-			return (file.getName().toLowerCase().endsWith(extension) || file.isDirectory());
-		}
-
-		@Override
-		public String getDescription() {
-			return description;
 		}
 	}
 
