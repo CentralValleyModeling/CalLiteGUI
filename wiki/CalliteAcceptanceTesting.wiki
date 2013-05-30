@@ -1,0 +1,38 @@
+Aceeptance testing procedure for Cal-Lite User Interface
+
+1. Test Default Scenario
+
+	1. Extract contents of zip file into folder of your choosing. Note the filename refererences the build date.
+	2. Double click run-calgui.bat. This should fire up the user interface.
+	3. Click the "Run Scenario" button. Ignore the Windows Firewall warning should one appear. The default scenario should run "out of the box". You will see WRIMS-generated message in the console.
+	4. Verify post processing by checking these outputs:
+		...
+		Quick Results
+		Exceedence plot
+		Verify Panel with month checkboxes comes alive
+		Right Click Trinity or some other
+		Order acsendending exceeedence percentage on plot
+	
+	5. If the run fails or the UI exhibits weird behavior, please write up a bug report.
+	
+	
+
+
+2. Test D-1485 Scenario
+
+	1. Repeat steps (1) through (2) above, if you haven't yet done so.
+	2. Click the "Regulations" tab. The Regulations dasjboard should appear.
+	3. Click the D-1485 button under the Quick Select panel
+	4. Save the scenario: File > Save As. Pick a filename for the cls file
+	5. Verify the these files appear in the Run Setting tab:
+			Scenario Name: The filename you chose.
+			DSS File Name: The same filename, contatenated with "_DV.DSS:
+	6. Click the "Run Scenario" button.
+	7. After the run finishes, verify the post processicing functionality:
+			...
+	8. If the run fails or the UI exhibits weird behavior, please write up a bug report.
+
+3. Test D-1641 Scenario
+
+ 
+
