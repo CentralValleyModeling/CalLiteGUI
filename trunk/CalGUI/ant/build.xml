@@ -164,7 +164,7 @@
 	</target>
 
 
-	<target name="make-jar" depends="compile">
+	<target name="make-jar" depends="test">
 
 		<manifestclasspath property="jar.classpath" jarfile="${deploy.dir}/calgui.jar">
 			<classpath refid="deploy.classpath"/>
