@@ -1,0 +1,46 @@
+#summary Notes from 5/31/2013 call - on checking progress of CalLite run and handling Hydroclimate realizations.
+
+= States =
+
+  * [[Ready to parse - possible jvm error]] - no PROGRESS.TXT or WRESLCHECK.log
+
+
+  * Parsing - NO PROGRESS.TXT, WRESLCHECK.log file is open, or does not contain "COMPLETED" string 
+
+
+  * Done parsing - NO PROGRESS.TXT, WRESLCHECK.log file is closed and contains "COMPLETED" string. Check for "TOTAL ERRORS" to determine success.
+
+
+  * Running - year xxxx of yyyy - PROGRESS.TXT exists [, no WRIMS run error file(s)]
+
+
+  * Done running, error - PROGRESS.TXT exists, last line "RUN STOPPED - ERROR" [, WRIMS run error file(s) exist]
+
+
+  * Done running, success: PROGRESS.TXT exists, last line "RUN COMPLETED" [, no WRIMS run error file(s)]
+
+
+= Hydroclimate =
+
+ * countHydroClimateRuns(scenario) -> 1-5
+
+ * >1 : scenario_q1.cls, ... scenario_q5.cls -> RunDetail\scenario_q1, ...; Scenarios\scenario_q1_DV.dss
+
+  **  : scenario.cls -> RunDetail\scenario_q1, RunDetail\scenario_q2
+
+  **  : scenario.cls -> RunDetail\scenario w/5 config files 
+
+---
+
+Run_1_Scenario method
+
+Batch_Scenario method
+
+mapOfSVNames(scenario) -> map: ("q1",first_svfilename) ("q2",
+
+
+D1641@5realizations
+
+D1641_q1.cls 
+
+
