@@ -1,12 +1,12 @@
 <?xml version ="1.0" ?>
 <project default="main">
 
-	<tstamp/>
-	
+	<tstamp />
+
 	<property file="build.properties" />
 
 	<path id="build.classpath">
-		<fileset dir="${lib.dir}" includes="**/*.jar" excludes="junit.jar" />
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
 	</path>
 	
 	<path id="deploy.classpath">
@@ -24,7 +24,7 @@
 
 		<delete dir="${deploy.dir}" />
 		<delete file="${logs.dir}/callite-debug.log" />
-		
+		<delete file="../${DSTAMP}_calgui_deploy.zip" />
 
 	</target>
 
@@ -40,6 +40,8 @@
 		<mkdir dir="${deploy.dir}/lib" />
 		<mkdir dir="${deploy.dir}/logs" />
 		<mkdir dir="${deploy.dir}/Scenarios" />
+		<mkdir dir="${deploy.dir}/test" />
+		<mkdir dir="${deploy.dir}/test/testclasses" />
 		<mkdir dir="${deploy.dir}/Model_w2" />
 
 
@@ -49,8 +51,8 @@
 				<exclude name="junit.jar" />
 			</fileset>
 
-			</copy>
-		
+		</copy>
+
 
 		<copy todir="${deploy.dir}/Config">
 
@@ -87,37 +89,77 @@
 			<fileset dir="${model.dir}" />
 
 		</copy>
-		
+
 		<copy todir="${deploy.dir}/img/images">
 
 			<fileset dir="${img.dir}" />
 
 		</copy>
-			
-		<copy file="../log4j/log4j.properties" todir="${deploy.dir}"/>
-		<copy file="../bin/callite-gui.properties" todir="${deploy.dir}"/>
-		<copy file="../cb.dll" todir="${deploy.dir}"/>
-		<copy file="../javaHeclib.dll" todir="${deploy.dir}"/>
-		<copy file="../rmaUtil.dll" todir="${deploy.dir}"/>
+
+		<copy file="../log4j/log4j.properties" todir="${deploy.dir}" />
+		<copy file="../bin/callite-gui.properties" todir="${deploy.dir}" />
+		<copy file="../cb.dll" todir="${deploy.dir}" />
+		<copy file="../javaHeclib.dll" todir="${deploy.dir}" />
+		<copy file="../rmaUtil.dll" todir="${deploy.dir}" />
 
 	</target>
-	
+
 	<target name="update-properties" depends="make-deploy-dir">
-	    <propertyfile file="${deploy.dir}/callite-gui.properties">
-	        <entry key="build.date" value="${DSTAMP}" />
-	        <entry key="version.id" value="blah" />
-	    </propertyfile>
-	    
+		<propertyfile file="${deploy.dir}/callite-gui.properties">
+			<entry key="build.date" value="${DSTAMP}" />
+			<entry key="version.id" value="blah" />
+		</propertyfile>
+
 	</target>
 
 	<target name="compile" depends="update-properties">
 
-		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on" compiler="${build.compiler}">
+		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes"
+			debug="on" compiler="${build.compiler}">
 
 			<classpath refid="build.classpath" />
 
 		</javac>
 
+
+	</target>
+
+	<target name="compile-tests" depends="compile">
+
+		<javac srcdir="${test.dir}" verbose="true" destdir="${deploy.dir}/test"
+			debug="on" compiler="${build.compiler}">
+
+			<classpath>
+				<pathelement path="${build.classpath}" />
+				<pathelement path="${deploy.dir}/classes" />
+				<pathelement path="${lib.dir}" />
+				<pathelement location="${lib.dir}/junit.jar" />
+				<pathelement location="${lib.dir}/swixml.jar" />
+				<pathelement location="${lib.dir}/commons-io-2.1.jar" />
+				<pathelement location="${lib.dir}/jdom.jar" />
+				<pathelement location="${lib.dir}/junit-addons-1.4.jar" />
+
+			</classpath>
+
+		</javac>
+
+
+	</target>
+
+
+	<target name="test" depends="compile-tests">
+		<junit printsummary="yes" fork="off" haltonfailure="yes">
+			<formatter type="plain" usefile="false" />
+
+			<classpath>
+				<pathelement path="${build.classpath}" />
+				<pathelement path="${deploy.dir}/classes" />
+				<pathelement path="${deploy.dir}/test" />
+				<pathelement location="${lib.dir}/junit.jar" />
+				<pathelement location="${lib.dir}/log4j-1.2.17.jar" />
+			</classpath>
+			<test name="gov.ca.water.calgui.results.TestDSSGrabber" />
+		</junit>
 
 	</target>
 
@@ -144,27 +186,25 @@
 		</jar>
 
 	</target>
-	
-	
+
+
 	<target name="create-shell-script" depends="make-jar">
-		
+
 		<echo file="${deploy.dir}/run-calgui.bat">@echo off
-		PATH =.;./jre6/bin;%PATH%
-		java -version
-		java -jar calgui.jar
+			PATH =.;./jre6/bin;%PATH%
+			java -version
+			java -jar calgui.jar
 		</echo>
-	
+
 	</target>
-	
+
 	<target name="deploy" depends="create-shell-script">
-		
-		<zip destfile="../${DSTAMP}_calgui_deploy.zip"
-			 basedir="${deploy.dir}"
-			 update="true"
-			>
+
+		<zip destfile="../${DSTAMP}_calgui_deploy.zip" basedir="${deploy.dir}"
+			update="false" excludes="**/test/**">
 		</zip>
-	
-	
+
+
 	</target>
 
 </project>
