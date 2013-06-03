@@ -1,7 +1,9 @@
 <?xml version ="1.0" ?>
 <project default="main">
 
-	<tstamp />
+	<tstamp>
+	    <format property = "build.date" pattern="dd MMMM yyyy"/>
+	</tstamp>
 
 	<property file="build.properties" />
 
@@ -27,6 +29,8 @@
 		<delete file="../${DSTAMP}_calgui_deploy.zip" />
 
 	</target>
+	
+
 
 	<target name="make-deploy-dir" depends="clean">
 
@@ -105,10 +109,12 @@
 	</target>
 
 	<target name="update-properties" depends="make-deploy-dir">
-		<propertyfile file="${deploy.dir}/callite-gui.properties">
-			<entry key="build.date" value="${DSTAMP}" />
-			<entry key="version.id" value="blah" />
+		<propertyfile file="${src.dir}/callite-gui.properties">
+			<entry key="build.date" value="${build.date}" />
+			<entry key="version.id" value="2.01" />
 		</propertyfile>
+		
+		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}"/>
 
 	</target>
 
@@ -158,7 +164,9 @@
 				<pathelement location="${lib.dir}/junit.jar" />
 				<pathelement location="${lib.dir}/log4j-1.2.17.jar" />
 			</classpath>
-			<test name="gov.ca.water.calgui.results.TestDSSGrabber" />
+			
+			<!-- Uncomment to add your test
+			<test name="gov.ca.water.calgui.results.TestDSSGrabber" />-->
 		</junit>
 
 	</target>
