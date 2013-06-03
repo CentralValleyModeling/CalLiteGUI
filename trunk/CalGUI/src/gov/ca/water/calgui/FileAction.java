@@ -9,7 +9,7 @@ import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.ProgressFrame;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
-import gov.ca.water.calgui.utils.UnitsUtils;
+import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Component;
 import java.awt.Cursor;
@@ -209,8 +209,8 @@ public class FileAction implements ActionListener {
 					Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
 
 					// Determine Month/Count
-					Integer iSMon = UnitsUtils.monthToInt(startMon);
-					Integer iEMon = UnitsUtils.monthToInt(endMon);
+					Integer iSMon = Utils.monthToInt(startMon);
+					Integer iEMon = Utils.monthToInt(endMon);
 					Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
 
 					if (numMon < 1) {
@@ -1003,8 +1003,8 @@ public class FileAction implements ActionListener {
 
 				// Determine Month/Count
 				Integer dayct = FileUtils.getDaysinMonth(startMon);
-				Integer iSMon = UnitsUtils.monthToInt(startMon);
-				Integer iEMon = UnitsUtils.monthToInt(endMon);
+				Integer iSMon = Utils.monthToInt(startMon);
+				Integer iEMon = Utils.monthToInt(endMon);
 				Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
 
 				String oDSS = ((JTextField) swix.find("run_txfoDSS")).getText().trim();
@@ -1445,8 +1445,8 @@ public class FileAction implements ActionListener {
 		Integer endYr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
 
 		// Determine Month/Count
-		Integer iSMon = UnitsUtils.monthToInt(startMon);
-		Integer iEMon = UnitsUtils.monthToInt(endMon);
+		Integer iSMon = Utils.monthToInt(startMon);
+		Integer iEMon = Utils.monthToInt(endMon);
 		Integer numMon = (endYr - startYr) * 12 + (iEMon - iSMon) + 1;
 
 		if (numMon < 1) {
