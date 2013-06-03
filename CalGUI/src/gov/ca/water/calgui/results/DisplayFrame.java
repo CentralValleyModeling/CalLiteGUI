@@ -1,6 +1,6 @@
 package gov.ca.water.calgui.results;
 
-import gov.ca.water.calgui.utils.UnitsUtils;
+import gov.ca.water.calgui.utils.Utils;
 import hec.io.TimeSeriesContainer;
 
 import java.awt.Component;
@@ -161,13 +161,12 @@ public class DisplayFrame {
 				Date lower = new Date();
 				JSpinner m = (JSpinner) swix.find("spnStartMonth");
 				JSpinner y = (JSpinner) swix.find("spnStartYear");
-				lower.setTime((new Month(UnitsUtils.monthToInt((String) m.getValue()), (Integer) y.getValue()))
-				        .getFirstMillisecond());
+				lower.setTime((new Month(Utils.monthToInt((String) m.getValue()), (Integer) y.getValue())).getFirstMillisecond());
 
 				Date upper = new Date();
 				m = (JSpinner) swix.find("spnEndMonth");
 				y = (JSpinner) swix.find("spnEndYear");
-				upper.setTime((new Month(UnitsUtils.monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
+				upper.setTime((new Month(Utils.monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
 
 				ChartPanel1 cp3;
 				if (doExceedance) {

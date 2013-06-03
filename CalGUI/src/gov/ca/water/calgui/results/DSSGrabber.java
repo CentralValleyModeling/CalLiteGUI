@@ -2,7 +2,7 @@ package gov.ca.water.calgui.results;
 
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.utils.Prefix;
-import gov.ca.water.calgui.utils.UnitsUtils;
+import gov.ca.water.calgui.utils.Utils;
 import hec.heclib.dss.HecDss;
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
@@ -94,13 +94,13 @@ public class DSSGrabber {
 		try {
 			HecTime ht = new HecTime();
 
-			int m = UnitsUtils.monthToInt(dateRange.substring(0, 3));
+			int m = Utils.monthToInt(dateRange.substring(0, 3));
 			int y = new Integer(dateRange.substring(3, 7));
 			ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0); // TODO: confirm why this wraps?
 			startTime = ht.value();
 			startWY = (m < 10) ? y : y + 1; // Water year
 
-			m = UnitsUtils.monthToInt(dateRange.substring(8, 11));
+			m = Utils.monthToInt(dateRange.substring(8, 11));
 			y = new Integer(dateRange.substring(11, 15));
 			ht.setYearMonthDay(m == 12 ? y + 1 : y, m == 12 ? 1 : m + 1, 1, 0);
 			endTime = ht.value();

@@ -24,7 +24,7 @@ import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
-import gov.ca.water.calgui.utils.UnitsUtils;
+import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -774,8 +774,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// Constrain run times to [10/1921,9/2003]
 			int syr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();
 			int eyr = (Integer) ((JSpinner) swix.find("spnRunEndYear")).getValue();
-			int smo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
-			int emo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
+			int smo = Utils.monthToInt(((String) ((JSpinner) swix.find("spnRunStartMonth")).getValue()).trim());
+			int emo = Utils.monthToInt(((String) ((JSpinner) swix.find("spnRunEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnRunStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
@@ -785,8 +785,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			syr = (Integer) ((JSpinner) swix.find("spnStartYear")).getValue();
 			eyr = (Integer) ((JSpinner) swix.find("spnEndYear")).getValue();
-			smo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
-			emo = UnitsUtils.monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
+			smo = Utils.monthToInt(((String) ((JSpinner) swix.find("spnStartMonth")).getValue()).trim());
+			emo = Utils.monthToInt(((String) ((JSpinner) swix.find("spnEndMonth")).getValue()).trim());
 			if ((syr == 1921) && (smo < 10))
 				((JSpinner) swix.find("spnStartMonth")).setValue("Oct");
 			if ((eyr == 2003) && (emo > 9))
