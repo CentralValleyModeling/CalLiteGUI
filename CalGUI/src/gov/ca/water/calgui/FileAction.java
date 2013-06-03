@@ -8,7 +8,6 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.ProgressFrame;
-import gov.ca.water.calgui.utils.SVNVersion;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.UnitsUtils;
 
@@ -24,12 +23,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 
 import javax.swing.AbstractButton;
@@ -422,9 +423,15 @@ public class FileAction implements ActionListener {
 			}
 
 		} else if (ae.getActionCommand().equals("AC_About")) {
-			String guiRevision = ((JTextField) swix.find("txfGUIRev")).getText();
-			JOptionPane.showMessageDialog(null, "CalLite 2.1 (alpha)\nCode revision " + SVNVersion.revisionString
-			        + "\nGUI xml revision " + guiRevision, "About CalLite", JOptionPane.OK_OPTION, null);
+
+			Long longTime = new File("Config/GUI.xml").lastModified();
+			Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("PST"));
+			calendar.setTimeInMillis(longTime);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+			String guiXmlDate = sdf.format(calendar.getTime());
+
+			JOptionPane.showMessageDialog(null, "CalLite 2.1 (alpha)\nBuild date: " + properties.getProperty("build.date")
+			        + "\nYour last GUI xml revision date: " + guiXmlDate, "About CalLite", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

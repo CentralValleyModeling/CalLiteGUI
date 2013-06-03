@@ -87,7 +87,7 @@ import org.swixml.SwingEngine;
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         KeyEventDispatcher {
 
-	static Logger log = Logger.getLogger(MainMenu.class.getName());
+	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
 	public final SwingEngine swix;
 
@@ -494,7 +494,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 			new MainMenu(true);
 		} catch (Exception e) {
-			// catch exception within constructor
+			log.debug(e);
 
 		}
 
