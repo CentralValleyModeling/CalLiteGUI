@@ -12,15 +12,30 @@ import org.junit.Test;
 
 public class TestScenario {
 
-	MainMenu mm = null;
+	private MainMenu mm = null;
 
 	@Before
 	public void setUp() {
 
+		// Give Cal-Lite a chance to initialize fully.
+
+		System.out.println("Initializing UI.");
+
 		try {
 			mm = new MainMenu(false);
-		} catch (Exception e) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// Give Cal-Lite a chance to initialize fully.
+		try {
+
+			System.out.println("Pausing for a few seconds...");
+
+			Thread.sleep(4000);
+
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
@@ -46,7 +61,7 @@ public class TestScenario {
 		// Give Cal-Lite a chance to initialize fully.
 		try {
 
-			System.out.println("Pausing...");
+			System.out.println("Pausing for a few more seconds...");
 
 			Thread.sleep(4000);
 
