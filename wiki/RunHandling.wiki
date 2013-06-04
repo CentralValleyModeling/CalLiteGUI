@@ -43,4 +43,16 @@ D1641@5realizations
 
 D1641_q1.cls 
 
+---
+
+= Requirement for run/batch run ==
+
+  # Run: starts a run for the scenario currently in memory, forcing a save first if the scenario in memory does not match the saved scenario of the same name.
+    * If the scenario has a single realization (no CC, or just one CC choice on hydroclimate page, just run the scenario.
+    * If the scenario includes multiple realizations, create a scenario subdirectory for each realization by programmatically creating and saving new scenario files for each realization, then running each of the realization scenarios (named scenario_ccc1, scenario cc2, etc.) 
+
+  # Batch run: Starts runs for each scenario selected by the user and passed as a list of filenames. For each scenario,
+    * If the scenario has a single realization (no CC, or just one CC choice on hydroclimate page, just run the scenario.
+    * If the scenario includes multiple realizations, create a scenario subdirectory for each realization by programmatically creating and saving new scenario files for each realization, then running each of the realization scenarios (named scenario_ccc1, scenario cc2, etc.) 
+
 
