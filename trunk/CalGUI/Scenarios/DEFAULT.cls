@@ -10,7 +10,6 @@ run_rdbDet|true
 run_rdbProb|false
 run_rdbD1641|false
 run_rdbBO|true
-txfGUIRev|$Rev: 602 $
 hyd_rdb2005|false
 hyd_rdb2030|true
 hyd_rdbCCEL|false
