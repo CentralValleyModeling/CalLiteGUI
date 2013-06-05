@@ -41,8 +41,4 @@ public class TestDSSGrabber extends TestCase {
 
 	}
 
-	public void testDateRangeErrorHandling() {
-		grabber.setDateRange("Apr2001-MAN2011");
-	}
-
 }
