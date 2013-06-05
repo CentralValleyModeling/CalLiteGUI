@@ -65,4 +65,37 @@ Suggested approach: Add a method that takes a scenario name and:
 
 New method will be called from FileAction.actionPerformed.
 
+=== Q (Mike) & A (Tad) ===
+
+Posit: Each "Climate Change Scenario" e.g., Q1, Q2...Q5, references a set of boundary conditions in some dss file (the SV file?).
+ 
+_Correct_
+
+If the user selects one or more realizations, then runs Cal-Lite:
+
+1. Does Cal-Lite do a single simulation for each realization? 
+ 
+_Yes_
+ 
+2. Are simulations done in sequence or in parallel, the latter on different threads.
+ 
+_TBD_
+ 
+3. Are the simulation results post-processed in any way, e.g., assigned probability of occurrence? (I'm trying to figure out what the "probabilistic mode"  is doing here). 
+ 
+_TBD - but probably analyzed to identify min max ave._
+ 
+4. Can the user save this as a single scenario that contains multiple runs, e.g., the cls file contains metadata for each run? 
+ 
+_The current intent is to have a single scenario corresponding to 2-5 runs._
+ 
+5. Related to (4), is this using batch processing functionality Kevin has built? 
+ 
+_Yes_
+ 
+6. Any thought given to just having one cls file per run then just queuing these up in a list? 
+ 
+_As implemented, what we're doing is creating one run directory per realization by creating the appropriate .cls file and saving it, which also creates the directory - and then running it. However we only keep the original .cls file._
+
+
     
