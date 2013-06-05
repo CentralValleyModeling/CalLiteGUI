@@ -157,8 +157,20 @@ public class FileAction implements ActionListener {
 						action_WSIDI = 1;
 						setFilenameTooltips();
 
+						// Check if scenario has multiple CC realizations checked
+						// int scenarioCCCount = 0;
+						// for (int i = 1; i <= 5; i++) {
+						// if (((JCheckBox) swix.find("hyd_ckb" + i)).isSelected())
+						// scenarioCCCount++;
+						// }
+						// boolean currentScenarioHasMultipleCCs = ((JCheckBox) swix.find("hyd_ckb1")).isEnabled()
+						// && (scenarioCCCount > 1);
+
+						// TODO: need a function that takes one cls file as argument, check for multiple CC realizations, and then
+						// return array of multiple cls files.
+
 						// generate study files
-						setupScenario(sf.getName(), desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+						setupScenario(sf.getName(), "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 
 						// put timeout of 3 secs between each run
 						setupBatchFile(sf.getName(), true);
@@ -314,7 +326,7 @@ public class FileAction implements ActionListener {
 						}
 						if (okToRun) {
 							// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
-							setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+							setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 							setupBatchFile(scen, false);
 							runBatch();
 						}
@@ -355,7 +367,7 @@ public class FileAction implements ActionListener {
 
 				if (proceed) {
 					saveFile(scen, swix, regUserEdits, dTableModels, gl);
-					setupScenario(scen, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+					setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 				} else {
 					JFrame frame = new JFrame("Error");
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
@@ -839,6 +851,7 @@ public class FileAction implements ActionListener {
 	 * Builds a detail directory for a scenario with subdirectories for generated files and for all run files.
 	 * 
 	 * @param scen
+	 * @param scen_subscen
 	 * @param desktop
 	 * @param swix
 	 * @param regUserEdits
@@ -846,8 +859,8 @@ public class FileAction implements ActionListener {
 	 * @param gl
 	 * @param RegFlags
 	 */
-	public static void setupScenario(final String scen, final JFrame desktop, final SwingEngine swix, final Boolean[] regUserEdits,
-	        final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
+	public static void setupScenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
+	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
 		// pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
 		pFrame = null;
@@ -892,7 +905,7 @@ public class FileAction implements ActionListener {
 				publish("Creating new Generated directory.");
 
 				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName
-				        + "\\" + scenWithoutExt + "\\Generated").getAbsolutePath();
+				        + "\\" + scenWithoutExt + scen_subscen + "\\Generated").getAbsolutePath();
 
 				// delete "Generated" folder to cleanup files from previous actions
 
@@ -925,7 +938,7 @@ public class FileAction implements ActionListener {
 				publish("Creating new Run directory.");
 
 				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
-				        + scenWithoutExt + "\\Run").getAbsolutePath();
+				        + scenWithoutExt + scen_subscen + "\\Run").getAbsolutePath();
 
 				success = success & setupScenarioDirectory(scenRunDir_absPath);
 
