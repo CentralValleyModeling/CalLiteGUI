@@ -133,7 +133,7 @@ public class TestWriteGUIFiles extends TestCase {
 		GUILinks gl = null;
 		int[] RegFlags = null;
 
-		FileAction.setupScenario("default.cls", desktop, swix, RegUserEdits, dTableModels, gl, RegFlags);
+		FileAction.setupScenario("default.cls", "", desktop, swix, RegUserEdits, dTableModels, gl, RegFlags);
 		FileAction.setupBatchFile("default.cls", false);
 		FileAction.runBatch();
 		File checkFile = new File(System.getProperty("user.dir") + "\\Run" + File.separator + "check.text");
