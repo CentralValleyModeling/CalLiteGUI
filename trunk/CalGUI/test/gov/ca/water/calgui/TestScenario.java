@@ -47,7 +47,7 @@ public class TestScenario {
 	}
 
 	@Test
-	public void runAndCompare() {
+	public void testDefault() {
 
 		// generate (not run) the scenario here
 
