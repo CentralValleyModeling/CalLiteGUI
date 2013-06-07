@@ -2,7 +2,7 @@
 <project default="main">
 
 	<tstamp>
-	    <format property = "build.date" pattern="dd MMMM yyyy"/>
+		<format property="build.date" pattern="dd MMMM yyyy" />
 	</tstamp>
 
 	<property file="build.properties" />
@@ -10,7 +10,7 @@
 	<path id="build.classpath">
 		<fileset dir="${lib.dir}" includes="**/*.jar" />
 	</path>
-	
+
 	<path id="deploy.classpath">
 		<fileset dir="${deploy.dir}/lib" includes="**/*.jar" />
 	</path>
@@ -29,7 +29,7 @@
 		<delete file="../${DSTAMP}_calgui_deploy.zip" />
 
 	</target>
-	
+
 
 
 	<target name="make-deploy-dir" depends="clean">
@@ -101,7 +101,7 @@
 		</copy>
 
 		<copy file="../log4j/log4j.properties" todir="${deploy.dir}" />
-		<copy file="../bin/callite-gui.properties" todir="${deploy.dir}" />
+		<copy file="../src/callite-gui.properties" todir="${deploy.dir}" />
 		<copy file="../cb.dll" todir="${deploy.dir}" />
 		<copy file="../javaHeclib.dll" todir="${deploy.dir}" />
 		<copy file="../rmaUtil.dll" todir="${deploy.dir}" />
@@ -113,15 +113,14 @@
 			<entry key="build.date" value="${build.date}" />
 			<entry key="version.id" value="2.01" />
 		</propertyfile>
-		
-		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}"/>
+
+		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}" />
 
 	</target>
 
 	<target name="compile" depends="update-properties">
 
-		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes"
-			debug="on" compiler="${build.compiler}">
+		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on" compiler="${build.compiler}">
 
 			<classpath refid="build.classpath" />
 
@@ -132,8 +131,7 @@
 
 	<target name="compile-tests" depends="compile">
 
-		<javac srcdir="${test.dir}" verbose="true" destdir="${deploy.dir}/test"
-			debug="on" compiler="${build.compiler}">
+		<javac srcdir="${test.dir}" verbose="true" destdir="${deploy.dir}/test/testclasses" debug="on" compiler="${build.compiler}">
 
 			<classpath>
 				<pathelement path="${build.classpath}" />
@@ -160,13 +158,19 @@
 			<classpath>
 				<pathelement path="${build.classpath}" />
 				<pathelement path="${deploy.dir}/classes" />
-				<pathelement path="${deploy.dir}/test" />
+				<pathelement path="${deploy.dir}/test/testclasses" />
+				<pathelement path="${lib.dir}" />
+				<pathelement location="${lib.dir}/junit.jar" />
+				<pathelement location="${lib.dir}/swixml.jar" />
+				<pathelement location="${lib.dir}/commons-io-2.1.jar" />
+				<pathelement location="${lib.dir}/jdom.jar" />
+				<pathelement location="${lib.dir}/junit-addons-1.4.jar" />
 				<pathelement location="${lib.dir}/junit.jar" />
 				<pathelement location="${lib.dir}/log4j-1.2.17.jar" />
 			</classpath>
-			
-			<!-- Uncomment to add your test
-			<test name="gov.ca.water.calgui.results.TestDSSGrabber" />-->
+
+			<!-- add your tests here -->
+			<test name="gov.ca.water.calgui.results.TestDSSGrabber" />
 		</junit>
 
 	</target>
@@ -175,21 +179,21 @@
 	<target name="make-jar" depends="test">
 
 		<manifestclasspath property="jar.classpath" jarfile="${deploy.dir}/calgui.jar">
-			<classpath refid="deploy.classpath"/>
-				
+			<classpath refid="deploy.classpath" />
+
 		</manifestclasspath>
-		
-		
+
+
 		<jar destfile="${deploy.dir}/calgui.jar" basedir="${deploy.dir}/classes">
 
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
 				<attribute name="SplashScreen-Image" value="images/splash.gif" />
-				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs"/>
+				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs" />
 			</manifest>
-			
-			<fileset dir="${deploy.dir}/img/"/>
+
+			<fileset dir="${deploy.dir}/img/" />
 
 		</jar>
 
@@ -208,8 +212,7 @@
 
 	<target name="deploy" depends="create-shell-script">
 
-		<zip destfile="../${DSTAMP}_calgui_deploy.zip" basedir="${deploy.dir}"
-			update="false" excludes="**/test/**">
+		<zip destfile="../${DSTAMP}_calgui_deploy.zip" basedir="${deploy.dir}" update="false" excludes="**/test/**">
 		</zip>
 
 
