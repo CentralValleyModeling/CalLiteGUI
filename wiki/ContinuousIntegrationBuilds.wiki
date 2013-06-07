@@ -1,0 +1,19 @@
+#summary A best practice of building continuously and often
+
+= Introduction =
+
+Jenkins is a simple and easy tool to get started with this practice.
+
+= Details =
+
+Ensure that java and ant are downloaded and on your path in a command line environment.
+
+Download the jenkins.war from http://jenkins-ci.org/
+
+java -DJENKINS_HOME=<some temp directory> -jar jenkins.war will start the Jenkins continuous build server
+
+Goto http://localhost:8080 to configure/monitor/add it. There is a lot of documentation on how to configure it.
+
+For the simple case of having it monitor and build callitegui simply add a new project and configure its SVN to point to the anonymous public svn url of the project
+
+Next configure a ant task to build using ant/build.xml as the build file. Easiest done using the windows batch command option.
