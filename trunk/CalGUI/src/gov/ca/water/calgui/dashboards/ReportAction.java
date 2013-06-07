@@ -266,13 +266,13 @@ public class ReportAction implements ActionListener {
 			Vector<String> data = new Vector<String>();
 
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter(".cgr", "CalLite Report File (*.cgr)"));
+			fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite GUI Report File (*.cgr)"));
 			fc.setCurrentDirectory(new File(".//Config"));
 
-			String dirname = ".//Config";
 			File file = null;
 			String filename = null;
 			JPanel mainmenu = (JPanel) swix.find("mainmenu");
+
 			int retval = fc.showOpenDialog(mainmenu);
 			if (retval == JFileChooser.APPROVE_OPTION) {
 				// ... The user selected a file, get it, use it.
@@ -281,9 +281,6 @@ public class ReportAction implements ActionListener {
 
 				try {
 
-					// FileInputStream fin = new
-					// FileInputStream(System.getProperty("user.dir") +
-					// "\\Config\\reportlist.cgr");
 					FileInputStream fin = new FileInputStream(filename);
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
@@ -311,7 +308,7 @@ public class ReportAction implements ActionListener {
 		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
 
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter(".cgr", "CalLite Report File (*.cgr)"));
+			fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite Report File (*.cgr)"));
 			fc.setCurrentDirectory(new File(".//Config"));
 
 			File file = null;
@@ -335,9 +332,6 @@ public class ReportAction implements ActionListener {
 				if (saveFlag) {
 					OutputStream outputStream;
 					try {
-						// outputStream = new
-						// FileOutputStream(System.getProperty("user.dir") +
-						// "\\Config\\reportlist.cgr");
 						outputStream = new FileOutputStream(filename);
 					} catch (FileNotFoundException e2) {
 
