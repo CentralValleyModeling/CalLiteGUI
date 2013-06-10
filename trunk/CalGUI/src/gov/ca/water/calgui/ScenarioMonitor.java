@@ -96,10 +96,7 @@ public class ScenarioMonitor {
 		if (scenSavedFile.exists() && !scenWRESLCHECKFile.exists())
 			return "Saved";
 
-		try
-		
 		File scenPROGRESSFile = new File(scenDir_absPath + "\\PROGRESS.txt");
-		
 
 		return "??";
 	}
