@@ -832,7 +832,9 @@ public class FileAction implements ActionListener {
 				batchFilePW.println("timeout 3");
 			} else {
 				// this doesn't writes progress.
-				batchText_template = "%~dp0\\Model_w2\\runConfig_limitedXA {ConfigFilePath}";
+				// batchText_template = "%~dp0\\Model_w2\\runConfig_limitedXA {ConfigFilePath}";
+				// this writes progress to .\Run\progress.txt
+				batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
 				batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
 				batchFilePW.println(batchText);
 				batchFilePW.println();
