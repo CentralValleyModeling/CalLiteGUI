@@ -1,9 +1,13 @@
 package gov.ca.water.calgui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
 import javax.swing.SwingWorker;
 
@@ -91,13 +95,57 @@ public class ScenarioMonitor {
 			return "Saving"; // Scenario save in progress
 
 		File scenSavedFile = new File(scenDir_absPath + "\\saved.txt");
-		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\WRESLCHECK.txt");
+		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.txt");
 
 		if (scenSavedFile.exists() && !scenWRESLCHECKFile.exists())
 			return "Saved";
 
-		File scenPROGRESSFile = new File(scenDir_absPath + "\\PROGRESS.txt");
+		List<String> text = new ArrayList<String>();
+		try {
+			Scanner scanner;
+			scanner = new Scanner(new FileInputStream(scenWRESLCHECKFile.getAbsolutePath()));
+			while (scanner.hasNextLine()) {
+				text.add(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (text.size() == 0) {
+			return ("Parsing");
+		} else {
+			boolean stillParsing = false;
+			for (int i = 0; i <= text.size(); i++) {
+				if (text.get(i).contains("Total errors: 0"))
+					stillParsing = true;
+				else if (text.get(i).contains("Total errors:"))
+					return "Done parsing - " + text.get(i);
+			}
+			if (stillParsing)
+				return "Parsing";
+		}
 
-		return "??";
+		File scenPROGRESSFile = new File(scenDir_absPath + "\\Run\\PROGRESS.txt");
+
+		if (!scenPROGRESSFile.exists())
+			return "Parsed, not running";
+
+		text.clear();
+		try {
+			Scanner scanner;
+			scanner = new Scanner(new FileInputStream(scenPROGRESSFile.getAbsolutePath()));
+			while (scanner.hasNextLine()) {
+				text.add(scanner.nextLine());
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (text.size() == 0)
+			return "Running?";
+		else
+			return "Running - " + text.get(text.size() - 1);
 	}
 }
