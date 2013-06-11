@@ -64,5 +64,3 @@ set PATH=%ExternalDir%;%JarDir%
 
 %temp_wrims2%/../../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% gov.ca.water.calgui.batch.Singleton -config="%configFilePath%"
 
-
-pause

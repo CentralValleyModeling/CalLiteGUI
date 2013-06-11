@@ -887,8 +887,8 @@ public class FileAction implements ActionListener {
 			protected void process(List<String> status) {
 
 				if (pFrame != null)
-					pFrame.setText(status.get(status.size() - 1));
-				return;
+					// pFrame.setText(status.get(status.size() - 1));
+					return;
 			}
 
 			@Override
