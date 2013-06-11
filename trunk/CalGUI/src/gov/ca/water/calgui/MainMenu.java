@@ -119,6 +119,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GUILinks gl;
 	String desktopTitle;
 	String scenFilename;
+
 	public DataFileTableModel[] dTableModels;
 	public Boolean[] regUserEditFlags;
 	public int[] regFlags;
@@ -473,6 +474,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			long totalSetupTime = System.currentTimeMillis() - startSetupTime;
 			if (totalSetupTime < 3000)
 				Thread.sleep(3000 - totalSetupTime);
+
+			ScenarioMonitor.add("quick");
+			ScenarioMonitor.start();
 
 			desktop.setVisible(makeVisible);
 

@@ -102,7 +102,7 @@ public class Report extends SwingWorker<Void, String> {
 	@Override
 	protected void process(List<String> status) {
 
-		frame.setText(status.get(status.size() - 1));
+		// frame.setText(status.get(status.size() - 1));
 		return;
 	}
 

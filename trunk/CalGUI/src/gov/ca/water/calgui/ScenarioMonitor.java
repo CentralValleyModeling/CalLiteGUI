@@ -1,11 +1,16 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.ProgressFrame;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -23,17 +28,18 @@ public class ScenarioMonitor {
 
 	private static Properties properties = new Properties();
 	private static Logger log = Logger.getLogger(FileAction.class.getName());
-	private String runRecordFolderName;
+	private static String runRecordFolderName;
+	private static ProgressFrame pFrame;
 
-	private final HashMap<String, String> scenarioList = new HashMap<String, String>();
-	private final SwingWorker<Void, String> workerScenarioMonitor = new SwingWorker<Void, String>() {
+	private static final HashMap<String, String> scenarioList = new HashMap<String, String>();
+	private static final SwingWorker<Void, String> workerScenarioMonitor = new SwingWorker<Void, String>() {
 
 		@Override
 		protected Void doInBackground() throws InterruptedException {
 
 			boolean loop = true;
 			while (loop) {
-				Thread.sleep(100);
+				Thread.sleep(1000);
 				publish(" ");
 			}
 			return null;
@@ -41,11 +47,17 @@ public class ScenarioMonitor {
 
 		@Override
 		protected void process(List<String> stuff) {
-			// TODO: replace console output with Swing GUI
-			System.out.println("ScenarioMonitor: " + scenarioList.size() + " scenarios.");
-			for (int i = 0; i <= scenarioList.size(); i++)
-				System.out.println(scenarioList.get(i));
-
+			String[] listData = new String[scenarioList.size()];
+			Iterator<Entry<String, String>> it = scenarioList.entrySet().iterator();
+			int i = 0;
+			while (it.hasNext()) {
+				Map.Entry<String, String> entry = it.next();
+				entry.setValue(getStatus(entry.getKey()));
+				listData[i] = entry.getKey() + " - " + entry.getValue();
+				i++;
+			}
+			pFrame.setList(listData);
+			pFrame.setVisible(true);
 			return;
 		}
 
@@ -60,13 +72,14 @@ public class ScenarioMonitor {
 	/**
 	 * Starts monitoring thread
 	 */
-	public void start() {
+	public static void start() {
 		try {
 			properties.load(FileAction.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
 			runRecordFolderName = properties.getProperty("runrecord.dir", "Run_Records");
 		} catch (Exception e) {
 			log.debug("Problem loading properties. " + e.getMessage());
 		}
+		pFrame = new ProgressFrame("Status Monitor");
 		workerScenarioMonitor.execute();
 	}
 
@@ -75,13 +88,13 @@ public class ScenarioMonitor {
 	 * 
 	 * @param scenarioName
 	 */
-	public void add(String scenarioName) {
+	public static void add(String scenarioName) {
 		// TODO: Check for duplicate and handle appropriately
 		// TODO: Logging
 		scenarioList.put(scenarioName, "Unknown");
 	}
 
-	private String getStatus(String scenarioName) {
+	public static String getStatus(String scenarioName) {
 
 		String scenDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 		        + scenarioName).getAbsolutePath();
@@ -95,41 +108,41 @@ public class ScenarioMonitor {
 			return "Saving"; // Scenario save in progress
 
 		File scenSavedFile = new File(scenDir_absPath + "\\saved.txt");
-		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.txt");
+		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.log");
 
 		if (scenSavedFile.exists() && !scenWRESLCHECKFile.exists())
 			return "Saved";
 
 		List<String> text = new ArrayList<String>();
-		try {
-			Scanner scanner;
-			scanner = new Scanner(new FileInputStream(scenWRESLCHECKFile.getAbsolutePath()));
-			while (scanner.hasNextLine()) {
-				text.add(scanner.nextLine());
-			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (text.size() == 0) {
-			return ("Parsing");
-		} else {
-			boolean stillParsing = false;
-			for (int i = 0; i <= text.size(); i++) {
-				if (text.get(i).contains("Total errors: 0"))
-					stillParsing = true;
-				else if (text.get(i).contains("Total errors:"))
-					return "Done parsing - " + text.get(i);
-			}
-			if (stillParsing)
-				return "Parsing";
-		}
 
 		File scenPROGRESSFile = new File(scenDir_absPath + "\\Run\\PROGRESS.txt");
+		if (!scenPROGRESSFile.exists()) {
+			try {
+				Scanner scanner;
+				scanner = new Scanner(new FileInputStream(scenWRESLCHECKFile.getAbsolutePath()));
+				while (scanner.hasNextLine()) {
+					text.add(scanner.nextLine());
+				}
+				scanner.close();
+			} catch (FileNotFoundException e) {
+				log.info("WRESLCheck file not openable for " + scenarioName);
+				e.printStackTrace();
+			}
+			if (text.size() == 0) {
+				return ("Parsing");
+			} else {
+				boolean stillParsing = false;
+				for (int i = 0; i <= text.size(); i++) {
+					if (text.get(i).contains("Total errors: 0"))
+						stillParsing = true;
+					else if (text.get(i).contains("Total errors:"))
+						return "Done parsing - " + text.get(i);
+				}
+				if (stillParsing)
+					return "Parsing";
+			}
 
-		if (!scenPROGRESSFile.exists())
-			return "Parsed, not running";
+		}
 
 		text.clear();
 		try {
@@ -140,11 +153,13 @@ public class ScenarioMonitor {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.info("Progress file not openable for " + scenarioName);
 		}
+
 		if (text.size() == 0)
 			return "Running?";
+		else if (text.get(text.size() - 1).contains("Run completed."))
+			return "Run completed";
 		else
 			return "Running - " + text.get(text.size() - 1);
 	}
