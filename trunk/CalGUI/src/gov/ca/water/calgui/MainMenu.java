@@ -376,7 +376,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		catch (Exception e) {
-			log.debug("Problem setting checkbox lables. " + e);
+			log.debug("Problem setting checkbox labels. " + e);
 		}
 
 		// Schematic views
@@ -475,7 +475,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if (totalSetupTime < 3000)
 				Thread.sleep(3000 - totalSetupTime);
 
-			ScenarioMonitor.add("quick");
 			ScenarioMonitor.start();
 
 			desktop.setVisible(makeVisible);
