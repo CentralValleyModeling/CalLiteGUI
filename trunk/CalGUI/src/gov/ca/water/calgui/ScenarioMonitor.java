@@ -4,8 +4,7 @@ import gov.ca.water.calgui.utils.ProgressFrame;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -40,7 +39,7 @@ public class ScenarioMonitor {
 			boolean loop = true;
 			while (loop) {
 				Thread.sleep(1000);
-				publish(" ");
+				publish("");
 			}
 			return null;
 		}
@@ -57,7 +56,7 @@ public class ScenarioMonitor {
 				i++;
 			}
 			pFrame.setList(listData);
-			pFrame.setVisible(true);
+
 			return;
 		}
 
@@ -92,75 +91,93 @@ public class ScenarioMonitor {
 		// TODO: Check for duplicate and handle appropriately
 		// TODO: Logging
 		scenarioList.put(scenarioName, "Unknown");
+		if (!pFrame.isVisible())
+			pFrame.setVisible(true);
+
 	}
 
+	/**
+	 * Returns status of scenario - Saved, Parsing, Running, Done
+	 * 
+	 * @param scenarioName
+	 * @return
+	 */
 	public static String getStatus(String scenarioName) {
+
+		String text;
 
 		String scenDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 		        + scenarioName).getAbsolutePath();
 
 		File scenDir = new File(scenDir_absPath);
 		if (!scenDir.isDirectory())
-			return "No directory"; // Scenario directory doesn't exist
+			return "ERROR - No directory"; // Scenario directory doesn't exist
 
-		File scenSavingFile = new File(scenDir_absPath + "\\saving.txt");
-		if (scenSavingFile.exists())
-			return "Saving"; // Scenario save in progress
-
-		File scenSavedFile = new File(scenDir_absPath + "\\saved.txt");
+		File scenSavingFile = new File(scenDir_absPath + "\\save.txt");
 		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.log");
-
-		if (scenSavedFile.exists() && !scenWRESLCHECKFile.exists())
-			return "Saved";
-
-		List<String> text = new ArrayList<String>();
-
 		File scenPROGRESSFile = new File(scenDir_absPath + "\\Run\\PROGRESS.txt");
+
+		if (!scenSavingFile.exists())
+			return "ERROR - No save.txt file"; // Scenario save in progress
+
+		text = lastLine(scenSavingFile);
+		if (text.contains("unopenable!"))
+			return "WORKING - unable to read save.txt";
+
+		if (!text.contains("Save complete"))
+			return "WORKING - " + text;
+
+		if (!scenWRESLCHECKFile.exists())
+			return "SAVED";
+
 		if (!scenPROGRESSFile.exists()) {
-			try {
-				Scanner scanner;
-				scanner = new Scanner(new FileInputStream(scenWRESLCHECKFile.getAbsolutePath()));
-				while (scanner.hasNextLine()) {
-					text.add(scanner.nextLine());
-				}
-				scanner.close();
-			} catch (FileNotFoundException e) {
-				log.info("WRESLCheck file not openable for " + scenarioName);
-				e.printStackTrace();
-			}
-			if (text.size() == 0) {
-				return ("Parsing");
-			} else {
-				boolean stillParsing = false;
-				for (int i = 0; i <= text.size(); i++) {
-					if (text.get(i).contains("Total errors: 0"))
-						stillParsing = true;
-					else if (text.get(i).contains("Total errors:"))
-						return "Done parsing - " + text.get(i);
-				}
-				if (stillParsing)
-					return "Parsing";
-			}
 
+			text = lastLine(scenWRESLCHECKFile);
+			if (text.contains("unopenable!"))
+				return "WORKING - unable to read parsing log";
+			if (text.contains("Empty!"))
+				return ("WORKING - parsing started");
+			if (!text.contains("Total errors:"))
+				return "WORKING - Parsing - " + text;
+			else
+				return "WORKING - Parsing complete - " + text;
+
+		} else {
+
+			text = lastLine(scenPROGRESSFile);
+			if (text.contains("unopenable!"))
+				return "WORKING - unable to read progress.txt";
+			if (text.contains("Empty!"))
+				return "WORKING - run starting";
+			if (!text.contains("Run completed."))
+				return "WORKING - " + text;
+			else
+				return "DONE";
 		}
+	}
 
-		text.clear();
+	/**
+	 * Reads a text file and returns last line
+	 * 
+	 * @param file
+	 * @return - String containing last line of file or the messages "Empty!" if no lines or "unopenable!".
+	 */
+
+	private static String lastLine(File file) {
+		String text = "Empty!";
 		try {
 			Scanner scanner;
-			scanner = new Scanner(new FileInputStream(scenPROGRESSFile.getAbsolutePath()));
+			scanner = new Scanner(new FileInputStream(file.getAbsolutePath()));
 			while (scanner.hasNextLine()) {
-				text.add(scanner.nextLine());
+				text = scanner.nextLine();
 			}
 			scanner.close();
-		} catch (FileNotFoundException e) {
-			log.info("Progress file not openable for " + scenarioName);
-		}
+			return text;
 
-		if (text.size() == 0)
-			return "Running?";
-		else if (text.get(text.size() - 1).contains("Run completed."))
-			return "Run completed";
-		else
-			return "Running - " + text.get(text.size() - 1);
+		} catch (IOException e) {
+			log.info(file.getName() + " not openable");
+			e.printStackTrace();
+			return file.getName() + " unopenable!";
+		}
 	}
 }
