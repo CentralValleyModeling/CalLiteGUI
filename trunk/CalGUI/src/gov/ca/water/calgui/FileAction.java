@@ -468,7 +468,7 @@ public class FileAction implements ActionListener {
 		try {
 			FileUtils.copyDirectory(wreslDir, ft, true);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug(e);
 			success = false;
 		}
 
@@ -477,8 +477,7 @@ public class FileAction implements ActionListener {
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			log.debug(e1);
 			success = false;
 		}
 
@@ -488,8 +487,7 @@ public class FileAction implements ActionListener {
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			log.debug(e1);
 			success = false;
 		}
 		return success;
@@ -516,8 +514,7 @@ public class FileAction implements ActionListener {
 		try {
 			FileUtils.copyDirectory(fs, ft, false);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			log.debug(e1);
 			success = false;
 		}
 		return success;
@@ -747,10 +744,10 @@ public class FileAction implements ActionListener {
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
 			int exitVal = proc.waitFor();
-			System.out.println("Process exitValue: " + exitVal);
+			log.debug("Return from batch run " + exitVal);
 		} catch (Throwable t) {
 			JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
-			t.printStackTrace();
+			log.debug(t.getStackTrace());
 		}
 
 	}
@@ -805,8 +802,7 @@ public class FileAction implements ActionListener {
 			batchFilePW.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.debug(e);
 		}
 
 	}
@@ -929,8 +925,7 @@ public class FileAction implements ActionListener {
 					// write to "Run" folder
 					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.debug(e1);
 					success = false;
 				}
 
@@ -1115,8 +1110,8 @@ public class FileAction implements ActionListener {
 					// copy dll to "Generated" folder
 					FileUtils.copyDirectory(fsAnnS, fsAnnO_wrims2_generated, true);
 
-				} catch (IOException e1) { // TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (IOException e1) {
+					log.debug(e1);
 					success = false;
 				}
 
@@ -1168,7 +1163,7 @@ public class FileAction implements ActionListener {
 										dTableModels[tID].writeToFile2(scenRunDir_absPath + "\\Lookup", files[0], files[1]);
 									}
 								} else {
-									System.out.println("Unhandled files.length case in FileAction.setupAndRun");
+									log.debug("Unhandled files.length case in FileAction.setupAndRun");
 								}
 
 							}
@@ -1189,7 +1184,7 @@ public class FileAction implements ActionListener {
 					String cName = parts[0].trim();
 					String tableName = gl.tableNameForCtrl(cName);
 					if (!tableName.equals("n/a")) {
-						System.out.println("Output to " + tableName);
+						// System.out.println("Output to " + tableName);
 						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
 						if (dTableModels[tID] == null) {
 							// System.out.println("Table not initialized - " + tableName);
@@ -1241,7 +1236,7 @@ public class FileAction implements ActionListener {
 			outobj.close();
 
 		} catch (Exception e1) {
-			System.err.println("Error: " + e1.getMessage());
+			log.debug("Error: " + e1);
 		}
 
 	}
