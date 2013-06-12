@@ -7,12 +7,10 @@ import gov.ca.water.calgui.utils.FileUtils;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
-import gov.ca.water.calgui.utils.ProgressFrame;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -31,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.TimeZone;
-import java.util.concurrent.ExecutionException;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -178,19 +175,6 @@ public class FileAction implements ActionListener {
 						// System.err.println("finished setup scen:" + sf.getAbsolutePath());
 
 						// Wait for Swing worker to complete.
-						try {
-							worker_setupScenario.get();
-						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-						}
-
-						// dispose pFrame
-						try {
-							pFrame.setCursor(null);
-							pFrame.dispose();
-						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-						}
 
 					}
 
@@ -743,11 +727,6 @@ public class FileAction implements ActionListener {
 		tableFile_BufferedWriter_.close();
 	}
 
-	static ProgressFrame pFrame;
-
-	// TODO: Modify to read/set swix state from scenario file "scen", possibly saving current state of swix in temporary string
-	// buffer.
-
 	/**
 	 * Sets up scenario directory and files, then executes
 	 * 
@@ -764,11 +743,6 @@ public class FileAction implements ActionListener {
 		// "Run" model
 
 		try {
-
-			if (pFrame != null) {
-				pFrame.setCursor(null);
-				pFrame.dispose();
-			}
 
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
@@ -791,18 +765,6 @@ public class FileAction implements ActionListener {
 	public static void setupBatchFile(final String scen, final boolean isParallel) {
 
 		boolean isAppend = isParallel;
-
-		// Wait for Swing worker to complete
-
-		try {
-			worker_setupScenario.get();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ExecutionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		// find config file path
 
@@ -849,6 +811,17 @@ public class FileAction implements ActionListener {
 
 	}
 
+	private static void updateSaveStatusFile(String statusFilename, String text) {
+
+		try {
+			FileWriter fw = new FileWriter(statusFilename, true); // the true will append the new data
+			fw.write(text + "\n");// appends the string to the file
+			fw.close();
+		} catch (IOException ioe) {
+			log.debug("IOException: " + ioe.getMessage());
+		}
+	}
+
 	/**
 	 * Builds a detail directory for a scenario with subdirectories for generated files and for all run files.
 	 * 
@@ -864,31 +837,22 @@ public class FileAction implements ActionListener {
 	public static void setupScenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
 	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
-		// pFrame = new ProgressFrame("CalLite 2.0 GUI - Generating study files...");
-		pFrame = null;
-
+		final String scenWithoutExt = FilenameUtils.removeExtension(scen);
+		final String statusFilename = System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+		        + scenWithoutExt + scen_subscen + "\\save.txt";
+		ScenarioMonitor.add(scenWithoutExt);
 		worker_setupScenario = new SwingWorker<Void, String>() {
 
 			@Override
 			protected void done() {
 
-				if (pFrame != null) {
-					pFrame.setCursor(null);
-					pFrame.dispose();
-				}
-
-				desktop.setEnabled(true);
-				desktop.setVisible(true);
+				updateSaveStatusFile(statusFilename, "Save complete");
 				return;
-
 			}
 
 			@Override
-			protected void process(List<String> status) {
-
-				if (pFrame != null)
-					// pFrame.setText(status.get(status.size() - 1));
-					return;
+			protected void process(List<String> stuff) {
+				return;
 			}
 
 			@Override
@@ -896,15 +860,11 @@ public class FileAction implements ActionListener {
 
 				desktop.setEnabled(false);
 
-				if (pFrame != null)
-					pFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
 				boolean success = true;
-				String scenWithoutExt = FilenameUtils.removeExtension(scen);
 
 				// ========== Prepare "Generated" folder
 
-				publish("Creating new Generated directory.");
+				updateSaveStatusFile(statusFilename, "Creating new Generated directory.");
 
 				String scenGeneratedDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName
 				        + "\\" + scenWithoutExt + scen_subscen + "\\Generated").getAbsolutePath();
@@ -937,7 +897,7 @@ public class FileAction implements ActionListener {
 
 				// ========== Copy Run directory
 
-				publish("Creating new Run directory.");
+				updateSaveStatusFile(statusFilename, "Creating new Run directory.");
 
 				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 				        + scenWithoutExt + scen_subscen + "\\Run").getAbsolutePath();
@@ -959,7 +919,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Writing GUI tables.");
+				updateSaveStatusFile(statusFilename, "Writing GUI tables.");
 				ArrayList<String> links2Lines = new ArrayList<String>();
 				links2Lines = GUIUtils.getGUILinks("Config\\GUI_Links2.table");
 
@@ -976,7 +936,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Copying demand tables.");
+				updateSaveStatusFile(statusFilename, "Copying demand tables.");
 
 				File fsDem;
 				if (((JRadioButton) swix.find("dem_rdbCurSWP")).isSelected()) {
@@ -1007,7 +967,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Creating study.sty.");
+				updateSaveStatusFile(statusFilename, "Creating study.sty.");
 
 				Calendar cal = Calendar.getInstance();
 
@@ -1068,7 +1028,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Writing WRIMSv2 Batchfile.");
+				updateSaveStatusFile(statusFilename, "Writing WRIMSv2 Batchfile.");
 
 				// configuration file for wrims v2
 				Integer iStartMonth = TimeOperation.monthValue(startMon.toLowerCase());
@@ -1096,7 +1056,7 @@ public class FileAction implements ActionListener {
 				configMap.put("ConfigFilePath",
 				        new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName") + ".config").getAbsolutePath());
 
-				publish("Writing Scenario Config.");
+				updateSaveStatusFile(statusFilename, "Writing Scenario Config.");
 
 				// replace vars in config template file
 
@@ -1126,7 +1086,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Copying WRIMSv2 DLL.");
+				updateSaveStatusFile(statusFilename, "Copying WRIMSv2 DLL.");
 
 				// wrims2 ANN file name is different from wrims1
 				File fsAnnS;
@@ -1162,7 +1122,7 @@ public class FileAction implements ActionListener {
 
 				// ==========
 
-				publish("Writing GUI regulations table files.");
+				updateSaveStatusFile(statusFilename, "Writing GUI regulations table files.");
 
 				// Write regulations table files
 				ArrayList<String> GUITables = new ArrayList<String>();
@@ -1217,11 +1177,9 @@ public class FileAction implements ActionListener {
 					}
 				}
 
-				System.out.println("Done");
-
 				// =====
 
-				publish("Writing GUI operations table files.");
+				updateSaveStatusFile(statusFilename, "Writing GUI operations table files.");
 
 				GUITables = new ArrayList<String>();
 				GUITables = GUIUtils.getGUITables(links2Lines, "Operations");
@@ -1249,11 +1207,10 @@ public class FileAction implements ActionListener {
 				if (success)
 					checkFile.createNewFile();
 
-				desktop.setVisible(false);
-
+				updateSaveStatusFile(statusFilename, "Save complete");
 				return null;
-
 			}
+
 		};
 
 		worker_setupScenario.execute();
