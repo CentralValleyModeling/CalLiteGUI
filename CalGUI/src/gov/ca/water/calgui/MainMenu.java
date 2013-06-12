@@ -199,7 +199,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		catch (Exception e) {
-			log.debug("Could not build UI. )" + e);
+			log.debug("Could not build UI. " + e);
 		}
 
 		// Read Schematic_DSS_link4.table and place in Table5
