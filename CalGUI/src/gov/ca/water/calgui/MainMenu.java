@@ -93,7 +93,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
-	public JFrame desktop;
+	public static JFrame desktop;
 	static JFrame help;
 	JPanel runsettings;
 	JPanel mainmenu;
@@ -471,11 +471,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 
+			ScenarioMonitor.start();
+
 			long totalSetupTime = System.currentTimeMillis() - startSetupTime;
 			if (totalSetupTime < 3000)
 				Thread.sleep(3000 - totalSetupTime);
-
-			ScenarioMonitor.start();
 
 			desktop.setVisible(makeVisible);
 

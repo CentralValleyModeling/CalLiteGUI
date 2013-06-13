@@ -1,6 +1,6 @@
 package gov.ca.water.calgui;
 
-import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.ProgressDialog;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,8 +28,9 @@ public class ScenarioMonitor {
 	private static Properties properties = new Properties();
 	private static Logger log = Logger.getLogger(FileAction.class.getName());
 	private static String runRecordFolderName;
-	private static ProgressFrame pFrame;
+	private static ProgressDialog progressDialog;
 
+	private static boolean saving = false;
 	private static final HashMap<String, String> scenarioList = new HashMap<String, String>();
 	private static final SwingWorker<Void, String> workerScenarioMonitor = new SwingWorker<Void, String>() {
 
@@ -38,25 +39,32 @@ public class ScenarioMonitor {
 
 			boolean loop = true;
 			while (loop) {
-				Thread.sleep(1000);
 				publish("");
+				Thread.sleep(1000);
 			}
 			return null;
 		}
 
 		@Override
 		protected void process(List<String> stuff) {
-			String[] listData = new String[scenarioList.size()];
-			Iterator<Entry<String, String>> it = scenarioList.entrySet().iterator();
-			int i = 0;
-			while (it.hasNext()) {
-				Map.Entry<String, String> entry = it.next();
-				entry.setValue(getStatus(entry.getKey()));
-				listData[i] = entry.getKey() + " - " + entry.getValue();
-				i++;
+			String[] listData;
+			saving = false;
+			if (scenarioList.size() == 0) {
+				listData = new String[1];
+				listData[0] = "No scenarios tracked";
+			} else {
+				listData = new String[scenarioList.size()];
+				Iterator<Entry<String, String>> it = scenarioList.entrySet().iterator();
+				int i = 0;
+				while (it.hasNext()) {
+					Map.Entry<String, String> entry = it.next();
+					entry.setValue(getStatus(entry.getKey()));
+					listData[i] = entry.getKey() + " - " + entry.getValue();
+					saving = saving || entry.getValue().contains("SAVING -");
+					i++;
+				}
 			}
-			pFrame.setList(listData);
-
+			progressDialog.setList(listData);
 			return;
 		}
 
@@ -78,7 +86,7 @@ public class ScenarioMonitor {
 		} catch (Exception e) {
 			log.debug("Problem loading properties. " + e.getMessage());
 		}
-		pFrame = new ProgressFrame("Status Monitor");
+		progressDialog = new ProgressDialog("Status Monitor");
 		workerScenarioMonitor.execute();
 	}
 
@@ -89,11 +97,14 @@ public class ScenarioMonitor {
 	 */
 	public static void add(String scenarioName) {
 		// TODO: Check for duplicate and handle appropriately
-		// TODO: Logging
-		scenarioList.put(scenarioName, "Unknown");
-		if (!pFrame.isVisible())
-			pFrame.setVisible(true);
+		if (!scenarioList.containsKey(scenarioName))
+			scenarioList.put(scenarioName, "Unknown");
+		if (!progressDialog.isVisible())
+			progressDialog.setVisible(true);
+	}
 
+	public boolean isSaving() {
+		return saving;
 	}
 
 	/**
@@ -122,10 +133,10 @@ public class ScenarioMonitor {
 
 		text = lastLine(scenSavingFile);
 		if (text.contains("unopenable!"))
-			return "WORKING - unable to read save.txt";
+			return "SAVING - unable to read save.txt";
 
 		if (!text.contains("Save complete"))
-			return "WORKING - " + text;
+			return "SAVING - " + text;
 
 		if (!scenWRESLCHECKFile.exists())
 			return "SAVED";
@@ -134,23 +145,23 @@ public class ScenarioMonitor {
 
 			text = lastLine(scenWRESLCHECKFile);
 			if (text.contains("unopenable!"))
-				return "WORKING - unable to read parsing log";
+				return "PARSING - unable to read parsing log";
 			if (text.contains("Empty!"))
-				return ("WORKING - parsing started");
+				return ("PARSING - parsing started");
 			if (!text.contains("Total errors:"))
-				return "WORKING - Parsing - " + text;
+				return "PARSING - " + text;
 			else
-				return "WORKING - Parsing complete - " + text;
+				return "PARSING - Parsing complete - " + text;
 
 		} else {
 
 			text = lastLine(scenPROGRESSFile);
 			if (text.contains("unopenable!"))
-				return "WORKING - unable to read progress.txt";
+				return "RUNNING - unable to read progress.txt";
 			if (text.contains("Empty!"))
-				return "WORKING - run starting";
+				return "RUNNING - run starting";
 			if (!text.contains("Run completed."))
-				return "WORKING - " + text;
+				return "RUNNING - " + text;
 			else
 				return "DONE";
 		}
