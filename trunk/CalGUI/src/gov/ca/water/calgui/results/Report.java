@@ -3,7 +3,7 @@ package gov.ca.water.calgui.results;
 import gov.ca.dsm2.input.parser.InputTable;
 import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
-import gov.ca.water.calgui.utils.ProgressFrame;
+import gov.ca.water.calgui.utils.ProgressDialog;
 import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Cursor;
@@ -77,15 +77,15 @@ public class Report extends SwingWorker<Void, String> {
 
 	private InputStream inputStream;
 	private JFrame desktop = null;
-	private ProgressFrame frame;
+	private ProgressDialog progressDialog;
 	private String outputFilename;
 
 	@Override
 	protected Void doInBackground() throws Exception {
 
-		frame = new ProgressFrame("CalLite 2.0 GUI - Generating Report");
+		progressDialog = new ProgressDialog("CalLite 2.0 GUI - Generating Report");
 		publish("Generating report in background thread.");
-		frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		progressDialog.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		desktop.setVisible(false);
 
 		logger.fine("Parsing input template");
@@ -102,15 +102,15 @@ public class Report extends SwingWorker<Void, String> {
 	@Override
 	protected void process(List<String> status) {
 
-		// frame.setText(status.get(status.size() - 1));
+		progressDialog.setText(status.get(status.size() - 1));
 		return;
 	}
 
 	@Override
 	protected void done() {
 
-		frame.setCursor(null);
-		frame.dispose();
+		progressDialog.setCursor(null);
+		progressDialog.dispose();
 
 		desktop.setVisible(true);
 		try {

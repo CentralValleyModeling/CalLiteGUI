@@ -6,8 +6,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -21,19 +21,21 @@ import org.apache.log4j.Logger;
  * @author tslawecki
  * 
  */
-public class ProgressFrame extends JFrame implements ActionListener {
+public class ProgressDialog extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = -606008444073979623L;
 
-	private static Logger log = Logger.getLogger(ProgressFrame.class.getName());
+	private static Logger log = Logger.getLogger(ProgressDialog.class.getName());
 
 	private final JList list;
+	private final JLabel label;
+	private final JScrollPane listScroller;
 
-	public ProgressFrame(String title) {
+	public ProgressDialog(String title) {
 
 		super();
 
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		setPreferredSize(new Dimension(400, 200));
 		setMinimumSize(new Dimension(400, 200));
 		setLayout(new BorderLayout(5, 5));
@@ -46,17 +48,22 @@ public class ProgressFrame extends JFrame implements ActionListener {
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(-1);
 
-		JScrollPane listScroller = new JScrollPane(list);
+		listScroller = new JScrollPane(list);
 		listScroller.setPreferredSize(new Dimension(350, 150));
 		listScroller.setMinimumSize(new Dimension(350, 150));
+		listScroller.setVisible(false);
 		add(BorderLayout.PAGE_START, listScroller);
 
-		JButton btnClose = new JButton("Hide");
-		btnClose.setPreferredSize(new Dimension(100, 25));
-		btnClose.setMinimumSize(new Dimension(100, 25));
-		btnClose.addActionListener(this);
-		btnClose.setActionCommand("Go");
-		add(BorderLayout.PAGE_END, btnClose);
+		label = new JLabel("");
+		label.setVisible(false);
+		add(label, BorderLayout.CENTER);
+
+		// JButton btnClose = new JButton("Dispose");
+		// btnClose.setPreferredSize(new Dimension(100, 25));
+		// btnClose.setMinimumSize(new Dimension(100, 25));
+		// btnClose.addActionListener(this);
+		// btnClose.setActionCommand("Go");
+		// add(BorderLayout.PAGE_END, btnClose);
 
 		pack();
 
@@ -65,18 +72,31 @@ public class ProgressFrame extends JFrame implements ActionListener {
 		java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 		setAlwaysOnTop(false);
+		setModal(false);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if ("Go".equals(e.getActionCommand()))
-			setVisible(false);
-
+			this.setVisible(false);
 	}
 
 	public void setList(String[] listData) {
+		if (!listScroller.isVisible()) {
+			label.setVisible(false);
+			listScroller.setVisible(true);
+		}
 		list.setListData(listData);
+		repaint();
+	}
+
+	public void setText(String string) {
+		if (!label.isVisible()) {
+			label.setVisible(true);
+			listScroller.setVisible(false);
+		}
+		label.setText(string);
 		repaint();
 	}
 

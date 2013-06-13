@@ -311,6 +311,7 @@ public class FileAction implements ActionListener {
 						if (okToRun) {
 							// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
 							setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+							ScenarioMonitor.add(FilenameUtils.removeExtension(scen));
 							setupBatchFile(scen, false);
 							runBatch();
 						}
@@ -818,6 +819,51 @@ public class FileAction implements ActionListener {
 		}
 	}
 
+	public static void setupScenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
+	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
+
+		// count and save current realizations
+
+		int scenarioCCCount = 0;
+		boolean[] realizationIsSelected = new boolean[5];
+		for (int i = 1; i <= 5; i++) {
+			realizationIsSelected[i - 1] = ((JCheckBox) swix.find("hyd_ckb" + i)).isSelected();
+			if (realizationIsSelected[i - 1]) {
+				scenarioCCCount++;
+			}
+		}
+
+		if (((JCheckBox) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount > 1)) {
+
+			// Multiple realizations
+
+			for (int i = 1; i <= 5; i++)
+				if (realizationIsSelected[i - 1]) {
+
+					// Set only one realization in scenario
+
+					for (int j = 1; j <= 5; j++)
+						((JCheckBox) swix.find("hyd_ckb" + i)).setSelected((i == j));
+
+					// save
+					saveFile(FilenameUtils.removeExtension(scen) + "_CC" + i + ".cls", swix, regUserEdits, dTableModels, gl);
+
+					// build
+					setup1Scenario(scen, "_CC" + i, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+
+					// TODO: delete realization scenario file
+
+				}
+			// restore current realizations for in-memory scenario
+			for (int i = 1; i <= 5; i++)
+				((JCheckBox) swix.find("hyd_ckb" + i)).setSelected(realizationIsSelected[i - 1]);
+		}
+
+		else
+			setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+
+	}
+
 	/**
 	 * Builds a detail directory for a scenario with subdirectories for generated files and for all run files.
 	 * 
@@ -830,13 +876,13 @@ public class FileAction implements ActionListener {
 	 * @param gl
 	 * @param RegFlags
 	 */
-	public static void setupScenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
+	public static void setup1Scenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
 	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
 
 		final String scenWithoutExt = FilenameUtils.removeExtension(scen);
 		final String statusFilename = System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 		        + scenWithoutExt + scen_subscen + "\\save.txt";
-		ScenarioMonitor.add(scenWithoutExt);
+		ScenarioMonitor.add(scenWithoutExt + scen_subscen);
 		worker_setupScenario = new SwingWorker<Void, String>() {
 
 			@Override
@@ -853,8 +899,6 @@ public class FileAction implements ActionListener {
 
 			@Override
 			protected Void doInBackground() throws Exception {
-
-				desktop.setEnabled(false);
 
 				boolean success = true;
 
