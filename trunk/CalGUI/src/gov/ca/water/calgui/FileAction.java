@@ -138,50 +138,19 @@ public class FileAction implements ActionListener {
 					// delete previous generated batch file
 					deleteBatchFile();
 
-					// load scenario, generate study files, generate batch file
-					for (File sf : batchScenFileDialog.fc.getSelectedFiles()) {
+					File[] expandedScenarioFiles = expandScenarioList(batchScenFileDialog.fc.getSelectedFiles(), swix);
 
-						System.out.println("loading scenario file: " + sf.getAbsolutePath());
-
-						// load scenario file
-						FileDialog scenFileDialog;
-						scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
-						scenFileDialog.fc.setSelectedFile(sf); // Use this name for next Save As
-
-						action_WSIDI = 0;
-						regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
-						regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
-						action_WSIDI = 1;
-						setFilenameTooltips();
-
-						// Check if scenario has multiple CC realizations checked
-						// int scenarioCCCount = 0;
-						// for (int i = 1; i <= 5; i++) {
-						// if (((JCheckBox) swix.find("hyd_ckb" + i)).isSelected())
-						// scenarioCCCount++;
-						// }
-						// boolean currentScenarioHasMultipleCCs = ((JCheckBox) swix.find("hyd_ckb1")).isEnabled()
-						// && (scenarioCCCount > 1);
-
-						// TODO: need a function that takes one cls file as argument, check for multiple CC realizations, and then
-						// return array of multiple cls files.
-
-						// generate study files
-						setupScenario(sf.getName(), "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+					// generate batch file
+					for (File sf : expandedScenarioFiles) {
 
 						// put timeout of 3 secs between each run
+
 						setupBatchFile(sf.getName(), true);
-
-						// System.err.println("finished setup scen:" + sf.getAbsolutePath());
-
-						// Wait for Swing worker to complete.
 
 					}
 
 					// run all scenarios with 3 secs delay between jvm initialization
 					runBatch();
-
-					// RunScenarios rs = new RunScenarios();
 
 				}
 
@@ -1092,8 +1061,8 @@ public class FileAction implements ActionListener {
 				configMap.put("ScenarioName", scenWithoutExt);
 				configMap.put("ScenarioPath", new File(scenRunDir_absPath).getParentFile().getAbsolutePath());
 				configMap.put("RunPath", scenRunDir_absPath);
-				configMap.put("ConfigFilePath",
-				        new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName") + ".config").getAbsolutePath());
+				configMap.put("ConfigFilePath", new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName")
+				        + scen_subscen + ".config").getAbsolutePath());
 
 				updateSaveStatusFile(statusFilename, "Writing Scenario Config.");
 
@@ -1467,4 +1436,34 @@ public class FileAction implements ActionListener {
 		}
 	}
 
+	// File[] expandedScenarioFiles = expandScenarioList(batchScenFileDialog.fc.getSelectedFiles(), swix);
+	private File[] expandScenarioList(File[] scenFiles, SwingEngine swix) {
+		// TODO: Save current UI
+		ArrayList<String> expandedList = new ArrayList<String>();
+		for (File sf : scenFiles) {
+			action_WSIDI = 0;
+			regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
+			boolean[] realizationIsSelected = new boolean[5];
+			int scenarioCCCount = 0;
+			for (int i = 1; i <= 5; i++) {
+				realizationIsSelected[i - 1] = ((JCheckBox) swix.find("hyd_ckb" + i)).isSelected();
+				if (realizationIsSelected[i - 1]) {
+					scenarioCCCount++;
+				}
+			}
+			if (scenarioCCCount < 2)
+				expandedList.add(sf.getAbsolutePath());
+			else
+				for (int i = 1; i <= 5; i++) {
+					if (realizationIsSelected[i - 1]) {
+						expandedList.add(FilenameUtils.removeExtension(sf.getAbsolutePath()) + "_CC" + i + ".cls");
+					}
+				}
+		}
+		File[] expandedScenFiles = new File[expandedList.size()];
+		for (int i = 0; i < expandedList.size(); i++)
+			expandedScenFiles[i] = new File(expandedList.get(i));
+		// TODO: Restore UI from saved file
+		return expandedScenFiles;
+	}
 }
