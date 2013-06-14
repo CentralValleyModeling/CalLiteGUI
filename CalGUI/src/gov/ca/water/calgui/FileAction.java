@@ -146,6 +146,7 @@ public class FileAction implements ActionListener {
 						// put timeout of 3 secs between each run
 
 						setupBatchFile(sf.getName(), true);
+						ScenarioMonitor.add(FilenameUtils.removeExtension(sf.getName()));
 
 					}
 
@@ -278,11 +279,23 @@ public class FileAction implements ActionListener {
 							}
 						}
 						if (okToRun) {
-							// setupAndRun(scen, desktop, swix, regUserEdits, dTableModels, gl);
-							setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
-							ScenarioMonitor.add(FilenameUtils.removeExtension(scen));
-							setupBatchFile(scen, false);
+
+							// delete previous generated batch file
+							deleteBatchFile();
+
+							File[] scenArray = { f };
+							File[] expandedScenarioFiles = expandScenarioList(scenArray, swix);
+
+							// generate batch file
+							for (File sf : expandedScenarioFiles) {
+								// put timeout of 3 secs between each run
+								setupBatchFile(sf.getName(), true);
+								ScenarioMonitor.add(FilenameUtils.removeExtension(sf.getName()));
+							}
+
+							// run all scenarios with 3 secs delay between jvm initialization
 							runBatch();
+
 						}
 						btn.setEnabled(true);
 						mainmenu.revalidate();
