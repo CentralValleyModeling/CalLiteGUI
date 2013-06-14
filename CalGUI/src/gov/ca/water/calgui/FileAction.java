@@ -754,6 +754,8 @@ public class FileAction implements ActionListener {
 		        .getAbsolutePath();
 
 		String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
+		String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
+		String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
 
 		String batchText_template = "";
 		String batchText = "";
@@ -766,18 +768,15 @@ public class FileAction implements ActionListener {
 		try {
 			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile, isAppend)));
 
+			batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
+			batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
+			batchFilePW.println("del /F /Q " + progressFilePath);
+			batchFilePW.println("del /F /Q " + wreslCheckFilePath);
+
 			if (isParallel) {
-				// this writes progress to .\Run\progress.txt
-				batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
-				batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
 				batchFilePW.println("start " + batchText);
 				batchFilePW.println("timeout 3");
 			} else {
-				// this doesn't writes progress.
-				// batchText_template = "%~dp0\\Model_w2\\runConfig_limitedXA {ConfigFilePath}";
-				// this writes progress to .\Run\progress.txt
-				batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
-				batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
 				batchFilePW.println(batchText);
 				batchFilePW.println();
 			}
