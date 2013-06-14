@@ -1046,7 +1046,7 @@ public class FileAction implements ActionListener {
 
 				Map<String, String> configMap = new HashMap<String, String>();
 				configMap.put("MainFile", scenRunDir_absPath + "\\main.wresl");
-				configMap.put("DvarFile", newtext[6]);
+				configMap.put("DvarFile", FilenameUtils.removeExtension(newtext[6]) + scen_subscen + ".dss");
 				configMap.put("SvarFile", newtext[5]);
 				configMap.put("SvarFPart", newtext[12]);
 				configMap.put("InitFile", newtext[7]);
