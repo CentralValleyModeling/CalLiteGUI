@@ -37,6 +37,8 @@ public class GUIUtils {
 
 	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
+	public static int simultaneousRuns;
+
 	public static void setMouseListener(Component component, Object obj) {
 
 		component.addMouseListener((MouseListener) obj);

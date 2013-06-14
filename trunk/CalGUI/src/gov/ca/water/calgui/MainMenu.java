@@ -65,6 +65,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -445,6 +446,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.setActionListener(runsettings, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
 			        regFlags));
+			((JSlider) swix.find("run_sldThreads")).addChangeListener(this);
 			GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, regUserEditFlags,
 			        dTableModels, gl, action_WSIDI));
 
@@ -470,6 +472,17 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
+
+			// Count threads and update selector appropriately
+
+			int maxThreads = Math.max(1, Runtime.getRuntime().availableProcessors());
+			GUIUtils.simultaneousRuns = maxThreads;
+
+			((JSlider) swix.find("run_sldThreads")).setEnabled(maxThreads > 1);
+			((JSlider) swix.find("run_sldThreads")).setMaximum(maxThreads);
+			((JLabel) swix.find("run_lblThreads")).setText(" " + maxThreads + ((maxThreads > 1) ? " runs" : " run"));
+			((JLabel) swix.find("run_lblThreadsInfo")).setText("Simultaneous runs "
+			        + ((maxThreads > 1) ? "(1-" + maxThreads + ")" : "(1)"));
 
 			ScenarioMonitor.start();
 
@@ -767,6 +780,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 		Component c = (Component) changeEvent.getSource();
+		if (c.getName().toLowerCase().equals("run_sldthreads")) {
+			GUIUtils.simultaneousRuns = ((JSlider) c).getValue();
+			((JLabel) swix.find("run_lblThreads")).setText(" " + GUIUtils.simultaneousRuns + " run"
+			        + ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
+		}
 		if (c.getName().toLowerCase().equals("reg_tabbedpane")) {
 			// Hide table on Regulations dashboard when moving between tabbed panes on Regulation dashboard
 			((JComponent) swix.find("scrRegValues")).setVisible(false);

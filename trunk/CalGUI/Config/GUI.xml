@@ -186,12 +186,27 @@
 								</radiobutton>
 							</buttongroup>
 						</panel>
-						<panel border="TitledBorder(Batch runs)" enabled="True">
+						<panel border="TitledBorder(Batch runs)" enabled="True"
+							layout="GridBagLayout">
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="70" gridwidth="2" />
 							<button text=" Select Scenarios ... " ActionCommand="AC_BATCH"
 								name="run_btnBatchSel" id="run_btnBatchSel">
+								<gridbagconstraints gridx="0" gridy="1"
+									gridwidth="3" />
 							</button>
+							<label name="run_lblThreadsInfo" id="run_lblThreadsInfo" enabled="false"
+								minimumsize="140,20" text="Simultaneous runs (1-4)">
+								<gridbagconstraints gridx="0" gridy="10" />
+							</label>
+							<label name="run_lblThreads" id="run_lblThreads" text="  4 runs"
+								minimumsize="50,20">
+								<gridbagconstraints gridx="4" gridy="10" />
+							</label>
+							<slider name="run_sldThreads" id="run_sldThreads" minimum="1" minortickspacing="1" paintticks="true"
+								minimumsize="60,20" maximum="4" orientation="0">
+								<gridbagconstraints insets="5,0,0,0" gridx="2" gridy="10" />
+							</slider>
 						</panel>
 						<button text=" Run Scenario " ActionCommand="AC_RUN" name="run_btnRun"
 							id="run_btnRun">
@@ -202,16 +217,12 @@
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="0" gridy="99" gridwidth="1" insets="5,5,5,0" />
 						</button>
-						<!--  label id="labGUIRev" name="labGUIRev" text="$Rev$"
-							enabled="false" minimumsize="80,20">
-							<gridbagconstraints anchor="GridBagConstraints.SOUTHEAST"
-								gridx="1" gridy="80" gridwidth="1" insets="5,5,5,0" />
-						</label-->
-						<!-- textfield id="txfGUIRev" name="txfGUIRev" text="Blah"
-							enabled="false" minimumsize="80,20">
-							<gridbagconstraints anchor="GridBagConstraints.SOUTHEAST"
-								gridx="1" gridy="99" gridwidth="1" insets="5,5,5,0" />
-						</textfield-->
+						<!-- label id="labGUIRev" name="labGUIRev" text="$Rev$" enabled="false" 
+							minimumsize="80,20"> <gridbagconstraints anchor="GridBagConstraints.SOUTHEAST" 
+							gridx="1" gridy="80" gridwidth="1" insets="5,5,5,0" /> </label -->
+						<!-- textfield id="txfGUIRev" name="txfGUIRev" text="Blah" enabled="false" 
+							minimumsize="80,20"> <gridbagconstraints anchor="GridBagConstraints.SOUTHEAST" 
+							gridx="1" gridy="99" gridwidth="1" insets="5,5,5,0" /> </textfield -->
 					</panel>
 					<panel preferredsize="610,675">
 						<gridbagconstraints insets="0,30,20,0"

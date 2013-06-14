@@ -176,14 +176,16 @@ public class ScenarioMonitor {
 
 	private static String lastLine(File file) {
 		String text = "Empty!";
+		String text2 = "";
 		try {
 			Scanner scanner;
 			scanner = new Scanner(new FileInputStream(file.getAbsolutePath()));
 			while (scanner.hasNextLine()) {
+				text2 = text;
 				text = scanner.nextLine();
 			}
 			scanner.close();
-			return text;
+			return text2 + text;
 
 		} catch (IOException e) {
 			log.info(file.getName() + " not openable");
