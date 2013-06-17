@@ -133,7 +133,6 @@ public class FileAction implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Files selected: " + batchScenFileDialog.fc.getSelectedFiles().length
 					        + ".\nBatch run will start after study files are generated.", "Batch select result",
 					        JOptionPane.INFORMATION_MESSAGE);
-					// Results in File[] batchScenFileDialog.fc.getSelectedFiles();
 
 					// delete previous generated batch file
 					deleteBatchFile();
@@ -201,7 +200,26 @@ public class FileAction implements ActionListener {
 						StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
 						Boolean okToRun = sb.toString().equals(sbExisting.toString());
-						if (!okToRun) {
+						if (okToRun) {
+							if (!(new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+							        + FilenameUtils.removeExtension(scen))).isDirectory()) {
+								setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+
+								// Wait two seconds to make sure save has started
+
+								try {
+									Thread.sleep(2000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							} else {
+								((JTextField) swix.find("run_txfScen")).setText(scen);
+								setFilenameTooltips();
+
+							}
+
+						} else {
 
 							// Scenario settings have changed - check if they should be saved before running
 
@@ -253,8 +271,8 @@ public class FileAction implements ActionListener {
 									String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
 									if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
 										if (JOptionPane.showConfirmDialog(mainmenu,
-										        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen
-										                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen,
+										        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen2
+										                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen2,
 										        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
 											// Existing file, do overwrite
 											okToRun = true;
@@ -269,7 +287,20 @@ public class FileAction implements ActionListener {
 										setFilenameTooltips();
 										sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
 										saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
+
+										// Force setup of scenario schema because there is a change
+
+										setupScenario(scen2, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 										scen = scen2;
+
+										// Wait two seconds to make sure save has started
+
+										try {
+											Thread.sleep(2000);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									} else {
 										((JTextField) swix.find("run_txfScen")).setText(scen);
 										setFilenameTooltips();
@@ -283,11 +314,29 @@ public class FileAction implements ActionListener {
 							// delete previous generated batch file
 							deleteBatchFile();
 
+							f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 							File[] scenArray = { f };
 							File[] expandedScenarioFiles = expandScenarioList(scenArray, swix);
 
 							// generate batch file
+							int maxWaitInSeconds = 60;
 							for (File sf : expandedScenarioFiles) {
+
+								String scenarioName = FilenameUtils.removeExtension(sf.getName());
+								try {
+									System.out.println(ScenarioMonitor.getStatus(scenarioName));
+
+									for (int wait = 0; (wait > maxWaitInSeconds)
+									        || (ScenarioMonitor.getStatus(scenarioName).contains("SAVING")); wait++) {
+
+										Thread.sleep(1000);
+
+									}
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									log.debug("Problem with wait for save");
+								}
+
 								// put timeout of 3 secs between each run
 								setupBatchFile(sf.getName(), true);
 								ScenarioMonitor.add(FilenameUtils.removeExtension(sf.getName()));
@@ -792,7 +841,8 @@ public class FileAction implements ActionListener {
 	private static void updateSaveStatusFile(String statusFilename, String text) {
 
 		try {
-			FileWriter fw = new FileWriter(statusFilename, true); // the true will append the new data
+			FileWriter fw = new FileWriter(statusFilename, (new File(statusFilename)).exists()); // the true will append the new
+			                                                                                     // data
 			fw.write(text + "\n");// appends the string to the file
 			fw.close();
 		} catch (IOException ioe) {
@@ -883,6 +933,15 @@ public class FileAction implements ActionListener {
 
 				boolean success = true;
 
+				// ========== Copy Run directory
+
+				updateSaveStatusFile(statusFilename, "Creating new Run directory.");
+
+				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+				        + scenWithoutExt + scen_subscen + "\\Run").getAbsolutePath();
+
+				success = success & setupScenarioDirectory(scenRunDir_absPath);
+
 				// ========== Prepare "Generated" folder
 
 				updateSaveStatusFile(statusFilename, "Creating new Generated directory.");
@@ -915,15 +974,6 @@ public class FileAction implements ActionListener {
 				success = success
 				        & copyDSSFileToScenarioDirectory(scenGeneratedDir_absPath,
 				                ((JTextField) swix.find("hyd_DSS_Init")).getText());
-
-				// ========== Copy Run directory
-
-				updateSaveStatusFile(statusFilename, "Creating new Run directory.");
-
-				String scenRunDir_absPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
-				        + scenWithoutExt + scen_subscen + "\\Run").getAbsolutePath();
-
-				success = success & setupScenarioDirectory(scenRunDir_absPath);
 
 				// ========== Copy DSS files to "Run" folder
 
