@@ -198,9 +198,14 @@
 		</jar>
 
 	</target>
+	
+	<!-- Blow away compiled code from deploy package after it has been jarred -->
+	<target name="clean-package" depends="make-jar">
+	    <delete dir="${deploy.dir}/classes"/>
+	</target>
 
 
-	<target name="create-shell-script" depends="make-jar">
+	<target name="create-shell-script" depends="clean-package">
 
 		<echo file="${deploy.dir}/run-calgui.bat">@echo off
 			PATH =.;./jre6/bin;%PATH%
