@@ -122,14 +122,14 @@ public class ScenarioMonitor {
 
 		File scenDir = new File(scenDir_absPath);
 		if (!scenDir.isDirectory())
-			return "ERROR - No directory"; // Scenario directory doesn't exist
+			return "WHILE SAVING - No directory"; // Scenario directory doesn't exist
 
 		File scenSavingFile = new File(scenDir_absPath + "\\save.txt");
 		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.log");
 		File scenPROGRESSFile = new File(scenDir_absPath + "\\Run\\PROGRESS.txt");
 
 		if (!scenSavingFile.exists())
-			return "ERROR - No save.txt file"; // Scenario save in progress
+			return "WHILE SAVING - No save.txt file"; // Scenario save in progress
 
 		text = lastLine(scenSavingFile);
 		if (text.contains("unopenable!"))
