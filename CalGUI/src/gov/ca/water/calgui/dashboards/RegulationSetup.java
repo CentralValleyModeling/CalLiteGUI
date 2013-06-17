@@ -264,7 +264,9 @@ public class RegulationSetup {
 				} else {
 					iOpt = 2;
 				}
-				dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+				if (dTableModels[tID] == null) {
+					dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+				}
 			}
 
 			// dTableModels[tID].addTableModelListener(this);
