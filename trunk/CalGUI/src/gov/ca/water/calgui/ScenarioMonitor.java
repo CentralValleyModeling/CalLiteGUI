@@ -1,10 +1,12 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.utils.Pair;
 import gov.ca.water.calgui.utils.ProgressDialog;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +19,7 @@ import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
 
+;
 /**
  * Tracks and displays scenario status during save and run
  * 
@@ -31,7 +34,7 @@ public class ScenarioMonitor {
 	private static ProgressDialog progressDialog;
 
 	private static boolean saving = false;
-	private static final HashMap<String, String> scenarioList = new HashMap<String, String>();
+	private static final HashMap<String, Pair<String, Date>> scenarioList = new HashMap<String, Pair<String, Date>>();
 	private static final SwingWorker<Void, String> workerScenarioMonitor = new SwingWorker<Void, String>() {
 
 		@Override
@@ -54,13 +57,28 @@ public class ScenarioMonitor {
 				listData[0] = "No scenarios tracked";
 			} else {
 				listData = new String[scenarioList.size()];
-				Iterator<Entry<String, String>> it = scenarioList.entrySet().iterator();
+				Iterator<Entry<String, Pair<String, Date>>> it = scenarioList.entrySet().iterator();
 				int i = 0;
+				int j = 0;
+				Date now = new Date();
 				while (it.hasNext()) {
-					Map.Entry<String, String> entry = it.next();
-					entry.setValue(getStatus(entry.getKey()));
-					listData[i] = entry.getKey() + " - " + entry.getValue();
-					saving = saving || entry.getValue().contains("SAVING -");
+
+					Map.Entry<String, Pair<String, Date>> entry = it.next();
+					String status = getStatus(entry.getKey());
+
+					// Check for change in status
+					if (!status.equals(entry.getValue().status)) {
+						entry.setValue(new Pair<String, Date>(status, now));
+					}
+
+					// Check for timeout
+					if (now.getTime() - entry.getValue().timestamp.getTime() < 1000 * 60) {
+						listData[j] = entry.getKey() + " - " + status;
+						j++;
+						saving = saving || status.contains("SAVING -");
+					} else {
+						scenarioList.remove(entry.getKey());
+					}
 					i++;
 				}
 			}
@@ -97,8 +115,12 @@ public class ScenarioMonitor {
 	 */
 	public static void add(String scenarioName) {
 		// TODO: Check for duplicate and handle appropriately
-		if (!scenarioList.containsKey(scenarioName))
-			scenarioList.put(scenarioName, "Unknown");
+		if (!scenarioList.containsKey(scenarioName)) {
+			Date now = new Date();
+			Pair<String, Date> pair = new Pair<String, Date>("Unknown", now);
+			scenarioList.put(scenarioName, pair);
+		}
+
 		if (!progressDialog.isVisible())
 			progressDialog.setVisible(true);
 	}
@@ -160,10 +182,24 @@ public class ScenarioMonitor {
 				return "RUNNING - unable to read progress.txt";
 			if (text.contains("Empty!"))
 				return "RUNNING - run starting";
-			if (!text.contains("Run completed."))
-				return "RUNNING - " + text;
-			else
+			if (text.contains("Run completed."))
 				return "DONE";
+			if (text.contains("Run failed."))
+				return "DONE - run failed.";
+			else {
+				String parts[] = text.split(" ");
+				if (parts.length == 4) {
+					try {
+						int totalMonths = 12 * (Integer.parseInt(parts[1]) - Integer.parseInt(parts[0]));
+						int months = Math.min(totalMonths,
+						        Integer.parseInt(parts[3]) + 12 * (Integer.parseInt(parts[2]) - Integer.parseInt(parts[0])));
+						text = parts[3] + "/" + parts[2] + " (" + (100 * months / totalMonths) + "%)";
+					} catch (NumberFormatException e) {
+						// System.out.println("Error");
+					}
+				}
+				return "RUNNING - " + text;
+			}
 		}
 	}
 
@@ -185,7 +221,11 @@ public class ScenarioMonitor {
 				text = scanner.nextLine();
 			}
 			scanner.close();
-			return text2 + text;
+			if (text2.equals("Empty!"))
+				return text;
+			else
+
+				return text2 + text;
 
 		} catch (IOException e) {
 			log.info(file.getName() + " not openable");
@@ -193,4 +233,5 @@ public class ScenarioMonitor {
 			return file.getName() + " unopenable!";
 		}
 	}
+
 }
