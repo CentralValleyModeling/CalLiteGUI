@@ -124,13 +124,14 @@ public class FileDialog implements ActionListener {
 	 * @param rdb1
 	 * @param rdb2
 	 */
-	public FileDialog(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2) {
+	public FileDialog(JList aList, JLabel aLabel, JRadioButton rdb1, JRadioButton rdb2, boolean isMultiple) {
 		theLabel = aLabel;
 		theFileExt = "DSS";
 		theTextField = null;
 		setup(aList);
 		rdbopt1 = rdb1;
 		rdbopt2 = rdb2;
+		theMultipleFlag = isMultiple;
 	}
 
 	/**
@@ -261,6 +262,11 @@ public class FileDialog implements ActionListener {
 				UIManager.put("FileChooser.openDialogTitleText", "Select Scenarios");
 				fc.setMultiSelectionEnabled(true);
 				dialogRC = fc.showDialog(null, "Select");
+				if (theList != null) {
+					for (File file : fc.getSelectedFiles()) {
+						addFileToList(file);
+					}
+				}
 			} else {
 
 				if (theFileExt == null)
@@ -279,44 +285,46 @@ public class FileDialog implements ActionListener {
 					if (theFileExt.equals("CLS") && !file.getName().toLowerCase().endsWith(".cls")) {
 						file = new File(file.getPath() + ".CLS");
 					}
-					boolean match = false;
 					if (theList != null) {
-						for (int i = 0; i < lmScenNames.getSize(); i++) {
-							RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
-							match = match | (rbli.toString().equals(file.getPath()));
-						}
-						if (!match)
-							lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
+						addFileToList(file);
+					} else if (theLabel != null) {
+						// theLabel.setText(file.getName());
+						// theLabel.setToolTipText(file.getPath());
+					} else if (theTextField != null) {
+						theTextField.setText(file.getName());
+						theTextField.setToolTipText(file.getPath());
 					}
-					if (match) {
-						JOptionPane
-						        .showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"
-						                + "and will not be added. It is already in the Scenarios list.", "Alert",
-						                JOptionPane.ERROR_MESSAGE);
-					} else {
-						if (theList == null || lmScenNames.getSize() == 1) {
-							if (theList != null)
-								((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
-							if (theLabel != null) {
-								// theLabel.setText(file.getName());
-								// theLabel.setToolTipText(file.getPath());
-							} else if (theTextField != null) {
-								theTextField.setText(file.getName());
-								theTextField.setToolTipText(file.getPath());
-							}
-						}
-						if (theList != null) {
-							theList.ensureIndexIsVisible(lmScenNames.getSize() - 1);
-							theList.revalidate();
-							theList.validate();
-							theList.getParent().invalidate();
-						}
 
-					}
 				}
 			}
+
 		}
 		return;
+	}
+
+	/**
+	 * Adds file to list of scenarios if not already in list. Currently used to manage list of scenarios on Quick Result dashboard
+	 * 
+	 * @param file
+	 */
+	private void addFileToList(File file) {
+		boolean match = false;
+		for (int i = 0; i < lmScenNames.getSize(); i++) {
+			RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
+			match = match | (rbli.toString().equals(file.getPath()));
+		}
+		if (match)
+			JOptionPane.showMessageDialog(null, "Scenario \"" + file.getPath() + "\"\n"
+			        + "and will not be added. It is already in the Scenarios list.", "Alert", JOptionPane.ERROR_MESSAGE);
+		else {
+			lmScenNames.addElement(new RBListItem(file.getPath(), file.getName()));
+			if (lmScenNames.getSize() == 1)
+				((RBListItem) lmScenNames.getElementAt(0)).setSelected(true);
+			theList.ensureIndexIsVisible(lmScenNames.getSize() - 1);
+			theList.revalidate();
+			theList.validate();
+			theList.getParent().invalidate();
+		}
 	}
 
 	/**

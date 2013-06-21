@@ -29,8 +29,10 @@ import gov.ca.water.calgui.utils.Utils;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Graphics2D;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
+import java.awt.SplashScreen;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +73,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
@@ -151,7 +152,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public MainMenu(boolean makeVisible) throws Exception {
 
+		// Place revision/release info on splash screen (to match About screen?)
+
 		long startSetupTime = System.currentTimeMillis();
+		final SplashScreen splash = SplashScreen.getSplashScreen();
+		Graphics2D g = splash.createGraphics();
+		g.setColor(Color.BLACK);
+		g.drawString("TEST STRING", 100, 100);
+		splash.update();
+
 		swix = new SwingEngine(this);
 
 		// Read GUI configuration, set UI elements
@@ -273,7 +282,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
 			JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
-			FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2);
+			FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2, true);
 			lstScenarios.setModel(fileDialog.lmScenNames);
 			lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 
@@ -380,6 +389,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		catch (Exception e) {
 			log.debug("Problem setting checkbox labels. " + e);
 		}
+
+		// Further progress
+		g.drawString("TEST STRING 2", 100, 120);
+		splash.update();
 
 		// Schematic views
 
@@ -506,14 +519,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public static void main(String[] args) {
 
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new SplashScreen();
-
-			}
-		});
+		// Load menu
 
 		try {
 			new MainMenu(true);
