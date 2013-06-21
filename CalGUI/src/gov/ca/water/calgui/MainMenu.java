@@ -71,6 +71,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ProgressMonitor;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
@@ -505,7 +506,14 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public static void main(String[] args) {
 
-		// Load menu
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				new SplashScreen();
+
+			}
+		});
 
 		try {
 			new MainMenu(true);
