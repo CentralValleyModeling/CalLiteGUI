@@ -1,11 +1,45 @@
 Aceeptance testing procedure for Cal-Lite User Interface
 
-1. Test Default Scenario
+1. Run Default Scenario
 
-	1. Extract contents of zip file into folder of your choosing. Note the file name references the build date.
-	2. Double click run-calgui.bat. This should fire up the user interface.
-	3. Click the "Run Scenario" button. Ignore the Windows Firewall warning should one appear. The default scenario should run "out of the box". You will see WRIMS-generated message in the console.
-	4. Verify post processing by checking these outputs:
+  * Extract contents of zip file into folder of your choosing. Note the file name references the build date.
+  * Double click run-calgui.bat. This should fire up the user interface.
+  * Click the "Run Scenario" button. Ignore the Windows Firewall warning should one appear. The default scenario should run "out of the box". You will see WRIMS-generated message in the console.
+
+2. Create and save D1485 scenario
+
+  * Switch to Regulations page
+  * Click on "D-1485" radiobutton
+  * File|Save As "D1485.cls"
+
+3. Create climate change scenario with two realizations
+
+  * Switch to Hydroclimate page
+  * Click on "Early Long-Term" or "Late Long-term" radiobuttons
+  * Click on any two Climate Change Scenario checkboxes
+  * File|Save As "CC.cls"
+
+4. Do batch run
+
+  * Switch to Run Settings page
+  * Click "Select Scenarios" button and choose D1485.cls and CC.cls.
+
+5. Check outputs
+
+  * When runs are done, switch to "Quick Results"
+  * Click Add button to load D1485_DV.DSS and DEFAULT_DV.DSS
+    * Right click on "Trinity" checkbox to see plot
+    * (MORE DETAIL TO COME)
+  * Switch to "External PDF"
+    * Select D1485_DV.DSS and DEFAULT_DV.DSS as result files.
+    * Click "Generate Report"
+  * Switch to "Map View"
+    * (MORE DETAIL TO COME)
+
+----
+==_Old Notes_==
+
+  #Verify post processing by checking these outputs:
 		...
 		Quick Results
 		Exceedence plot
