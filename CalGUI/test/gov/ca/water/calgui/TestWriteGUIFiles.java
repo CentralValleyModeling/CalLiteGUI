@@ -8,6 +8,7 @@ import gov.ca.water.calgui.utils.NumericTextField;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
@@ -134,7 +135,9 @@ public class TestWriteGUIFiles extends TestCase {
 		int[] RegFlags = null;
 
 		FileAction.setupScenario("default.cls", "", desktop, swix, RegUserEdits, dTableModels, gl, RegFlags);
-		FileAction.setupBatchFile("default.cls", false);
+		List<String> defaultScenFileName = new ArrayList<String>();
+		defaultScenFileName.add("default.cls");
+		FileAction.setupBatchFile(null, defaultScenFileName, false);
 		FileAction.runBatch();
 		File checkFile = new File(System.getProperty("user.dir") + "\\Run" + File.separator + "check.text");
 		assertTrue(checkFile.exists());

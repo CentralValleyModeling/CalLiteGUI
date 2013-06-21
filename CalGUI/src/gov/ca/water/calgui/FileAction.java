@@ -139,15 +139,36 @@ public class FileAction implements ActionListener {
 
 					File[] expandedScenarioFiles = expandScenarioList(batchScenFileDialog.fc.getSelectedFiles(), swix);
 
-					// generate batch file
-					for (File sf : expandedScenarioFiles) {
-
-						// put timeout of 3 secs between each run
-
-						setupBatchFile(sf.getName(), true);
-						ScenarioMonitor.add(FilenameUtils.removeExtension(sf.getName()));
-
+					// how many simultaneous run?
+					int numberOfSimultaneousRun = GUIUtils.simultaneousRuns;
+					// how many sub batch files?
+					int numberOfSubBatch = (int) Math.ceil((float) expandedScenarioFiles.length / numberOfSimultaneousRun);
+					// sub batch file name array
+					String[] subBatchFileNameArray = new String[numberOfSubBatch];
+					for (int j = 0; j < numberOfSubBatch; j++) {
+						subBatchFileNameArray[j] = "group_" + j + ".bat";
 					}
+
+					for (int j = 0; j < numberOfSubBatch; j++) {
+
+						subBatchFileNameArray[j] = "group_" + j + ".bat";
+						File subBatchFile = new File(System.getProperty("user.dir"), subBatchFileNameArray[j]);
+						FileUtils.deleteDir(subBatchFile);
+						List<String> groupScenFileNameList = new ArrayList<String>();
+						for (int i = j * numberOfSimultaneousRun; i < Math.min((j + 1) * numberOfSimultaneousRun,
+						        expandedScenarioFiles.length); i++) {
+
+							String scenFileName = expandedScenarioFiles[i].getName();
+							groupScenFileNameList.add(scenFileName);
+							ScenarioMonitor.add(FilenameUtils.removeExtension(scenFileName));
+
+						}
+
+						setupBatchFile(subBatchFileNameArray[j], groupScenFileNameList, true);
+					}
+
+					// generate main batch file
+					setupMainBatchFile(null, expandedScenarioFiles, subBatchFileNameArray);
 
 					// run all scenarios with 3 secs delay between jvm initialization
 					runBatch();
@@ -320,9 +341,11 @@ public class FileAction implements ActionListener {
 
 							// generate batch file
 							int maxWaitInSeconds = 60;
+
 							for (File sf : expandedScenarioFiles) {
 
 								String scenarioName = FilenameUtils.removeExtension(sf.getName());
+
 								try {
 									System.out.println(ScenarioMonitor.getStatus(scenarioName));
 
@@ -337,14 +360,40 @@ public class FileAction implements ActionListener {
 									log.debug("Problem with wait for save");
 								}
 
-								// put timeout of 3 secs between each run
-								setupBatchFile(sf.getName(), true);
-								ScenarioMonitor.add(FilenameUtils.removeExtension(sf.getName()));
 							}
 
-							// run all scenarios with 3 secs delay between jvm initialization
-							runBatch();
+							// how many simultaneous run?
+							int numberOfSimultaneousRun = GUIUtils.simultaneousRuns;
+							// how many sub batch files?
+							int numberOfSubBatch = (int) Math.ceil((float) expandedScenarioFiles.length / numberOfSimultaneousRun);
+							// sub batch file name array
+							String[] subBatchFileNameArray = new String[numberOfSubBatch];
+							for (int j = 0; j < numberOfSubBatch; j++) {
+								subBatchFileNameArray[j] = "group_" + j + ".bat";
+							}
 
+							for (int j = 0; j < numberOfSubBatch; j++) {
+
+								subBatchFileNameArray[j] = "group_" + j + ".bat";
+								File subBatchFile = new File(System.getProperty("user.dir"), subBatchFileNameArray[j]);
+								FileUtils.deleteDir(subBatchFile);
+								List<String> groupScenFileNameList = new ArrayList<String>();
+								for (int i = j * numberOfSimultaneousRun; i < Math.min((j + 1) * numberOfSimultaneousRun,
+								        expandedScenarioFiles.length); i++) {
+
+									String scenFileName = expandedScenarioFiles[i].getName();
+									groupScenFileNameList.add(scenFileName);
+									ScenarioMonitor.add(FilenameUtils.removeExtension(scenFileName));
+
+								}
+
+								setupBatchFile(subBatchFileNameArray[j], groupScenFileNameList, true);
+							}
+
+							// generate main batch file
+							setupMainBatchFile(null, expandedScenarioFiles, subBatchFileNameArray);
+
+							runBatch();
 						}
 						btn.setEnabled(true);
 						mainmenu.revalidate();
@@ -791,42 +840,87 @@ public class FileAction implements ActionListener {
 
 	}
 
-	public static void setupBatchFile(final String scen, final boolean isParallel) {
+	public static void setupBatchFile(String batFileName, final List<String> scenList, final boolean isParallel) {
 
-		boolean isAppend = isParallel;
-
-		// find config file path
-
-		String scenarioName = FilenameUtils.removeExtension(scen);
-
-		String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\" + scenarioName)
-		        .getAbsolutePath();
-
-		String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
-		String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
-		String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
-
-		String batchText_template = "";
-		String batchText = "";
+		if (batFileName == null || batFileName.isEmpty())
+			batFileName = "CalLite_w2.bat";
 
 		File batchFile = null;
 
-		batchFile = new File(System.getProperty("user.dir"), "CalLite_w2.bat");
+		batchFile = new File(System.getProperty("user.dir"), batFileName);
 
 		PrintWriter batchFilePW;
 		try {
-			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile, isAppend)));
+			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile)));
 
-			batchText_template = "%~dp0\\Model_w2\\runConfig_calgui {ConfigFilePath}";
-			batchText = batchText_template.replace("{ConfigFilePath}", configFilePath);
-			batchFilePW.println("del /F /Q " + progressFilePath);
-			batchFilePW.println("del /F /Q " + wreslCheckFilePath);
+			for (int i = 0; i < scenList.size(); i++) {
 
-			if (isParallel) {
-				batchFilePW.println("start " + batchText);
-				batchFilePW.println("timeout 3");
-			} else {
-				batchFilePW.println(batchText);
+				String scen = scenList.get(i);
+				String scenarioName = FilenameUtils.removeExtension(scen);
+
+				String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+				        + scenarioName).getAbsolutePath();
+
+				String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
+
+				String batchText = "%~dp0\\Model_w2\\runConfig_calgui " + configFilePath;
+
+				if (isParallel && i < scenList.size() - 1) {
+					batchFilePW.println("start " + batchText);
+					batchFilePW.println("timeout 3");
+				} else {
+					batchFilePW.println("@title = \"" + batchText + "\"");
+					batchFilePW.println(batchText);
+					batchFilePW.println();
+				}
+			}
+
+			batchFilePW.flush();
+			batchFilePW.close();
+
+		} catch (IOException e) {
+			log.debug(e);
+		}
+
+	}
+
+	public static void setupMainBatchFile(String batFileName, final File[] allScenarioFiles, final String[] subBatchFileNameArray) {
+
+		if (batFileName == null || batFileName.isEmpty())
+			batFileName = "CalLite_w2.bat";
+
+		String del = "";
+
+		for (File scenFile : allScenarioFiles) {
+
+			String scenarioName = FilenameUtils.removeExtension(scenFile.getName());
+
+			String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
+			        + scenarioName).getAbsolutePath();
+
+			String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
+			String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
+
+			del = del + "del /F /Q " + progressFilePath + "\n";
+			del = del + "del /F /Q " + wreslCheckFilePath + "\n";
+		}
+
+		File batchFile = null;
+
+		batchFile = new File(System.getProperty("user.dir"), batFileName);
+
+		PrintWriter batchFilePW;
+		try {
+			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile)));
+
+			batchFilePW.println(del);
+
+			for (String subBat : subBatchFileNameArray) {
+				batchFilePW.println("start /wait " + subBat);
+				batchFilePW.println();
+			}
+			for (String subBat : subBatchFileNameArray) {
+				// batchFilePW.println("del /F /Q " + subBat);
 				batchFilePW.println();
 			}
 			batchFilePW.flush();
