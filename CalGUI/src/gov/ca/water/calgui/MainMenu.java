@@ -29,10 +29,8 @@ import gov.ca.water.calgui.utils.Utils;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Graphics2D;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
-import java.awt.SplashScreen;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -153,14 +151,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 	public MainMenu(boolean makeVisible) throws Exception {
 
-		// Place revision/release info on splash screen (to match About screen?)
-
 		long startSetupTime = System.currentTimeMillis();
-		final SplashScreen splash = SplashScreen.getSplashScreen();
-		Graphics2D g = splash.createGraphics();
-		g.setColor(Color.BLACK);
-		g.drawString("TEST STRING", 100, 100);
-		splash.update();
+
+		try {
+			CalLiteSplash.getSplash();
+		}
+
+		catch (Exception e) {
+			log.debug("Problem loading splash screen: " + e);
+		}
 
 		swix = new SwingEngine(this);
 
@@ -389,10 +388,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		catch (Exception e) {
 			log.debug("Problem setting checkbox labels. " + e);
 		}
-
-		// Further progress
-		g.drawString("TEST STRING 2", 100, 120);
-		splash.update();
 
 		// Schematic views
 
