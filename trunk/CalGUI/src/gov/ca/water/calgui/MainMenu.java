@@ -126,6 +126,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public DataFileTableModel[] dTableModels;
 	public Boolean[] regUserEditFlags;
 	public int[] regFlags;
+	static FileDialog fdDSSFiles;
 
 	static public String lookups[][];
 	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
@@ -277,20 +278,19 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		// Set up additional UI elements
-
 		try {
 			JRadioButton rdb1 = (JRadioButton) swix.find("rdbp001");
 			JRadioButton rdb2 = (JRadioButton) swix.find("rdbp002");
 
-			FileDialog fileDialog = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2, true);
-			lstScenarios.setModel(fileDialog.lmScenNames);
+			fdDSSFiles = new FileDialog(lstScenarios, (JLabel) swix.find("lblBase"), rdb1, rdb2, true);
+			lstScenarios.setModel(fdDSSFiles.lmScenNames);
 			lstScenarios.setBorder(new LineBorder(Color.gray, 1));
 
 			JButton btnScenario = (JButton) swix.find("btnAddScenario");
-			btnScenario.addActionListener(fileDialog);
+			btnScenario.addActionListener(fdDSSFiles);
 
 			JButton btnScenarioDel = (JButton) swix.find("btnDelScenario");
-			btnScenarioDel.addActionListener(fileDialog);
+			btnScenarioDel.addActionListener(fdDSSFiles);
 
 			JButton btnClearAll = (JButton) swix.find("btnClearScenario");
 			btnClearAll.addActionListener(this);

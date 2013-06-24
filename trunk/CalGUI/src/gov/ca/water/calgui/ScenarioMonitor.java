@@ -58,7 +58,6 @@ public class ScenarioMonitor {
 			} else {
 				listData = new String[scenarioList.size()];
 				Iterator<Entry<String, Pair<String, Date>>> it = scenarioList.entrySet().iterator();
-				int i = 0;
 				int j = 0;
 				Date now = new Date();
 				while (it.hasNext()) {
@@ -69,6 +68,10 @@ public class ScenarioMonitor {
 					// Check for change in status
 					if (!status.equals(entry.getValue().status)) {
 						entry.setValue(new Pair<String, Date>(status, now));
+						if (status.contains("DONE - run completed")) {
+							MainMenu.fdDSSFiles.addFileToList(new File(System.getProperty("user.dir") + "\\Scenarios\\"
+							        + entry.getKey() + "_DV.DSS"));
+						}
 					}
 
 					// Check for timeout
@@ -79,7 +82,6 @@ public class ScenarioMonitor {
 					} else {
 						scenarioList.remove(entry.getKey());
 					}
-					i++;
 				}
 			}
 			progressDialog.setList(listData);
@@ -183,7 +185,7 @@ public class ScenarioMonitor {
 			if (text.contains("Empty!"))
 				return "RUNNING - run starting";
 			if (text.contains("Run completed."))
-				return "DONE";
+				return "DONE - run completed";
 			if (text.contains("Run failed."))
 				return "DONE - run failed.";
 			else {

@@ -307,7 +307,7 @@ public class FileDialog implements ActionListener {
 	 * 
 	 * @param file
 	 */
-	private void addFileToList(File file) {
+	public void addFileToList(File file) {
 		boolean match = false;
 		for (int i = 0; i < lmScenNames.getSize(); i++) {
 			RBListItem rbli = (RBListItem) lmScenNames.getElementAt(i);
