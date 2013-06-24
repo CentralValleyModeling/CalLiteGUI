@@ -26,14 +26,13 @@ public class CalLiteSplash {
 			log.error("Problem in main method:", e);
 		}
 
-		String buildDate = properties.getProperty("build.date");
+		String buildDate = "Build date: " + properties.getProperty("build.date");
 		String versionId = "v. " + properties.getProperty("version.id");
 
 		Graphics2D g = splash.createGraphics();
-		g.setColor(Color.BLACK);
-		g.drawString(buildDate, 80, 100);
-		// Further progress
-		g.drawString(versionId, 80, 120);
+		g.setColor(new Color(255, 255, 204));
+		g.drawString(versionId, 25, 110);
+		g.drawString(buildDate, 25, 130);
 		splash.update();
 
 	}

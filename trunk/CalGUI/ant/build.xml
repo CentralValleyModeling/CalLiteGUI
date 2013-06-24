@@ -111,7 +111,7 @@
 	<target name="update-properties" depends="make-deploy-dir">
 		<propertyfile file="${src.dir}/callite-gui.properties">
 			<entry key="build.date" value="${build.date}" />
-			<entry key="version.id" value="2.01" />
+			<entry key="version.id" value="2.03" />
 		</propertyfile>
 
 		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}" />
@@ -189,7 +189,7 @@
 			<manifest>
 				<attribute name="Manifest-Version" value="1.0" />
 				<attribute name="Main-Class" value="gov.ca.water.calgui.MainMenu" />
-				<attribute name="SplashScreen-Image" value="images/splash.gif" />
+				<attribute name="SplashScreen-Image" value="images/splash.jpg" />
 				<attribute name="Class-Path" value=". ${jar.classpath} docs/helpset.hs" />
 			</manifest>
 
