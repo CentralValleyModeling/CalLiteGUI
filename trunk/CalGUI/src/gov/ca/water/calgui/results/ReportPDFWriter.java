@@ -5,12 +5,15 @@ import gov.ca.water.calgui.results.Report.Writer;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
@@ -82,6 +85,9 @@ public class ReportPDFWriter implements Writer {
 
 	@Override
 	public void startDocument(String filename) {
+
+		// Check if file is already open
+
 		bigFont = FontFactory.getFont("Arial", 14);
 		smallFont = FontFactory.getFont("Arial", 10);
 		smallBoldFont = FontFactory.getFont("Arial", 10);
@@ -99,9 +105,12 @@ public class ReportPDFWriter implements Writer {
 			        new FileOutputStream(filename));
 			document.open();
 		} catch (DocumentException de) {
-			System.err.println(de.getMessage());
+			log.debug(de.getMessage());
 		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
+			log.debug(ioe.getMessage());
+			JOptionPane.showMessageDialog(null, "Please close the file " + (new File(filename).getName()) + " if it is open.",
+			        "Warning!", JOptionPane.WARNING_MESSAGE);
+			return;
 		}
 	}
 
