@@ -101,14 +101,12 @@ public class ReportAction implements ActionListener {
 				JOptionPane.showMessageDialog(null, "You must specify the source DSS files and the output PDF file", "Error",
 				        JOptionPane.ERROR_MESSAGE);
 			} else {
-				Report report = null;
-				// dialog.setVisible(false);
+
 				try {
 					// Create an inputstream from template file;
 					FileInputStream fin = new FileInputStream(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 					// Open the template file
-					System.out.println(((JTextField) swix.find("tfTemplateFILE")).getToolTipText());
 					String theText = br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
 					theText = theText + br.readLine() + "\n";
@@ -131,7 +129,6 @@ public class ReportAction implements ActionListener {
 
 					theText = theText + "TABLE_FONT_SIZE\t" + ((JTextField) swix.find("tfFontSize")).getText() + "\n";
 
-					System.out.println(theText);
 					String aLine = br.readLine();
 					while (aLine != null) {
 						theText = theText + aLine + "\n";
@@ -141,17 +138,13 @@ public class ReportAction implements ActionListener {
 					theText = theText + "\n";
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
 					try {
-						System.out.println(theText);
-						report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText(), desktop);
+						Report report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText(), desktop);
 						report.execute();
-						// report = new Report(bs);
 					} catch (IOException e1) {
-
-						log.debug(e1.getMessage());
+						log.debug(e1.getMessage()); // Not sure - should catch thread problems like already-open PDF?
 					}
 				} catch (IOException e1) {
-
-					log.debug(e1.getMessage());
+					log.debug(e1.getMessage()); // Failure to open template file (?)
 				}
 
 			}

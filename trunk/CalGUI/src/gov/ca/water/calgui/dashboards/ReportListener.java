@@ -19,11 +19,8 @@ public class ReportListener implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stu
-		JComponent component = (JComponent) e.getItem();
-		// TODO: EXTERNALIZE
 
-		// was "e.getItemSelected"
+		JComponent component = (JComponent) e.getItem();
 		String cName = component.getName();
 		if (cName != null) {
 

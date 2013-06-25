@@ -13,6 +13,7 @@ import gov.ca.water.calgui.dashboards.RegAction;
 import gov.ca.water.calgui.dashboards.RegListener;
 import gov.ca.water.calgui.dashboards.RegulationSetup;
 import gov.ca.water.calgui.dashboards.ReportAction;
+import gov.ca.water.calgui.dashboards.ReportListener;
 import gov.ca.water.calgui.dashboards.RunListener;
 import gov.ca.water.calgui.dashboards.SchematicAction;
 import gov.ca.water.calgui.dashboards.SchematicListener;
@@ -430,6 +431,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setChangeListener(regulations, this);
 
 			swix.setActionListener(Reporting, new ReportAction(desktop, swix));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(Reporting, new ReportListener(swix));
 
 			swix.setActionListener(hydroclimate, new HydAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, regUserEditFlags,
