@@ -142,6 +142,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	ProgressMonitor pMon;
 
 	public JList lstScenarios;
+	public FileAction fileAction; // Listener for FileActions is public to facilitate testing
 
 	/**
 	 * Main constructor for CalLite GUI
@@ -421,7 +422,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Set Listeners
 		try {
-			swix.setActionListener(menu, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags));
+			fileAction = new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags);
+			swix.setActionListener(menu, fileAction);
 			GUIUtils.setMenuListener(menu, this);
 
 			swix.setActionListener(regulations, new RegAction(swix, regUserEditFlags, dTableModels, gl, reg_btng1, regFlags));
