@@ -420,6 +420,15 @@ public class FileUtils {
 		return idx;
 	}
 
+	/**
+	 * Copies CVP_SYS and SWP files according to GUI combinations from default lookup WSIDI directory to specified location
+	 * 
+	 * @param index
+	 *            suffix for existing WSIDI table based on run type, level of deevlopment, and climate change setting
+	 * @param where
+	 *            location to write .table
+	 * @return
+	 */
 	public static int copyWSIDItoLookup(String index, String where) {
 
 		int retval = 0;

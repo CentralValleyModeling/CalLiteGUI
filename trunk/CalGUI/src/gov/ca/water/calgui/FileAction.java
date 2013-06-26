@@ -304,6 +304,7 @@ public class FileAction implements ActionListener {
 										}
 									}
 									if (okToRun) {
+
 										((JTextField) swix.find("run_txfScen")).setText(scen2);
 										setFilenameTooltips();
 										sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
@@ -515,7 +516,7 @@ public class FileAction implements ActionListener {
 	/**
 	 * Sets value of DV DSS file name and tooltips for scenario and DSS textfields
 	 */
-	private void setFilenameTooltips() {
+	public void setFilenameTooltips() {
 
 		String scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 		((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\" + scenFilename);
@@ -1419,7 +1420,7 @@ public class FileAction implements ActionListener {
 	 * @param gl
 	 * @return
 	 */
-	private static StringBuffer buildScenarioString(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
+	public static StringBuffer buildScenarioString(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
 	        GUILinks gl) {
 
 		StringBuffer sb = new StringBuffer();
@@ -1552,7 +1553,7 @@ public class FileAction implements ActionListener {
 	 *            StringBuffer contains all control settings from GUI along with ancillary data.
 	 * @param filename
 	 */
-	private static void saveScenarioFile(StringBuffer sb, String filename) {
+	public static void saveScenarioFile(StringBuffer sb, String filename) {
 		File f;
 		FileUtils.createNewFile(filename);
 		f = new File(filename);
