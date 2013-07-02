@@ -24,9 +24,9 @@
 			Cleaning up previous build, purging logs...
 		</echo>
 
-		<delete dir="${deploy.dir}" />
-		<delete file="${logs.dir}/callite-debug.log" />
-		<delete file="../${DSTAMP}_calgui_deploy.zip" />
+		<delete dir="${deploy.dir}" quiet="true"/>
+		<delete file="${logs.dir}/callite-debug.log" quiet="true"/>
+		<delete file="../${DSTAMP}_calgui_deploy.zip" quiet="true"/>
 
 	</target>
 
