@@ -30,11 +30,14 @@ import gov.ca.water.calgui.utils.Utils;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -87,7 +90,7 @@ import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
-        KeyEventDispatcher {
+        ComponentListener, KeyEventDispatcher {
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
@@ -138,6 +141,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
 	Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 
+	JTabbedPane jtp;
 	JMenuBar menu;
 	ProgressMonitor pMon;
 
@@ -197,7 +201,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			// Recolor results tabs
 
-			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+			jtp = (JTabbedPane) swix.find("tabbedPane1");
 
 			jtp.setForegroundAt(6, Color.blue);
 			jtp.setForegroundAt(7, Color.blue);
@@ -208,6 +212,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(7, Color.WHITE);
 			jtp.setBackgroundAt(8, Color.WHITE);
 			jtp.setBackgroundAt(9, Color.WHITE);
+			// DSSGrabber dss_Grabber = new DSSGrabber(lstScenarios);
+			// new WebData(jtp, this, swix, dss_Grabber, lstScenarios, desktop, 0);
 
 		}
 
@@ -422,6 +428,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		// Set Listeners
 		try {
+
+			jtp.addChangeListener(this);
+
 			fileAction = new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags);
 			swix.setActionListener(menu, fileAction);
 			GUIUtils.setMenuListener(menu, this);
@@ -467,6 +476,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
 
 			swix.setActionListener(externalPDF, new ReportAction(desktop, swix));
+
+			desktop.addComponentListener(this);
 
 			// Check for scenario changes on Exit.
 			desktop.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -532,7 +543,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	// React to menu selections.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO: EXTERNALIZE
 
 		if (e.getActionCommand().startsWith("UD_Table")) {
 
@@ -711,30 +721,31 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// Right click
 
 		if (button != MouseEvent.NOBUTTON && button != MouseEvent.BUTTON1) {
-			if (cName.startsWith("ckbp")) {
 
-				// ----- Quick Results: HANDLE DISPLAY OF SINGLE VARIABLE -----
-
-				menu.setCursor(hourglassCursor);
-
-				if (lstScenarios.getModel().getSize() == 0) {
-					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-				} else {
-
-					lstScenarios = (JList) swix.find("SelectedList");
-					JCheckBox chk = (JCheckBox) component;
-					DisplayFrame.displayFrame(DisplayFrame.quickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(),
-					        swix, lstScenarios, desktop, 0);
-					menu.setCursor(normalCursor);
-				}
+			if (cName != null) {
 			}
 		} else {
 
 			// Double Click
 
 			if (iClickCount == 2) {
-				if (cName != null) {
+				if (cName.startsWith("ckbp")) {
 
+					// ----- Quick Results: HANDLE DISPLAY OF SINGLE VARIABLE -----
+
+					menu.setCursor(hourglassCursor);
+
+					if (lstScenarios.getModel().getSize() == 0) {
+						JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+
+						lstScenarios = (JList) swix.find("SelectedList");
+						JCheckBox chk = (JCheckBox) component;
+						DisplayFrame.displayFrame(
+						        DisplayFrame.quickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), swix,
+						        lstScenarios, desktop, 0);
+						menu.setCursor(normalCursor);
+					}
 					// Placeholder for future handling of double-clicks
 
 				}
@@ -803,6 +814,22 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			((JComponent) swix.find("scrRegValues")).setVisible(false);
 			((JPanel) swix.find("reg_panTab")).setBorder(BorderFactory.createTitledBorder("Values"));
 		}
+		if (c.getName().toLowerCase().equals("tabbedpane1")) {
+			// Allow larger windows when Web Map or Custom View selected
+			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
+				// Enable max
+				desktop.setResizable(true);
+				// Resize to last large size
+			} else {
+				// Disable max
+				desktop.setResizable(false);
+				// Store current size
+				// Size down if needed
+				desktop.setSize(new Dimension(1024, 768));
+
+			}
+		}
+
 		if (c.getName().toLowerCase().substring(0, 3).equals("spn")) {
 
 			// Constrain run times to [10/1921,9/2003]
@@ -928,6 +955,71 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+
+		Component c = (Component) e.getSource();
+		if (c.getName().equals("desktop")) {
+
+			// Handle resizing of main frame for app (only allowed in Web and Map views)
+
+			JFrame f = (JFrame) c;
+			Dimension d = f.getSize();
+
+			if (d.width < 1024 || d.height < 768) {
+
+				// Don't allow to shrink below 1024 x 768
+
+				d.height = 768;
+				d.width = 1024;
+				f.setSize(d);
+				f.repaint();
+			}
+
+			// If larger adjust position of settings panel
+			JPanel p1 = (JPanel) swix.find("settings");
+			p1.setSize(new Dimension(d.width - 4, d.height - 28));
+			p1.setPreferredSize(new Dimension(d.width - 4, d.height - 28));
+			p1.setMaximumSize(new Dimension(d.width - 4, d.height - 28));
+
+			JPanel p2 = (JPanel) swix.find("schematic_holder");
+			p2.setSize(new Dimension(d.width - 74, d.height - 168));
+			p2.setPreferredSize(new Dimension(d.width - 74, d.height - 168));
+			p2.setMaximumSize(new Dimension(d.width - 74, d.height - 168));
+
+			JPanel p3 = (JPanel) swix.find("schematic_holder2");
+			p3.setSize(new Dimension(d.width - 74, d.height - 168));
+			p3.setPreferredSize(new Dimension(d.width - 74, d.height - 168));
+			p3.setMaximumSize(new Dimension(d.width - 74, d.height - 168));
+
+			System.out.println("Desktop " + desktop.getSize());
+			System.out.println("Mainmenu " + mainmenu.getSize());
+			System.out.println(p1.getSize());
+			System.out.println(p2.getSize());
+			System.out.println();
+
+			mainmenu.repaint();
+
+		}
+
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

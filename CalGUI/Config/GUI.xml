@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<frame id="desktop" size="1024,768"
+<frame id="desktop" name="desktop" size="1024,768"
 	title="CalLite 2.10 - Development - The Central Valley Water Management Screening Model"
 	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
 
@@ -31,13 +31,15 @@
 
 	<panel id="mainmenu">
 
-		<panel id="settings" name="settings" layout="BorderLayout"
+		<panel id="settings" name="settings" layout="GridBagLayout"
 			visible="true" preferredsize="1020,740">
+			<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
+				gridx="0" gridy="0" />
 
-			<tabbedpane constraints="Borderlayout.WEST" id="tabbedPane1"
-				name="tabbedPane1">
+			<tabbedpane id="tabbedPane1" name="tabbedPane1">
+
 				<panel id="runsettings" name="Run Settings" border="TitledBorder()"
-					font="Tahoma-Bold-12" layout="GridBagLayout">
+					font="Tahoma-Bold-12" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel preferredsize="360,675" layout="GridBagLayout">
 						<gridbagconstraints insets="0,0,0,5"
 							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
@@ -195,17 +197,19 @@
 								<gridbagconstraints gridx="0" gridy="1"
 									gridwidth="3" />
 							</button>
-							<label name="run_lblThreadsInfo" id="run_lblThreadsInfo" enabled="false"
-								minimumsize="140,20" text="Simultaneous runs (1-4)">
+							<label name="run_lblThreadsInfo" id="run_lblThreadsInfo"
+								enabled="false" minimumsize="140,20" text="Simultaneous runs (1-4)">
 								<gridbagconstraints gridx="0" gridy="10" />
 							</label>
 							<label name="run_lblThreads" id="run_lblThreads" text="  4 runs"
 								minimumsize="50,20">
 								<gridbagconstraints gridx="4" gridy="10" />
 							</label>
-							<slider name="run_sldThreads" id="run_sldThreads" minimum="1" minortickspacing="1" paintticks="true"
-								minimumsize="60,20" maximum="4" orientation="0">
-								<gridbagconstraints insets="5,0,0,0" gridx="2" gridy="10" />
+							<slider name="run_sldThreads" id="run_sldThreads" minimum="1"
+								minortickspacing="1" paintticks="true" minimumsize="60,20"
+								maximum="4" orientation="0">
+								<gridbagconstraints insets="5,0,0,0" gridx="2"
+									gridy="10" />
 							</slider>
 						</panel>
 						<button text=" Run Scenario " ActionCommand="AC_RUN" name="run_btnRun"
@@ -2813,13 +2817,13 @@
 					<panel id="schematic_holder" preferredsize="950,600"
 						maximumsize="950,600" layout="BorderLayout">
 						<gridbagconstraints gridx="0" gridy="0"
-							gridwidth="3" insets="0,0,20,60" />
+							gridwidth="3" />
 					</panel>
 
 					<panel id="schematic_holder2" preferredsize="950,600"
 						maximumsize="950,600" layout="BorderLayout">
 						<gridbagconstraints gridx="0" gridy="0"
-							gridwidth="3" insets="0,0,20,60" />
+							gridwidth="3" />
 					</panel>
 
 					<panel layout="FlowLayout(FlowLayout.Left)">

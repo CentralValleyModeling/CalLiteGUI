@@ -4,10 +4,11 @@ import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Stroke;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
 import javax.print.attribute.standard.OrientationRequested;
+import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -58,6 +60,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 	private static final long serialVersionUID = 7398804723681056388L;
 	private String buffer;
 	private static Logger log = Logger.getLogger(ChartPanel.class.getName());
+	JButton btnScatter;
 
 	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
 	        Date lower, Date upper, String sLabel) {
@@ -75,6 +78,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 		double ymin = 1e20;
 
 		JFreeChart chart;
+		JFreeChart chartXY = null;
+
 		int primaries = 0;
 		String sName = "";
 		if (sLabel.equals("")) {
@@ -87,6 +92,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			}
 		} else
 			sName = sLabel;
+
+		boolean scatterAvailable = (stscs == null) && (tscs.length == 2);
 
 		boolean isSchVw = false;
 		String[] svNames = null;
@@ -254,6 +261,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 						ymin = tscs[i].minimumValue();
 					if (ymax < tscs[i].maxmimumValue())
 						ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+
 				}
 
 				if (stscs != null) {
@@ -288,61 +296,36 @@ public class ChartPanel1 extends JPanel implements Printable {
 				        yLabel + " (" + tscs[0].units + ")", // y-axis label
 				        dataset, // data
 				        true); // create and display a frame...
+
+				if (scatterAvailable) {
+
+					XYSeriesCollection datasetXY = new XYSeriesCollection();
+					datasetXY = new XYSeriesCollection();
+					XYSeries seriesXY = new XYSeries("");
+					for (int j = 0; j < tscs[0].numberValues; j++)
+						seriesXY.addOrUpdate(tscs[0].values[j], tscs[1].values[j]);
+					datasetXY.addSeries(seriesXY);
+					chartXY = ChartFactory.createXYLineChart(title.replace(";", "+") + " (" + tscs[0].units + ")", // title
+					        tscs[0].fileName, // x-axis label
+					        tscs[1].fileName, // y-axis label
+					        datasetXY, // data
+					        true); // create and display a frame...
+					// XYPlot plot = (XYPlot) chartXY.getPlot();
+					// LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
+					// renderer.setLinesVisible(false);
+					// renderer.setBaseShapesVisible(true);
+					// renderer.setDrawOutlines(true);
+					// renderer.setUseFillPaint(true);
+					// renderer.setBaseFillPaint(Color.white);
+
+				}
+
 			}
 		}
 
-		chart.setBackgroundPaint(Color.WHITE);
-
+		setChartOptions(chart, stscs, isExceed, isBase, ymax, ymin, primaries);
 		XYPlot plot = (XYPlot) chart.getPlot();
-		plot.setBackgroundPaint(Color.WHITE); // White background
-		plot.setDomainGridlinesVisible(false); // No gridlines
-		plot.setRangeGridlinesVisible(false);
-		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
-
-		XYItemRenderer r = plot.getRenderer();
-
-		if (plot instanceof CombinedDomainXYPlot)
-			;
-		else if (plot.getDataset(0).getSeriesCount() >= 4) // Fourth series assumed yellow, switched to black
-			r.setSeriesPaint(3, ChartColor.BLACK);
-
-		if (stscs != null) { // Secondary time series as dashed lines
-			for (int t = 0; t < (isBase ? 1 : stscs.length); t++) {
-				Stroke stroke = new BasicStroke(1.0f, // Width
-				        BasicStroke.CAP_SQUARE, // End cap
-				        BasicStroke.JOIN_MITER, // Join style
-				        10.0f, // Miter limit
-				        new float[] { 2.0f, 2.0f }, // Dash pattern
-				        0.0f); // Dash phase
-				r.setSeriesStroke(primaries + t, stroke);
-			}
-		}
-
 		ValueAxis axis = plot.getDomainAxis();
-		if (isExceed)
-			axis.setInverted(true);
-
-		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
-		if (isExceed)
-			axis.setRange(0.0, 100.0);
-		// else {
-		// DateAxis dateAxis = (DateAxis) axis;
-		// dateAxis.setRange(upper, lower);
-		// }
-
-		if ((ymax - ymin) < 0.01) {
-			ymax += 0.05;
-			ymin -= 0.05;
-		}
-		if (plot instanceof CombinedDomainXYPlot)
-			;
-		else {
-			axis = plot.getRangeAxis();
-			axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
-			axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
-		}
-		plot.setDomainPannable(true);
-		plot.setRangePannable(true);
 
 		final ChartPanel p1 = new ChartPanel(chart);
 
@@ -374,14 +357,53 @@ public class ChartPanel1 extends JPanel implements Printable {
 		// Finish up window
 
 		p1.setPreferredSize(new Dimension(800, 600));
-		this.setLayout(new BorderLayout());
-
-		this.add(p1);
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		c.anchor = GridBagConstraints.CENTER;
+		this.add(p1, c);
 
 		if (isSchVw) {
 			ChartPanel p2 = new ChartPanel(chart);
 			this.add(p2);
 		}
+		if (scatterAvailable) {
+
+			setChartOptions(chartXY, stscs, isExceed, isBase, ymax, ymin, primaries);
+			final ChartPanel p2 = new ChartPanel(chartXY);
+			p2.setVisible(false);
+			p2.setPreferredSize(new Dimension(800, 600));
+			this.add(p2, c);
+
+			// Button for XY scatter
+			btnScatter = new JButton("XY Scatter");
+			btnScatter.setSize(new Dimension(100, 20));
+			btnScatter.setMaximumSize(new Dimension(110, 20));
+			btnScatter.setPreferredSize(new Dimension(110, 20));
+			btnScatter.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if (btnScatter.getText().equals("XY Scatter")) {
+						btnScatter.setText("Time Series");
+						p1.setVisible(false);
+						p2.setVisible(true);
+					} else {
+						btnScatter.setText("XY Scatter");
+						p1.setVisible(true);
+						p2.setVisible(false);
+					}
+
+				}
+
+			});
+			c.gridx = 0;
+			c.gridy = 1;
+			c.anchor = GridBagConstraints.SOUTHEAST;
+			this.add(btnScatter, c);
+		}
+
 		if (plot instanceof CombinedDomainXYPlot)
 			;
 		else {
@@ -423,6 +445,73 @@ public class ChartPanel1 extends JPanel implements Printable {
 		}
 	}
 
+	/**
+	 * Sets some common chart options
+	 * 
+	 * @param chart
+	 * @param stscs
+	 * @param isExceed
+	 * @param isBase
+	 * @param ymax
+	 * @param ymin
+	 * @param primaries
+	 */
+	private void setChartOptions(JFreeChart chart, TimeSeriesContainer[] stscs, boolean isExceed, boolean isBase, Double ymax,
+	        Double ymin, Integer primaries) {
+
+		chart.setBackgroundPaint(Color.WHITE);
+
+		XYPlot plot = (XYPlot) chart.getPlot();
+		plot.setBackgroundPaint(Color.WHITE); // White background
+		plot.setDomainGridlinesVisible(false); // No gridlines
+		plot.setRangeGridlinesVisible(false);
+		plot.setAxisOffset(new RectangleInsets(0, 0, 0, 0)); // No axis offset
+
+		XYItemRenderer r = plot.getRenderer();
+
+		if (plot instanceof CombinedDomainXYPlot)
+			;
+		else if (plot.getDataset(0).getSeriesCount() >= 4) // Fourth series assumed yellow, switched to black
+			r.setSeriesPaint(3, ChartColor.BLACK);
+
+		if (stscs != null) { // Secondary time series as dashed lines
+			for (int t = 0; t < (isBase ? 1 : stscs.length); t++) {
+				Stroke stroke = new BasicStroke(1.0f, // Width
+				        BasicStroke.CAP_SQUARE, // End cap
+				        BasicStroke.JOIN_MITER, // Join style
+				        10.0f, // Miter limit
+				        new float[] { 2.0f, 2.0f }, // Dash pattern
+				        0.0f); // Dash phase
+				r.setSeriesStroke(primaries + t, stroke);
+			}
+		}
+
+		ValueAxis axis = plot.getDomainAxis();
+		if (isExceed)
+			axis.setInverted(true);
+
+		axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
+		if (isExceed)
+			axis.setRange(0.0, 100.0);
+
+		if ((ymax - ymin) < 0.01) {
+			ymax += 0.05;
+			ymin -= 0.05;
+		}
+		if (plot instanceof CombinedDomainXYPlot)
+			;
+		else {
+			axis = plot.getRangeAxis();
+			axis.setTickMarkInsideLength(axis.getTickMarkOutsideLength());
+			axis.setRange(new Range(ymin - 0.05 * (ymax - ymin), ymax + 0.05 * (ymax - ymin)));
+		}
+		plot.setDomainPannable(true);
+		plot.setRangePannable(true);
+	}
+
+	/**
+	 * Prints chart
+	 */
 	public void createChartPrintJob() {
 
 		PrintRequestAttributeSet set = new HashPrintRequestAttributeSet();
