@@ -3,24 +3,23 @@
                      "http://java.sun.com/products/javahelp/map_2_0.dtd">
 
 <map version="1.0">
-	<mapID target="Demands_screen" url="Demands screen.htm"/>
-	<mapID target="Dropdown Menus" url="Dropdown Menus.html"/>
-	<mapID target="Facilities" url="Facilities.html"/>
-	<mapID target="Hydroclimate" url="Hydroclimate.html"/>
-	<mapID target="Introduction" url="Introduction.htm"/>
-	<mapID target="Operations" url="Operations.html"/>
-	<mapID target="Regulations" url="Regulations.html"/>
-	<mapID target="Run Settings" url="Run Settings.html"/>
-	<mapID target="Scenario Settings" url="Scenario Settings.html"/>
-	<mapID target="Results" url="Results.html"/>
-	<mapID target="Quick Results" url="Quick.html"/>
-	<mapID target="Custom Results" url="Custom.html"/>
-	<mapID target="Map View" url="Schematics.html"/>
-	<mapID target="External PDF" url="External PDF.html"/>
-	<mapID target="Demands" url="Demands.html"/>
-	<mapID target="D1641 Regulations" url="D1641 Regulations.html"/>
-	<mapID target="BORPA regulations" url="BORPA regulations.html"/>
-	<mapID target="Other regulations" url="Other regulations.html"/>
+	<mapID target="Dropdown Menus" url="menu-options.html"/>
+	<mapID target="Facilities" url="facilities.html"/>
+	<mapID target="Hydroclimate" url="hydroclimate.html"/>
+	<mapID target="Introduction" url="intro.html"/>
+	<mapID target="Operations" url="operations.html"/>
+	<mapID target="Regulations" url="regs.html"/>
+	<mapID target="Run Settings" url="run-settings.html"/>
+	<mapID target="Scenario Settings" url="scenario-settings.html"/>
+	<mapID target="Results" url="results.html"/>
+	<mapID target="Quick Results" url="quick.html"/>
+	<mapID target="Custom Results" url="custom.html"/>
+	<mapID target="Map View" url="map-view.html"/>
+	<mapID target="External PDF" url="ext-pdf.html"/>
+	<mapID target="Demands" url="demands.html"/>
+	<mapID target="D1641 Regulations" url="d1641.html"/>
+	<mapID target="BORPA regulations" url="borpa-reg.html"/>
+	<mapID target="Other regulations" url="other-regs.html"/>
 	<mapID target="imagembuhbedf679719990681748443" url="Images/imagembuhbedf679719990681748443.jpg"/>
 	<mapID target="Tutorial" url="Tutorial.html"/>
 	<mapID target="imagevperpkbs5568480087042685513" url="Images/imagevperpkbs5568480087042685513.jpg"/>
@@ -53,7 +52,7 @@
 	<mapID target="imagelqzkybko766005600835213504" url="Images/imagelqzkybko766005600835213504.jpg"/>
 	<mapID target="imagenmkccuqh8824478093454813451" url="Images/imagenmkccuqh8824478093454813451.jpg"/>
 	<mapID target="imagedjmwlegq3566830970070749478" url="Images/imagedjmwlegq3566830970070749478.jpg"/>
-	<mapID target="Web Map" url="Map Display.html"/>
+	<mapID target="Web Map" url="web-map.html"/>
 	<mapID target="imagejcnhhjts6698311430087798235" url="Images/imagejcnhhjts6698311430087798235.gif"/>
 	<mapID target="imagekgxvrwsw4233986803733364488" url="Images/imagekgxvrwsw4233986803733364488.gif"/>
 	<mapID target="imagecszhglkm5724847970819370389" url="Images/imagecszhglkm5724847970819370389.gif"/>
@@ -102,7 +101,6 @@
 	<mapID target="imageyahlqjda64970641149976133741" url="Images/imageyahlqjda6497064114997613374.jpg"/>
 	<mapID target="imagezhlaqudd5912638313262732021" url="Images/imagezhlaqudd591263831326273202.jpg"/>
 	<mapID target="MC900434750" url="Images/MC900434750.png"/>
-	<mapID target="Map Display" url="Map Display.html"/>
 	<mapID target="Tutorial1" url="Tutorial.html"/>
 	<mapID target="MC900434750 - Copy" url="Images/MC900434750 - Copy.png"/>
 	<mapID target="MC900434750 - Copy1" url="Images/MC900434750 - Copy.png"/>
