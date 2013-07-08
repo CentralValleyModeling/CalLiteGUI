@@ -12,7 +12,7 @@
 		<tocitem text="3.4. Facilities" target="Facilities" />
 		<tocitem text="3.5. Regulations" target="Regulations">
 			<tocitem text="3.5.1. D-1641 Regulations" target="D1641 Regulations" />
-			<tocitem text="3.5.2. BO RPA Regulations" target="BORPA regulations" />
+			<tocitem text="3.5.2. BO RPA Regulations" target="borpa-reg" />
 			<tocitem text="3.5.3. Other Regulations" target="Other regulations" />
 		</tocitem>
 		<tocitem text="3.6. Operations" target="Operations" />
