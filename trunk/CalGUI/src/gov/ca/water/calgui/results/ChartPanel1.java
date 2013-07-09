@@ -7,8 +7,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Stroke;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
@@ -24,6 +22,7 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
 import javax.print.attribute.standard.OrientationRequested;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -44,6 +43,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.util.RectangleInsets;
 import org.jfree.data.Range;
 import org.jfree.data.time.Month;
@@ -310,13 +310,13 @@ public class ChartPanel1 extends JPanel implements Printable {
 					        tscs[1].fileName, // y-axis label
 					        datasetXY, // data
 					        true); // create and display a frame...
-					// XYPlot plot = (XYPlot) chartXY.getPlot();
-					// LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
-					// renderer.setLinesVisible(false);
-					// renderer.setBaseShapesVisible(true);
-					// renderer.setDrawOutlines(true);
-					// renderer.setUseFillPaint(true);
-					// renderer.setBaseFillPaint(Color.white);
+					XYPlot plot = (XYPlot) chartXY.getPlot();
+					XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) plot.getRenderer();
+					renderer.setSeriesLinesVisible(0, false);
+					renderer.setSeriesShapesVisible(0, true);
+					renderer.setDrawOutlines(true);
+					renderer.setUseFillPaint(true);
+					renderer.setBaseFillPaint(Color.white);
 
 				}
 
@@ -357,12 +357,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 		// Finish up window
 
 		p1.setPreferredSize(new Dimension(800, 600));
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = 0;
-		c.anchor = GridBagConstraints.CENTER;
-		this.add(p1, c);
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.add(p1);
 
 		if (isSchVw) {
 			ChartPanel p2 = new ChartPanel(chart);
@@ -374,7 +370,8 @@ public class ChartPanel1 extends JPanel implements Printable {
 			final ChartPanel p2 = new ChartPanel(chartXY);
 			p2.setVisible(false);
 			p2.setPreferredSize(new Dimension(800, 600));
-			this.add(p2, c);
+			p2.setMaximumSize(new Dimension(1920, 1200));
+			this.add(p2);
 
 			// Button for XY scatter
 			btnScatter = new JButton("XY Scatter");
@@ -394,14 +391,10 @@ public class ChartPanel1 extends JPanel implements Printable {
 						p1.setVisible(true);
 						p2.setVisible(false);
 					}
-
 				}
-
 			});
-			c.gridx = 0;
-			c.gridy = 1;
-			c.anchor = GridBagConstraints.SOUTHEAST;
-			this.add(btnScatter, c);
+
+			this.add(btnScatter);
 		}
 
 		if (plot instanceof CombinedDomainXYPlot)
