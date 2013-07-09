@@ -309,7 +309,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 					        tscs[0].fileName, // x-axis label
 					        tscs[1].fileName, // y-axis label
 					        datasetXY, // data
-					        true); // create and display a frame...
+					        false); // create and display a frame...
 					XYPlot plot = (XYPlot) chartXY.getPlot();
 					XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) plot.getRenderer();
 					renderer.setSeriesLinesVisible(0, false);
