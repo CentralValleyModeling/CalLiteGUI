@@ -31,10 +31,8 @@
 
 	<panel id="mainmenu">
 
-		<panel id="settings" name="settings" layout="GridBagLayout"
+		<panel id="settings" name="settings" layout="FlowLayout"
 			visible="true" preferredsize="1020,740">
-			<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
-				gridx="0" gridy="0" />
 
 			<tabbedpane id="tabbedPane1" name="tabbedPane1">
 
@@ -2811,60 +2809,46 @@
 
 				</panel>
 
-				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
-					layout="GridBagLayout">
+				<panel id="schematics" name="Map View" font="Tahoma-Italic-12">
 
-					<panel id="schematic_holder" preferredsize="950,600"
-						maximumsize="950,600" layout="BorderLayout">
-						<gridbagconstraints gridx="0" gridy="0"
-							gridwidth="3" />
-					</panel>
+					<vbox>
+						<panel id="schematic_holder" preferredsize="950,600"
+							maximumsize="950,600" layout="FlowLayout" visible="true">
+						</panel>
 
-					<panel id="schematic_holder2" preferredsize="950,600"
-						maximumsize="950,600" layout="BorderLayout">
-						<gridbagconstraints gridx="0" gridy="0"
-							gridwidth="3" />
-					</panel>
+						<panel id="schematic_holder2" preferredsize="950,600"
+							maximumsize="950,600" layout="FlowLayout" visible="false">
+						</panel>
 
-					<panel layout="FlowLayout(FlowLayout.Left)">
-						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="1" insets="-40,0,0,0" />
-						<label
-							text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
-							font="Tahoma-BOLD-13" foreground="CC3333" />
-					</panel>
+						<hbox>
+							<panel layout="FlowLayout(FlowLayout.Left)">
+								<vbox>
+									<label
+										text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
+										font="Tahoma-BOLD-13" foreground="CC3333" />
+									<label
+										text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
+										font="Tahoma-BOLD-13" foreground="CC3333" />
+								</vbox>
+							</panel>
 
-					<panel layout="FlowLayout(FlowLayout.Left)">
-						<gridbagconstraints anchor="GridBagConstraints.WEST"
-							gridx="0" gridy="2" insets="-40,0,0,0" />
-						<label
-							text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
-							font="Tahoma-BOLD-13" foreground="CC3333" />
-					</panel>
+							<hbox>
+								<buttongroup>
+									<radiobutton id="rdbSchemNormal" name="rdbSchemNormal"
+										text="Normal" selected="true" />
+									<radiobutton id="rdbSchemMB" name="rdbSchemMB"
+										text="Mass balance" />
+								</buttongroup>
+							</hbox>
 
-					<panel layout="GridBagLayout">
-						<gridbagconstraints anchor="GridBagConstraints.EAST"
-							gridx="1" gridy="1" gridheight="2" insets="0,0,0,60" />
-						<buttongroup>
-							<radiobutton id="rdbSchemNormal" name="rdbSchemNormal"
-								text="Normal" selected="true" />
-							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="0" insets="-40,0,0,0" />
-							<radiobutton id="rdbSchemMB" name="rdbSchemMB" text="Mass balance" />
-							<gridbagconstraints anchor="GridBagConstraints.WEST"
-								gridx="0" gridy="1" insets="-40,0,0,0" />
-						</buttongroup>
+							<panel layout="FlowLayout(FlowLayout.Right)">
+								<button text="Help" ActionCommand="AC_Help">
+								</button>
+							</panel>
 
+						</hbox>
 
-					</panel>
-					<panel layout="FlowLayout(FlowLayout.Right)">
-						<gridbagconstraints anchor="GridBagConstraints.EAST"
-							gridx="2" gridy="1" insets="0,0,0,60" />
-						<button text="Help" ActionCommand="AC_Help">
-						</button>
-					</panel>
-
-
+					</vbox>
 					<!-- <button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD"> 
 						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="0" 
 						gridy="0" /> </button> <button text="Delta" preferredwidth="100,12" ActionCommand="Sch_Delta"> 

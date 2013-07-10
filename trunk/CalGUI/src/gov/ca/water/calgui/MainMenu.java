@@ -801,6 +801,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// //action depending on text/name ...
 	}
 
+	int lastHeight = 768;
+	int lastWidth = 1024;
+
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 		Component c = (Component) changeEvent.getSource();
@@ -820,12 +823,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				// Enable max
 				desktop.setResizable(true);
 				// Resize to last large size
+				desktop.setSize(lastWidth, lastHeight);
 			} else {
 				// Disable max
 				desktop.setResizable(false);
 				// Store current size
+				lastWidth = (int) desktop.getSize().getWidth();
+				lastHeight = (int) desktop.getSize().getHeight();
 				// Size down if needed
-				desktop.setSize(new Dimension(1024, 768));
+				desktop.setSize(1024, 768);
 
 			}
 		}
