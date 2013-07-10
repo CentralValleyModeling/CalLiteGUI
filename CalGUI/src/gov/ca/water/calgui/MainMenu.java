@@ -402,10 +402,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 
 			SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
-			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 4.0, 0.0, 0.0, 4.0, -1400.0,
+			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 1.0, 0.0, 0.0, 1.0, -1400.0,
 			        -200.0);
-			schemView = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
-			        + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0, -950.0, -520.0);
+			SchematicMain schemView2 = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///"
+			        + System.getProperty("user.dir") + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0,
+			        -950.0, -520.0);
 		} catch (Exception e) {
 			log.debug("Could not load schematic views. " + e);
 		}
@@ -984,42 +985,61 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			JFrame f = (JFrame) c;
 			Dimension d = f.getSize();
 
-			if (d.width < 1024 || d.height < 768) {
+			d.width = Math.max(1024, d.width);
+			d.height = Math.max(768, d.height);
+			if (d != f.getSize()) {
 
-				// Don't allow to shrink below 1024 x 768
-
-				d.height = 768;
-				d.width = 1024;
 				f.setSize(d);
 				f.repaint();
 			}
 
-			// If larger adjust position of settings panel
-			JPanel p1 = (JPanel) swix.find("settings");
-			p1.setSize(new Dimension(d.width - 4, d.height - 28));
-			p1.setPreferredSize(new Dimension(d.width - 4, d.height - 28));
-			p1.setMaximumSize(new Dimension(d.width - 4, d.height - 28));
+			// Adjust position of schematics components
 
-			JPanel p2 = (JPanel) swix.find("schematic_holder");
-			p2.setSize(new Dimension(d.width - 74, d.height - 168));
-			p2.setPreferredSize(new Dimension(d.width - 74, d.height - 168));
-			p2.setMaximumSize(new Dimension(d.width - 74, d.height - 168));
-
-			JPanel p3 = (JPanel) swix.find("schematic_holder2");
-			p3.setSize(new Dimension(d.width - 74, d.height - 168));
-			p3.setPreferredSize(new Dimension(d.width - 74, d.height - 168));
-			p3.setMaximumSize(new Dimension(d.width - 74, d.height - 168));
-
-			System.out.println("Desktop " + desktop.getSize());
-			System.out.println("Mainmenu " + mainmenu.getSize());
-			System.out.println(p1.getSize());
-			System.out.println(p2.getSize());
-			System.out.println();
-
-			mainmenu.repaint();
+			updateSchematicLayout(d);
+			mainmenu.invalidate();
 
 		}
 
+	}
+
+	/**
+	 * @param d
+	 */
+	private void updateSchematicLayout(Dimension d) {
+		mainmenu.setSize(new Dimension(d.width - 8, d.height - 51));
+
+		JPanel p1 = (JPanel) swix.find("settings");
+		p1.setMinimumSize(new Dimension(d.width - 4, d.height - 28));
+		p1.setSize(new Dimension(d.width - 4, d.height - 28));
+		p1.setPreferredSize(new Dimension(d.width - 4, d.height - 28));
+		p1.setMaximumSize(new Dimension(d.width - 4, d.height - 28));
+
+		JPanel p2 = (JPanel) swix.find("schematic_holder");
+		p2.setSize(new Dimension(d.width - 74, d.height - 148));
+		p2.setPreferredSize(new Dimension(d.width - 74, d.height - 148));
+		p2.setMaximumSize(new Dimension(d.width - 74, d.height - 148));
+		p2.setMinimumSize(new Dimension(d.width - 74, d.height - 148));
+		p2.invalidate();
+
+		JPanel p3 = (JPanel) swix.find("schematic_holder2");
+		p3.setSize(new Dimension(d.width - 74, d.height - 148));
+		p3.setPreferredSize(new Dimension(d.width - 74, d.height - 148));
+		p3.setMaximumSize(new Dimension(d.width - 74, d.height - 148));
+		p3.setMinimumSize(new Dimension(d.width - 74, d.height - 148));
+		p3.invalidate();
+
+		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+		mainmenu.setLocation(0, 2);
+		jtp.setLocation(0, 0);
+		p1.setLocation(0, 0);
+		jtp.setSize(new Dimension(mainmenu.getSize().width - 1, mainmenu.getSize().height - 4));
+		System.out.println("Desktop " + desktop.getSize());
+		System.out.println("Mainmenu " + mainmenu.getSize() + " " + mainmenu.getLocation());
+		System.out.println("TabbedPane " + jtp.getSize() + " " + jtp.getLocation());
+		System.out.println("Settings " + p1.getSize() + " " + p1.getLocation());
+		System.out.println("Schematic" + p2.getSize() + "  " + (desktop.getSize().height - p2.getSize().height));
+
+		System.out.println();
 	}
 
 	@Override

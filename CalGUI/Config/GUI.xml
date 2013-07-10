@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <frame id="desktop" name="desktop" size="1024,768"
 	title="CalLite 2.10 - Development - The Central Valley Water Management Screening Model"
-	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false">
-
+	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false" layout='FlowLayout'>
 	<menubar id="menu">
 		<menu text="File" mnemonic="VK_F">
 			<menuitem text="New" enabled="false" visible="false" />
@@ -29,12 +28,12 @@
 		</menu>
 	</menubar>
 
-	<panel id="mainmenu">
+	<panel id="mainmenu" location="0,2">
 
 		<panel id="settings" name="settings" layout="FlowLayout"
-			visible="true" preferredsize="1020,740">
+			visible="true" preferredsize="1020,740" location="0,0">
 
-			<tabbedpane id="tabbedPane1" name="tabbedPane1">
+			<tabbedpane id="tabbedPane1" name="tabbedPane1" location="0,0">
 
 				<panel id="runsettings" name="Run Settings" border="TitledBorder()"
 					font="Tahoma-Bold-12" layout="FlowLayout(FlowLayout.LEFT)">
@@ -2809,15 +2808,15 @@
 
 				</panel>
 
-				<panel id="schematics" name="Map View" font="Tahoma-Italic-12">
+				<panel id="schematics" name="Map View" font="Tahoma-Italic-12" border="LineBorder(grey,1)">
 
 					<vbox>
 						<panel id="schematic_holder" preferredsize="950,600"
-							maximumsize="950,600" layout="FlowLayout" visible="true">
+							layout="BorderLayout" visible="true">
 						</panel>
 
 						<panel id="schematic_holder2" preferredsize="950,600"
-							maximumsize="950,600" layout="FlowLayout" visible="false">
+							visible="false">
 						</panel>
 
 						<hbox>
@@ -2868,6 +2867,7 @@
 						<scrollpane id="schem_scr" name="schem_scr" minimumsize="900,600" layout="BorderLayout"> 
 						</scrollpane> </panel> -->
 				</panel>
+
 				<panel id="externalPDF" name="External PDF" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
 					<label text="Report template file">
@@ -3003,4 +3003,5 @@
 		</panel>
 
 	</panel>
+
 </frame>
