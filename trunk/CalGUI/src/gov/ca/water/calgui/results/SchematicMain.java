@@ -106,7 +106,7 @@ public class SchematicMain {
 		});
 
 		scrollPane = new JSVGScrollPane(canvas);
-		p.add("Center", scrollPane);
+		p.add(scrollPane);
 
 	}
 
