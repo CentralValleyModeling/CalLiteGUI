@@ -372,6 +372,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 			p2.setPreferredSize(new Dimension(800, 600));
 			p2.setMaximumSize(new Dimension(1920, 1200));
 			this.add(p2);
+			this.setBackground(Color.WHITE);
 
 			// Button for XY scatter
 			btnScatter = new JButton("XY Scatter");
