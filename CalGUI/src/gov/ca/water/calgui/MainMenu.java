@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 			swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml"));
-			desktop.setVisible(true);
+			desktop.setVisible(false);
 
 			// Set GUI visuals
 			desktopTitle = desktop.getTitle();
