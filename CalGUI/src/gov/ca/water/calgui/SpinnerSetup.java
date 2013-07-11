@@ -6,7 +6,11 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
 
+import org.apache.log4j.Logger;
+
 public class SpinnerSetup {
+
+	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
 	public static void SetNumberModelAndIndex(JSpinner jspn, int val, int min, int max, int step, String format, Object obj,
 	        boolean changelistener) {
@@ -22,13 +26,17 @@ public class SpinnerSetup {
 	public static void SetMonthModelAndIndex(JSpinner jspn, int idx, Object obj, boolean changelistener) {
 		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
-		// JSpinner jspn = (JSpinner) component;
-		SpinnerListModel monthModel = new SpinnerListModel(monthNames);
-		jspn.setModel(monthModel);
-		jspn.setValue(monthNames[idx]);
-		jspn.addChangeListener((ChangeListener) obj);
-		if (changelistener == true) {
-			jspn.addChangeListener((ChangeListener) obj);
+		try {
+			SpinnerListModel monthModel = new SpinnerListModel(monthNames);
+			jspn.setModel(monthModel);
+			jspn.setValue(monthNames[idx]);
+			if (changelistener == true) {
+				jspn.addChangeListener((ChangeListener) obj);
+			}
+		}
+
+		catch (Exception e) {
+			log.debug("Problem reading table files. " + e);
 		}
 	}
 

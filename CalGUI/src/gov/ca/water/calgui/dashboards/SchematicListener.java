@@ -1,11 +1,13 @@
 package gov.ca.water.calgui.dashboards;
 
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.swixml.SwingEngine;
@@ -30,16 +32,17 @@ public class SchematicListener implements ItemListener {
 		String cName = component.getName();
 		if (cName != null) {
 
+			JPanel p = (JPanel) swix.find("schematic_card_layout");
+			CardLayout cl = (CardLayout) p.getLayout();
 			if (cName.equals("rdbSchemNormal")) {
 				if (((JRadioButton) component).isSelected()) {
-					swix.find("schematic_holder2").setVisible(false);
-					swix.find("schematic_holder").setVisible(true);
+
+					cl.show(p, "First");
 					updateSchematicLayout();
 				}
 			} else if (cName.equals("rdbSchemMB")) {
 				if (((JRadioButton) component).isSelected()) {
-					swix.find("schematic_holder").setVisible(false);
-					swix.find("schematic_holder2").setVisible(true);
+					cl.show(p, "Second");
 					updateSchematicLayout();
 				}
 
@@ -51,8 +54,10 @@ public class SchematicListener implements ItemListener {
 	 * @param d
 	 */
 	private void updateSchematicLayout() {
-		Dimension d = ((JFrame) swix.find("desktop")).getSize();
-		((JFrame) swix.find("desktop")).setSize(d);
+		JFrame f = (JFrame) swix.find("desktop");
+		Dimension d = f.getSize();
+		f.setSize(new Dimension(d.width + 1, d.height));
+		f.setSize(d);
 
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <frame id="desktop" name="desktop" size="1024,768"
 	title="CalLite 2.10 - Development - The Central Valley Water Management Screening Model"
-	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false" layout='FlowLayout'>
+	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false" layout='BorderLayout'>
 	<menubar id="menu">
 		<menu text="File" mnemonic="VK_F">
 			<menuitem text="New" enabled="false" visible="false" />
@@ -2808,46 +2808,48 @@
 
 				</panel>
 
-				<panel id="schematics" name="Map View" font="Tahoma-Italic-12" border="LineBorder(grey,1)">
+				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
+					border="LineBorder(grey,1)" layout="GridBagLayout">
 
-					<vbox>
-						<panel id="schematic_holder" preferredsize="950,600"
-							layout="BorderLayout" visible="true">
-						</panel>
+					<panel id="schematic_card_layout" layout="CardLayout">
+						<gridbagconstraints gridx="0" gridy="0" />
 
-						<panel id="schematic_holder2" preferredsize="950,600"
-							visible="false">
+						<panel id="schematic_holder" constraints="First" layout="BorderLayout"
+							preferredsize="400,400" size="400,400" />
+
+						<panel id="schematic_holder2" constraints="Second" layout="BorderLayout"
+							preferredsize="400,400" size="400,400" />
+
+					</panel>
+					<hbox>
+						<gridbagconstraints gridx="0" gridy="1" />
+						<panel layout="FlowLayout(FlowLayout.Left)">
+							<vbox>
+								<label
+									text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
+									font="Tahoma-BOLD-13" foreground="CC3333" />
+								<label
+									text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
+									font="Tahoma-BOLD-13" foreground="CC3333" />
+							</vbox>
 						</panel>
 
 						<hbox>
-							<panel layout="FlowLayout(FlowLayout.Left)">
-								<vbox>
-									<label
-										text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
-										font="Tahoma-BOLD-13" foreground="CC3333" />
-									<label
-										text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
-										font="Tahoma-BOLD-13" foreground="CC3333" />
-								</vbox>
-							</panel>
-
-							<hbox>
-								<buttongroup>
-									<radiobutton id="rdbSchemNormal" name="rdbSchemNormal"
-										text="Normal" selected="true" />
-									<radiobutton id="rdbSchemMB" name="rdbSchemMB"
-										text="Mass balance" />
-								</buttongroup>
-							</hbox>
-
-							<panel layout="FlowLayout(FlowLayout.Right)">
-								<button text="Help" ActionCommand="AC_Help">
-								</button>
-							</panel>
-
+							<buttongroup>
+								<radiobutton id="rdbSchemNormal" name="rdbSchemNormal"
+									text="Normal" selected="true" />
+								<radiobutton id="rdbSchemMB" name="rdbSchemMB" text="Mass balance" />
+							</buttongroup>
 						</hbox>
 
-					</vbox>
+						<panel layout="FlowLayout(FlowLayout.Right)">
+							<button text="Help" ActionCommand="AC_Help">
+							</button>
+						</panel>
+
+					</hbox>
+
+
 					<!-- <button text="NOD" preferredwidth="100,12" ActionCommand="Sch_NOD"> 
 						<gridbagconstraints insets="0,0,2,2" anchor="GridBagConstraints.WEST" gridx="0" 
 						gridy="0" /> </button> <button text="Delta" preferredwidth="100,12" ActionCommand="Sch_Delta"> 

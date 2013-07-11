@@ -40,11 +40,12 @@ import org.w3c.dom.events.EventTarget;
 public class SchematicMain {
 
 	JSVGCanvas canvas;
+	AffineTransform theAT;
+
 	Document document;
 	Window window;
 	MainMenu mainMenu;
 	SwingEngine swix;
-	AffineTransform theAT;
 	JSVGScrollPane scrollPane;
 
 	/**
@@ -67,8 +68,9 @@ public class SchematicMain {
 
 		mainMenu = mainMenuIn;
 		this.swix = swix;
-		canvas = new JSVGCanvas();
+
 		theAT = new AffineTransform(m0, m1, m2, m3, m4, m5);
+		canvas = new JSVGCanvas();
 
 		// Forces the canvas to always be dynamic even if the current
 		// document does not contain scripting or animation.
@@ -106,7 +108,12 @@ public class SchematicMain {
 		});
 
 		scrollPane = new JSVGScrollPane(canvas);
+		scrollPane.setSize(400, 400);
+		scrollPane.setScrollbarsAlwaysVisible(true);
 		p.add(scrollPane);
+
+		System.out.println(canvas.getURI() + " "
+		        + ((JSVGScrollPane) ((JPanel) swix.find("schematic_holder")).getComponent(0)).getCanvas().getRenderingTransform());
 
 	}
 
@@ -179,13 +186,13 @@ public class SchematicMain {
 				JFrame desktop = null;
 				if (mainMenu.lstScenarios.getModel().getSize() == 0)
 					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
-				else
+				else {
 					desktop = (JFrame) swix.find("desktop");
-				lstScenarios = (JList) swix.find("SelectedList");
-				DisplayFrame.displayFrame(DisplayFrame.quickState(swix) + ";Locs-" + label + ";Index-" + "SchVw" + label, swix,
-				        lstScenarios, desktop, 0);
+					lstScenarios = (JList) swix.find("SelectedList");
+					DisplayFrame.displayFrame(DisplayFrame.quickState(swix) + ";Locs-" + label + ";Index-" + "SchVw" + label, swix,
+					        lstScenarios, desktop, 0);
+				}
 			}
-
 			System.out.println("Title: " + label);
 
 		}
