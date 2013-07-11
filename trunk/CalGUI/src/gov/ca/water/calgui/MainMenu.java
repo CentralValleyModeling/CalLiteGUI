@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.getTaglib().registerTag("numtextfield", NumericTextField.class);
 			swix.render(new File(System.getProperty("user.dir") + "/Config/GUI.xml"));
-			desktop.setVisible(false);
+			desktop.setVisible(true);
 
 			// Set GUI visuals
 			desktopTitle = desktop.getTitle();
@@ -402,11 +402,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 
 			SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
-			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 1.0, 0.0, 0.0, 1.0, -1400.0,
-			        -200.0);
+			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
 			SchematicMain schemView2 = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///"
-			        + System.getProperty("user.dir") + "/Config/callite-massbalance_working.svg", this, swix, 3.0, 0, 0.0, 3.0,
-			        -950.0, -520.0);
+			        + System.getProperty("user.dir") + "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2,
+			        21.0, 15.0);
 		} catch (Exception e) {
 			log.debug("Could not load schematic views. " + e);
 		}
@@ -821,10 +820,15 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		if (c.getName().toLowerCase().equals("tabbedpane1")) {
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
+
 				// Enable max
 				desktop.setResizable(true);
 				// Resize to last large size
 				desktop.setSize(lastWidth, lastHeight);
+				// if (((JPanel) swix.find("schematic_holder")).isVisible() && ((JPanel)
+				// swix.find("schematic_holder2")).isVisible())
+				// ((JPanel) swix.find("schematic_holder2")).setVisible(false);
+
 			} else {
 				// Disable max
 				desktop.setResizable(false);
@@ -835,6 +839,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				desktop.setSize(1024, 768);
 
 			}
+			mainmenu.setLocation(0, 2);
+			((JTabbedPane) c).setLocation(0, 0);
+			((JPanel) swix.find("settings")).setLocation(0, 0);
 		}
 
 		if (c.getName().toLowerCase().substring(0, 3).equals("spn")) {
@@ -1006,6 +1013,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 * @param d
 	 */
 	private void updateSchematicLayout(Dimension d) {
+
 		mainmenu.setSize(new Dimension(d.width - 8, d.height - 51));
 
 		JPanel p1 = (JPanel) swix.find("settings");
@@ -1028,18 +1036,26 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		p3.setMinimumSize(new Dimension(d.width - 74, d.height - 148));
 		p3.invalidate();
 
+		// JPanel p4 = (JPanel) swix.find("schematics");
+		// p4.setSize(new Dimension(d.width - 40, d.height - 40));
+
 		JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
 		mainmenu.setLocation(0, 2);
 		jtp.setLocation(0, 0);
 		p1.setLocation(0, 0);
 		jtp.setSize(new Dimension(mainmenu.getSize().width - 1, mainmenu.getSize().height - 4));
-		System.out.println("Desktop " + desktop.getSize());
-		System.out.println("Mainmenu " + mainmenu.getSize() + " " + mainmenu.getLocation());
-		System.out.println("TabbedPane " + jtp.getSize() + " " + jtp.getLocation());
-		System.out.println("Settings " + p1.getSize() + " " + p1.getLocation());
-		System.out.println("Schematic" + p2.getSize() + "  " + (desktop.getSize().height - p2.getSize().height));
 
-		System.out.println();
+		// System.out.println(p4.getSize());
+		// System.out.println("Desktop " + desktop.getSize());
+		// System.out.println("Mainmenu " + mainmenu.getSize() + " " + mainmenu.getLocation());
+		// System.out.println("TabbedPane " + jtp.getSize() + " " + jtp.getLocation());
+		// System.out.println("Settings " + p1.getSize() + " " + p1.getLocation());
+		// System.out.println("Schematic" + p2.getSize() + "  " + (desktop.getSize().height - p2.getSize().height));
+		// System.out.println(((JSVGScrollPane) ((JPanel) swix.find("schematic_holder")).getComponent(0)).getCanvas()
+		// .getRenderingTransform());
+		// System.out.println(((JSVGScrollPane) ((JPanel) swix.find("schematic_holder2")).getComponent(0)).getCanvas()
+		// .getRenderingTransform());
+		// System.out.println();
 	}
 
 	@Override
