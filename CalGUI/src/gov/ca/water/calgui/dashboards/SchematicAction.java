@@ -28,6 +28,14 @@ public class SchematicAction implements ActionListener {
 			calLiteHelp.showHelp(label);
 
 		}
+		if (actionEvent.getActionCommand().equals("AC_Controls")) {
+
+			JTabbedPane jtp = (JTabbedPane) SWIX.find("tabbedPane1");
+			String label = jtp.getTitleAt(jtp.getSelectedIndex());
+			CalLiteHelp calLiteHelp = new CalLiteHelp();
+			calLiteHelp.showHelp(label);
+
+		}
 
 	}
 
