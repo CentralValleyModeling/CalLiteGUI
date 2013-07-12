@@ -2843,8 +2843,12 @@
 						</hbox>
 
 						<panel layout="FlowLayout(FlowLayout.Right)">
-							<button text="Help" ActionCommand="AC_Help">
-							</button>
+							<vbox>
+								<button text="Controls ..." ActionCommand="AC_Controls" />
+								<button text="Help" ActionCommand="AC_Help" />
+							</vbox>
+
+
 						</panel>
 
 					</hbox>
