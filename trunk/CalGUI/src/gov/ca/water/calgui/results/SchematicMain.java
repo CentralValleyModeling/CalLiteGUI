@@ -112,9 +112,6 @@ public class SchematicMain {
 		scrollPane.setScrollbarsAlwaysVisible(true);
 		p.add(scrollPane);
 
-		System.out.println(canvas.getURI() + " "
-		        + ((JSVGScrollPane) ((JPanel) swix.find("schematic_holder")).getComponent(0)).getCanvas().getRenderingTransform());
-
 	}
 
 	public void registerListeners() {

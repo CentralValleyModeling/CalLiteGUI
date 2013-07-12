@@ -1,6 +1,8 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.CalLiteHelp;
+import gov.ca.water.calgui.results.ControlFrame;
+import gov.ca.water.calgui.utils.GUIUtils;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,10 +32,10 @@ public class SchematicAction implements ActionListener {
 		}
 		if (actionEvent.getActionCommand().equals("AC_Controls")) {
 
-			JTabbedPane jtp = (JTabbedPane) SWIX.find("tabbedPane1");
-			String label = jtp.getTitleAt(jtp.getSelectedIndex());
-			CalLiteHelp calLiteHelp = new CalLiteHelp();
-			calLiteHelp.showHelp(label);
+			if (GUIUtils.controlFrame == null)
+				GUIUtils.controlFrame = new ControlFrame(SWIX);
+
+			GUIUtils.controlFrame.display();
 
 		}
 

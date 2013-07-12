@@ -1,5 +1,7 @@
 package gov.ca.water.calgui.utils;
 
+import gov.ca.water.calgui.results.ControlFrame;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ItemListener;
@@ -38,6 +40,8 @@ public class GUIUtils {
 	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
 	public static int simultaneousRuns;
+
+	public static ControlFrame controlFrame = null;
 
 	public static void setMouseListener(Component component, Object obj) {
 

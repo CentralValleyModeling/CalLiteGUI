@@ -2490,7 +2490,7 @@
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
 									</button>
 									<label font="Tahoma-BOLD-13" foreground="CC3333"
-										text="Right-click item to display  ">
+										text="Double-click item to display  ">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.EAST" gridx="5" gridy="19"
 											gridwidth="3" />
