@@ -124,6 +124,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	GUILinks gl;
 	String desktopTitle;
 	String scenFilename;
+	JFrame frameDisplayControls;
 
 	public DataFileTableModel[] dTableModels;
 	public Boolean[] regUserEditFlags;
@@ -830,6 +831,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				// ((JPanel) swix.find("schematic_holder2")).setVisible(false);
 
 			} else {
+
 				// Disable max
 				desktop.setResizable(false);
 				// Store current size
@@ -837,6 +839,14 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				lastHeight = (int) desktop.getSize().getHeight();
 				// Size down if needed
 				desktop.setSize(1024, 768);
+				if (((JTabbedPane) c).getSelectedIndex() == 6) { // Quick Results
+					if (GUIUtils.controlFrame != null) {
+						WindowEvent wev = new WindowEvent(GUIUtils.controlFrame, WindowEvent.WINDOW_CLOSING);
+						GUIUtils.controlFrame.dispatchEvent(wev);
+						GUIUtils.controlFrame.dispose();
+						GUIUtils.controlFrame = null;
+					}
+				}
 
 			}
 			mainmenu.setLocation(0, 2);
