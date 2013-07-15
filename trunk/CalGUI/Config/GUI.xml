@@ -1851,17 +1851,18 @@
 							insets="0,0,20,0" gridx="0" gridy="0" gridheight="2" />
 
 						<panel id="ss" resizeable="false" border="TitledBorder(Scenarios)"
-							layout="GridBagLayout" preferredsize="440,180" minimumsize="410,180">
+							layout="GridBagLayout" preferredsize="440,180" minimumsize="440,180">
 							<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 								gridx="0" gridy="0" />
 							<hbox>
 								<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 									gridx="0" gridy="0" insets="0,10,0,0" />
+							
 								<button id="btnAddScenario" name="btnAddScenario" text="Add" />
 								<button id="btnDelScenario" name="btnDelScenario" text="Delete" />
 								<button id="btnClearScenario" name="btnClearScenario"
 									text="Clear All" />
-								<label text="       "></label>
+								<glue minimumsize="30,0"/>
 								<button id="btnCompareScenarios" name="btnCompareScenarios"
 									ActionCommand="AC_CompScen" text="Compare Scenarios" />
 							</hbox>
@@ -1877,6 +1878,7 @@
 							<hbox>
 								<gridbagconstraints insets="5,10,0,10"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
+								<label text=" "></label>
 								<buttongroup>
 									<radiobutton name="rdbp000" id="rdbp000" text="Base"
 										selected="true">
@@ -1892,48 +1894,48 @@
 						</panel>
 
 						<panel id="Display" resizeable="false" border="TitledBorder(Display)"
-							layout="GridBagLayout" preferredsize="440,505" minimumsize="440,505"
+							layout="GridBagLayout" preferredsize="440,502" minimumsize="440,502"
 							constraints="BorderLayout.LEFT">
 							<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 								gridx="0" gridy="1" />
 							<label text="Month">
-								<gridbagconstraints insets="0,5,5,5"
+								<gridbagconstraints insets="0,5,5,0"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0" />
 							</label>
 							<label text="Year">
-								<gridbagconstraints insets="0,5,5,5"
+								<gridbagconstraints insets="0,5,5,0"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="0" />
 							</label>
 							<label text="Start ">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</label>
 							<spinner id="spnStartMonth" name="spnStartMonth"
 								preferredsize="75,25" minimumsize="50,20">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
 							</spinner>
 							<spinner id="spnStartYear" name="spnStartYear"
 								preferredsize="75,25" minimumsize="50,20">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="1" />
 							</spinner>
 							<label text="End">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</label>
 							<spinner id="spnEndMonth" name="spnEndMonth"
 								preferredsize="75,25" minimumsize="50,20">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
 							</spinner>
 							<spinner id="spnEndYear" name="spnEndYear" preferredsize="75,25"
 								minimumsize="50,20">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="2" />
 							</spinner>
 							<hbox>
-								<gridbagconstraints insets="5,0,5,5"
+								<gridbagconstraints insets="5,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" gridwidth="3" />
 								<label text="Display Units for Flows: " />
 								<buttongroup id="rep4">
@@ -1944,7 +1946,7 @@
 							</hbox>
 							<checkbox name="RepckbTimeSeriesPlot" id="RepckbTimeSeriesPlot"
 								text="Time series plot" selected="true">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" gridwidth="2" />
 							</checkbox>
 							<checkbox name="RepckbExceedancePlot" id="RepckbExceedancePlot"
@@ -1952,14 +1954,14 @@
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="5" gridwidth="2" />
 							</checkbox>
-							<checkbox name="RepckbBAWPlot" id="RepckbBAWPlot"
+							<checkbox name="RepckbBAWPlot" id="RepckbBAWPlot" enabled="false"
 								text="Box and whiskers plot">
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="5" gridwidth="1" />
 							</checkbox>
 							<panel id="controls2" resizeable="true" border="TitledBorder"
 								layout="GridBagLayout" enabled="false">
-								<gridbagconstraints insets="0,0,0,5"
+								<gridbagconstraints insets="0,0,0,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="6" gridwidth="3" />
 								<checkbox name="RepchkMonOct" text="Oct" font="Tahoma-Normal-11"
 									enabled="false">
@@ -2048,17 +2050,17 @@
 							</panel>
 							<checkbox id="RepckbMonthlyTable" name="RepckbMonthlyTable"
 								text="Monthly table">
-								<gridbagconstraints insets="10,0,0,5"
+								<gridbagconstraints insets="10,0,0,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="7" gridwidth="2" />
 							</checkbox>
 							<checkbox name="RepckbSummaryTable" id="RepckbSummaryTable"
 								text="Summary table" selected="true">
-								<gridbagconstraints insets="10,0,0,5"
+								<gridbagconstraints insets="10,0,0,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="8" gridwidth="2" />
 							</checkbox>
 							<panel id="controls3" border="TitledBorder" resizeable="true"
 								layout="GridBagLayout" enabled="true">
-								<gridbagconstraints insets="0,0,5,5"
+								<gridbagconstraints insets="0,0,5,3"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="9" gridwidth="3" />
 
 								<label text="Statistic" font="Tahoma-Bold-10">
@@ -2067,27 +2069,27 @@
 								</label>
 								<checkbox id="rdbStat1" name="rdbStat1" text="Avg"
 									font="Tahoma-Normal-11" enabled="true" selected="true">
-									<gridbagconstraints insets="0,5,0,5" gridx="0"
+									<gridbagconstraints insets="0,5,0,3" gridx="0"
 										gridy="1" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbStat2" name="rdbStat2" text="Max"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,5,0,5" gridx="0"
+									<gridbagconstraints insets="0,5,0,3" gridx="0"
 										gridy="2" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbStat3" name="rdbStat3" text="Min"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,5,0,5" gridx="0"
+									<gridbagconstraints insets="0,5,0,3" gridx="0"
 										gridy="3" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbStat4" name="rdbStat4" text="StdDev"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,5,0,5" gridx="0"
+									<gridbagconstraints insets="0,5,0,3" gridx="0"
 										gridy="4" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbStat5" name="rdbStat5" text="Median"
 									font="Tahoma-Normal-11" enabled="truee">
-									<gridbagconstraints insets="0,5,0,5" gridx="0"
+									<gridbagconstraints insets="0,5,0,3" gridx="0"
 										gridy="5" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<label text="Water year type" font="Tahoma-Bold-10">
@@ -2097,22 +2099,22 @@
 
 								<checkbox id="rdbWYType1" name="rdbWYType1" text="Sac 40-30-30"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,0,0,5" gridx="2"
+									<gridbagconstraints insets="0,0,0,3" gridx="2"
 										gridy="1" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbWYType2" name="rdbWYType2" text="Shasta Index"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,0,0,5" gridx="2"
+									<gridbagconstraints insets="0,0,0,3" gridx="2"
 										gridy="2" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbWYType3" name="rdbWYType3" text="Feather Index"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,0,0,5" gridx="2"
+									<gridbagconstraints insets="0,0,0,3" gridx="2"
 										gridy="3" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 								<checkbox id="rdbWYType4" name="rdbWYType4" text="SJR Index"
 									font="Tahoma-Normal-11" enabled="true">
-									<gridbagconstraints insets="0,0,0,5" gridx="2"
+									<gridbagconstraints insets="0,0,0,3" gridx="2"
 										gridy="4" anchor="GridBagConstraints.WEST" />
 								</checkbox>
 
@@ -2203,9 +2205,9 @@
 							minimumsize="550,505" preferredsize="550,505">
 							<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 								gridx="1" gridy="1" />
-							<tabbedpane>
+							<tabbedpane id="variables" name="variables" minimumsize="510,502" preferredsize="510,502">
 
-								<panel id="presets" name="Storage and Flows" layout="GridBagLayout">
+								<panel id="presets" name="Storage+Flows" layout="GridBagLayout">
 									<label text="Storage" font="Tahoma-BOLD-14" foreground="3366FF"
 										preferredsize="110,15">
 										<gridbagconstraints insets="0,0,0,0"
@@ -2503,7 +2505,7 @@
 									</label>
 								</panel>
 
-								<panel id="SJR Results" name="San Joaquin River" layout="GridBagLayout">
+								<panel id="SJR Results" name="San Joaquin R." layout="GridBagLayout">
 									<label text="Storage" font="Tahoma-BOLD-14" foreground="3366FF"
 										preferredsize="110,15">
 										<gridbagconstraints insets="0,0,0,0"
@@ -2591,7 +2593,7 @@
 									</checkbox>
 								</panel>
 
-								<panel id="shortage" name="Shortages/Flow Objectives"
+								<panel id="shortage" name="Shortages/Flow Obj."
 									layout="GridBagLayout">
 									<label text="Flow Shortage " font="Tahoma-BOLD-14"
 										foreground="3366FF" preferredsize="110,20" ipady="10">
@@ -2715,7 +2717,7 @@
 									</label>
 								</panel>
 
-								<panel id="WMA" name="Water Management Actions" layout="GridBagLayout">
+								<panel id="WMA" name="Water Mgt. Actions" layout="GridBagLayout">
 									<label text="Sites" font="Tahoma-BOLD" preferredsize="110,15">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="9" gridy="1" />
