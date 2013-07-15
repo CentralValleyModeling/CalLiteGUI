@@ -337,6 +337,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				scenFileDialog.actionPerformed(null);
 				if (scenFileDialog.dialogRC != 0)
 					return;
+
 				tf = (JTextField) swix.find("run_txfScen");
 				scen = tf.getText();
 				file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
