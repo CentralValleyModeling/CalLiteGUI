@@ -432,6 +432,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 
 			jtp.addChangeListener(this);
+			((JTabbedPane) swix.find("variables")).addChangeListener(this);
 
 			fileAction = new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags);
 			swix.setActionListener(menu, fileAction);
@@ -808,18 +809,27 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
+
 		Component c = (Component) changeEvent.getSource();
-		if (c.getName().toLowerCase().equals("run_sldthreads")) {
+		String lcName = c.getName().toLowerCase();
+
+		if (lcName.equals("run_sldthreads")) {
 			GUIUtils.simultaneousRuns = ((JSlider) c).getValue();
 			((JLabel) swix.find("run_lblThreads")).setText(" " + GUIUtils.simultaneousRuns + " run"
 			        + ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
 		}
-		if (c.getName().toLowerCase().equals("reg_tabbedpane")) {
+		if (lcName.equals("reg_tabbedpane")) {
 			// Hide table on Regulations dashboard when moving between tabbed panes on Regulation dashboard
 			((JComponent) swix.find("scrRegValues")).setVisible(false);
 			((JPanel) swix.find("reg_panTab")).setBorder(BorderFactory.createTitledBorder("Values"));
 		}
-		if (c.getName().toLowerCase().equals("tabbedpane1")) {
+
+		if (lcName.equals("variables")) {
+			desktop.setSize(1025, 768);
+			desktop.setSize(1024, 768);
+		}
+
+		if (lcName.equals("tabbedpane1")) {
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
 
@@ -827,9 +837,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				desktop.setResizable(true);
 				// Resize to last large size
 				desktop.setSize(lastWidth, lastHeight);
-				// if (((JPanel) swix.find("schematic_holder")).isVisible() && ((JPanel)
-				// swix.find("schematic_holder2")).isVisible())
-				// ((JPanel) swix.find("schematic_holder2")).setVisible(false);
 
 			} else {
 
@@ -838,16 +845,19 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				// Store current size
 				lastWidth = (int) desktop.getSize().getWidth();
 				lastHeight = (int) desktop.getSize().getHeight();
-				// Size down if needed
-				desktop.setSize(1024, 768);
+
 				if (((JTabbedPane) c).getSelectedIndex() == 6) { // Quick Results
+					desktop.setResizable(true);
 					if (GUIUtils.controlFrame != null) {
 						WindowEvent wev = new WindowEvent(GUIUtils.controlFrame, WindowEvent.WINDOW_CLOSING);
 						GUIUtils.controlFrame.dispatchEvent(wev);
 						GUIUtils.controlFrame.dispose();
 						GUIUtils.controlFrame = null;
 					}
+					desktop.setSize(1025, 768);
 				}
+				// Size down if needed
+				desktop.setSize(1024, 768);
 
 			}
 			mainmenu.setLocation(0, 2);
@@ -855,7 +865,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			((JPanel) swix.find("settings")).setLocation(0, 0);
 		}
 
-		if (c.getName().toLowerCase().substring(0, 3).equals("spn")) {
+		if (lcName.substring(0, 3).equals("spn")) {
 
 			// Constrain run times to [10/1921,9/2003]
 			int syr = (Integer) ((JSpinner) swix.find("spnRunStartYear")).getValue();

@@ -93,7 +93,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 		} else
 			sName = sLabel;
 
-		boolean scatterAvailable = (stscs == null) && (tscs.length == 2);
+		boolean scatterAvailable = (stscs == null) && (tscs.length == 2) && !isExceed;
 
 		boolean isSchVw = false;
 		String[] svNames = null;

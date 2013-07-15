@@ -178,25 +178,27 @@ public class FileDialog implements ActionListener {
 
 					// Get index of item clicked
 
-					int index = list.locationToIndex(event.getPoint());
+					if (list.getModel().getSize() > 0) {
+						int index = list.locationToIndex(event.getPoint());
 
-					// Toggle selected state
+						// Toggle selected state
 
-					for (int i = 0; i < list.getModel().getSize(); i++) {
-						RBListItem item = (RBListItem) list.getModel().getElementAt(i);
-						if (i == index) {
-							item.setSelected(true);
-							list.repaint(list.getCellBounds(i, i));
-						} else {
-							if (item.isSelected())
+						for (int i = 0; i < list.getModel().getSize(); i++) {
+							RBListItem item = (RBListItem) list.getModel().getElementAt(i);
+							if (i == index) {
+								item.setSelected(true);
 								list.repaint(list.getCellBounds(i, i));
-							item.setSelected(false);
+							} else {
+								if (item.isSelected())
+									list.repaint(list.getCellBounds(i, i));
+								item.setSelected(false);
+							}
 						}
+
+						// Repaint cell
+
+						list.repaint(list.getCellBounds(index, index));
 					}
-
-					// Repaint cell
-
-					list.repaint(list.getCellBounds(index, index));
 				}
 			});
 		}
