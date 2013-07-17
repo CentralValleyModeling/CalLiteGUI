@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.results;
 
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.utils.Utils;
 import hec.io.TimeSeriesContainer;
 
@@ -30,20 +31,21 @@ import org.swixml.SwingEngine;
  * 
  */
 public class DisplayFrame {
-	public int displayCount;
+
+	private static int displayLocation = 0;
+	private static SwingEngine swix = MainMenu.getSwix();
 
 	/**
 	 * 
-	 * displayFrame method creates a frame showing multiple charts according to parameters.
+	 * showDisplayFrames method creates a frame showing multiple charts according to parameters.
 	 * 
 	 * @param displayGroup
 	 * @param swix
 	 * @param dss_Grabber
 	 * @param lstScenarios
-	 * @param desktop
 	 * @param displayCount
 	 */
-	public static void displayFrame(String displayGroup, SwingEngine swix, JList lstScenarios, JFrame desktop, int displayCount) {
+	public static void showDisplayFrames(String displayGroup, JList lstScenarios) {
 
 		DSSGrabber dssGrabber = new DSSGrabber(lstScenarios);
 		boolean doComparison = false;
@@ -115,10 +117,9 @@ public class DisplayFrame {
 			dssGrabber.setLocation(locationNames[i]);
 
 			if (dssGrabber.getPrimaryDSSName() == null)
-				JOptionPane.showMessageDialog(desktop, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i]
-				        + ".");
+				JOptionPane.showMessageDialog(null, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
 			else if (dssGrabber.getPrimaryDSSName().equals(""))
-				JOptionPane.showMessageDialog(desktop, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
+				JOptionPane.showMessageDialog(null, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
 				        + ".");
 			else {
 
@@ -274,15 +275,15 @@ public class DisplayFrame {
 
 				frame.setVisible(true);
 				frame.setSize(980, 700);
-				frame.setLocation(displayCount * 20, displayCount * 20);
-				displayCount++;
+				frame.setLocation(displayLocation, displayLocation);
+				displayLocation += 20;
 
 			}
 		}
 		return;
 	}
 
-	public static String quickState(SwingEngine swix) {
+	public static String quickState() {
 
 		String cAdd;
 		cAdd = "";

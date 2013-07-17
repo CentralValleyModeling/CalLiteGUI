@@ -48,7 +48,7 @@ public class ReportAction implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int displayCount;
+
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().startsWith("AC_PresetClear")) {
 
@@ -217,7 +217,7 @@ public class ReportAction implements ActionListener {
 					}
 				}
 
-				lstArray1[n] = DisplayFrame.quickState(swix) + cSTOR + cSTORIdx;
+				lstArray1[n] = DisplayFrame.quickState() + cSTOR + cSTORIdx;
 
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
@@ -237,7 +237,7 @@ public class ReportAction implements ActionListener {
 					}
 				}
 
-				lstArray1[n] = DisplayFrame.quickState(swix) + cSTOR + cSTORIdx;
+				lstArray1[n] = DisplayFrame.quickState() + cSTOR + cSTORIdx;
 
 				// String[] reportNamesEG = {cDate};
 				lstReports.setListData(lstArray1);
@@ -367,11 +367,10 @@ public class ReportAction implements ActionListener {
 			if (lstScenarios.getModel().getSize() == 0) {
 				JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
-				displayCount = 0;
+
 				JList list = (JList) swix.find("lstReports");
 				for (int i = 0; i < list.getModel().getSize(); i++)
-					DisplayFrame
-					        .displayFrame((String) (list.getModel().getElementAt(i)), swix, lstScenarios, desktop, displayCount);
+					DisplayFrame.showDisplayFrames((String) (list.getModel().getElementAt(i)), lstScenarios);
 
 			}
 		}
@@ -383,9 +382,8 @@ public class ReportAction implements ActionListener {
 			} else if (((JList) swix.find("lstReports")).getSelectedValue() == null) {
 				JOptionPane.showMessageDialog(null, "No display group selected", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
-				displayCount = 0;
-				DisplayFrame.displayFrame((String) ((JList) swix.find("lstReports")).getSelectedValue(), swix, lstScenarios,
-				        desktop, displayCount);
+
+				DisplayFrame.showDisplayFrames((String) ((JList) swix.find("lstReports")).getSelectedValue(), lstScenarios);
 			}
 		}
 
