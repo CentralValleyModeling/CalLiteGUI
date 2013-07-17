@@ -95,7 +95,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
-	public static SwingEngine swix;
+	private static SwingEngine swix;
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
