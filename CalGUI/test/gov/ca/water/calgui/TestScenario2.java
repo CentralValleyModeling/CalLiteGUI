@@ -64,10 +64,10 @@ public class TestScenario2 {
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenarioName + ".cls");
 
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, mm.swix, mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, mm.swix, mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.dTableModels, mm.gl);
+		mm.regFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.gl);
 
-		FileAction.setupScenario(scenarioName + ".cls", "", mm.desktop, mm.swix, mm.regUserEditFlags, mm.dTableModels, mm.gl,
+		FileAction.setupScenario(scenarioName + ".cls", "", mm.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
 		        mm.regFlags);
 
 		// Give Cal-Lite a chance to initialize fully.
