@@ -186,8 +186,8 @@ public class SchematicMain {
 				else {
 					desktop = (JFrame) swix.find("desktop");
 					lstScenarios = (JList) swix.find("SelectedList");
-					DisplayFrame.displayFrame(DisplayFrame.quickState(swix) + ";Locs-" + label + ";Index-" + "SchVw" + label, swix,
-					        lstScenarios, desktop, 0);
+					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + label + ";Index-" + "SchVw" + label,
+					        lstScenarios);
 				}
 			}
 			System.out.println("Title: " + label);

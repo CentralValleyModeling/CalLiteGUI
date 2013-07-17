@@ -18,6 +18,7 @@ import gov.ca.water.calgui.dashboards.RunListener;
 import gov.ca.water.calgui.dashboards.SchematicAction;
 import gov.ca.water.calgui.dashboards.SchematicListener;
 import gov.ca.water.calgui.results.DisplayFrame;
+import gov.ca.water.calgui.results.GoogleMapTab;
 import gov.ca.water.calgui.results.SchematicMain;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
@@ -94,7 +95,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
-	public final SwingEngine swix;
+	public static SwingEngine swix;
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
@@ -213,8 +214,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(7, Color.WHITE);
 			jtp.setBackgroundAt(8, Color.WHITE);
 			jtp.setBackgroundAt(9, Color.WHITE);
-			// DSSGrabber dss_Grabber = new DSSGrabber(lstScenarios);
-			// new WebData(jtp, this, swix, dss_Grabber, lstScenarios, desktop, 0);
+
+			// Enable web-map tab
+			GoogleMapTab googleMapTab = new GoogleMapTab(lstScenarios);
+			JPanel googleMapPanel = googleMapTab.getWebTab();
+			jtp.add("Web Map", googleMapPanel);
+			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
+			jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
 
 		}
 
@@ -744,9 +750,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 						lstScenarios = (JList) swix.find("SelectedList");
 						JCheckBox chk = (JCheckBox) component;
-						DisplayFrame.displayFrame(
-						        DisplayFrame.quickState(swix) + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), swix,
-						        lstScenarios, desktop, 0);
+						DisplayFrame.showDisplayFrames(
+						        DisplayFrame.quickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), lstScenarios);
 						menu.setCursor(normalCursor);
 					}
 					// Placeholder for future handling of double-clicks
@@ -1083,6 +1088,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public void componentShown(ComponentEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public static SwingEngine getSwix() {
+
+		return swix;
 	}
 
 }
