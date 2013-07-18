@@ -71,7 +71,7 @@ public class RegAction implements ActionListener {
 						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
 							table.setValueAt(value, startRow + i, startCol + j);
 						table.repaint();
-						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
+						// System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
 					}
 				}
 			} catch (Exception ex) {
