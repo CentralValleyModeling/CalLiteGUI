@@ -126,6 +126,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	String desktopTitle;
 	String scenFilename;
 	JFrame frameDisplayControls;
+	GoogleMapTab googleMapTab;
 
 	public DataFileTableModel[] dTableModels;
 	public Boolean[] regUserEditFlags;
@@ -216,7 +217,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(9, Color.WHITE);
 
 			// Enable web-map tab
-			GoogleMapTab googleMapTab = new GoogleMapTab(lstScenarios);
+			googleMapTab = new GoogleMapTab(lstScenarios);
 			JPanel googleMapPanel = googleMapTab.getWebTab();
 			jtp.add("Web Map", googleMapPanel);
 			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
@@ -1082,6 +1083,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// System.out.println(((JSVGScrollPane) ((JPanel) swix.find("schematic_holder2")).getComponent(0)).getCanvas()
 		// .getRenderingTransform());
 		// System.out.println();
+		googleMapTab.setSizes(d.width - 24, d.height - 98);
 	}
 
 	@Override

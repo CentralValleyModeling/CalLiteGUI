@@ -1,18 +1,28 @@
 package gov.ca.water.calgui.results;
 
+import gov.ca.water.calgui.CalLiteHelp;
+import gov.ca.water.calgui.MainMenu;
+import gov.ca.water.calgui.utils.GUIUtils;
+
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import org.apache.log4j.Logger;
+import org.swixml.SwingEngine;
 
 import com.teamdev.jxbrowser.Browser;
 import com.teamdev.jxbrowser.BrowserFactory;
@@ -26,6 +36,9 @@ public class GoogleMapTab {
 	private String urlString = "http://callitewebapp.appspot.com";
 	private Browser browser = BrowserFactory.createBrowser(BrowserType.Mozilla);
 	private JList lstScenarios;
+	private static SwingEngine swix = MainMenu.getSwix();
+
+	private Component bc;
 
 	public GoogleMapTab(JList lstScenarios) {
 
@@ -83,16 +96,58 @@ public class GoogleMapTab {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
+		c.gridwidth = 3;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		c.insets = new Insets(0, 0, 25, 75);
+		c.insets = new Insets(0, 0, 5, 5);
 
-		browser.getComponent().setMinimumSize(new Dimension(1010, 680));
-		browser.getComponent().setPreferredSize(new Dimension(1010, 680));
+		bc = browser.getComponent();
+		setSizes(1000, 670);
 
-		jPanel.add(browser.getComponent(), c);
+		jPanel.add(bc, c);
 
+		JButton btnControls = new JButton("Controls");
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 0, 5, 5);
+		btnControls.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (GUIUtils.controlFrame == null)
+					GUIUtils.controlFrame = new ControlFrame(swix);
+
+				GUIUtils.controlFrame.display();
+
+			}
+		});
+
+		jPanel.add(btnControls, c);
+
+		JButton btnHelp = new JButton("Help");
+		c.gridx = 1;
+		btnHelp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
+				String label = jtp.getTitleAt(jtp.getSelectedIndex());
+				CalLiteHelp calLiteHelp = new CalLiteHelp();
+
+				calLiteHelp.showHelp(label);
+
+			}
+		});
+
+		jPanel.add(btnHelp, c);
 		return jPanel;
+	}
+
+	public void setSizes(int width, int height) {
+		bc.setMinimumSize(new Dimension(width, height));
+		bc.setPreferredSize(new Dimension(width, height));
+
 	}
 
 	private void showErrorDialog(Exception e) {
