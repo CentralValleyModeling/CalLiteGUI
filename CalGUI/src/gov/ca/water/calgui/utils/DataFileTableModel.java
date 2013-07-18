@@ -772,7 +772,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			outputStream1 = new FileOutputStream(OFileName1);
 			outputStream2 = new FileOutputStream(OFileName2);
 		} catch (FileNotFoundException e2) {
-			System.out.println("Cannot open output file");
+			// System.out.println("Cannot open output file");
 			return;
 		}
 
@@ -793,7 +793,7 @@ public class DataFileTableModel extends AbstractTableModel {
 			output2.println(outputFileName2);
 			String data1, data2;
 			output1.println(columnNames.elementAt(0) + " " + columnNames.elementAt(1));
-			System.out.println(columnNames.elementAt(0) + " " + columnNames.elementAt(1) + " " + data.size());
+			// System.out.println(columnNames.elementAt(0) + " " + columnNames.elementAt(1) + " " + data.size());
 			for (int i = 1; i <= data.size() / 7; i++) {
 
 				String colName = columnNames.elementAt(0);
@@ -826,7 +826,7 @@ public class DataFileTableModel extends AbstractTableModel {
 					data2 = (String) data.elementAt(i * 7 - 7);
 				}
 
-				System.out.println(data1 + " " + data2);
+				// System.out.println(data1 + " " + data2);
 				output1.println(data1 + " " + data2);
 			}
 

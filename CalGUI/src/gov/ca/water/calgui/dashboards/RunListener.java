@@ -93,7 +93,7 @@ public class RunListener implements ItemListener {
 
 						action_WSIDI = 2; // Skip all actions on update
 
-						System.out.println(cName + ":-" + newcName);
+						// System.out.println(cName + ":-" + newcName);
 						((JRadioButton) swix.find(newcName)).setSelected(true);
 
 						action_WSIDI = 1;

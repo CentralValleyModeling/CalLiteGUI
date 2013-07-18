@@ -54,7 +54,7 @@ public class ScenarioMonitor {
 			saving = false;
 			if (scenarioList.size() == 0) {
 				listData = new String[1];
-				listData[0] = "No scenarios tracked";
+				listData[0] = "No active scenarios";
 			} else {
 				listData = new String[scenarioList.size()];
 				Iterator<Entry<String, Pair<String, Date>>> it = scenarioList.entrySet().iterator();
