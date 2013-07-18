@@ -187,6 +187,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 			desktop.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
 
+			// Set up scenario list
+			try {
+				lstScenarios = (JList) swix.find("SelectedList");
+			} catch (Exception e) {
+				log.debug("Problem setting scenario list. " + e);
+			}
+
 			// Title
 			scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
 			desktop.setTitle(desktopTitle + " - " + scenFilename);
@@ -217,7 +224,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(9, Color.WHITE);
 
 			// Enable web-map tab
-			googleMapTab = new GoogleMapTab(lstScenarios);
+			googleMapTab = new GoogleMapTab();
 			JPanel googleMapPanel = googleMapTab.getWebTab();
 			jtp.add("Web Map", googleMapPanel);
 			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
@@ -284,13 +291,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		// Setup for Reporting page
-
-		// Set up scenario list
-		try {
-			lstScenarios = (JList) swix.find("SelectedList");
-		} catch (Exception e) {
-			log.debug("Problem setting scenario list. " + e);
-		}
 
 		// Set up additional UI elements
 		try {
