@@ -239,7 +239,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 
 				// Search for control index
 				int index = FileUtils.findInArray(controls, comp);
-				System.out.println(index);
+				// System.out.println(index);
 
 				scenmatrix[index][i + 2] = value;
 
@@ -289,7 +289,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				if (scenmatrix[i][0].equals("Scenario Directory")) {
 					for (j = 1; j <= selected.length; j++)
 						scenmatrix1[ito][j + 1] = System.getProperty("user.dir") + "\\Scenarios"; // "\\Scenarios\\ +
-																								  // scenmatrix[i][j + 1];
+					                                                                              // scenmatrix[i][j + 1];
 				} else if (scenmatrix[i][0].equals("spnRunStartMonth")) {
 					scenmatrix1[ito][0] = "  Run Start";
 					for (j = 1; j <= selected.length; j++)
@@ -411,7 +411,7 @@ public class ScenarioTable extends JFrame implements ItemListener {
 				if (!CurDash.equals(PrevDash)) {
 					procscenmatrix[ii][0] = parArr[0].toUpperCase();
 					ii++;
-					System.out.println(i + " " + scenmatrix[i][1]);
+					// System.out.println(i + " " + scenmatrix[i][1]);
 				}
 
 				// Special Handling for Regulation Sub Tabs
