@@ -35,14 +35,12 @@ public class GoogleMapTab {
 	private static Logger log = Logger.getLogger(GoogleMapTab.class.getName());
 	private String urlString = "http://callitewebapp.appspot.com";
 	private Browser browser = BrowserFactory.createBrowser(BrowserType.Mozilla);
-	private JList lstScenarios;
 	private static SwingEngine swix = MainMenu.getSwix();
 
 	private Component bc;
 
-	public GoogleMapTab(JList lstScenarios) {
+	public GoogleMapTab() {
 
-		this.lstScenarios = lstScenarios;
 		this.initializeBrowser();
 
 	}
@@ -72,14 +70,20 @@ public class GoogleMapTab {
 			@Override
 			public void titleChanged(TitleChangedEvent arg0) {
 				String title = browser.getTitle();
+				System.out.println(title);
 
 				if (title.contains(":")) {
 					String[] subtitles = title.split(":");
 					if (subtitles.length == 2) {
 						if (!subtitles[1].startsWith("AD_") && !subtitles[1].startsWith("I_")) {
-
-							DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + subtitles[1] + ";Index-"
-							        + subtitles[1], lstScenarios);
+							JList lstScenarios = (JList) swix.find("SelectedList");
+							if (lstScenarios.getModel().getSize() < 1) {
+								JOptionPane.showMessageDialog(null, "test");
+								// (swix.find("desktop"), "No scenarios loaded.");
+							} else {
+								DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + subtitles[1] + ";Index-"
+								        + subtitles[1], lstScenarios);
+							}
 						}
 					}
 				}
