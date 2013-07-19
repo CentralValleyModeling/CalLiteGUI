@@ -69,17 +69,16 @@ public class GoogleMapTab {
 		browser.addTitleListener(new TitleListener() {
 			@Override
 			public void titleChanged(TitleChangedEvent arg0) {
-				String title = browser.getTitle();
-				System.out.println(title);
 
+				String title = browser.getTitle();
 				if (title.contains(":")) {
 					String[] subtitles = title.split(":");
 					if (subtitles.length == 2) {
 						if (!subtitles[1].startsWith("AD_") && !subtitles[1].startsWith("I_")) {
 							JList lstScenarios = (JList) swix.find("SelectedList");
 							if (lstScenarios.getModel().getSize() < 1) {
-								JOptionPane.showMessageDialog(null, "test");
-								// (swix.find("desktop"), "No scenarios loaded.");
+								// JOptionPane.showMessageDialog(swix.find("desktop"), "No scenarios loaded.");
+								System.out.println("No scenarios loaded!");
 							} else {
 								DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + subtitles[1] + ";Index-"
 								        + subtitles[1], lstScenarios);
@@ -145,6 +144,18 @@ public class GoogleMapTab {
 		});
 
 		jPanel.add(btnHelp, c);
+
+		JButton btnTest = new JButton("JOptionPane Test");
+		c.gridx = 2;
+		btnTest.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Test message");
+			}
+		});
+
+		jPanel.add(btnTest, c);
 		return jPanel;
 	}
 

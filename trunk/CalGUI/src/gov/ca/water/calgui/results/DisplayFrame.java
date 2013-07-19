@@ -56,6 +56,7 @@ public class DisplayFrame {
 		boolean isCFS = false;
 		boolean doMonthlyTable = false;
 		boolean doSummaryTable = false;
+		boolean isWeb = ((JTabbedPane) swix.find("tabbedPane1")).getSelectedIndex() == 10;
 		String exceedMonths = "";
 		String summaryTags = "";
 		String names = "";
@@ -114,14 +115,24 @@ public class DisplayFrame {
 
 		for (int i = 0; i < locationNames.length; i++) {
 
-			dssGrabber.setLocation(locationNames[i]);
+			if (isWeb)
+				dssGrabber.setLocationWeb(locationNames[i]);
+			else
+				dssGrabber.setLocation(locationNames[i]);
 
-			if (dssGrabber.getPrimaryDSSName() == null)
-				JOptionPane.showMessageDialog(null, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
-			else if (dssGrabber.getPrimaryDSSName().equals(""))
-				JOptionPane.showMessageDialog(null, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
-				        + ".");
-			else {
+			if (dssGrabber.getPrimaryDSSName() == null) {
+				if (isWeb)
+					System.out.println("No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
+				else
+					JOptionPane.showMessageDialog(null, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i]
+					        + ".");
+			} else if (dssGrabber.getPrimaryDSSName().equals("")) {
+				if (isWeb)
+					System.out.println("No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
+				else
+					JOptionPane.showMessageDialog(null, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
+					        + ".");
+			} else {
 
 				dssGrabber.setDateRange(dateRange);
 
