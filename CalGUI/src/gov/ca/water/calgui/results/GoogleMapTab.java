@@ -77,7 +77,11 @@ public class GoogleMapTab {
 						if (!subtitles[1].startsWith("AD_") && !subtitles[1].startsWith("I_")) {
 							JList lstScenarios = (JList) swix.find("SelectedList");
 							if (lstScenarios.getModel().getSize() < 1) {
-								// JOptionPane.showMessageDialog(swix.find("desktop"), "No scenarios loaded.");
+								if (GUIUtils.controlFrame == null)
+									GUIUtils.controlFrame = new ControlFrame(swix);
+								GUIUtils.controlFrame.display();
+								// JOptionPane.showMessageDialog(GUIUtils.controlFrame, "No scenarios loaded.");
+
 								System.out.println("No scenarios loaded!");
 							} else {
 								DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + subtitles[1] + ";Index-"
