@@ -53,6 +53,7 @@ public class DisplayFrame {
 		boolean doTimeSeries = false;
 		boolean doBase = false;
 		boolean doExceedance = false;
+		boolean doBoxPlot = false;
 		boolean isCFS = false;
 		boolean doMonthlyTable = false;
 		boolean doSummaryTable = false;
@@ -75,6 +76,8 @@ public class DisplayFrame {
 				doDifference = true;
 			else if (groupParts[i].equals("TS"))
 				doTimeSeries = true;
+			else if (groupParts[i].equals("BP"))
+				doBoxPlot = true;
 			else if (groupParts[i].startsWith("EX-")) {
 				doExceedance = true;
 				exceedMonths = groupParts[i].substring(3);
@@ -181,6 +184,10 @@ public class DisplayFrame {
 				upper.setTime((new Month(Utils.monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
 
 				ChartPanel1 cp3;
+				if (doBoxPlot) {
+					tabbedpane.insertTab("Box Plot", null, new BoxPlotChartPanel(dssGrabber.getTitle(), dssGrabber.getYLabel(),
+					        primary_Results, null, lower, upper, dssGrabber.getSLabel(), doBase), null, 0);
+				}
 				if (doExceedance) {
 					boolean plottedOne = false; // Check if any monthly plots
 					                            // were
@@ -356,7 +363,10 @@ public class DisplayFrame {
 			}
 			cAdd = cAdd + cST;
 		}
-
+		// Boxplot
+		if (((JCheckBox) swix.find("RepckbBAWPlot")).isSelected()) {
+			cAdd = cAdd + ";BP";
+		}
 		// Monthly Table
 		ckb = (JCheckBox) swix.find("RepckbMonthlyTable");
 		if (ckb.isSelected()) {
