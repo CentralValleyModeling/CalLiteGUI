@@ -299,7 +299,7 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 				if (scatterAvailable) {
 
-					XYSeriesCollection datasetXY = new XYSeriesC	ollection();
+					XYSeriesCollection datasetXY = new XYSeriesCollection();
 					datasetXY = new XYSeriesCollection();
 					XYSeries seriesXY = new XYSeries("");
 					for (int j = 0; j < Math.min(tscs[0].numberValues, tscs[1].numberValues); j++)
