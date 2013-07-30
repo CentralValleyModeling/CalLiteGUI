@@ -53,7 +53,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class ChartPanel1 extends JPanel implements Printable {
+public class OldChartPanel1 extends JPanel implements Printable {
 	/**
 	 * ChartPanel1 - Creates JPanel with a single ChartPanel
 	 */
@@ -62,12 +62,12 @@ public class ChartPanel1 extends JPanel implements Printable {
 	private static Logger log = Logger.getLogger(ChartPanel.class.getName());
 	JButton btnScatter;
 
-	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
+	public OldChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
 	        Date lower, Date upper, String sLabel) {
 		this(title, yLabel, tscs, stscs, isExceed, lower, upper, sLabel, false);
 	}
 
-	public ChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
+	public OldChartPanel1(String title, String yLabel, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, boolean isExceed,
 	        Date lower, Date upper, String sLabel, boolean isBase) {
 
 		super();
@@ -299,10 +299,10 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 				if (scatterAvailable) {
 
-					XYSeriesCollection datasetXY = new XYSeriesC	ollection();
+					XYSeriesCollection datasetXY = new XYSeriesCollection();
 					datasetXY = new XYSeriesCollection();
 					XYSeries seriesXY = new XYSeries("");
-					for (int j = 0; j < Math.min(tscs[0].numberValues, tscs[1].numberValues); j++)
+					for (int j = 0; j < tscs[0].numberValues; j++)
 						seriesXY.addOrUpdate(tscs[0].values[j], tscs[1].values[j]);
 					datasetXY.addSeries(seriesXY);
 					chartXY = ChartFactory.createXYLineChart(title.replace(";", "+") + " (" + tscs[0].units + ")", // title
