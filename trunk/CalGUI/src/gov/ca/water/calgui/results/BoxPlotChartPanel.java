@@ -36,6 +36,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.labels.BoxAndWhiskerToolTipGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
 import org.jfree.chart.plot.XYPlot;
@@ -105,8 +106,10 @@ public class BoxPlotChartPanel extends JPanel implements Printable {
 			yAxis.setRange(ymin * 0.95, ymax * 1.05);
 			final BoxAndWhiskerRenderer renderer = new BoxAndWhiskerRenderer();
 			renderer.setFillBox(false);
-			// renderer.setToolTipGenerator(new BoxAndWhiskerToolTipGenerator());
+
+			renderer.setBaseToolTipGenerator(new BoxAndWhiskerToolTipGenerator());
 			final CategoryPlot plot = new CategoryPlot(dataset, xAxis, yAxis, renderer);
+
 			plot.setBackgroundPaint(Color.WHITE); // White background
 			plot.setDomainGridlinesVisible(false); // No gridlines
 			plot.setRangeGridlinesVisible(false);
