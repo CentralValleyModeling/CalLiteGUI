@@ -80,7 +80,7 @@ public class GoogleMapTab {
 								if (GUIUtils.controlFrame == null)
 									GUIUtils.controlFrame = new ControlFrame(swix);
 								GUIUtils.controlFrame.display();
-								// JOptionPane.showMessageDialog(GUIUtils.controlFrame, "No scenarios loaded.");
+								JOptionPane.showMessageDialog(GUIUtils.controlFrame, "No scenarios loaded.");
 
 								System.out.println("No scenarios loaded!");
 							} else {
