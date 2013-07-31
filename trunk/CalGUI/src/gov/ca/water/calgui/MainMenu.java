@@ -853,7 +853,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				lastHeight = (int) desktop.getSize().getHeight();
 
 				if (((JTabbedPane) c).getSelectedIndex() == 6) { // Quick Results
-					desktop.setResizable(true);
 					if (GUIUtils.controlFrame != null) {
 						WindowEvent wev = new WindowEvent(GUIUtils.controlFrame, WindowEvent.WINDOW_CLOSING);
 						GUIUtils.controlFrame.dispatchEvent(wev);
@@ -1083,7 +1082,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// System.out.println(((JSVGScrollPane) ((JPanel) swix.find("schematic_holder2")).getComponent(0)).getCanvas()
 		// .getRenderingTransform());
 		// System.out.println();
-		googleMapTab.setSizes(d.width - 24, d.height - 98);
+		googleMapTab.setSizes(d.width - 24, d.height - 108);
 	}
 
 	@Override

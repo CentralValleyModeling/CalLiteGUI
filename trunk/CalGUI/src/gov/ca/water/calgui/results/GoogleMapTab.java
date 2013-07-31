@@ -16,6 +16,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -103,9 +104,16 @@ public class GoogleMapTab {
 
 	public JPanel getWebTab() {
 
-		JPanel jPanel = new JPanel();
+		// Panel
 
+		JPanel jPanel = new JPanel();
 		jPanel.setLayout(new GridBagLayout());
+
+		// Browser window
+
+		bc = browser.getComponent();
+		setSizes(1000, 660);
+
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
@@ -114,8 +122,7 @@ public class GoogleMapTab {
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.insets = new Insets(0, 0, 5, 5);
 
-		bc = browser.getComponent();
-		setSizes(1000, 670);
+		// Buttons
 
 		jPanel.add(bc, c);
 
@@ -123,7 +130,6 @@ public class GoogleMapTab {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
-		c.insets = new Insets(0, 0, 5, 5);
 		btnControls.addActionListener(new ActionListener() {
 
 			@Override
@@ -155,18 +161,19 @@ public class GoogleMapTab {
 
 		jPanel.add(btnHelp, c);
 
-		JButton btnTest = new JButton("JOptionPane Test");
+		// Filler
+
+		JLabel lblFill = new JLabel(" ");
 		c.gridx = 2;
-		btnTest.addActionListener(new ActionListener() {
+		jPanel.add(lblFill, c);
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Test message");
-			}
-		});
+		c.gridy = 2;
+		jPanel.add(lblFill, c);
 
-		jPanel.add(btnTest, c);
+		// Done
+
 		return jPanel;
+
 	}
 
 	public void setSizes(int width, int height) {
