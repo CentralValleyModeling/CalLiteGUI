@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * ProgressFrame - simple frame to show progress passed by method setText();
+ * ProgressFrame - Dialog shows status of runs and of PDF report generation
  * 
  * @author tslawecki
  * 

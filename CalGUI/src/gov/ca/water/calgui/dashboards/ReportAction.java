@@ -138,7 +138,7 @@ public class ReportAction implements ActionListener {
 					theText = theText + "\n";
 					ByteArrayInputStream bs = new ByteArrayInputStream(theText.getBytes());
 					try {
-						Report report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText(), desktop);
+						Report report = new Report(bs, ((JTextField) swix.find("tfReportFILE3")).getToolTipText());
 						report.execute();
 					} catch (IOException e1) {
 						log.debug(e1.getMessage()); // Not sure - should catch thread problems like already-open PDF?

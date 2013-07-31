@@ -20,6 +20,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
@@ -80,7 +81,12 @@ public class GoogleMapTab {
 								if (GUIUtils.controlFrame == null)
 									GUIUtils.controlFrame = new ControlFrame(swix);
 								GUIUtils.controlFrame.display();
-								JOptionPane.showMessageDialog(GUIUtils.controlFrame, "No scenarios loaded.");
+								SwingUtilities.invokeLater(new Runnable() {
+									@Override
+									public void run() {
+										JOptionPane.showMessageDialog(null, "No scenarios loaded.");
+									}
+								});
 
 								System.out.println("No scenarios loaded!");
 							} else {

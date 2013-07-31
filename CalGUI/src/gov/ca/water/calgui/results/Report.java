@@ -3,10 +3,11 @@ package gov.ca.water.calgui.results;
 import gov.ca.dsm2.input.parser.InputTable;
 import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
+import gov.ca.water.calgui.MainMenu;
+import gov.ca.water.calgui.ScenarioMonitor;
 import gov.ca.water.calgui.utils.ProgressDialog;
 import gov.ca.water.calgui.utils.Utils;
 
-import java.awt.Cursor;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,8 +17,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.SwingWorker;
+
+import org.swixml.SwingEngine;
 
 import vista.report.TSMath;
 import vista.set.DataReference;
@@ -40,7 +43,10 @@ public class Report extends SwingWorker<Void, String> {
 	 * @author psandhu
 	 * 
 	 */
+	private static SwingEngine swix = MainMenu.getSwix();
+
 	public static interface Writer {
+
 		static final int BOLD = 100;
 		static final int NORMAL = 1;
 
@@ -76,17 +82,16 @@ public class Report extends SwingWorker<Void, String> {
 	 */
 
 	private InputStream inputStream;
-	private JFrame desktop = null;
 	private ProgressDialog progressDialog;
 	private String outputFilename;
+	private boolean isInitialized = false;
 
 	@Override
 	protected Void doInBackground() throws Exception {
 
-		progressDialog = new ProgressDialog("CalLite 2.0 GUI - Generating Report");
+		ScenarioMonitor.add("Creating PDF");
 		publish("Generating report in background thread.");
-		progressDialog.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		desktop.setVisible(false);
+		((JButton) swix.find("btnReport")).setEnabled(false);
 
 		logger.fine("Parsing input template");
 		publish("Parsing input template.");
@@ -94,6 +99,8 @@ public class Report extends SwingWorker<Void, String> {
 
 		publish("Processing DSS files.");
 		doProcessing();
+		publish("Done");
+
 		logger.fine("Done generating report");
 
 		return null;
@@ -102,17 +109,14 @@ public class Report extends SwingWorker<Void, String> {
 	@Override
 	protected void process(List<String> status) {
 
-		progressDialog.setText(status.get(status.size() - 1));
+		ScenarioMonitor.setPDFStatus(status.get(status.size() - 1));
 		return;
 	}
 
 	@Override
 	protected void done() {
 
-		progressDialog.setCursor(null);
-		progressDialog.dispose();
-
-		desktop.setVisible(true);
+		((JButton) swix.find("btnReport")).setEnabled(true);
 		try {
 			Runtime.getRuntime().exec("cmd /c start " + outputFilename);
 		} catch (IOException e) {
@@ -123,11 +127,11 @@ public class Report extends SwingWorker<Void, String> {
 
 	}
 
-	public Report(InputStream inputStream, String outputFilename, JFrame desktop) throws IOException {
+	public Report(InputStream inputStream, String outputFilename) throws IOException {
 
-		this.desktop = desktop;
 		this.inputStream = inputStream;
 		this.outputFilename = outputFilename;
+		this.isInitialized = true;
 
 	}
 
@@ -159,7 +163,7 @@ public class Report extends SwingWorker<Void, String> {
 
 	void parseTemplateFile(InputStream templateFileStream) throws IOException {
 
-		if (desktop != null) {
+		if (isInitialized) {
 			publish("Parsing template file.");
 		}
 
@@ -202,7 +206,7 @@ public class Report extends SwingWorker<Void, String> {
 
 	public void doProcessing() {
 		// open files 1 and file 2 and loop over to plot
-		if (desktop != null) {
+		if (isInitialized) {
 			publish("Processing template file.");
 		}
 		Group dssGroupBase = Utils.opendss(scalars.get("FILE_BASE"));
@@ -235,7 +239,7 @@ public class Report extends SwingWorker<Void, String> {
 		int dataIndex = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
 			dataIndex = dataIndex + 1;
-			if (desktop != null) {
+			if (isInitialized) {
 				publish("Generating plot " + dataIndex + " of " + pathnameMaps.size() + ".");
 			}
 
@@ -301,7 +305,7 @@ public class Report extends SwingWorker<Void, String> {
 
 	private void generateSummaryTable() {
 
-		if (desktop != null) {
+		if (isInitialized) {
 			publish("Generating summary table.");
 		}
 
@@ -340,7 +344,7 @@ public class Report extends SwingWorker<Void, String> {
 		int dataIndex = 0;
 		for (PathnameMap pathMap : pathnameMaps) {
 			dataIndex++;
-			if (desktop != null) {
+			if (isInitialized) {
 				publish("Processing dataset " + dataIndex + " of " + pathnameMaps.size());
 			}
 

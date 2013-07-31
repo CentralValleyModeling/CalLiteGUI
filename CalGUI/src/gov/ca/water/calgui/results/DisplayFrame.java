@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 
 import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
@@ -123,18 +124,20 @@ public class DisplayFrame {
 			else
 				dssGrabber.setLocation(locationNames[i]);
 
-			if (dssGrabber.getPrimaryDSSName() == null) {
-				if (isWeb)
-					System.out.println("No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".");
-				else
-					JOptionPane.showMessageDialog(null, "No GUI table entry found for " + namesText[i] + "/" + locationNames[i]
-					        + ".");
-			} else if (dssGrabber.getPrimaryDSSName().equals("")) {
-				if (isWeb)
-					System.out.println("No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".");
-				else
-					JOptionPane.showMessageDialog(null, "No DSS time series specified for " + namesText[i] + "/" + locationNames[i]
-					        + ".");
+			String message = null;
+			if (dssGrabber.getPrimaryDSSName() == null)
+				message = "No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".";
+			else if (dssGrabber.getPrimaryDSSName().equals(""))
+				message = "No DSS time series specified for " + namesText[i] + "/" + locationNames[i] + ".";
+			if (message != null) {
+
+				final String messageText = message;
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						JOptionPane.showMessageDialog(null, messageText);
+					}
+				});
 			} else {
 
 				dssGrabber.setDateRange(dateRange);

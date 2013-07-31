@@ -131,6 +131,12 @@ public class ScenarioMonitor {
 		return saving;
 	}
 
+	private static String pdfStatus;
+
+	public static void setPDFStatus(String status) {
+		pdfStatus = status;
+	}
+
 	/**
 	 * Returns status of scenario - Saved, Parsing, Running, Done
 	 * 
@@ -138,6 +144,9 @@ public class ScenarioMonitor {
 	 * @return
 	 */
 	public static String getStatus(String scenarioName) {
+
+		if (scenarioName.equals("Creating PDF"))
+			return pdfStatus;
 
 		String text;
 
