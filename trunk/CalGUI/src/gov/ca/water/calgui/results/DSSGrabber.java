@@ -43,6 +43,7 @@ public class DSSGrabber {
 
 	static Logger log = Logger.getLogger(DSSGrabber.class.getName());
 	static final double CFS_2_TAF_DAY = 0.001983471;
+	static final double TAF_DAY_2_CFS = 504.166667;
 
 	private final JList lstScenarios;
 	private String baseName;
@@ -65,6 +66,8 @@ public class DSSGrabber {
 	private int scenarios; // Number of scenarios passed in list parameter
 	private double[][] annualTAFs;
 	private double[][] annualTAFsDiff;
+	private double[][] annualCFSs;
+	private double[][] annualCFSsDiff;
 
 	public DSSGrabber(JList list) {
 
@@ -512,7 +515,7 @@ public class DSSGrabber {
 						primaryResults[i].values[j] = monthlyTAF;
 				}
 				if (!isCFS)
-					primaryResults[i].units = "TAF";
+					primaryResults[i].units = "TAFY";
 			}
 
 			// Calculate differences if applicable (primary series only)
@@ -542,7 +545,7 @@ public class DSSGrabber {
 
 					}
 					if (!isCFS)
-						secondaryResults[i].units = "TAF";
+						secondaryResults[i].units = "TAFY";
 				}
 			}
 		}
@@ -556,6 +559,95 @@ public class DSSGrabber {
 	public double getAnnualTAFDiff(int i, int wy) {
 
 		return annualTAFsDiff[i][wy - startWY];
+	}
+
+	public double getAnnualCFS(int i, int wy) {
+
+		return annualCFSs[i][wy - startWY];
+	}
+
+	public double getAnnualCFSDiff(int i, int wy) {
+
+		return annualCFSsDiff[i][wy - startWY];
+	}
+
+	/**
+	 * Calculates annual volume in CFS for any TAF dataset, and replaces monthly values if CFS flag is checked.
+	 * 
+	 * @param primaryResults
+	 * @param secondaryResults
+	 */
+	public void calcCFSforTAF(TimeSeriesContainer[] primaryResults, TimeSeriesContainer[] secondaryResults) {
+
+		// Allocate and zero out
+
+		int datasets = primaryResults.length;
+		if (secondaryResults != null)
+			datasets = datasets + secondaryResults.length;
+
+		annualCFSs = new double[datasets][endWY - startWY + 2];
+
+		for (int i = 0; i < datasets; i++)
+			for (int j = 0; j < endWY - startWY + 1; j++)
+				annualCFSs[i][j] = 0.0;
+
+		// Calculate
+
+		if (originalUnits.equals("TAF")) {
+
+			HecTime ht = new HecTime();
+			Calendar calendar = Calendar.getInstance();
+
+			// Primary series
+
+			for (int i = 0; i < primaryResults.length; i++) {
+				for (int j = 0; j < primaryResults[i].numberValues; j++) {
+
+					ht.set(primaryResults[i].times[j]);
+					calendar.set(ht.year(), ht.month() - 1, 1);
+					double monthlyCFS = primaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+					        * TAF_DAY_2_CFS;
+					int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
+					if (wy >= 0)
+						annualCFSs[i][wy] += monthlyCFS;
+					if (!isCFS)
+						primaryResults[i].values[j] = monthlyCFS;
+				}
+				if (isCFS)
+					primaryResults[i].units = "cfs";
+			}
+
+			// Calculate differences if applicable (primary series only)
+
+			if (primaryResults.length > 1) {
+				annualCFSsDiff = new double[primaryResults.length - 1][endWY - startWY + 2];
+				for (int i = 0; i < primaryResults.length - 1; i++)
+					for (int j = 0; j < endWY - startWY + 1; j++)
+						annualCFSsDiff[i][j] = annualCFSs[i + 1][j] - annualCFSs[0][j];
+			}
+
+			if (secondaryResults != null) {
+
+				// Secondary series
+
+				for (int i = 0; i < secondaryResults.length; i++) {
+					for (int j = 0; j < secondaryResults[i].numberValues; j++) {
+
+						ht.set(secondaryResults[i].times[j]);
+						calendar.set(ht.year(), ht.month() - 1, 1);
+						double monthlyCFS = secondaryResults[i].values[j] * calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+						        * TAF_DAY_2_CFS;
+						int wy = ((ht.month() < 10) ? ht.year() : ht.year() + 1) - startWY;
+						annualCFSs[i + primaryResults.length][wy] += monthlyCFS;
+						if (isCFS)
+							secondaryResults[i].values[j] = monthlyCFS;
+
+					}
+					if (isCFS)
+						secondaryResults[i].units = "cfs";
+				}
+			}
+		}
 	}
 
 	/**

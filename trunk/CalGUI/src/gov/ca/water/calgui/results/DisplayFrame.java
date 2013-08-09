@@ -145,7 +145,11 @@ public class DisplayFrame {
 				TimeSeriesContainer[] primary_Results = dssGrabber.getPrimarySeries(locationNames[i]);
 				TimeSeriesContainer[] secondary_Results = dssGrabber.getSecondarySeries();
 
-				dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
+				if (isCFS == true) {
+					dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
+				} else {
+					dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
+				}
 
 				TimeSeriesContainer[] diff_Results = dssGrabber.getDifferenceSeries(primary_Results);
 				TimeSeriesContainer[][] exc_Results = dssGrabber.getExceedanceSeries(primary_Results);
