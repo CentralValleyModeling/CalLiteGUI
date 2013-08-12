@@ -310,9 +310,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			JButton btnClearAll = (JButton) swix.find("btnClearScenario");
 			btnClearAll.addActionListener(this);
 
-			JButton btnScenarioComp = (JButton) swix.find("btnCompareScenarios");
-			btnScenarioComp.addActionListener(this);
-
 			// Set up month spinners
 			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
 			SpinnerSetup.SetMonthModelAndIndex(spnSM, 9, this, true);
@@ -489,6 +486,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
 
 			swix.setActionListener(externalPDF, new ReportAction(desktop, swix));
+
+			JButton btnScenarioComp = (JButton) swix.find("btnCompareScenarios");
+			// btnScenarioComp.addActionListener(this);
+			swix.setActionListener(btnScenarioComp, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
+			        regFlags));
 
 			desktop.addComponentListener(this);
 
