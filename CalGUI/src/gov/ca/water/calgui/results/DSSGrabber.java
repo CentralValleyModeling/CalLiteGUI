@@ -515,7 +515,7 @@ public class DSSGrabber {
 						primaryResults[i].values[j] = monthlyTAF;
 				}
 				if (!isCFS)
-					primaryResults[i].units = "TAFY";
+					primaryResults[i].units = "TAF per year";
 			}
 
 			// Calculate differences if applicable (primary series only)
@@ -545,7 +545,7 @@ public class DSSGrabber {
 
 					}
 					if (!isCFS)
-						secondaryResults[i].units = "TAFY";
+						secondaryResults[i].units = "TAF per year";
 				}
 			}
 		}
