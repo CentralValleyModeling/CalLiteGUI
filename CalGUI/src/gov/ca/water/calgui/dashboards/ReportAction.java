@@ -387,6 +387,10 @@ public class ReportAction implements ActionListener {
 			}
 		}
 
+		else if (e.getActionCommand().startsWith("Time_SELECT")) {
+
+		}
+
 		else if (e.getActionCommand().equals("AC_Help")) {
 
 			JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
