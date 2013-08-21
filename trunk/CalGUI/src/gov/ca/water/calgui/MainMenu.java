@@ -54,11 +54,14 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import javax.help.JHelp;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -492,6 +495,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			swix.setActionListener(btnScenarioComp, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
 			        regFlags));
 
+			// JComboBox cbotimeQS = (JComboBox) swix.find("cbotimeQS");
+			// swix.setActionListener(cbotimeQS, new ReportAction(desktop, swix));
+
 			desktop.addComponentListener(this);
 
 			// Check for scenario changes on Exit.
@@ -554,6 +560,49 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 	}
+
+	public Action Time_SELECT = new AbstractAction() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
+			JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
+			JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
+			JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
+
+			JComboBox cbotimeQS = (JComboBox) swix.find("cbotimeQS");
+			String strSel = cbotimeQS.getSelectedItem().toString();
+			if (strSel.equals("Custom")) {
+				spnSM.setEnabled(true);
+				spnEM.setEnabled(true);
+				spnSY.setEnabled(true);
+				spnEY.setEnabled(true);
+			} else {
+
+				String delims = " - ";
+				String[] tokens = strSel.split(delims);
+				delims = " ";
+				String[] tokensStart = tokens[0].split(delims);
+				String[] tokensEnd = tokens[1].split(delims);
+				String sMonth = tokensStart[0];
+				int sYear = Integer.parseInt(tokensStart[1]);
+				String eMonth = tokensEnd[0];
+				int eYear = Integer.parseInt(tokensEnd[1]);
+
+				spnSM.setValue(sMonth);
+				spnSY.setValue(sYear);
+				spnEM.setValue(eMonth);
+				spnEY.setValue(eYear);
+
+				spnSM.setEnabled(false);
+				spnEM.setEnabled(false);
+				spnSY.setEnabled(false);
+				spnEY.setEnabled(false);
+
+			}
+
+			// System.out.println(((JComboBox) e.getSource()).getSelectedItem().toString());
+		}
+	};
 
 	// React to menu selections.
 	@Override
