@@ -44,6 +44,7 @@ public class CalLiteHelp {
 		}
 
 		String path = new File(properties.getProperty("help.dir")).getAbsolutePath();
+		String versionId = properties.getProperty("version.id");
 
 		try {
 
@@ -51,7 +52,7 @@ public class CalLiteHelp {
 
 			JHelp helpViewer = new JHelp(new HelpSet(null, url));
 
-			JFrame help = new JFrame("CalLite 2.0 GUI Help");
+			JFrame help = new JFrame("CalLite " + versionId + " GUI Help");
 			help.getContentPane().add(helpViewer);
 
 			helpViewer.setCurrentID(label);
