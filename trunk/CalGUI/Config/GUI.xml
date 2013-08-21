@@ -1920,11 +1920,11 @@
 									gridx="0" gridy="0" />
 								</label>
 								<spinner id="spnStartMonth" name="spnStartMonth"
-									size="75,20">
+									size="75,20" enabled="false">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="0" />
 								</spinner>
-								<spinner id="spnStartYear" name="spnStartYear">
+								<spinner id="spnStartYear" name="spnStartYear" enabled="false">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="0" />
 								</spinner>
@@ -1934,11 +1934,11 @@
 									gridx="0" gridy="1" />
 								</label>
 								<spinner id="spnEndMonth" name="spnEndMonth"
-									size="75,20">
+									size="75,20" enabled="false">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="1" gridy="1" />
 								</spinner>
-								<spinner id="spnEndYear" name="spnEndYear">
+								<spinner id="spnEndYear" name="spnEndYear" enabled="false">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 									gridx="2" gridy="1" />
 								</spinner>
