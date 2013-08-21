@@ -12,7 +12,7 @@
 	</path>
 
 	<path id="deploy.classpath">
-		<fileset dir="${deploy.dir}/lib" includes="**/*.jar" />
+		<fileset dir="${deploy.dir}/lib" includes="**/*.jar"/>
 	</path>
 
 
@@ -53,6 +53,7 @@
 
 			<fileset dir="${lib.dir}">
 				<exclude name="junit.jar" />
+				<exclude name="license.jar" />
 			</fileset>
 
 		</copy>
