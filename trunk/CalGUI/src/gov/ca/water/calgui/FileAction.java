@@ -508,8 +508,9 @@ public class FileAction implements ActionListener {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 			String guiXmlDate = sdf.format(calendar.getTime());
 
-			JOptionPane.showMessageDialog(null, "CalLite 2.1 (alpha)\nBuild date: " + properties.getProperty("build.date")
-			        + "\nYour last GUI xml revision date: " + guiXmlDate, "About CalLite", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "CalLite v. " + properties.getProperty("version.id") + "\nBuild date: "
+			        + properties.getProperty("build.date") + "\nYour last GUI xml revision date: " + guiXmlDate, "About CalLite",
+			        JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
