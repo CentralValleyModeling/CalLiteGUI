@@ -79,9 +79,10 @@ public class GoogleMapTab {
 						if (!subtitles[1].startsWith("AD_") && !subtitles[1].startsWith("I_")) {
 							JList lstScenarios = (JList) swix.find("SelectedList");
 							if (lstScenarios.getModel().getSize() < 1) {
-								if (GUIUtils.controlFrame == null)
-									GUIUtils.controlFrame = new ControlFrame(swix);
-								GUIUtils.controlFrame.display();
+								// if (GUIUtils.controlFrame == null)
+								// GUIUtils.controlFrame = new ControlFrame(swix);
+								ControlFrame cf = GUIUtils.getControlFrame();
+								cf.display();
 								SwingUtilities.invokeLater(new Runnable() {
 									@Override
 									public void run() {
@@ -134,10 +135,8 @@ public class GoogleMapTab {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (GUIUtils.controlFrame == null)
-					GUIUtils.controlFrame = new ControlFrame(swix);
-
-				GUIUtils.controlFrame.display();
+				ControlFrame cf = GUIUtils.getControlFrame();
+				cf.display();
 
 			}
 		});

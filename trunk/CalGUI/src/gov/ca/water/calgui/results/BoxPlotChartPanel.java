@@ -68,7 +68,7 @@ public class BoxPlotChartPanel extends JPanel implements Printable {
 		int categoryCount = 14; // 12 months, all, annual
 		for (int i = 0; i < seriesCount; i++) {
 			for (int j = 0; j < categoryCount; j++) {
-				final List list = new ArrayList();
+				final List<Double> list = new ArrayList<Double>();
 
 				if (j == 0) {
 					// All data
@@ -237,10 +237,6 @@ public class BoxPlotChartPanel extends JPanel implements Printable {
 				log.debug(e.getMessage());
 			}
 		}
-
-	}
-
-	private void Work(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs) {
 
 	}
 

@@ -17,6 +17,7 @@ import gov.ca.water.calgui.dashboards.ReportListener;
 import gov.ca.water.calgui.dashboards.RunListener;
 import gov.ca.water.calgui.dashboards.SchematicAction;
 import gov.ca.water.calgui.dashboards.SchematicListener;
+import gov.ca.water.calgui.results.ControlFrame;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.GoogleMapTab;
 import gov.ca.water.calgui.results.SchematicMain;
@@ -28,6 +29,7 @@ import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -92,6 +94,9 @@ import javax.swing.event.TableModelListener;
 
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
+
+import calsim.gui.CalLiteGUIPanelWrapper;
+import calsim.gui.GuiUtils;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         ComponentListener, KeyEventDispatcher {
@@ -164,7 +169,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public MainMenu(boolean makeVisible) throws Exception {
 
 		long startSetupTime = System.currentTimeMillis();
-
+		System.out.println(" -- ");
 		try {
 			CalLiteSplash.getSplash();
 		}
@@ -227,11 +232,22 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(9, Color.WHITE);
 
 			// Enable web-map tab
-			googleMapTab = new GoogleMapTab();
-			JPanel googleMapPanel = googleMapTab.getWebTab();
-			jtp.add("Web Map", googleMapPanel);
-			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
-			jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
+			// googleMapTab = new GoogleMapTab();
+			// JPanel googleMapPanel = googleMapTab.getWebTab();
+			// jtp.add("Web Map", googleMapPanel);
+			// jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
+			// jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
+
+			// Put WRIMS GUI message panel in Custom Results tab
+
+			JPanel p = (JPanel) swix.find("WRIMS");
+			p.setSize(800, 600);
+			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
+			JPanel pwp = pw.getPanel();
+			System.out.println(pwp.getSize() + " " + p.getSize());
+			pw.getPanel().setSize(800, 600);
+			p.add(pw.getPanel(), BorderLayout.NORTH);
+			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
 
 		}
 
@@ -907,11 +923,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				lastHeight = (int) desktop.getSize().getHeight();
 
 				if (((JTabbedPane) c).getSelectedIndex() == 6) { // Quick Results
-					if (GUIUtils.controlFrame != null) {
-						WindowEvent wev = new WindowEvent(GUIUtils.controlFrame, WindowEvent.WINDOW_CLOSING);
-						GUIUtils.controlFrame.dispatchEvent(wev);
-						GUIUtils.controlFrame.dispose();
-						GUIUtils.controlFrame = null;
+					ControlFrame cf = GUIUtils.getControlFrame();
+					if (cf != null) {
+						WindowEvent wev = new WindowEvent(cf, WindowEvent.WINDOW_CLOSING);
+						cf.dispatchEvent(wev);
+						GUIUtils.closeControlFrame();
+
 					}
 					desktop.setSize(1025, 768);
 				}
@@ -1136,7 +1153,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		// System.out.println(((JSVGScrollPane) ((JPanel) swix.find("schematic_holder2")).getComponent(0)).getCanvas()
 		// .getRenderingTransform());
 		// System.out.println();
-		googleMapTab.setSizes(d.width - 24, d.height - 108);
+		// googleMapTab.setSizes(d.width - 24, d.height - 108);
 	}
 
 	@Override

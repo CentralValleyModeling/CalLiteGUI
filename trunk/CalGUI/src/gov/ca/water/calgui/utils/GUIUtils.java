@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.utils;
 
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.ControlFrame;
 
 import java.awt.Component;
@@ -39,9 +40,9 @@ public class GUIUtils {
 
 	private static Logger log = Logger.getLogger(GUILinks.class.getName());
 
-	public static int simultaneousRuns;
+	public static int simultaneousRuns; // TODO make private and add getter.
 
-	public static ControlFrame controlFrame = null;
+	private static ControlFrame _controlFrame = null;
 
 	public static void setMouseListener(Component component, Object obj) {
 
@@ -824,6 +825,20 @@ public class GUIUtils {
 	public static String defaultDSSDirectoryString() {
 		return System.getProperty("user.dir") + "\\Model_w2\\DSS_Files";
 
+	}
+
+	public static ControlFrame getControlFrame() {
+
+		if (_controlFrame == null)
+			_controlFrame = new ControlFrame(MainMenu.getSwix());
+		return _controlFrame;
+	}
+
+	public static void closeControlFrame() {
+		_controlFrame.dispose();
+		_controlFrame = null;
+
+		return;
 	}
 
 }
