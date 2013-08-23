@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 public class ScenarioMonitor {
 
 	private static Properties properties = new Properties();
-	private static Logger log = Logger.getLogger(FileAction.class.getName());
+	private static Logger log = Logger.getLogger(ScenarioMonitor.class.getName());
 	private static String runRecordFolderName;
 	private static ProgressDialog progressDialog;
 

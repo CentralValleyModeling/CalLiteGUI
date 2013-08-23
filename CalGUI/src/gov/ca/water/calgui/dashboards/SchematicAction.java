@@ -32,10 +32,8 @@ public class SchematicAction implements ActionListener {
 		}
 		if (actionEvent.getActionCommand().equals("AC_Controls")) {
 
-			if (GUIUtils.controlFrame == null)
-				GUIUtils.controlFrame = new ControlFrame(SWIX);
-
-			GUIUtils.controlFrame.display();
+			ControlFrame cf = GUIUtils.getControlFrame();
+			cf.display();
 
 		}
 

@@ -62,5 +62,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/license.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/CalLite/lib/calsim.gui.jar" sourcepath="C:/Users/tslawecki/git/WRIMS2/wrims15/calsim/gui"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

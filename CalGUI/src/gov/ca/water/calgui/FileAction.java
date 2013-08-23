@@ -68,7 +68,7 @@ public class FileAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private int action_WSIDI;
-	private final int[] RegFlags;
+	private final int[] regFlags;
 	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
 	                                           // run
 
@@ -87,14 +87,14 @@ public class FileAction implements ActionListener {
 	 * @param action_WSIDI
 	 */
 	public FileAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
-	        int action_WSIDI, int[] RegFlags) {
+	        int action_WSIDI, int[] regFlags) {
 		this.desktop = desktop;
 		this.swix = swix;
 		this.regUserEdits = regUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.action_WSIDI = action_WSIDI;
-		this.RegFlags = RegFlags;
+		this.regFlags = regFlags;
 
 		// create and load default properties
 		try {
@@ -224,7 +224,7 @@ public class FileAction implements ActionListener {
 						if (okToRun) {
 							if (!(new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 							        + FilenameUtils.removeExtension(scen))).isDirectory()) {
-								setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+								setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags);
 
 								// Wait two seconds to make sure save has started
 
@@ -312,7 +312,7 @@ public class FileAction implements ActionListener {
 
 										// Force setup of scenario schema because there is a change
 
-										setupScenario(scen2, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+										setupScenario(scen2, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags);
 										scen = scen2;
 
 										// Wait two seconds to make sure save has started
@@ -433,7 +433,7 @@ public class FileAction implements ActionListener {
 
 				if (proceed) {
 					saveFile(scen, swix, regUserEdits, dTableModels, gl);
-					setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+					setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags);
 				} else {
 					JFrame frame = new JFrame("Error");
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
@@ -466,7 +466,6 @@ public class FileAction implements ActionListener {
 			// Save current settings to temp file
 			saveFile("Current_Scenario", swix, regUserEdits, dTableModels, gl);
 			ScenarioFrame ScenFrame = new ScenarioFrame("CalLite 2.0 GUI - Scenario Comparison", swix);
-			ScenFrame.setVisible(true);
 			ScenFrame.setVisible(true);
 
 		} else if (ae.getActionCommand().startsWith("AC_ViewScen")) {
