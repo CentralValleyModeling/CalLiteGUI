@@ -264,7 +264,7 @@ public class FileDialog implements ActionListener {
 				UIManager.put("FileChooser.openDialogTitleText", "Select Scenarios");
 				fc.setMultiSelectionEnabled(true);
 				dialogRC = fc.showDialog(null, "Select");
-				if (theList != null) {
+				if (theList != null & dialogRC != 1) {
 					for (File file : fc.getSelectedFiles()) {
 						addFileToList(file);
 					}
