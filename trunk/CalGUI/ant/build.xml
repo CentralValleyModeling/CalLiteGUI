@@ -112,7 +112,7 @@
 	<target name="update-properties" depends="make-deploy-dir">
 		<propertyfile file="${src.dir}/callite-gui.properties">
 			<entry key="build.date" value="${build.date}" />
-			<entry key="version.id" value="2.03" />
+			<entry key="version.id" value="2.04 (dev)" />
 		</propertyfile>
 
 		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}" />
