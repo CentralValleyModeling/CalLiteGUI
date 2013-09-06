@@ -95,6 +95,8 @@ import javax.swing.event.TableModelListener;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
+import calsim.app.AppUtils;
+import calsim.app.Project;
 import calsim.gui.CalLiteGUIPanelWrapper;
 import calsim.gui.GuiUtils;
 
@@ -104,6 +106,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
 	private static SwingEngine swix;
+
+	private static Project project;
 
 	// Declare public Objects
 	static JHelp helpViewer = null;
@@ -145,9 +149,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
 	static String table5[][]; // Holds DSS Schematic link values
 
-	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO
-
-	// configuration. Set False initially
+	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO configuration. Set False initially
 
 	Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
 	Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
@@ -242,12 +244,17 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			JPanel p = (JPanel) swix.find("WRIMS");
 			p.setSize(800, 600);
+
 			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
 			JPanel pwp = pw.getPanel();
-			System.out.println(pwp.getSize() + " " + p.getSize());
 			pw.getPanel().setSize(800, 600);
 			p.add(pw.getPanel(), BorderLayout.NORTH);
 			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
+
+			// Create a WRIMS GUI project for WRIMS GUI to work off of
+
+			project = new Project();
+			AppUtils.setCurrentProject(project);
 
 		}
 
@@ -906,6 +913,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		if (lcName.equals("tabbedpane1")) {
+
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
 
@@ -1162,6 +1170,20 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	}
 
+	/**
+	 * Getter for access to application-wide GUI WRIMS project
+	 * 
+	 * @return
+	 */
+	public static Project getProject() {
+		return project;
+	}
+
+	/**
+	 * Getter for access to application-wide SwiXml engine
+	 * 
+	 * @return
+	 */
 	public static SwingEngine getSwix() {
 
 		return swix;

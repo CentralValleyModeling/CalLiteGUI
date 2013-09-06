@@ -205,6 +205,14 @@ public class FileDialog implements ActionListener {
 	}
 
 	/**
+	 * Update WRIMS GUI project file names from file list
+	 */
+	private void updateProjectFiles() {
+		// C
+		// Find and Set main DV file
+	}
+
+	/**
 	 * Custom ListDataListener to enable/disable controls based on number of files in list.
 	 * 
 	 * @author tslawecki
