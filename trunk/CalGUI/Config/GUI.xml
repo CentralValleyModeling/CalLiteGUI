@@ -1235,7 +1235,7 @@
 							</label>
 						</panel>
 					</panel>
-					<panel preferredsize="300,400">
+					<panel id="FacPict" name="FacPict" preferredsize="300,400">
 						<gridbagconstraints insets="0,0,0,0"
 							anchor="GridBagConstraints.NORTH" gridx="2" gridy="0" />
 						<label id="map3" name="map3" icon="images/Banks_pumping_Plant.jpg" />
