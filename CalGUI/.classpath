@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
 	<classpathentry kind="lib" path="lib/pdf-renderer.jar"/>
-	<classpathentry kind="lib" path="lib/vista.jar"/>
 	<classpathentry kind="lib" path="lib/crimson.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/dsm2-input-model.jar"/>
@@ -62,6 +61,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/license.jar"/>
-	<classpathentry kind="lib" path="D:/workspace/CalLite/lib/calsim.gui.jar"/>
+	<classpathentry kind="lib" path="lib/vista.jar"/>
+	<classpathentry kind="lib" path="D:/workspace/CalLite/lib/z-for-order.calsim.gui.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
