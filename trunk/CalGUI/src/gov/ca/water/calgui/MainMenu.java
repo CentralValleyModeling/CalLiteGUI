@@ -234,11 +234,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.setBackgroundAt(9, Color.WHITE);
 
 			// Enable web-map tab
-			// googleMapTab = new GoogleMapTab();
-			// JPanel googleMapPanel = googleMapTab.getWebTab();
-			// jtp.add("Web Map", googleMapPanel);
-			// jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
-			// jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
+
+			googleMapTab = new GoogleMapTab();
+			JPanel googleMapPanel = googleMapTab.getWebTab();
+			jtp.add("Web Map", googleMapPanel);
+			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
+			jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
 
 			// Put WRIMS GUI message panel in Custom Results tab
 
@@ -564,9 +565,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		catch (Exception e) {
 			log.debug("Problem with setting listeners " + e);
 		}
-		System.out.println(menu.getComponentCount());
-		System.out.println(menu.isVisible());
-
 	}
 
 	/**
