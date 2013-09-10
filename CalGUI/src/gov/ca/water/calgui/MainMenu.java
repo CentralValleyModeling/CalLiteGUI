@@ -171,7 +171,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	public MainMenu(boolean makeVisible) throws Exception {
 
 		long startSetupTime = System.currentTimeMillis();
-		System.out.println(" -- ");
+
 		try {
 			CalLiteSplash.getSplash();
 		}
@@ -246,7 +246,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			p.setSize(800, 600);
 
 			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
-			JPanel pwp = pw.getPanel();
 			pw.getPanel().setSize(800, 600);
 			p.add(pw.getPanel(), BorderLayout.NORTH);
 			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
@@ -565,6 +564,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		catch (Exception e) {
 			log.debug("Problem with setting listeners " + e);
 		}
+		System.out.println(menu.getComponentCount());
+		System.out.println(menu.isVisible());
 
 	}
 
@@ -622,8 +623,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				spnEY.setEnabled(false);
 
 			}
-
-			// System.out.println(((JComboBox) e.getSource()).getSelectedItem().toString());
 		}
 	};
 
@@ -883,8 +882,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				p.setVisible(true);
 			}
 		}
-		// System.out.print("Clicked! " + ((JMenu) e.getSource()).getText());
-		// //action depending on text/name ...
 	}
 
 	int lastHeight = 768;
@@ -913,6 +910,14 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		}
 
 		if (lcName.equals("tabbedpane1")) {
+
+			System.out.println(menu.getLocation());
+			System.out.println(menu.getHeight());
+			System.out.println(menu.getWidth());
+			menu.setSize(150, 20);
+
+			System.out.println(menu.getComponent(0).getName());
+			System.out.println(menu.isVisible());
 
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {

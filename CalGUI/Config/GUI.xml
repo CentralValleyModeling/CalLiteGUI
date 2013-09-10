@@ -2820,17 +2820,12 @@
 
 				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12"
 					layout="GridBagLayout">
-					<label enabled="false" icon="images/WRIMS.jpg">
-						<gridbagconstraints gridx="0" gridy="2" />
-					</label>
-					<label text="Under Construction!" font="Tahoma-BOLD-15"
-						foreground="CC3333">
-						<gridbagconstraints gridx="0" gridy="0" />
-					</label>
+				
 					<panel name="WRIMS" id="WRIMS" layout="BorderLayout" preferredsize="800,600">
 						<gridbagconstraints gridx="0" gridy="1" />
 					</panel>
-
+			
+			
 				</panel>
 
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"
