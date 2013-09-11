@@ -2,6 +2,7 @@ package gov.ca.water.calgui;
 
 import gov.ca.water.calgui.results.RBListItem;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
+import gov.ca.water.calgui.utils.WRIMSGUILinks;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -174,6 +175,7 @@ public class FileDialog implements ActionListener {
 			theList.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent event) {
+
 					JList list = (JList) event.getSource();
 
 					// Get index of item clicked
@@ -198,18 +200,13 @@ public class FileDialog implements ActionListener {
 						// Repaint cell
 
 						list.repaint(list.getCellBounds(index, index));
+
+						WRIMSGUILinks.updateProjectFiles(list);
+
 					}
 				}
 			});
 		}
-	}
-
-	/**
-	 * Update WRIMS GUI project file names from file list
-	 */
-	private void updateProjectFiles() {
-		// C
-		// Find and Set main DV file
 	}
 
 	/**
@@ -229,6 +226,7 @@ public class FileDialog implements ActionListener {
 				rdbopt1.setEnabled(lmScenNames.getSize() > 1);
 				rdbopt2.setEnabled(lmScenNames.getSize() > 1);
 			}
+			WRIMSGUILinks.updateProjectFiles(theList);
 		}
 
 		@Override
@@ -238,6 +236,7 @@ public class FileDialog implements ActionListener {
 				rdbopt1.setEnabled(lmScenNames.getSize() > 1);
 				rdbopt2.setEnabled(lmScenNames.getSize() > 1);
 			}
+			WRIMSGUILinks.updateProjectFiles(theList);
 		}
 	}
 
