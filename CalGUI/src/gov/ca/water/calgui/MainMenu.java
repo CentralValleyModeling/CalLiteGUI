@@ -28,6 +28,7 @@ import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
+import hec.watershed.model.Project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -95,10 +96,7 @@ import javax.swing.event.TableModelListener;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
-import calsim.app.AppUtils;
-import calsim.app.Project;
-import calsim.gui.CalLiteGUIPanelWrapper;
-import calsim.gui.GuiUtils;
+import vista.report.GuiUtils;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         ComponentListener, KeyEventDispatcher {
@@ -250,6 +248,20 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			pw.getPanel().setSize(800, 600);
 			p.add(pw.getPanel(), BorderLayout.NORTH);
 			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
+
+			JButton retrieveBtn = GuiUtils._panelCLG.getRetrievePanel().getRetrieveBtn();
+			for (ActionListener al : retrieveBtn.getActionListeners()) {
+				retrieveBtn.removeActionListener(al);
+			}
+
+			retrieveBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					retrieve();
+
+				}
+			});
 
 			// Create a WRIMS GUI project for WRIMS GUI to work off of
 
