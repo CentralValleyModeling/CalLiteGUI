@@ -25,9 +25,9 @@ import vista.set.RegularTimeSeries;
 import vista.set.Stats;
 import vista.set.TimeSeries;
 import vista.time.SubTimeFormat;
-import vista.time.Time;
 import vista.time.TimeFactory;
 import vista.time.TimeWindow;
+import vista.time.Time;
 
 public class Utils {
 
