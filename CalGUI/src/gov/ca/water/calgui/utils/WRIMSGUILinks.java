@@ -6,7 +6,14 @@ package gov.ca.water.calgui.utils;
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.RBListItem;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
 import javax.swing.JList;
+
+import org.apache.log4j.Logger;
 
 import calsim.app.Project;
 
@@ -18,6 +25,9 @@ import calsim.app.Project;
  * 
  */
 public class WRIMSGUILinks {
+
+	static Logger log = Logger.getLogger(WRIMSGUILinks.class.getName());
+
 	/**
 	 * Update WRIMS GUI project file names from file list
 	 */
@@ -34,7 +44,39 @@ public class WRIMSGUILinks {
 		// Find and set files
 
 		if (theList.getModel().getSize() == 1) {
-			project.setDVFile(((RBListItem) theList.getModel().getElementAt(0)).toString());
+
+			String dvFileName = ((RBListItem) theList.getModel().getElementAt(0)).toString();
+			project.setDVFile(dvFileName);
+
+			// Find scenario file
+			String clsFileName = dvFileName.substring(0, dvFileName.length() - 7) + ".cls";
+			File clsF = new File(clsFileName);
+			String svFileName = "";
+			try {
+				Scanner scanner;
+				scanner = new Scanner(new FileInputStream(clsF.getAbsolutePath()));
+				while (scanner.hasNextLine() && svFileName.equals("")) {
+					String text = scanner.nextLine();
+					if (text.startsWith("hyd_DSS_SV|")) {
+
+						String[] texts = text.split("[|]");
+						svFileName = texts[1];
+					}
+				}
+				scanner.close();
+
+			} catch (IOException e) {
+				log.info(clsF.getName() + " not openable");
+				e.printStackTrace();
+			}
+
+			// Build string pointing to "Scenarios/Run_Details/scenarioname/Run/DSS/svfilename"
+
+			String svPathString = dvFileName.substring(0, dvFileName.length() - 7); // Strip out "_DV.DSS"
+			int i = svPathString.lastIndexOf("\\"); // find rightmost "/"
+			svFileName = svPathString.substring(0, i) + "\\Run_Details" + svPathString.substring(i) + "\\Run\\DSS\\" + svFileName;
+			project.setSVFile(svFileName);
+
 		} else {
 
 			int dssCount = 1;
@@ -60,5 +102,4 @@ public class WRIMSGUILinks {
 			}
 		}
 	}
-
 }

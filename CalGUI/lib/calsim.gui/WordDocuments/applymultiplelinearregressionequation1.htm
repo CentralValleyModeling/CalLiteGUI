@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link type="text/css" href="../Theme/nav.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/C1H_HTML.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/Ch8-Scripting.css" rel="stylesheet">
+    <meta content="ComponentOne Doc-To-Help v.2009.2.0.480" name="Generator">
+    <meta content="(Default) v.21" name="D2HTheme">
+    <title>Apply Multiple Linear Regression Equation</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " padding-left: 0px; margin-left: 0px; margin-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; padding-right: 0px; margin-right: 0px;">
+    <div id="nsbanner" style=
+    " padding-left: 0px; left: 0px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
+      <div id="TitleRow" style=
+      " padding-left: 22px; width: 100%; padding-top: 4px; padding-bottom: 4px; padding-right: 10px;">
+        <div id="ienav">
+          <p class="linknav" align="left">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href="addadataset1.htm">Previous</a>
+            &nbsp; <a id="D2HNext" class="d2hnextenabled" href=
+            "arcsinetrigonometricfunction1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-left: 22px; padding-top: 5px; padding-bottom: 10px; padding-right: 10px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-bottom: 0pt; margin-top: 0pt;">
+        <h3 style=" margin-left: 0pt; margin-bottom: 6pt; margin-top: 9pt; margin-right: 0pt;">
+           <a name="_Toc104616441"></a><a name="_Toc104610492"></a><a name="_Toc101758551"></a><a
+          name="_Toc100980918"></a><a name="_Toc100728600"></a><a name="_Toc100728287"></a><a name=
+          "ApplyMultipleLinearRegressionEquation"></a><a name="_Toc19007558"></a><a name=
+          "_Toc19005563"></a><a name="_Toc14888767"></a><a name="_Toc6903127"></a><a name=
+          "_Ref6644295">Apply Multiple Linear Regression Equation</a>
+        </h3>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 0.0px; tab-stops: 72.0pt; text-indent: 0pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>applyMultipleLinearRegression<font style=" font-weight: normal;">(string
+          startTimeString,</font></code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; tab-stops: 72.0pt; text-indent: 36pt; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+          endTimeString,</font></code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; tab-stops: 72.0pt; text-indent: 36pt; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          sequence&nbsp;tsDataSetSequence,</font></code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; tab-stops: 72.0pt; text-indent: 36pt; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          floating-point&nbsp;minimumLimit,</font></code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; tab-stops: 72.0pt; text-indent: 36pt; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          floating-point&nbsp;maximumLimit)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Apply the regression coefficients contained in the current paired data set to the array
+          of time series data sets in <b>tsDataSetSequence</b> to develop a new time series data
+          set.&nbsp; The applyMultipleLinearRegression function applies the multiple linear
+          regression coefficients computed with the multipleLinearRegression function.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           For the general linear regression equation, a dependent variable, Y, may be computed
+          from a set independent variables, Xn:
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           Y&nbsp; =&nbsp; B0 + B1*X1 + B2*X2 + B3*X3
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           where Bn are linear regression coefficients.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           For time series data sets, an estimate of the original time series data set values may
+          be computed from a set of independent time series data sets using regression coefficients
+          such that:
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           TsEstimate(t)&nbsp; =&nbsp; B0 + B1*TS1(t) + B2*TS2(t) + … +&nbsp; Bn*TSn(t)
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           where Bn are the set of regression coefficients and TSn are the time series data sets
+          contained in <b>tsDataSetSequence</b>.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The number of regression coefficients in the current PairedDataMath object must be one
+          more than the number of independent time series data sets in
+          <b>tsDataSetSequence</b>.&nbsp; The collection of selected time series data sets must be
+          in the same order as when the regression coefficients were computed with the
+          multipleLinearRegression method.&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           All the time series data sets must be regular interval and have the same time
+          interval.&nbsp; The function filters the data to determine the time period common to all
+          time series data sets and uses only those points in the regression analysis.&nbsp; For
+          any given time, if a value is missing in any time series, the value in resultant time
+          series is set to missing.&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The parameters <b>minimumLimit</b> and <b>maximumLimit</b> can be used to specify the
+          range of valid values for the resultant data set.&nbsp; Values which fall outside the
+          specified range are set to missing.&nbsp; <b>minimumLimit</b> or <b>maximumLimit</b> may
+          be entered as <b>Constants.UNDEFINED</b> to ignore the minimum or maximum value check.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           If <b>startTimeString</b> or <b>endTimeString</b> are blank strings, the start and end
+          time of the resultant time series will be defined by the time period common to all time
+          series data sets in <b>tsDataSetSequence</b>.&nbsp; Otherwise the time series start and
+          end may be defined using <b>startTimeString</b> and <b>endTimeString</b> which have the
+          usual HEC time window format (e.g. “01JAN2001 1400”).&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Names, parameter type and unit labels for the new time series data set are copied over
+          from the first time series data set in <b>tsDataSetSequence</b>. The F-part in the new
+          data set is set to “COMPUTED.”
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           <code>startTimeString</code> <code>–</code> A string containing an HEC time (e.g.
+          “01JAN2001 1400”) specifying the start time of the resultant time series data set.&nbsp;
+          May be blank (“ “)
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           <code>endTimeString</code> <code>–</code> A string containing an HEC time (e.g.
+          “01JAN2001 1400”) specifying the ending time of the resultant time series data set.&nbsp;
+          May be blank (“ “)
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           <code>tsDataSetSequence</code> – Sequence of TimeSeriesMath objects.&nbsp; Must all be
+          regular interval and have the same time interval.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           <code>minimumLimit</code> – A floating-point value specifying the minimum valid value in
+          the resultant time series data set.&nbsp; Set to Constants.UNDEFINED to ignore this
+          option.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; margin-top: 0pt; margin-right: 0pt;">
+           <code>maximumLimit</code> – A floating-point value specifying the maximum valid value in
+          the resultant time series data set. Set to Constants.UNDEFINED to ignore this
+          option.&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; text-indent: 36pt; margin-top: 0pt;">
+           <code>newTsData =</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; text-indent: 36pt; margin-top: 0pt;">
+           <code>pairedData.applyMultipleLinearRegression(</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; text-indent: 36pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>“01Jan2000 0000”,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; text-indent: 36pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>“31Dec2000 2300”,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; text-indent: 36pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>(tsData1, tsData2, tsData3),</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; text-indent: 36pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>Constants.UNDEFINED,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-bottom: 0pt; margin-left: 28.0px; text-indent: 36pt; margin-top: 0pt; margin-right: 0pt;">
+           <code>Constants.UNDEFINED)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b>&nbsp; A new regular interval TimeSeriesMath object
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Generated Exceptions:&nbsp;</b> <code><font style=" font-weight: normal;">Throws
+          a</font></code> HecMathException if the number of data sets in <b>tsDataSetSequence</b>
+          is not equal to the number of regression coefficients -1, or if the data sets in
+          <b>tsDataSetSequence</b> are not regular interval time series data sets with the same
+          interval time.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

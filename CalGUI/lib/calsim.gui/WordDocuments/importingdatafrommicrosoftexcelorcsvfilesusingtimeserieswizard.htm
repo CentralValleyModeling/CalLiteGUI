@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch5-DataEntry.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Importing Data from Microsoft Excel or ".csv" files using Time Series Wizard</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="importingdatafrommicrosoftexcelorcsvfilesusingdataentry.htm"
+            class="d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "retrievingandimportingusgsnwisdata.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="dataentryimportandexport.htm" class="d2h_breadcrumbsnormal">Data Entry, Import and
+        Export</a> <font class="d2h_breadcrumbslinkseparator">&gt;</font> <a href=
+        "importingandexportingmicrosoftexcelandcsvdata.htm" class="d2h_breadcrumbsnormal">Importing
+        and Exporting Microsoft Excel and ".CSV" Data</a>
+      </div>
+      <p style=" tab-stops: 0pt; text-indent: 0pt; margin-left: 0pt;">
+        <br>
+         <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Importing Data from
+        Microsoft Excel or “.csv” files using Time Series Wizard</font></b><br>
+        <br>
+         You can import multiple columns of time-series data from Excel, a “.csv” file, or a blank
+        separated file using the <b>Time Series Wizard</b>.&nbsp; The <b>Time Series Wizard</b> is
+        a plug-in that is distributed in a development stage; check the HEC-DSSVue plug-ins web
+        page for updates.
+      </p>
+      <ol>
+        <li>
+          Open your DSS file and select <b>Excel</b> from the <b>Import</b> popup menu from <b>Data
+          Entry</b> on the menu bar, see below.
+        </li>
+        <li>
+          If your data is in a “.csv” or blank separated file, select <b>Time Series Data</b>
+          instead of <b>Excel</b>.<br>
+          <br>
+           <img src="../ImagesExt/image21_35.jpg" border="0"><br>
+           Importing Excel or .csv Files<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          Select your file to import, as shown below.&nbsp; Data should be in columns, separated by
+          comma or spaces.&nbsp; Ideally, a row should contain a location or parameter, and a
+          column should contain date/time.<br>
+          <br>
+           <img src="../ImagesExt/image21_36.jpg" border="0"><br>
+           Selection of an Excel or .csv File to import into HEC-DSSVue<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          The file will be read into an editable table as shown below.<br>
+          <br>
+           <img src="../ImagesExt/image21_37.jpg" border="0"><br>
+           Editable Import Table of an Excel or .csv File<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          Select any location, parameter, units, or version, etc. rows by right clicking on the
+          header row in the first column and selecting the item, as shown below.&nbsp; You may also
+          skip any rows that are not to be imported or used.<br>
+          <br>
+           <img src="../ImagesExt/image21_38.jpg" border="0"><br>
+           Assigning Locations, Parameters, Units, Versions, etc. to Rows<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          From the top header row, select any columns that contain dates or times, as shown
+          below.<br>
+          <br>
+           <img src="../ImagesExt/image21_39.jpg" border="0"><br>
+           Assigning Data and Time to Columns<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          You can also select individual data columns from the header popup.
+        </li>
+        <li>
+          Alternatively, you can enter all data into DSS at one time by right-clicking the upper
+          left cell and selecting <b>Set All Data Columns</b>, as shown in the figure below.&nbsp;
+          The resulting window will look like the second example figure below.<br>
+          <br>
+           <img src="../ImagesExt/image21_40.jpg" border="0"><br>
+           Select all Data and Columns to Import<br>
+          <br>
+           <img src="../ImagesExt/image21_41.jpg" border="0"><br>
+           Window after Selecting Select All Data Columns<br>
+           &nbsp;
+        </li>
+        <li>
+          This will bring up a dialog to set additional pathname parts or units, as shown
+          below.<br>
+          <br>
+           <img src="../ImagesExt/image21_42.jpg" border="0"><br>
+           Import Data Window<br>
+           &nbsp;
+        </li>
+        <li>
+          Enter additional information desired.&nbsp; To import all the data sets, press the
+          <b>Import Now</b> button. A confirmation window will appear, see below.<br>
+          <br>
+           <img src="../ImagesExt/image21_43.jpg" border="0"><br>
+           <a name="OLE_LINK5">Import Data Confirmation Window</a><br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          Alternatively, if all columns are not to be imported, individual data set columns can be
+          imported by right clicking on the header row of the&nbsp; column and selecting <b>Set
+          Data Column</b>. This will bring up the window shown below.<br>
+          <br>
+           <img src="../ImagesExt/image21_44.jpg" border="0"><br>
+           Import Data Window<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          Fill in the additional information and press <b>Import Now</b> if you are finished
+          importing data from this file, or press <b>OK</b> to select other columns.&nbsp; When you
+          have selected all the columns you want to import, press the <b>Import Now</b> button, or
+          the <b>Import</b> button at the bottom of the table. A confirmation window will appear,
+          see below.<br>
+          <br>
+           <img src="../ImagesExt/image21_43.jpg" border="0"><br>
+           Import Data Confirmation Window
+        </li>
+      </ol>
+      <p style=" margin-left: 0.0px;" align="left" class="bodytextindent1">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+JarIndex-Version: 1.0
+
+../data.jar
+hec/data
+hec/data/location
+hec/data/location/awt
+hec/data/meta
+hec/data/meta/awt
+hec/data/rating
+hec/data/rating/awt
+hec/data/statistic
+hec/data/tx
+hec/data/tx/awt
+

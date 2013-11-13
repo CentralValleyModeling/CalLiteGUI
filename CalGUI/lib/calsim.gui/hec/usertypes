@@ -1,0 +1,94 @@
+#
+UserType:serverAdmin-configure:
+ServerAdmin.serverTab,configure:
+#
+UserType:serverAdminUsers-configure:
+ServerAdmin.usersTab,configure:
+#
+#UserType:Coop-configure:
+#ServerAdmin.coopTab,configure:
+#
+#UserType:Coop-write:
+#ServerAdmin.coopTab,write:
+#
+UserType:Watershed Configuration-configure:
+watershedConfigModule,configure:
+#
+UserType:Watershed Configuration-write/execute:
+watershedConfigModule,write:
+#
+UserType:Watershed Configuration-read:
+watershedConfigModule,read:
+#
+UserType:Data Acquisition-configure:
+CAVI.dataAcquisitionModule,configure:
+#
+UserType:Data Acquisition-write/execute:
+CAVI.dataAcquisitionModule,write:
+#
+UserType:Data Acquisition-read:
+CAVI.dataAcquisitionModule,read:
+#
+UserType:Data Visualization-configure:
+CAVI.dataVisualizationModule,configure:
+#
+UserType:Data Visualization-write/execute:
+CAVI.dataVisualizationModule,write:
+#
+UserType:Data Visualization-read:
+CAVI.dataVisualizationModule,read:
+#
+UserType:Model Interface-configure:
+CAVI.modelingModule,configure:
+#
+UserType:Model Interface-write/execute:
+CAVI.modelingModule,write:
+#
+UserType:Model Interface-read:
+CAVI.modelingModule,read:
+#
+UserType:Res-configure:
+Res,configure:
+Res.SystemConfigurationModule,configure:
+#
+UserType:Res-read:
+Res,read:
+Res.SystemConfigurationModule,read:
+#
+UserType:FloodOpt-configure:
+FloodOpt,configure:
+#
+UserType:GridUtil-configure:
+GridUtil,configure:
+GridUtil.GriddedDataModule,configure:
+#
+UserType:GridUtil-read:
+GridUtil,read:
+GridUtil.GriddedDataModule,read:
+#
+UserType:FIA-configure:
+FIA,configure:
+#
+UserType:FDA-configure:
+FDA,configure:
+#
+UserType:Hfp-read:
+Hfp,read:
+Hfp.MfpModule,read:
+Hfp.HfpModule,read:
+#
+UserType:Hfp-write:
+Hfp,write:
+Hfp.MfpModule,write:
+Hfp.HfpModule,write:
+#
+UserType:Hfp-configure:
+Hfp,configure:
+Hfp.MfpModule,configure:
+Hfp.HfpModule,configure:
+#
+UserType:Scripting-read:
+Scripting.ServerSide,read:
+#
+UserType:Scripting-write:
+Scripting.ServerSide,write:

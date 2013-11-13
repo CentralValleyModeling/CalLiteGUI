@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Round Off to Specified Precision</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "roundtonearestwholenumber2.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="screenforerroneousvaluesbasedonconstantvalue1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "RoundOffToSpecifiedPrecision"></a><a name="_Toc104616494"></a><a name=
+          "_Toc104610545"></a><a name="_Toc101758604"></a><b><a name="_Toc100980971"></a><a name=
+          "_Toc100728653"></a><a name="_Toc100728340"></a><a name="_Toc19007621"></a><a name=
+          "_Toc19005626"></a><a name="_Toc14888819">Round Off to Specified
+          Precision</a></b></font><br>
+          <br>
+           <code>roundOff(integer significantDigits, integer powerOfTensPlace)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Round values in a time series or paired data set to a specified number of significant
+          digits and/or power of tens place.&nbsp; For the power of tens place, -1 specifies
+          rounding to one-tenth (0.1), while +2 rounds to the hundreds (100).&nbsp; For example:
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 20.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           1234.123456 will round to:
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 20.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 40.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           1230.0&nbsp;&nbsp;&nbsp; for number of significant digits = 3,&nbsp;&nbsp;power of tens
+          place = -1<br>
+           1234.1&nbsp;&nbsp;&nbsp; for number of significant digits = 6,&nbsp; power of tens place
+          = -1<br>
+           1234&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for number of significant digits = 6,&nbsp;
+          power of tens place =&nbsp; 0<br>
+           1230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for number of significant digits = 6,&nbsp;
+          power of tens place =&nbsp; 1
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0px;">
+           &nbsp;<br>
+           The x-values in paired data sets are unaffected by the function, only the y-value data
+          are rounded.&nbsp; For time series data sets, missing values are kept missing.<br>
+           For paired data sets, use the setCurve() method to first select the paired data
+          curve(s).
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; tab-stops: 126.0pt;">
+           <b>See also:</b> round();
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; text-indent: 36pt; margin-top: 0pt; tab-stops: 126.0pt;">
+           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;truncate();
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt; tab-stops: 126.0pt;">
+           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;setCurve().
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>significantDigits</code> – An integer specifying the number of significant digits
+          to use in the rounding.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>powerOfTensPlace</code> – An integer specifying the power of tens place to use in
+          the rounding.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; text-indent: 0pt; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <b>Example:</b><code>&nbsp;roundedData = dataSet.roundOff(5, -2)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b>&nbsp; A new HecMath object of the same type as the current object.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

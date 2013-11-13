@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch1-Introduction.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Data Conventions</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="catalogs.htm" class="d2hpreviousenabled">Previous</a> &nbsp;
+            <a id="D2HNext" href="timeseriesconventions.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="introduction.htm" class="d2h_breadcrumbsnormal">Introduction</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="generalconceptsforhecdss.htm" class=
+        "d2h_breadcrumbsnormal">General Concepts for HEC-DSS</a>
+      </div>
+      <p style=
+      " text-indent: 0pt; tab-stops: 0pt; margin-top: 0pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+        <br>
+         <a name="_Toc18996140"><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Data
+        Conventions</font></b></a><br>
+        <br>
+         HEC-DSS can store data of most types using a pathname of any structure.&nbsp; To
+        facilitate the ability of application and utility programs to work with and display data,
+        standard record conventions were developed.&nbsp; These conventions define what should be
+        contained in a pathname, how data is stored, and what additional information is stored
+        along with the data.&nbsp; For regular-interval time series data (<i>e.g.</i>, hourly
+        data), the conventions specify that data is stored in blocks of a standard length, uniform
+        for that time interval, with a pathname that contains the date of the beginning of the
+        block and the time interval.&nbsp; The conventions identify how a pathname for the data
+        should be constructed.&nbsp; Conventions have been defined for regular and irregular
+        interval time series data, paired (curve) data, gridded data (such as NEXRAD radar data),
+        and text (alphanumeric) data.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         Regular-interval time series data is data that occurs at a standard time interval. This
+        data is divided into blocks whose length depends on the time interval. For example, hourly
+        data is stored with a block length of a month, while daily data is stored with a block
+        length of a year.&nbsp; Only the date and time of the first piece of data for a block is
+        stored; the times of the other data elements are implied by their location within the
+        block.&nbsp; If a data element, or a set of elements, does not exist for a particular time,
+        a missing data flag is placed in that element’s location.&nbsp; Data quality flags may
+        optionally be stored along with a regular-interval time series record.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         Irregular-interval time series data does not have a constant time interval between
+        values.&nbsp; This type of data is stored with a date/time stamp for each element.&nbsp;
+        The user-selectable block size is based on the amount of data that is to be stored.&nbsp;
+        For example, the user may select a block length of a month or a year.&nbsp; Because a
+        date/time stamp is stored with each data element, approximately twice the amount of space
+        is required compared with regular-interval time series data.&nbsp; Data quality flags may
+        optionally be stored along with an irregular-interval time series record.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         A convention for paired data has been defined for data that generally defines a
+        curve.&nbsp; It is used for rating tables, flow-frequency curves, and stage-damage curves,
+        etc.&nbsp; One paired data record may contain several curves within it as long as it has a
+        common set of ordinates.&nbsp; For example, a stage-damage curve will contain a set of
+        stages and it may have associated residential damages, commercial damages, agricultural
+        damages, etc.; however, a stage-damage curve and a stage-flow curve cannot be stored in the
+        same record.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         Conventions for spatially gridded data can be found in the “GridUtil” User’s Manual.&nbsp;
+        Text conventions are specified in the HEC-DSS Programmer’s Manual.<br>
+        <br>
+      </p>
+    </div>
+  </body>
+</html>

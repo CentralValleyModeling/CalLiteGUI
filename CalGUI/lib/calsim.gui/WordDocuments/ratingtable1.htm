@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Rating Table</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "modifiedpulsrouting1.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="reverseratingtable1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "hydrologicfunctions1.htm">Hydrologic Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc6903208"><font size="5" face=
+          "SansSerif, Verdana, Arial, Helvetica"><b>Rating Table</b></font></a><br>
+          <br>
+           The <b>Rating Table</b> function transforms/interpolates values in a time series data
+          set using the rating table x-y values stored in a paired data set.&nbsp; For example, the
+          Rating Table function can be used to transform stage values to flow values using a
+          stage-flow rating table.&nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           The units and parameter type of the resultant time series data set are duplicated from
+          the y-units and y-parameter type of the rating table paired data set.&nbsp; For example,
+          if a stage-flow rating table has a y-data parameter type of “FLOW” and y-units of “cfs”,
+          the resultant time series data set will have the data parameter type “FLOW” and the units
+          “cfs.”
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           <img src="../ImagesExt/image38_28.jpg">
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           Rating table Method
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           To derive a new time series data set from the rating table interpolation based on the
+          selected time series data set:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Hydrologic</b> tab of the Math Functions screen and select the <b>Rating
+            Table</b> operator, as shown above.
+          </li>
+          <li>
+            From the <b>Selected Data Set</b> list, select a time series data set for rating table
+            interpolation.&nbsp; If the selected data set is not a time series, the remaining input
+            boxes on the screen will be unavailable.
+          </li>
+          <li>
+            From the <b>Rating Table</b> list, select the paired data set containing the rating
+            table information.&nbsp; Only paired data sets will appear in this list, and you may
+            select only one data set at a time.
+          </li>
+          <li>
+            Click <b>Compute</b> to perform the rating table interpolation of the selected time
+            series data set.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

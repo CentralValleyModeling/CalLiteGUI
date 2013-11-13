@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Generate Data Pairs from Two Time Series</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="forwardmovingaveragesmoothingoftimeseries1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "generatearegularintervaltimeseries1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" tab-stops: 63.0pt; margin-bottom: 0pt;">
+          <br>
+           <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Generate Data Pairs from
+          Two Time Series</font></b><br>
+          <br>
+           <code>generateDataPairs<font style=" font-weight: normal;">(TimeSeriesMath
+          tsData,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font
+          style=" font-weight: normal;">boolean sort)</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Generate a paired data set by pairing values (by time) from the current time series data
+          set and the time series data set <b>tsData</b>.<b>&nbsp;</b> The values of the current
+          time series form the x-ordinates, while values from <code><font style=
+          " font-weight: normal;">tsData</font></code> form the y-ordinates of the resulting paired
+          data set.&nbsp; The times in the two time series data sets must match exactly.&nbsp; If a
+          value for a time is missing in either time series, no data value pair is formed or added
+          to the paired data set.&nbsp; If <b>sort</b> is “true”, data pairs in the paired data set
+          are sorted by ascending x-value.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The units and parameter type from the current time series data set are assigned to the
+          paired data set x-units and x-parameter type.&nbsp; The units and parameter type from
+          <b>tsData</b> are assigned to the paired data set y-units and y-parameter type.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           An example application of the function would be to mate a time series record of stage to
+          one of flow to generate a stage-flow paired data set.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>tsData</code> – A TimeSeriesMath object that forms the y-ordinates of the
+          resulting paired data set.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>sort</code> – Either Constants.TRUE, or Constants.FALSE, value.&nbsp; If true,
+          sort data pairs in ascending x-value.&nbsp; If false, leave unsorted.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b> <code>ratingCurve = tsStage.generateDataPairs(tsFlow)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A PairedDataMath object with x-ordinates from the current time series,
+          and y-ordinates from <b>tsData</b>.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> &nbsp;<code><font style=" font-weight: normal;">Throws
+          a</font></code> hec.hecmath.HecMathException if times from the current time series and
+          <b>tsData</b> do not match exactly.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

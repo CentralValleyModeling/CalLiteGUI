@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Modality with Scripts</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="runninginbatchmode1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "accessingthemainprogramwindow1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="headlessandbatchoperation1.htm" class=
+        "d2h_breadcrumbsnormal">Headless and Batch Operation</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Modality with
+          Scripts</font></b><br>
+          <br>
+           <i>Modality</i> is how windows behave after they are drawn.&nbsp; In general, if a
+          window is modal, it takes presence, and is usually on top of other windows, and waits for
+          the user to do something before the next step is taken.&nbsp; Error dialogs are always
+          modal.&nbsp; A non-modal window can be minimized and will allow other steps to be
+          taken.&nbsp; Most windows are non-modal.&nbsp; Tables and plots in HEC-DSSVue are not
+          modal.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           The purpose of Oakville.py script is to generate a .png file.&nbsp; When you run it, you
+          do not see the plot.&nbsp; This is assured by closing the plot after it has been saved as
+          a .png file:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 108pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           #&nbsp; Save the plot and close
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           plot.saveToPng("C:/temp/Oakville.png")
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           plot.close()&nbsp; #&nbsp; Do this if you only want the plot
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          as a .png and not on screen
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           Since plots are non-modal, they will close in batch mode regardless if they explicit
+          close or not.&nbsp;&nbsp; However, suppose you want the user to look at the plot instead
+          of just creating a file from it?&nbsp; If you are running interactively, and you do not
+          close the plot, it will stay opened, but in batch it will close when the script is done.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           Some windows in HEC-DSSVue are modal by default and some (those that inherit from
+          RmaJFrame) have the function <i>stayOpen()</i> that emulate modality.&nbsp; The
+          <i>stayOpen()</i> function causes the window to wait and stay open until the window is
+          closed.&nbsp; Because of how this function is preformed, <b><i>stayOpen()</i></b>
+          <b>cannot be used in an interactive script</b>.&nbsp; It will cause the program to
+          freeze.&nbsp; Plots will stay open automatically when in an interactive mode.&nbsp; An
+          example use for Oakville.py is:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           #&nbsp; Display the plot and wait for them to close
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent1">
+           plot.stayOpen() &nbsp;&nbsp;&nbsp;# Do not use in an interactive script
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           An alternative to stayOpen(), which can be used regardless if the window has the
+          stayOpen() capability or not, is to insert a JOptionPane in the script after the window
+          is complete.&nbsp; This will display a dialog for the user to click OK before the script
+          continues.&nbsp; This call is safe for both interactive and batch modes.&nbsp; However,
+          the users has an extra dialog on the screen and must press OK before continuing.&nbsp; An
+          example of JOPtionPane is:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           from hec.script import *
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           from hec.heclib.dss import *
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           from javax.swing import *
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           plot = Plot.newPlot()
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           plot.setSize(600, 500)
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           …
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           plot.showPlot()
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           JOptionPane.showMessageDialog(table,"Press OK when done")
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=
+        " text-indent: 0pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           The modality of the primary windows in HEC-DSSVue is shown below.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p style=
+        " text-indent: 0pt; margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent1">
+           Modality of the Primary Windows
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <TBODY>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: black 1pt solid;">
+              <p style=
+              " margin-top: 0pt; text-align: center; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent1" align="center">
+                 <b>Class</b>
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: black 1pt solid;">
+              <p style=
+              " margin-top: 0pt; text-align: center; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent1" align="center">
+                 <b>Modal</b>
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: black 1pt solid;">
+              <p style=
+              " margin-top: 0pt; text-align: center; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent1" align="center">
+                 <b>Comment</b>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 ListSelection
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Plot (G2dDialog)
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Table (HecDataTable)
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 DataEntry
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Yes
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Nothing needed
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 CompareFiles
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 ExcelFrame
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 GridInfoFrame
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use JOptionPane
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Math
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Pie Charts
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use JOptionPane
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 SelectRecords
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="176" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: black 1pt solid; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 132.25pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 UndeleteRecords
+              </p>
+            </td>
+            <td valign="top" width="154" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 115.45pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 No
+              </p>
+            </td>
+            <td valign="top" width="164" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: black 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: black 1pt solid; width: 123.1pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent1">
+                 Use stayOpen()
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt; margin-left: 108pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

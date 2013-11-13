@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Determine if Computation Stable for Given Muskingum Routing Parameters</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="determineifdataisinmetricunits1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "lastvalidvaluesdateandtime1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 63.0pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="DetermineIfMuskingumStable"></a><a name="_Toc104616467"></a><a name=
+          "_Toc104610518"></a><a name="_Toc101758577"></a><a name="_Toc100980944"></a><b><font
+          face="SansSerif, Verdana, Arial, Helvetica" size="5"><a name="_Toc100728626"></a><a name=
+          "_Toc100728313"></a><a name="_Toc19007586"></a><a name="_Toc19005591"></a><a name=
+          "_Toc14888792"></a><a name="_Toc6903152"></a><a name="_Ref6629034">Determine if
+          Computation Stable for Given Muskingum Routing Parameters</a></font></b><br>
+          <br>
+           <code>isMuskingumRoutingStable<font style=" font-weight: normal;">(integer
+          numberSubreaches,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          muskingumK,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          muskingumX)</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           Check for possible instability for the given Muskingum Routing parameters.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           Test if the input parameters satisfy the stability criteria:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 40.0px;" align="left" class="msonormal">
+           1/(2(1-x)) &lt;= K/deltaT &lt;= 1/2x
+        </p>
+        <p style=" margin-left: 0.0px;" align="left" class="msonormal">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" align="left" class="bodytextindent155">
+           &nbsp;where deltaT = (time series time interval)/numberSubreaches
+        </p>
+        <p style=" margin-top: 0pt;" align="left" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>numberSubreaches</code> – integer specifying the number of routing subreaches.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>muskingumK</code> –floating-point number specifying the Muskingum "K" parameter,
+          in hours.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>muskingumX</code> - floating-point number specifying the Muskingum "x" parameter,
+          between 0.0 and 0.5 (inclusive).
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>warning = tsDataSet.isMuskingumRoutingStable(</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>reachCount,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>kVal,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>xVal)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if warning :</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print
+          warning</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A string if the stability criteria is not met.&nbsp; The string contains
+          a warning message detailing the specific instability problem.&nbsp; Otherwise returns
+          None.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> Throws a hec.hecmath.HecMathException if the current time
+          series is not a regular interval time series, or if values for numberSubreaches or
+          muskingumX are invalid.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

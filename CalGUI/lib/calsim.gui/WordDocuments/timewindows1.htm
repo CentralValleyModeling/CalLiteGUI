@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/lf.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Time Windows</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " padding-bottom: 0px; padding-right: 0px; padding-left: 10px; padding-top: 0px;">
+    <div class="d2h_secondary_topic" style=
+    " margin-left: 0pt; padding-bottom: 10pt; margin-top: 0pt; padding-right: 0pt; margin-bottom: 0pt; margin-right: 0pt; padding-left: 0pt; padding-top: 0pt;">
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt; margin-top: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Time
+          Windows</b></font><br>
+          <br>
+           Dates and times used to specify time windows should not contain blank characters and
+          should include the 4 digit year.&nbsp; An example date and time is “04MAR2003
+          1400”.&nbsp; If a single string is used to specify the time window, the starting date and
+          time must precede the ending date and time, for example <i>dssFile</i>.setTimeWindow
+          (“04MAR2003 1400 06APR2004 0900”).&nbsp; A relative time may be used in the single string
+          command, where the letter “T” represents the current time, and the days or hours can be
+          subtracted or added to that.&nbsp; For example <i>dssFile</i>.setTimeWindow(“T-14D T-2H”)
+          would specify the starting time as current time minus 14 days and the ending time as the
+          current time minus 2 hours.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Time Windows (specified by starting time and ending time) effect how the DSSFile.read(…)
+          method operates for the various data types.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <ul>
+          <li>
+            <b>Time-series data.</b>&nbsp; The time window supplied to DSS.open(…) or
+            <i>dssFile</i>.setTimeWindow(…) specifies the default time window for all subsequent
+            <i>dssFile</i>.read(…) operations.&nbsp; If no time window is supplied to DSS.open(…)
+            then the default time window is undefined until <i>dssFile</i>.setTimeWindow(…) is
+            called.&nbsp; If the default time window is undefined, then all <i>dssFile</i>.read(…)
+            operations involving time-series data <i>must</i> specify a time window either
+            implicitly via the D-part of the specified pathname or explicitly via the startTime and
+            endTime parameters.&nbsp; The order of precedence for time windows is as follows: 
+            <ul>
+              <li>
+                <b>Explicit time window.</b>&nbsp; Specified in <i>dssFile</i>.read(pathname,
+                startTime, endTime) or <i>dssFile</i>.read(pathname, timeWindow).&nbsp; The D-part
+                of the pathname is ignored and may be empty.
+              </li>
+              <li>
+                <b>Default time window.</b>&nbsp; Specified in DSS.open(filename, startTime,
+                endTime) or DSS.open(filename, timeWindow) or
+                <i>dssFile</i>.setTimeWindow(startTime, endTime) or
+                <i>dssFile</i>.setTimeWindow(timeWindow).&nbsp; The D-part of the pathname is
+                ignored and may be empty.&nbsp; The default time window can be set to undefined by
+                calling <i>dssFile</i>.setTimeWindow(“”, “”).
+              </li>
+              <li>
+                <b>Implicit time window.</b>&nbsp; Specified as the D-part of the pathname supplied
+                to <i>dssFile</i>.read(pathname) when the default time window is undefined.&nbsp;
+                The D-part of the pathname must not be empty.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Paired data</b>.&nbsp; Time windows have no effect on reading paired data records.
+          </li>
+          <li>
+            <b>Stream rating data</b>.&nbsp; Stream rating data are comprised of a
+            time-series&nbsp; of individual rating records for a common location.&nbsp; The reading
+            of stream rating data is not affected by default time windows.&nbsp; The implicit time
+            window for reading stream rating data is the entire time span covered by the rating
+            records.&nbsp; An explicit time window may be supplied by using the
+            <i>dssFile</i>.read(pathname, startTime, endTime) method.&nbsp; If an explicit time
+            window is specified, a (possible) subset of the rating records is retrieved that cover
+            the specified time window.&nbsp; The explicit time window is interpreted as the time
+            window containing all time-series data that is to be rated via the stream rating
+            data.&nbsp; The set of rating records retrieved for an explicit time window meets the
+            following criteria. 
+            <ul>
+              <li>
+                The earliest record retrieved is the latest rating that is on or before the start
+                of the time window. &nbsp;If no such record exists, the earliest record in the
+                rating time-series is retrieved.
+              </li>
+              <li>
+                The latest record retrieved is the earliest rating that is on or after the end of
+                the time window.&nbsp; If no such record exists, the latest record in the rating
+                time-series is retrieved.
+              </li>
+              <li>
+                All rating records between the earliest and latest retrieved records are also
+                retrieved.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="bodytextindent155" style=
+        " margin-left: 126pt; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link type="text/css" href="../Theme/nav.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/C1H_HTML.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/Ch8-Scripting.css" rel="stylesheet">
+    <meta content="ComponentOne Doc-To-Help v.2009.2.0.480" name="Generator">
+    <meta content="(Default) v.21" name="D2HTheme">
+    <title>Add a Data Set</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " padding-left: 0px; margin-left: 0px; margin-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; padding-right: 0px; margin-right: 0px;">
+    <div id="nsbanner" style=
+    " padding-left: 0px; left: 0px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
+      <div id="TitleRow" style=
+      " padding-left: 22px; width: 100%; padding-top: 4px; padding-bottom: 4px; padding-right: 10px;">
+        <div id="ienav">
+          <p class="linknav" align="left">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href="addaconstant1.htm">Previous</a>
+            &nbsp; <a id="D2HNext" class="d2hnextenabled" href=
+            "applymultiplelinearregressionequation1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-left: 22px; padding-top: 5px; padding-bottom: 10px; padding-right: 10px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-bottom: 0pt; margin-top: 0pt;">
+        <h3 style=" margin-left: 0pt; margin-bottom: 6pt; margin-top: 9pt; margin-right: 0pt;">
+           <a name="_Ref205008392"></a><a name="_Toc104616440"></a><a name="_Toc104610491"></a><a
+          name="_Toc101758550"></a><a name="_Toc100980917"></a><a name="_Toc100728599"></a><a name=
+          "_Toc100728286"></a><a name="AddADataSet"></a><a name="_Toc19007557"></a><a name=
+          "_Toc19005562"></a><a name="_Toc14888766"></a><a name="_Toc6903126">Add a Data Set</a>
+        </h3>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>add<font style=" font-weight: normal;">(TimeSeriesMath tsData)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Add the values in the data set <b>tsData</b> to the values in the current data
+          set.&nbsp; The function only applies to time series data sets.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           When adding one time series data set to another, there is no restriction that times in
+          the two data sets match exactly.&nbsp; However, only values with coincident times will be
+          added.&nbsp; Times in the current time series data set that cannot be matched with times
+          in the second data set are set to missing.&nbsp; Values in the current data set that are
+          missing are kept as missing.&nbsp; Either or both data sets may be regular or irregular
+          interval time series.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           This function will not merge data sets.&nbsp; Use the mergeTimeSeries (for time series
+          data sets) or the mergePairedData (for paired data sets) functions for this purpose.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; tab-stops: 126.0pt; margin-top: 0pt;">
+           <b>See also:</b>&nbsp;&nbsp;add(floating-point constant)
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 20.0px; tab-stops: 126.0pt; text-indent: 36pt; margin-top: 0pt;">
+           mergeTimeSeries(TimeSeriesMath)
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 20.0px; tab-stops: 126.0pt; text-indent: 36pt; margin-top: 0pt;">
+           mergePairedData(PairedDataMath)
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:&nbsp;</b><code>tsData</code> &nbsp;- A TimeSeriesMath object
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Examples:</b> <code>newTsData = tsData.add(otherTsData)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:&nbsp;</b>A new TimeSeriesMath object
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

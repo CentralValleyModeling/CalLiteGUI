@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Screen with Forward Moving Average</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "screenusingminimumandmaximum1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="paireddataoperations1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "generalfunctions1.htm">General Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "_Toc104616338"></a><a name="_Toc104610389"></a><a name="_Toc101758447"></a><a name=
+          "_Toc100980814"><b>Screen with Forward Moving Average</b></a></font><br>
+          <br>
+           The <b>Screen with Forward Moving Average</b> function screens a time series data set
+          for possible erroneous values based on the change from the forward moving average
+          computed at the previous point.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           Data values failing the screening test are assigned a user specified quality flag and/or
+          are set to the missing value.&nbsp; The data set may or may not currently have quality
+          flags assigned. The forward moving average is computed over a user specified number of
+          values.&nbsp; Missing values and values failing the screening test are not counted in the
+          moving average and the divisor of the average is less one for each such value.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           To screen data in time series data sets:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>General</b> tab of the Math Functions screen and select the <b>Screen
+            with Forward Moving Average</b> operator.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.&nbsp;
+          </li>
+          <li>
+            In the <b>Number to Average Over</b> box, enter a value to set the size of the moving
+            average interval.
+          </li>
+          <li>
+            In the <b>Change Value Limit</b> box, enter a value to set maximum absolute change
+            allowed from the forward moving average.
+          </li>
+          <li>
+            Select the <b>Set Invalid Values to Missing</b> box if time series values failing the
+            screening test are to be set to the missing value.&nbsp;
+          </li>
+          <li>
+            Select the <b>Set Quality Flag to</b> box if the data quality flag is to be set for
+            data values failing the screening test.&nbsp; If this box is checked, invalid data will
+            be flagged with the quality selected in the list to the right.&nbsp; The available
+            quality settings are:&nbsp; R(ejected), M(issing) and Q(uestionable).&nbsp;
+          </li>
+          <li>
+            Click Compute to apply the function to the selected data set.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

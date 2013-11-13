@@ -1,0 +1,557 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN"
+                     "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+
+<toc version="2.0">
+	<tocitem text="Introduction" target="introduction">
+		<tocitem text="Overview of the HEC Data Storage System" target="overviewofthehecdatastoragesystem">
+			<tocitem text="Background" target="background" />
+			<tocitem text="HEC-DSS Contrasted with Other Database Systems" target="hecdsscontrastedwithotherdatabasesystems" />
+		</tocitem>
+		<tocitem text="General Concepts for HEC-DSS" target="generalconceptsforhecdss">
+			<tocitem text="Pathnames" target="pathnames" />
+			<tocitem text="Catalogs" target="catalogs" />
+			<tocitem text="Data Conventions" target="dataconventions" />
+			<tocitem text="Time Series Conventions" target="timeseriesconventions">
+				<tocitem text="Regular-Interval Time Series Conventions:" target="regularintervaltimeseriesconventions" />
+				<tocitem text="Irregular-Interval Time Series Conventions:" target="irregularintervaltimeseriesconventions" />
+				<tocitem text="Paired Data (Curve Data) Conventions" target="paireddatacurvedataconventions" />
+				<tocitem text="Text Data Conventions" target="textdataconventions" />
+				<tocitem text="General FILE Conventions" target="generalfileconventions" />
+			</tocitem>
+		</tocitem>
+	</tocitem>
+	<tocitem text="Using HEC-DSSVue: An Overview" target="usinghecdssvueanoverview">
+		<tocitem text="HEC-DSSVue Main Screen" target="hecdssvuemainscreen">
+			<tocitem text="Menu Bar" target="menubar" />
+			<tocitem text="Tool Bar" target="toolbar" />
+			<tocitem text="File Tabs" target="filetabs" />
+			<tocitem text="Current File Name" target="currentfilename" />
+			<tocitem text="Search Boxes" target="searchboxes" />
+			<tocitem text="List of HEC-DSS Pathnames" target="listofhecdsspathnames" />
+			<tocitem text="Selected Pathnames" target="selectedpathnames" />
+			<tocitem text="Selection Buttons" target="selectionbuttons" />
+		</tocitem>
+		<tocitem text="Message Bar" target="messagebar" />
+		<tocitem text="Drag and Drop" target="draganddrop" />
+		<tocitem text="File Menu Operations" target="filemenuoperations">
+			<tocitem text="Creating a New HEC-DSS File" target="creatinganewhecdssfile" />
+			<tocitem text="Opening a HEC-DSS File" target="openingahecdssfile" />
+			<tocitem text="Closing the HEC-DSS File" target="closingthehecdssfile" />
+			<tocitem text="Printing the Catalog" target="printingthecatalog" />
+			<tocitem text="Exiting HEC-DSSVue" target="exitinghecdssvue" />
+		</tocitem>
+		<tocitem text="View Catalog" target="viewcatalog">
+			<tocitem text="Choosing a Display Mode for HEC-DSS Pathnames" target="choosingadisplaymodeforhecdsspathnames" />
+			<tocitem text="Searching and Filtering HEC-DSS Pathnames" target="searchingandfilteringhecdsspathnames">
+				<tocitem text="Searching Pathname Strings" target="searchingpathnamestrings" />
+				<tocitem text="Filtering HEC-DSS Pathnames by Parts" target="filteringhecdsspathnamesbyparts" />
+			</tocitem>
+			<tocitem text="Refreshing the Catalog" target="refreshingthecatalog" />
+		</tocitem>
+		<tocitem text="Selecting Pathnames" target="selectingpathnames">
+			<tocitem text="De-Selecting Pathnames" target="deselectingpathnames" />
+		</tocitem>
+		<tocitem text="Visualizing HEC-DSS Data with Plots and Tables" target="visualizinghecdssdatawithplotsandtables" />
+		<tocitem text="Groups" target="groups">
+			<tocitem text="Creating and Saving Groups" target="creatingandsavinggroups" />
+			<tocitem text="Selecting Groups" target="selectinggroups" />
+			<tocitem text="Plotting Groups" target="plottinggroups" />
+			<tocitem text="Tabulate Groups" target="tabulategroups" />
+			<tocitem text="Math Groups" target="mathgroups" />
+			<tocitem text="Manage Groups" target="managegroups" />
+		</tocitem>
+		<tocitem text="Data Entry" target="dataentry" />
+		<tocitem text="Utilities" target="utilities" />
+		<tocitem text="Custom and Scripting Menus" target="customandscriptingmenus" />
+		<tocitem text="Plug-ins" target="plugins" />
+	</tocitem>
+	<tocitem text="Displaying and Editing Data" target="displayingandeditingdata">
+		<tocitem text="Setting a Time Window" target="settingatimewindow">
+			<tocitem text="Display Data Options" target="displaydataoptions" />
+		</tocitem>
+		<tocitem text="Viewing Tabular Data" target="viewingtabulardata">
+			<tocitem text="Accessing Tables" target="accessingtables" />
+			<tocitem text="Customizing the Display of Tabular Data" target="customizingthedisplayoftabulardata" />
+			<tocitem text="Searching for Values" target="searchingforvalues" />
+			<tocitem text="Comparing Data Sets" target="comparingdatasets" />
+		</tocitem>
+		<tocitem text="Editing Tabular Data" target="editingtabulardata">
+			<tocitem text="Selecting Table Cells" target="selectingtablecells" />
+			<tocitem text="Cutting and Pasting Data" target="cuttingandpastingdata" />
+			<tocitem text="Copying and Pasting Data" target="copyingandpastingdata" />
+			<tocitem text="Clearing Table Cells" target="clearingtablecells" />
+			<tocitem text="Adding and Inserting Rows" target="addingandinsertingrows" />
+			<tocitem text="Deleting Rows and Columns" target="deletingrowsandcolumns" />
+		</tocitem>
+		<tocitem text="Printing, Copying, and Exporting Tables" target="printingcopyingandexportingtables">
+			<tocitem text="Printing Tables" target="printingtables" />
+			<tocitem text="Exporting Tables" target="exportingtables" />
+			<tocitem text="Copying Tables to the Clipboard for Use in Other Applications" target="copyingtablestotheclipboardforuseinotherapplications" />
+		</tocitem>
+		<tocitem text="Tabulate and Editing using MS Excel (Optional)" target="tabulateandeditingusingmsexceloptional" />
+		<tocitem text="Graphical Editing" target="graphicalediting">
+			<tocitem text="Graphical Editor Tools and Buttons" target="graphicaleditortoolsandbuttons" />
+			<tocitem text="Editing a Curve with the Line Draw Tool" target="editingacurvewiththelinedrawtool" />
+			<tocitem text="Editing a Point with the Single-Point Edit Tool" target="editingapointwiththesinglepointedittool" />
+			<tocitem text="Editing Data in the Table." target="editingdatainthetable" />
+			<tocitem text="Printing the Table and Graph" target="printingthetableandgraph" />
+			<tocitem text="Graphical Editor View Options" target="graphicaleditorviewoptions" />
+		</tocitem>
+		<tocitem text="Supplemental Information" target="supplementalinformation" />
+	</tocitem>
+	<tocitem text="Utilities" target="utilities1">
+		<tocitem text="Renaming HEC-DSS Data in HEC-DSSVue" target="renaminghecdssdatainhecdssvue" />
+		<tocitem text="Deleting Records" target="deletingrecords" />
+		<tocitem text="Undoing Deletions" target="undoingdeletions" />
+		<tocitem text="Duplicating Records" target="duplicatingrecords" />
+		<tocitem text="Copying Records into another HEC-DSS File" target="copyingrecordsintoanotherhecdssfile" />
+		<tocitem text="Merging HEC-DSS Files" target="merginghecdssfiles">
+			<tocitem text="Comparing Data Sets" target="comparingdatasets1" />
+		</tocitem>
+		<tocitem text="Comparing HEC-DSS Files" target="comparinghecdssfiles" />
+		<tocitem text="Searching for a Value" target="searchingforavalue" />
+		<tocitem text="Checking File Integrity" target="checkingfileintegrity">
+			<tocitem text="Squeezing an HEC-DSS File" target="squeezinganhecdssfile" />
+		</tocitem>
+		<tocitem text="Scripting" target="scripting" />
+		<tocitem text="Catalogs" target="catalogs1">
+			<tocitem text="Condensed Disk Catalog" target="condenseddiskcatalog" />
+			<tocitem text="Abbreviated Disk Catalog" target="abbreviateddiskcatalog" />
+			<tocitem text="Full Disk Catalog" target="fulldiskcatalog" />
+		</tocitem>
+		<tocitem text="Viewing the Consol Output" target="viewingtheconsoloutput" />
+		<tocitem text="Viewing HEC-DSS File Output" target="viewinghecdssfileoutput">
+			<tocitem text="Program Options" target="programoptions" />
+		</tocitem>
+		<tocitem text="Advanced Functions" target="advancedfunctions">
+			<tocitem text="Memory Monitor" target="memorymonitor" />
+			<tocitem text="Open List of HEC-DSS Files" target="openlistofhecdssfiles" />
+			<tocitem text="Viewing the DSS Header List" target="viewingthedssheaderlist" />
+			<tocitem text="HEC-DSS File Internals" target="hecdssfileinternals">
+				<tocitem text="Message Levels" target="messagelevels" />
+				<tocitem text="DSS ZSET" target="dsszset" />
+				<tocitem text="DSS ZINQIR" target="dsszinqir" />
+				<tocitem text="Debug/Examine File" target="debugexaminefile" />
+			</tocitem>
+		</tocitem>
+	</tocitem>
+	<tocitem text="Data Entry, Import and Export" target="dataentryimportandexport">
+		<tocitem text="Entering Data Manually" target="enteringdatamanually">
+			<tocitem text="Entering Time Series Data Manually" target="enteringtimeseriesdatamanually" />
+			<tocitem text="Entering Paired Data Manually" target="enteringpaireddatamanually" />
+			<tocitem text="Manual Text Entry" target="manualtextentry" />
+		</tocitem>
+		<tocitem text="Import/Export Files" target="importexportfiles">
+			<tocitem text="Import Text Files" target="importtextfiles" />
+			<tocitem text="Exporting Text Files" target="exportingtextfiles" />
+			<tocitem text="Import Image and Generic Files" target="importimageandgenericfiles" />
+			<tocitem text="Exporting Image and Generic Files" target="exportingimageandgenericfiles" />
+		</tocitem>
+		<tocitem text="Importing and Exporting SHEF Data" target="importingandexportingshefdata">
+			<tocitem text="SHEF Table Files" target="sheftablefiles">
+				<tocitem text="SHEFPARM" target="shefparm" />
+				<tocitem text="Parameter File - shfdssp" target="parameterfileshfdssp" />
+				<tocitem text="Sensor File - shfdsss" target="sensorfileshfdsss" />
+			</tocitem>
+			<tocitem text="Importing SHEF Data" target="importingshefdata" />
+			<tocitem text="Exporting SHEF" target="exportingshef" />
+		</tocitem>
+		<tocitem text="Importing and Exporting Microsoft Excel and &quot;.CSV&quot; Data" target="importingandexportingmicrosoftexcelandcsvdata">
+			<tocitem text="Exporting Data to Microsoft Excel" target="exportingdatatomicrosoftexcel" />
+			<tocitem text="Editing Data in Microsoft Excel" target="editingdatainmicrosoftexcel" />
+			<tocitem text="Importing Data from Microsoft Excel or &quot;.csv&quot; files using Data Entry" target="importingdatafrommicrosoftexcelorcsvfilesusingdataentry" />
+			<tocitem text="Importing Data from Microsoft Excel or &quot;.csv&quot; files using Time Series Wizard" target="importingdatafrommicrosoftexcelorcsvfilesusingtimeserieswizard" />
+		</tocitem>
+		<tocitem text="Retrieving and Importing USGS (NWIS) Data" target="retrievingandimportingusgsnwisdata" />
+		<tocitem text="Importing NCDC Data" target="importingncdcdata">
+			<tocitem text="Obtaining NCDC Data" target="obtainingncdcdata" />
+			<tocitem text="Recognized NCDC Formats" target="recognizedncdcformats" />
+			<tocitem text="Importing" target="importing" />
+		</tocitem>
+		<tocitem text="Retrieving and Importing California CDEC Data" target="retrievingandimportingcaliforniacdecdata" />
+		<tocitem text="Importing and Exporting DSSUTL Format" target="importingandexportingdssutlformat">
+			<tocitem text="Importing DSSUTL data" target="importingdssutldata" />
+			<tocitem text="Exporting Data to DSSUTL" target="exportingdatatodssutl" />
+		</tocitem>
+		<tocitem text="Importing North Carolina DWR CRONOS Data" target="importingnorthcarolinadwrcronosdata" />
+	</tocitem>
+	<tocitem text="Customizing Plots" target="customizingplots">
+		<tocitem text="Customizing Plots: Overview" target="customizingplotsoverview1" />
+		<tocitem text="Using Plot Editors" target="usingploteditors1">
+			<tocitem text="Setting Defaults vs. Customizing Individual Plots" target="settingdefaultsvscustomizingindividualplots1" />
+			<tocitem text="Accessing Editors" target="accessingeditors1" />
+		</tocitem>
+		<tocitem text="Plot Editors and Tools" target="ploteditorsandtools1">
+			<tocitem text="Plot Properties Editor" target="plotpropertieseditor1" />
+			<tocitem text="Individual Plot Property Editors" target="individualplotpropertyeditors1" />
+			<tocitem text="Configure Plot Editor" target="configureploteditor1" />
+			<tocitem text="Default Line Styles Options Editor" target="defaultlinestylesoptionseditor1" />
+			<tocitem text="Default Plot Properties Editor" target="defaultplotpropertieseditor1" />
+		</tocitem>
+		<tocitem text="Customizing Plot Titles" target="customizingplottitles1" />
+		<tocitem text="Customizing Curves" target="customizingcurves1">
+			<tocitem text="Customizing Curves in Individual Plots" target="customizingcurvesinindividualplots1" />
+			<tocitem text="Specifying Parameter-Based Default Curve Styles" target="specifyingparameterbaseddefaultcurvestyles1" />
+			<tocitem text="Adding New Data Styles" target="addingnewdatastyles1" />
+			<tocitem text="Specifying Line and Point Styles of Curves" target="specifyinglineandpointstylesofcurves1" />
+			<tocitem text="Customizing Curve Labels" target="customizingcurvelabels1" />
+			<tocitem text="Customizing Curve Quality Symbols" target="customizingcurvequalitysymbols1" />
+		</tocitem>
+		<tocitem text="Customizing Viewport Properties" target="customizingviewportproperties1">
+			<tocitem text="Customizing Viewport Borders and Background" target="customizingviewportbordersandbackground1" />
+			<tocitem text="Customizing Viewport Gridlines" target="customizingviewportgridlines1" />
+		</tocitem>
+		<tocitem text="Adding and Customizing Marker Lines" target="addingandcustomizingmarkerlines1">
+			<tocitem text="Adding Markers" target="addingmarkers1" />
+			<tocitem text="Deleting Markers" target="deletingmarkers1" />
+			<tocitem text="Customizing Markers" target="customizingmarkers1" />
+			<tocitem text="Editing Callouts" target="editingcallouts1" />
+		</tocitem>
+		<tocitem text="Customizing Axes" target="customizingaxes1">
+			<tocitem text="Changing Axis Type" target="changingaxistype1" />
+			<tocitem text="Specifying Axis Scale" target="specifyingaxisscale1" />
+			<tocitem text="Modifying Tic Marks" target="modifyingticmarks1" />
+			<tocitem text="Customizing Axis Labels" target="customizingaxislabels1" />
+		</tocitem>
+		<tocitem text="Customizing Legends" target="customizinglegends1">
+			<tocitem text="Legend Title" target="legendtitle1" />
+			<tocitem text="Legend Blocks" target="legendblocks1" />
+			<tocitem text="Customizing Legend Items" target="customizinglegenditems3" />
+		</tocitem>
+		<tocitem text="Customizing Window Panels" target="customizingwindowpanels1">
+			<tocitem text="Customizing the Panel Background Color" target="customizingthepanelbackgroundcolor1" />
+			<tocitem text="Customizing the Horizontal Spacer Size" target="customizingthehorizontalspacersize1" />
+			<tocitem text="Customizing the Window Size" target="customizingthewindowsize1" />
+		</tocitem>
+		<tocitem text="Customizing Plot Layout" target="customizingplotlayout1">
+			<tocitem text="Adding and Removing Viewports" target="addingandremovingviewports1" />
+			<tocitem text="Setting Viewport Weights" target="settingviewportweights1" />
+			<tocitem text="Adding and Removing Axes" target="addingandremovingaxes1" />
+			<tocitem text="Arranging Viewports and Axes" target="arrangingviewportsandaxes1" />
+			<tocitem text="Reversing Axes (Invert Data)" target="reversingaxesinvertdata1" />
+		</tocitem>
+		<tocitem text="Saving and Applying Templates" target="savingandapplyingtemplates1" />
+		<tocitem text="Additional Viewing Options for Plots" target="additionalviewingoptionsforplots1">
+			<tocitem text="Viewing Data in Tabular Form" target="viewingdataintabularform1" />
+			<tocitem text="Saving Plots" target="savingplots1" />
+			<tocitem text="Copying Plots to the Clipboard" target="copyingplotstotheclipboard1" />
+		</tocitem>
+		<tocitem text="Printing Plots" target="printingplots1" />
+		<tocitem text="Importing and Exporting Default Plot Properties" target="importingandexportingdefaultplotproperties1">
+			<tocitem text="Exporting Default Plot Properties" target="exportingdefaultplotproperties1" />
+			<tocitem text="Importing Default Plot Properties" target="importingdefaultplotproperties1" />
+		</tocitem>
+		<tocitem text="Text Substitution" target="textsubstitution1">
+			<tocitem text="Text Substitution Keywords" target="textsubstitutionkeywords1" />
+		</tocitem>
+	</tocitem>
+	<tocitem text="Math Functions" target="mathfunctions1">
+		<tocitem text="The Math Functions Screen" target="themathfunctionsscreen1">
+			<tocitem text="Menu Bar" target="menubar3" />
+			<tocitem text="Menu Bar Buttons" target="menubarbuttons1" />
+			<tocitem text="Other Math Features of the Math Functions Screen" target="othermathfeaturesofthemathfunctionsscreen1" />
+		</tocitem>
+		<tocitem text="Managing Data" target="managingdata1">
+			<tocitem text="Selecting Paired Data Curves for Function Operations" target="selectingpaireddatacurvesforfunctionoperations1" />
+		</tocitem>
+		<tocitem text="Arithmetic Functions" target="arithmeticfunctions1">
+			<tocitem text="Add" target="add1" />
+			<tocitem text="Subtract" target="subtract1" />
+			<tocitem text="Multiply" target="multiply1" />
+			<tocitem text="Divide" target="divide1" />
+			<tocitem text="Exponentiation" target="exponentiation1" />
+			<tocitem text="Absolute Value" target="absolutevalue3" />
+			<tocitem text="Square Root" target="squareroot3" />
+			<tocitem text="Log" target="log1" />
+			<tocitem text="Log Base 10" target="logbase101" />
+			<tocitem text="Sine" target="sine1" />
+			<tocitem text="Cosine" target="cosine1" />
+			<tocitem text="Tangent" target="tangent1" />
+			<tocitem text="Inverse" target="inverse1" />
+			<tocitem text="Accumulation" target="accumulation1" />
+			<tocitem text="Successive Differences" target="successivedifferences1" />
+			<tocitem text="Time Derivative" target="timederivative1" />
+		</tocitem>
+		<tocitem text="General Functions" target="generalfunctions1">
+			<tocitem text="Units Conversion" target="unitsconversion1" />
+			<tocitem text="Set Units" target="setunits1" />
+			<tocitem text="Set Type" target="settype1" />
+			<tocitem text="Round to Nearest Whole Number" target="roundtonearestwholenumber3" />
+			<tocitem text="Truncate to Whole Number" target="truncatetowholenumber1" />
+			<tocitem text="Round Off" target="roundoff1" />
+			<tocitem text="Estimate Missing Values" target="estimatemissingvalues1" />
+			<tocitem text="Replace Specific Values" target="replacespecificvalues3" />
+			<tocitem text="Screen Using Minimum and Maximum" target="screenusingminimumandmaximum1" />
+			<tocitem text="Screen with Forward Moving Average" target="screenwithforwardmovingaverage1" />
+			<tocitem text="Paired Data Operations" target="paireddataoperations1" />
+			<tocitem text="Merge Time Series" target="mergetimeseries1" />
+			<tocitem text="Merge Paired Data" target="mergepaireddata1" />
+			<tocitem text="Generate Data Pairs" target="generatedatapairs1" />
+		</tocitem>
+		<tocitem text="Time Functions" target="timefunctions1">
+			<tocitem text="Min/Max/Avg/… Over Period" target="minmaxavgoverperiod1" />
+			<tocitem text="Copy in Time" target="copyintime1" />
+			<tocitem text="Shift in Time" target="shiftintime1" />
+			<tocitem text="Change Time Interval" target="changetimeinterval1" />
+			<tocitem text="Irregular to Regular" target="irregulartoregular1" />
+			<tocitem text="Regular to Irregular" target="regulartoirregular1" />
+			<tocitem text="To Irregular using Pattern" target="toirregularusingpattern1" />
+			<tocitem text="Extract Time Series" target="extracttimeseries1" />
+		</tocitem>
+		<tocitem text="Hydrologic Functions" target="hydrologicfunctions1">
+			<tocitem text="Muskingum Routing" target="muskingumrouting1" />
+			<tocitem text="Straddle Stagger Routing" target="straddlestaggerrouting1" />
+			<tocitem text="Modified Puls Routing" target="modifiedpulsrouting1" />
+			<tocitem text="Rating Table" target="ratingtable1" />
+			<tocitem text="Reverse Rating Table" target="reverseratingtable1" />
+			<tocitem text="Two Variable Rating Table" target="twovariableratingtable1" />
+			<tocitem text="Decaying Basin Wetness" target="decayingbasinwetness1" />
+			<tocitem text="Shift Adjustment" target="shiftadjustment1" />
+			<tocitem text="Period Constants" target="periodconstants1" />
+			<tocitem text="Multiple Linear Regression" target="multiplelinearregression1" />
+			<tocitem text="Apply Multiple Linear Regression" target="applymultiplelinearregression1" />
+			<tocitem text="Conic Interpolation" target="conicinterpolation1" />
+			<tocitem text="Polynomial" target="polynomial1" />
+			<tocitem text="Polynomial with Integral" target="polynomialwithintegral1" />
+			<tocitem text="Flow Accumulator Gage Processor" target="flowaccumulatorgageprocessor1" />
+		</tocitem>
+		<tocitem text="Smoothing Functions" target="smoothingfunctions1">
+			<tocitem text="Centered Moving Average" target="centeredmovingaverage1" />
+			<tocitem text="Olympic Smoothing Average" target="olympicsmoothingaverage1" />
+			<tocitem text="Forward Moving Average" target="forwardmovingaverage1" />
+		</tocitem>
+		<tocitem text="Statistics Functions" target="statisticsfunctions1">
+			<tocitem text="Basic" target="basic1" />
+			<tocitem text="Linear Regression" target="linearregression1" />
+			<tocitem text="Cyclic Analysis" target="cyclicanalysis1" />
+			<tocitem text="Duration Analysis" target="durationanalysis1" />
+			<tocitem text="Frequency Plot" target="frequencyplot1" />
+		</tocitem>
+	</tocitem>
+	<tocitem text="Scripting" target="scripting1">
+		<tocitem text="Executing Scripts" target="executingscripts1">
+			<tocitem text="Script Menu" target="scriptmenu1" />
+			<tocitem text="Main Toolbar" target="maintoolbar1" />
+			<tocitem text="Script Selector" target="scriptselector1" />
+		</tocitem>
+		<tocitem text="Script Editor" target="scripteditor1">
+			<tocitem text="Menu Bar" target="menubar4" />
+			<tocitem text="Editor Panel" target="editorpanel1" />
+			<tocitem text="Tree Hierarchy" target="treehierarchy1" />
+		</tocitem>
+		<tocitem text="Scripting Basics" target="scriptingbasics1">
+			<tocitem text="Outputting Text" target="outputtingtext1" />
+			<tocitem text="Data Types" target="datatypes1" />
+			<tocitem text="Variables" target="variables1" />
+			<tocitem text="Operators" target="operators1" />
+			<tocitem text="Comments" target="comments1" />
+			<tocitem text="Program Lines" target="programlines1" />
+			<tocitem text="Conditional Expressions" target="conditionalexpressions1" />
+			<tocitem text="Looping" target="looping1">
+				<tocitem text="Conditional Looping" target="conditionallooping1" />
+				<tocitem text="Iterative Looping" target="iterativelooping1" />
+			</tocitem>
+			<tocitem text="Defining and Using Functions" target="definingandusingfunctions1" />
+			<tocitem text="Modules, Functions and Methods" target="modulesfunctionsandmethods1" />
+			<tocitem text="Handling Exceptions" target="handlingexceptions1" />
+		</tocitem>
+		<tocitem text="Scripting Messages" target="displayingmessages1">
+			<tocitem text="Displaying Message Dialogs" target="displayingmessagedialogs1" />
+		</tocitem>
+		<tocitem text="Headless and Batch Operation" target="headlessandbatchoperation1">
+			<tocitem text="Headless on Windows" target="headlessonwindows1" />
+			<tocitem text="Headless on Unix" target="headlessonunix1" />
+			<tocitem text="Running in Batch Mode" target="runninginbatchmode1" />
+			<tocitem text="Modality with Scripts" target="modalitywithscripts1" />
+		</tocitem>
+		<tocitem text="Accessing the Main Program Window" target="accessingthemainprogramwindow1">
+			<tocitem text="ListSelection Class" target="listselectionclass1" />
+			<tocitem text="DataReference Class" target="datareferenceclass1" />
+		</tocitem>
+		<tocitem text="Reading and Writing to HEC-DSS Files" target="readingandwritingtohecdssfiles1">
+			<tocitem text="HecDss Class" target="hecdssclass1" />
+			<tocitem text="HecDss Retrieve and Store Functions" target="hecdssretrieveandstorefunctions1">
+				<tocitem text="Pattern Strings" target="patternstrings1" />
+				<tocitem text="Time Windows" target="timewindows1" />
+			</tocitem>
+		</tocitem>
+		<tocitem text="DataContainer Class" target="datacontainerclass1">
+			<tocitem text="TimeSeriesContainer Class" target="timeseriescontainerclass1" />
+			<tocitem text="PairedDataContainer Class" target="paireddatacontainerclass1" />
+		</tocitem>
+		<tocitem text="HecTime Class" target="hectimeclass1" />
+		<tocitem text="Scripting Plots" target="plottingbasics1">
+			<tocitem text="Plot Class" target="plotclass1" />
+			<tocitem text="Changing Plot Component Attributes" target="changingplotcomponentattributes1" />
+			<tocitem text="G2dDialog Class" target="g2ddialogclass1" />
+			<tocitem text="PlotLayout Class" target="plotlayoutclass1" />
+			<tocitem text="ViewportLayout Class" target="viewportlayoutclass1" />
+			<tocitem text="Viewport Class" target="viewportclass1" />
+			<tocitem text="AxisMarker Class" target="axismarkerclass1" />
+			<tocitem text="Axis Class" target="axisclass1" />
+			<tocitem text="AxisTics Class" target="axisticsclass1" />
+			<tocitem text="G2dLine Class" target="g2dlineclass1" />
+			<tocitem text="G2dLabel, G2dTitle, and AxisLabel Classes" target="g2dlabelg2dtitleandaxislabelclasses1" />
+			<tocitem text="Templates" target="templates1" />
+		</tocitem>
+		<tocitem text="Plot Component Properties" target="plotcomponentproperties1">
+			<tocitem text="Colors" target="colors1" />
+			<tocitem text="Alignment" target="alignment1" />
+			<tocitem text="Positions" target="positions1" />
+			<tocitem text="Rotation" target="rotation1" />
+			<tocitem text="Fill Patterns" target="fillpatterns1" />
+			<tocitem text="Fill Types" target="filltypes1" />
+			<tocitem text="Line Styles" target="linestyles1" />
+			<tocitem text="Step Style" target="stepstyle1" />
+			<tocitem text="Symbol Types" target="symboltypes1" />
+		</tocitem>
+		<tocitem text="Tables" target="tables1">
+			<tocitem text="Tabulate Class" target="tabulateclass1" />
+			<tocitem text="HecDataTableFrame Class" target="hecdatatableframeclass1" />
+		</tocitem>
+		<tocitem text="TableExportOptions Class" target="tableexportoptionsclass1" />
+		<tocitem text="HecMath Class" target="hecmathclass1" />
+		<tocitem text="Scripting Math Functions" target="mathfunctions2">
+			<tocitem text="Absolute Value" target="absolutevalue2" />
+			<tocitem text="Accumulation (Running)" target="accumulationrunning1" />
+			<tocitem text="Arccosine Trigonometric Function" target="arccosinetrigonometricfunction1" />
+			<tocitem text="Add a Constant" target="addaconstant1" />
+			<tocitem text="Add a Data Set" target="addadataset1" />
+			<tocitem text="Apply Multiple Linear Regression Equation" target="applymultiplelinearregressionequation1" />
+			<tocitem text="Arcsine Trigonometric Function" target="arcsinetrigonometricfunction1" />
+			<tocitem text="Arctangent Trigonometric Function" target="arctangenttrigonometricfunction1" />
+			<tocitem text="Ceiling Function" target="ceilingfunction1" />
+			<tocitem text="Centered Moving Average Smoothing" target="centeredmovingaveragesmoothing1" />
+			<tocitem text="Conic Interpolation from Elevation/Area Table" target="conicinterpolationfromelevationareatable1" />
+			<tocitem text="Convert Values to English Units" target="convertvaluestoenglishunits1" />
+			<tocitem text="Convert Values to Metric (SI) Units" target="convertvaluestometricsiunits1" />
+			<tocitem text="Correlation Coefficients" target="correlationcoefficients1" />
+			<tocitem text="Cosine Trigonometric Function" target="cosinetrigonometricfunction1" />
+			<tocitem text="Cyclic Analysis (Time Series)" target="cyclicanalysistimeseries1" />
+			<tocitem text="Decaying Basin Wetness Parameter" target="decayingbasinwetnessparameter1" />
+			<tocitem text="Divide by a Constant" target="dividebyaconstant1" />
+			<tocitem text="Divide by a Data Set" target="dividebyadataset1" />
+			<tocitem text="Estimate Values for Missing Precipitation Data" target="estimatevaluesformissingprecipitationdata1" />
+			<tocitem text="Estimate Values for Missing Data" target="estimatevaluesformissingdata1" />
+			<tocitem text="Exponent" target="exponent1" />
+			<tocitem text="Exponentiation Function" target="exponentiationfunction1" />
+			<tocitem text="Exponentiation Timeseries Function" target="exponentiationtimeseriesfunction1" />
+			<tocitem text="Extract Time Series Data at Unique Time Specification" target="extracttimeseriesdataatuniquetimespecification1" />
+			<tocitem text="First Valid Date" target="firstvaliddate1" />
+			<tocitem text="First Valid Value" target="firstvalidvalue1" />
+			<tocitem text="Floor Function" target="floorfunction1" />
+			<tocitem text="Flow Accumulator Gage (Compute Period Average Flows)" target="flowaccumulatorgagecomputeperiodaverageflows1" />
+			<tocitem text="Modulo Function with both arguments are greater than zero" target="modulofunctionwithbothargumentsaregreaterthanzero1" />
+			<tocitem text="Forward Moving Average Smoothing" target="forwardmovingaveragesmoothing1" />
+			<tocitem text="Forward Moving Average Smoothing of time series" target="forwardmovingaveragesmoothingoftimeseries1" />
+			<tocitem text="Generate Data Pairs from Two Time Series" target="generatedatapairsfromtwotimeseries1" />
+			<tocitem text="Generate a Regular Interval Time Series" target="generatearegularintervaltimeseries1" />
+			<tocitem text="Get Data Container" target="getdatacontainer1" />
+			<tocitem text="Get Data Type for Time Series Data Set" target="getdatatypefortimeseriesdataset1" />
+			<tocitem text="Get Units Label for Data Set" target="getunitslabelfordataset1" />
+			<tocitem text="Gmean" target="gmean1" />
+			<tocitem text="Hmean" target="hmean1" />
+			<tocitem text="Integer_divide" target="integerdivide2" />
+			<tocitem text="Integer_divide" target="integerdivide3" />
+			<tocitem text="Interpolate Time Series Data at Regular Intervals" target="interpolatetimeseriesdataatregularintervals1" />
+			<tocitem text="Inverse ( 1/X ) Function" target="inverse1xfunction1" />
+			<tocitem text="Determine if Data is in English Units" target="determineifdataisinenglishunits1" />
+			<tocitem text="Determine if Data is in Metric Units" target="determineifdataisinmetricunits1" />
+			<tocitem text="Determine if Computation Stable for Given Muskingum Routing Parameters" target="determineifcomputationstableforgivenmuskingumroutingparameters1" />
+			<tocitem text="Last Valid Value's Date and Time" target="lastvalidvaluesdateandtime1" />
+			<tocitem text="Last Valid Value in a Time Series" target="lastvalidvalueinatimeseries1" />
+			<tocitem text="Natural Log, Base &quot;e&quot; Function" target="naturallogbaseefunction1" />
+			<tocitem text="Log Base 10 Function" target="logbase10function1" />
+			<tocitem text="Maximum Value in a Time Series" target="maximumvalueinatimeseries2" />
+			<tocitem text="Maximum Value in a Time Series" target="maximumvalueinatimeseries3" />
+			<tocitem text="Maximum Value's Date and Time" target="maximumvaluesdateandtime1" />
+			<tocitem text="Mean Time Series Value" target="meantimeseriesvalue2" />
+			<tocitem text="Mean Time Series Value" target="meantimeseriesvalue3" />
+			<tocitem text="Median Time Series Value" target="mediantimeseriesvalue1" />
+			<tocitem text="Merge Paired Data Sets" target="mergepaireddatasets1" />
+			<tocitem text="Merge Two Time Series Data Sets" target="mergetwotimeseriesdatasets1" />
+			<tocitem text="Minimum Value in a Time Series" target="minimumvalueinatimeseries2" />
+			<tocitem text="Minimum Value in a Time Series" target="minimumvalueinatimeseries3" />
+			<tocitem text="Minimum Value's Date and Time" target="minimumvaluesdateandtime1" />
+			<tocitem text="Modified Puls or Working R&amp;D Routing Function" target="modifiedpulsorworkingrdroutingfunction1" />
+			<tocitem text="Modulo" target="modulo2" />
+			<tocitem text="Modulo" target="modulo3" />
+			<tocitem text="Multiple Linear Regression Coefficients" target="multiplelinearregressioncoefficients1" />
+			<tocitem text="Multiply by a Constant" target="multiplybyaconstant1" />
+			<tocitem text="Multiply by a Data Set" target="multiplybyadataset1" />
+			<tocitem text="Muskingum Hydrologic Routing Function" target="muskingumhydrologicroutingfunction1" />
+			<tocitem text="Negation Function" target="negationfunction1" />
+			<tocitem text="Number of Invalid Values in a Time Series" target="numberofinvalidvaluesinatimeseries1" />
+			<tocitem text="Number of Missing Values in a Time Series" target="numberofmissingvaluesinatimeseries1" />
+			<tocitem text="Number of Questioned Values in a Time Series" target="numberofquestionedvaluesinatimeseries1" />
+			<tocitem text="Number of Rejected Values in a Time Series" target="numberofrejectedvaluesinatimeseries1" />
+			<tocitem text="Number of Valid Values in a Time Series" target="numberofvalidvaluesinatimeseries1" />
+			<tocitem text="Olympic Smoothing" target="olympicsmoothing1" />
+			<tocitem text="P1 Function" target="p1function1" />
+			<tocitem text="P2 Function" target="p2function1" />
+			<tocitem text="P5 Function" target="p5function1" />
+			<tocitem text="P10 Function" target="p10function1" />
+			<tocitem text="P20 Function" target="p20function1" />
+			<tocitem text="P25 Function" target="p25function1" />
+			<tocitem text="P75 Function" target="p75function1" />
+			<tocitem text="P80 Function" target="p80function1" />
+			<tocitem text="P89 Function" target="p89function1" />
+			<tocitem text="P90 Function" target="p90function1" />
+			<tocitem text="P95 Function" target="p95function1" />
+			<tocitem text="P99 Function" target="p99function1" />
+			<tocitem text="Period Constants Generation" target="periodconstantsgeneration1" />
+			<tocitem text="Polynomial Transformation" target="polynomialtransformation1" />
+			<tocitem text="Polynomial Transformation with Integral" target="polynomialtransformationwithintegral1" />
+			<tocitem text="Product Function" target="productfunction1" />
+			<tocitem text="Rating Table Interpolation" target="ratingtableinterpolation1" />
+			<tocitem text="Replace Specific Values" target="replacespecificvalues2" />
+			<tocitem text="Reverse Rating Table Interpolation" target="reverseratingtableinterpolation1" />
+			<tocitem text="RMS Function" target="rmsfunction1" />
+			<tocitem text="Round to Nearest Whole Number" target="roundtonearestwholenumber2" />
+			<tocitem text="Round Off to Specified Precision" target="roundofftospecifiedprecision1" />
+			<tocitem text="Screen for Erroneous Values Based on Constant Value" target="screenforerroneousvaluesbasedonconstantvalue1" />
+			<tocitem text="Screen for Erroneous Values Based on Duration Magnitude" target="screenforerroneousvaluesbasedondurationmagnitude1" />
+			<tocitem text="Screen for Erroneous Values Based on Forward Moving Average" target="screenforerroneousvaluesbasedonforwardmovingaverage2" />
+			<tocitem text="Screen for Erroneous Values Based on Forward Moving Average" target="screenforerroneousvaluesbasedonforwardmovingaverage3" />
+			<tocitem text="Screen for Erroneous Values Based on Maximum/Minimum Range" target="screenforerroneousvaluesbasedonmaximumminimumrange4" />
+			<tocitem text="Screen for Erroneous Values Based on Maximum/Minimum Range" target="screenforerroneousvaluesbasedonmaximumminimumrange5" />
+			<tocitem text="Screen for Erroneous Values Based on Maximum/Minimum Range" target="screenforerroneousvaluesbasedonmaximumminimumrange6" />
+			<tocitem text="Screen for Erroneous Values Based on Maximum/Minimum Range" target="screenforerroneousvaluesbasedonmaximumminimumrange7" />
+			<tocitem text="Screen for Erroneous Values Based on Rate of Change" target="screenforerroneousvaluesbasedonrateofchange1" />
+			<tocitem text="Select a Paired Data Curve by Curve Label" target="selectapaireddatacurvebycurvelabel1" />
+			<tocitem text="Select a Paired Data Curve by Curve Number" target="selectapaireddatacurvebycurvenumber1" />
+			<tocitem text="Set Data Container" target="setdatacontainer1" />
+			<tocitem text="Set Location Name for Data Set" target="setlocationnamefordataset1" />
+			<tocitem text="Set Parameter for Data Set" target="setparameterfordataset1" />
+			<tocitem text="Set Pathname for Data Set" target="setpathnamefordataset1" />
+			<tocitem text="Set Time Interval for Data Set" target="settimeintervalfordataset1" />
+			<tocitem text="Set Data Type for Time Series Data Set" target="setdatatypefortimeseriesdataset1" />
+			<tocitem text="Set Units Label for Data Set" target="setunitslabelfordataset1" />
+			<tocitem text="Set Version Name for Data Set" target="setversionnamefordataset1" />
+			<tocitem text="Set Watershed Name for Data Set" target="setwatershednamefordataset1" />
+			<tocitem text="Shift Adjustment of Time Series Data" target="shiftadjustmentoftimeseriesdata1" />
+			<tocitem text="Shift Time Series in Time" target="shifttimeseriesintime1" />
+			<tocitem text="Sign Function" target="signfunction1" />
+			<tocitem text="Sine Trigonometric Function" target="sinetrigonometricfunction1" />
+			<tocitem text="Skew Coefficient" target="skewcoefficient1" />
+			<tocitem text="Snap Irregular Times to Nearest Regular Period" target="snapirregulartimestonearestregularperiod1" />
+			<tocitem text="Square Root" target="squareroot2" />
+			<tocitem text="Standard Deviation of Time Series" target="standarddeviationoftimeseries2" />
+			<tocitem text="Standard Deviation of Time Series" target="standarddeviationoftimeseries3" />
+			<tocitem text="Straddle Stagger Hydrologic Routing" target="straddlestaggerhydrologicrouting1" />
+			<tocitem text="Subtract a Constant" target="subtractaconstant1" />
+			<tocitem text="Subtract a Data Set" target="subtractadataset1" />
+			<tocitem text="Successive Differences for Time Series" target="successivedifferencesfortimeseries1" />
+			<tocitem text="Sum Values in Time Series" target="sumvaluesintimeseries2" />
+			<tocitem text="Sum Values in Time Series" target="sumvaluesintimeseries3" />
+			<tocitem text="Tangent Trigonometric Function" target="tangenttrigonometricfunction1" />
+			<tocitem text="Time Derivative (Difference Per Unit Time)" target="timederivativedifferenceperunittime1" />
+			<tocitem text="Transform Time Series to Regular Interval" target="transformtimeseriestoregularinterval1" />
+			<tocitem text="Transform Time Series to Irregular Interval" target="transformtimeseriestoirregularinterval1" />
+			<tocitem text="Truncate to Whole Numbers" target="truncatetowholenumbers1" />
+			<tocitem text="Two Variable Rating Table Interpolation" target="twovariableratingtableinterpolation1" />
+			<tocitem text="Variable Function" target="variablefunction1" />
+		</tocitem>
+	</tocitem>
+</toc>

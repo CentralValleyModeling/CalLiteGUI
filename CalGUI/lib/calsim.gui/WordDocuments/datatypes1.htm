@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Data Types</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="outputtingtext1.htm" class="d2hpreviousenabled">Previous</a>
+            &nbsp; <a id="D2HNext" href="variables1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="scriptingbasics1.htm" class=
+        "d2h_breadcrumbsnormal">Scripting Basics</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: list 76.5pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="_Toc104616385"></a><a name="_Toc104610436"></a><a name="_Toc101758494"></a><a
+          name="_Toc100980861"></a><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5"><a
+          name="_Toc100728543"></a><a name="_Toc100728230"></a><a name="_Toc19007489"></a><a name=
+          "_Toc19005494"></a><a name="_Ref18905778"></a><a name="_Toc19004570"></a><a name=
+          "_Toc19005493"></a><a name="_Toc19007488"></a>Data Types</font></b><br>
+          <br>
+           Python has integer, long integer, floating-point, imaginary number, and sequence and
+          dictionary data types.&nbsp; Sequences are divided into mutable (or changeable) sequences
+          called lists, immutable sequences called tuples.&nbsp; Strings are special tuples of
+          characters that have their own syntax.&nbsp; Dictionaries are like sequences but are
+          indexed by non-numeric values.&nbsp; In addition, Python also has a special type called
+          None, which is used to indicate the absence of any value.<br>
+          <br>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Python does not have a specific type for boolean (logical, or “true / false”)
+          data.&nbsp; Tests, such as conditional expressions, which must evaluate to true or false,
+          are conducted such that the result is false if the expression evaluates to None, integer
+          or floating-point zero, or an empty sequence.&nbsp; Any other result is true.&nbsp;
+          Python statements that generate Boolean information (such as the <b>if</b> statement)
+          generate integer 0 for false and integer 1 for true.&nbsp; This becomes an issue in
+          Jython which allows calling Java functions and methods which expect a Java boolean for
+          input or generate a Java boolean for output.&nbsp; Jython maps these boolean values to
+          integer 0 or 1.&nbsp; Documentation for the HEC-DSSVue API uses the term Constants.TRUE
+          (1), or Constants.FALSE (0), or sometimes the shorthand “0/1”, for arguments (these are
+          constants defined to 1 and 0, respectively, in hec.script), and “0/1” to specify that the
+          return type is a Python integer, but its value is restricted to 0 or 1, corresponding to
+          a Java boolean.&nbsp; The hec.script module supplies constants to use in these
+          situations.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           There are also situations regarding the HEC-DSSVue API where it is necessary or
+          desirable to set a time-series value to “missing” or to test whether a time-series value
+          is missing.&nbsp; The hec.script module also supplies a constant to use in these
+          situations.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+          <br>
+           The currently-defined constants in the hec.script module are:
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <TBODY>
+          <tr>
+            <td valign="top" width="192" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 144pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Constant</b>
+              </p>
+            </td>
+            <td valign="top" width="114" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 85.5pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Type</b>
+              </p>
+            </td>
+            <td valign="top" width="144" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 108pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Represents</b>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="192" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 144pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Constants.TRUE
+              </p>
+            </td>
+            <td valign="top" width="114" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 85.5pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="144" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 108pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 true
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="192" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 144pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Constants.FALSE
+              </p>
+            </td>
+            <td valign="top" width="114" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 85.5pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="144" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 108pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 false
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="192" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 144pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Constants.UNDEFINED
+              </p>
+            </td>
+            <td valign="top" width="114" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 85.5pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 floating-point
+              </p>
+            </td>
+            <td valign="top" width="144" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 108pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 missing data value
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           It is recommended that these defined constants be used where applicable for portability
+          and clarity.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" width="516" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 387pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 409.9pt;">
+            <td valign="top" width="516" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 409.9pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 387pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="msocaption">
+                 <a name="_Toc104615192"></a><a name="_Toc104610755"></a><a name=
+                "_Toc19007775">Example</a>: Variable Types
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set some integer values
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 i = 0
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 j = 1
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 k = -10998
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 m = Constants.TRUE
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set a long integer
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 n = 79228162514264337593543950336L
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set some floating-point values
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 x = 9.375
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 y = 6.023e23
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 z = -7.2e-3
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 t = Constants.UNDEFINED
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set some strings
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_1 = “abc”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_2 = ‘xyz’
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_3 = “he said \“I won’t!\””
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_4 = ‘he said “I will not!”‘
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_5 = “””this is a
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                multi-line string”””
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set a tuple – tuples are contained within ()
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 tuple_1 = (1, 2, “abc”, x, None)
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set a list – lists are contained within []
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 list_1 = [1, 2, “abc”, x, tuple_1]
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # set a dictionary, using <i>key : value</i> syntax
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # dictionaries are contained within {}
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 dict_1 = {“color” : “red”, “size” : 10, “list” : [1, 5, 8]}
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Indexing into sequence types is done using [i] where i starts at 0 for the first
+          element.&nbsp; Subsets of sequence types (called slices) are accessed using [i:j] where i
+          is the first element in the subset and j is the element <i>after</i> the last element in
+          the subset.&nbsp; If negative numbers are used to specify and index or slice, the index
+          is applied to the <i>end</i> of the sequence, where [-1] specifies the last element, [-2]
+          the next-to last and so on.&nbsp; If i is omitted in slice syntax it defaults to 0. If j
+          is omitted in slice syntax it defaults to the length of the sequence, so list_1
+          [0:len(list_1)] is the same as list_1[:]. Indexing into dictionaries is done using [x]
+          where x is the key.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The number of elements in a sequence type or dictionary is returned by the <b>len()</b>
+          function.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" width="516" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 387pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 117.4pt;">
+            <td valign="top" width="516" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 117.4pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 387pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="msocaption">
+                 <a name="_Toc104615193"></a><a name="_Toc104610756"></a><a name=
+                "_Toc19007776">Example</a>: Sequence Indexing and Slicing
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                <br>
+                 string_4[3]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                # 4<sup>th</sup> element
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_4[3:5]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                # 4<sup>th</sup> &amp; 5<sup>th</sup> elements
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 list_1[-1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                # last element
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 list_1[2:-1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                # 3<sup>rd</sup> through next-to-last element
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 list_1[2:len(list_1)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+                3<sup>rd</sup> through last element (also list_1[2:])
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 dict_1[“size”]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                # value associated with “size” key
+              </p>
+              <p style=" page-break-after: avoid; text-indent: 36pt;" class="msonormal">
+                 i = len(list_1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #
+                length of list_1
+              </p>
+              <p style=" page-break-after: avoid; text-indent: 36pt;" class="msonormal">
+                 &nbsp;
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

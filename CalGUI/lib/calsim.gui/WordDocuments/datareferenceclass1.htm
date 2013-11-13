@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>DataReference Class</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="listselectionclass1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "readingandwritingtohecdssfiles1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>
+       &nbsp;
+    </p>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 0px; padding-left: 22px; padding-top: 0px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="accessingthemainprogramwindow1.htm"
+        class="d2h_breadcrumbsnormal">Accessing the Main Program Window</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <a name="_Toc104616399"></a><a name="_Toc104610450"></a><a name="_Toc101758509"></a><a
+          name="_Toc100980876"></a><a name="_Toc100728558"></a><br>
+           <a name="_Toc100728245"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">DataReference</font></b></a><b><font face="SansSerif, Verdana, Arial, Helvetica"
+          size="5"> Class</font></b><br>
+          <br>
+           The getSelectionList() ListSelection method returns a Vector of DataReference objects
+          that represent the interactive selections.&nbsp; Each individual selection may have a
+          different DSS filename, pathname, and time window than other selections.&nbsp; The
+          methods of the DataReference class are listed in the table below.
+        </p>
+        <p style=" margin-top: 0pt;">
+           <i>&nbsp;</i>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;">
+           DataReference Methods
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <TBODY>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: windowtext 1pt solid;">
+              <p class="msonormal">
+                 <b>Method</b>
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: windowtext 1pt solid;">
+              <p class="msonormal">
+                 <b>Returns</b>
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: windowtext 1pt solid;">
+              <p class="msonormal">
+                 <b>Description</b>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="msonormal">
+                 getFilename()
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Returns the name of the DSS file from which this selection was made.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="msonormal">
+                 getNominalPathname()
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Returns the nominal pathname for this selection.&nbsp; If a condensed set, this
+                will not be a real pathname, but show the date span in the D part
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="msonormal">
+                 getPathname()
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Returns the pathname for this selection
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="htmlbody35">
+                 <font style=" layout-grid-mode: both;">getPathnameList()</font>
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 Vector
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Returns a list of the pathnames for this selection.&nbsp; This will be only more
+                than one if a condensed reference
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="htmlbody35">
+                 <font style=" layout-grid-mode: both;">getTimeWindow(</font>
+              </p>
+              <p class="htmlbody35">
+                 <font style=" layout-grid-mode: both;">&nbsp; HecTime startTime,</font>
+              </p>
+              <p class="htmlbody35">
+                 <font style=" layout-grid-mode: both;">&nbsp; HecTime endTime)</font>
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Sets the startTime and endTime parameters with the start time and end time of the
+                selection, respectively.&nbsp; Returns Constants.TRUE if a time window is defined
+                for the selection.&nbsp; Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="151" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 113.1pt; border-top: medium none;">
+              <p class="msonormal">
+                 hasTimeWindow()
+              </p>
+            </td>
+            <td valign="top" width="75" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 56.15pt; border-top: medium none;">
+              <p class="msonormal">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="293" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 219.55pt; border-top: medium none;">
+              <p class="msonormal">
+                 Returns Constants.TRUE if a time window is defined for the selection.&nbsp;
+                Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch7-Math.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Estimate Missing Values</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="roundoff1.htm" class="d2hpreviousenabled">Previous</a>
+            &nbsp; <a id="D2HNext" href="replacespecificvalues3.htm" class=
+            "d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="mathfunctions1.htm" class="d2h_breadcrumbsnormal">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="generalfunctions1.htm" class=
+        "d2h_breadcrumbsnormal">General Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc6903191"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Estimate Missing Values</font></b></a><br>
+          <br>
+           The <b>Estimate Missing Values</b> function linearly interpolates estimates for missing
+          values in a regular or irregular interval time series data set.&nbsp; Linear
+          interpolation will occur for those portions of the time series data set where the number
+          of consecutive missing values exceeds a specified user limit.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           If the time series data set has type "INST-CUM", a special check box appears to
+          optionally enable the following rules intended for cumulative precipitation:
+        </p>
+        <p style=" margin-left: 20.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 90.0pt; margin-top: 0pt; margin-left: 32.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="msobodytextindent">
+           § &nbsp;If the values bracketing the missing period are increasing with time, only
+          interpolate if the number of successive missing values does not exceed the value of the
+          user specified limit.
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 90.0pt; margin-top: 0pt; margin-left: 32.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="msobodytextindent">
+           § &nbsp;If the values bracketing the missing period are decreasing with time, do not
+          estimate any missing values.
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 90.0pt; margin-top: 0pt; margin-left: 32.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="msobodytextindent">
+           § &nbsp;If the values bracketing the missing period are equal, then estimate any number
+          of missing values
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To estimate for missing values in time series data sets:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>General</b> tab of the Math Functions screen and select the <b>Estimate
+            Missing Values</b> operator.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.&nbsp;
+          </li>
+          <li>
+            In the <b>Maximum Consecutive Number of Missing</b> box, enter a value to set the limit
+            for consecutive missing values allowed for interpolation.
+          </li>
+          <li>
+            If the time series data set is of type cumulative precipitation, select <b>Interpolate
+            Cumulative Precip</b> to apply the modified rules for the interpolation of missing
+            precipitation data.
+          </li>
+          <li>
+            Click <b>Compute</b> to perform the linear interpolation fill of the missing values in
+            the data set.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

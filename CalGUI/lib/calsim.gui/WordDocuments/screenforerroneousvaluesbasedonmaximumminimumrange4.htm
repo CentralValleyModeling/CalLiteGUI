@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Screen for Erroneous Values Based on Maximum/Minimum Range</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "screenforerroneousvaluesbasedonforwardmovingaverage3.htm">Previous</a> &nbsp; <a id=
+            "D2HNext" class="d2hnextenabled" href=
+            "screenforerroneousvaluesbasedonmaximumminimumrange5.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-bottom: 6pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Screen for Erroneous
+          Values Based on Maximum/Minimum Range</b></font>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+          <br>
+           <code>screenWithMaxMin<font style=" font-weight: normal;">(floating-point
+          minValueLimit,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          maxValueLimit,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          changeLimit,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean
+          setInvalidToMissingValue,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+          qualityFlagForInvalidValue)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Flag values in a time series data set exceeding minimum and maximum limit values or
+          maximum change limit.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Values in the time series are screened for quality. Values below <b>minValueLimit</b> or
+          above <b>maxValueLimit</b> or with a change from the previous time series value greater
+          than <b>changeLimit</b> fail the screening test.&nbsp; The maximum change comparison is
+          done only when consecutive values are not flagged.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           If <b>setInvalidToMissingValue</b> is set to true, values failing the screening test are
+          set to the "Missing" value.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           If <b>qualityFlagForInvalidValue</b> is set to a character or string recognized as a
+          valid quality flag, the quality flag will be set for tested values.&nbsp; If there is no
+          previously existing quality available for the time series, the quality flag array will be
+          created for the time series. Values failing the quality test are set to the user
+          specified quality flag for invalid values.&nbsp; If there is existing quality data and
+          the time series value passes the quality test, the existing quality flag for the points
+          is unchanged.&nbsp; If there was no previously existing quality and the time series value
+          passes the quality test, the quality flag is set to "Okay.”
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           For example:
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           resultantDataSet = dataSet.screenWithMaxMin ( 0.0, 1000., 100., Constants.FALSE,&nbsp;
+          “R” )
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           time series values less than 0.0, or greater than 1000., or with a change from a
+          previous point greater than 100 will be flagged as “Rejected.”&nbsp; Flagged points
+          however will not be set to the “Missing” value.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>minValueLimit</code> – A floating-point number specifying the minimum valid value
+          limit.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>maxValueLimit</code> - A floating-point number specifying the maximum valid value
+          limit.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>changeLimit</code> - A floating-point number specifying the maximum change allowed
+          in the tested value from the previous time series value.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>setInvalidToMissingValue</code> – Either Constants.TRUE, or Constants.FALSE,
+          specifying whether time series values failing the screening test are set to the "Missing"
+          value.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>qualityFlagForInvalidValue</code> - A string representing the quality flag setting
+          for values failing the screening test. The accepted character strings are: "M" or
+          "Missing”, "R" or "Rejected”, "Q" or "Questionable.” An empty string (“ ”) is entered to
+          disable the setting of the quality flag.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>screenedData = tsData.screenWithMaxMin(</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1000.,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100.,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constants.FALSE,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “R”)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> A new TimeSeriesMath object.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Generated Exceptions:</b> Throws a HecMathException if an unrecognized quality flag
+          is entered for <code><font style=
+          " font-weight: normal;">qualityFlagForInvalidValue</font></code> or if <code><font style=
+          " font-weight: normal;">setInvalidToMissingValue</font></code> is false and <code><font
+          style=" font-weight: normal;">qualityFlagForInvalidValue</font></code> is blank (no
+          action would occur).
+        </p>
+        <h3 style=" margin-left: 0.0px; margin-bottom: 6pt; tab-stops: 63.0pt;">
+           <a name="ScreenWithMaxMin"></a><a name="_Toc104616496"></a><a name=
+          "_Toc104610547"></a><a name="_Toc101758606"></a><a name="_Toc100980973"></a><a name=
+          "_Toc100728655"></a><a name="_Toc100728342"></a><a name="_Toc19007623"></a><a name=
+          "_Toc19005628"></a><a name="_Toc14888821"></a>&nbsp;
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>

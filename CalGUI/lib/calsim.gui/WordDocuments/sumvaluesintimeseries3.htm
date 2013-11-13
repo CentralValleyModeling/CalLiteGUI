@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Sum Values in Time Series</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "sumvaluesintimeseries2.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="tangenttrigonometricfunction1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <a name="_Ref205089719"><font size="5" face=
+          "SansSerif, Verdana, Arial, Helvetica"><b>Sum Values in Time Series</b></font></a><br>
+          <br>
+           <code>sum(<font style=" font-weight: normal;">list of HecMath tsMathArray</font>)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Add each of the time series in the parameter, tsMathArray, to the current time series. A
+          new time series will be created which duplicates the time points of the current time
+          series.&nbsp; Where time points match for the current time series and each time series in
+          tsMathArray, the values will be summed provided values for all time series are valid
+          values (not missing).&nbsp; Points in the current time series which cannot be matched to
+          valid points in tsMathArray are set to missing.&nbsp; Values in the current time series
+          which are missing remain missing in the new time series.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The new time series will always have quality defined.&nbsp; For a specific time, if any
+          of the quality values in the current or parameter time series is questionable or
+          rejected, the quality value for that time in the new time series will be set to the most
+          severe quality for that time (e.g. if questionable and rejected are both encountered, the
+          new quality will be set to rejected.)
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:&nbsp;</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           tsMathArray - the array of time series to be added to the current time series.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b> <code>tsData.sum(list of HecMath tsMathArray)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b>&nbsp; a new time series representing the sum of the two time series
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0pt; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <h3 style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+           <a name="Tangent"></a><a name="_Toc104616520"></a><a name="_Toc104610571"></a><a name=
+          "_Toc101758630"></a><a name="_Toc100980997"></a><a name="_Toc100728679"></a><a name=
+          "_Toc100728366"></a><a name="_Toc19007644"></a><a name="_Toc19005649"></a><a name=
+          "_Toc14888838"></a>&nbsp;
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>

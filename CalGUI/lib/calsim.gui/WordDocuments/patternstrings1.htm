@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/lf.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Pattern Strings</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " padding-bottom: 0px; padding-right: 0px; padding-left: 10px; padding-top: 0px;">
+    <div class="d2h_secondary_topic" style=
+    " margin-left: 0pt; padding-bottom: 10pt; margin-top: 0pt; padding-right: 0pt; margin-bottom: 0pt; margin-right: 0pt; padding-left: 0pt; padding-top: 0pt;">
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt; margin-top: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Pattern
+          Strings</b></font><br>
+          <br>
+           The pattern strings used with the getCatalogedPathnames(…) methods filter the list of
+          returned pathnames in a user-specified manner.&nbsp; Pattern strings can be specified in
+          two modes: pathname mode and pathname part mode.&nbsp; Both modes make use of pathname
+          part filters:
+        </p>
+        <ul>
+          <li>
+            Pathname mode =
+            <b>/</b><i>Afilter</i><b>/</b><i>Bfilter</i><b>/</b><i>Cfilter</i><b>/</b><i>Dfilter</i>
+            <b>/</b><i>Efilter</i><b>/</b><i>Ffilter</i><b>/</b>
+          </li>
+          <li>
+            Pathname part mode = [<b>A=</b><i>Afilter</i>] [<b>B=</b><i>Bfilter</i>]
+            [<b>C=</b><i>Cfilter</i>] [<b>D=</b><i>Dfilter</i>] [<b>E=</b><i>Afilter</i>]
+            [<b>F=</b><i>Ffilter</i>]
+          </li>
+        </ul>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           In pathname mode, filters must be supplied for all pathname parts.&nbsp; In pathame part
+          mode, only those parts that will not match everything must be specified.
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Filters are comprised of the following components:
+        </p>
+        <ul>
+          <li>
+            <b>Normal text characters.</b> &nbsp;These characters are interpreted as they
+            appear.&nbsp; For example, a pattern string of “B=XYZ” specifies matching every
+            pathname that has a B-part of “XYZ”.
+          </li>
+          <li>
+            <b>Special characters.</b>&nbsp; The special characters are comprised of the following
+            list: 
+            <ul>
+              <li>
+                <b>‘@’</b> or <b>‘*’</b> (used interchangeably).&nbsp; This character can be
+                specified as the first and/or last character of a filter and specifies matching a
+                string of zero or more characters.&nbsp; For example, a pattern string of “B=XYZ@”
+                specifies matching every pathname that as a B-part that begins with “XYZ”.&nbsp; A
+                pattern string of “B=*XYZ” specifies matching every pathname that has a B-part that
+                ends with “XYZ”.&nbsp; A pattern string of “B=*XYZ*” specifies matching every
+                pathname that “XYZ” anywhere in the B-part.&nbsp; Note that the <b>@</b> or
+                <b>*</b> character must be the first and/or last character of the filter (e.g. a
+                pattern string of “B=ABC*XYZ” is invalid).
+              </li>
+              <li>
+                <b>‘#’</b> or <b>‘!’</b> (used interchangeably).&nbsp; This character must be
+                specified as the first character of a filter and specifies matching of every string
+                <i>except</i> the remainder of the filter (e.g. it negates the remainder of the
+                filter).&nbsp; A pattern string of “B=!XYZ*” specifies matching every pathname that
+                does <i>not</i> have a B-part that begins with “XYZ”.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>No character</b>. The absence of any character specifies an empty filter, which
+            matches a blank pathname part.&nbsp; Both of the following pattern strings match every
+            pathname that has a blank A-part: 
+            <ul>
+              <li>
+                “//*/*/*/*/*/”
+              </li>
+              <li>
+                “A=”
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="bodytextindent155" style=
+        " margin-left: 0pt; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Using getCatalogedPathnames(…) with a pattern string utilizes the pathname matching in
+          the underlying DSS library.&nbsp; To accomplish more sophisticated pathname filtering,
+          use one of the getCatalogedPathnames(…) methods in conjunction with python text parsing
+          and matching utilities.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

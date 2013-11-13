@@ -1,0 +1,36 @@
+/*<!--do not change. css modified by doc-to-help-->*/a.d2hpreviousenabled {
+	font-style: normal; color: blue; font-weight: normal; text-decoration: underline
+}
+font.d2hpreviousdisabled {
+	font-style: normal; color: black; font-weight: normal; text-decoration: none
+}
+a.d2hnextenabled {
+	font-style: normal; color: blue; font-weight: normal; text-decoration: underline
+}
+font.d2hnextdisabled {
+	font-style: normal; color: black; font-weight: normal; text-decoration: none
+}
+p.linknav {
+	padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px
+}
+font.d2h_breadcrumbscontentsonly {
+	font-style: normal; color: black; font-weight: normal; text-decoration: none
+}
+a.d2h_breadcrumbsnormal {
+	font-style: normal; color: blue; font-weight: normal; text-decoration: none
+}
+font.d2h_breadcrumbsselected {
+	font-style: normal; color: purple; font-weight: normal; text-decoration: none
+}
+a.d2h_breadcrumbsnormal:hover {
+	font-style: normal; color: red; font-weight: normal; text-decoration: none
+}
+font.d2h_breadcrumbslabel {
+	font-style: normal; color: black; font-weight: normal; text-decoration: none
+}
+font.d2h_breadcrumbslinkseparator {
+	font-style: normal; color: black; font-weight: normal; text-decoration: none
+}
+div.d2h_breadcrumbs {
+	border-bottom: medium none
+}

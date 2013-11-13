@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch7-Math.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Merge Time Series</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="paireddataoperations1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="mergepaireddata1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="mathfunctions1.htm" class="d2h_breadcrumbsnormal">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="generalfunctions1.htm" class=
+        "d2h_breadcrumbsnormal">General Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Merge Time
+          Series</font></b><br>
+          <br>
+           The <b>Merge Time Series</b> function merges data from one time series data set with
+          another time series data set.&nbsp; The resultant time series data set includes all the
+          data points in the two time series, except where the data points occur at the same
+          time.&nbsp; When data points from the two data sets are coincident in time, valid values
+          in the primary time series take precedence over valid values in the second selected time
+          series.&nbsp; However if a coincident point is missing in the primary time series, a
+          valid value in the second time series will be used for the data point in the resultant
+          data set.&nbsp; If the value is missing for both time series data sets, the value is
+          missing in the resultant data set.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The data sets for merging may be either regular or irregular time interval.&nbsp; The
+          resultant data set is tested to determine if the times have a regular time
+          interval.&nbsp; If not, it is typed as an irregular time interval data set.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Data of any type (i.e., "INST-CUM") or units may be merged with data of any other type
+          or units.&nbsp; The resultant time series receives the data type and units of the primary
+          time series.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To merge two time series data sets:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>General</b> tab of the Math Functions screen and select the <b>Merge Time
+            Series</b> operator.
+          </li>
+          <li>
+            From the <b>Selected Data Set</b> List, select the <i>primary</i> time series data set.
+          </li>
+          <li>
+            From the <b>Time Series</b> list, select the <i>second</i> time series data set for
+            merging.&nbsp;
+          </li>
+          <li>
+            Click <b>Compute</b> to merge the two data sets.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

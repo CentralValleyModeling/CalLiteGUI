@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Apply Multiple Linear Regression</title>
+  </head>
+  <body style=
+  " padding-left: 0px; margin-top: 0px; padding-bottom: 0px; margin-right: 0px; margin-left: 0px; padding-top: 0px; margin-bottom: 0px; padding-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div style=
+    " padding-left: 0px; padding-bottom: 0px; left: 0px; padding-top: 0px; padding-right: 0px;" id=
+    "nsbanner">
+      <div style=
+      " padding-left: 22px; width: 100%; padding-bottom: 4px; padding-top: 4px; padding-right: 10px;"
+       id="TitleRow">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "multiplelinearregression1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="conicinterpolation1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div valign="bottom" style=
+    " padding-left: 22px; padding-bottom: 10px; padding-top: 5px; padding-right: 10px;" id="nstext"
+    class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "hydrologicfunctions1.htm">Hydrologic Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <h3 style=" margin-left: 0pt;">
+           <a name="_Toc104616363"></a><a name="_Toc104610414"></a><a name="_Toc101758472"></a><a
+          name="_Toc100980839"></a><a name="_Toc19002714"></a><a name="_Toc6903215"></a><a name=
+          "_Ref6143389">Apply Multiple Linear</a> Regression
+        </h3>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The <b>Apply Multiple Linear Regression</b> function applies the multiple linear
+          regression coefficients computed with the Multiple Linear Regression function.&nbsp; The
+          coefficients, stored in a paired data set, are applied to a collection of independent
+          time series data sets to derive a new estimated time series data set.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           For time series data, an estimate of the primary time series values may be computed from
+          a set of independent time series data sets using regression coefficients such that:
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-right: 0pt; margin-left: 40.0px; margin-bottom: 0pt;"
+        class="msobodytextindent">
+           Y&nbsp; =&nbsp; B0 + B1*X1 + B2*X2 + B3*X3
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-right: 0pt; margin-left: 30.150002px; margin-bottom: 0pt;" class=
+        "msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           where Bn are the linear regression coefficients.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           For time series data, an estimate of the original time series values may be computed
+          from a set of independent time series data using regression coefficients such that:
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 40.0px; margin-bottom: 0pt;" align="left" class=
+        "msobodytextindent">
+           TsEstimate(t)&nbsp; =&nbsp; B0 + B1*TS1(t) + B2*TS2(t) + … +&nbsp; Bn*TSn(t)
+        </p>
+        <p style=" margin-left: 0.0px; text-align: center; margin-bottom: 0pt;" align="center"
+        class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           where Bn are the set of regression coefficients and TSn are the time series data sets.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The number regression coefficients in the paired data set must be one more than the
+          number of independent time series data sets.&nbsp; The collection of selected time series
+          data sets should be in the same order as when the regression coefficients were
+          computed.&nbsp; The displayed list of time series is sorted alphabetically in the
+          dialog.&nbsp; The user should be aware if the names of the time series data sets used for
+          coefficient generation are substantially different from the data names used in this
+          function.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           All the time series data sets must be regular interval and have the same time
+          interval.&nbsp; The function filters the data to determine the time period common to all
+          time series data sets and uses only those points in the regression analysis.&nbsp; For
+          any given time, if a value is missing in any time series, the value in the resultant time
+          series is set to missing.&nbsp; You can also set optional minimum and maximum value
+          limits.&nbsp; Computed values in the resultant time series, which fall outside the
+          specified range, are set to missing.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Names, parameter type and unit labels for the resultant time series data set are taken
+          from the first time series data set. The "F part” (Version) in the new data set is set to
+          "COMPUTED.”
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           <img src="../ImagesExt/image38_37.jpg">
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Apply Multiple Linear Regression Method
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To apply a set of multiple linear regression coefficients to derive a new time series
+          data set:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Hydrologic</b> tab of the Math Functions screen and select the
+            <b>Apply</b> <b>Multiple Linear Regression</b> operator, as shown in the figure above.
+          </li>
+          <li>
+            From the <b>Selected Data Set</b> list, select the paired data set containing the
+            regression coefficients.&nbsp; If the selected data set is not a paired data set, the
+            remaining input boxes on the screen are unavailable.
+          </li>
+          <li>
+            From the <b>Independent Time Series Data Sets</b> list, select one or more of the
+            independent time series data sets.&nbsp; (You can select a single data set by clicking
+            on it; select multiple contiguous data sets using <b>Shift+Click</b>, or select
+            multiple, non-contiguous data sets using <b>Ctrl+Click</b>.)
+          </li>
+          <li>
+            Click <b>Compute</b>.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

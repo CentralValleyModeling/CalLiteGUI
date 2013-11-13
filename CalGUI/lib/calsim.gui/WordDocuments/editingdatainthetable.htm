@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch3-DisplayAndEdit.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Editing Data in the Table.</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="editingapointwiththesinglepointedittool.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "printingthetableandgraph.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="displayingandeditingdata.htm" class="d2h_breadcrumbsnormal">Displaying and Editing
+        Data</a> <font class="d2h_breadcrumbslinkseparator">&gt;</font> <a href=
+        "graphicalediting.htm" class="d2h_breadcrumbsnormal">Graphical Editing</a>
+      </div>
+      <p style=" tab-stops: 0pt; text-indent: 0pt; margin-left: 0pt;">
+        <br>
+         <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Editing Data in the
+        Table</font></b><br>
+        <br>
+         You can edit, add, and delete data in an irregular-interval time series table but you
+        cannot extend the table.&nbsp; Regular-interval values cannot be deleted or added but you
+        can change values to missing.&nbsp; To edit data within the table:
+      </p>
+      <ol>
+        <li>
+          Select the data set from the drop down box at the top of the screen if it is not selected
+          already.&nbsp;
+        </li>
+        <li>
+          Select the row in the table that you want to edit at, or select the location on the graph
+          with the mouse after pressing the <b>Select</b> <img src=
+          "../ImagesExt/image19_39.jpg">&nbsp;tool.
+        </li>
+        <li>
+          Type in the new values in the <b>Estimate/Entry</b> column.&nbsp; To move to the next row
+          in the column, press the <b>Tab</b> key or use the up and down arrows.
+        </li>
+        <li>
+          You can copy the original value to the <b>Estimate/Entry</b> column by selecting all data
+          sets you want to change, right-clicking and selecting <b>Fill – Linear</b>, as shown
+          below. You can then change it by pressing the <b>Estimate</b> or <b>Estimate All</b>
+          button.
+        </li>
+        <li>
+          When complete, press the <b>Accept</b> button or the <b>Accept All</b> button to accept
+          all edits.&nbsp; This will copy the data from the <b>Estimate/Entry</b> column into the
+          <b>Revised</b> column and will be ready to save to the HEC-DSS file.
+        </li>
+        <li>
+          At the end of all of your edits, press the <b>Save</b> <img src=
+          "../ImagesExt/image19_36.png">&nbsp;or <b>Save As</b> <img src=
+          "../ImagesExt/image19_37.png">&nbsp;button or select that item from the <b>File</b> menu
+          to store your changes in the HEC-DSS file.
+        </li>
+      </ol>
+      <p style=" margin-left: 0.0px;" class="bodytextindent1">
+         You can repeat values or linearly interpolate between selected values or delete values by
+        using the popup selector shown below.<br>
+        <br>
+         <img src="../ImagesExt/image19_40.png"><br>
+         Table Fill Options Box<br>
+         &nbsp;&nbsp;<br>
+         To fill multiple values in the table:
+      </p>
+      <ol>
+        <li>
+          Select (highlight) the starting row of the data that you want to fill.&nbsp; For linear
+          and repeat fill, this marks the starting value to use, which will not be changed.&nbsp;
+          If the clear fill option is selected, this is the first value to be cleared.
+        </li>
+        <li>
+          Mark the ending row.&nbsp; You can do this by holding down the left mouse button and
+          moving the mouse down the table, or by left-clicking the mouse on the ending row while
+          holding down the <b>Shift</b> key.
+        </li>
+        <li>
+          Right click the mouse button to bring up the popup window shown above and then select
+          either <b>Fill – Linear</b>, <b>Fill – Repeat</b>, or <b>Clear</b>.&nbsp; For
+          <b>Linear</b>, the values between the first and last point will be linearly interpolated,
+          with the first and last point remaining the same.&nbsp; For <b>Repeat</b>, the first
+          value will be repeated through the last value.&nbsp; For <b>Clear</b>, all values within
+          the selected rows will be set to missing.
+        </li>
+        <li>
+          When complete, press the <b>Accept</b> button or the <b>Accept All</b> button to accept
+          all edits.&nbsp; This will copy the data from the <b>Estimate/Entry</b> column into the
+          <b>Revised</b> column and will be ready to save to the HEC-DSS file.
+        </li>
+        <li>
+          At the end of all of your edits, press the <b>Save</b> <img src=
+          "../ImagesExt/image19_36.png">&nbsp;or <b>Save As</b> <img src=
+          "../ImagesExt/image19_37.png">&nbsp;button or select that item from the <b>File</b> menu
+          to store your changes in the HEC-DSS file.
+        </li>
+      </ol>
+      <p class="bodytextindent1">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

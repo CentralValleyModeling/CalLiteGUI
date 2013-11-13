@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Olympic Smoothing</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="numberofvalidvaluesinatimeseries1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="p1function1.htm" class=
+            "d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 63.0pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="OlympicSmoothing"></a><a name="_Toc104616487"></a><a name=
+          "_Toc104610538"></a><a name="_Toc101758597"></a><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5"><a name="_Toc100980964"></a><a name=
+          "_Toc100728646"></a><a name="_Toc100728333"></a><a name="_Toc19007612"></a><a name=
+          "_Toc19005617"></a><a name="_Toc14888812">Olympic Smoothing</a></font></b><br>
+          <br>
+           olympicSmoothing( integer numberToAverageOver,
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 100.0px;" class="bodytextindent155">
+           boolean onlyValidValues,
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 100.0px;" class="bodytextindent155">
+           boolean useReduced)
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Derive a new time series from the Olympic smoothing of <b>numberToAverageOver</b> values
+          in the current time series.&nbsp; <b>numberToAverageOver</b> must be and odd integer and
+          greater than.&nbsp; Similar to centered moving average smoothing, except that the minimum
+          and maximum values over the averaging interval are excluded from the computation.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           If <b>onlyValidValues</b> is set to true, then if any values in the averaging interval
+          are missing, the point in the resultant time series is set to missing.&nbsp; If
+          <b>onlyValidValues</b> is set to false and there are missing values in the averaging
+          interval, a smoothed point is still computed using the remaining valid values in the
+          interval.&nbsp; If there are no valid values in the averaging interval, the point in the
+          resultant time series is set to missing.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           If <b>useReduced</b> is set to true, then moving average values can be still be computed
+          at the beginning and end of the time series even if there are less than
+          <b>numberToAverageOver</b> values in the interval.&nbsp; If <b>useReduced</b> is set to
+          false, then the first and last numberToAverageOver/2 points of the resultant time series
+          are set to missing.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>numberToAverageOver</code> – An integer specifying the number of values to average
+          over for computing the smoothed time series. Must be an odd integer greater than 2.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>onlyValidValues</code> – Either Constants.TRUE, or Constants.FALSE, specifying
+          whether all values in the averaging interval must be valid for the computed point in the
+          resultant time series to be valid.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>useReduced</code> - Either Constants.TRUE, or Constants.FALSE, specifying whether
+          to allow points at the beginning and end of the smoothed time series to be computed from
+          a reduced ( less than numberToAverageOver ) number of values. Otherwise, set the first
+          and last numberToAverageOver/2 points of the new time series to missing.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>avgData = tsData.olympicSmoothing(</code>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>1)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A new TimeSeriesMath object.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> &nbsp;<code><font style=" font-weight: normal;">Throws
+          a</font></code> HecMathException if the numberToAverageOver is less than 3 or not odd.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Displaying Message Dialogs</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="displayingmessages1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "headlessandbatchoperation1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="displayingmessages1.htm" class=
+        "d2h_breadcrumbsnormal">Displaying Messages</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: list 76.5pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="_Toc104616396"></a><a name="_Toc104610447"></a><a name="_Toc101758505"></a><a
+          name="_Toc100980872"></a><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5"><a
+          name="_Toc100728554"></a><a name="_Toc100728241"></a><a name="_Toc19007504"></a><a name=
+          "_Toc19005509">Displaying Message Dialog</a>s</font></b><br>
+          <br>
+           The MessageBox class in the hec.script module, and the MessageDialog class in the
+          MessageDialog module have several functions used to display messages in message box
+          dialogs. The dialogs can be one of four different types: Error, Warning, Informational or
+          Plain. The difference between the MessageBox functions and their MessageDialog
+          counterparts is the MessageBox versions do not allow interaction with any object other
+          than the message box itself, while the MessageDialog versions allow the user to interact
+          with the HecDssVue program window, as well as any displayed tables or plots while the
+          message box is displayed. If MessageDialog functions are used in a script that is to be
+          executed other than from the command line, they must not be used in the main script
+          thread.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           MessageBox and MessageDialog functions with multiple buttons return a string containing
+          the text of the button that was selected to dismiss the message box.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Note:</b> Do not use the MessageBox or MessageDialog functions in a script that is to
+          run unattended since these functions cause scripts to pause for user interaction.<br>
+          <br>
+           MessageBox and MesssageDialog functions are described in the table below.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           MessageBox and MessageDialog Functions
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <THEAD>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: windowtext 1pt solid;">
+              <p class="msonormal">
+                 <b>Function</b>
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: windowtext 1pt solid;">
+              <p style=" text-align: justify;" class="msonormal">
+                 <b>Returns</b>
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: windowtext 1pt solid;">
+              <p class="msonormal">
+                 <b>Comments</b>
+              </p>
+            </td>
+          </tr>
+          </THEAD><TBODY>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showError(string message, string title)
+              </p>
+              <p class="htmlbody35">
+                 &nbsp;
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display an error dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showWarning(string message, string title)
+              </p>
+              <p class="msonormal">
+                 &nbsp;
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a warning dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showInformation(string message, string title)
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a Informational dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showPlain(string message, string title)
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a plain dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showYesNo(string message, string title)
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a Yes/No dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showYesNoCancel(string message, string title)
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a Yes/No/Cancel dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="264" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 198pt; border-top: medium none;">
+              <p class="msonormal">
+                 showOkCancel(string message, string title)
+              </p>
+            </td>
+            <td valign="top" width="78" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 58.5pt; border-top: medium none;">
+              <p style=" text-align: justify;" class="msonormal">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="169" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 126.9pt; border-top: medium none;">
+              <p class="msonormal">
+                 Display a Ok/Cancel dialog to you with the message and title
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 71.95pt;">
+            <td valign="top" width="518" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 71.95pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 388.8pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="example35">
+                 <a name="_Toc104615204"></a><a name="_Toc104610767"></a><a name=
+                "_Toc15720114"></a><a name="_Ref15209708"></a><a name="_Toc14888711"></a><a name=
+                "_Toc19007787"></a><a name="_Ref18901543">Example</a>: Display Error Dialog with
+                MessageBox class
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 <font style=" layout-grid-mode: both;">from hec.script import *</font>
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="msonormal">
+                 MessageBox.showError("An Error Occurred”,
+                "Error")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 102.1pt;">
+            <td valign="top" width="518" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 102.1pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 388.8pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="example35">
+                 <a name="_Toc104615205"></a><a name="_Toc104610768"></a><a name=
+                "_Toc15720115"></a><a name="_Ref15210008"></a><a name="_Toc14888712"></a><a name=
+                "_Toc19007788">Example</a>: Display OK/Cancel Dialog with MessageDialog class
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 &nbsp;
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 from hec.script import *
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 import MessageDialog
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 import thread
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 def main() :
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 &nbsp;&nbsp;&nbsp; ok=MessageDialog.showOkCancel(“Continue with Operation”,
+                “Confirm”)
+              </p>
+              <p style=
+              " margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;" class=
+              "bodytextindent155">
+                 thread.start_new_thread(main, ())
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-left: 18pt;" class="htmlbody35">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

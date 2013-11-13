@@ -1,0 +1,5497 @@
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: calsim.gui.CalsimGui
+
+Name: COM/objectspace/jgl/DequeIterator.class
+SHA-Digest: N+PCiGGs4qZCA1O5JsCki8nJjE4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pEzMwVaHHoDdnRGRJedn/Q==
+
+Name: javax/mail/internet/ContentDisposition.class
+SHA-Digest: E4wR7/5sKCxkAaYki3WnLFWN3io=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1Fs4WG4XSB/lxVf8P8rnbA==
+
+Name: org/w3c/dom/Node.class
+SHA-Digest: Z5OJcK+7e+8TZ9VqmTQ3LjtgwZs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 30PZ6nhpGeZhacRXIyKEdQ==
+
+Name: javax/help/plaf/HelpContentViewerUI.class
+SHA1-Digest: ZGHZHXOPbrynzcBeU6gKFR7grgo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 44VU0uLLxvbuyiEua4K2yQ==
+
+Name: com/sun/mail/iap/Response.class
+SHA-Digest: ch0D2K5zshL2JC37GNuaPp+tXt4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: YrCfDOgK/82/KoMFoFlrzA==
+
+Name: org/xml/sax/SAXParseException.class
+SHA-Digest: n6NhMG2vwiWDu0zgTJgkuvaSLsc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NTU0KwAD+57WsctyEy5WuQ==
+
+Name: com/nwoods/jgo/svg/
+Implementation-Vendor: Northwoods Software Corporation
+Implementation-Title: com.nwoods.jgo.svg
+Implementation-Version: 5.1
+Specification-Vendor: Northwoods Software Corporation
+Sealed: true
+Specification-Title: JGo SVG Support Library
+Specification-Version: 5.1
+
+Name: javax/help/plaf/basic/BasicTOCCellRenderer.class
+SHA1-Digest: 1wdWFbrOdaqwNDL6BH5ofMSj5Ws=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RAHiNFH964Y5g01aDARxsg==
+
+Name: com/sun/xml/tree/ParentNode$TagList.class
+SHA-Digest: Nvk+9CFUtCMh+wZbQUGR+O27JQc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: qlkXLsfa8wqZPosNbLAdgg==
+
+Name: javax/mail/internet/MimePart.class
+SHA-Digest: V5t0/G+DkCx8EdNkvIdq+1R6IH0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SVUG1jF2jPWmsTS6zOCJqA==
+
+Name: com/sun/mail/imap/IMAPMessage.class
+SHA-Digest: 7Wbj+IEGrBICEvaT7yiC91Nobkk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dqoCuCmPkr8UcQOjK0PxBg==
+
+Name: COM/objectspace/jgl/LessEqualCollator.class
+SHA-Digest: ZJ+N5/pKb/Rv0tMOMZsfuBKoFgo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: q62NbIkWSQVLHb36CyHevw==
+
+Name: com/nwoods/jgo/JGoTextEdit.class
+SHA-1-Digest: oCkAjUz/cngnQvhSrz4WtUaZTsY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: FatpxTgC3RZ1nLWr27rCdg==
+
+Name: Acme/Nnrpd/MultiplexNewsDbMessageIds.class
+SHA-Digest: hPgbTUmLx1xOQE0pLWm84E9u324=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: u5zMZm6tdcCg2j2bfAiQKw==
+
+Name: javax/mail/search/HeaderTerm.class
+SHA-Digest: r7ZVVHtdj6KGFfzb2YKkM6N2CHg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Jub864iF4+Vepeevds0BMw==
+
+Name: javax/mail/AuthenticationFailedException.class
+SHA-Digest: Fm5bk61s+hmd31Yp/8SlRvSr+xI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ocjY90H0mOTFd26wB+xY1A==
+
+Name: com/sun/mail/imap/protocol/SearchSequence.class
+SHA-Digest: cEo2H5Midhq/BXuzYkZjkcoF5as=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yAGO6YQaFRKtxUnG3YgcMA==
+
+Name: com/sun/java/help/search/DefaultIndexerKit.class
+SHA1-Digest: 94r/myDFMl/2X32/eb6Yejqqw8k=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +7wgYufYiD6jlnjWg5x6MQ==
+
+Name: javax/mail/Session.class
+SHA-Digest: mX3TgNby/mevewebZLPlyiRAZTE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WK/sbGA4e1pNu1xUdgYovQ==
+
+Name: com/sun/java/util/collections/HashMap$HashIterator.class
+SHA-Digest: muoDBel4PKi/xwZbaOPK9F/xMrA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ANThCy2DZmSwtJp9UeibdQ==
+
+Name: COM/objectspace/jgl/OrderedMultiSet.class
+SHA-Digest: +U8y9iXxWTUXnZkfuR+eCuQ6q5M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Vq8vMCBDDS+rL15agFUBxg==
+
+Name: com/sun/java/help/impl/ParserListener.class
+SHA1-Digest: aDLmLggnp+ziOOFA4qpLo3Q4KEk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: bM2bU6GEEDq51IhUDHYhww==
+
+Name: javax/mail/Address.class
+SHA-Digest: aeoRyp/9q4Kq6b5zaGNWYxGz65k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sPLHa70YXLb2i+VTGkgRgA==
+
+Name: com/sun/activation/registries/MailcapFile.class
+SHA-Digest: OgT3ojQZpPBwIqlWgskX8w65iCU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7lUkoqXCUgLdi9Dhh6AOxw==
+
+Name: Acme/DbzKeyEnumerator.class
+SHA-Digest: dvBU4efP1CRW+N1Gi0wDEwF1k24=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KSy9i6pZn4gl2ACiP/yQxQ==
+
+Name: com/sun/java/util/collections/TreeMap$Iterator.class
+SHA-Digest: 0U8etaVq1dLIRVNikL6tORRPIFI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: oIb3N1t/ls+uTqtVKR1AAg==
+
+Name: COM/objectspace/jgl/OrderedMap.class
+SHA-Digest: q7Q87bLqhYj1zqT8VpguUywpuvA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 6lrTSI04+qqXye1KhcAKFQ==
+
+Name: Acme/Nnrpd/MultiplexNewsDb.class
+SHA-Digest: UDCC2k1wnuhVO2Ux3Dps+pMvfWQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NlTSNBA8le0I0GCk23Q9vw==
+
+Name: com/sun/mail/imap/IMAPMultipartDataSource.class
+SHA-Digest: jehf42Nu0K1uZI3fjSsShG1QGuw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OOtITZdBUq3DLtD6FE16Zg==
+
+Name: javax/help/search/SearchListener.class
+SHA1-Digest: s3hKJoRD/HsDVyaYaXUElnjikuo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RiWcsLFRkAgGDG4HQO20Lw==
+
+Name: com/sun/java/util/collections/Hashtable$2.class
+SHA-Digest: LsdwEo7W/rm96CDf1hZKzCYuyUA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KGE8f/Dk6oI7MmTVFVpgjw==
+
+Name: javax/mail/internet/NewsAddress.class
+SHA-Digest: CAkLz4ct1W3Vl5/GoxfQU0BrgyU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UaejAFKQacWflwAz//wzCw==
+
+Name: com/sun/java/help/search/QueryEngine.class
+SHA1-Digest: 8xVRQtKOj9Hf73iiYTG5UNG8GLc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dKQPjwrVbj8Jjn9JWbeiig==
+
+Name: com/nwoods/jgo/JGoSnapEditor.class
+SHA-1-Digest: 6QNxRzLdVLgsH/q4Insb66dVMWc=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: xTn6+0c3bN/7iHr5ZTgBrg==
+
+Name: javax/help/event/HelpModelEvent.class
+SHA1-Digest: WwZgYd2CcE3dj+cTN8w0H8Q4lEg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RwPMNvoq6RkLB+hUirzj2g==
+
+Name: Acme/Serve/ServeUtils.class
+SHA-Digest: ifugVD45PhRffZ/NoWwm+tLCLcY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vlScppktaiMhknZEvkcfMg==
+
+Name: com/sun/java/util/collections/Hashtable$Enumerator.class
+SHA-Digest: CGM03LH/uXTGpWTddy90PVlHUu8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SaWBmkXf99HOOAayPcJISg==
+
+Name: Acme/Serve/servlet/ServletException.class
+SHA-Digest: Y3hRb0Lf44YVAOeg+X1yIJqvRLA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ds8G8lEFtRUZAuiHTDddcg==
+
+Name: com/sun/xml/tree/XmlDocument$ExtWriteContext.class
+SHA-Digest: YcoerbqKcgRLa0wJ7/OzGVayHVQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: toE35t5d61dabm3solLi1g==
+
+Name: COM/objectspace/jgl/ShortArray.class
+SHA-Digest: OtyxmAPR8jVaGmwoo6Ri/1rzsZ0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: H7wi4aUk9KK1gpZQhnxm+g==
+
+Name: com/sun/java/help/search/EntryProcessor.class
+SHA1-Digest: 4U+CFQsJLW5k6a80z7rxkBKFovA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: PEMLzfQ8JogjbEqKP/+GuA==
+
+Name: javax/mail/search/OrTerm.class
+SHA-Digest: WO3TZMnxI87MSpJYUMfLkjDSxVs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: i0DJTZuwS6wkptHpVuXQjQ==
+
+Name: com/sun/java/help/search/DocumentCompressor.class
+SHA1-Digest: Jx4PviGDc++OMeoFQtNZ/ofCz9o=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RTd5+WsiDeqsDZ6/JNMEiQ==
+
+Name: com/sun/java/help/search/Indexer.class
+SHA1-Digest: 7KXm57tG7fu5KkpoyAJ1GRXoogA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 4my7+indVORYAGvnKlPOhw==
+
+Name: javax/mail/event/MessageChangedListener.class
+SHA-Digest: CO4WmyMgpnfmTeMqRB10BP3E/IQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xB3oQtwcYkosTIg5yQDFTg==
+
+Name: Acme/Widgets/Slider.class
+SHA-Digest: l79r1JSybWdDB+QMV4F2b3J9aVc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gha3HS1FbQVm8EXaeEiB2A==
+
+Name: com/sun/java/help/search/NonnegativeIntegerGenerator.class
+SHA1-Digest: 0ZD0cAP4nzXfAuzo3A6u7VPq1Ic=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: DFh8sMN08d29Xl9ronYH7Q==
+
+Name: com/sun/java/util/collections/Hashtable$Entry.class
+SHA-Digest: RFm3YN5377aSmIZdsm3ce5UU3HE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RE8Gib3gtaZtGB5SVBHLiw==
+
+Name: Acme/Serve/AdaptiveAudioInputStream.class
+SHA-Digest: ZkBzH06ikHUxmpFB+NOi+VJocdQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: T+PQeeB9mrvrnKmh+XeFTg==
+
+Name: org/w3c/dom/Notation.class
+SHA-Digest: 9jivYqGT2tTON5Dc5nax7aO+JVE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jHECJltjy35Rx+1sqA4tEQ==
+
+Name: Acme/Widgets/ErrorBox.class
+SHA-Digest: huUIu80gMoPeP+P0N8uGai3Pr+U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RU8jq1pbDxZZ7MnQcWZ64w==
+
+Name: com/sun/mail/imap/protocol/ListInfo.class
+SHA-Digest: 6o9yST/BTYd1vkQJAdu1uEYZKmo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 8JYcoDClbLtfzR2otsnoSA==
+
+Name: javax/mail/internet/MimeMultipart.class
+SHA-Digest: lOuDdVywatpnHS6mZ6gMvVZau6Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: K6sfUFhxg8HA9ti20QTA7A==
+
+Name: com/sun/xml/tree/XmlDocumentBuilder$DtdListener.class
+SHA-Digest: B0H3b/38ZNo2uDRihH8YFE8MbaE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NJ3fg82kqPWWsKQ2ortU1w==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$PreAc
+ tion.class
+SHA1-Digest: UOMmerxPb3upVXfCRt6NC2gKZVs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9Y4UYP6K9AtzWVX81kNZQg==
+
+Name: javax/help/JHelpIndexNavigator.class
+SHA1-Digest: lbytHxst40ngWPFT6OYUpOG0R34=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: JWcKr04wPHe5IjZLvVMMRQ==
+
+Name: javax/activation/DataHandler$1.class
+SHA-Digest: PEULf5msNfdqNgFot/usZ9pK8Tw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sA5fZAmhKuXHmwwkvXE1kQ==
+
+Name: com/sun/mail/imap/protocol/BODYSTRUCTURE.class
+SHA-Digest: Ub7oPjubHjbpLgbo22+ATJS/Itk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Airrzoisi4Hz0S1VK6Jziw==
+
+Name: Acme/PsgState.class
+SHA-Digest: EP86PZetM5K4qMPS8TBTTP0ew84=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: q2NYkE7TLCf0viQL6cJpZQ==
+
+Name: com/nwoods/jgo/svg/DefaultDocument.class
+SHA-1-Digest: z+f8N5CQzbgMdKZETja2KKmjl68=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: yqUb8/L+q8g6kQREah2a5A==
+
+Name: javax/help/plaf/basic/images/high.gif
+SHA1-Digest: C+A/8rJYVQgkgENXQClKDTkKObI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: FinH2zCLEc/5VRay8q90TA==
+
+Name: javax/help/plaf/basic/images/onItem.gif
+SHA1-Digest: frEvNyS1WUsF2efsCmWICZqodHI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WWKYapIoGOjIovja7AEVKA==
+
+Name: com/sun/java/help/search/ConceptList.class
+SHA1-Digest: aNQq1m6/OqUG9kV/b/cFbRVauH4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: JlIUkzAtLaseuhmFeYPZHA==
+
+Name: org/xml/sax/ErrorHandler.class
+SHA-Digest: maQCMdouFexbSzgGUrVgMIov/1o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lpnttdi4r4FAxv+lngosrw==
+
+Name: COM/objectspace/jgl/LongArray.class
+SHA-Digest: oobXcYs3/EWGTEosbXKdueZfHBc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Az7Ur7ah24BeEr8Z5JsBQw==
+
+Name: org/w3c/dom/Element.class
+SHA-Digest: LcaM+C8kUjKj8iHs/Z/Q2ri4ts4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: W7R5uh3E4T4iJwutgIP9kw==
+
+Name: com/sun/mail/imap/Utility.class
+SHA-Digest: xyN7FKvECnjRKZHV8gFNzfYCXEk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1r/mB20khy2OQ/BWsH6IWg==
+
+Name: javax/mail/FolderClosedException.class
+SHA-Digest: lLdkQAO67Zc9vHNEqc61QXumhtY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: s2hB8hSEjoSjImIGwLEjBg==
+
+Name: Acme/Crypto/IdeaCipher.class
+SHA-Digest: BM8N/n8B8YU9pCWac0MZCmp67g8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3nqlcapu/WZ06TxvlSM7UA==
+
+Name: com/nwoods/jgo/JGoPrintPreview.class
+SHA-1-Digest: vDVgEPig+FxIiZ0RTAgPPUEfCU4=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: lIc2ISDa+ATTqzEovUbOOA==
+
+Name: COM/objectspace/jgl/DList$DListNode.class
+SHA-Digest: 94d9SMTjfHvlKmzk4H+48XsM9bo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4fK5FS2PtmG1IPA2UKqGfg==
+
+Name: Acme/PsgMatrix.class
+SHA-Digest: GtXW/XHnSr4VGTE9bcDRbWIrVxU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 58696S9YfMLHQf+vtOI+Xw==
+
+Name: javax/help/plaf/basic/images/prev.gif
+SHA1-Digest: 6kqmChqa2MgiM1xaRFmOlbKZZ5g=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: UVCk4qQhkAh29wY5ewuOrQ==
+
+Name: javax/help/plaf/basic/images/help.gif
+SHA1-Digest: k61bZ2ggAKmODVGB4BObBCEJEmw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SQo/wXksRF6XVU3R6r6mMg==
+
+Name: com/sun/mail/util/BASE64DecoderStream.class
+SHA-Digest: SMe21GT/sUKoyCavZksEXqQ6w5A=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Gky/lGnsUJRgkl+MxUYMyQ==
+
+Name: javax/mail/search/ReceivedDateTerm.class
+SHA-Digest: cjreWy3NqmhPvMMg/SdeX09tTkI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: T5rJMz0+frbW1n9m/PCS9A==
+
+Name: COM/objectspace/jgl/EqualNumber.class
+SHA-Digest: 4bgXB3tE8Bickr8lUn+IG8JozKU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VuAQmCXYUhPPuvbvDQYibw==
+
+Name: com/sun/java/help/search/Search.class
+SHA1-Digest: PBQDyfWqh+/oatfDLbQ/60FiyQ8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BBdinLnHeUSjtaonxU7zfg==
+
+Name: com/sun/xml/parser/resources/Messages_en.properties
+SHA-Digest: SnOZsB4US7yIR7cMoS0A12wiRQM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: B7bHG0AuHyMPXCvDra9eMg==
+
+Name: com/sun/xml/util/MessageCatalog.class
+SHA-Digest: 8pU91MJ7AZXgBt8CLl8PSyyUIc8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wkgrcRp8bnuBvl5wa2gGjA==
+
+Name: com/sun/mail/imap/protocol/FLAGS.class
+SHA-Digest: RTeNE+VrxujtxZay9Sq056rDl3Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0ddR21FPEDCawIr5XYkYGw==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Ancho
+ rAction.class
+SHA1-Digest: +ttkiseWUpdhm58j1dDSQSRjj7g=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: mHfP7h1aNiKYxe8L13EsNg==
+
+Name: javax/help/FlatMap$FlatMapResourceBundle.class
+SHA1-Digest: dQtbsd2KSv8uPN7VGC9FXPanDoQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: QOxxjJdzPIl9KRrhkJ2yTQ==
+
+Name: com/sun/xml/tree/SimpleElementFactory.class
+SHA-Digest: vPpkyeLu3IO3V8X0F8JllTTnIyw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XXyGsf5cXiKwyQbtXmlm+A==
+
+Name: com/nwoods/jgo/JGoPrintPreview$2.class
+SHA-1-Digest: 2jQK9ehow+W40iGZj3iTEju3vxU=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: UIxiCGodzTHQHa0+ejv/EQ==
+
+Name: COM/objectspace/jgl/GreaterString.class
+SHA-Digest: H3wTECGmxWH3AYD7Xx39BVC/u3Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dUNY1vzysd1ztZo1CTSHcg==
+
+Name: javax/mail/EventQueue$QueueElement.class
+SHA-Digest: NNerJARcUmk6/nYbxF2xXrFjZ9A=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Be63A66/E+Rlqo8AJ2PTSg==
+
+Name: com/sun/mail/util/CRLFOutputStream.class
+SHA-Digest: PNdyZ48TyEDgxFrfku7HYd5hdkE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rxevTFBxXMHyqo2pT5SpWA==
+
+Name: com/sun/xml/parser/Parser$NameCacheEntry.class
+SHA-Digest: Vx+S7+p2R541IjbRyxKx4pLmL6o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Y48TL4ReIMrbBU+GGx32Rg==
+
+Name: com/nwoods/jgo/JGoPaletteBeanInfo.class
+SHA-1-Digest: 2WmrTOQuD9S0qmGljltWjyrmrt0=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 0eolnsePhqmVE2IuaWwSkA==
+
+Name: Acme/Chat/ChatUtils.class
+SHA-Digest: p3juxVcM/2W2oyVaCFhoaH2UAUY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2Vy3WkT3oJyQZomRsWM3AQ==
+
+Name: com/sun/mail/handlers/multipart_mixed.class
+SHA-Digest: LFZVgBmMEQ5TYePgUqoi5XprR/8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /XbUw1HkyLXpad/qsLzNew==
+
+Name: com/sun/mail/imap/protocol/IMAPProtocol$1$NullInputStream.class
+SHA-Digest: 0Onky0vtGat7finvWpAVZqsr8yc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: F9LXVhB+XLriEBFwFMHMNQ==
+
+Name: javax/mail/search/ComparisonTerm.class
+SHA-Digest: rxIu/zZ54/KaeBIGaMGGeWpUJ3c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SRX8gWj2+B09do72YArHoA==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler$Print1dot1.class
+SHA1-Digest: Gn6gzxcrFwK/4q/tgbx8DGrWuMQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: s83458Kz4BbJmOeJzuFuaw==
+
+Name: javax/mail/internet/HeaderTokenizer$Token.class
+SHA-Digest: meXLmr90FBuiTAnKnzA7YwCrZ4o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TphYc9ZW27h+GfXuEaPPLQ==
+
+Name: com/nwoods/jgo/JGoButton.class
+SHA-1-Digest: qpbPAlm6iE6Li7ppO6C/CB6vnHc=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: ZwXe9a301CN23wdyfY3CxA==
+
+Name: Acme/Crypto/BlowfishCipher.class
+SHA-Digest: /utbGAtzk52lCpg6BIzaAqaczR0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: H/cG2L7bCO97v3x1TM+nlw==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableSet.class
+SHA-Digest: WX7ohTlbFsQVnhFsTCO2zFiLn2g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4EaZesPvcJWmB85daG24tQ==
+
+Name: com/nwoods/jgo/images/jgoicon16c.gif
+Design-Time-Only: true
+SHA-Digest: l9nQAJHpllgh0t3Wgn7kLwuW0Ic=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TlPHxb4jkKTCR5KNQKBHeA==
+
+Name: com/sun/xml/tree/XmlDocument$EntityRefNode.class
+SHA-Digest: pdXk8b8CZi6xEEpCyBS4OUeCWLY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +Px71XbOWQpVnC5C0eQbNA==
+
+Name: com/sun/xml/parser/XmlReader$Utf8Reader.class
+SHA-Digest: BmBz6aujmpK6MIpCGThXd3Chtr4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sCJHA33JqkEm0CNnrN0psw==
+
+Name: com/sun/xml/tree/XmlReadable.class
+SHA-Digest: RLwYHECEiKRVK8IMpa11aMoic9k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: JWfyaOIjqbq9FtPmUsk/jg==
+
+Name: COM/objectspace/jgl/LessInteger.class
+SHA-Digest: lLe5UbC9D5VSoEDjp0Kjh9fgGTA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0SC2pNvjIKAOvig0z3d+wg==
+
+Name: javax/mail/IllegalWriteException.class
+SHA-Digest: Alu4Wp8+2byOai/+UR4mQvNOyjA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wtV4Cc7gSSWR9XrePue7Cg==
+
+Name: com/sun/mail/smtp/SMTPOutputStream.class
+SHA-Digest: LL2rLlEqJmQSmGF6v+jR0aLf6rY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hpPDgLEOg8upSntavRC3KQ==
+
+Name: Acme/HtmlEditScanner.class
+SHA-Digest: QkEUEoZl7c7RmI9rl9t1VdsytLw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jbhaK6BdTF1+eJZBih2/9g==
+
+Name: javax/activation/CommandObject.class
+SHA-Digest: H3Q1PbYHywiyh3yqY2NMBxb/mdM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OJQl7SHhreejDtLRjRgxBQ==
+
+Name: com/sun/java/help/impl/Parser$ParserMulticaster.class
+SHA1-Digest: KOTZhlUAjT+eZ2Ah0LAmxxwT1fc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BzgSLTd93x6kveBGi/AxmQ==
+
+Name: javax/mail/internet/MimeMessage.class
+SHA-Digest: beRBCVuHPoEigtPUuZv10x2yiO4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Pj1JRY5q6a+di78e9TOJFw==
+
+Name: COM/objectspace/jgl/TimesInteger.class
+SHA-Digest: b09P/Qd+NAEoZ+4BdHGOZfcjClk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3zwELEp2bZFP+cl8PwgVNQ==
+
+Name: com/sun/java/help/search/RAFFileFactoryOn12$1.class
+SHA1-Digest: QNGHXx7PxTGhUkdzO+TzLGp4FGw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: d8sCQ5eWJTQi0z04uyBUgg==
+
+Name: Acme/SpiderItem.class
+SHA-Digest: XQx06rvbgEH3niTGsvdke75r9BU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CDUNhaq7YT38sOIUyhS3RQ==
+
+Name: javax/help/plaf/basic/BasicHelpUI$3.class
+SHA1-Digest: 6kQFwblD7KfX8sDGqaDF0IS4V7I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SblHeXIixWnN86e8KNlWhg==
+
+Name: com/nwoods/jgo/JGoHandle.class
+SHA-1-Digest: UNuQftIGVo3+WfahJTqusmIE78s=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: eyrHyOp7ySAOysLdmPQUdA==
+
+Name: javax/help/event/EventListenerList.class
+SHA1-Digest: /RTzv9s1dsinjI0zl8Tiy5F0hco=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 4BZzBvYd5Iut2hE6CB1F8g==
+
+Name: com/sun/java/util/collections/Collections.class
+SHA-Digest: 0mVtyqL9fxFkyp9abZmXPR0+iCQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uLNkCcHJVP+B6ROftaCMcA==
+
+Name: Acme/Serve/servlet/ServletStub.class
+SHA-Digest: NvdSy7YdgAck1RoFftj1w89zU+g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 6jczx9nQc9pC2gs4zPcNIg==
+
+Name: com/sun/mail/util/RfcDateParser.class
+SHA-Digest: U7XCzQqdWnh4MSvqomWN88e6Jxw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wfc+r4aymQDvzjAMdnTHbA==
+
+Name: com/sun/java/help/impl/JHSecondaryViewer$1.class
+SHA1-Digest: rBtOhIoZyoUl4or1meVm1W2HcF0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: EwJVB0QCUGs8eDh1BYbitA==
+
+Name: com/sun/xml/tree/resources/Messages_en.properties
+SHA-Digest: 43bPmr+54/l9TCcWdHnBAoorbfk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gdj3MW55tUxbv9XW40BDxw==
+
+Name: com/sun/mail/imap/IMAPStore.class
+SHA-Digest: 4HETN4EtEh5wdQ/CjLJM2GVrjUU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +SoQOlmoYrgHwcVbDJqXhA==
+
+Name: com/sun/java/util/collections/TreeMap$SubMap$EntriesView.class
+SHA-Digest: ajANLAcrWr2C7KaADDFw2+ksOV0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hJ8KWdrst2U2dz3r7QsVDw==
+
+Name: Acme/Versioned.class
+SHA-Digest: yMi/JM2u89FoeWcVmr7H0N7xuh8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mZn4jUkad15hKIs1annvAQ==
+
+Name: Acme/Serve/servlet/ServletRequest.class
+SHA-Digest: tUjn55pTkue9Fn2dhcyiK6cVKpQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rRdq8dMv2f8OKReqOsh7xA==
+
+Name: org/w3c/dom/NodeList.class
+SHA-Digest: kt4Qhp+K9GP0YW9uTc5x5dqe8O0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: V55NR3I/IioGul7edJz+5Q==
+
+Name: javax/help/plaf/basic/BasicSearchCellRenderer$ValueJLabel.class
+SHA1-Digest: DJGk/SMF7DyElNtc986nIYEf838=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: I2mp8sj0fMByrmcVCX8Peg==
+
+Name: javax/mail/UIDFolder.class
+SHA-Digest: qDcdba2rD5hvk4Quzsc3l/5nCYc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: f/ZEC8C6tfIHO/GukXcBAA==
+
+Name: org/xml/sax
+Package-Title: org.xml.sax
+Package-Vendor: Sun Microsystems, Inc.
+Sealed: true
+Specification-Title:  Simple API to XML
+Package-Version: 1.0.0
+Specification-Version: 1.0.0
+Specification-Vendor: David Megginson
+
+Name: Acme/Crypto/CryptoUtils.class
+SHA-Digest: o+ps0qIStwjtbvla/++kXmfCsRk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lgwZhG/OANDCfDOHMMSR/g==
+
+Name: javax/help/FlatMap$FlatEnumeration.class
+SHA1-Digest: o5uFWIHIy60NWoUcPnv2p2dHKBA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Sm3uj9XCf45v6v7RB2t2Dg==
+
+Name: COM/objectspace/jgl/LongIterator.class
+SHA-Digest: /DTSpd9dHS6PpLxSJwaUjotd9HA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ln7bkPHbP8oAdx7gtGHUVw==
+
+Name: com/sun/xml/parser/ValidatingParser$ChildrenValidator.class
+SHA-Digest: SBMH7oFR2mOSyEIVJIzlrmxp2Cc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xPF7UQCbgxhllcZsd74DOA==
+
+Name: COM/objectspace/jgl/Replacing.class
+SHA-Digest: plVygBMqcMF69T8tWDgFcIFEb3s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5tANHQKJS5nSJBVrxkXZKw==
+
+Name: Acme/JPM/Filters/Smooth.class
+SHA-Digest: WuCzs3fZ82JTXoaWrCLPxh5INow=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PwC5Jxdo3bQvLJuDJjvesw==
+
+Name: com/sun/mail/imap/protocol/IMAPProtocol.class
+SHA-Digest: ddb8zq8QsJP16DpQ28c2dDRLHpQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mMLtli2PobonuuHwakbIdw==
+
+Name: com/sun/xml/parser/SimpleHashtable$Entry.class
+SHA-Digest: p3i/LJZN1qN5PzXHSNG+nLdhx6k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jLO00W155fE/9C3hOcXQ2g==
+
+Name: Acme/SerialUtilsTest.class
+SHA-Digest: WVghAZ9zRXfxEmc4f3KD0OsdD48=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3kmyb//fLLV5IkxKM3ezqQ==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableSortedMap.
+ class
+SHA-Digest: YRhA76AWvjxj/Y3GolIBv5H0vk4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5AqiBvbO16J58UdmLCOFAQ==
+
+Name: javax/help/resources/Constants_fr.class
+SHA1-Digest: s5z/7m+ofVjDsQ5Nz2RNP8Dte8g=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: UPs8K7WHci2nUOq4Jy9K/w==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedCollection
+ .class
+SHA-Digest: EK8wF2sXxDtl5qxaSQVEK/YPdGk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /WvoFprp/2J1B8Eh1qwc9A==
+
+Name: com/nwoods/jgo/JGoListPosition.class
+SHA-1-Digest: KCLTgYGW7dPf8KIu5IOUGn7Xnw8=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Dgk4JinphYkNKac/M5C5SQ==
+
+Name: com/sun/java/help/search/Query.class
+SHA1-Digest: I/SLK7ben1Icz56D5uPYMKL7W9I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 3CdnKFr6bhJhPETOIFUz9Q==
+
+Name: com/sun/mail/iap/ParsingException.class
+SHA-Digest: w2s90wnyFN6W6bTUCBQTwXGZbZE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LBjrfjAm3LEtlTMvGmr/nA==
+
+Name: com/sun/mail/iap/ProtocolException.class
+SHA-Digest: Lw6zow5xNGYglzMjlRR9ARdYwN4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5PJJpYJjJVVy+CMUpraRyw==
+
+Name: javax/mail/event/TransportAdapter.class
+SHA-Digest: EsQnHicmdSy4+ueqgONNeMdQseQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: H9yWZXRL+V8I5dXjG3fthA==
+
+Name: javax/activation/FileTypeMap.class
+SHA-Digest: IrTag+4yrAnuaKujsMTo9Rl9M18=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3KGQSpTx5mawrToaeHaQbA==
+
+Name: com/sun/mail/imap/protocol/RFC822DATA.class
+SHA-Digest: GKlmriN4pe3N+WnhRK4DoM5S1fA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1npXznhBNqDw5TpoBcdQHg==
+
+Name: javax/help/InvalidNavigatorViewException.class
+SHA1-Digest: lxuHgVzHT7cR9HWiFOcPMf1LYgE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 60/RHdnfErulk/BxZ/iJyg==
+
+Name: com/nwoods/jgo/JGoGlobal.class
+SHA-1-Digest: yGNQ7e2CCxF+BzMoEIFBzA58G8Y=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 4+hq4dMZj/1/aby47Nr5Qw==
+
+Name: com/sun/java/help/search/CompressorIterator.class
+SHA1-Digest: GWOzb/ywt2TrNt1hpRHFQMFomG0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: S8SPyiJR0vRLJYGRxlClHA==
+
+Name: com/sun/xml/parser/SimpleHashtable.class
+SHA-Digest: 6K2AoFsgFZctZ/+dKbm9VAE4TR0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Arg0/uAKqRXnKm4P9pTTpw==
+
+Name: com/sun/mail/iap/Argument.class
+SHA-Digest: YpwUsSeIasfpE/5AX8MINIUWwCU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZAdFGNmEc6nVDhmuz9s42g==
+
+Name: javax/mail/Service.class
+SHA-Digest: aZBYEBdbfsWDAZNDLCL4k/89YdU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gLQh/3SLuQsRpr5h5yuaSQ==
+
+Name: org/xml/sax/helpers/ParserFactory.class
+SHA-Digest: yB1cAFsOi2zP7HX7QgLzeA2hbaw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kv6kaYUKT8QfeoZBmhYuLA==
+
+Name: COM/objectspace/jgl/LogicalOr.class
+SHA-Digest: 0J2qPMiXNEI8kA9GNfE598DRylA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zDMNhQhOfPeEYhL/BIttNA==
+
+Name: Acme/Serve/FileServlet.class
+SHA-Digest: bad/3KNG9EINRWmG5/3uyj870jw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KyYzNnHi9N09yiC9UDCikg==
+
+Name: Acme/Serve/ServeInputStream.class
+SHA-Digest: +tMAqDrYgpi67Ev491EQqXfw6tA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pLIGH+qyTJhCFnzWTOahJg==
+
+Name: com/sun/java/util/collections/Hashtable$1.class
+SHA-Digest: /nsTBa8+rclZVaUwmToe0eO8UzY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jckvq6pYE6RQj7XudhEEHQ==
+
+Name: com/sun/java/util/collections/Hashtable.class
+SHA-Digest: VYmQS5zFmh5k7cLpcyWZEZLOcUQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iVKzpTbJ9FWQWf8HHOYSYA==
+
+Name: javax/help/JHelpSearchNavigator$MergingSearchQuery.class
+SHA1-Digest: KHypLnmLBrWt42Xx7LlaPWm7QCs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ERniTXbx0+4hGipfKxJLeQ==
+
+Name: com/sun/java/help/search/BtreeDict.class
+SHA1-Digest: 09ytSNhuJZ7cQDz/OSYAhStLC0I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9SjLla6I+ZULXykUufzC7g==
+
+Name: Acme/LruHashtableEnumerator.class
+SHA-Digest: u39F+ycOYSjj0QBABaWrP35kpTg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RPQ78kyv5Iryj5xY/7leTA==
+
+Name: com/sun/java/help/search/Compressor.class
+SHA1-Digest: 35us9gDjSuS5G8Baemy14NgjEPI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 5gUilWs9KLZpGl5PrR2z8w==
+
+Name: javax/mail/internet/MimeMessage$RecipientType.class
+SHA-Digest: ABFtnMI4VWsUsVB5ZbDAEnMVC/U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UfmjaoLUS9/zJDkG6fDU6Q==
+
+Name: COM/objectspace/jgl/IntArray.class
+SHA-Digest: OujjTT/US+Kg2GsWy+cXf2zv9WE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gbEIVlBsXanBP5s6sK4zQw==
+
+Name: com/sun/xml/parser/EndOfInputException.class
+SHA-Digest: jHfWPUIX+TDnElcYRxFrJZbVvAo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: a07KpW0JP8A3IOEzD/x0ew==
+
+Name: COM/objectspace/jgl/UnaryFunction.class
+SHA-Digest: vfUQSBDXWg9X7z2c7Bg94moisfM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dcJL9+CuAPSuVXHRTusF3Q==
+
+Name: org/w3c/dom/DOMException.class
+SHA-Digest: 7JppOTahShwJ6Bo3X3KKHVZUJxw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: C4pTEeNNcBKGGkolhNbD3A==
+
+Name: com/sun/java/util/collections/NoSuchElementException.class
+SHA-Digest: 5L8o1o5leh73mRJkgFtFTcCT4Sg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: JiY4Hic36hYvYYzvuq1hpg==
+
+Name: com/nwoods/jgo/JGoTextEdit$JGoJTextField.class
+SHA-1-Digest: qt6NNw9Qi+BLq0/FioNZ8MJqMGI=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 9HOx2W7dsIFUOpV+9hOqxA==
+
+Name: javax/help/TextHelpModel.class
+SHA1-Digest: zymvEcwTIkby1Pr/5yPr9S8fxNA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: s36rPDd4x5NYymbiEpE+1Q==
+
+Name: Acme/JPM/Filters/RGBAllFilter.class
+SHA-Digest: t2WyUUfBSP7lfUN5sS00dxE2TYc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sYyDw9j2oYzC43mdDRyFRQ==
+
+Name: Acme/Chat/ChatAppletWhoThread.class
+SHA-Digest: 9KYFk3pjmt+jsHYfVVwNI9qyrHw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: adMIAoED8BWi0lib4djVIw==
+
+Name: COM/objectspace/jgl/HashSetIterator.class
+SHA-Digest: q/ocxQBclNQAiiYFxEqNtiHd7uM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZseMwMytk2wgeOUG6+mVLg==
+
+Name: Acme/PsgException.class
+SHA-Digest: sD+W/mKwTOAxwiPQ72QzNfm0qGU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QI7KiAKWQfXPhWSDBP/+8Q==
+
+Name: javax/help/DefaultHelpBroker$2.class
+SHA1-Digest: Kd3pXHdFk9Z3l8nncyrt19GJoK0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Dd3VRGD06bunnViVLK8QHA==
+
+Name: javax/help/DefaultHelpModel.class
+SHA1-Digest: esrmG6u3xZnOvgFXN+Hov6T4hsg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SKUhpOdfu4+ikCeEIIYG3w==
+
+Name: javax/mail/Folder.class
+SHA-Digest: WhM6tTRONEAVuAixeRAUHihJHb8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yoWpUYlN5u+VCbd6wjIyvQ==
+
+Name: com/sun/java/help/search/HTMLIndexerKit.class
+SHA1-Digest: ZEgai5/14NhuhjVIV5ObQOhLLT0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: nJPr3MiSwKtr6gMk+39RiQ==
+
+Name: com/nwoods/jgo/images/jgopal32c.gif
+Design-Time-Only: true
+SHA-Digest: iulR2a4PzMznADOy6hkCYQ2Bl8M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uE+N7lBTifIqlLYzuIPO6w==
+
+Name: COM/objectspace/jgl/PositiveNumber.class
+SHA-Digest: ni80SdAhoWmsq1ZdZLeF80HSsYk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: W27Ls9da8JXtu3xNI8QTig==
+
+Name: javax/mail/internet/HeaderTokenizer.class
+SHA-Digest: WwU482bi27P6Jq/sD2SBcw21U80=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Fy8tiiwt2jpRtsiK6/X0cg==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Title
+ Action.class
+SHA1-Digest: rbGoDzy/GUYiWqx8DGYDH/2pI60=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7YL5+C5NjGVZrg1xL34aAg==
+
+Name: com/nwoods/jgo/JGoDocumentChangedEdit.class
+SHA-1-Digest: RH+0WOm2BgbwaoC/IWUEChLJ5yY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: XkPYfum2Ho6AXxHnJFAxMQ==
+
+Name: COM/objectspace/jgl/DoubleIterator.class
+SHA-Digest: fxV5O3ovYDZIOsK+pYWLthVB79g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PTEQUKA3lDZwftXW9MEtxg==
+
+Name: Acme/JPM/Encoders/JpegEncoder.class
+SHA-Digest: gKykQVZk54gCpCrYw3b3TjB+Vtk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: JJHW2KUcZ4dv11EtNliyew==
+
+Name: com/sun/xml/tree/NodeEx.class
+SHA-Digest: v0PIFMf8YQqhXthcAv4FqqpqN6w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1V4AVmQxv8EKCg3wX1a4Aw==
+
+Name: javax/mail/search/StringTerm.class
+SHA-Digest: ItlRm/h2doqFvEoMBxGsMXgsR4w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SwzxrhVkaAVoGagdrLeJfA==
+
+Name: com/sun/xml/parser/Parser$ListenerBase.class
+SHA-Digest: hHyGsN/chKUazy3qN8Z87MBqPvc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: EbVymD3G3YH8L25yRhO5gg==
+
+Name: javax/help/plaf/basic/images/index.gif
+SHA1-Digest: x0YLUjNGuidY9QCuy4An9tFprBM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: KLyI4dEgfQGnVSZwQFsUOQ==
+
+Name: COM/objectspace/jgl/NotIdenticalTo.class
+SHA-Digest: XknZyqBBs2TDSanzKr0QgCmhHgc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: nBW23FNPnsLI+iFYFnDbEA==
+
+Name: com/nwoods/jgo/JGoPen.class
+SHA-1-Digest: xOPrQw5jp1dk6HnkeCaDRB2U0HQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Vl0AiCXLdClIr8LEUpOydQ==
+
+Name: printing/PrintMenu.class
+SHA-Digest: /HoWWje4GDjfDuj4rl1bGw+J2FQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: nLJJUVomwtQCQ9oU5cOqUA==
+
+Name: com/nwoods/jgo/JGoPalette.class
+SHA-1-Digest: edmhy5OEJObWrvFCNPwxhUUOxH4=
+Digest-Algorithms: SHA-1 MD5 
+Java-Bean: true
+MD5-Digest: gS4GqNMngAuBLRusJp4/vA==
+
+Name: COM/objectspace/jgl/LengthString.class
+SHA-Digest: gLC9GGVUxWVKlw9KXL6tXB+0y/M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /MKRq/4hNHvtLQ02pG0W7Q==
+
+Name: com/sun/xml/parser/Parser$DocLocator.class
+SHA-Digest: /aKrVJ9LGvaOATd3iOPrSNc60n4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: t/+1kqLMdICDKgFjo0CgzA==
+
+Name: com/nwoods/jgo/JGoUndoManager.class
+SHA-1-Digest: hOSd08TF9zPiK0lhR71uIVwOknw=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: d3hvO12nPZwBEvzU/Pf6qA==
+
+Name: javax/help/SearchTOCItem$1.class
+SHA1-Digest: JUdz7HbdqAGqGI7gN0r8CBiil9w=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Zm7EFoZ3Sc7aNDotdNRutA==
+
+Name: COM/objectspace/jgl/ForwardIterator.class
+SHA-Digest: 6BhZtf5z+esQzhinTTK9tT4yXKk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eEm/Mttl+FyEz0F/irV5Iw==
+
+Name: Acme/Nnrpd/NnrpdSession.class
+SHA-Digest: fs/5Ak6z2Qaiyr6Hd/0mN49mrHg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GWFE81pO6wN5DiuSEaY69w==
+
+Name: javax/help/CSH$DisplayHelpFromFocus.class
+SHA1-Digest: j2Bn3sVeC4TYAFKm7djW4Y0Ig9g=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cNO6yLgZL2T2gs8NtqX15Q==
+
+Name: com/sun/java/util/collections/SortedSet.class
+SHA-Digest: boxtieE8uO5nr/kW34GUX0DOuPA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /O6GKzM3pvI+xT7+dLmSGg==
+
+Name: COM/objectspace/jgl/Randomizer.class
+SHA-Digest: 7mBYfT+Es1kEVwuclkT8lqaU/+c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: u0kpWGfbEJYp1Hr7MI9FNw==
+
+Name: Acme/JPM/Filters/ScaleCopy.class
+SHA-Digest: Pq9ZQkG5LA8sfrnSlgXOAhqxryA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: w3kI7Ws/Z4wzg9lng3HDDQ==
+
+Name: Acme/Serve/servlet/ServletOutputStream.class
+SHA-Digest: 1LxL+SOOQqb2vlorQSzpATlrOhw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gjYaJ6i/mu64YbUh5rQ4IA==
+
+Name: COM/objectspace/jgl/BinaryFunction.class
+SHA-Digest: MMHoJB7Co3DmB5KbNmN054BgK1o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Z2hl21DR8yeU6notNqzBGw==
+
+Name: Acme/Utils.class
+SHA-Digest: dIPhSnMjgoVvNOvi0JTShelIa0s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: qoB9H+00Ar+3JB1TQH3J2g==
+
+Name: COM/objectspace/jgl/BinaryComposePredicate.class
+SHA-Digest: k2gR7eGo3Pg+e2FtkAJEpmkQ+Bc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Uk5kaEfRzf8gRb57ZJ3ztA==
+
+Name: com/nwoods/jgo/DomText.class
+SHA-1-Digest: oja/9iB7Ugqinhgv9KT1wl8NFhw=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: b/4hPBNNhQ6lLWasmH18+Q==
+
+Name: com/sun/mail/imap/IMAPNestedMessage.class
+SHA-Digest: exz6kGPMhFDx2ZnXrza1p3jdrXw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: JBZ/edYKtfOyoV5w4J3EfQ==
+
+Name: com/sun/xml/parser/ElementValidator.class
+SHA-Digest: ue8BMzHUFUg7Zm2p/6a1Zx1TlDg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iKT+d7VMseH2dRrPOzMqew==
+
+Name: com/sun/java/help/search/RoleFiller.class
+SHA1-Digest: rUUGgHDuW5ebPbTjmZtvM+yKQOM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Rm6lJc5d5zbphYsQJn0JzQ==
+
+Name: org/xml/sax/HandlerBase.class
+SHA-Digest: PtXTAZloQ8+g5UHTSQJYHnfpyXA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sAOAhekociw5/UmCbUv+CA==
+
+Name: COM/objectspace/jgl/GreaterCollationKey.class
+SHA-Digest: popWLlFRuJdp0teg/LyXSEm3ScU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uEVguzuUO87flT8061wf9w==
+
+Name: javax/mail/search/SizeTerm.class
+SHA-Digest: NpTG+2mGqsfBZT0SCmO7r6Mxkns=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: EPDKLb1kHWYNShRXvTkMiw==
+
+Name: com/sun/java/help/search/PlainTextIndexerKit.class
+SHA1-Digest: OeHkGk//L8gfExicN0QlLFfpExI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zpyybm26Bw7lEsYYW6SYPg==
+
+Name: javax/mail/search/SubjectTerm.class
+SHA-Digest: KygiNLR2j+JCYKvW3NCok/Qqmx8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: d6+CQn5QJSA5T3632e0yag==
+
+Name: COM/objectspace/jgl/LessEqualCollationKey.class
+SHA-Digest: YIeDLwE37n7ponHu1zNhtZeypug=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dm9zxP0NP7GJoQHKByGJRA==
+
+Name: javax/help/plaf/basic/BasicHelpUI$1.class
+SHA1-Digest: nYMUS6Cg//j88a0p8IvZLd8HW1c=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: oRn/TGa7wNlsleu5Nji1ng==
+
+Name: COM/objectspace/jgl/NotEqualCollationKey.class
+SHA-Digest: 3FLh8QFOabcJF/62ZlA775la90c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NY4d0Lcwpd2IQYodF5807Q==
+
+Name: Acme/HtmlObserver.class
+SHA-Digest: wsvkd42F8bp6Ha9VOdX2xGx+gdU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VchrHLHa06gOvHtyPHaaGw==
+
+Name: javax/mail/internet/ContentType.class
+SHA-Digest: CtT3Ss5a9C7bqp6pV3aYsbTWvho=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CCSEu7qhmsaxZhLyMZS94A==
+
+Name: com/sun/java/help/search/BitBuffer.class
+SHA1-Digest: 8NYSlVIFkzbi/JOcRSvCqUeZWWk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 3cCEdA65eP7Kh+3lUypsBQ==
+
+Name: javax/help/JHelpTOCNavigator.class
+SHA1-Digest: JcbFOjOcDNqKoh4oU50Gu5osRAI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cG5Lsj1uE2n+2iAtJcz2tw==
+
+Name: Acme/SyslogException.class
+SHA-Digest: 3oz1dbe33AZzZowtcy+eGDfcmQs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BJeuAOhARZy4nL8hWB934Q==
+
+Name: javax/activation/MimeTypeParseException.class
+SHA-Digest: //jyJ25D0joWPGtjVUmVqY6Ybz8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: F2ZTYajuNbjU0DhB2I+RWA==
+
+Name: COM/objectspace/jgl/Printing.class
+SHA-Digest: ZwtIOYhvTvPb7q74OJiCnZ9vNmo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xR4sgImjLk8bm8b5fvJc9Q==
+
+Name: javax/help/IndexItem.class
+SHA1-Digest: WhgfTZILiJTiZad1vmQYuotHVE8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: mnmZJaEhnn6vqapeq7P3WA==
+
+Name: com/sun/activation/registries/MailcapEntry.class
+SHA-Digest: Pun9AQNTRnFC+Mh59NHPcbZ5nBU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: O9cA5gkQ/FzirmBt80t3Pg==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedList.class
+SHA-Digest: hrLDCOUMPUibew9Dd2gj+iEoDdE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0q6DHjZEMXAnjS11aCZmcg==
+
+Name: org/w3c/dom/Attr.class
+SHA-Digest: eH4R3WkS1Ru/FwXqN1Q7h26nVLs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3FH27t3BEyZOzB3O3R62IA==
+
+Name: COM/objectspace/jgl/DividesNumber.class
+SHA-Digest: Oc7fWTdOZPSPW1wWpgiK4e2XITU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PpVEIj+t2YSsrs2PtAgMDw==
+
+Name: com/sun/java/util/collections/Collection.class
+SHA-Digest: 2nCA1wIDzZoi5WXPDZBz/wcJpR0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: A0pO0MRCHw07RUbImyYgug==
+
+Name: javax/activation/ObjectDataContentHandler.class
+SHA-Digest: gktPz3F4qMu0W8CgZAIhD8gefeI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0KHaeQy25ghoXcv4dAUaeA==
+
+Name: Acme/Chat/ChatAppletName.class
+SHA-Digest: 65xQ2729tnZMgAalnfuqRQuDBZM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: I6Sug5ajjr5R7GkMpBARKw==
+
+Name: COM/objectspace/jgl/BooleanIterator.class
+SHA-Digest: Pbj0aFvm0y2vRKegbDHs11JC4ho=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: AWMlu7c9shLc6v85+J9NWA==
+
+Name: Acme/Serve/Serve.class
+SHA-Digest: TiOXls4vD9++GCMzxp63iZJr2Cs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aoP9O3ILg4S4PKHVQzDK2g==
+
+Name: COM/objectspace/jgl/PlusNumber.class
+SHA-Digest: L6zTIGP7jBsBSmhm0s+xdQKoaFQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mxLrGVWZ86SelkD3YNtIwQ==
+
+Name: javax/help/resources/Constants_de.class
+SHA1-Digest: 3aI30/cgOUrEL5NkGQ5QlaM8bcg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: nghZnpSequO/H9DJ4aZG8g==
+
+Name: javax/help/plaf/basic/BasicIndexCellRenderer.class
+SHA1-Digest: s/c8vLYnPLE/5G0PG6ecx6EJqLs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 1wkDqbYv3yxPoj6NYmwkUw==
+
+Name: javax/help/plaf/HelpNavigatorUI.class
+SHA1-Digest: Flrpp85WdlqiPUksfMUEG+PMnaw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: TFaH3wnc869kc7cBzHEnHg==
+
+Name: COM/objectspace/jgl/SwappedBinaryPredicate.class
+SHA-Digest: XYlM2aEuVzhLw7jWRNFawF3ZeSo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 02qHkJp10Eaumi5ZSeo5fw==
+
+Name: javax/help/plaf/basic/BasicSearchNavigatorUI$SearchActionListene
+ r.class
+SHA1-Digest: CubXaRNirapF4YL80+lFxyrPUzE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Lf+sj5VRNXsUj5Iojt2LWQ==
+
+Name: javax/help/search/ConfigFile.class
+SHA1-Digest: soqzm948Tvbe7dk5Svt6FKyDIk8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Fpu7zSydpKRojgApUrFDKg==
+
+Name: com/sun/xml/tree/XmlDocument$Catalog.class
+SHA-Digest: bdAZRpZ/ZChbVDtxY2T2wYArA/4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: whDlu1RYFGKULw+CFfwcMA==
+
+Name: javax/mail/SendFailedException.class
+SHA-Digest: LFR/QOb9C9QX+DmUtmIEl+z7/3M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XdYssF8Ay0ttIc/QsajCWA==
+
+Name: COM/objectspace/jgl/Deque.class
+SHA-Digest: 2UGuLDHk/z4qACZt/f1xybFzI/w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UPudGHz+gmrlbK0yiDnHjw==
+
+Name: com/nwoods/jgo/JGoView$JGoViewHelper.class
+SHA-1-Digest: b89z06LM00yOPH7qNZUWYCTgydA=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Eqcx89bEpGb0frQshUZ17w==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Isind
+ exAction.class
+SHA1-Digest: DH37UKOQzw6x8LyKMdSv+Kwn1KY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: sV+wjm1rJ2WQyBZLkQ4QXQ==
+
+Name: COM/objectspace/jgl/OrderedSetIterator.class
+SHA-Digest: D0dFyJmI7JEjtj11Y8iLGoHkwmE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QYLzGtAoIVN9Yj9zz+hpcA==
+
+Name: COM/objectspace/jgl/PriorityQueue.class
+SHA-Digest: zcDE3mMHi6udRInOebaFWU0efqY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BINUxZE+fhNF1XnjjrBlCQ==
+
+Name: com/sun/java/help/search/RAFFileFactoryOn12.class
+SHA1-Digest: AkaKjxI13ey1djuwwck1RsmNbxo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: l2fIXcrlg059GEaaGw6kvA==
+
+Name: COM/objectspace/jgl/ArrayIterator.class
+SHA-Digest: bNL8+EK7TnNbNrIb/X5iSwa1uy8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yRpJzMzhjKSv9Il+AlxZFA==
+
+Name: Acme/MainFrame.class
+SHA-Digest: dbEAPklcOVUQxGlxSr+fX7VBQ88=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CgHSfpZEYm/UlE6zv2llgg==
+
+Name: com/nwoods/jgo/JGoIconicNode.class
+SHA-1-Digest: f/cyLlmiBEO/IMvDBqX5Xc0hH74=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: YWGqy6awBJq1n54ocRg/sQ==
+
+Name: javax/mail/Message.class
+SHA-Digest: sm5AMFZBiHWSx7dDIp5seet7avc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: s9q0J0oZT+EVHxi7SyIh4Q==
+
+Name: COM/objectspace/jgl/Tree.class
+SHA-Digest: 7wLaxtKBHN/zLQT2yYvC/c70oCY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +W/LsqbBDJGAGro1VmrPrw==
+
+Name: Acme/JPM/Encoders/GifEncoder.class
+SHA-Digest: +0aT2svwWDv+edvkQH9Mdy0drts=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +cVZqNHeGyY/77Bar+mx3Q==
+
+Name: javax/mail/event/TransportListener.class
+SHA-Digest: ZsaUmiJzCAKO4AcGnHFxgUVLA1Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: R50fKs2354kxlL6ciZ98rA==
+
+Name: COM/objectspace/jgl/OrderedSetOperations.class
+SHA-Digest: TfbCNpHl0F0ENK9TugeNWGOCABs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Bbm2trcs+POJpZNiPbwBZQ==
+
+Name: Acme/Serve/servlet/Servlet.class
+SHA-Digest: Ai4EojtAO7KmnlTKEqDDDEjw+7Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ezeFCJ9LkQABqn6kcLSIgA==
+
+Name: com/sun/xml/tree/CommentNode.class
+SHA-Digest: jmGqr6hknNR7pW/2rx/fSYmHm6M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QhZwwnN8zi2FgDMTTT6QSw==
+
+Name: COM/objectspace/jgl/GreaterInteger.class
+SHA-Digest: PD20vJzHbh8+o/x0xfOK4JWQc7A=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: grLUQM1bxHOGlJ68cQRMQA==
+
+Name: javax/help/plaf/basic/images/search.gif
+SHA1-Digest: ydZM6V02AEnBBnjw8oFTVgopP80=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: beDBdsGrmWGbXIgUMJjsJg==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler.class
+SHA1-Digest: SpGQHocgu2SZgKmLGd2PmIzdnPQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: W6PDad/pSUjdvvjdiQsMkQ==
+
+Name: com/sun/java/help/search/NextDocGenerator.class
+SHA1-Digest: T34LXwd4z9w/msQUgQz1Vn2BwAo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: rDVzuxmV1OxzBsSX2KCiSg==
+
+Name: COM/objectspace/jgl/InvalidOperationException.class
+SHA-Digest: ZXwqYRkFu+wvmHAda/0YA5MaEXI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jRQ2tPpOg2GR00XByu37lA==
+
+Name: javax/help/plaf/basic/BasicIndexNavigatorUI.class
+SHA1-Digest: JR4/8N3l59SOYkoQOXoHbgSPswI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: UiajXngc4IA93iDTjG/l5w==
+
+Name: javax/help/plaf/basic/BasicContentViewerUI.class
+SHA1-Digest: beu+zTOV+lpqyJGKDqIZA8dLH18=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: qQM32KZkV0E2gqTmK/SFeg==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler$MyJEditorPane.class
+SHA1-Digest: w5fBDC6+jybMrJzYbrGB8rcsdJY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: JCdIi17Od7T3FiBmA479Ng==
+
+Name: org/xml/sax/SAXException.class
+SHA-Digest: msJuQ3Bo4MnjBT+2nu/4pNKMNK0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: e5i6CzhcWS7GxuKaXqxQlQ==
+
+Name: Acme/JPM/StubToolkit.class
+SHA-Digest: Ojcyz0Bl/T5pN70RvKn4l+fMuEo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mkIOXhQ3p1U9RJ8tax0+4A==
+
+Name: com/nwoods/jgo/JGoUndoManager$JGoCompoundEdit.class
+SHA-1-Digest: 9++ePdTK6Dhl+3N6c9mMp8KbI+o=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: jj3VzYBpDyakWDkVcH2ZAQ==
+
+Name: com/nwoods/jgo/JGoGridView.class
+SHA-1-Digest: NSUXXkcJYXeN0SesO4KWHb4LIJQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: hyaUyGf6qK87aKgFFwBeuw==
+
+Name: Acme/Widgets/ImageLabel.class
+SHA-Digest: NKTZc1rmSq/bMugkvBEiyHwo+Yo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rZ0StMwe+tisR0OY+8lszQ==
+
+Name: Acme/MediaTracker.class
+SHA-Digest: qgUi6wAZwLCO/dPi3EopANr+HRM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4pkD0FYduZMnuDLH9osHSQ==
+
+Name: com/nwoods/jgo/JGoScrollBar$JSBListener.class
+SHA-1-Digest: 90ywXlICCBo6e3/zvpjeNbH40UM=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: StriH1t4p/KzNnpAYbfd6w==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableSortedSet.
+ class
+SHA-Digest: gIg1G9zYjqP9MeLMPj15PqxBVgc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Lu9hschGGaao3Q59ku16bg==
+
+Name: Acme/ImageMediaEntry.class
+SHA-Digest: tdnCkTwV00Mdub+QPvcaZ1ZUgHs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NTAsmZaa0ikRsW+UfZss8A==
+
+Name: Acme/Application.class
+SHA-Digest: Y+6HHYL6yNKg1upw4jZI1fNaxGA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0v81qO8FyH+J/MycBpEV9g==
+
+Name: com/nwoods/jgo/images/jgopal16c.gif
+Design-Time-Only: true
+SHA-Digest: fNZCxgwUhho9S2oQbFAo5uIjrJY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XrHAw+v5KbBnumWQollT9w==
+
+Name: javax/mail/MultipartDataSource.class
+SHA-Digest: q5t9m5Z6jIVYd+Ndb52UMWIX9Sw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 9eak1+4EOTVTSJHKqa1JQg==
+
+Name: Acme/Crypto/Des3Cipher.class
+SHA-Digest: Xwnuvu2zwDaI2SOngCQFOfNTWjk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FrBPKAiNnwEa2MrMeZTNsg==
+
+Name: com/sun/mail/imap/protocol/FetchResponse.class
+SHA-Digest: cJJm0PpOYOp+UA0TZYKAKXnBYLM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eQa5UoFTjPh+gTPxffmHEg==
+
+Name: com/sun/java/help/search/DefaultSearchQuery.class
+SHA1-Digest: DM+L3TMcXqi0kFRQ9fTbmPVPL+s=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Qif5ZMmUBIp76jf32AYnmA==
+
+Name: Acme/Nnrpd/CrLfOutputStream.class
+SHA-Digest: gN6wYvZBy1InwfObdj0/D8Z1e/Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UFZSxtgZQwT39fO3lL/1JQ==
+
+Name: com/sun/java/help/impl/CustomKit$CustomFactory.class
+SHA1-Digest: yfhp05yzXEtYJi2sZMtbigqizZQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Ki+Wnb+yaBo2m/bFs485yQ==
+
+Name: com/sun/mail/iap/BadCommandException.class
+SHA-Digest: N2+kRgax3DkJ/1pMheDa83kX1Ko=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5/+X6h+JsqOifdj7P1UOsA==
+
+Name: com/sun/java/util/collections/Collections$ReverseComparator.clas
+ s
+SHA-Digest: fmc6MWMIqrsQqzW4IaOd4ZYpGkc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TKNV7XCtPY4fyRS+nLI2WQ==
+
+Name: com/sun/mail/imap/protocol/IMAPResponse.class
+SHA-Digest: Fd4xIYby62EuiCrf3Ytqlw0hh+I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UnsvRHkyqNMpax9ti3dzkg==
+
+Name: javax/help/plaf/basic/images/toc.gif
+SHA1-Digest: ok9OnXE+XIkQVmJ4/wJ7tSvvQgI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: G4KewW7xum9XyXdJgDG2aA==
+
+Name: com/nwoods/jgo/JGoControl.class
+SHA-1-Digest: VsyAIsIEmd7qLJupLUogve0w2aQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: gIxvf8jFyA1ry7sl+1OFYg==
+
+Name: COM/objectspace/jgl/MinMax.class
+SHA-Digest: BgY6z2o3349HyGDDp8AsNLl8Kuc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HPDZP2xRjokCF5ak4iFzKg==
+
+Name: javax/help/CSH$DisplayHelpAfterTracking.class
+SHA1-Digest: +dZVZ5aeRsjGMWsbPUq5dKoEdBA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: aCM0Ylcrj65/Bb3DPmE+ug==
+
+Name: COM/objectspace/jgl/LessNumber.class
+SHA-Digest: YPpJvdk5neKvXJkqxnSPeqgENbk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OHpDDVX/jGm5ttchH6jWow==
+
+Name: javax/help/JHelp.class
+SHA1-Digest: vprH0px/4B3NmOuyuYsCdo3VGQ0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: PjinId+n8LNVr+ernGfeeA==
+
+Name: com/sun/java/help/search/StreamDecompressor.class
+SHA1-Digest: nNK7isl0xOBl+W7ExgLJ4hGnH/0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: i04jvBkH8ITkhVjMjZ1FVA==
+
+Name: com/nwoods/jgo/JGo3DRect.class
+SHA-1-Digest: EcFH0J4WgdV0s6oMcXiUnNW9Iuc=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: lOLLJeKU2Tb1ei/sRlSBiQ==
+
+Name: Acme/Queue.class
+SHA-Digest: 1bJ79jX/71cfLGhESPCbJak+Joo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yTDyfbnUmuGhDjVPbYTZTg==
+
+Name: javax/help/HelpSetException.class
+SHA1-Digest: +4J9UGmZ1prGcsAPkWy30SRJciM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: GOyQ31S9S0Tbwn1XG2qPKA==
+
+Name: com/sun/java/util/collections/Arrays$ArrayList.class
+SHA-Digest: ZGPF7IPY5/+RuB3Bmcbpr/jrIsE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QqSxZZo5G84/+VcV9JZ2vQ==
+
+Name: javax/activation/MailcapCommandMap.class
+SHA-Digest: CMM7L7doDBGW12ng64x8NedG48w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1c9dKyXOW10am0FULljDTQ==
+
+Name: com/sun/java/help/search/ChangedCharSetException.class
+SHA1-Digest: yf3NVoAWkQj8d92FgqBrvBeDXss=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WDgukql6QFFFjifqu1HLDA==
+
+Name: javax/help/plaf/basic/BasicContentViewerUI$JHEditorPane.class
+SHA1-Digest: 9HlYjTzRWO4Q6B9yjc4Rp3Uka1M=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: eMKc6ei1+l6bPAMT0EB0xA==
+
+Name: com/nwoods/jgo/JGoObjectSimpleCollection.class
+SHA-1-Digest: TYD4cxxfyqsj6xGda2FphyVSLp4=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: kLQUjV8a4ADpgkRufB2j7g==
+
+Name: javax/mail/event/ConnectionEvent.class
+SHA-Digest: 5UO0zMCwzzkoPry9TjlyUrPVDNY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Ea1icG96jk2p//mxRDe9mQ==
+
+Name: javax/mail/search/FlagTerm.class
+SHA-Digest: s+2/lt+lrIWbWPlXjLY/P6D7SAU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: slRGrkuz/XekjTBlQxpavQ==
+
+Name: javax/help/HelpSet.class
+SHA1-Digest: yJKjKr9lbwkfnukoleyYcgLCPvc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 0PBP7GPysPELwtQ1utPxVQ==
+
+Name: com/nwoods/jgo/JGoRoundRect.class
+SHA-1-Digest: Vb5f4fzp/8CQMxL8RAVBFifnXvk=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Z+47XpPCqwbK0vhCiqa5MQ==
+
+Name: COM/objectspace/jgl/DList.class
+SHA-Digest: 5Wjcp3QDdKBVejzipYvuBkz7oGk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4b/Qnin+mHYb61zCR0I59Q==
+
+Name: javax/mail/event/FolderEvent.class
+SHA-Digest: /8RhZZ+QW+7zylo0N+VKpbcb4bs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FW3rz5E7KQzNZ8y9TIqEQg==
+
+Name: javax/mail/FetchProfile.class
+SHA-Digest: w33NHZT92rOkOXvZPnYz/JK9OPA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kfHhyyVFFYebQKy+iR6s8g==
+
+Name: com/sun/java/help/search/GeneratorHeap.class
+SHA1-Digest: MwJs0TmIjMHFuNKLFvf6+J3h5VM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: djTsLA84wW1Hw57wXUPRLg==
+
+Name: com/sun/xml/parser/resources
+Package-Title: com.sun.xml.parser.resources
+Package-Vendor: Sun Microsystems, Inc.
+Sealed: false
+Specification-Title:  Sun XML Parser Localization Resources
+Package-Version: 0.8.0
+Specification-Version: 0.8.0
+Specification-Vendor: Sun Microsystems
+
+Name: Acme/Widgets/WidgetTest.class
+SHA-Digest: O7YfCvFIZl5OPzCNUO4r6lMt0bw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2r/bZFQpaK5l7jG4gyhoDQ==
+
+Name: org/xml/sax/helpers/LocatorImpl.class
+SHA-Digest: NkE4yLzwfg9n/V4jDwGH+T7pgr0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: B+1odr76y6fe/88EkBK0wA==
+
+Name: com/sun/java/util/collections/SortedMap.class
+SHA-Digest: lpp+9KjYNp43wbsoMdml8pcuWyY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: nQUsWfTymqt+3ttXrePPGQ==
+
+Name: Build-Info
+informix: true
+build-compiler: modern
+debug: true
+oracle: true
+svn-build: true
+jdk-target-version: 1.5
+version: 2.5.1
+
+Name: javax/help/search/SearchItem.class
+SHA1-Digest: l9uN8MPP9v20eg7dDyQiGCtqSRQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: giJaNG5nfX2oY8+5RcdRgQ==
+
+Name: Acme/NoRobots.class
+SHA-Digest: yPMawDHqRgwKKnQpsbGzdsBG/4U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +O5rSHXOlGd9q5UhbAkNEw==
+
+Name: COM/objectspace/jgl/DListIterator.class
+SHA-Digest: KUnb6A6ehwfPpFMtTtqmnWIhWIk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: T604VhqyBHojwCU7g3TT6A==
+
+Name: Acme/Crypto/Cipher.class
+SHA-Digest: VzIOFfDDbYVo8ZAiGNDN3+LyQD8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sv7k61ROGPoCL60XAzMSUQ==
+
+Name: com/nwoods/jgo/JGoOverview$OverviewRectangle.class
+SHA-1-Digest: H89hQZi1mEak3SiOcpaUGSqFAbU=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: pgIZW+WN3Tzxsufxs0j02Q==
+
+Name: com/sun/java/help/search/Location.class
+SHA1-Digest: XF2hcHe4t12cpmq/qhen17Cl/f0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: eiX+IPLKc3v0mw/U7PqHkQ==
+
+Name: com/nwoods/jgo/JGoImage.class
+SHA-1-Digest: mZTvLT/8KzieeAUhJdWWLd7ZpUQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: FTuHvshmmjTDHtwUNS7I3w==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback.class
+SHA1-Digest: haHJ3WYjZPiIlu1tgESdAoutk7Y=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 8wRzVJA6qyQMd+htUQ1F1A==
+
+Name: com/sun/xml/parser/XmlReader.class
+SHA-Digest: MNIbSiihj+do8S0f0E8jksCKlKU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: E9lC1zTWiSmsKUUc7sBFew==
+
+Name: com/sun/mail/imap/protocol/BASE64MailboxDecoder.class
+SHA-Digest: AsJE3wgwFwDupUC+8ODroCuqSqI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: V71VCWAQXVLJCUvd7m81Pw==
+
+Name: javax/help/JHelp$AccessibleJHelp.class
+SHA1-Digest: aDRf44LGHhDtzqJQHVWh11XAYOw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: tQZK4arSgxicGiII0L9YYg==
+
+Name: com/sun/java/help/search/BlockManager.class
+SHA1-Digest: vEnGr1R5EGXRoW4dSOnWcWO0fhE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: uxcmbY9B4Ju66Wg8AW9rPw==
+
+Name: javax/activation/CommandMap.class
+SHA-Digest: oiyeBf4/LT24cgANab92NnZ9unk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /xbfvY89W2eONL6crpzVFQ==
+
+Name: Acme/Serve/CgiServlet.class
+SHA-Digest: NhG3T+mgpdrblImEvbR6MkEH6r8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Hd8l4UQXQKoNcLWmxHMcuQ==
+
+Name: COM/objectspace/jgl/LogicalNot.class
+SHA-Digest: w6A8X+XEmY4ohM4vZAfwepPJ+gw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: whgVHoH2dTtiIThORsEw3A==
+
+Name: com/sun/mail/handlers/message_rfc822.class
+SHA-Digest: vpQRm64yO9/OWL2fUbSctDwJi9E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GEyMwpc4VB2tKSqjhVNW7Q==
+
+Name: com/nwoods/jgo/JGoLinkLabel.class
+SHA-1-Digest: 8xpPw2uBg6zgT0q7D3S2MSS99hY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: k7TCT/YIgKcsJ078wNrAGw==
+
+Name: Acme/Widgets/ButtonDialog.class
+SHA-Digest: 5Rn+p35z6tNsu3fzghZ5YvlGjAE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0cophwrfwv6taxBN8DcUvA==
+
+Name: com/sun/java/util/collections/AbstractMap$3.class
+SHA-Digest: bzuMf2wXgWwCYr/kbDisx/5w4ho=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: phHDsKV6iqB67OyvvuBZXg==
+
+Name: COM/objectspace/jgl/NotEqualString.class
+SHA-Digest: GVmQeT70zhAc1TDogpEMSZ8YIiI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jtt+vl3Sb/SbDbO4ploLWQ==
+
+Name: Acme/Widgets/OkCancelBox.class
+SHA-Digest: XMZ/bZKtx27EDGEvnDsjJdzc7LI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 59keU/vZcaZvNHpZgqyhAA==
+
+Name: com/sun/mail/util/TraceOutputStream.class
+SHA-Digest: xGKaaLxljchWM+nc5kSMcbeLtgc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: AcmK8DiZ0q7pWTTr1X48fg==
+
+Name: com/sun/mail/imap/Utility$Condition.class
+SHA-Digest: /RP1IP2+QlNdpHguqi8189/a+To=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QHBeF0B6zdwRxwqQzm5sGQ==
+
+Name: com/sun/java/util/collections/ConcurrentModificationException.cl
+ ass
+SHA-Digest: jhbkYUTBNyfD7PQCwOeLHt5x0VY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7TzzC/xGSOTetxl4WKYEFw==
+
+Name: javax/help/plaf/basic/images/next.gif
+SHA1-Digest: yvTih7/XP/B2K88ww//KTHGvJ7o=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 6YiAWRIsLJpwhzrK23rIdw==
+
+Name: javax/mail/PasswordAuthentication.class
+SHA-Digest: GNATW1MmmcXIVZNXFwo1Xr20a5g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lMmoKHJ1Xuzkk962jY4bww==
+
+Name: Acme/SpiderConnection.class
+SHA-Digest: N43POw0rvtP7nhwi9n/6xW7MSOE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: cJFi/vjT8J6WEctFs5Cjbg==
+
+Name: COM/objectspace/jgl/NotEqualCollator.class
+SHA-Digest: sVsAXU8xTZlUE2tpRYuFLf7r5q8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: j9Qb/zPi2b6LyIr3I5cVVQ==
+
+Name: javax/mail/search/NotTerm.class
+SHA-Digest: QbP3FTTZxuZPbYLPLKWR+cZDIbY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gDB9xfSa3V3G91u5/fvEkw==
+
+Name: com/nwoods/jgo/JGoStroke.class
+SHA-1-Digest: E9tXUHOEg3BP6rUTrRLgDvS0oQ4=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: dt6RWvXCAMhdZBHYZFiq7g==
+
+Name: com/sun/java/help/search/DocumentLists$MicroIndex.class
+SHA1-Digest: Xp6fhXfu7o5NU2tAQBdM2t0kUJw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dmFQl0WWkSPdJIFO9zGICA==
+
+Name: com/sun/java/util/collections/Comparable.class
+SHA-Digest: /oLXXjefjGBZSU0/8mbfuh105jc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LyaOvmbR6J+qqlkg1a8/bg==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Speci
+ alAction.class
+SHA1-Digest: b+tJwhihlYAp6knZT+JU653qxps=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +0UWVBhhNXoZDDYxGOo7iA==
+
+Name: com/sun/java/help/search/ConceptLocation$PositionSorter.class
+SHA1-Digest: 9krbHN+urejFkP9qaU8kK4RL0vY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: D5PxlmNfaCSAyL8+yd1YRg==
+
+Name: com/nwoods/jgo/JGoGridStyleEditor.class
+SHA-1-Digest: cjK9UzVa44X3oyxzwA8my7qbj64=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 2L5uxUlLpCzgwaGP1WYkMw==
+
+Name: com/sun/xml/parser/InternalEntity.class
+SHA-Digest: /8tTL5swMcmjCMRtMURl5yX0WNY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Boix3k0Ogd91YQSEf8zP4w==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Parag
+ raphAction.class
+SHA1-Digest: CLM2B2lLRacDj36lyFceaxmcxos=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: mbs1/8VOy3NWRwajIXNtrQ==
+
+Name: javax/help/DefaultHelpBroker$1.class
+SHA1-Digest: fu93JHUhN04WzKHmmJwJtFXxCNA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 8iM3CGl5Z6uA2s5R28zJHQ==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$TagAc
+ tion.class
+SHA1-Digest: OysXyaL0wLGmzQ9LwPyvQ4nKBVc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: AGWN0yngPIhEDyGoYi6V6g==
+
+Name: com/sun/mail/imap/protocol/ENVELOPE.class
+SHA-Digest: pEyRWFU+iVWOAoPVrJgd9W8kVbk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: nqmhceUOdwPvwcs6jVGm0A==
+
+Name: com/nwoods/jgo/JGoPrintPreview$5.class
+SHA-1-Digest: QVJKwzmE65hnLgwAgK7gkj+/XCI=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 7PyeFnGIWfpxSfPpu6P2Ig==
+
+Name: com/sun/xml/tree/TextNode.class
+SHA-Digest: 4atzLqgL/TBoOyQnNCgmoWG38/0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UuFGWOQMBCThpucK5poV0g==
+
+Name: com/sun/xml/tree/XmlWriteContext.class
+SHA-Digest: jxdNOH5NnYSauk85P1OLkqcz6m0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KModQDTAltG7dlCFjdP1zQ==
+
+Name: com/nwoods/jgo/JGoPrintPreview$PreviewContainer.class
+SHA-1-Digest: zt5Hl+2wfAn8HKBWn1YMmYNKO/0=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: cB7HWyS2He26I2ztWBrpDQ==
+
+Name: javax/help/plaf/basic/images/med.gif
+SHA1-Digest: 4rWIGa0n8cKI7L5YiJqvNJDP3As=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: gdTyPJe/1d7p1mmwFeKDew==
+
+Name: Acme/FlexVector.class
+SHA-Digest: VKUXyEIhxwJvuN/jmRuJ33QX4Eg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gIEKWkVJci1bpJ1bfjPgSw==
+
+Name: com/sun/java/help/impl/LangElement.class
+SHA1-Digest: vJov+6Yq1D7GpJV8g9gEsUn0t0s=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 6AVGtW65xCK5qPWUJj8KcQ==
+
+Name: Acme/Task.class
+SHA-Digest: b+cpoR6M/+X40StmzQu2q6lG2A0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZASFnJyabauuqayOFEhhpQ==
+
+Name: Acme/JPM/Decoders/ImageDecoderRead.class
+SHA-Digest: Z4JwP7UbWbGGq7zr6K5DVzRt/ZQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: P53uk3EXL70j1tttZgV4aw==
+
+Name: javax/help/HelpUtilities.class
+SHA1-Digest: jMIdGloshiTRbr1UsrR3FbOXtMc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 2JqJW0UuzvZnEYTgMZ+CkQ==
+
+Name: com/sun/mail/handlers/text_plain.class
+SHA-Digest: IPLLMRBVrWpvXrxyuPi+wvONdPc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LPW3yPP19nRpsuGeazmfng==
+
+Name: com/nwoods/jgo/JGo3DNoteRect.class
+SHA-1-Digest: Sc8RNVgX7Fog+REkXDXMwm/55LU=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: IHM0yak5SGGb3czEvG2GBQ==
+
+Name: COM/objectspace/jgl/BindSecond.class
+SHA-Digest: J+lX/5CDQ9CwZxrU6vdrF1RlaiY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Y4xRIiQ2NtkWlv08X4b0QA==
+
+Name: com/sun/xml/tree
+Package-Title: com.sun.xml.tree
+Package-Vendor: Sun Microsystems, Inc.
+Sealed: true
+Specification-Title:  Sun DOM Implementation
+Package-Version: 0.8.0
+Specification-Version: 0.8.0
+Specification-Vendor: Sun Microsystems
+
+Name: javax/help/resources/Constants_ja.class
+SHA1-Digest: /Q2MI6w/jVWCSq9U+cxBlSn81RE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: xXbtuM9LJz6TPKJMQ7A6GA==
+
+Name: Acme/MediaEntry.class
+SHA-Digest: rrvb/Mv2Yqj5zB2uTXvShWPikOk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WYhrzr5nFKSkyrPGbGNUQg==
+
+Name: Acme/Serve/servlet/http/ChunkedOutputStream.class
+SHA-Digest: cPNJentaWjgRFbMfRUG7MgrdD64=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yHQdinQMiEn/R5R4JNYeSQ==
+
+Name: javax/help/plaf/basic/BasicCursorFactory.class
+SHA1-Digest: spkNu+j0n4HMtlNA8WLWEn+3pVA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Y/xiU0jk9/zPrkZMXe5Kdw==
+
+Name: com/sun/mail/imap/IMAPFolder.class
+SHA-Digest: 0QlaNIBjmQ/GV5tnTqXWIL1ipWI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pBtiv5IGlZUOULkmcTaTpQ==
+
+Name: com/sun/java/util/collections/Map$Entry.class
+SHA-Digest: Alzot1XBqw3S7SwN0ZtaBHl4/7M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Mhamd47d/vEiGTZh8cqVtA==
+
+Name: com/sun/xml/parser/ValidatingParser$MixedValidator.class
+SHA-Digest: D96GHQaQspEOyTIrOm8wUFEtEtc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zGgDfOK8ayhGQkEauPKUzQ==
+
+Name: org/w3c/dom/CDATASection.class
+SHA-Digest: yWuA+A5PlHugmi4mJcnevvI3q1w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WgzzcUSXpgB9svej7Ir/6A==
+
+Name: com/nwoods/jgo/JGoSubGraphHandle.class
+SHA-1-Digest: 3sZc+uh+oWnwG11F/QLR3K0l8Ag=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 4NhcHvlSMB2qjPxbQ4Gpbw==
+
+Name: com/sun/java/help/search/DefaultIndexBuilder.class
+SHA1-Digest: SKSnoRydPUSV9roicKMVJv5lgr4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 78x7IZStUPMJzNc2S12kqg==
+
+Name: com/sun/java/help/search/BtreeDictCompactor$InternalBlockState.c
+ lass
+SHA1-Digest: z5FSXTbuRn/4L1WNCF4C8hMsqPk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 8TLrau1ttHvXm9UWZpIacA==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$LangE
+ lement.class
+SHA1-Digest: giyJLuUnrKq3LblyTLpfFMNv9QY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: r7visZam8on6C8JeFzxI6g==
+
+Name: com/sun/java/util/collections/Set.class
+SHA-Digest: Ow0s52jnZWC+JEwM3w4VAefiGeE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XvlEQO+mYQiNy+FNHGkNRg==
+
+Name: javax/mail/search/AndTerm.class
+SHA-Digest: b5VVO2onJnRsgM05cUzPQ4Fh3/0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wSAYhiCJwaZx36STLEwOig==
+
+Name: com/sun/java/help/search/FullBtreeDict$1.class
+SHA1-Digest: Hu7JsyiHQkk5ZVmQIqzKR81NNu0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Gh95G2B8sLjqo7k8oPN2PQ==
+
+Name: javax/help/TryMap.class
+SHA1-Digest: pEesBK4uWPhfxTTqF7dz9iJbtAM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 5sr13cSlmrM/oRX0MOdKyA==
+
+Name: COM/objectspace/jgl/DoubleArray.class
+SHA-Digest: djQDDj+8SqGeYrQG6+8NvHvhnWs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: qwNN/dceWzWTspOAB8nN8g==
+
+Name: com/nwoods/jgo/JGoInternalMouseActionsEditor.class
+SHA-1-Digest: VXjsslpi8Wq531AJV5cPYMCeP6c=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: JxSf3lPWx5a/d8THhsJ5gw==
+
+Name: Acme/Serve/servlet/ServletInputStream.class
+SHA-Digest: yBIHTsLI1e1ErGA9yYXswbV47Zw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vJfjIMHHlpDJs6Roo8juOA==
+
+Name: com/sun/java/util/collections/LinkedList.class
+SHA-Digest: KdLcHnCGA3b6PMhWwm9Csyc+F1g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jo4xm4e1UduELYyo/5HqLQ==
+
+Name: com/nwoods/jgo/svg/AbstractNode.class
+SHA-1-Digest: E6mQTAdu7VxjGtv3aBbpMutvLsM=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: awhWYLIB8VewGFdF3Zo02A==
+
+Name: com/nwoods/jgo/JGoScrollBar.class
+SHA-1-Digest: kZpHaRd/h+X5hB/DMOy4HY8gB70=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: laO1h4hGYOm4i7jJVROm9Q==
+
+Name: Acme/Widgets/BorderPanel.class
+SHA-Digest: GYM7yaWvNnzNckebGZHVLuLt24Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5MaOIUC8M7lWftvMkuRPwQ==
+
+Name: javax/help/plaf/basic/images/print.gif
+SHA1-Digest: JKX/Y4/pFvNxfRmgfBM6zOaAC1Y=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: wMiztEHNiDH6Vuiz67GXsw==
+
+Name: com/sun/java/util/collections/ArrayList.class
+SHA-Digest: +4gNwNKuGsU32MvE7hAEW26fVW4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pAjsNH4tGmdDik8UMf3h+A==
+
+Name: COM/objectspace/jgl/Permuting.class
+SHA-Digest: OSSZZvnpdocErnJStdaTvn4U+Hc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0TaEG4Vq6Ay53Sp0q0X30g==
+
+Name: COM/objectspace/jgl/BinaryNot.class
+SHA-Digest: iy9e+W1t4gsxtBC/gQwd/Q6PHAc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5nSCu6pgMU30mNWC4pov5w==
+
+Name: printing/PixelConsumer.class
+SHA-Digest: hFFoTdw8vcrV/UQXVXXAAIwl5m4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: N64P74e16tWE0EopIT+f6A==
+
+Name: com/nwoods/jgo/images/jgoover16c.gif
+Design-Time-Only: true
+SHA-Digest: ZZqMJH5alAfkixpOTLO0uoKEePk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UqSVV7Eghv9eUpF/lkaanw==
+
+Name: com/sun/java/util/collections/Arrays.class
+SHA-Digest: zFcRGOJlwultSoDgVRVNlA3xvCk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +vFek43tMymSgtA+vAXcxA==
+
+Name: org/w3c/dom
+Package-Title:  org.w3c.dom
+Package-Vendor: Sun Microsystems, Inc.
+Sealed: true
+Specification-Title:  Document Object Model, Level 1 Core
+Package-Version: 1.0.0
+Specification-Version: 1.0.0
+Specification-Vendor: World Wide Web Consortium
+
+Name: Acme/JPM/Encoders/ImageEncoder.class
+SHA-Digest: 7WMqg51byFFIDs5v6ZmMoHgZbWg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2f4ZyKFHFDnVDT/FOxRYTg==
+
+Name: javax/help/HelpUtilities$1.class
+SHA1-Digest: Vfd9I9bCBOa0XoZpdhahU+GRl3c=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: NuqBFUHUoMwtsrB2JvDpUg==
+
+Name: COM/objectspace/jgl/GreaterEqualInteger.class
+SHA-Digest: OJ0lh4hQc7I7B9+cOpIGfXJbtcE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: e8R5Yo4cdbr877X4ne4ZAw==
+
+Name: COM/objectspace/jgl/BindFirstPredicate.class
+SHA-Digest: MNfqr6fEwaaqZEKHdgYMoqzFGBo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VPpiCieTeyROXF5SRsvTdA==
+
+Name: com/sun/xml/util/XmlChars.class
+SHA-Digest: +MjE2x6OIotRI1kAIOlK/FUhuBw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +iKRuXB5lf8xnttzxhbGjw==
+
+Name: com/sun/java/util/collections/AbstractList.class
+SHA-Digest: 73gPT8fqd6zCtiTQHfJqd0FmnMg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sti+UkwJ/wxhtR4P4wLL9Q==
+
+Name: COM/objectspace/jgl/Shuffling.class
+SHA-Digest: iQJiZN37eqSS2+p2TLDBoZ0y0xs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FBX/TWSCd4TjIh/pOkkB0Q==
+
+Name: COM/objectspace/jgl/Filling.class
+SHA-Digest: IFgmqA04tXWgC4Z0jwrgsk4SwWs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Z5uQW1YLyHLD6jL8wMRv+Q==
+
+Name: com/sun/java/help/search/RAFFileFactory.class
+SHA1-Digest: qFSQ72tm2ElL/ml02l0m5GQOavg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7hYDidkq/V5iJ9PmjPhrQg==
+
+Name: com/sun/java/util/collections/ListIterator.class
+SHA-Digest: TnplynJZPNaK4ZhcMiOTsa7WvwU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HpyjUKWKIpU3ITt9Sdxeew==
+
+Name: Acme/Crypto/BlockCipher.class
+SHA-Digest: AxXpmUxmHdlytZWGTQNCNExfWK4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ivjAAW+vedlbJLZsavsvtQ==
+
+Name: COM/objectspace/jgl/UnaryNot.class
+SHA-Digest: bP1YswhLiVlSMl80p4UdExAIYAs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hwz9XL6Bhwu12OJSarVABw==
+
+Name: COM/objectspace/jgl/NotEqualTo.class
+SHA-Digest: AvLeJTWGZmbHKk7ubqOyHzVngU8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KHu4rG36X5vPwy188go9TA==
+
+Name: COM/objectspace/jgl/Counting.class
+SHA-Digest: aA4PifQlYmf3nX68WFt6vq9BI6w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iFtdz+QuBEPpag5C9IHh7w==
+
+Name: javax/help/JHelpContentViewer.class
+SHA1-Digest: f6u26uZHWVJWZZEIbTff+LcyOGU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BbEtvAJuFIJ/pQNdZiQIsg==
+
+Name: COM/objectspace/jgl/HashSet.class
+SHA-Digest: +YQyIgPqDkYGEqxnNwyDFxmf96Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ikR1HZATviLpPkrDXuhTBA==
+
+Name: COM/objectspace/jgl/GreaterCollator.class
+SHA-Digest: afoNMOiwVGU5GRK/+MU42h797D8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pBvyu52hyCvwOgwdo4WE9Q==
+
+Name: com/sun/java/help/search/Rule.class
+SHA1-Digest: KDa2gilhMUJYFWYDRoOpZIs9QPM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: LqUDEugyoh3hbrGsR1ZfpA==
+
+Name: javax/help/Map$ID.class
+SHA1-Digest: Xr1jL9yZOBuG16Efq+CkVoAuSAA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: eGKHa5L2pkelcIrBpLlxLg==
+
+Name: javax/help/search/IndexBuilder.class
+SHA1-Digest: z4Z/2BDJV81JmUk+PLfupDpsbLw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9o4N91zFeYC9FSGL9cRS2w==
+
+Name: COM/objectspace/jgl/Removing.class
+SHA-Digest: 93akybds9JAJhnetKLtOrfPHWAo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7RHXxv2tQ1y1xWO6pbuxKQ==
+
+Name: COM/objectspace/jgl/HashMap$HashMapNode.class
+SHA-Digest: DbW06FxU3B/qOTyRJgZlCoC/0Ts=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: oGV1ni6TBGKWEtDbwywbSA==
+
+Name: javax/help/HelpSet$DefaultHelpSetFactory.class
+SHA1-Digest: bG2mtHGVo1MWmN78O27mdxg0DEs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 41zzL9zhpquYa6jz52nt6Q==
+
+Name: com/sun/java/help/search/RAFFile.class
+SHA1-Digest: sRPkU28cO6rs0ixWeymnyEPLfU0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zc9RH/no/cJXZJgj0UQEtA==
+
+Name: javax/activation/CommandInfo.class
+SHA-Digest: fmcSQGO/FuqdGnCDGixjctFKnJU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: tqFlyKq+8pK8n8hBrkrFZg==
+
+Name: javax/help/plaf/basic/images/onItemCursor.gif
+SHA1-Digest: uFVsTUY8QkxJ/bU3ayizJCV1pzo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: jF/OpGjMZbwOmf13LfHcfg==
+
+Name: com/nwoods/jgo/JGoObject.class
+SHA-1-Digest: OXoJ6BKQtYIMyMkdmEVmkMUlAkI=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: nYXtA3I2s9bZZJt2fvLJjA==
+
+Name: javax/help/plaf/HelpUI.class
+SHA1-Digest: sdqCJ8FRbcDQW5yps2qgKh3uC+o=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zRt0PWYg6dV6KKGiCAUAiw==
+
+Name: COM/objectspace/jgl/HashMultiSet.class
+SHA-Digest: bBg3ih4uDRZ9lgtSw34jAv251O4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5HHAexUOs3Acoa/67DUw6A==
+
+Name: javax/help/search/IndexerKit.class
+SHA1-Digest: lI8gxS9F7koS8NVYKjJ0TGVX8X8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: FFFjmvcnPMy8RWKjQHWhxw==
+
+Name: com/sun/java/util/collections/TreeMap$2.class
+SHA-Digest: 2Ct2Cia/gdX1YtFBI6wYdeOeCVg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Mm8cWGHnaXzh8ePtgwozfw==
+
+Name: com/sun/java/util/collections/AbstractList$Itr.class
+SHA-Digest: hcRarSL0g7q7tji8KuRvzZTrLkw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GkL7/QQWF1NZXUdZG7NxuQ==
+
+Name: com/sun/xml/tree/ElementEx.class
+SHA-Digest: TyUfv1lawGxjMKXGJy8/nps4MIg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RkmlE6sNOK8jFM4xfILMFA==
+
+Name: COM/objectspace/jgl/HashMultiMap.class
+SHA-Digest: T0AYrsiWMN2D7X9FnMkcdvTOtxE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: w6mEfl8gMKrTonJ/XkMydw==
+
+Name: COM/objectspace/jgl/Tree$InsertResult.class
+SHA-Digest: 7oMrISIgKmXoZNEI9T9poUSQw4E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LMHNxNcpPCTNCmiKfJTcPg==
+
+Name: com/nwoods/jgo/JGoActionObject.class
+SHA-1-Digest: sdYpXTJJWfZ1XG0NmLFZEX8Ests=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 3xiibhzP2QSiz6jK1+TPyg==
+
+Name: Acme/Nnrpd/OverviewCache.class
+SHA-Digest: FYFUvA0qh7Fd6GwHLrf/CR5BeMM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: qoVf60VGXefrNEJ/rK9cWg==
+
+Name: javax/mail/Store.class
+SHA-Digest: SfOuaWxgC6Pg7pafBzCWkOFeaa4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jB9oBTvekX4uYebIaVebdw==
+
+Name: com/sun/mail/imap/protocol/INTERNALDATE.class
+SHA-Digest: PaZRSmeC9u+arzShQzv21yDNBUQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5wEAA+FHYD1hNBjzJhh+fw==
+
+Name: javax/help/SearchHit.class
+SHA1-Digest: oGXeQ7EaM2XQJvUfCu50uot4Jas=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: p6iN8RhObm647aax4N5BnA==
+
+Name: com/nwoods/jgo/svg/DefaultText.class
+SHA-1-Digest: uWyTgt1E5Zs/oHrK1B2Jy3k6elE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: RsjHpvVU7Ot8PL9lQ3tkMw==
+
+Name: com/sun/xml/tree/NodeBase.class
+SHA-Digest: 0lD6nzvbbjDWWFO2Z7ReSJFYa6s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gcyIVrzQh1tsSI9X1Kz15A==
+
+Name: Acme/PostURLConnection.class
+SHA-Digest: kO5jCIuczvw98Xqf3pnV3LpLmNU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sOiB3zAraGG7KEqJfC3G/g==
+
+Name: org/w3c/dom/CharacterData.class
+SHA-Digest: lVtyxnc51TOj7mqcr2Aq9EO7nuA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Wp2ir+9BFdUS8ZGxNN8s+g==
+
+Name: com/sun/java/util/collections/UnsupportedOperationException.clas
+ s
+SHA-Digest: QxllCi55umwl46J3MihVLdySvsc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: nXS51FMguar0v/PuGA+HDw==
+
+Name: COM/objectspace/jgl/CharIterator.class
+SHA-Digest: 83y3R+1+PAXASiyDQlKTxUqq4g4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LPTvPy1qFIrR3gwrUItWhg==
+
+Name: org/xml/sax/AttributeList.class
+SHA-Digest: 9mTeE25wg3KCBpss+iS06zk1lwQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gGzb4pt6vPAzJtdL0wE8NA==
+
+Name: com/nwoods/jgo/JGoNode.class
+SHA-1-Digest: wyLlJPQZDAvhc0SgFusBSl7vJos=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: ETL3xSx9vq+7VHV/3I7/fA==
+
+Name: com/sun/mail/util/ASCIIUtility.class
+SHA-Digest: YwJhXsz2uB1P9aiKWOA2IK/dcQQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BQXMG9WMBBoqssuwzhJCLA==
+
+Name: javax/help/event/TextHelpModelEvent.class
+SHA1-Digest: 4Kkn4HyzAMAjzjsqS5cO2GC/E5o=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: c8NMZCVBFkreTcGA9/ecfg==
+
+Name: javax/help/CSH.class
+SHA1-Digest: TiXTBQkaN2QKOLtB2sZmMElKd+s=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: qRh+BXj3/UyNmmbBRRdEFQ==
+
+Name: com/sun/java/help/search/FullBtreeDict$FullDictBlock.class
+SHA1-Digest: WgUJsNJsWybH8C6BgWNwouQDEpo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: arTE0mKp0Epy8QGCKOkphA==
+
+Name: javax/help/event/TextHelpModelListener.class
+SHA1-Digest: q9P/GwaVzysHn3MlyGiRpSSNous=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RfYjxq/p4Rf1WUy2ChSmYA==
+
+Name: Acme/Chat/ChatServletUser.class
+SHA-Digest: cPPdS75BkJlRhhdLxN+6jShS9u8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: faJiJbMY3uy8ZTUbqz6m3Q==
+
+Name: javax/help/plaf/basic/images/OnItemCursor.properties
+SHA1-Digest: J2v5cWBd/K2SqzCTXMlMgJypK7o=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BpSLQ3lIJ0tv9Nduf27jFw==
+
+Name: javax/activation/DataSource.class
+SHA-Digest: B5TaFI6M47bUxwhxYQdkgyXBG7E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XhSIG8FtCvGU5IGx/OPrgw==
+
+Name: COM/objectspace/jgl/VectorArray.class
+SHA-Digest: S0813Y7hKIzPKqvd0vsB2Ic/wyI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VdcnCKtIVEk47LUN9/77Ew==
+
+Name: com/sun/java/help/search/ConceptData.class
+SHA1-Digest: EdPKan+XhBhKaNaGxEOg4lyb8Oc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: GY3CntQYPKfE6PvzkK/XiA==
+
+Name: com/sun/java/util/collections/Collections$1.class
+SHA-Digest: h56kKD/+WF3nu/dUBxr4Xsyxrl0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: p7wd49Z+REQWfwZ4p7yXhw==
+
+Name: com/sun/java/util/collections/TreeMap$Entry.class
+SHA-Digest: 2JPMcpE7v0dSpWllfJHb5UrAtf4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4elXo6MQ1CMJkf/U9747wg==
+
+Name: javax/help/plaf/basic/BasicTOCNavigatorUI.class
+SHA1-Digest: YnOVvvK4Zw6c8FKxSoYDqB5ZOYE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7sli5FJKwUtV/2/BpkFOHA==
+
+Name: COM/objectspace/jgl/MinusInteger.class
+SHA-Digest: AapihO8RkdjCeZ3U3m57K+PVYMA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rHokYzMJANAF2A2NVOeXIQ==
+
+Name: com/nwoods/jgo/JGoDocumentEvent.class
+SHA-1-Digest: wbHjDxxqo0KYlJTWB1twJqEbSis=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: XRBMBskXw1ock6NwT7IjfA==
+
+Name: javax/help/JHelpNavigator.class
+SHA1-Digest: v2yiuEqpYvlVYK7JZXmcppEox+w=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: gpbBU9vC8ikcIAtKguzhqQ==
+
+Name: COM/objectspace/jgl/NegativeInteger.class
+SHA-Digest: 8v8CBv8HeFzbS5cqZ33iYuXgffA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Hyz0ToGRI54mfdKRSScgbg==
+
+Name: com/sun/mail/imap/protocol/BASE64MailboxEncoder.class
+SHA-Digest: KMCgpF6TkQFvFshdvZ27d22Dplo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OgqpsbqcWHFLLtvsufVPUA==
+
+Name: com/nwoods/jgo/JGoPositionArray.class
+SHA-1-Digest: 5QZ17qPmqI5xHdbAMSAgRiHmI0s=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: bzapp3ASd2e2CLbThiSsgA==
+
+Name: com/sun/java/util/collections/HashMap$2.class
+SHA-Digest: UvA6V2iiAepbkAYMemSiee4ete0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: k628EvSAZHVzqvyHgZSiAw==
+
+Name: Acme/Widgets/YesNoCancelBox.class
+SHA-Digest: fg6OhmRbP7Rzm4MYyGKEaHXlH8s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DQt6bH+4HPoQy+wgcUn07A==
+
+Name: Acme/DbzSearcher.class
+SHA-Digest: A3FRED1JqR5WbVexTB+3nlzt68I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: i4viUr0dbkfhXrbpOkEkqg==
+
+Name: Acme/Mirrorable.class
+SHA-Digest: VrKcMGNif/5QiQIjrrvtvHPpP2w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: a8M7xZU1osAuTgvmw5hdWg==
+
+Name: COM/objectspace/jgl/Heap.class
+SHA-Digest: 2FPz57JByKhY1EEyK1cBbM97XAE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Wq2rqA/qveGvBRO+44YhNg==
+
+Name: Acme/Crypto/DesCipher.class
+SHA-Digest: V/MUBctLK+HYC2ZjK3J9S5bmD5o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: U36qN3AzfrhkjE8xKCybsQ==
+
+Name: javax/help/NavigatorView.class
+SHA1-Digest: ruSaOMJwlXcemfmLWzCj50GhdaI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: kHK2J/Rc+feqbbs2RJhAwA==
+
+Name: com/nwoods/jgo/JGoObjList.class
+SHA-1-Digest: HmnF+By3zdk1nJWd266JjiIgurA=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: +oHCu3Hk5i4xT8Uqc7dw5g==
+
+Name: javax/help/TOCItem.class
+SHA1-Digest: JKLVO16EOhFF6iJrTtWYopCByRU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WpGcQbZWZKlMzIzWIRepwQ==
+
+Name: com/sun/java/util/collections/HashMap.class
+SHA-Digest: oo7mfkX8bvbuGb/xmp0H2hb3rKk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: S92Ezfd7Oee3cCi80gImxQ==
+
+Name: com/sun/java/help/search/BtreeDictCompactor$1.class
+SHA1-Digest: Pz2toAiQGdJj/SKZYtyhX7KUrB0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: rHbYit6XwED4YLo/VkODQQ==
+
+Name: Acme/Nnrpd/MultiplexNewsDbGroups.class
+SHA-Digest: eCS0goQztCTd4ep+qVGvmAc2A1U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yhj8W8L7NgXuyPFkpVtCAQ==
+
+Name: javax/help/IndexView$IndexParser.class
+SHA1-Digest: 69H5G3QFGxW8sBrTOsgslHD7k5U=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: z0kKKDZTx//zB/xUmT/4xw==
+
+Name: COM/objectspace/jgl/LessCollationKey.class
+SHA-Digest: neS3V8Ir8vbW5wQMvYhBfdfP9+0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: oVSGv7CUJnqsYc6LOTvWkg==
+
+Name: javax/mail/internet/MimeUtility.class
+SHA-Digest: kHbLGeGVEXyBk8NO9kPn249Aryk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: K2ITpJ8sDkMpxggouFOXpw==
+
+Name: javax/mail/search/SentDateTerm.class
+SHA-Digest: LnffHV40+swZQp6xhDClSU4yFs0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g/6CFlZP3Eaaqn9JYleHVQ==
+
+Name: com/nwoods/jgo/JGoView$DragImage.class
+SHA-1-Digest: THA/jAqwkp4WSZIm7RHIMGO8jyY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: VDPfy5PCj0oQiccH37tF4w==
+
+Name: javax/mail/MethodNotSupportedException.class
+SHA-Digest: sCuTKqtKdA+TDUygCTFQ/G20PDQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g7des6fGaCO60NR360XNHA==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedSortedMap.
+ class
+SHA-Digest: XbEcztA+7pdsBeEpdH8MsMnToMU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: N0glaTCFmajdZK7aMY/UVg==
+
+Name: javax/help/TOCView.class
+SHA1-Digest: eraPihFn/SK1zX6CbMEggkjV5xI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: VNFQznRcXYxeoY9/zRdSEw==
+
+Name: org/xml/sax/EntityResolver.class
+SHA-Digest: LH/zuszloYKxt297J4fqQhUK4+8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HwVQMoZ2fojYJPD6Cg+Tog==
+
+Name: com/sun/xml/parser/InputEntity.class
+SHA-Digest: CNjqiawYrFx6KcyBop/e8yFQQtw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Lod/R/1UbuvVfSuj/ivdVg==
+
+Name: COM/objectspace/jgl/Swapping.class
+SHA-Digest: 5wYqERAPeB9qrbDWTRbhLNGqq6E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: A305IEz6fJurWXodo4hhlg==
+
+Name: COM/objectspace/jgl/BinaryPredicateFunction.class
+SHA-Digest: AzIp8jj92onplkXEhZKDE+x5XiE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ppB7S0G+IKmfsNbj9mzdQg==
+
+Name: com/sun/mail/util/UUDecoderStream.class
+SHA-Digest: 9fYN65FGj5rfQJUoRk8KRkXFXIM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FbZ4OqYr6ax5j/7fzsauEg==
+
+Name: com/sun/java/help/impl/XmlReader.class
+SHA1-Digest: r2J0utps7VFy8VT2blahDVOxVLM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 7H05wW/49ZtnPRyH1Wwzvw==
+
+Name: com/nwoods/jgo/JGoLabeledLink.class
+SHA-1-Digest: tTrvWBbLDMf4D0LIykjYBiEclZc=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 3lpuz+DXlKIc36uKKxe8YQ==
+
+Name: Acme/JPM/Decoders/PpmDecoder.class
+SHA-Digest: oEkt9if4wc8Y7OnPktVOEaIkEr4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aUGb7YNXi41y7jIz7I9MDA==
+
+Name: COM/objectspace/jgl/LessString.class
+SHA-Digest: KY7yaNTnBh+wCGRZ5x6ni6yg3sg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ANfrf1TrX99QzVhztiopIg==
+
+Name: Acme/Widgets/Spacer.class
+SHA-Digest: kMxLvHPi3uSycqLvlCbI5/1iGRk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OEId8H9Zeq0yhsvgdaBxqQ==
+
+Name: javax/help/plaf/basic/BasicSearchCellRenderer$ValueJLabel$Access
+ ibleValueJLabel.class
+SHA1-Digest: spUiQQugOka80b6Ta856/Ow5zvk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: hEdoL6ELCGZrk9pdEdJvxA==
+
+Name: Acme/WildcardDictionary.class
+SHA-Digest: vYXlqkFgiJisJcBhtpg9l/J6F/Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HaJ16hhBF7Ddj493/h9ukA==
+
+Name: com/sun/java/help/impl/JHSecondaryViewerBeanInfo.class
+SHA1-Digest: zyOKsjU6V99y46071/aeTKxTOiA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: GaRGaYs0hEkpLKeh6c7FVw==
+
+Name: Acme/FlexVectorEnumerator.class
+SHA-Digest: zXo+04myCzW1oBBjdqXf4SCU3Ec=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: bAj1/q1zjFNgkJXQgY2/rg==
+
+Name: com/nwoods/jgo/JGoLink.class
+SHA-1-Digest: dTHYoSbjmXr6+kCHq8K6dK1nNpg=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: plpPzdYtUOOw9n6ANYoMcQ==
+
+Name: com/sun/xml/tree/NamespaceScoped.class
+SHA-Digest: /S5fD/PqdG9zQ00Kayd7yMMGuzc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IGfXIxy1DsLlPq8/SSmBTQ==
+
+Name: javax/help/UnsupportedOperationException.class
+SHA1-Digest: iVjdgedKVeDhwO7leQl1gNhU5vQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: vlMwIbNisLOqwPveufmDuw==
+
+Name: com/sun/java/help/search/BtreeDict$2.class
+SHA1-Digest: lm1tdJ0dMiSdZUyZ+hMPNN/jcsg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: OyOeIx2XUu5PiMh/UF9biw==
+
+Name: COM/objectspace/jgl/IntIterator.class
+SHA-Digest: 3x+yt8TQ6ElX3EajUbJtgqawZds=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aCi6OV95iWPTz4SSWPE5JA==
+
+Name: com/sun/java/util/collections/TreeMap$1.class
+SHA-Digest: uTJgXz0ad5X8Hi2zac/3f1YMum8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iKBZvDZ24mhQ9wZI1NwvjA==
+
+Name: Acme/Widgets/WidgetUtils.class
+SHA-Digest: lMd/pElEQU1GtqMf1kAD5mjh59k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: tf1ZQITRNxAPKqAeUtR3pQ==
+
+Name: javax/help/plaf/basic/BasicSearchCellRenderer.class
+SHA1-Digest: BCI5tMys+ukEgNcNqcUCQfHCRZk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Bx1ry6NOHoBIYaSCv1YUIQ==
+
+Name: COM/objectspace/jgl/Print.class
+SHA-Digest: 8fbrxz3kyIqQOxt4HO6+DJ2dDwE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CXZIJdYKfjEgP8sFxgbXrQ==
+
+Name: javax/mail/Provider$Type.class
+SHA-Digest: BnTEAK+A7AC+RtvccM/6SKm0Z5U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 22pO4SBABKzm457vX1t6uQ==
+
+Name: com/sun/java/help/impl/JHSecondaryViewer$3.class
+SHA1-Digest: 3vf6eUwCUUbaiYjfTbRMM1oeejY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 1ODQFzeqRrC4dZFZlwgwrw==
+
+Name: com/sun/java/help/impl/CustomKit$CustomDocument$CustomReader.cla
+ ss
+SHA1-Digest: 6xWGrE0t8fqKSAZBxilqgNJ62r0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: z4i1wIDvu6Ny5gdmGwzhHA==
+
+Name: Acme/Serve/servlet/http/HttpServletRequest.class
+SHA-Digest: 90Z4UU54DnSPXW0wRVBOUlJL2K0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: I5zED1d5iHBm9ahxJXRQ+g==
+
+Name: COM/objectspace/jgl/UnaryComposePredicate.class
+SHA-Digest: f+ev9IumvGSyKG0ctn3x1qfySSY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kOD0MXQCmT1QOZTwc6lKwQ==
+
+Name: com/sun/java/help/impl/Parser.class
+SHA1-Digest: V70wrQiUUNMbKPJ6N1UTZSJ7Aj4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BZLOqXmUvlTzjVUvQmXsrA==
+
+Name: com/nwoods/jgo/JGoEllipse.class
+SHA-1-Digest: WDuEOwcfI8zXrgvifSm/csOvxlE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: mVEGm17lDHJpK+s5z36CKQ==
+
+Name: COM/objectspace/jgl/DividesInteger.class
+SHA-Digest: 3aJn71CmMyWKRalHb0n8zEBOO1I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BegeRsL9Yo0XYUw8TTv6iw==
+
+Name: com/nwoods/jgo/JGoPrintPreview$4.class
+SHA-1-Digest: ovpC6WZ6EG2QJ8PKceBJYw8pgxE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: zvIK97D7HT+HR9A4W7Kclw==
+
+Name: javax/mail/event/FolderListener.class
+SHA-Digest: jqyODyE3T/VwXhIxZxtt2HKNfRE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zoC/knivf0vigBUa03PhBQ==
+
+Name: org/xml/sax/helpers
+Package-Title: org.xml.sax.helpers
+Sealed: true
+Package-Vendor: Sun Microsystems, Inc.
+Specification-Title:  Simple API to XML
+Package-Version: 1.0.0
+Specification-Version: 1.0.0
+Specification-Vendor: David Megginson
+
+Name: COM/objectspace/jgl/NegateNumber.class
+SHA-Digest: MStYRs5vTu8Yb8XO6uRl/mLDFxg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rSiJjUnp/VhmkCzSPEhflw==
+
+Name: com/nwoods/jgo/JGoPrintPreview$PagePreview.class
+SHA-1-Digest: mSxp2BgbOuUWFtfpaOLD4Jm8PjY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 2Kja6jEe5IqoR7sTKxfvHg==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableList.class
+SHA-Digest: iEfCyx8Qa7vqjz4a0eHezZ/Px7I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sEXtwGIa7e3EgnfGD7y4dQ==
+
+Name: javax/mail/Authenticator.class
+SHA-Digest: nN8eZs2pjjl9l7iX73mRbVQ7IAU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: EB1KsaEJVwXZvK1zpPrgWQ==
+
+Name: com/sun/java/help/impl/CustomKit$CustomDocument.class
+SHA1-Digest: dgXlFypqlGFU+67Fyw1ncErxXxE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Ez3RyttPDBSIZymQoxsUVA==
+
+Name: com/sun/xml/parser/DtdEventListener.class
+SHA-Digest: DFf7a6QDI+P9m4kdA7k7+OBW2D4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1dpVGjx+SErDwPbVWnJQWw==
+
+Name: javax/activation/DataContentHandlerFactory.class
+SHA-Digest: r8rO1d/D9kIJu3GiNzYWgykpnIM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hA9KvoHe3sxjrf2X5oY+tA==
+
+Name: com/sun/java/help/search/ConceptLocation.class
+SHA1-Digest: sMMkj6Pju2ZfbzkNNMCXEp0nnSI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Wk/yn22sHjl8jgoThpSW6g==
+
+Name: com/sun/java/help/impl/TagProperties.class
+SHA1-Digest: uvIKInBY7W4PxTOSyc7CFGB4x8k=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: IWQJnJIXSNwACgyqDWbm1A==
+
+Name: com/sun/xml/parser/ValidatingParser.class
+SHA-Digest: mVH5cjs2ET2aOVpgRFth3HRGiXo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UX04f03nl6z5bmG0pu0BNw==
+
+Name: javax/activation/MimeType.class
+SHA-Digest: sCXHU3HvPI28kmdTnQ4LnFc2wFc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: P7LNMR5NlFdUpCUOrBY/OQ==
+
+Name: org/w3c/dom/Document.class
+SHA-Digest: YooScY8XBLkEq2fPnQw/cACaNKw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uVi5sC6R+gWr8skL0czPdQ==
+
+Name: com/sun/xml/parser/EntityDecl.class
+SHA-Digest: 0gYYOWjeHXaXqQJjvlDiLxCJD4E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KxC0MvS2xX38B/DxoWNYwQ==
+
+Name: Acme/Nnrpd/ArticleCache.class
+SHA-Digest: qTSZHNsXDSRQT4z27LQTpXfdbzM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IGjOJ4fViDL6MvLQ67UFxg==
+
+Name: com/sun/xml/util/XmlNames.class
+SHA-Digest: xGtByDg9pKzyetzaYbadptaORBw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SG0WSK/OtawxsE1ngWqiMA==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Hidde
+ nAction.class
+SHA1-Digest: 6xvFJ6ZhZPJq81hJlXcedPgddDE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Gvj1/UnEXw+dgfx8sx4eRA==
+
+Name: com/sun/java/help/impl/CustomKit$CustomDocument$CustomReader$Obj
+ ectAction1.class
+SHA1-Digest: HS2K9MZs8DRig6y56txnA0IL+LU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: I4eP9J6Hlk2pKDmuwZcLVg==
+
+Name: com/nwoods/jgo/JGoSubGraph.class
+SHA-1-Digest: FsWeTbMVxnozZlS41RlSiwMj75g=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: EblDEXSI08LsF+EiZB75dw==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Objec
+ tAction.class
+SHA1-Digest: ldR4No7CaJwwkDu4hvKpinM0w8A=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dAgQwsQ8zOoGC26Nkpn8/g==
+
+Name: javax/activation/DataHandlerDataSource.class
+SHA-Digest: s/ZKm+IXYoLLI+8W7mearIWaxVo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZgQkIa4Put/Fp83fYggDEw==
+
+Name: Acme/HtmlScanner.class
+SHA-Digest: yUAPW96RysydOAl7bD+3x49uNNw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gLExd643r6NPKpcaCqg+SQ==
+
+Name: com/sun/java/help/search/ConceptGroupGenerator.class
+SHA1-Digest: 34DtaSKGbzzwZ41nkaAxMEA61sY=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: QJ1+CZc1oavLsHJWW0+tIg==
+
+Name: Acme/Nnrpd/NewsDb.class
+SHA-Digest: i2eivj1qJ/wurMUsoXXycBbXAFE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aMYhesBcQsrGHBF/6/QSmw==
+
+Name: javax/help/TextHelpModel$Highlight.class
+SHA1-Digest: tMv1dhI8ZQqpXOwAn4icavz4TnI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: LJbdkW+cXz8o2+FRnwZ/LQ==
+
+Name: com/sun/xml/tree/CDataNode.class
+SHA-Digest: PeGxMe5dZQYn6yfON10Yrb+7NwA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CEYZX+tSNrLXb/2CZWY4jw==
+
+Name: Acme/LruHashtable.class
+SHA-Digest: W3SuFqIvGEUUtDUM6coRM36ozX8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VoVFY6XlfhgAfoHlyk3ONg==
+
+Name: com/sun/java/util/collections/HashMap$1.class
+SHA-Digest: WPFFzI96UCDuGydWW4swJpyWFdc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ihNui730W7niMn96/HV8Cw==
+
+Name: Acme/HtmlEditObserver.class
+SHA-Digest: 59p202mOjK9+w79GTH1dGNGfSoI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OCCNfNGd1ob2TcP1IdVE7g==
+
+Name: COM/objectspace/jgl/BindFirst.class
+SHA-Digest: 1AtArxPXU8b1AIFG5mXUoynqP0g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 32Mmd+ID+cjKI40OCuXiIg==
+
+Name: Acme/TaskRunner.class
+SHA-Digest: aFYZAsPmc0NWT9DOn2Ve9u/8TpA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DdgLW+KywpXXzKrBOtiLrA==
+
+Name: com/sun/mail/util/ParseException.class
+SHA-Digest: xqbHUflpJGgcRvbC3OLFEZF9jKs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /a+struXa+HCii+1vbwPCw==
+
+Name: com/sun/mail/imap/protocol/Item.class
+SHA-Digest: jt+5t84a7Lj6fTDiFf92jLnL904=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: f8dwgYEGj6s5B+scssgOhQ==
+
+Name: com/nwoods/jgo/JGoLabeledPart.class
+SHA-1-Digest: PkH1fKaLgrPuzASmOiiimK06jkI=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: wcnj6lQ7Uf7ez9v7Rw7AQQ==
+
+Name: com/nwoods/jgo/images/jgoover32c.gif
+Design-Time-Only: true
+SHA-Digest: JCGuhongyg81k8pbaOACcSQd7w4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DBzWDe2luEbOh+GI6ep8Fw==
+
+Name: javax/mail/internet/MimeUtility$1$NullInputStream.class
+SHA-Digest: Buv4P5J451/ECsPK/kgKc7SMtBU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CKDfaPtxPvyPzZCDB8MHdQ==
+
+Name: COM/objectspace/jgl/SetOperations.class
+SHA-Digest: B2Y+qVWsbLg4R1LVMLpoH//F878=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CPecQNzrggtWk67H6CRyog==
+
+Name: javax/mail/MessageRemovedException.class
+SHA-Digest: JNbv4TUbZtSjrqn8BnjYDoI7LZc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: s+1g9Qe0bPkAgx1TSf5Xcw==
+
+Name: COM/objectspace/jgl/ArrayAdapter.class
+SHA-Digest: OAMfRtzotma86VvuRbRDLWwuHak=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2S1nvpd00Ap8qE821LA9jQ==
+
+Name: javax/activation/DataContentHandler.class
+SHA-Digest: lTM5vo32NfspQZIJHR1qC3TtxCo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: fpzh7csTHnhqCPWuqabMOw==
+
+Name: COM/objectspace/jgl/LessEqualInteger.class
+SHA-Digest: YgWqUM+SgrT6Q75+Wk0AsGitOc0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mBd+AToiHfQeXrF1GY11jQ==
+
+Name: com/nwoods/jgo/JGoOverviewBeanInfo.class
+SHA-1-Digest: XRYqDM3es1pTymkcdL6++R2htsI=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: xG/md/uIsEAlfjti+emcuA==
+
+Name: javax/mail/event/MessageChangedEvent.class
+SHA-Digest: GSocZMqy59RsqI1UfVfGIrPjqDw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Ofr40/fR8+BdAYsfLAv8eg==
+
+Name: com/sun/xml/tree/Doctype$Nodemap.class
+SHA-Digest: 8CeZX2qdoD47YqW/0EYO2GU10ak=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dxAH3KetmfucnoDFs0ZXlA==
+
+Name: com/sun/java/help/search/ByteArrayDecompressor.class
+SHA1-Digest: eiuxtegmbFk2NM1lPuDyACF94h4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: GKRIhEj7X39J32Fqh1FBww==
+
+Name: com/nwoods/jgo/JGoArea.class
+SHA-1-Digest: 9fl4di+CqTaN+FvVRn4y/rlnrKE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: hINBPfx6pZ49rSdN+lfROg==
+
+Name: com/sun/xml/parser/XmlReader$Iso8859_1Reader.class
+SHA-Digest: /uqtm83jQAmr9v/BYJCPWvAfsPY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uUyVY56ZVsRY0wojHtXSmw==
+
+Name: Acme/Widgets/YesNoBox.class
+SHA-Digest: an8yDNsoCs6jmFC0EwNZzjfOXm4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: c+ebs19yGMjzPVKsvq78Nw==
+
+Name: com/sun/xml/tree/DataNode.class
+SHA-Digest: uyAwItDKriTCe2eBdFVy7Iai3Sk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CxSvdnZwr3pdHOnKk0hNlQ==
+
+Name: javax/help/plaf/basic/images/toggle.gif
+SHA1-Digest: 102v85ALge6nO9r4cJ1FuACxSoE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: i/rs+tGLXOQQsNhCWhMlxw==
+
+Name: printing/Jlpr.class
+SHA-Digest: 863jAVRfriPxrXsPAAB+zK7lfXQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: puRhlipQeQzoKGLKsgMCCQ==
+
+Name: javax/help/event/HelpModelListener.class
+SHA1-Digest: NoAjdlQ5HjXY1A9ShXvcotdJT9I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: BcdXlimHNS1m8hZ3RpCGiw==
+
+Name: com/nwoods/jgo/JGoLayer.class
+SHA-1-Digest: +38kKtCIFbrGnEF5Sv1fwATJtn0=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: NvY3FEKCApmJnBqUQVev/w==
+
+Name: com/sun/java/help/search/HitStoreNode.class
+SHA1-Digest: lXePTD75WOTw5a5pmW0w2l/wuV4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: bw77aY9XnL12XJXjP0gW4A==
+
+Name: javax/help/HelpUtilities$LocalePair.class
+SHA1-Digest: k1lVQqc87abXtdytJrqQ63eomsk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: s/oLiaqrH5SYalFwqkDh/Q==
+
+Name: com/nwoods/jgo/JGoPrintPreview$1.class
+SHA-1-Digest: g4ELv0p16GT4jfq95uGULvIV6eQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: b4aUDX4KwL17UHjhH7sLpg==
+
+Name: Acme/Spider.class
+SHA-Digest: zatpZ8COTIhzF3DW1ZfFLWxVGd8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TlwTCUkD6VF/vhJm2C//NA==
+
+Name: com/nwoods/jgo/
+Implementation-Vendor: Northwoods Software Corporation
+Implementation-Title: com.nwoods.jgo
+Implementation-Version: 5.1
+Specification-Vendor: Northwoods Software Corporation
+Sealed: true
+Specification-Title: JGo Graphical Object Editor Library for SWING
+Specification-Version: 5.1
+
+Name: com/sun/java/util/collections/Collections$4.class
+SHA-Digest: dCJFR9CipylU3o5vRehzhgzjGG8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /ZvX4ezO0cZhJs3FLUiAuA==
+
+Name: javax/help/plaf/basic/images/history.gif
+SHA1-Digest: p+/dUKbDIWgcRR3HJ1gYdxcM56M=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zvlwSo9twKJbZ4bAyJdcqA==
+
+Name: com/sun/xml/tree/Doctype$NotationNode.class
+SHA-Digest: HdpO/zyh+8mC1KFhEoaNuNnqnmM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dPHzcT758mgqQpeiyxNHgQ==
+
+Name: com/sun/java/help/impl/CustomKit$ObjectView1.class
+SHA1-Digest: PKZu4Cn5u43B7M4m/0uYurU47hs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: RAN3GgusQgTmGub1yNH9kQ==
+
+Name: COM/objectspace/jgl/ObjectArray.class
+SHA-Digest: G0UhqwVKZgONYoAcXfns9bxE3v8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: prSS9CkltM4HLOlFa5rIVw==
+
+Name: com/sun/xml/tree/AttributeSet.class
+SHA-Digest: vTudSe9Qy44xrYseuH/5vHmVEyk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: q+JnsIVLvXE5zabd8DDA0A==
+
+Name: Acme/Fmt.class
+SHA-Digest: FFM7RfjzoddOj9FeGZeTOeouXcU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: P6WR/fd2A4gpsxF9sqrZtA==
+
+Name: javax/mail/Transport.class
+SHA-Digest: TpWWWOu9GyPGboiPfUYcyNU9l3E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: r+Z1a2ez2aTicQK6vX2MLw==
+
+Name: com/sun/java/help/search/BlockManagerParameters.class
+SHA1-Digest: 2ZI6bIwqAtuKPbl8+SvCxsMSvzQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: sdEN3oZlLozC7sOJhqP9LQ==
+
+Name: javax/help/JHelpContentViewer$AccessibleJHelpContentViewer.class
+SHA1-Digest: qI+6bvtYqBR1NJmp+YEU+k5U4yQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: bkq+y6XUFIfdMqOMJ0Pq6A==
+
+Name: COM/objectspace/jgl/UnaryPredicate.class
+SHA-Digest: Rb8qkHEMA3vErAKSRSZZ7woatkA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lJTdSenkmVAjU7v66DtfTg==
+
+Name: javax/mail/internet/ParameterList.class
+SHA-Digest: sxvoWqy1lvF1ojCk6h9IG1k57Ck=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: J8IViptH4jRDFyGDsaDe+Q==
+
+Name: com/nwoods/jgo/JGoView$DragStroke.class
+SHA-1-Digest: Za87FlqkQLKbJSwOmDUyA6Nk4g8=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 8K1rZr2NYHAMSRE/ie7I9g==
+
+Name: com/sun/activation/registries/MailcapTokenizer.class
+SHA-Digest: RS97RDcJvyPcd/FQVB+RliKZjVw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PpoWtu7w3WKCZ2FqZeq+ww==
+
+Name: com/sun/java/util/collections/Comparator.class
+SHA-Digest: CDuYskqezsxco3iToL9/jclUrSg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: R/7c+uZBjOnH3PRas3y68A==
+
+Name: com/sun/java/help/search/BtreeDictCompactor.class
+SHA1-Digest: jz412vQMkErEICBg7R/6E5s/qLw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: M5I38stnLtL7Ab7UStcVCw==
+
+Name: com/sun/mail/iap/ResponseHandler.class
+SHA-Digest: PscpGXa4y5TeSxv6FO/YCRiALUA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GNx1MnWEimCXk8Yq6wG1Lg==
+
+Name: COM/objectspace/jgl/Tree$TreeNode.class
+SHA-Digest: j9FKD8ENP0LppQ8SqgiT8L0qeG4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3WFsQf+K98PIWYCtFJXVMw==
+
+Name: COM/objectspace/jgl/CharArray.class
+SHA-Digest: 75ScFUyfKsVBMPHI17Jbwushpuc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 9VbAbDR2r1/U5Dhpvlq1qg==
+
+Name: javax/mail/internet/hdr.class
+SHA-Digest: xbBSZ/7DVlxGJrVJLR/wFZMCXN0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XZ+6RvBucHOSG6oxQgpIkw==
+
+Name: javax/help/search/SearchEvent.class
+SHA1-Digest: ARV33nEFqZFiqm72h5mmIKLtasI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: KvYx9TQyuCSNI09Eg47Pvw==
+
+Name: com/nwoods/jgo/JGoViewListener.class
+SHA-1-Digest: 6MNrgtWJxcdv7Vd5w/py7gji9tA=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: awV1nLcS4kxsi7bc7YkdIg==
+
+Name: COM/objectspace/jgl/OrderedMultiMap.class
+SHA-Digest: tXH5hHlIPwyqOGmLQMFJEPwfIkY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZsrHqNu+YloYnJwtu6H9OA==
+
+Name: com/sun/java/help/search/DBPartParameters.class
+SHA1-Digest: VDZOz/awNh/Q/onOrY++iotiewM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: nkczrzOrNGLAQEyixxQFkQ==
+
+Name: javax/activation/URLDataSource.class
+SHA-Digest: /qsXU0R8VJD6SKej21HE+PCVMOU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Ef2BsfGehliwuByG0ouGxw==
+
+Name: com/sun/java/util/collections/AbstractCollection.class
+SHA-Digest: //Xo8YTSavwdv+KIMp2IpA72t4o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pB6aPRgpcaAVN+nZfwOLtg==
+
+Name: javax/mail/search/FromTerm.class
+SHA-Digest: NocPhMW7iBSuPwIiAxcMiOr72Uk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uyb2n1KumIy77KXkyZuhzA==
+
+Name: com/sun/xml/parser
+Package-Title: com.sun.xml.parser
+Package-Vendor: Sun Microsystems, Inc.
+Sealed: true
+Specification-Title:  Sun XML Parsers
+Package-Version: 0.8.0
+Specification-Version: 0.8.0
+Specification-Vendor: Sun Microsystems
+
+Name: com/sun/mail/iap/AString.class
+SHA-Digest: Jkfno574uWxb+SxoAhaHYfEh63A=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FKptrBa3h8SOUFC+TF4sGg==
+
+Name: javax/help/HelpSetFactory.class
+SHA1-Digest: aZFP/t4PkvA/zCyIiJRuLq9Yqy8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: FLLSHcKhRRW5dRse0SoClQ==
+
+Name: Acme/TextcompInputStream.class
+SHA-Digest: w6apqcxBKFvyb/oVaiApmtg6Bwc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: MVlJWwK3MeTaoRkXz6mIJQ==
+
+Name: COM/objectspace/jgl/Comparing.class
+SHA-Digest: n4uTnjd4zUw51+wHylmn8EYwQcA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: q0B+tY/MRwyuFlEjSflDbQ==
+
+Name: com/sun/java/help/search/BlockProcessor.class
+SHA1-Digest: y1IxpzyQjM+d16MeXTswnMQKTDk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 1eXrPgL79hwpTBON9jOjVg==
+
+Name: com/sun/java/help/impl/HeaderParser.class
+SHA1-Digest: 1WCC13ZJ+PB+ubm2R/OL/vVZim0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cRbW2j2fxcA5S1p0R4vKUw==
+
+Name: com/sun/java/util/collections/LinkedList$ListItr.class
+SHA-Digest: UQNpgFoQE71BwugS4DCIsi7mVhQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Np0GNp1bRmxF9N2O4qGbQA==
+
+Name: com/nwoods/jgo/JGoOverview.class
+SHA-1-Digest: qZd5xTjGQMNewU0ySJp8V9jsscc=
+Digest-Algorithms: SHA-1 MD5 
+Java-Bean: true
+MD5-Digest: CUiKbk405nFA3O0/NnHo0w==
+
+Name: COM/objectspace/jgl/GreaterNumber.class
+SHA-Digest: 0bQNIxDXtuc7ufzzFdiUILGyNcs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2i8jOWVgCEMgwcD1Iu4G0Q==
+
+Name: Acme/RefFloat.class
+SHA-Digest: hss5A5Ia/GHVUJ4x6o48qBzgdXE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Z6L3e0QsMrihwff15jaRFA==
+
+Name: javax/mail/search/AddressTerm.class
+SHA-Digest: wi4ejd7css/8K9OZbu3TbsI/3go=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TSpQpUpyjsM7JkYgmTCBuw==
+
+Name: Acme/PsgPathItem.class
+SHA-Digest: jVAfCDUFvAzNKpFvo1IIPdJNONQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hJAD9ENehAHSHGwK4Ju+GA==
+
+Name: COM/objectspace/jgl/Set.class
+SHA-Digest: +ckZsB/UIpa3nhaSUB7XlH1UoLI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PQ1nw8SOPGMPl/g7tj41hA==
+
+Name: com/nwoods/jgo/svg/DefaultList.class
+SHA-1-Digest: 3QA4Y6DGqYMwy/9WJ+qY2TdT4/k=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: C+zeezxQOI7XnnxNoqLCYQ==
+
+Name: Acme/Serve/SampleServlet.class
+SHA-Digest: 1c3zc0zA2Igbr6MwC15hWJq3xf8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HrCOaA5ufFK7UamIJq0zEA==
+
+Name: COM/objectspace/jgl/ModulusInteger.class
+SHA-Digest: 9jCO0xVqL3KC0Qxl7uJYAe6iZWo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dZn799yf4EjQaU6qpjnx2Q==
+
+Name: COM/objectspace/jgl/Filtering.class
+SHA-Digest: ZhSQweWFqaZWyUtRP9jb6YMvfEo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zA+AVZ3dhpQPS8WRSIzljA==
+
+Name: com/nwoods/jgo/images/jgoicon32c.gif
+Design-Time-Only: true
+SHA-Digest: oUzHEdXDGgHGYdMkhIMYmOhdNUM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: qEa+Sd2Nf7kFslqEpTSWMw==
+
+Name: Acme/Nnrpd/ProxyNewsDb.class
+SHA-Digest: vTzh0aE8/9Mf+rxGkpQjowMx0VI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mN7P4dWsMDPvWg7LhNpc4g==
+
+Name: Acme/UtilsBrokenImageSource.class
+SHA-Digest: FIirVoM7NJcc5z1gpA6k5ZWeuug=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IDnMiNgcxFpIWjR86jD6kg==
+
+Name: Acme/Crypto/NullCipher.class
+SHA-Digest: TfSi6ZaOoRSS4EK8hexPD9yF1hc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +hl1CFAvdTYt/PcR0F5jdA==
+
+Name: Acme/Serializable.class
+SHA-Digest: IdZCH0QrH8zrjpWU2ia2jUNPfR8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WvCTSjcD68zVP5SR0IC/FQ==
+
+Name: com/sun/mail/util/BEncoderStream.class
+SHA-Digest: /7KJorVILOM/jCVlByDGUtZbvpY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g5NXwv2ZPAlH3Me7TaEIgw==
+
+Name: com/sun/java/util/collections/Vector.class
+SHA-Digest: xDdTsuZFHaD/TpBblogXaCcyhNc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IzezEdI23TmhIHuhQGvABA==
+
+Name: com/sun/xml/parser/ValidatingParser$EmptyValidator.class
+SHA-Digest: ORcNaIKgvFN4qz39sjkYty940O0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zLKpUEYoE0i0B/H5O3Cy2Q==
+
+Name: com/nwoods/jgo/JGoSelection.class
+SHA-1-Digest: cjt4031We3AEjd7HHYoPVmlgo/Y=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: f//WRc9Iz9HfHKUCf9L0yA==
+
+Name: org/w3c/dom/ProcessingInstruction.class
+SHA-Digest: fYBokTsGKrCzU6LzNvNOWEv7Jyg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: j/5UBtggQHQYrjnD2P7VTQ==
+
+Name: com/nwoods/jgo/JGoObjectCollection.class
+SHA-1-Digest: HYiu4jS5yzw9xKB2OFSGuB4RIk8=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: vWc4QDB1hdBbX+gLM7lX5w==
+
+Name: COM/objectspace/jgl/HashSet$HashSetNode.class
+SHA-Digest: 906L37Bsg5EQuAII/SXbpuVWoaU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Yor2CdlvBZG5MZuMyX7d1w==
+
+Name: Acme/Nnrpd/LocalNewsDb.class
+SHA-Digest: kdC0OaM0phtVlCwvVLIrjboZT+U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GkTCgJvC56SnZ98WTlLaRQ==
+
+Name: com/sun/java/help/impl/TagProperties$EmptyEnumerator.class
+SHA1-Digest: WGkxm7VqbCUyLhVB5Vb6KKdF47I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9+XDQUcpTXl4i45z+3Ji8g==
+
+Name: com/sun/java/help/search/ConceptLocation$ConceptLocationSorter.c
+ lass
+SHA1-Digest: UAFBca95L7HWglKll+5d+lgTdTM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Fg+/VdPzCgD8Eauj/d7dVQ==
+
+Name: javax/activation/MimetypesFileTypeMap.class
+SHA-Digest: 8KTQKmfBnJwsV5iRbVW3ErpSRk4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mIMvUL9jo+lxC2xi0RC7Cw==
+
+Name: Acme/Nnrpd/NewsDbGroup.class
+SHA-Digest: 7BpKPHneyUuDjBuoXEEDwgOfBhA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: W86mD9sWSwCM3N7SI6AV4A==
+
+Name: org/w3c/dom/DOMImplementation.class
+SHA-Digest: KhN7A6KGIfUgwHNRW+xJT8QhjtE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ug9D5q6Cd2V1ME6IGzGUWA==
+
+Name: Acme/Serve/AdaptiveAudioServlet.class
+SHA-Digest: TexRkfvJq3UgcD2fjZy+ltUQ+wg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xVRdpQoS5ZjMcYbUg76f2Q==
+
+Name: javax/mail/UIDFolder$FetchProfileItem.class
+SHA-Digest: 55rB1VK/zqEub38m0cM1ukLQRl0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zG9DdUTjl49ivQUVYrbg/A==
+
+Name: com/sun/mail/util/UUEncoderStream.class
+SHA-Digest: aR/fCEPvvfXkkazeY+qg99rm93g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1Ii2HF1JHTBD4rdwLU9eQw==
+
+Name: Acme/Syslog.class
+SHA-Digest: uCmI1ZZ/Kqedn2WYzhV6dNqVGrE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: tekvKFek3ItledfiKock+Q==
+
+Name: javax/help/plaf/basic/BasicHelpUI$2.class
+SHA1-Digest: 41xaoxQQHNeubodRuC0cCbQjiEg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: YivaaAXrBMoWb9QTBqrt8A==
+
+Name: javax/mail/BodyPart.class
+SHA-Digest: rEMcX7LyyiRM/MQcqrDFAcu4JZA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0BTmxQ3nhKxM6OJPY8iQLA==
+
+Name: COM/objectspace/jgl/PlusInteger.class
+SHA-Digest: ryFPeJtw3puPiPe42Zy4g+nVdpA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Pb1b8RFpfxUN3f0G0Thz0A==
+
+Name: com/sun/java/util/collections/AbstractMap$1.class
+SHA-Digest: gaCHiIzQlE3xv3EY397eq4cyCXQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: u1YEzIg9cEOd53QxgX1mEQ==
+
+Name: javax/mail/event/MessageCountAdapter.class
+SHA-Digest: t9k74R6WNEuH8+ani/kY+rqlpi4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /yakhUmGaY8k7om/GEt4Mg==
+
+Name: Acme/Serve/ServeOutputStream.class
+SHA-Digest: xNvzFyUTesG8My8/KQfhaDmfdRs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +7ydQ8fESFiIrro+daB+4w==
+
+Name: javax/help/resources/Constants.class
+SHA1-Digest: EMAs9K2qke3IK6JWfuUlcM0rn30=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: EoEdeJBN9qrpAAudWNqCuA==
+
+Name: com/sun/mail/imap/IMAPInputStream.class
+SHA-Digest: m21u0850hDizDLxJQY+7qs1faEo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: l6itoQ7ikRmg/Y3e93ZrXw==
+
+Name: javax/mail/event/TransportEvent.class
+SHA-Digest: Vq1+Orliwp/bQhb/ExAZ93IiTBo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dcmbHdztj+EA1dUfjlWjiw==
+
+Name: com/sun/mail/util/QPDecoderStream.class
+SHA-Digest: /6nFuYrjuR+h2sDJ9FgpbULYphw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5plmC+eDFtLdb6wEeVLTMg==
+
+Name: com/nwoods/jgo/JGoPort.class
+SHA-1-Digest: WQuDhjltS3CUPLJw4rhMceZoImc=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 5dfvqMP519VrwakpcVJ2/g==
+
+Name: javax/help/HelpBroker.class
+SHA1-Digest: VwJX8bczIkiaD024c3PkKPwj6wQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: f5/O6BMNnRFXZ0FKWjoPww==
+
+Name: com/sun/activation/viewers/TextEditor.class
+SHA-Digest: 1u4govAyrNlTOJBAg8WEXaKbM60=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Gv8K8J3n/FmlZQJF7hpEhw==
+
+Name: javax/help/DefaultHelpModel$DefaultHighlight.class
+SHA1-Digest: fAiccnbLSoslyDgbfII5pZwKZQw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: fE3+m+ZOG7e3J9MDuZVtLQ==
+
+Name: Acme/TimeKiller.class
+SHA-Digest: hU49d9mp18oW4id44AfeUdGjm0k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zF2YyLxFpTQUiG3zPwG17Q==
+
+Name: com/sun/java/help/search/Decompressor.class
+SHA1-Digest: ALh6VjbykJ+n5MwmAYcPUBImZJI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: AQEU7qSd1XaoQ21RhhoJOg==
+
+Name: com/nwoods/jgo/JGoViewBeanInfo.class
+SHA-1-Digest: CykLAKZAVIrT2/u1iTcD4qepWuI=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: gBw6h+TrDvB+g/ED8DeYvQ==
+
+Name: javax/mail/Message$RecipientType.class
+SHA-Digest: eV1UxoHr1bDjKTkffw/Eb5TfcWc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: icy2Lg0ShPSxzeqaKPTW0Q==
+
+Name: javax/help/plaf/basic/images/reload.gif
+SHA1-Digest: qvYtBoxo14Tb+TF9TjHMzEcR4V4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: DGD8g6rLxGKOpso+IdLS7g==
+
+Name: com/sun/mail/imap/IMAPBodyPart.class
+SHA-Digest: wCzkbXayAeXMv9hgvP4+MHdeZ94=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZqtGfnR2/+98owhHpP7HrA==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableCollection
+ .class
+SHA-Digest: 4xDnJEc9zOrEHerqaqix2shtosI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2TtuswK5Q4S3cxffIWu2sw==
+
+Name: com/sun/xml/tree/TreeWalker.class
+SHA-Digest: lkXgVZmoFBxFHAExczy7sHi102o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iiE002NwjLIZRBlJR7UlmQ==
+
+Name: COM/objectspace/jgl/VectorIterator.class
+SHA-Digest: i3fRVNRQCf3gtbcrF/iDV8NwR9c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0CrqvalXeSD3cX61iBdrUw==
+
+Name: com/sun/java/help/search/HitStore.class
+SHA1-Digest: 9k05/TkuZfRa5ENoVdNDBeu79xU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: TAEQSbJ9G6HV/abINmKqHg==
+
+Name: com/sun/java/help/impl/JHSecondaryViewer$2.class
+SHA1-Digest: 53g6bjDybrDQO06xG4ZQaQdBm/0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: GFWnnpKhkeopMp7CaNnbOQ==
+
+Name: com/sun/java/util/collections/HashMap$Entry.class
+SHA-Digest: 5ZTBct4rloEma1Y2/t5rIM4Kwk4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3dGWGO6Uya2lFQDtsxOUlA==
+
+Name: com/sun/mail/util/TraceInputStream.class
+SHA-Digest: ERarilL+MZBCa0DNufPnyJoo/Ik=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: OqMjQxKrN4tFgg6wO4WaEg==
+
+Name: com/sun/java/help/search/BtreeDictCompactor$CompactorDictBlock.c
+ lass
+SHA1-Digest: 0PZ3WmqN587AHtS2w/V/GnvjDmE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WAzBIaZtHba3lhV3OwwtSg==
+
+Name: com/sun/java/help/search/Block.class
+SHA1-Digest: kJ+s1eur2jjt6tcFHeDlwtRWCfI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ekTZUChlAtr6zswlMzF1eA==
+
+Name: com/sun/mail/imap/IMAPMessage$1$FetchProfileCondition.class
+SHA-Digest: Cr/qUC1lnTODKV62Eg25uh2hi5k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DuxFhTRRoSh0FvokaTKTQw==
+
+Name: com/sun/xml/parser/Parser$Catalog.class
+SHA-Digest: BUkjv4KgXBY8QsVlSj90agdCpmw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SQ8CezJtM6A/2EGtS+7Y+g==
+
+Name: javax/mail/FolderNotFoundException.class
+SHA-Digest: djx8bdEkDFtHX9eCHhGeLgOtZ+s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: MGqbe2iZeIU/1buS/CuZbw==
+
+Name: com/sun/java/util/collections/LinkedList$Entry.class
+SHA-Digest: uOgxcrEtnx+Uim9xtgkZLPY1Wx0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ZdU+CQ6Utm2wetfVq9hpkw==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedSortedSet.
+ class
+SHA-Digest: BJ8SJpNbB2ikwR1tqq4NAr/I0Lc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3iST0kOY6++TU4U8C5GYTg==
+
+Name: Acme/Crypto/StreamCipher.class
+SHA-Digest: 94W5gBeOJGrDndjYo6lTuAYpZ5w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eqS5WktIUgXcOgHcqx+4zg==
+
+Name: Acme/Crypto/Rot13Cipher.class
+SHA-Digest: z/zioTDKm7hqXnuZl1t2FnLIOOk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LWWwVcCholn3P62Vatpj3A==
+
+Name: com/sun/xml/parser/Parser.class
+SHA-Digest: +ghi8mwtxp40zqez1CPRO6Qk+7Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HL0nQReceR8SVe3QUBMHcQ==
+
+Name: javax/mail/NoSuchProviderException.class
+SHA-Digest: Ch/q8VQX/+90mM1AvyNNQczmc/s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5wwi0CitF67gBLyj/kYRFg==
+
+Name: COM/objectspace/jgl/BidirectionalIterator.class
+SHA-Digest: MuHf0WTllO5PkW6b2qSp56bhtTU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1YcdVUWD1hQcXxZrlcYTdA==
+
+Name: com/sun/java/help/search/LiteMorph.class
+SHA1-Digest: 9zFaNZ3CgpHhIHdA6ojzVWTkYec=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: NiQpEPUY0wF/0+bjGfADZg==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedMap.class
+SHA-Digest: KB9sg5Tef9N6Y775wi7acWxDBG0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FTBzjEduRJeMNAQ9AeTdfQ==
+
+Name: com/sun/java/help/impl/Tag.class
+SHA1-Digest: WR2ROcYbr5/NedT8XxC0xlb2Go0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: LhjgqXnqEWonjO1Rkxe7wA==
+
+Name: com/nwoods/jgo/JGoLayer$a.class
+SHA-1-Digest: KeRUCp+MaFLGWU1BD8IScVhlu8c=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: iUXqv5eG5oL1tp8XP+Qc+A==
+
+Name: com/sun/java/help/search/Entry.class
+SHA1-Digest: Dbx3+MiqQAnUdu67lvLrywoG8lg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WKhzL/XUyO+/pKYnjuGhIA==
+
+Name: Acme/Crypto/CbcBlockCipher.class
+SHA-Digest: NQGASPdPzuYh/VrsjAxPrhCgX30=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hp1LM1XtgZINJvTaqOFMHA==
+
+Name: COM/objectspace/jgl/EqualCollator.class
+SHA-Digest: ETGrXg0IYyLqYJqFcRt096PWS08=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 822VJUcuPn0Ce75+gTN+jQ==
+
+Name: com/nwoods/jgo/images/jgopal32m.gif
+Design-Time-Only: true
+SHA-Digest: AxfqtKStg9My5jqb7Fg27ACRZks=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: soeN7BH16OtRl8dw+InglA==
+
+Name: javax/help/Map.class
+SHA1-Digest: pZ/B8jL6jOzTmXpmQ2Zi122V6sg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 1yJsDuiKUwvy09OfDcW7Cg==
+
+Name: javax/mail/MessagingException.class
+SHA-Digest: kOiekq1g+9ReG47dxgdoVipXrdo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LSCfhe1u0XJ9Kv66FuvRNw==
+
+Name: com/sun/java/util/collections/AbstractMap.class
+SHA-Digest: 7ENtWvg/+FQVnxZBP2qiOsvSDRE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QqlJ1XMyeGbAGJy+CNfNUA==
+
+Name: com/nwoods/jgo/JGoView.class
+SHA-1-Digest: 8TDKIF1xRrXTbIwzWh2WPpYqqDI=
+Digest-Algorithms: SHA-1 MD5 
+Java-Bean: true
+MD5-Digest: 1lX5Byd2CbpykHprAx7JVg==
+
+Name: com/nwoods/jgo/images/jgopal16m.gif
+Design-Time-Only: true
+SHA-Digest: yAKVY7pvi3uO8WkAur0kvg1yZBY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NAZUNGX9yGHs5LLAJlMe8w==
+
+Name: COM/objectspace/jgl/SListIterator.class
+SHA-Digest: uVARClQaei5R6fjcuCYzo7pCPF8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ij3Q0mZcaL8hkQbMXY3uyg==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Chara
+ cterAction.class
+SHA1-Digest: eNGgsTF6NcpDVqPRnJUAc3T6L5Q=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: OnH0pYy5i3LEMOUfRhG+4Q==
+
+Name: javax/mail/search/MessageIDTerm.class
+SHA-Digest: 305E4qmEBJEPgv2jMGquhMy+PPU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: S6YPeh0DFcI3zmxa44G14A==
+
+Name: com/sun/java/util/collections/List.class
+SHA-Digest: laa7ZDVhEx/ZmgqlMh51Byk6zqM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CvrzFsHqxGJzcltYOsPvcg==
+
+Name: com/sun/xml/parser/ContentModel.class
+SHA-Digest: c8p7phQrD2Si/VFPVnTq5DXSTe4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Pzba+oAMlRfyUCMMy/tS8g==
+
+Name: com/sun/java/util/collections/Iterator.class
+SHA-Digest: +4ecULDmc8faJu2BRjQAOlczoz0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KO2Yvvedt+qjz6cDxFtLTg==
+
+Name: com/sun/java/help/impl/CustomKit.class
+SHA1-Digest: y2ekOLn34+m0eJOw0agw6VPtffQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: MDz2TTmvbPoTRZ5uqMuKmw==
+
+Name: com/nwoods/jgo/JGoPolygon.class
+SHA-1-Digest: w/OgRk0a19gq7NcYI4/dBVMTKpw=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: /g//zJ6INewKsV68cxDEgg==
+
+Name: com/sun/java/help/impl/MyBufferedReader.class
+SHA1-Digest: 1G8bRLP2Nt2oddotT8Ya8bP6xvw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: tdKi8sd1msiuoSZ9kpzOlQ==
+
+Name: javax/mail/Provider.class
+SHA-Digest: qEwOmxWiKaiOHmrqd3BVymWW27Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rLT+eNNOm8xXQ8jqRb3vPQ==
+
+Name: COM/objectspace/jgl/ShortIterator.class
+SHA-Digest: 5gwiAXQTOJwsaHV+xTuz3kDm20U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /3LTh7JviJ31E2BdeBuZ2A==
+
+Name: com/sun/xml/tree/XmlWritable.class
+SHA-Digest: dyZNCl2doTSNubMKlVdyzHDekwc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kO6l6wbImG/dFHmnawfpnQ==
+
+Name: com/nwoods/jgo/JGoView$JGoViewCanvas.class
+SHA-1-Digest: 3k5gvpPd6xGZmqbcMy1oR9KLVes=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: stmsQdGayVi/0B5kqi6wpA==
+
+Name: COM/objectspace/jgl/Queue.class
+SHA-Digest: 8WRclK4FKgrKQK2aT30Hq4/Qe5U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2ssA1UU2Kzu4reILBrB6vQ==
+
+Name: com/sun/mail/util/Parser.class
+SHA-Digest: wnlS+T6xUafkIDnZ0w0qx592600=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2uYhOBB5BQ2bpjbfthsE4g==
+
+Name: Acme/JPM/JPMUtils.class
+SHA-Digest: j8fYAJymo80xSIwa/FsFXreL1N0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lAlaOOpf78iSs4J/0EhutQ==
+
+Name: com/sun/java/help/search/QueryEngine$SearchIds.class
+SHA1-Digest: IP76Oo92CN7y3GLQMK1WXt834A4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: q6YtQyCEapI1MVfgQX5g9g==
+
+Name: com/sun/java/util/collections/Collections$2.class
+SHA-Digest: +/NVAq080I9sAl5LDKz6SpgM7W8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dnAft7FNvTnYJ01ZnHzjZA==
+
+Name: com/nwoods/jgo/JGoScrollBar$JSBDTListener.class
+SHA-1-Digest: mV4UiCHtFW+MlMdrwW1oEOw5Fq4=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: o1RW4y82ZlBFycPrKCcS5Q==
+
+Name: javax/help/plaf/basic/BasicSearchNavigatorUI.class
+SHA1-Digest: nPPrion+aQ0ms0nEiu7+k+l+QKI=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: uycRPGFryJghE9Af57KBCg==
+
+Name: javax/mail/internet/InternetHeaders.class
+SHA-Digest: HAqO0xNvKNqsJqP1o3kDA8LGZ1o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: oz04ArNaQDNCmBdlSOFYog==
+
+Name: Acme/Nnrpd/NewsDbArticle.class
+SHA-Digest: 1YpxI6s1CC6t7p9JUiG4zXmKBOU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eY8FvmjbqQZPriWJt8j9PQ==
+
+Name: com/sun/xml/tree/ParseContext.class
+SHA-Digest: /fffCU+EQQjAyYz4N1fniLFKtVE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 25rF1CTh6Yq+moQ2tLOP/g==
+
+Name: COM/objectspace/jgl/LogicalAnd.class
+SHA-Digest: L3Jut9XYahD5zfHgxS4qsO5fqRs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: AhexO4YNAbQkDeMrKLfcqw==
+
+Name: com/sun/xml/tree/XmlDocument.class
+SHA-Digest: o80XPgm3wHUMD0RlZZMnb0j72ms=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: MeFfxkUsUe++8CjZApilLw==
+
+Name: COM/objectspace/jgl/Reversing.class
+SHA-Digest: YP8ezBsp5RQTpUQlYuK2rXaX6K4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Pm+Xbir9kC9ty11vaiyR4g==
+
+Name: COM/objectspace/jgl/ReverseIterator.class
+SHA-Digest: MN91Ukb9j4ZVGZQsQLHSvlbAWuE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: fgoKBHAlEi6JP5/tvVfcbw==
+
+Name: javax/activation/MimeTypeParameterList.class
+SHA-Digest: EJS45w97YTGh+UfYCtF5J8OhzS8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Qb30VaxehVi/57UHLg6AwA==
+
+Name: COM/objectspace/jgl/GreaterEqualCollationKey.class
+SHA-Digest: q5Re67ny00XePMgXDTcu0PvmRHM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: G4jtJUjN+wFFkXm01xOZyQ==
+
+Name: com/sun/xml/tree/ElementNode.class
+SHA-Digest: kevLuUZE3UiW/qC348LhcMexy0s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Brdz6004cAmfhsBD3cjIZw==
+
+Name: COM/objectspace/jgl/UnaryPredicateFunction.class
+SHA-Digest: tsnK4RpjJE4+rsbxkmO2HP4ZObo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sltcD7j9RVl4lugYMC27pQ==
+
+Name: COM/objectspace/jgl/Benchmark.class
+SHA-Digest: CY8Bgk9Qxlw8wyoLk81pbmVezTA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lGKbxmqf3fIuC6TTcRHHTA==
+
+Name: javax/activation/ActivationDataFlavor.class
+SHA-Digest: RpZcgueNDBcYfxjQ3EMWbAHJK8w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: t2Dd64nPF//BTK/e+AEbQg==
+
+Name: org/w3c/dom/Comment.class
+SHA-Digest: vI8C2aGDwpFKholU8SlE/ue58c4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: u69EXNdTQniZK3FXH4k8uQ==
+
+Name: com/sun/java/util/collections/AbstractList$ListItr.class
+SHA-Digest: Efa10NxMftMiCcuQkkWIAG97UP0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: up1phnSNCsu7kfy/8OWbxg==
+
+Name: com/sun/java/help/impl/JHSecondaryViewer$SecondaryView.class
+SHA1-Digest: Y92MuvlTyE0q9brtiDdLAWTbhLE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: O5Qo+iwD1lXsN0xs3Xck3A==
+
+Name: javax/help/IndexView$DefaultIndexFactory.class
+SHA1-Digest: Daf1LxSx34Txey4v4Dc8LYWotbw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 4viTrOoQLYtQEGPXZhNiQw==
+
+Name: com/sun/java/util/collections/Collections$3.class
+SHA-Digest: poZ/fv9FiDBcHHT1PJedoyMBKac=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xHIe2Y8Re8J7iBQ+WfQ4EA==
+
+Name: Acme/JPM/Filters/Oil.class
+SHA-Digest: f7BECeh9riAGbsb1x6ocVZAlNOQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aC3Z3c7K0Fv6UuaVnid0sQ==
+
+Name: javax/help/CSH$DisplayHelpFromSource.class
+SHA1-Digest: dw5si5fs5NBSqmLcLgknvK2XKnM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: o91eu5bfjZEkYm6SDkkHnw==
+
+Name: Acme/Widgets/OkDialog.class
+SHA-Digest: 0Z6+1qM9qPy+jzivTvDHVaLDHF0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yi/4bVbMyNfU4924yFKcWw==
+
+Name: Acme/Serve/ServeStub.class
+SHA-Digest: XHpO9gjMZgYi+hDT0EYPHHBO44Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: u3YUvtDiWmuKw9HguxJO8w==
+
+Name: COM/objectspace/jgl/Rotating.class
+SHA-Digest: /z8mk5J8qF2x7cvlhVOvAltruXA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5zmpwZ197Vzw2NmdIfJCGg==
+
+Name: Acme/Crypto/Crc16Hash.class
+SHA-Digest: Aojzr7j/Q85fmWsuc7kzQyAzPLs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SWEuW9oYqN2mL0ORoXCpIw==
+
+Name: Acme/Crypto/EncryptedOutputStream.class
+SHA-Digest: EN+/z9zZUZhod7s4jKUUOLCdZIY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vQtTtUc8FjjofUVP/HUNiQ==
+
+Name: COM/objectspace/jgl/HashMapIterator.class
+SHA-Digest: M9A69IWRqxhMYJ5nPZD2oWATIpE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mxemXIWADDuI9rCsbpQwJQ==
+
+Name: javax/help/JHelpSearchNavigator$MergingSearchEngine.class
+SHA1-Digest: ts8QuDxuj03nF0UV4a6gUGzx/os=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: xfcfRs9fohCoQ/uNDulLPw==
+
+Name: com/sun/mail/imap/protocol/BODY.class
+SHA-Digest: U0mEPQN6jCFWEy5D0b0jDVRVwTw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Vizroo6XjE4VLm+Wz9ZYxA==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Block
+ Action.class
+SHA1-Digest: W43Uag43nd61oWG3I7cVzKGP0lA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: O9hDFHEeMCJOvl2UG6LPFQ==
+
+Name: com/sun/mail/util/QEncoderStream.class
+SHA-Digest: Frl6X8KBbrTR4fvJkahBuK7+OSQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: b/mfSSU4QL919rqjIwY+1A==
+
+Name: com/sun/activation/viewers/ImageViewerCanvas.class
+SHA-Digest: 8lUH4TcWIVSeI+V2x+dqn3HWCKM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: M+hW//WzWZJoiBxDIXzIgg==
+
+Name: com/sun/java/help/search/BlockManager$BlockDescriptor.class
+SHA1-Digest: IWp2rUTHLJzhx2gqRcE6dFouT3U=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: MMRvPMz2Qfxhv+iy5f9+gg==
+
+Name: javax/mail/internet/AddressException.class
+SHA-Digest: D3orMnEkTtxLOiAO9bzPQEhQ3MQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kwzK9/pfJjZSM1Cj3gnWqQ==
+
+Name: Acme/Chat/ChatAppletNameThread.class
+SHA-Digest: Nh9jZW2Uhs9Een5WF4KjPOIKc7s=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WWIPgKWuDmq+Bfd22eJMyw==
+
+Name: javax/mail/event/StoreListener.class
+SHA-Digest: +BM2MswIMrP3NN235/bFi+oCxDg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1kvCLUbz8y7ESbY3/ceYag==
+
+Name: javax/help/plaf/basic/images/low.gif
+SHA1-Digest: KanHtsiNdVmSyWPmUFzm66Dbit8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: vkpLNq/5QIc38DpKWC+iZA==
+
+Name: com/sun/java/util/collections/HashMap$3.class
+SHA-Digest: jJDMuEqn+kyllPmKYHAnN2vmLTE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g4xJrFDbTBF35T/D00bG4g==
+
+Name: printing/PSGr.class
+SHA-Digest: PcPCw56FL8Iyryr3P+wiPij74bU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: bN7rqaP6CunIusCggGNWzQ==
+
+Name: com/sun/java/util/collections/AbstractSet.class
+SHA-Digest: oSR8Z7xrHkETOpfqyoSViuBS0fU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jrPIFkNjFc8ggB73pL/R5g==
+
+Name: com/sun/mail/iap/ByteArray.class
+SHA-Digest: cZ3kO2kBNMZ+0ej0yQgwDoB5wUA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DVn9VoCMovyNG57gOg6JVA==
+
+Name: Acme/Widgets/WarningBox.class
+SHA-Digest: 4EUH26sCenQuM7fPymMTqqVnayc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BQ1dnU9rBZ6efQjUG4mOLQ==
+
+Name: com/nwoods/jgo/DomCDATASection.class
+SHA-1-Digest: 9TBnKF/rKZ1XEfHaPuGTo9w95h4=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: EIod4VwvjWczmIv6ZRZS4g==
+
+Name: javax/help/IndexView.class
+SHA1-Digest: bGL4NYuSIrak0YdbtSKOL6G4glo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SRx3ZJTXT9tNhMHpFw0khg==
+
+Name: Acme/SerialUtils.class
+SHA-Digest: U7aSTIRoR2Q7cKspTw88CnlZlfw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: legDg212/5Oj6sEn6rmWeg==
+
+Name: com/sun/xml/parser/Resolver.class
+SHA-Digest: JF3O6UjbMEK/U5CzHLT4YNHt8Zo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: auvFq4+NkGzPVS6jFC6bVA==
+
+Name: com/sun/mail/imap/protocol/UID.class
+SHA-Digest: 5Yj49SyD3HqXZ3jpCjijXaPTBns=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: c3xqGNM0mHjcYg8NTRKSUw==
+
+Name: javax/mail/search/SearchTerm.class
+SHA-Digest: IDVNHpSyo0J650hafC7/wWyLG28=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QkpbqdT8nPUTXw9LDUjuIQ==
+
+Name: javax/help/plaf/basic/images/pageSetup.gif
+SHA1-Digest: 5vhWLDrp+ELO/gORgIpnBF7QbNk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9ldwwOKwSwXIBkZqbinWsw==
+
+Name: Acme/Nnrpd/NnrpdException.class
+SHA-Digest: DIZ3tYtHNG4FuJ0vH10w5/YWdn4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FyJc3GXv+VbpcYZKEhTDFg==
+
+Name: COM/objectspace/jgl/ObjectIterator.class
+SHA-Digest: Z9hs/F1y8dcTEC95PN93ZTj+HZ8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wrls6Ikt60YffiCsKuLInw==
+
+Name: COM/objectspace/jgl/BinaryCompose.class
+SHA-Digest: ixoxq/uKtk7Ha/nep9k4+oRCtjI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: al3AKHDRQrjfmrzzkGXoVg==
+
+Name: COM/objectspace/jgl/LessCollator.class
+SHA-Digest: 9evDrdwNqUBL/2/oMO2Ta0PpeHE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 8BcBQe9vzta3Q96qFnhBnQ==
+
+Name: org/w3c/dom/Text.class
+SHA-Digest: CfrIj9PBXCLkRNtIR4LPkG7CC4M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: B+mbPRO6uVzaWby3RwvUFA==
+
+Name: Acme/JPM/Encoders/PpmEncoder.class
+SHA-Digest: eTei/qiSIwpLlhU7XQE8wfmr4w0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ChxY5bu95TofrXqEg6k1Ww==
+
+Name: org/w3c/dom/DocumentType.class
+SHA-Digest: Xe2AtM8i14P7Troo0BC85KiBbhU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: T//fiAvvY8qqVtppKgv45Q==
+
+Name: com/sun/java/help/search/MemoryRAFFile.class
+SHA1-Digest: p4Q1scoI1XJNoPRSvtg0aykR1Vc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: V48mzt9tB9iaDhJ6GgPmOg==
+
+Name: javax/help/resources/Constants_zh.class
+SHA1-Digest: VCpkvjVh37V0sgOorWBx2wD6iGM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +hx4DrSa4U4gTFrwD+HxpA==
+
+Name: COM/objectspace/jgl/BindSecondPredicate.class
+SHA-Digest: rZXKR0XqyfmcWeBwXskUsh9/0xo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /uw8haX7robyZlJt4REeYg==
+
+Name: Acme/JPM/Filters/EdgeDetect.class
+SHA-Digest: /Z8bnCaIL0YT3IPKxLFWI8vdnm8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eGENOzD5Spe8JWN0V7qdHQ==
+
+Name: javax/mail/internet/ParseException.class
+SHA-Digest: XOd9D4EjVowlQ+9HJw9VJ2NJrpg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GVm1D/rhXV29vp7QdcBgRA==
+
+Name: COM/objectspace/jgl/InputIterator.class
+SHA-Digest: Mz0SqAueuhUJTNgEuQdmOscxsqo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 8i2tb2l5CpRQl4ski43T3Q==
+
+Name: com/sun/java/util/collections/TreeMap$SubMap.class
+SHA-Digest: cvMVLTTf5hCm8z94vZVeM19xA9Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FmqLbmn2niV9alJobb0LkA==
+
+Name: Acme/IntGlide.class
+SHA-Digest: ZZrMkhCOUMBPezdPWz8NAX8AhSU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rIibPeVjzRvr4afY87MmjA==
+
+Name: Acme/Crypto/Crc32Hash.class
+SHA-Digest: hXTNC/UJQZS1rFRVthQlP4tmgVI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IW3DCMSMqVGcAyts/cSZPQ==
+
+Name: COM/objectspace/jgl/HashMap.class
+SHA-Digest: YEOHzuCBkehpqmoQ1+/FHaC6mFg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Bpv3P8SKEdr8P5fl/CW7XQ==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler$RootView.class
+SHA1-Digest: Vp+QsEXDmFMsHz1O4WINe4JSW5c=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: z6gglWYW2shXYyFPMXX0/Q==
+
+Name: Acme/Phase.class
+SHA-Digest: r2WWzvdh3F66vIWCqMOOb86SLEc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Jx0uY30LzvutTEAzV1b1mg==
+
+Name: COM/objectspace/jgl/Range.class
+SHA-Digest: FTHOpBf3K/nEyBCVj9acDE6gcf8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: YW2CB681tEkud5dBhMilAg==
+
+Name: Acme/Nnrpd/NnrpdUtils.class
+SHA-Digest: dFDVP8BMortR2yqjD4f5kpcpkXA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HhG1q0UgThJnQ0gclHUhXA==
+
+Name: com/sun/java/util/collections/Map.class
+SHA-Digest: fDGmRio1pZTm1vMFgCUt0C90hl4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2bdo/ED5hFlXIrnsqWerYQ==
+
+Name: com/sun/java/util/collections/Hashtable$3.class
+SHA-Digest: 85yWT+HXzEff+wodcJtHHD546JQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pMETydCgXqkpMyDiqLWI5g==
+
+Name: org/w3c/dom/EntityReference.class
+SHA-Digest: K6L+nJNbrglh8SycCMlHBPoeUog=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: AXBomz1nJFJvgnxX5Gtjxw==
+
+Name: Acme/GenericCloneable.class
+SHA-Digest: qIm9Et/x+9AUWm4krQ7TyT2rOxs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: bT9k9oiRkIYXGz2D3WwS3A==
+
+Name: com/sun/mail/util/QDecoderStream.class
+SHA-Digest: EqdkNUmaHbSQzLABMMDW5yJwG1M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wAzv0yt04hVNcwcSDu62qA==
+
+Name: com/sun/mail/util/LineOutputStream.class
+SHA-Digest: QYjGWiEBBm3ucxidWM68HHFUdWg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BIK570PChxMVDX07zpX3cQ==
+
+Name: javax/help/plaf/basic/BasicHelpUI.class
+SHA1-Digest: amydQ1iyk2zKjkY/yJW4TqIMFww=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: R42N8ymfeJYQdsEWXdabAA==
+
+Name: com/sun/java/help/search/QueryHit.class
+SHA1-Digest: pJlSKr1oPVFR5wvbumXoKiqI8G8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: plvIATTvEiPjTxvusvB3Wg==
+
+Name: javax/help/resources/Constants_ru.class
+SHA1-Digest: WpcQVcKJcpign7mroPKlqRZyg2I=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: U2jFNMjiqZsQIpsOac140w==
+
+Name: com/sun/java/util/collections/Vector$1.class
+SHA-Digest: Xwqeo4NMYk9PIiHqYAK6PagPAsE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CeXCquvc0N8jLnDNR5vL/Q==
+
+Name: javax/mail/event/MessageCountListener.class
+SHA-Digest: Y/DnFhVvjkIMkoV+0T8TXX0uERs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KsukvR8N+IgtpRANO9rhkg==
+
+Name: COM/objectspace/jgl/GreaterEqualString.class
+SHA-Digest: xAiiJyhBThYyoVdQ3YNVV9gnBgQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: oRZExH8UnUWKcSQPpSdGmA==
+
+Name: com/nwoods/jgo/JGoIdentifiablePart.class
+SHA-1-Digest: 8OxCsw81WcGfnFJOpMwPqwtL5YE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: IQZbQGTRi1d374NzJhREAg==
+
+Name: javax/help/BadIDException.class
+SHA1-Digest: yqBdREPfrEnzoT3apOWuVRto4Tc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Sfa50hHMpBtv0kGPJlqidQ==
+
+Name: COM/objectspace/jgl/Pair.class
+SHA-Digest: IKUV0oaI1uRZFrHSisE9UzBGMwU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sBoeFPhfxaObv7A93osTMQ==
+
+Name: COM/objectspace/jgl/Sorting.class
+SHA-Digest: 1vEmb47JHeasE9kIUuN4IJdbKNU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: P2Vodb6F9/vhUe0PWZTx8g==
+
+Name: com/sun/xml/parser/AttributeDecl.class
+SHA-Digest: Z23es1TqiKqxDjBoAMEQhkUMHJE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pYejSr4c99FghI/3aQhaYg==
+
+Name: COM/objectspace/jgl/FloatArray.class
+SHA-Digest: 8vQo2KEzxmKgLDSe3K14tLa/WOM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aLtGaNYI+c47MSDnFWPQ0Q==
+
+Name: com/nwoods/jgo/JGoCopyMap.class
+SHA-1-Digest: JfUjjJQ2nusmjv4wFTkaglgPrAo=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: b1fymZN/+lmrwDhzDcP5pQ==
+
+Name: com/nwoods/jgo/JGoText.class
+SHA-1-Digest: GkNQEkPzIEe39E+H0z6kaSiCUoM=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 6YFwWeluJ/mFVaFoGCSkkQ==
+
+Name: com/sun/activation/viewers/TextViewer.class
+SHA-Digest: zviFs/zZFKjOToTKhzUex23wjBU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: fqIFNfdmf+3IGU5Vt84aqg==
+
+Name: javax/help/event/HelpSetListener.class
+SHA1-Digest: t2WDtHe3Qcgc9xO8uNNk9ElkWJs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: vvm4dpBporqOGF94PhdGvA==
+
+Name: com/sun/java/help/impl/JHSecondaryViewer.class
+SHA1-Digest: V3EeveW+EP/1LKqWMCAm5+12t0A=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: xBgFmDQMmbGGrZWL0P3soA==
+
+Name: com/sun/java/util/collections/TreeMap.class
+SHA-Digest: pr0WdEFAuWFCmGkFM7FCbWY5vns=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BWLDsOihLzcrtd3t5dtt8Q==
+
+Name: javax/mail/FetchProfile$Item.class
+SHA-Digest: CV0z28okgiyP2ZLY7sIR/QC0CIU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 9v9a4wUlapvPTVD03RejfQ==
+
+Name: COM/objectspace/jgl/GreaterEqualCollator.class
+SHA-Digest: O4+OK0YDLcs1pMTLjQk3y/OHgkQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WfdVKxb+9Fz5qkILGexyKQ==
+
+Name: COM/objectspace/jgl/OrderedMapIterator.class
+SHA-Digest: 8LXDAPniC0xzHmxVpP9e95j8iL4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: csngYoVreOvM8ogNF3VYMA==
+
+Name: com/nwoods/jgo/JGoView$DragRectangle.class
+SHA-1-Digest: x2ydOWTYoO+5IWOCs0Ba9Yk8P58=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: YI9/EAPs9hPan2v/pdLfCg==
+
+Name: com/sun/java/util/collections/Collections$UnmodifiableMap.class
+SHA-Digest: 8fCbjHPSBf7L41xQ0F02TZe/Ugo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: P8Ckaex9sT4HmsX8mLFxWw==
+
+Name: com/sun/xml/tree/DomEx.class
+SHA-Digest: 7HnIEfNJH/YRWaY+6n2IG9PXo4w=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SM2uemCZaYVsX/7+AuUgUg==
+
+Name: COM/objectspace/jgl/NumberHelper.class
+SHA-Digest: 2XdWf2FAHsdcJqK+31kKHsyWpWk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: moDLEASQ30jbD2kg6HFURw==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$BaseA
+ ction.class
+SHA1-Digest: yR/cBSI67tC2Nmh437nEUDE1PWE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: P/wfdNAGhieeT3scbEMIEg==
+
+Name: com/nwoods/jgo/JGoDocument.class
+SHA-1-Digest: mfrFrVyJmsaf9gG9sDRnqfOu4Cg=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: DOMRB948NNcwGjDhZ1Vsmw==
+
+Name: com/sun/java/help/search/ConceptLocation$ConceptSorter.class
+SHA1-Digest: C37Iet3PKnS+2TnaihPyVXuSJrg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: yGxRE5Hk0RH6xmR9NmZlYw==
+
+Name: Acme/Serve/servlet/ServletResponse.class
+SHA-Digest: Gkf3l9RF9HdsPlLH/9svq14bgVQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Bx8VJWk7920AeF1s9LEy2Q==
+
+Name: javax/help/InvalidHelpSetContextException.class
+SHA1-Digest: N4znzkxtZJamgn4tRwvmmd7lXxU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 0NvWR2fPvIyWplLHxEOwXg==
+
+Name: com/sun/java/help/search/Schema.class
+SHA1-Digest: PGQ8rQ8q+eCx5g1V6CTJf6mqFps=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: HrYFU9dUnnglnZtLvzDnGA==
+
+Name: com/sun/java/util/collections/AbstractSequentialList.class
+SHA-Digest: 3E4RUpiko/x2qF1VyOrOneMsMZI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VNt3GbNXbKXxXI7LcKXwEw==
+
+Name: COM/objectspace/jgl/ToString.class
+SHA-Digest: yPS8ntvaDGoJpqSTAdMoRtgun+4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: fTd6V2qIqe2u+l3O+SfEVw==
+
+Name: COM/objectspace/jgl/InstanceOf.class
+SHA-Digest: WKguYHgAfhMVB+HBYYDmIGQSor0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: U5ZQMKaQPj2b/fjx5JxrBA==
+
+Name: Acme/JPM/Decoders/ImageDecoder.class
+SHA-Digest: yM/BwP4G+jasx+0FUEsdZ8k482I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: H5/ImDGaQ6XVFrykOsQMRw==
+
+Name: Acme/APrintStream.class
+SHA-Digest: WhcL9KcbxE4ltA2oKHhOqLI0CMQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xackJGLqy5QkOvIvDbuLJg==
+
+Name: com/sun/java/help/impl/ParserEvent.class
+SHA1-Digest: abvJ09Hlyp+qlra6okkXz+EypJA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +HL0nI2lSvQdjpGTSWD/Qw==
+
+Name: javax/help/TreeItem.class
+SHA1-Digest: aGC4XVHkB/nVoYg4LbMS4Hp6kKg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: KRskuuUhylKtf3WLogz/hg==
+
+Name: com/sun/java/help/search/BtreeDict$DictBlock.class
+SHA1-Digest: z0k8uc6206na0ROGlR6ff24G5yA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: adrLvX3AUEfk/yk8kmrtEA==
+
+Name: javax/help/JHelpSearchNavigator.class
+SHA1-Digest: VHRlSMBuhAP0lRwiBz07849MdFo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: PwbYNFifZNV/V80xm+ECtg==
+
+Name: javax/help/TryMap$TryEnumeration.class
+SHA1-Digest: lI/5sVnQqR1wmNJvJQWNVtkl7f0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +IJC7bVenuHhw3xB5yKUug==
+
+Name: org/xml/sax/Locator.class
+SHA-Digest: bhmj44fb+3rfywbnet+gKaDSSXc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Izov5WY2yUg3IqhohkQwvQ==
+
+Name: COM/objectspace/jgl/MinusNumber.class
+SHA-Digest: aTNKxG/KzlG5uL/jhXc8TitX1Rs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: cgXpMV9D6ldy/djgVeSAEQ==
+
+Name: org/xml/sax/Parser.class
+SHA-Digest: MB+gLozmwLv1r01KYJeEF7oQRr0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QoJKsZIOZnL/pudLxMdx/w==
+
+Name: Acme/DQueue.class
+SHA-Digest: 8B1rv/yzM4rhLG7P42cpIAoF/vQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VrPa1mxf/mOUDJ5iFfvHZg==
+
+Name: javax/mail/search/IntegerComparisonTerm.class
+SHA-Digest: GqA4xHjU0Zu/FHbfIp05nj0ZBLQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: V2eU/AoRCbQ7nh7tvVCqfQ==
+
+Name: javax/mail/search/DateTerm.class
+SHA-Digest: qWOqabfA9VaINmdq5Eycb2+Twfg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: j/RtSupetMh7hXSp7dX03g==
+
+Name: COM/objectspace/jgl/SelectSecond.class
+SHA-Digest: pY2W8rGKMbiyxkq9vLPnlQlJskI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +B8KSoiDyMFr6Li6j+Pakg==
+
+Name: com/sun/mail/util/QPEncoderStream.class
+SHA-Digest: REDpYVQZ3Tg8dbETtESnYhZvQJ8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7hPRPl53DEZd9sFOg9JqVQ==
+
+Name: com/sun/activation/registries/MimeTypeFile.class
+SHA-Digest: 0HNsD+AIzhzlpo4AwsgpKi+zoPw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: w62UJnU/CsCl2nqc3Bh3XQ==
+
+Name: COM/objectspace/jgl/ObjectOutputStreamIterator.class
+SHA-Digest: ln/BuqKmoiHtfiKIt2F8vNiJJ4M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5GQoQVaxqk3KBVVV9RfeaQ==
+
+Name: COM/objectspace/jgl/NegativeNumber.class
+SHA-Digest: KUlvSZ9/3n9QXA0XFgLV31rgXzs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: aSQlQu4Z7BWbQ8KhTEJoJA==
+
+Name: com/sun/xml/parser/ContentModelState.class
+SHA-Digest: q8y3v//g8L9cgZ1DqZzeG2Gg5Dk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: M+Qtvk6u/OeflGC8hEFmKQ==
+
+Name: COM/objectspace/jgl/Copying.class
+SHA-Digest: e899BqAX4msI9yaLU6QDJIMG/uw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 35tchTW7AQF1JBQyKLEpug==
+
+Name: COM/objectspace/jgl/Allocator.class
+SHA-Digest: 0b2bxjWq1hRldfHIZzsdoJeMD1U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1rfo7k8IvXsn05RHisqTMA==
+
+Name: COM/objectspace/jgl/SList.class
+SHA-Digest: 6qoO8AuDMlF8xNKatQ4SGNVV1MI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 6ccU6pjd0KNpmutdoeVmbQ==
+
+Name: com/sun/java/help/impl/DocPConst.class
+SHA1-Digest: phK/8ZIp4Tf/QHF7AbWl/TmzJD8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: tAR+OB3AGmeEVhHrsFUP2w==
+
+Name: COM/objectspace/jgl/UnaryCompose.class
+SHA-Digest: rcbM+fN+thav1/hkNiHPY00mtlY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: msxJ1qrG/kzj9pw/rL+/zw==
+
+Name: com/sun/mail/iap/ConnectionException.class
+SHA-Digest: VWSUQWl0rkYKMtWrStgoyR/m67c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ruwdzAZMoiUYEi/nmyAKXA==
+
+Name: com/sun/java/help/search/FullBtreeDict$Entry.class
+SHA1-Digest: mECuh/icAPsLrR77SBooNU5NGd8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: csmYijep8fjsT2pKUtV/sg==
+
+Name: com/nwoods/jgo/JGoXMLSaveRestore.class
+SHA-1-Digest: 0gI5cqKJ1NONn+G+yYld4PXRvDM=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: LJ87/lsCy3pXDn/sC7R6ew==
+
+Name: javax/mail/search/MessageNumberTerm.class
+SHA-Digest: 7C3nc2xrQ8zeQGCs2+BUnANuWZs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rPJWIL9Cy+svSx9AZmqa/A==
+
+Name: com/sun/java/help/search/NextDocGeneratorHeap.class
+SHA1-Digest: /rXauTDL08+4Z4gjMKop1AjHI6E=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: jHauJ5AU1KdaTGe+oRePlw==
+
+Name: javax/activation/FileDataSource.class
+SHA-Digest: YJiWMuBOx/lGQeEGbwNf6wtXOv8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yotD4VE13TwxtT0twTZCDA==
+
+Name: org/w3c/dom/Entity.class
+SHA-Digest: Keh5jCW67+pGM7WIkMiXqdEc1rg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pkV9pfhMf+H8OLAOwlNK8A==
+
+Name: com/sun/xml/parser/Parser$NameCache.class
+SHA-Digest: 3zyYT2MidJEooQ03y8ORombXDAQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kditf+oARXKmASF8pIEl7Q==
+
+Name: javax/mail/search/SearchException.class
+SHA-Digest: RBdAWJy9f8flI7QWg+rVi4jB9Ms=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WjcMaXHPGL+QJmaOy0dFCA==
+
+Name: COM/objectspace/jgl/Transforming.class
+SHA-Digest: yAWkLjeP6CrHD4Cbl77lqqbxbJI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lU2mgu0uB8VFsSfWEDdr4g==
+
+Name: com/nwoods/jgo/DomList.class
+SHA-1-Digest: ruqpkEBO8iY1LvaDOsPgqeHzLEE=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: bMDH+ln1z0x/2Q57nsAEAg==
+
+Name: javax/help/event/HelpSetEvent.class
+SHA1-Digest: vebmVdbl8KQJKeRdNMdm22UMWfw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: yLS9h9u22wQKsmq3HJzUKw==
+
+Name: com/sun/java/util/collections/TreeMap$3.class
+SHA-Digest: g8NTklatB2ieENwEF3o8BqRuMU0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: O9plwMaCqJTxJ59wtAcsBg==
+
+Name: com/sun/mail/util/LineInputStream.class
+SHA-Digest: nwbqHXNf1taAdp1DGtnShjS7XxM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: hEGKFQgNRE25P+8ujegZ4Q==
+
+Name: COM/objectspace/jgl/EqualCollationKey.class
+SHA-Digest: GEYZwLIeF/MHkynNq7vzPUNC7dE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: MSmkaPUdhPYj34zpbiGiwA==
+
+Name: com/sun/java/util/collections/HashSet.class
+SHA-Digest: 4+U+B8V+7c4e9LPJItiwRYsIlUg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7vcfmWl3Ze03RGUod7LEpA==
+
+Name: javax/mail/Header.class
+SHA-Digest: A5XTKto3aeUVzzlD3Wz21J5Phk8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: YJlupWh4slT9xhV4qyAFrg==
+
+Name: com/nwoods/jgo/JGoPrintPreview$3.class
+SHA-1-Digest: 7/mG7AgU1UgWulYhIOW/NJt1FyM=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: NPOTZjoqDWofa+KGwOXAzQ==
+
+Name: com/nwoods/jgo/JGoViewEvent.class
+SHA-1-Digest: bXxJY1uWaUno85pi6pa8qvnQYK0=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: oKvosI7FAm/7xUjubuQ2tg==
+
+Name: javax/mail/URLName.class
+SHA-Digest: xz/4tfwpyu/E2hQrYJk9jpmNq+M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FISmYo51qg56/aNRBQhMiw==
+
+Name: Acme/ArrayEnumerator.class
+SHA-Digest: xLxwuYU5DPjuVpNzv5oyHxEfSJc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: bq834flOWt8sqy8a0zumqQ==
+
+Name: COM/objectspace/jgl/SList$SListNode.class
+SHA-Digest: XoO4usccLbGD8q94qyqgZQjqB6o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Iuttkw6MkGDboIXrpvc1bQ==
+
+Name: COM/objectspace/jgl/EqualString.class
+SHA-Digest: TO0WI218FME/LuhUgUhrX5D8d4E=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xAe9JGpBoO/RSCwxcuR6NQ==
+
+Name: com/sun/activation/viewers/ImageViewer.class
+SHA-Digest: 0/Slgm5NTWVHdOz9Dp19QUIrHeM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0pqW7CYSRPIWaFEmtF3VRw==
+
+Name: Acme/JPM/Filters/ImageFilterPlus.class
+SHA-Digest: T7n6We5iFXb3IHjFtbDoFy56YFw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dqHMY7poDJzRdTe3lMK/Gw==
+
+Name: Acme/Chat/ChatServlet.class
+SHA-Digest: hZOZ5gdZAlC/WGcfamcRSPmkRbI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: tgTEZvTmdhuBTkNnlAP7Jg==
+
+Name: COM/objectspace/jgl/PlusString.class
+SHA-Digest: /V3oNuqQKS2EAuUY7yQm3pF3qZc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uqT8bIpPkQsraia8OqMwvQ==
+
+Name: COM/objectspace/jgl/ModulusNumber.class
+SHA-Digest: HFY7oeD4u9aFKUSpSHpnjBj/Vrc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ickwQgunNLgqv50sidZj4g==
+
+Name: com/sun/java/help/search/BlockFactory.class
+SHA1-Digest: h/1tkgueVnTr8p76VU83oo1PI9A=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: xu0a7M1d9so69L7K9S+N8A==
+
+Name: com/sun/java/help/search/BtreeDictParameters.class
+SHA1-Digest: mcyVjUVtRpEGPGD6nJOWcTqYkdU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ZE5791t3OUQ8iCr2/NeHXw==
+
+Name: com/sun/java/help/search/TemporaryRAFFile.class
+SHA1-Digest: 7kuke6ts9Zn9Pz8buUil6RUx8h8=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: NCDcGm6dP5PR77Ug/LoEjw==
+
+Name: com/nwoods/jgo/JGoRectangle.class
+SHA-1-Digest: TNgTBKDHL+IrvOSsZU3sQYAZdCA=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: wtvI2HfoPPauPhHdyoF/iw==
+
+Name: org/xml/sax/DTDHandler.class
+SHA-Digest: zIyAwTFHJm7+lhCYfgXMvjO8qLg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: A+0hhEGJ+4pRiILU5Byhgw==
+
+Name: COM/objectspace/jgl/BooleanArray.class
+SHA-Digest: no5jNAvIlS8m78OmnBlavt3Kd7g=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 13nRt/9Kl628FZ6cBUKjYA==
+
+Name: com/sun/xml/tree/XmlDocumentBuilder$ParseContextImpl.class
+SHA-Digest: XAyecsivqM9osJnfsOoYpX8/RP8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: YU3wAdc2B7vcIcEbOKbNvA==
+
+Name: javax/help/plaf/basic/BasicContentViewerUI$ScrollToPosition.clas
+ s
+SHA1-Digest: 0lq1PYnI12gOGH2BsR9a8J6tMZg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 0Zo9vsINc7Hv6UY9hzn5zw==
+
+Name: com/sun/xml/tree/Doctype$EntityNode.class
+SHA-Digest: mVWnPaWSgThhnBzmPDkWPOdt7Ps=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g5XYn3/VncBjwURJjMqroQ==
+
+Name: Acme/Crypto/EncryptedInputStream.class
+SHA-Digest: do/DetA8jMOdF7pnW5TldLeiPlQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jtMCAGiuR4GxcynFxa2OaA==
+
+Name: com/sun/mail/util/BASE64EncoderStream.class
+SHA-Digest: FcSvF6f+iwx80pYrhwHDyFvwCWQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1bkGMMAZh8K/asEd7p7+AA==
+
+Name: Acme/TextcompOutputStream.class
+SHA-Digest: mAbP6Kjn66Vq6fMFNEMGSgt05aY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3iuPNcwudHuvk4QK8pYb+g==
+
+Name: Acme/Crypto/Hash.class
+SHA-Digest: DXxT3+OOnH5tAHA6PB0L3HiprOA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: uybESd/hhcJujhrZfgfAOg==
+
+Name: javax/help/search/SearchEngine.class
+SHA1-Digest: DQop+SvbkDiu2CQEEQ4H4z+2HmM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dPkoNiHtff8d6RxBU+elIw==
+
+Name: javax/mail/Part.class
+SHA-Digest: 9G9aj3EQEFJkLkGaVyAjesSW1Jk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 6VN6kAryw+zuO3MleHwxTA==
+
+Name: Acme/TaskTimer.class
+SHA-Digest: fHiJe/g6XUWwix0bOifOQIIBhT0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3zLP4Nu02t7hAeOlxNLRvQ==
+
+Name: com/sun/java/help/impl/ScanBuffer.class
+SHA1-Digest: o6FAYyi/F12UOLaho47Txy098RE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: I3xK6UehbJFH+IpE814vMA==
+
+Name: COM/objectspace/jgl/PositiveInteger.class
+SHA-Digest: anEPrm61R46yzYMrt178oFxKMtM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: yvSecT9z9NQWIb9lrCucvg==
+
+Name: javax/mail/internet/UniqueValue.class
+SHA-Digest: /vx+/ivl+NHKkKHUt+RzEK3WD4A=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2ODJ1Ku+05PVGls+1hkH4g==
+
+Name: Acme/Primes.class
+SHA-Digest: F3CCoeo2cYLIP9QXgCsja5zjZYw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 24LlZYMnAID6NwJ/RAka8Q==
+
+Name: COM/objectspace/jgl/OutputStreamIterator.class
+SHA-Digest: xa2n+pOKOVHs3hh4wNoRK+d5fQA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 98JL37+sCyXaIVG/Q5AHEw==
+
+Name: javax/mail/event/MailEvent.class
+SHA-Digest: IABbIuBDNkuftnN5YlcB1AiqtvA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0jOHvn4tLx6cM4AG5z10vA==
+
+Name: com/nwoods/jgo/JGoDocumentListener.class
+SHA-1-Digest: 8n67SyBpABTzHqVPXSHCY7I5vck=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: HZrNu/wRarPFlV93PWNQkg==
+
+Name: com/nwoods/jgo/svg/DefaultElement.class
+SHA-1-Digest: fnCGkMjVo8n+9TDQudHj53XOd5g=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Aa6BZ9qoMpicpRAMbvpoRg==
+
+Name: com/sun/xml/tree/XmlDocument$DocFragNode.class
+SHA-Digest: abLJNGZbMW1352VJm0QdtqO5ChU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NldPo5GgAwRB6oi0+TLeLQ==
+
+Name: com/nwoods/jgo/JGoBrush.class
+SHA-1-Digest: 8qRHGkhNxDIHscpyQTcHvKNc2wQ=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: Edb4n8Qg2qlXifEe/DsqAQ==
+
+Name: com/sun/xml/tree/PINode.class
+SHA-Digest: zBQcwT9sr3oRHjhdFO9ty7rnJco=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5exiMYizpKzOA5ADzI2Skg==
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$FormA
+ ction.class
+SHA1-Digest: 9yKpAeMuBP3pU6sgJPFdXUJont4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: G7rSF72b5RdLp+QbyNGJiw==
+
+Name: COM/objectspace/jgl/FloatIterator.class
+SHA-Digest: HbY99oSSOX8HInt35YBmIP5kRbM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ID3BRpKE3kKl6SHPMfRTBg==
+
+Name: Acme/Serve/servlet/http/HttpServletResponse.class
+SHA-Digest: 6zQmk5HYrw4GiGEvvWtF0UzHds4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3CxlgY73Su3aqGD6qK5F8A==
+
+Name: javax/help/plaf/basic/BasicContentViewerUI$PageLoader.class
+SHA1-Digest: EE3C/1ReC+rnBs+T2oySaS5ObQ4=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zQsJERl57yJbNFD1AsaRYA==
+
+Name: com/sun/java/help/search/IntegerArray.class
+SHA1-Digest: RRZgHFUrnoOZ111vwlPVj/I86fE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: a8MDxEttGCnwJ9mZVt0toA==
+
+Name: Acme/SynthAudioClip.class
+SHA-Digest: 8IE0E0fikNxUyx90+gdTyCAj+Qk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: En53/sMmAWovYh4ayAJGtw==
+
+Name: com/sun/xml/parser/XmlReader$AsciiReader.class
+SHA-Digest: VtaMwcHY9+pnnvOcVF8zVi1v4w4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: sXfzjWpVCurkJBljm7A4OA==
+
+Name: COM/objectspace/jgl/GreaterEqualNumber.class
+SHA-Digest: 9bh98dDrMA1txTpaHQ2NdBxJ0rA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ObCjUZbMpTfPwm5MRzkZ5Q==
+
+Name: Acme/NullInputStream.class
+SHA-Digest: Yl4d7iXpWukx+A3AZChV65k5AcI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vAfanhcSpWXkm1xu9VRH5A==
+
+Name: javax/mail/internet/matchEnum.class
+SHA-Digest: 4jVYfbRFu3S6TlldLeTyNsN4fu8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dn4APBEVNoWoiDK5dk6xhg==
+
+Name: com/nwoods/jgo/images/doc.gif
+SHA-Digest: YzBdjB7covIs3hR2HaUD0aMBTME=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 35SjNl6wTGFmFUq+YsciPA==
+
+Name: com/sun/mail/smtp/SMTPTransport.class
+SHA-Digest: RdAQD4KEemgisYFNehbF6zFkeQk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: n5+REOh5ZxPmbCIlDKgiRw==
+
+Name: javax/help/JHelpNavigator$AccessibleJHelpNavigator.class
+SHA1-Digest: LOLyX8x/pFAxHWZRKhyqGV36aEA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: gkn4tBwaPx8D8XW6lhD7Sg==
+
+Name: com/sun/java/help/impl/ViewAwareComponent.class
+SHA1-Digest: pecpi0zQJ/mewHuetLfZu9ycZHk=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: U/UIO5SSNOyUSdZUG0Firw==
+
+Name: Acme/JPM/JPMTest.class
+SHA-Digest: 05AHFKmjwBNsuq6rFKJku5QSdms=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RwdGD65NJ3ToABidfjNLUQ==
+
+Name: org/w3c/dom/DocumentFragment.class
+SHA-Digest: WN8kIYxU4G97FSRQBdt20CfVNeg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: owSrOLTYUFqQmlTbzdrVEQ==
+
+Name: com/sun/xml/tree/AttributeNode.class
+SHA-Digest: 9fpwcwej6jKWmExiqiowFCPZCdM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vBU0zvPHjTCWiDVAWDPTuw==
+
+Name: javax/activation/UnsupportedDataTypeException.class
+SHA-Digest: EYy7QAADFTFmagbZVXpaz473qN4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0huE4O8SWW3UGWVoV8OTNg==
+
+Name: Acme/Dbz.class
+SHA-Digest: ye4oZBKJWiZFl2wjfKjsV3fA2sA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CYlO0Tx6QoCzJ6k+XmleEw==
+
+Name: COM/objectspace/jgl/ByteIterator.class
+SHA-Digest: CJcNGyPl2U4DUJKKUDRWf+Hd3MM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SpLcUV5KhGpTUlsAlVlFnQ==
+
+Name: javax/mail/event/ConnectionAdapter.class
+SHA-Digest: 4ormW9e5qKxdg8aLSydC6tQI2Vc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: CaiJAJlEiU4sPj98nyo85g==
+
+Name: com/nwoods/jgo/JGoStroke$ArrowInfo.class
+SHA-1-Digest: jPsA4ET1JhYjQtz/DLozvAYJn84=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 20jhOSJv8NdgtheSemydNQ==
+
+Name: com/sun/xml/tree/ElementFactory.class
+SHA-Digest: oo2hJ7INgMrVUAdZoz895KIRPys=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: eXxYpUD0Zi8+MmGFcddoKg==
+
+Name: Acme/UnixUser.class
+SHA-Digest: dI5imQ8InaIsnUVluE1c/R6IivE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 1NDvOhrAvqBoCWvHasYjDA==
+
+Name: javax/mail/EventQueue.class
+SHA-Digest: Uxt6OLjnrSyr8ktyswipXrYmTvo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /YcwehJiELkQmk3wMtCcrg==
+
+Name: com/nwoods/jgo/JGoCopyEnvironment.class
+SHA-1-Digest: Q0KJXXc/R8YsrbMFXFCYnwn3aXY=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: dZ+6C1RSWAj+C4Aj4W6Aow==
+
+Name: COM/objectspace/jgl/NotEqualNumber.class
+SHA-Digest: 2CvsOHwviJZa5OukTfacrlhqfGM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TBNATmD0to5IpKcZcNvX8A==
+
+Name: com/nwoods/jgo/DomElement.class
+SHA-1-Digest: HSkB0EhWko/yAC2R1cEe6Il2c5Y=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: A4dZQnL9lzBYNGDjt56uZA==
+
+Name: Acme/Widgets/BusyBox.class
+SHA-Digest: BqMjP4YgaqRKea0P07VnAs251ko=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ha8v2B6cisCVECv3EM/PVg==
+
+Name: com/sun/java/help/search/BtreeDict$1.class
+SHA1-Digest: OnOefGDJXpCcEPAwsazr/kgjFxw=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 3/Dbq1AhDXaDlBUnL4T1Qg==
+
+Name: javax/help/TreeItemFactory.class
+SHA1-Digest: oE6cNcg4AEl2pNf/97l8ZNmTMpQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 4Xv8ZhmmIRSAsJB1Mdhq5g==
+
+Name: com/nwoods/jgo/JGoDrawable.class
+SHA-1-Digest: 5UEeUnW0402JlM3JtuiCv4rkk3g=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: yiAHawpI/xJ6f1pb7fLMdA==
+
+Name: Acme/PsgTest.class
+SHA-Digest: 4jW2515DpEbnCkWgs0uJIG/M90Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: II3f6UebUl45WvrzLf+IpA==
+
+Name: COM/objectspace/jgl/LessEqualNumber.class
+SHA-Digest: TwUItljwTzZWI7Mveb7+jasz/Es=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Cb5kwDZsoCivRjEcgBzCTg==
+
+Name: javax/mail/internet/MimeBodyPart.class
+SHA-Digest: nTswmepqsydGZ2M/qR+XS3XuhEw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: z+bLu7SQ9lzy3F6tq4Pzvg==
+
+Name: javax/mail/event/StoreEvent.class
+SHA-Digest: V+InpdpG9xHqDxDzj/1Ov5sUqn0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: KvFtM9yczFtrD3NE+fLviw==
+
+Name: Acme/RefDouble.class
+SHA-Digest: xs0+ODuK3QuYf5hNjApd2+lqryE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: GgMbcuPrrbGv8IfpIniYxA==
+
+Name: javax/help/SearchTOCItem.class
+SHA1-Digest: sR9zJbcWjii+VEaUrDvQdFQRBDM=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: wzyyTOOLd5aHvZczh4zjyQ==
+
+Name: javax/mail/event/FolderAdapter.class
+SHA-Digest: HTfmb0Ne+v3wTigCI665ms9ydUY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IQfVlC6iyKOq/aKjmi1aCA==
+
+Name: Acme/DbzElementEnumerator.class
+SHA-Digest: yiKOru7a1FQ8xkgt38bsKZvqb7Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 4ulm7eQxJqF0Tysrv+VQJg==
+
+Name: com/sun/mail/iap/CommandFailedException.class
+SHA-Digest: +pFUiaZUv4AzSQrgxHLwuLQH0NI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QePJ0ZkCVrKDz/CactdTRg==
+
+Name: com/sun/java/util/collections/Collections$SynchronizedSet.class
+SHA-Digest: 8koYeVmN/sk7Pj2GIJKIkEuZaCg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: xKk0alU6Nuo7n241pHwCZA==
+
+Name: COM/objectspace/jgl/HashComparator.class
+SHA-Digest: kEAjk0vH4lMyMJ+l49Df0opREpc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: riMWhoT1jD0z4BAigS/JUQ==
+
+Name: com/sun/mail/iap/ResponseInputStream.class
+SHA-Digest: 1N39O/Pn8D1+5gPhdH3E1KC6NAo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: +5sf4Emc2uydxRoC7xiA8A==
+
+Name: COM/objectspace/jgl/OutputIterator.class
+SHA-Digest: gIMgLkTvfiayXl94E8m/PjDD4rg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: VsUKA5Fjz18ge3PtpmQb+w==
+
+Name: COM/objectspace/jgl/Map.class
+SHA-Digest: 69q6RzWgCVBSxVAGl2z/FRA60gY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wAZxFMyKHZMpAmEaRRq2XQ==
+
+Name: Acme/Widgets/NoticeBox.class
+SHA-Digest: qslL9OKIIjVgH/tnmpLxWtgkjbQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: D3sAwqr/vhLxgHGydu0PHg==
+
+Name: Acme/Pair.class
+SHA-Digest: ge22/PSFKzD9qh6y0isccUDVDU4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 2SOhxemu8ik8Kjzr0QxdnQ==
+
+Name: com/sun/java/help/impl/CustomKit$MouseHandler.class
+SHA1-Digest: kM0WujkTo4lOffcbav7FSmwE/og=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: PMPFUf9iWuvPeaY3MtNNaQ==
+
+Name: com/sun/java/util/collections/AbstractMap$2.class
+SHA-Digest: NusXa2ks3jSmk6A+DGNSPdynFL8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: JxIOItY8CRneURzFEnN7+Q==
+
+Name: com/sun/xml/parser/LexicalEventListener.class
+SHA-Digest: 3JfLgipXMhY8aYQHyrKYbD0DGxc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: lw3AyWTMbbtAytD5Phh6VQ==
+
+Name: Acme/JPM/Filters/Enlarge.class
+SHA-Digest: k6Y+Fqht1dGuAZ2vIDCpMZDLGSM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pbsCDSbtA3UaO5HEBgmLsA==
+
+Name: com/sun/java/util/collections/Collections$SubList.class
+SHA-Digest: sEBZPdUYwSLtGAWnIXx/s/oolSA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IVaCIANU2MXUWnB6QWnR/Q==
+
+Name: org/xml/sax/InputSource.class
+SHA-Digest: CdocWlOZJlp0Pm6tiROC86IEX0M=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LrjBu0B/HqZY9c6+B+OviQ==
+
+Name: com/sun/activation/registries/LineTokenizer.class
+SHA-Digest: 6S3x57jdxqX2LExlVAc7pht6L74=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: gSPev5+qBE1935Aky4oxuw==
+
+Name: com/nwoods/jgo/JGoTextEdit$JGoJTextArea.class
+SHA-1-Digest: atQJo8a4LvKiKll+4AfKfUYYEJc=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: ieETnrmJnsMOaSmBJ/jPJA==
+
+Name: javax/help/plaf/basic/images/medlow.gif
+SHA1-Digest: rxNlELBU7mgET0vbrdXfdVaJjF0=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dpEpdy9LnMqdbc+qVvcsZg==
+
+Name: com/sun/xml/parser/XmlReader$BaseReader.class
+SHA-Digest: DZhKhpvKO3N52zbLGaSm2dOISU8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 11H1K3Lz9y+N5kMapFvYpQ==
+
+Name: com/nwoods/jgo/images/jgoicon16m.gif
+Design-Time-Only: true
+SHA-Digest: /mEja+TGxQcGaqVLz4X6ZZxZbk8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DwKXFzdS783Ma84K8cop7g==
+
+Name: Acme/JPM/Filters/Gamma.class
+SHA-Digest: k7A5WlVzHs6UcO8s5fh2izznuBI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: iW7DIyRoy71oFbQTiJ0vug==
+
+Name: javax/help/search/SearchQuery.class
+SHA1-Digest: mnkB35w+cnIkOmZ9TRAdDxwim3U=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: o0bDrdUBGN8iF3YhHHP5NA==
+
+Name: com/sun/java/util/collections/AbstractMap$4.class
+SHA-Digest: Hwbkb8inIAxK0y75r4tAMjUKheM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ybhyfBP5coe9RNSRml0e3w==
+
+Name: NAME
+Implementation-Vendor: KNOXVILLE
+
+Name: com/sun/java/help/search/HTMLIndexerKit$HTMLParserCallback$Cente
+ rAction.class
+SHA1-Digest: 4Rcojz2aCEPnksXhSuP/Dw8hS+s=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: fjimxsDvSiEdHgz3OCqbcA==
+
+Name: com/nwoods/jgo/images/jgoover16m.gif
+Design-Time-Only: true
+SHA-Digest: syYEeAxUXnpaCkjnVpD+u1nyFsw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FaZxBXPL7IZX4pX5zzGVrg==
+
+Name: javax/help/HelpModel.class
+SHA1-Digest: dscbrzP+7oBCszBqIw7hXkpeKXE=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: yUSq9K0DlIiubpYhEN+m3g==
+
+Name: com/sun/xml/parser/ElementDecl.class
+SHA-Digest: 8hOO838ZkN9VQuza3qxHoskkBUY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: tUiQdXtop3MTbGvbvhk6Gg==
+
+Name: Acme/Crypto/ShaHash.class
+SHA-Digest: AyEX45UAcKRroGLMV8zn1k3ZmYU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QDOfPMSROkVzsQU/yTVHng==
+
+Name: COM/objectspace/jgl/Finding.class
+SHA-Digest: MJuJmXX6paOqHKV/+mUciWQ4QVU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: cmAElkVwQMWQ/gySkriDMQ==
+
+Name: javax/help/plaf/basic/BasicHelpUI$IdChangeListener.class
+SHA1-Digest: KBFpeKtd2yY5l3avAgrvWMyU29Q=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WIVzL22daWNwOOoBKstbew==
+
+Name: com/sun/mail/imap/protocol/MessageSet.class
+SHA-Digest: crqjm9cXbFXpO2Q+Wwq8hU/UPS4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: DGFi2NCil1vCxtSmFvOHaA==
+
+Name: com/nwoods/jgo/images/jgoicon32m.gif
+Design-Time-Only: true
+SHA-Digest: X/VhcurI6S1AUmr3yrrC1cPbZHQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: F5K3SQ+76bwZ6VngQBW1kA==
+
+Name: com/nwoods/jgo/JGoOrientationEditor.class
+SHA-1-Digest: /68CNa7u8iBJQ2ksNM+7djZK4mQ=
+Design-Time-Only: true
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: k3u1yAbZGnZQi38yHsGHKw==
+
+Name: Acme/JPM/Filters/Shrink.class
+SHA-Digest: 8ERf9/IDkqGRjCriydnmZjRJibQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: SUHpMRfdMI01IaKHqnUtWA==
+
+Name: com/nwoods/jgo/svg/a.class
+SHA-1-Digest: hyJ0nhxs+KeawENQKJ4ibAbydz0=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: J+Hd2FlDQg4VBGssz/mFbw==
+
+Name: com/nwoods/jgo/DomNode.class
+SHA-1-Digest: 4eele5GhyIntfrcyQDkt135/d3Y=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: iNrPzhD246TjnVZxWLxYDQ==
+
+Name: com/nwoods/jgo/images/jgoover32m.gif
+Design-Time-Only: true
+SHA-Digest: yglNNDvPp83ncRmXtI9W3z5hVC0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: x4A5pRAn69wjJEMbHwTaiw==
+
+Name: COM/objectspace/jgl/Container.class
+SHA-Digest: CKtI2P5PScg5Kn0IPdQpTLbpjGA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QAPrSCUtGtnYLojlr/K2ew==
+
+Name: com/nwoods/jgo/DomDoc.class
+SHA-1-Digest: w8Ub9La4XXmupjHqBy/8jBOqdIg=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: P2sRkE3KJ0c5Fy8jfyW50g==
+
+Name: Acme/RefInt.class
+SHA-Digest: uy5hHCkwspPZ3gekN9DRiZofwBQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: IY9B0V/KHD4VNMJSeFYbpg==
+
+Name: Acme/JPM/Encoders/GifEncoderHashitem.class
+SHA-Digest: 1lyYvW6KfRcB3Dq34DEYrj7I1qI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Hjp54mNv4t31sp9a69NahQ==
+
+Name: Acme/Serve/ServeConnection.class
+SHA-Digest: fx0Y1UNbkGAtQ8zpkMZhAdrjX4c=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: PaS5imbzwKE6fdptZL/pJA==
+
+Name: com/sun/xml/tree/DocumentEx.class
+SHA-Digest: SC2dmLpCZ2vIMgZKeMDB3s1mmXQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Le3xNoa8WPfWGSMEqCtDRw==
+
+Name: com/sun/mail/imap/protocol/RFC822SIZE.class
+SHA-Digest: 0vM8j03U4BZlP3OBTVWXEsHMyRo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: g4B0Brsu6lAxi4FanfLK4g==
+
+Name: Acme/Serve/servlet/http/ChunkedInputStream.class
+SHA-Digest: oYLnuJrizgHLfFbyJRbaqjZ7JeM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: vdJRHlMh/1khD5c5vwWpBQ==
+
+Name: javax/help/TOCView$DefaultTOCFactory.class
+SHA1-Digest: MLNfBi1p78wjNJQ5TuHU638P7uo=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cOxCpAIX7ObgmuGNwYvryg==
+
+Name: COM/objectspace/jgl/LessEqualString.class
+SHA-Digest: AIozwR+FOvLVc6MgO8qGZ+N3Edg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 34PMRzHeOnPrg3M4ItjWUA==
+
+Name: Acme/GuiUtils.class
+SHA-Digest: Coa8ZmbVdeZQs9pyc7OzAWURbR4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wJkkjOA4wUBtvaL0ElK51A==
+
+Name: javax/mail/Flags$Flag.class
+SHA-Digest: IuzG2cE+OX1V7MTDO2QFiw5haK0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: O29E3+GqJaSZS0ysQ6rshA==
+
+Name: com/sun/java/help/search/FullBtreeDict.class
+SHA1-Digest: y2WVVrHlztYP1i6ebyIHzuAcg7M=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: eyx1gs56cfRVH7xIjo3VrA==
+
+Name: com/nwoods/jgo/JGoBasicNode.class
+SHA-1-Digest: FSHxb9Htt5rZZZOK6Ta2elLOFIU=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 4NVsAPow4nX/dDbQKAcZqQ==
+
+Name: COM/objectspace/jgl/TimesNumber.class
+SHA-Digest: zwUj1X/rHChdsBEmUkVFeACP23o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LpvlFOsMRsC8yTQ33ZzD1g==
+
+Name: COM/objectspace/jgl/Hash.class
+SHA-Digest: Ag6BzLxcP246x83eKFOVKAUr1RI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jO10RjwSJmPQj5Adligz5w==
+
+Name: javax/help/SearchView.class
+SHA1-Digest: KQTcAjhNH26tpKBIbOSXjngC1ik=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: IbxG/JAoaMQtQp0h1Myivw==
+
+Name: com/sun/xml/tree/ParentNode.class
+SHA-Digest: iZo1Mq4oIMmJMbE/VsQT2A0K2mc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: s7XNUNCrkCHZn4F/PEzoaw==
+
+Name: Acme/DoublePoint.class
+SHA-Digest: xoZmQQZdvi1Ir+e5dJA4+PFxfNc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: amf7J+WwOmgF2YdETEMNqg==
+
+Name: com/sun/xml/tree/XmlDocumentBuilder.class
+SHA-Digest: uOAkh4VEYSC5hCveBfEvnflGurE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 45sjrxMwQWC5YkpjKRwLzA==
+
+Name: javax/help/plaf/basic/images/medhigh.gif
+SHA1-Digest: 8ZnkBRf5FCww7eVRPIam65twvIQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: v/C8awK4ClXVz/vuVUz3vw==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler1_2.class
+SHA1-Digest: PVsxSTV19n3v4g4jbSIB41YVy54=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: kpgBj+YAmRFmB7HX+rpxSA==
+
+Name: org/xml/sax/helpers/AttributeListImpl.class
+SHA-Digest: 408wk4VZgiYiaecbD+rSrPUpL/8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 8bhI/s2jUfx2CYzag5xYDQ==
+
+Name: com/sun/xml/parser/AttributeListImpl.class
+SHA-Digest: r2ytC4OEcVJX7M2ZuIcSDdmka1I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Bnls0l0hko47pjZkwsS0bA==
+
+Name: COM/objectspace/jgl/OrderedSet.class
+SHA-Digest: Sk6Nm9GYRknqk7kx5I+xXFZ2bi8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: otEhEnvCZbGhaayCAOFwng==
+
+Name: Acme/Nnrpd/NewsDbException.class
+SHA-Digest: gYj61f0afAM5wVJIgeuMnfD/EFc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ka0Q1GnO2kkYqPrKXBTrhw==
+
+Name: Acme/RefLong.class
+SHA-Digest: eallUBaK42+36ig0YXpbF9M6BA4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: M2PlWTK7sBUchn2WdB3bXg==
+
+Name: Acme/Serve/servlet/http/HttpServlet.class
+SHA-Digest: ihEqyiJQt+yIsDmjnddleAtTxds=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 8SvOEq4kkfRRjxQydFBE/w==
+
+Name: com/sun/xml/parser/ExternalEntity.class
+SHA-Digest: s6Ay/b5j8WKFUFMzaz8OZnUtBGw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0069Md0pwWfKRYlv7M68qQ==
+
+Name: com/sun/java/util/collections/Collections$5.class
+SHA-Digest: E1fTzhnntSFRqfiG4ig9mHTywiY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 5qjeXFPYp6DFhnvHnaMJKA==
+
+Name: javax/mail/Multipart.class
+SHA-Digest: 0UBRldSEdldxRiWHDNofHjdIh4Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 0QnE5WXYDY6I5yYbTJbCxA==
+
+Name: COM/objectspace/jgl/SelectFirst.class
+SHA-Digest: lKmCzoVTiMALBFDq8XnueuSceZg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: QOoRl+sVbkBT3Dy5HxLtWg==
+
+Name: Acme/Psg.class
+SHA-Digest: mXxZMt0le0u8gx4x2JaDdgIfU8o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: jD/0h4uamcfYnbMKDGAtRA==
+
+Name: com/sun/java/help/search/SearchEnvironment.class
+SHA1-Digest: IPgRq3a4dgFU2v7RinRNLHVhJxs=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: i06midPKTJRE8YM3+J7zpA==
+
+Name: COM/objectspace/jgl/Sequence.class
+SHA-Digest: WPQQjgQ1+z4kB2bewpeptsOQZgE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Xr+iDg4oWrMfbQmTiJNhIw==
+
+Name: COM/objectspace/jgl/Array.class
+SHA-Digest: isvoNgi0UQiUu3WW+oy/1Je+C7U=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: J4SY11LNWHYrJq5+TJ+cTg==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler1_2$JH12Printable.class
+SHA1-Digest: teOQAv6/NtRN1neQBtNVigmnAeA=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: EgrJlvo2528Ttu6MKZH5uw==
+
+Name: Acme/JPM/Filters/RGBBlockFilter.class
+SHA-Digest: vH/8CmFaUXVmc5wAUIoaO28kfDA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: TCvHyG2b1y5ir5lPiW7Qgg==
+
+Name: COM/objectspace/jgl/Hashing.class
+SHA-Digest: fZPiRYnLuDsDcCZfXTddAw3Mfhw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: smcpQUvwPfoJusWTjTGY3w==
+
+Name: org/w3c/dom/NamedNodeMap.class
+SHA-Digest: q5c6BcR/D4TDwVlWWWtuiEJPclo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: AG8U8vCT7eZdpl7oBp+PXA==
+
+Name: Acme/JPM/Filters/Tile.class
+SHA-Digest: 8ersB/YKH2Ay3D0JFsybkvmrs7Y=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: mhkOa2P9mrJH6KEOYM1lOg==
+
+Name: com/nwoods/jgo/JGoButton$JBListener.class
+SHA-1-Digest: JfkRS1wURUuztiW7VP/8cqHMccg=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: dopzscvSBArNAt/6yAhToA==
+
+Name: javax/mail/search/BodyTerm.class
+SHA-Digest: Hpo2xZoKqZs8XbVjUODRxoYicmw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LQwSTnNhZHeyxGVMa65yZg==
+
+Name: COM/objectspace/jgl/Applying.class
+SHA-Digest: idGOYdFJxdtWft9T5Ofa1XLD0B0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: EaxRnFnSHuBSQZl7Xv67vA==
+
+Name: com/sun/java/help/search/DefaultSearchEngine.class
+SHA1-Digest: qcM9lW5DpzRLGBYC9K/IXu2Uyeg=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: C+94f9YFHOn0rkkh/ThpeQ==
+
+Name: COM/objectspace/jgl/EqualTo.class
+SHA-Digest: glgkPOeMSnefIzYgebAEZfy1vH8=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: BfQ0K60L9bYEZz00qTBkbg==
+
+Name: javax/mail/Flags.class
+SHA-Digest: gcr8BHb9Y74auV3OTtaXWG3f7dc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Tkussnf1BVlcDWmcVTJ+Yw==
+
+Name: com/sun/mail/imap/protocol/Status.class
+SHA-Digest: oCn61AoGTe01hw9o2K5K07kmp+0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: wZlBUOPz2By1WhsRIPvJEg==
+
+Name: com/sun/java/help/search/DocumentLists.class
+SHA1-Digest: DUlcjOjO7xfb8CMAZ+289XP6Vew=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: P8ijwWgNLDVoJoqulgdSfg==
+
+Name: COM/objectspace/jgl/BinaryPredicate.class
+SHA-Digest: GC9dJZiu8e7t74WXKJpxcomwxwU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: y+3v65tA4a9iJc2allcyBw==
+
+Name: Acme/Serve/ThrottleItem.class
+SHA-Digest: zSgXyIHjGuI5fhfr98hniOIDBZQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: I2lgUbVAoeaTEeUO3xwvcQ==
+
+Name: com/sun/activation/registries/MailcapParseException.class
+SHA-Digest: NypAHAvj6db6pTbS/WH0sa2WnpI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: s8XkQzVIJ3+56mlJRmIxJQ==
+
+Name: javax/help/HelpSet$HelpSetParser.class
+SHA1-Digest: Yy68oNwAZ6jgvLaqytOBMeu40eU=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: kg4fZt08d/+IRuOB5v0TlQ==
+
+Name: com/sun/mail/iap/Atom.class
+SHA-Digest: A4WcIxH3S1ry1uDVSLHTyvj37LI=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: rLzYZlkyAKIHupzT3C/B5A==
+
+Name: com/sun/mail/iap/Protocol.class
+SHA-Digest: N3kly1qg1MB7gy0kCVFN4sVeqT0=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ev5jBGRLIoQtpkg0iRiCxw==
+
+Name: javax/mail/internet/MimePartDataSource.class
+SHA-Digest: wl7jRdoxAEMIUnSaX0+plHBeV1Q=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zQTZfRq0Y+pizVzX30opNw==
+
+Name: COM/objectspace/jgl/Stack.class
+SHA-Digest: xoFMxEhslvRLnYAY3sKBVerqgC4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: e/Te6DG8k6stvkwDhe3mjA==
+
+Name: javax/mail/search/RecipientTerm.class
+SHA-Digest: vmJJC+PuUgotCSiAsRVSlKgOVDM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NvlMYRlrVbN+Yar5AZ25/Q==
+
+Name: Acme/Crypto/Rc4Cipher.class
+SHA-Digest: N5WSc9rO/uSlkGDnpRuNIOkr6yw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: UKOXc8l+pUhGxEmKZfK9kw==
+
+Name: javax/help/FlatMap.class
+SHA1-Digest: OEkKJGmbt0ofhfwdl8solkA33Vc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 24eNfNzz4LXyIc8btyOXzA==
+
+Name: com/sun/java/util/collections/TreeSet.class
+SHA-Digest: xLJm5ZEaeT1aSS+sjT9xmHcNOss=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: NoHHwx9Cjfxam0l8Dix9PA==
+
+Name: Acme/Nnrpd/Nnrpd.class
+SHA-Digest: LiIgnQQ/Bflkqv859rhW8vkZRvo=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: FLRSzdiaJLBLyC13zRRRZg==
+
+Name: Acme/Serve/servlet/GenericServlet.class
+SHA-Digest: FGzJp3Xx/US/rgMHHzYOXvhj5CQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: ytUBlisHuN16aoVnbGk9jw==
+
+Name: com/sun/xml/tree/Doctype.class
+SHA-Digest: WFvNGp34SgnsyI8bEu3VUFR3aJE=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 58KLv5MLknOeITcCGeIsig==
+
+Name: javax/mail/event/MessageCountEvent.class
+SHA-Digest: 625MgOGdpOe2jp6nKQQlp+eqxfA=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3H6ixIbunH2uq4oEQvgz+g==
+
+Name: com/sun/java/help/search/LiteMorph_en.class
+SHA1-Digest: ABobG8989QhSyPq/zgs3TrDpomQ=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 8w2TyTYLG56Qlemla8QhQA==
+
+Name: Acme/ApplicationApplet.class
+SHA-Digest: 1ORql8iR35IxpYaxwbBG0VpPkhg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 3L1a8ky05tUb50ktvlK4sg==
+
+Name: Acme/Serve/servlet/ServletContext.class
+SHA-Digest: cBCdmpaGbZx7O+ElRD/KNVD4gtQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: pNsspnj/+pUX1tHJ8iqf3A==
+
+Name: com/sun/xml/tree/DataNode$NodeListImpl.class
+SHA-Digest: WNfM52TjeLMh8Ouv/LsyJChWCdY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: dyuPikwIBal+KtzQ6P0Btw==
+
+Name: COM/objectspace/jgl/InsertIterator.class
+SHA-Digest: ncZHwvrPuhYvKh+uMKsRj0PbZmQ=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: XvcEn7Ady9DHInXmoMnMvw==
+
+Name: COM/objectspace/jgl/ByteArray.class
+SHA-Digest: Ysh0rcc/cfxBYiG9FdHrpL5wfY4=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: G7TyTOg7/RqxgsboUXRiJg==
+
+Name: javax/mail/internet/InternetAddress.class
+SHA-Digest: MIW5cLj02seMx7u7AHdpO7tbl4o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: C/rPqAdBCkoCpWSYEyaVNw==
+
+Name: javax/mail/event/ConnectionListener.class
+SHA-Digest: 4a5cGqI0/mOkMii7FKm6AFct87k=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: WqE1SIZsPwPppZrV+v6rng==
+
+Name: Acme/Serve/TestServlet.class
+SHA-Digest: Zb/2YWPedfP8Ey69MS32L/P6uDs=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: si9xbNGdk9G/say5wAkX7g==
+
+Name: com/sun/xml/parser/ValidatingParser$1.class
+SHA-Digest: QTZLmK+3PFKGhwCcKk3A/QcnFyw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: zbZHuozOEdbstMAq6oX5eg==
+
+Name: Acme/Serve/ThrottledOutputStream.class
+SHA-Digest: Z1K/PTOi/l0Y+xK3AE4jgq+FuVc=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 7KN+aimlLONV01Pe65lgZQ==
+
+Name: COM/objectspace/jgl/RandomAccessIterator.class
+SHA-Digest: bSO7UybkpoE2cFsCTOdUtBZFibw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: J+UNO8UbsiZu/gkffirq9Q==
+
+Name: javax/mail/StoreClosedException.class
+SHA-Digest: cIqiMyyXcFMJoniLjkwr/ZKRejk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: 6SzPA3UhgSp0NxKCJl/X9Q==
+
+Name: org/xml/sax/DocumentHandler.class
+SHA-Digest: 0tLjhB/xetQQPKBul3jo0K9iDUg=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: j8i2x/N0LJzoZMYGcUlj+A==
+
+Name: COM/objectspace/jgl/IdenticalTo.class
+SHA-Digest: 2u+PJVDAsv5ExHo7cprstG6hB1o=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: djrri6JjUmtnRWJGCVcz4g==
+
+Name: Acme/Chat/ChatApplet.class
+SHA-Digest: AWdATeLPAAo3qyOMjOqvseNdR3I=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: i4PDEK4lniXnt5DlQo8Q7w==
+
+Name: javax/help/DefaultHelpBroker.class
+SHA1-Digest: 6LAy57Ikz1oa9QSeo3OOUPu9sRc=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: MYbU5smZvtatoQYPb4nrEg==
+
+Name: com/sun/java/help/impl/JHelpPrintHandler1_2$Print1dot2.class
+SHA1-Digest: 7JGmjpwK7Ih52wUtCONPFsbqV+U=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 0m+DW1+gw4ITuEkGdKFOlA==
+
+Name: com/sun/java/help/impl/DocumentParser.class
+SHA1-Digest: fIF2ZI/FQKrn3p9vWNMi1F1us20=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +ewVKNdgsMGD0FONHn21Pg==
+
+Name: javax/help/TOCView$TOCParser.class
+SHA1-Digest: aaeql/2dN9Q68RKbfznfv7tUx3s=
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: d1drK6ZIsdr5NRCwDg3l0A==
+
+Name: com/sun/mail/imap/DefaultFolder.class
+SHA-Digest: Fv/jfzuSN3CoVmunhJp/YfDpANw=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: LXtZRFLkZGsRDEy9pyLbvw==
+
+Name: com/nwoods/jgo/JGoTextNode.class
+SHA-1-Digest: r6hQHPHbf3RdOF25mysm0CtNCDU=
+Digest-Algorithms: SHA-1 MD5 
+MD5-Digest: 4/WxHqYvpShFAbekbB03KQ==
+
+Name: com/sun/mail/imap/protocol/MailboxInfo.class
+SHA-Digest: uY4SaE4ZfeNjHjFjEsc52iPYeco=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: kxmC7WLvFmcF8MUag7UfWQ==
+
+Name: javax/activation/DataHandler.class
+SHA-Digest: dv7LEDG6yjKMUQF+M87pd08pNsk=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: inDeIf1PIvOSLuWcxGdhnQ==
+
+Name: com/sun/activation/registries/MimeTypeEntry.class
+SHA-Digest: YLEnalN4p//mBaSbws5Umjr6odY=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: J4lNEU9mhOFky4N2uOmbrQ==
+
+Name: Acme/JPM/StubImage.class
+SHA-Digest: ktANoSr8tdUYX7Stq8YJjVmtRWU=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: HNW6oUvoltn5VIbebFBJ3Q==
+
+Name: Acme/JPM/StubGraphics.class
+SHA-Digest: 1fueZUyJMJk9JiocZNkHVP00FPM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: cqLKIOEw8h6wV7X44750/w==
+
+Name: COM/objectspace/jgl/NegateInteger.class
+SHA-Digest: nOtbfJSYo+uA5LsFrC4CV/VYVyM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: RhIX2JvtXExvtri9I6JSVg==
+
+Name: com/sun/xml/parser/AttributeListEx.class
+SHA-Digest: apjc4yO37jakqXufvmbVEj7eDLM=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: /bpGxM8UnSmF/9mm0EU2aw==
+
+Name: javax/activation/DataSourceDataContentHandler.class
+SHA-Digest: diAoItosewYLO/gpXormGUlgG98=
+Digest-Algorithms: SHA MD5 
+MD5-Digest: Sn+NccN6Rj5wbPC+ORiGbw==
+

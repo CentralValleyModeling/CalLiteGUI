@@ -1,5 +1,6 @@
 package gov.ca.water.calgui;
 
+import gov.ca.water.calgui.dashboards.CustomResultsAction;
 import gov.ca.water.calgui.dashboards.DemAction;
 import gov.ca.water.calgui.dashboards.DemListener;
 import gov.ca.water.calgui.dashboards.FacListener;
@@ -28,7 +29,6 @@ import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
-import hec.watershed.model.Project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -96,7 +96,13 @@ import javax.swing.event.TableModelListener;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
-import vista.report.GuiUtils;
+import vista.gui.VistaUtils;
+import vista.set.DataReference;
+import vista.set.Group;
+import calsim.app.AppUtils;
+import calsim.app.Project;
+import calsim.gui.CalLiteGUIPanelWrapper;
+import calsim.gui.GuiUtils;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         ComponentListener, KeyEventDispatcher {
@@ -249,7 +255,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			p.add(pw.getPanel(), BorderLayout.NORTH);
 			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
 
-			JButton retrieveBtn = GuiUtils._panelCLG.getRetrievePanel().getRetrieveBtn();
+			// Replace WRIMS GUI display action with CalLite GUI action
+
+			JButton retrieveBtn = GuiUtils.getCLGPanel().getRetrievePanel().getRetrieveBtn();
+
 			for (ActionListener al : retrieveBtn.getActionListeners()) {
 				retrieveBtn.removeActionListener(al);
 			}
@@ -507,13 +516,24 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			FacilitiesSetup.SetFacilitiesTables(swix);
 			GUIUtils.setCheckBoxorRadioButtonItemListener(facilities, new FacListener(swix));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(Display, new FacListener(swix));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(presets, new FacListener(swix));
-			GUIUtils.setCheckBoxorRadioButtonItemListener(shortage, new FacListener(swix));
-			GUIUtils.setMouseListener(presets, this);
-			GUIUtils.setMouseListener(shortage, this);
+
+			// Set listeners for subpanels of "variables" TabbedPane
+
+			JTabbedPane jtp2 = (JTabbedPane) swix.find("variables");
+			for (int i = 0; i < jtp2.getTabCount(); i++) {
+				// TODO: ADD TYPE CHECK FOR COMPONENT
+				// if (typeof(jtp2.getComponent(i)) == JPanel) {
+				//
+				// }
+				JPanel p = (JPanel) jtp2.getComponent(i);
+				GUIUtils.setCheckBoxorRadioButtonItemListener(p, new FacListener(swix));
+				GUIUtils.setMouseListener(p, this);
+			}
+
 			GUIUtils.setMouseListener(facilities, this);
 			swix.setActionListener(facilities, new FacilitiesAction(swix));
+
+			swix.setActionListener(swix.find("Custom"), new CustomResultsAction(swix));
 
 			swix.setActionListener(runsettings, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
 			        regFlags));
@@ -1205,4 +1225,41 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		return swix;
 	}
 
+	/**
+	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
+	 * 
+	 */
+	void retrieve() {
+		if (!AppUtils.baseOn) {
+			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
+			        JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		try {
+			String noRowsString = "";
+			JTable _table = GuiUtils.getCLGPanel().getRetrievePanel().getTable();
+			if (_table.getRowCount() == 0)
+				noRowsString = " after using \"Filter\" to load variables";
+			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
+			if (_group == null || _table.getSelectedRowCount() == 0) {
+				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
+				        JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			int[] rows = _table.getSelectedRows(); // checked if count > 0 above
+			DataReference[] array = new DataReference[rows.length];
+			for (int i = 0; i < rows.length; i++)
+				array[i] = _group.getDataReference(rows[i]);
+			// GuiUtils.displayData(array);
+			for (int i = 0; i < rows.length; i++) {
+
+				String[] parts = array[i].getName().split("::");
+				System.out.println(array[i]);
+				DisplayFrame
+				        .showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2], lstScenarios);
+			}
+		} catch (Exception e) {
+			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+		}
+	}
 }

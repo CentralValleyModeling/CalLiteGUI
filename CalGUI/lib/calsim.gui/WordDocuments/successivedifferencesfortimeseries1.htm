@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Successive Differences for Time Series</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "subtractadataset1.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="sumvaluesintimeseries2.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "SuccessiveDifferencesForATimeSeries"></a><a name="_Toc104616518"></a><a name=
+          "_Toc104610569"></a><a name="_Toc101758628"></a><b><a name="_Toc100980995"></a><a name=
+          "_Toc100728677"></a><a name="_Toc100728364"></a><a name="_Toc19007642"></a><a name=
+          "_Toc19005647"></a><a name="_Toc14888836">Successive Differences for Time
+          Series</a></b></font><br>
+          <br>
+           <code>successiveDifferences()</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Derive a new time series from the difference between successive values in the current
+          regular or irregular interval time series data set.&nbsp; The current data must be of
+          type “INST-VAL” or “INST-CUM.”&nbsp; A value in the resultant time series is set to
+          missing if either the current or previous value in the current time series is missing
+          (need to have two consecutive valid values).&nbsp; If the data type of the current data
+          set is “INST-CUM” the resultant time series data set is assigned the type "PER-CUM”,
+          otherwise the data type does not change.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>See also:</b> timeDirivative()
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>&nbsp;Takes no parameters
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b> <code>newTsData = tsData.successiveDifferences()</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> A new TimeSeriesMath object.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Generated Exceptions:</b> Throws a HecMathException if the current data set is not of
+          type "INST-VAL" or "INST-CUM.”
+        </p>
+        <h3 style=" margin-bottom: 6pt; tab-stops: 63.0pt;">
+           <a name="SumValuesInATimeSeries"></a><a name="_Toc104616519"></a><a name=
+          "_Toc104610570"></a><a name="_Toc101758629"></a><a name="_Toc100980996"></a><a name=
+          "_Toc100728678"></a><a name="_Toc100728365"></a><a name="_Toc19007643"></a><a name=
+          "_Toc19005648"></a><a name="_Toc14888837"></a><a name="_Toc6903197"></a>&nbsp;
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>

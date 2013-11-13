@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch5-DataEntry.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Retrieving and Importing USGS (NWIS) Data</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "importingdatafrommicrosoftexcelorcsvfilesusingtimeserieswizard.htm">Previous</a>
+            &nbsp; <a id="D2HNext" class="d2hnextenabled" href="importingncdcdata.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="dataentryimportandexport.htm">Data Entry, Import and
+        Export</a>
+      </div>
+      <p style=" margin-left: 0pt; text-indent: 0pt; tab-stops: 0pt;">
+        <br>
+         <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Retrieving and Importing
+        USGS (NWIS) Data</b></font><br>
+        <br>
+         You can retrieve and import time-series data from the USGS NWIS database via the web using
+        the <b>USGS</b> plug-in tool.&nbsp; The USGS occasionally updates the NWS database with
+        more information and the <b>USGS</b> plug-in may be updated to reflect changes; check the
+        HEC-DSSVue plug-ins web page for updates.
+      </p>
+      <p class="bodytextindent1" style=" margin-left: 0.0px;">
+         The <b>USGS</b> data retrieval plug-in will retrieve daily, hourly and annual peak flows
+        from the NWIS web site.&nbsp; Daily, real-time and peak data availability can be obtained
+        from the USGS water web site at:&nbsp; http://waterdata.usgs.gov/nwis.&nbsp; Hourly data
+        information can be obtained from the USGS IDA (Instantaneous Data Archive) at
+        http://ida.water.usgs.gov.&nbsp; The IDA is in a developmental phase and only a limited
+        number of stations have historical short-term data available.
+      </p>
+      <p class="bodytextindent1" style=" margin-left: 0.0px;">
+         To use the USGS plug-in, you must be connected to the internet and the file USGS.jar must
+        be located in the <b>Plugins</b> directory for HEC-DSSVue.
+      </p>
+      <ol>
+        <li>
+          Open your DSS file and select <b>USGS Web</b> from the <b>Import</b> popup menu from
+          <b>Data Entry</b> on the menu bar.&nbsp; This will open the USGS Download plug-in
+          interface with an empty station identifier table.&nbsp;
+        </li>
+        <li>
+          You can either open a previously saved table, manually enter the station information for
+          the stations that you want, or automatically populate the table with a list of stations
+          available on a state by state basis. An example of the <b>USGS Download</b> window can be
+          seen below.<br>
+          <br>
+           <img src="../ImagesExt/image21_45.jpg" border="0"><br>
+           USGS Download Window
+        </li>
+      </ol>
+      <p align="center" class="msonormal" style=" text-align: center;">
+         &nbsp;
+      </p>
+      <ol>
+        <li>
+          To open a previously saved table, select the <b>File</b> menu and then <b>Open Station
+          Table.</b> Browse to the directory and file that you want to access and then press the
+          <b>Open</b> button.&nbsp; Optionally, you can select a file from the most recently used
+          file list at the bottom of the <b>File</b> menu.&nbsp;
+        </li>
+        <li>
+          To save a table, select the <b>File</b> menu and then <b>Save Station Table</b>.&nbsp;
+          Browse to the directory where you want to save your table and then enter the file name
+          and press the <b>Save</b> button. .&nbsp; Tables are in text format and are saved with an
+          extension of “.usgs”.
+        </li>
+        <li>
+          To manually enter station information, select the USGS Station ID cell on a blank
+          row.&nbsp; Enter the USGS station ID number and then fill in the basin or river name,
+          location name, parameter and version in the subsequent columns or accept the defaults
+          provided after entering the station ID.&nbsp; If you need to add additional rows, select
+          the <b>Edit</b> menu and then <b>Insert Rows</b>.&nbsp; Fill in the identifiers for any
+          remaining stations that you want.&nbsp; Once you have completed your table, save it using
+          <b>Save Station Table</b> from the <b>File</b> menu.
+        </li>
+        <li>
+          You can sort the station table by pressing on the column header of the column that you
+          want to sort by.&nbsp; A second press of the column header will perform an inverse sort.
+        </li>
+        <li>
+          You may find the list of stations easier to use if you delete those stations that you are
+          not interested in.&nbsp; To do this, highlight the rows in the table that you want to
+          delete and then select <b>Delete Checked Rows</b> from the <b>Edit</b> menu.&nbsp; You
+          can save your table by selecting <b>Save Station Table</b> from the <b>File</b> menu.
+        </li>
+        <li>
+          You can query for the starting date and ending date of available data for selected
+          stations.&nbsp; To do this, select the check boxes for the stations that you want and
+          then press the <b>Get Available Dates</b> button.&nbsp; Each station has to be queried
+          independently, so select only those stations that you are interested in.&nbsp; The date
+          range for the selected stations will be displayed in the two right most columns of the
+          table.
+        </li>
+        <li>
+          To retrieve data from the USGS web site and import into HEC-DSS, select the <b>Data
+          Type</b> you want (either Daily, Instantaneous (Hourly), Real Time or Annual Peak Data)
+          from the drop down selector near the top panel of the screen.&nbsp; If you want daily,
+          you can enter a start date and end date for the time frame that you are interested in or
+          select the <b>Retrieve Period of Record</b> check box to retrieve the period of record
+          data.&nbsp; The date should be entered in the form of DDMMMYYYY (e.g., 03FEB2005).&nbsp;
+          Selecting the small box in the date field will provide a calendar tool to aid in setting
+          the date.&nbsp; Even though you may specify dates, only data that is available within
+          those dates from the web site can be retrieved.&nbsp; If you want real time data, enter
+          the number of days back that you want to retrieve data for.&nbsp; The USGS offers data
+          for the last 31 days for real time data.
+        </li>
+        <li>
+          Use caution when selecting a time period for instantaneous historical data, as you might
+          unintentionally request excessive number of values.&nbsp; For example, if data is given
+          in 15 minute intervals, a year’s worth of data will be 35,040 values, which can take a
+          long time to retrieve.
+        </li>
+        <li>
+          After the data type and time span have been set, select the stations from the table that
+          you want data for by checking the box in the <b>Import Data</b> column for those
+          stations.&nbsp; If you want to retrieve data for all stations in your table, press the
+          <b>Select All</b> button.&nbsp; The data retrieval process will begin when you press the
+          <b>Import</b> button.&nbsp; This operation will take some time, depending on your
+          connection speed to the internet and how much data you have requested.&nbsp; A
+          <b>Retrieve Progress</b> dialog box will display the progress of the process.&nbsp; After
+          data has been retrieved, the main catalog screen in HEC-DSSVue will be automatically
+          updated.
+        </li>
+        <li>
+          Daily data is stored with an E part of “1DAY”.&nbsp; The interval for real-time data will
+          be set based on the frequency of the data retrieved.&nbsp; If the frequency varies, the
+          data will be store in an irregular interval format.&nbsp; You may want to use the
+          interval modification functions available from the <b>Time Functions</b> tab in the
+          <b>Math Functions</b> screen to change the data to a desired interval.
+        </li>
+        <li>
+          Data can be directly plotted, tabulated or sent to Microsoft Excel from the plug-in by
+          selecting the desired data sets and then pressing the appropriate tool bar button.&nbsp;
+          You do not need to import the data first; it will be automatically imported and stored in
+          the HEC-DSS file for you.&nbsp; To send the data to Microsoft Excel, you must have
+          installed the Excel plug-in, available from the HEC-DSSVue plug-in web page, or you must
+          have an Excel capable version (currently under development) of the program.
+        </li>
+        <li>
+          Some offices require proxy information to be set to access the internet.&nbsp; Proxy
+          information can be set by selecting the <b>Options</b> item from the <b>Edit</b>
+          menu.&nbsp; This will display the screen shown shown below.&nbsp; Fill in the appropriate
+          values and then press the OK button.&nbsp; The information will be retained between
+          sessions.<br>
+          <br>
+           <img src="../ImagesExt/image21_46.jpg" border="0"><br>
+           Connection Settings Window<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          The USGS plug-in currently has limited error detection capabilities.&nbsp; If you think
+          that there are problems, you should check the HEC-DSSVue log screen for messages.&nbsp;
+          The log screen is usually minimized in your task bar.&nbsp;
+        </li>
+      </ol>
+      <p>
+         The USGS plug-in will indicate when data cannot be retrieved, but it may not give the
+        reason why.&nbsp; You should check the USGS web page with a browser to ensure that what you
+        are requesting is available.&nbsp; The web address is:&nbsp; http://waterdata.usgs.gov/nwis
+        for daily and real-time data, or http://ida.water.usgs.gov/ida for hourly data.
+      </p>
+      <h2 style=" margin-left: 0pt;">
+         &nbsp;
+      </h2>
+    </div>
+  </body>
+</html>

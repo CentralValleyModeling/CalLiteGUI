@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/lf.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Iterative Looping</title>
+  </head>
+  <body style=" padding-right: 0px; padding-bottom: 0px; padding-left: 10px; padding-top: 0px;"
+  relpart="../" background-color="transparent">
+    <div style=
+    " padding-right: 0pt; margin-top: 0pt; margin-left: 0pt; padding-left: 0pt; padding-bottom: 10pt; padding-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+     class="d2h_secondary_topic">
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 72.0pt; margin-top: 24pt; margin-left: 0.0px; margin-bottom: 6pt; margin-right: 0pt;">
+           <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Iterative
+          Looping</font></b><br>
+          <br>
+           Python supports iterative looping with the <b><i>for</i></b> statement, which has the
+          form:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           for <i>item</i> in <i>sequence</i> :
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp;&nbsp;&nbsp; <i>loop-group</i>
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           [else :
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp;&nbsp;&nbsp; <i>else-group</i>]
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Iterative looping executes the body of the loop (the loop-group) once for each element
+          in <i>sequence</i>, first setting <i>item</i> to be that element.&nbsp; If the iteration
+          proceeds to completion without being interrupted by a break statement the else-group will
+          be executed, if specified.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The <b>range([<i>start</i>,] <i>stop</i>[, <i>increment</i>])</b> helper function
+          generates a sequence of numbers from <i>start</i> (default = 0) to <i>stop</i>,
+          incrementing by <i>increment</i> (default = 1).&nbsp; Thus range(4) generates the
+          sequence (0, 1, 2, 3).
+        </p>
+        <p style=" page-break-after: avoid; margin-bottom: 0pt;" class="msocaption">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" width="516" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 387pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 194.35pt;">
+            <td valign="top" width="516" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 194.35pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 387pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="example35">
+                 <a name="_Toc104615200"></a><a name="_Toc104610763"></a><a name=
+                "_Toc19007783">Example</a>: Iterative Looping
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                <br>
+                 # print the first 10 characters
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_1 = “this is a test string”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 for i in range(10) :&nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; print string_1[i]
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # print all the characters
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_1 = “this is a test string”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 for i in range(len(string_1)) :&nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; print string_1[i]
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 # print all the characters (more Python-y)
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 string_1 = “this is a test string”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 for c in string_1 :&nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; print c
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

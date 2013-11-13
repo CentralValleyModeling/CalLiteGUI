@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Executing Scripts</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="scripting1.htm" class="d2hpreviousenabled">Previous</a>
+            &nbsp; <a id="D2HNext" href="scriptmenu1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc100728222"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Executing Scripts</font></b></a><br>
+          <br>
+           HEC-DSSVue allows the execution of scripts in interactive and batch modes.&nbsp; Scripts
+          are executed interactively by starting the HEC-DSSVue program and selecting the desired
+          script from the Toolbar or the Script Selector from the <b>Utilities</b> menu.&nbsp;
+          Scripts are executed in batch mode by starting the HEC-DSSVue program with a script file
+          name as a parameter (e.g. HEC-DSSVue.exe c:\test\myScript.py).&nbsp; Scripts can be
+          launched from the HEC-DSSVue program from the <b>Script Menu</b>, or from the
+          <b>Toolbar</b> or from the <b>Script Selector</b>.<br>
+          <br>
+           Interactive scripts are not passed any parameters upon script execution.&nbsp; In a
+          script executed interactively the variable sys.argv is a list of length 1, with the only
+          element set to the empty string (e.g. sys.argv = [“”]).<br>
+          <br>
+           Scripts executed in batch mode may take parameters from the command line (e.g.
+          HEC-DSSVue.exe c:\test\myScript.py a b c).&nbsp; In a script executed in batch mode the
+          variable sys.argv is a list whose length is one greater than the number of parameters
+          passed on the command line, with the first element set to the file name of the executing
+          script and the remaining elements set to the parameters (e.g. sys.argv =
+          [“c:\\test\\myScript.py”, “a”, “b”, “c”]).
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+      </div>
+      <p class="msobodytext">
+         More:
+      </p>
+      <p class="msonormal">
+         <a style=" text-decoration: none;" href="scriptmenu1.htm"><img src="../button.gif" alt=""
+        border="0" style=" text-decoration: none;" align="absmiddle">Script Menu</a>
+      </p>
+      <p class="msonormal">
+         <a style=" text-decoration: none;" href="maintoolbar1.htm"><img src="../button.gif" alt=""
+        border="0" style=" text-decoration: none;" align="absmiddle">Main Toolbar</a>
+      </p>
+      <p class="msonormal">
+         <a style=" text-decoration: none;" href="scriptselector1.htm"><img src="../button.gif"
+        alt="" border="0" style=" text-decoration: none;" align="absmiddle">Script Selector</a>
+      </p>
+    </div>
+  </body>
+</html>

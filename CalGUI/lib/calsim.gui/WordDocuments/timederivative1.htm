@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Time Derivative</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "successivedifferences1.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="generalfunctions1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "arithmeticfunctions1.htm">Arithmetic Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "_Toc104616329"></a><a name="_Toc104610380"></a><a name="_Toc101758438"></a><a name=
+          "_Toc100980805"></a><b><a name="_Toc19002684"></a><a name="_Toc6903185">Time
+          Derivative</a></b></font><br>
+          <br>
+           The <b>Time Derivative</b> function computes the successive differences per unit time
+          for a regular or irregular interval time series data set.&nbsp; For the time “t,”
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p align="left" class="msonormal" style=" margin-left: 40.0px;">
+           TS2(t)&nbsp; =&nbsp; ( TS1(t) – TS1(t-1) ) / DT
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           where DT is the time difference between t and t-1.&nbsp; For the current form of the
+          function, the units of DT are minutes.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           A value in the resultant time series is set to missing if either the current or previous
+          value in the original time series is missing (need to have two consecutive valid
+          values).&nbsp; By default, the data type of the resultant time series data set is
+          assigned as "PER-AVER.”
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           To compute the time derivative for time series data sets:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Arithmetic</b> tab of the Math Functions Screen and select the <b>Time
+            Derivative</b> operator.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.
+          </li>
+          <li>
+            Click <b>Compute</b>.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

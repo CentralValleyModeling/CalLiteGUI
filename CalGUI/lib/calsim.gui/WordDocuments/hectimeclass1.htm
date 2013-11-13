@@ -1,0 +1,2193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>HecTime Class</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="paireddatacontainerclass1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="plottingbasics1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 24pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <a name="_Toc104616407"></a><a name="_Toc104610458"></a><a name=
+          "_Toc101758517"></a><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5"><a
+          name="_Toc100980884"></a><a name="_Toc100728566"></a><a name="_Toc100728253"></a><a name=
+          "HecTime">HecTime Class</a></font></b><br>
+          <br>
+           HecTime objects are used to manipulate dates and times and to convert dates and times
+          among different formats.&nbsp; To use HecTime objects, the HecTime class must be imported
+          from the hec.heclib.util module (e.g. “from hec.heclib.util import *” or “from
+          hec.heclib.util import HecTime”).&nbsp; After importing the class, a new HecTime object
+          can be created by calling HecTime() (e.g. “myTime = HecTime()”).&nbsp; <b>HecTime</b>
+          methods are described below.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;">
+           HecTime Methods
+        </p>
+        <table cellpadding="0" cellspacing="0" border="1" style=
+        " border-right: medium none; border-left: medium none; margin-left: 0pt; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+         class="msonormaltable">
+          <THEAD>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Method</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Returns</b>
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <b>Description</b>
+              </p>
+            </td>
+          </tr>
+          </THEAD><TBODY>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 add(HecTime increment)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified increment to the object’s date and time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 add(integer increment)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified increment in minutes to the object’s date and time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 addDays(integer days)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified number of days to the time
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 addHours (integer hours)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified number of hours to the time
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 addMinutes (integer minutes)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified number of minutes to the time
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 addSeconds (integer seconds)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the specified number of seconds to the time
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 adjustToIntervalOffset(integer intervalMinutes, integer offset)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Changes the time to be at the standard time for that interval, according to
+                HEC-DSS.&nbsp; For example, will adjust daily data to 2400 hours of that day.
+              </p>
+            </td>
+          </tr>
+          <tr style=" height: 88.6pt; page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 88.6pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 compareTimes(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 88.6pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 88.6pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns one of the following values:
+              </p>
+              <table cellpadding="0" cellspacing="0" border="0" style=" border-collapse: collapse;"
+              class="msonormaltable">
+                <TBODY>
+                <tr>
+                  <td width="28" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 21.35pt;">
+                    <p style=
+                    " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                     class="bodytextindent155" align="right">
+                       <b>-1</b>
+                    </p>
+                  </td>
+                  <td width="192" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 143.75pt;">
+                    <p style=
+                    " margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                    class="bodytextindent155">
+                       The object’s date and time is less than the other object’s
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="28" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 21.35pt;">
+                    <p style=
+                    " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                     class="bodytextindent155" align="right">
+                       <b>0</b>
+                    </p>
+                  </td>
+                  <td width="192" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 143.75pt;">
+                    <p style=
+                    " margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                    class="bodytextindent155">
+                       The objects’ dates and times are equal
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="28" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 21.35pt;">
+                    <p style=
+                    " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                     class="bodytextindent155" align="right">
+                       <b>1</b>
+                    </p>
+                  </td>
+                  <td width="192" valign="top" style=
+                  " padding-right: 5.4pt; padding-bottom: 0pt; padding-left: 5.4pt; padding-top: 0pt; width: 143.75pt;">
+                    <p style=
+                    " margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+                    class="bodytextindent155">
+                       The object’s date and time is greater than the other object’s
+                    </p>
+                  </td>
+                </tr>
+                </TBODY>
+              </table>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 &nbsp;
+              </p>
+            </td>
+          </tr>
+          <tr style=" height: 49.5pt; page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 49.5pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 computeNumberIntervals(HecTime otherTime, integer intervalInMins)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 49.5pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 49.5pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Determines the number of periods between the time set and the time passed in,
+                where intervalInMins is the interval length.
+              </p>
+            </td>
+          </tr>
+          <tr style=" height: 62.1pt; page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 62.1pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 convertTimeZone(HecTime hecTime, TimeZone fromTimeZone, TimeZone toTimeZone)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 62.1pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 62.1pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Changes the time passed in from the first time zone to the second time zone.&nbsp;
+                Adjusts for daylight savings time, according to the time given.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 date()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns a string representation of the object’s date.&nbsp; Same as date(2).
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 date(integer format)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns a string representation of the object’s date, formatted according to the
+                integer parameter <a href="hectimeclass1.htm#HecTimeObjectMethodsFootnote1"></a>
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 &nbsp;
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <sup>1</sup>
+              </p>
+              <p>
+                 &nbsp;
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 .
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 dateAndTime()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns a string representation of the object’s date and time.&nbsp; Same as
+                dateAndTime(2).
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 dateAndTime(integer format)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns a string representation of the object’s date and time, formatted according
+                to the integer parameter <a href=
+                "hectimeclass1.htm#HecTimeObjectMethodsFootnote1"></a>
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 &nbsp;
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <sup>1</sup>
+              </p>
+              <p>
+                 &nbsp;
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 .
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 day()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the day portion of the object’s date as an integer
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 dayOfWeek()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the day of the week with Sunday starting as 1, Monday 2
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 dayOfWeekName()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the name of the day of the week, such as “Sunday”
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 dayOfYear()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the julian day of the year, with Jan.1 returned as “1”.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 equalTo(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Constants.TRUE if the object’s date and time is equal to the other
+                object’s date and time.&nbsp; Returns Contstants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 greaterThan(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Contstants.TRUE if the object’s date and time is greater (later) than the
+                other object’s date and time.&nbsp; Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 greaterThanEqualTo(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Contstants.TRUE if the object’s date and time is greater (later) than or
+                equal to the other object’s date and time.&nbsp; Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 getJavaDate(integer minutesTimezoneOffset)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Date
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the Java Date for this time
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 getMinutes()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 long
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the number of milliseconds since Jan 1, 1900
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 getTimeInMillis()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 long
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the number of <font style=" color: black;">milliseconds since January 1,
+                1970, 00:00:00 GMT</font>
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 getTimeWindow (String userLine, HecTime startTime, HecTime endTime)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer Success=0
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Fail = -1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Takes a user entered line with start date/time and end date/time and converts to
+                HecTims.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 getXMLDateTime (integer minutesTimezoneOffset)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the date in XML format
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 hour()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the hours portion of the object’s time as an integer
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 isDefined()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Constants.TRUE if the object is set to a valid date and time and
+                Constants.FALSE if not.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 isDateDefined()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Constants.TRUE if the date portion is valid (ignores time) and
+                Constants.FALSE if not.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 isTimeDefined()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Constants.TRUE if the time portion is valid (ignores date) and
+                Constants.FALSE if not.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 increment(integer numberPeriods, integer minutesInPeriod)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Adds the number of periods to the date
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 isoDate()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the date in ISO format (YYMMDD)
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 isoTime()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the time in ISO format (HHMMSS)
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 lessThan(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Contstants.TRUE if the object’s date and time is less (earlier) than the
+                other object’s date and time.&nbsp; Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 lessThanEqualTo(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Contstants.TRUE if the object’s date and time is less (earlier) than or
+                equal to the other object’s date and time.&nbsp; Returns Constants.FALSE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 julian()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the number of days since Jan 1, 1900
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 minute()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the minutes portion of the object’s time as an integer
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 month()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the month portion of the object’s date as an integer
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 notEqualTo(HecTime other)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 0/1
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns Constants.FALSE if the object’s date and time is equal to the other
+                object’s date and time.&nbsp; Returns Contstants.TRUE otherwise.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 second()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the seconds portion of the object’s time as an integer
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setCurrent()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the date/time to the current time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 set (integer time)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the date and time represented by the integer (minutes since
+                31Dec1899 00:00)
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 set(string dateAndTime)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the date and time represented by the string, and returns zero
+                if successful.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 set (string date, string time)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the date represented by the date string and the time
+                represented by the time string, and returns zero if successful.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 set (HecTime time)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the date and time represented by the HecTime parameter.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setDate(string date)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the date represented by the string, and returns zero if
+                successful.&nbsp; The time portion of the object is not modified.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setTime(string time)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to the time represented by the string, and returns zero if
+                successful.&nbsp; The date portion of the object is not modified.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setJulian(integer julian)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the date to the julian days (Since Jan 1, 1900)
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setXML (String dateTime)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Success=0
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the date and time according to the XML string
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 setUndefined()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Sets the object to represent an undefined time, as if the object had just been
+                created.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 showTimeAsBeginningOfDay(0/1 showBeginning)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Specifies whether the object is to show midnight times as 00:00 (vs 24:00)
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 subtract(HecTime increment)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Subtracts the specified increment from the object’s date and time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 subtract(integer increment)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 None
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Subtracts the specified increment in minutes from the object’s date and time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 time()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns a string representation of the object’s time.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 toString()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the date and time in string format, for format style 2
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 toString(integer format)
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 string
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the date and time in string format, for format style given
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 value()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the object’s date and time as an the number of minutes since 31Dec1899
+                0000.
+              </p>
+            </td>
+          </tr>
+          <tr style=" page-break-inside: avoid;">
+            <td valign="top" width="221" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 165.85pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 year()
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 60pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 integer
+              </p>
+            </td>
+            <td valign="top" width="217" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 162.95pt; border-top: medium none;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Returns the year portion of the object’s date as an integer
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           <a name="HecTimeObjectMethodsFootnote1"></a>&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <sup>1</sup> The format of the string returned by the date(integer format) method and
+          the date portion of the string returned by the dateAndTime(integer format) method are
+          displayed below.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;">
+           HecTime Date Formats
+        </p>
+        <table cellpadding="0" cellspacing="0" width="518" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 388.8pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: windowtext 1pt solid;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>0</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 June 2, 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>10</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 June 2, 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>100</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">June 2, 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>110</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: windowtext 1pt solid; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">June 2, 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>1</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun 2, 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>11</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun 2, 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>101</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun 2, 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>111</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun 2, 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>2</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2 June 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>12</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2 June 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>102</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2 June 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>112</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2 June 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>3</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 June 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>13</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 June 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>103</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">June 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>113</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">June 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>4</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 02Jun1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>14</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 02Jun85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>104</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">02Jun1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>114</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">02Jun85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>5</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2Jun1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>15</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2Jun85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>105</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2Jun1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>115</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2Jun85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>6</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>16</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>106</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>116</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>7</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 02 Jun 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>17</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 02 Jun 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>107</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">02 Jun 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>117</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">02 Jun 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>8</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2 Jun 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>18</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 2 Jun 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>108</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2 Jun 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>118</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: medium none; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">2 Jun 85</font>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="31" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; border-left: medium none; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: medium none; width: 23.4pt; border-top: medium none;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>9</b>
+              </p>
+            </td>
+            <td valign="top" width="88" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun 1985
+              </p>
+            </td>
+            <td valign="top" width="12" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>19</b>
+              </p>
+            </td>
+            <td valign="top" width="80" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 Jun 85
+              </p>
+            </td>
+            <td valign="top" width="16" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>109</b>
+              </p>
+            </td>
+            <td valign="top" width="85" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun 1985</font>
+              </p>
+            </td>
+            <td valign="top" width="26" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=
+              " margin-top: 0pt; text-align: right; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+               class="bodytextindent155" align="right">
+                 <b>119</b>
+              </p>
+            </td>
+            <td valign="top" width="86" style=
+            " padding-right: 5.4pt; border-right: medium none; border-left: medium none; border-top: medium none; padding-bottom: 0pt; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt;">
+              <p style=" margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+              class="bodytextindent155">
+                 <font style=" text-transform: uppercase;">Jun 85</font>
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

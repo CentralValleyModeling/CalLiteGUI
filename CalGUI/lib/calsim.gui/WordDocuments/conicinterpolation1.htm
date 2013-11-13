@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch7-Math.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Conic Interpolation</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="applymultiplelinearregression1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="polynomial1.htm" class=
+            "d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="mathfunctions1.htm" class="d2h_breadcrumbsnormal">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="hydrologicfunctions1.htm" class=
+        "d2h_breadcrumbsnormal">Hydrologic Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc104616364"></a><a name="_Toc104610415"></a><a name="_Toc101758473"></a><a
+          name="_Toc100980840"></a><a name="_Toc19002715"></a><a name="_Toc6903216"><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5">Conic Interpolation</font></b></a><br>
+          <br>
+           The <b>Conic Interpolation</b> function transforms values in a time series data set by
+          conic interpolation using an elevation-area table stored in a paired data set.&nbsp; The
+          first value pair in the paired data set contains the initial conic depth and the initial
+          storage volume at the first elevation (given in the next value pair).&nbsp; If the
+          initial conic depth is missing, one is computed by the function.&nbsp; Values in the
+          elevation-area table are stored in ascending order.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The Conic Interpolation function can interpolate a time series of elevation to derive a
+          time series of storage or area.&nbsp; The function can interpolate a time series of
+          storage to derive a time series of elevation or area.&nbsp; If the output time series is
+          elevation, the output units are assigned from the x-units of the paired data set.&nbsp;
+          If the output time series is area, the output units are assigned from the y-units of the
+          paired data set.&nbsp; If the output time series is storage, the output units are
+          undefined.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The appearance of the Math Functions screen for the Conic Interpolation function is
+          shown below.&nbsp; The Conic Interpolation function is accessed from the
+          <b>Hydrologic</b> tab of the Math Functions screen.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           <img src="../ImagesExt/image38_38.jpg">
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           <b>Screen for Conic Interpolation function</b>
+        </p>
+        <div style=" margin-top: 0pt; margin-bottom: 0pt;" align="center">
+          <table cellpadding="0" cellspacing="0" border="1" style=
+          " border-right: medium none; border-left: medium none; border-top: medium none; border-bottom: medium none; border-collapse: collapse;"
+           class="msonormaltable">
+            <TBODY></TBODY>
+          </table>
+        </div>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To perform the conic interpolation of a of elevation or storage:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Hydrologic</b> tab of the Math Functions screen and select the <b>Conic
+            Interpolation</b> operator.
+          </li>
+          <li>
+            From the <b>Selected Data Set</b> list, select a time series data set.&nbsp; If the
+            selected data set is not a time series, the remaining input boxes on the screen are
+            unavailable.
+          </li>
+          <li>
+            From the <b>Conic Interpolation Table</b> list, select the paired data set containing
+            the conic interpolation table.&nbsp; Only paired data sets will appear in this list,
+            and only one data set at a time can be selected.
+          </li>
+          <li>
+            From the <b>Input Type</b> list, select the parameter type of the input time series
+            data (Elevation or Storage).
+          </li>
+          <li>
+            From the <b>Output Type</b> list, select the desired output data type (Storage,
+            Elevation or Area).
+          </li>
+          <li>
+            In the <b>Storage Scale</b> box, enter factor for the scale of the storage output
+            values.&nbsp; By default this value is 1.&nbsp; The value is used to scale input (by
+            multiplying) and output (by dividing) storage values.&nbsp; For example, if the area in
+            the conic interpolation table is expressed in sq. ft., the storage scale could be set
+            to 43560 to convert the storage output to acre-ft.
+          </li>
+          <li>
+            Click <b>Compute</b> to interpolate the selected time series data set.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
