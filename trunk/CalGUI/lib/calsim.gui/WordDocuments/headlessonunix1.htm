@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Headless on Unix</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="headlessonwindows1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="runninginbatchmode1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="headlessandbatchoperation1.htm" class=
+        "d2h_breadcrumbsnormal">Headless and Batch Operation</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Headless on
+          Unix</font></b><br>
+          <br>
+           On Unix, you must have an X-Window to write (showPlot) the plot to.&nbsp; This is done
+          using a <i>Virtual</i> XWindow, such Xvfb.&nbsp; The programs treat this as a normal
+          XWindow that they are writing graphics to.&nbsp; Like the PC, you run the scripts as
+          normal, although you don’t need to set at location:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           plot = Plot.newPlot()
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           plot.setSize(600, 500)
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           …
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           plot.showPlot()
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           …
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           plot.saveToPng("/tmp/myPlot.png")
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           plot.close()
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           For more information, refer to:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           http://www.x.org/archive/X11R6.8.2/doc/Xvfb.1.html
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent1">
+           On Unix it is generally advantageous to use the same script to run in an interactive
+          mode as well as a batch mode.&nbsp; This can be accomplished by checking to see if the
+          DISPLAY environment variable is set.&nbsp; If it isn’t, then check that Xvfb is running
+          and set the DISPLAY variable to “:1.0”.&nbsp; For example:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 36pt; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           #!/bin/ksh
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           # ******************************************************************
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           if [ "$DISPLAY" = "" ]
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           then
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp; XvfbRunning=`ps -ef | grep Xvfb | grep -v grep | wc -l | sed -e "s/ //g"`
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp; if [ $XvfbRunning -gt 0 ]
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp; then
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; export DISPLAY=":1.0"
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf "\nWARNING : Using virtual display – “
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf "no graphics will be visible.\n\n"
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp; &nbsp;else
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;printf "\nWARNING : Virtual display server is not
+          running."
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf
+          "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set DISPLAY variable or start
+          Xvfb.\n\n"
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           &nbsp;&nbsp; fi
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           fi
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           # ******************************************************************
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent1">
+           # Execute the program here….
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

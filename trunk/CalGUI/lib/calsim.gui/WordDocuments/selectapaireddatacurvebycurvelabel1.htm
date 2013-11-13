@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Select a Paired Data Curve by Curve Label</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "screenforerroneousvaluesbasedonrateofchange1.htm">Previous</a> &nbsp; <a id="D2HNext"
+            class="d2hnextenabled" href="selectapaireddatacurvebycurvenumber1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <a name="SelectAPairedDataByCurveLabel"></a><a name="_Toc104616497"></a><a name=
+          "_Toc104610548"></a><a name="_Toc101758607"></a><a name="_Toc100980974"></a><a name=
+          "_Toc100728656"></a><a name="_Toc100728343"></a><a name="_Toc19007624"></a><a name=
+          "_Toc19005629"></a><a name="_Ref15210539"></a><a name="_Ref15210375"></a><a name=
+          "_Ref15210357"></a><a name="_Toc14888822"><font size="5" face=
+          "SansSerif, Verdana, Arial, Helvetica"><b>Select a Paired Data Curve by Curve
+          Label</b></font></a><br>
+          <br>
+           <code>setCurve<font style=" font-weight: normal;">(string curveName)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Select, by curve label, the paired data curve for performing subsequent arithmetic
+          operations or math functions.&nbsp; By default, a paired data set loaded from file has
+          all curves selected.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           A paired data set may contain more than one set of y-values.&nbsp; However, a user may
+          wish to modify only one curve of the data set.&nbsp; For example, using the function
+          ".add( 2.0 )" would by default add 2.0 to all y-values for all curves.&nbsp; The
+          setCurve() call may be used to limit the operation to just one selected set of
+          y-values.&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The function searches the paired data set list of curve labels for a match to
+          <b>curveName</b>.&nbsp; If a match is found, that curve is set as the selected curve.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>See also:</b>&nbsp; setCurve( integer curveNumber )
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+          <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+             <b>Parameters:</b>
+          </p>
+          <p class="bodytextindent155" style=
+          " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+             <code>curveName</code> – The curve label (a string) to set as the selected curve.
+          </p>
+        </div>
+        <p>
+           <b>Example:</b> <code>damageCurve.setCurve(“RESIDENTIAL”)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> Nothing
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Generated Exceptions:</b> Throws a HecMathException – if curveName is not found in
+          the paired data set curve labels.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

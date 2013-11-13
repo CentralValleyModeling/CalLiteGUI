@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch6-Graphics.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Text Substitution</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "importingdefaultplotproperties1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="textsubstitutionkeywords1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="customizingplots.htm">Customizing Plots</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt; margin-top: 24pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Text
+          Substitution</b></font><br>
+          <br>
+           In all locations where the plot properties editors allow you to enter text, for example:
+          the <b>Plot Title</b>, <b>Legend Title</b>, <b>Axis Labels</b>, <b>Legend Labels</b>,
+          etc. you can use text substitution.&nbsp; Text substitution is when you set the text
+          using predefined keywords based on Date/Time and DSS related information.&nbsp; These
+          keywords will be used as a look-up and replaced when the text is used in the plot window
+          according to the selected DSS data.&nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           In order for Keywords to be recognized as such, they must be bracketed on each side by %
+          characters.&nbsp; For example: %BPART% would result in the “BPART” of the DSS path being
+          written in the final display text.&nbsp; If you would like to have the actual percentage
+          sign in the display text, use two % characters in a row %% and the second one will be
+          displayed.
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           By default, the first DSS path provided in the plot will be used for the text
+          substitution.&nbsp; However, adding a colon and integer value to the substitution keyword
+          will instruct the substitution algorithm to use a different path.&nbsp; For example
+          %BPART:3% would show the “BPART” of the third DSS path provided in the plot.&nbsp; If
+          there were less than three paths proved in the plot, the last DSS path listed would be
+          used for the substitution.
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           Text substitution keywords may be mixed with fixed text.&nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           For example:
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 28.0px;">
+           The text: &nbsp;Final Results at %BPART%
+        </p>
+        <p class="msonormal" style=" margin-left: 28.0px;">
+           Would display:&nbsp; Final Results for SHASTA
+        </p>
+        <p class="msonormal" style=" margin-left: 28.0px;">
+           Using the DSS path:&nbsp; //SHASTA/ELEV/1HOUR/01JAN2000/ALT1/
+        </p>
+        <p class="msonormal" style=" margin-left: 28.0px;">
+           &nbsp;
+        </p>
+      </div>
+      <p class="msobodytext">
+         More:
+      </p>
+      <p class="msonormal">
+         <a style=" text-decoration: none;" href="textsubstitutionkeywords1.htm"><img style=
+        " text-decoration: none;" alt="" border="0" align="absmiddle" src="../button.gif">Text
+        Substitution Keywords</a>
+      </p>
+    </div>
+  </body>
+</html>

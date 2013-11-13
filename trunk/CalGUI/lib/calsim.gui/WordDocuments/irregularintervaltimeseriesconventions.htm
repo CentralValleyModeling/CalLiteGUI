@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/lf.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch1-Introduction.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Irregular-Interval Time Series Conventions:</title>
+  </head>
+  <body style=" padding-right: 0px; padding-bottom: 0px; padding-left: 10px; padding-top: 0px;"
+  relpart="../" background-color="transparent">
+    <div style=
+    " padding-right: 0pt; margin-top: 0pt; margin-left: 0pt; padding-left: 0pt; padding-bottom: 10pt; padding-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;"
+     class="d2h_secondary_topic">
+      <p style=" text-indent: -45pt; tab-stops: 81.0pt; margin-left: 45pt;">
+         <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Irregular-Interval Time
+        Series Conventions</font></b>
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         The irregular-interval time series conventions are similar to the regular-interval
+        conventions except that an explicit date and time is stored with each piece of data whereas
+        in regular-interval time series the date and time are implied by the location of the data
+        within the block. Irregular-interval data is stored in variable length blocks while
+        regular-interval data is stored in fixed length blocks. The block lengths are days, months,
+        years, decades, and centuries.
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         The number of values that may be stored in one record is indefinite although it is prudent
+        to choose a size that will be less than 3000. The user selects the appropriate block
+        length. For example, if the data to be stored occurred once every 1-2 hours, a monthly
+        block would be appropriate. If data were recorded once or twice a day, use a yearly block.
+        One would not want to store data that occurred 8 or more times a day in a yearly block
+        (about 3000 values) because that may exceed dimension limits in some DSS programs.&nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         All data are stored in variable length blocks that are incremented a set amount when
+        necessary. Initial space for 100 data values is allocated and additional increments are for
+        50 data values unless otherwise set. (When the 101st data value is added to the record, a
+        new record with a length of 150 values is written.)
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         <b>Part D - Block Start Date</b>
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         Part D should be a 9 character military style date for the first day of the standard data
+        block (not necessarily the start of the first piece of data). For example, data stored in a
+        daily block beginning on March 23, 1952 at 3:10 p.m. would have a part D of 23MAR1952. If
+        the same data were stored in a monthly block, part D would be 01MAR1952. The same data in a
+        yearly block would have a part D of 01JAN1952, and as a decade block, 01JAN1950.
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         <b>Part E - Block Length</b>
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         Part E indicates the length of the time block, i.e. whether it is a day, a month, a year,
+        or a decade. It consists of the letters "IR-" concatenated with the block length:
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         IR-DAY
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         IR-MONTH
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         IR-YEAR
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         IR-DECADE
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         IR-CENTURY
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         It should be noted that the same data may be stored in blocks of different lengths. The
+        DSS stores these as different records and treats them as a completely different data
+        set.&nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         An example of a pathname for irregular-interval data is:
+      </p>
+      <p style=" margin-left: 0.0px;" class="msonormal">
+         &nbsp;
+      </p>
+      <p style=" margin-left: 28.0px;" class="msonormal">
+         /SANTA ANA/PRADO/FLOW/01JAN2008/IR-MONTH/OBS/
+      </p>
+      <p style=" text-indent: 36pt; margin-left: 50.4pt;" class="msonormal">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

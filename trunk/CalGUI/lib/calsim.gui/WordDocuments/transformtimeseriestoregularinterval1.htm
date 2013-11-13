@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Transform Time Series to Regular Interval</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "timederivativedifferenceperunittime1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="transformtimeseriestoirregularinterval1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Transform Time Series to
+          Regular Interval</b></font><br>
+          <br>
+           <code>transformTimeSeries<font style=" font-weight: normal;">(string
+          timeIntervalString,</font></code><br>
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+          timeOffsetString,</font></code><br>
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+          functionTypeString )</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Generate a new regular interval time series data set from the current regular or
+          irregular time series.&nbsp; The new time series is computed having the regular time
+          interval specified by <b>timeIntervalString</b> and time offset set by
+          <b>timeOffsetString</b>.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Values for the new time series are computed from the original time series data set using
+          one of seven available functions.&nbsp; The function is selected by setting
+          <b>functionTypeString</b> to one of the following types:
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "INT"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;
+          Interpolate at end of interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "MAX"&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; Maximum over
+          interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "MIN"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; Minimum
+          over interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "AVE"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; Average
+          over interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ACC"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;
+          Accumulation over interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "ITG"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;
+          Integration over interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "NUM"&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp; Number of
+          valid data over interval
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           where “interval” is the interval between time points in the new time series.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The regular interval time of the new time series is specified by
+          <b>timeIntervalString</b>.&nbsp; <b>timeIntervalString</b> is a valid HEC time increment
+          string (e.g. “1MIN”, “15MIN”, “1HOUR”, “6HOUR”,&nbsp; “1DAY”, “1MONTH”).&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Times in the resultant time series may be shifted (offset) from the regular interval
+          time by the increment specified by <code>timeOffsetString</code>.&nbsp; As an example,
+          the offset could be used to shift times from the top of the hour to 6 minutes past the
+          hour.&nbsp; Typically no offset is used.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           The data type of the original time series data governs how values are
+          interpolated.&nbsp; Data type “INST-VAL”&nbsp; (or “INST-CUM”) considers the value to
+          change linearly over the interval from the previous data value to the current data
+          value.&nbsp; Data type “PER-AVER” considers the value to be constant at the current data
+          value over the interval.&nbsp; Data type “PER-CUM” considers the value to increase from
+          0.0 (at the start of the interval) up to the current value over the interval.&nbsp;
+          Interpolation of the three data types is illustrated in the figure below.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <img src="../ImagesExt/image39_21.png" border="0">
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Interpolation of “INST-VAL”, “PER-AVER” and “PER-CUM” data
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <div align="right" style=" margin-top: 0pt; margin-bottom: 0pt;">
+          <table class="msonormaltable" cellpadding="0" style=
+          " border-bottom: medium none; border-right: medium none; border-collapse: collapse; border-left: medium none; border-top: medium none;"
+           border="1" cellspacing="0">
+            <TBODY></TBODY>
+          </table>
+        </div>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           How interpolation is performed for a specific data type influences the computation of
+          new time series values for the selected function.&nbsp; For example, if the data type is
+          “INST-VAL”, the function “Maximum over interval” is evaluated by:&nbsp; Finding the
+          maximum value of the data points from the original time series that are inclusive in the
+          new time interval.&nbsp; Linearly interpolate values at beginning and ending of the new
+          time interval, and determine if these values represent the maximum over the interval.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Referring to the plots in the figure above,&nbsp;the “Average over interval” function is
+          applied to a time series by integrating the area under the curve between interpolated
+          points and dividing the result by the interval time.
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>See also:</b> transformTimeSeries( TimeSeriesMath tsData, string functionTypeString )
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>timeIntervalString</code> – A string specifying the regular time interval for the
+          resultant time series.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>timeOffsetString</code> – A string specifying the offset of the new time points
+          from the regular interval time. This variable may be a blank string (“ ”).
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>functionTypeString</code> – A string specifying the method for computing values
+          for the new time series data set.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>newTsData = tsData.transformTimeSeries(</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “1Day”,&nbsp;</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “0M”,</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “AVE”)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns</b>: A new regular interval TimeSeriesMath object.
+        </p>
+        <h3 style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+           <a name="TransformTimeSriesToIrregularInterval"></a><a name="_Toc104616523"></a><a name=
+          "_Toc104610574"></a><a name="_Toc101758633"></a><a name="_Toc100981000"></a><a name=
+          "_Toc100728682"></a><a name="_Toc100728369"></a><a name="_Toc19007650"></a><a name=
+          "_Toc19005655"></a><a name="_Toc14888841"></a>&nbsp;
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>

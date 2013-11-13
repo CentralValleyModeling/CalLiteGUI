@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Decaying Basin Wetness Parameter</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="cyclicanalysistimeseries1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="dividebyaconstant1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 63.0pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="DecayingBasinWetnessParameter"></a><a name="_Toc104616449"></a><a name=
+          "_Toc104610500"></a><a name="_Toc101758559"></a><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5"><a name="_Toc100980926"></a><a name=
+          "_Toc100728608"></a><a name="_Toc100728295"></a><a name="_Toc19007567"></a><a name=
+          "_Toc19005572"></a><a name="_Toc14888775"></a><a name="_Toc6903135">Decaying Basin
+          Wetness Parameter</a></font></b><br>
+          <br>
+           <code>decayingBasinWetnessParameter<font style=" font-weight: normal;">( TimeSeriesMath
+          tsPrecip,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 52.0px;" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">floating-point decayRate )</font></code>
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Compute a time series of decaying basin wetness parameters from the regular interval
+          time series data set of incremental precipitation, <b>tsPrecip,</b> by:
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 48.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           TSResult(t)&nbsp; =&nbsp; Rate * TSResult(t-1)&nbsp; +&nbsp; TSPrecip(t)
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           where Rate is <b>decayRate</b>, and 0 &lt; Rate &lt; 1.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The first value of the resultant time series data set, TSResult(1), is set to the first
+          value in the current time series data set.&nbsp; The current time series data set can be
+          the same time series data set as <b>tsPrecip</b>.&nbsp; Missing values in the
+          precipitation time series are taken as zero when applying the above equation.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>tsPrecip</code> – A regular interval TimeSeriesMath object representing
+          precipitation
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>decayRate</code> – a floating-point number in the range 0 &lt; decayRate &lt; 1.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>tsWetness =</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>tsPrecip.decayingBasinWetnessParameter(</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>tsPrecip,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>0.87)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A new TimeSeriesMath object
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

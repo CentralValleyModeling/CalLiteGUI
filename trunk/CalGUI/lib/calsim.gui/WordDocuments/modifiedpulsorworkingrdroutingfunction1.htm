@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Modified Puls or Working R&D Routing Function</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="minimumvaluesdateandtime1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="modulo2.htm" class=
+            "d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" tab-stops: 63.0pt; margin-bottom: 6pt;">
+          <br>
+           <a name="ModifiedPulsRouting"></a><a name="_Toc104616480"></a><a name=
+          "_Toc104610531"></a><a name="_Toc101758590"></a><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5"><a name="_Toc100980957"></a><a name=
+          "_Toc100728639"></a><a name="_Toc100728326"></a><a name="_Toc19007604"></a><a name=
+          "_Toc19005609"></a><a name="_Toc14888805"></a><a name="_Toc6903165">Modified Puls or
+          Working R&amp;D Routing Function</a></font></b><br>
+          <br>
+           <code>modifiedPulsRouting<font style=" font-weight: normal;">(TimeSeriesMath
+          tsFlow,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+          numberSubreaches,</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          muskingumX )</font></code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The current data set is a paired data set containing the storage-discharge table for
+          Puls routing, where the x-values are storage and the y-values are discharge.&nbsp; The
+          function derives a new time series data set from the Modified Puls or Working R&amp;D
+          routing of the time series data set <b>tsFlow</b>.&nbsp; <b>numberSubreaches</b> is the
+          number of routing subreaches.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The Working R&amp;D method provides a means of including the effects of inflow on reach
+          storage by use of the Muskingum “x” wedge coefficient.&nbsp; The Working R&amp;D method
+          is activated in the computation if <b>muskingumX</b> is greater than 0.0.&nbsp; However,
+          <b>muskingumX</b> cannot be greater that 0.5.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>tsFlow</code> – A regular interval time series data set for routing.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>numberSubreaches</code> – Number of routing subreaches.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>muskingumX</code> - Muskingum "X" parameter, between 0.0 and 0.5
+          (inclusive).&nbsp; Enter 0.0 to route by the Modified Puls method, or a value greater
+          than 0.0 to apply the Working R&amp;D.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>routedFlow =</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>storDichareCurve.modifiedPulsRouting(</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tsFlow,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reachCount,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; coefficient)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b>&nbsp; A new TimeSeriesMath object.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> Throws a hec.hecmath.HecMathException if the tsMath is not
+          a regular interval time series; if muskingumX is less than 0.0 or greater than 0.5; if
+          the current paired data set does not have both ascending x and y values.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch5-DataEntry.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Importing North Carolina DWR CRONOS Data</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="exportingdatatodssutl.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="customizingplots.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="dataentryimportandexport.htm" class="d2h_breadcrumbsnormal">Data Entry, Import and
+        Export</a>
+      </div>
+      <p style=" tab-stops: 0pt; text-indent: 0pt; margin-left: 0pt;">
+        <br>
+         <b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">Importing North Carolina DWR
+        CRONOS Data</font></b><br>
+        <br>
+         The North Carolina Department of Water Resources developed a plug-in to import data from
+        the CRONOS database into HEC-DSS.&nbsp; This plug-in is supported by North Carolina
+        DWR.&nbsp; For questions, please contact them directly.&nbsp; The web site is
+        http://www.ncwater.org/wrisars/dss.<br>
+        <br>
+         The CRONOS Plug-in, developed by NC DWR, can search and retrieve the water and weather
+        data for North Carolina and the surrounding states from NC Climate Retrieval and
+        Observations Network of the Southeast Database (CRONOS) and store the data into a HEC-DSS
+        file. The map and table search engine in Water Resources Information, Storage, Analysis,
+        and Retrieval System (<b>WRISARS</b>) can be used with the CRONOS Plug-in to enhance the
+        search capability. An example of the import window is shown below.<br>
+        <br>
+         <img alt="http://www.ncwater.org/wrisars/dss/images/cronos.PNG" src=
+        "../ImagesExt/image21_52.png" border="0"><br>
+         Import NC DWR CRONOS Window<br>
+        <br>
+         <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_params.PNG" src=
+        "../ImagesExt/image21_53.png" border="0"><br>
+         Select Parameters Window<br>
+        <br>
+         To import data from CRONOS:
+      </p>
+      <ol>
+        <li>
+          In HEC-DSSVue, create a new dss file or open an existing one.
+        </li>
+        <li>
+          In the HEC-DSSVue main window, click the <b>Data Entry</b> menu, then <b>NC DWR
+          CRONOS</b> from the <b>Import</b> popup, as shown below.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_start.JPG" src=
+          "../ImagesExt/image21_54.jpg" border="0"><br>
+           Importing ND DWR CRONOS<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          In the newly opened <b>NC DWR CRONOS Download</b> panel, select a <b>Data Type</b>, as
+          shown below.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_datatype.PNG" src=
+          "../ImagesExt/image21_55.png" border="0"><br>
+           Data Type Selection<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          Select a <b>Data Table</b>, see below.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_datatable.PNG" src=
+          "../ImagesExt/image21_56.png" border="0"><br>
+           Data Table Selection<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          Click the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_getStationsByState.PNG" src=
+          "../ImagesExt/image21_57.png" border="0">&nbsp;button and then select a state from the
+          drop-down list, shown below, or click the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_getStationsByHUC.PNG" src=
+          "../ImagesExt/image21_58.png" border="0">&nbsp;button and then select a HUC. Click
+          <b>OK</b> to search the stations and you will see the selected stations in the station
+          table.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_selStationsByState.PNG" src=
+          "../ImagesExt/image21_59.png" border="0"><br>
+           Select State<br>
+           &nbsp;
+        </li>
+        <li>
+          If you check <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_clearStations.PNG" src=
+          "../ImagesExt/image21_60.png" border="0">check box, then the station table will be
+          cleared when you select another group of stations.
+        </li>
+        <li>
+          If you want to do a more specific search, click the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_useWRISARS.PNG" src=
+          "../ImagesExt/image21_61.png" border="0">&nbsp;button. It will lead you to the WRISARS
+          search page.
+        </li>
+        <li>
+          You can save the station table to a .cronos text file by clicking the <b>File</b> menu,
+          then <b>Save Station Table</b>.
+        </li>
+        <li>
+          You can open a previously saved station table from an existing .cronos text file by
+          clicking the <b>File</b> menu and then <b>Open Station Table</b>.
+        </li>
+        <li>
+          You can open a station table directly by clicking a file name (e.g. StationTableC.cronos)
+          below the <b>Close</b> section in the File menu.
+        </li>
+        <li>
+          Select stations in the station table.
+        </li>
+        <li>
+          You can click the column title to sort the station table by that column, e.g. click
+          <b>Available End</b> to sort by the available end timestamps. The columns in the table
+          are shown in the figure below.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_columns.PNG" src=
+          "../ImagesExt/image21_62.png" border="0"><br>
+           Column Header Titles<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          You can also use the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_selAll.PNG" src=
+          "../ImagesExt/image21_63.png" border="0">&nbsp;button or the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_unselAll.PNG" src=
+          "../ImagesExt/image21_64.png" border="0">&nbsp;button to select or unselect all rows in
+          the station table, respectively.
+        </li>
+        <li>
+          You can delete the checked rows from station table by clicking the <b>Edit</b> menu Edit,
+          then <b>Delete Checked Rows</b>.
+        </li>
+        <li>
+          You can also add rows in front of the current row by clicking the <b>Edit</b> menu and
+          then <b>Insert Rows</b>.
+        </li>
+        <li>
+          If you want to use the Station IDs for B parts, click the <b>Edit</b> menu and then click
+          <b>Set B Part to Station ID</b>.
+        </li>
+        <li>
+          If you want to use the Station Names for B parts, click the <b>Edit</b> menu and then
+          click <b>Set B Part to Station Name</b>. The Stations Names are used for B parts by
+          default.
+        </li>
+        <li>
+          If you just want to import a part of the data, then set up the <b>Start Date</b> and
+          <b>End Date</b>, otherwise check the <b>Retrieve Period of Record</b> check box.&nbsp;
+          (You can click <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_refreshDates.PNG" src=
+          "../ImagesExt/image21_65.png" border="0">button to get the most accurate available dates
+          information.) See the figure below for an example of this toolbar.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_dates.PNG" src=
+          "../ImagesExt/image21_66.png" border="0"><br>
+           Setting the Time Window for Data Retrieval<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          Click the <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_selParamImport.PNG"
+          src="../ImagesExt/image21_67.png" border="0">&nbsp;button to open the <b>Select
+          Parameters</b> window for the selected stations. The descriptions for the parameters are
+          shown on the right of the window. By default, all parameters are selected. You can click
+          the <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_unselAll.PNG" src=
+          "../ImagesExt/image21_64.png" border="0">&nbsp;button or the &nbsp;<img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_selAll.PNG" src=
+          "../ImagesExt/image21_63.png" border="0">&nbsp;button, or you can select a few parameters
+          manually. If you check the upper checkbox in the <b>All</b> column, then the whole row
+          will be selected automatically. Then click the <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/cronos_import.PNG" src=
+          "../ImagesExt/image21_68.png" border="0">&nbsp;button to import the data from the CRONOS
+          database to the DSS file you just opened or created. An example of the <b>Select
+          Parameters</b> window is shown below.<br>
+          <br>
+           <img alt="http://www.ncwater.org/wrisars/dss/images/cronos_params.PNG" src=
+          "../ImagesExt/image21_53.png" border="0"><br>
+           Select Parameters Window<br>
+           &nbsp;
+        </li>
+        <li>
+          You can click <b>Plot</b> <img alt="http://www.ncwater.org/wrisars/dss/images/plot.gif"
+          src="../ImagesExt/image21_69.png" border="0">, <b>Tabulate</b> <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/tabulate.gif" src=
+          "../ImagesExt/image21_70.png" border="0">, or <b>Tabulate in MS Excel</b> <img alt=
+          "http://www.ncwater.org/wrisars/dss/images/Excel.gif" src="../ImagesExt/image21_71.png"
+          border="0">buttons to open the <b>Select Parameters</b> window, select some parameters,
+          and then import the data and show the data in a plot, table, or Excel directly.
+        </li>
+        <li>
+          You can also click the <b>View</b> menu, then <b>Tabulate</b>, <b>Plot</b>, or
+          <b>Tabulate with Excel</b> to import the selected station-parameters and show the data in
+          a plot, table or Excel.
+        </li>
+        <li>
+          Examine the imported or updated data in HEC-DSSVue root window, table, plot, or Excel.
+        </li>
+      </ol>
+      <p style=" margin-left: 90pt;" class="bodytextindent1">
+        <br>
+        <br>
+      </p>
+      <p class="bodytextindent1">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

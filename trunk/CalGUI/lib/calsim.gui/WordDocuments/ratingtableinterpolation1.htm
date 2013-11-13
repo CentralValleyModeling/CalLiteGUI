@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Rating Table Interpolation</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "productfunction1.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled" href=
+            "replacespecificvalues2.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "RatingTableInterpolation"></a><a name="_Toc104616491"></a><a name="_Toc104610542"></a><a
+          name="_Toc101758601"></a><b><a name="_Toc100980968"></a><a name="_Toc100728650"></a><a
+          name="_Toc100728337"></a><a name="_Toc19007618"></a><a name="_Toc19005623"></a><a name=
+          "_Toc14888816"></a><a name="_Ref6720681">Rating Table Interpolation</a></b></font><br>
+          <br>
+           <code>ratingTableInterpolation<font style=
+          " font-weight: normal;">(TimeSeriesMath&nbsp;tsData)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Transform/interpolate values in the time series data set <b>tsData</b> using the rating
+          table x-y values stored in the current paired data set.&nbsp; For example, you can use
+          the function to transform a time series of stage to a time series of flow using a
+          stage-flow rating table.&nbsp; <b>tsData</b> may be a regular or irregular time interval
+          data set.&nbsp; Missing values in <b>tsData</b> are kept missing in the resultant data
+          set.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Create the paired data set with the rating table option to set values for “<code>datum”,
+          “shift”,</code> and “<code>offset.”</code>&nbsp; By default these values are 0.0.&nbsp;
+          The shift is added to and the datum subtracted from all input time series values.&nbsp;
+          If the rating table is Log-Log, the table x-values are adjusted by subtracting the
+          offset.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Units and parameter type in resultant time series data set are defined by the y-units
+          label and parameter type of the current paired data set.&nbsp; All other names and labels
+          are copied over from <code>tsData</code>.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>See also:</b>&nbsp; reverseRatingTableInterpolation()
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>tsData</code> – A regular or irregular interval TimeSeriesMath object.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>tsFlow =</code>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>&nbsp;&nbsp;&nbsp; stageFlowCurve.ratingTableInterpolation(tsStage)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> A new TimeSeriesMath object.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

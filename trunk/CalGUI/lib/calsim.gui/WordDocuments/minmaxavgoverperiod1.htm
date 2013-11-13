@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch7-Math.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Min/Max/Avg/… Over Period</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="timefunctions1.htm" class="d2hpreviousenabled">Previous</a>
+            &nbsp; <a id="D2HNext" href="copyintime1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="mathfunctions1.htm" class="d2h_breadcrumbsnormal">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="timefunctions1.htm" class=
+        "d2h_breadcrumbsnormal">Time Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc100980819"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Min/Max/Avg/… Over Period</font></b></a><br>
+          <br>
+           The <b>Min/Max/Avg/… Over Period</b> function generates a time series data set using a
+          variety of functions from an existing irregular or regular interval time series data
+          set.&nbsp;&nbsp; The functions are:
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Interpolate at end of Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Maximum for Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Minimum <a name="_Hlk232501560">for Period</a>
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Average over Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Accumulation over Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Volume for Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Integration over Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           Number of Valid Data over Period
+        </p>
+        <p style=
+        " margin-top: 0pt; margin-left: 30.150002px; margin-bottom: 0pt; margin-right: 0pt;" class=
+        "msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           where “period” is a user selected time interval to evaluate the data over.&nbsp; This
+          function is often used to compute information such as the maximum or minimum annual flow,
+          total annual precipitation, and maximum and minimum daily temperatures.&nbsp; (See
+          remarks following regarding computing values for water years.)
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The resulting data can be put in an irregular-interval data set.&nbsp; By doing so, the
+          date and time of each occurrence will be saved with the data.&nbsp; For example, if
+          maximum annual flows are computed, the date and time of that maximum will be provided
+          with an irregular-interval block.&nbsp; You should choose an irregular-interval block
+          size, so that between 50 and 1,000 values are stored in a block.&nbsp; Daily data results
+          should use a block size of “IR-YEAR”.&nbsp; Annual results should use a block size of
+          “IR-DECADE”.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Besides choosing a standard interval, you can also select a <b>Custom Period
+          Interval</b>.&nbsp; This provides you the capability to compute information over a period
+          that is different from a standard storage interval, such as two-day averages, and maximum
+          or accumulation over 2, 5 or 10 years.&nbsp; To compute using a custom interval, select
+          <b>Custom Period Interval</b> and then enter an integer interval value and select the
+          time increment for that value from the list further to the right. &nbsp;The time
+          increments include: <b>Minute</b>, <b>Hour</b>, <b>Day</b>, <b>Week</b>, <b>Month</b>,
+          and <b>Year.</b> &nbsp;If you choose a custom period interval, the results must be stored
+          in irregular-interval data sets.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The data type of the original time series data governs how values are
+          interpolated.&nbsp; Data type “INST-VAL” (or “INST-CUM”) considers the value to change
+          linearly over the interval from the previous data value to the current data value.&nbsp;
+          Data type “PER-AVER” considers the value to be constant at the current data value over
+          the interval.&nbsp; Data type “PER-CUM” considers the value to increase from 0.0 (at the
+          start of the interval) up to the current value over the interval.&nbsp; Interpolation of
+          the three data types is illustrated below.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           <img src="../ImagesExt/image38_16.png"><br>
+           Interpolation of “INST-VAL,” “PER-AVER” and “PER-CUM” Data
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           How interpolation is performed for a specific data type influences the computation of
+          new time series values for the selected function.&nbsp; For example, if the data type is
+          “INST-VAL,” the function <b>Maximum for Period</b> is evaluated by:
+        </p>
+        <ul>
+          <li>
+            Finding the maximum value of the data points from the original time series that are
+            inclusive in the new time period.&nbsp;
+          </li>
+          <li>
+            Linearly interpolate values at beginning and ending of the new time interval, and
+            determine if these values represent the maximum over the interval.<br>
+          </li>
+        </ul>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Referring to the plots in Figure 7.10, the <b>Average over Period</b> function is
+          applied to a time series by integrating the area under the curve between interpolated
+          points and dividing the result by the interval time.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           Times in the new time series may be shifted (offset) from the regular interval time by a
+          user specified offset.&nbsp; As an example, the offset could be used to shift times in
+          regular hourly interval data from the top of the hour to 6 minutes past the hour.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The figure below&nbsp;shows the appearance of the Math Functions screen for the
+          <b>Min/Max/Avg/… Over Period</b> function.&nbsp;&nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           <img src="../ImagesExt/image38_17.jpg"><br>
+           Screen for Min/Max/Avg/… Over Period Function
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To compute the minimum, maximum, average, etc. of time series data sets:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Time Functions</b> tab of the <b>Math Functions</b> screen and select the
+            <b>Min/Max/Avg/… Over Period</b> operator.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.
+          </li>
+          <li>
+            From the <b>Function Type</b> list, select the computation to apply to the data.
+          </li>
+          <li>
+            From the <b>New Period Interval</b> list or the <b>Custom Period Interval</b> list,
+            select the interval period to compute values for.
+          </li>
+          <li>
+            If you select a <b>Custom</b> period, enter the integer period interval and select the
+            <b>minute/hour/day/week/month/year</b> time increment for that value from the list
+            further to the right.
+          </li>
+          <li>
+            Optionally, you may put the data in an irregular interval time series data set, which
+            will retain the dates and times of each occurrence.&nbsp; You should choose an
+            irregular-interval <b>Block Size</b>, so that between 50 and 1,000 values are stored in
+            a block.&nbsp; Daily data results should use a block size of “IR-YEAR”.&nbsp; Annual
+            results should use a block size of “IR-DECADE”.
+          </li>
+          <li>
+            Optionally, you may specify a <b>Time Offset</b> to offset the new points in time from
+            the standard interval time.&nbsp; For example, if you select a daily interval for the
+            Time Interval, you may use the option to offset time points to be at 6 a.m. instead of
+            at midnight.&nbsp; If the <b>Set Time Offset</b> box is checked, enter an integer
+            number in the box to the right and select the <b>minute/hour/day/week/month/year</b>
+            time increment from the list further to the right.&nbsp; If the <b>Set Time Offset</b>
+            box is unchecked, times in the resultant data sets will fall on the regular interval
+            time (typical setting).
+          </li>
+          <li>
+            Click <b>Compute</b>.
+          </li>
+        </ol>
+        <p>
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

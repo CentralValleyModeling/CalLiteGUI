@@ -1,0 +1,1910 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>HecMath Class</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="tableexportoptionsclass1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="mathfunctions2.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 24pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <a name="_Toc104616436"></a><a name="_Toc104610487"></a><a name="_Toc101758546"></a><a
+          name="_Toc100980913"></a><a name="_Toc100728595"></a><a name="_Toc100728282"></a><a name=
+          "MathFunctions"></a><a name="_Toc104616403"></a><a name="_Toc104610454"></a><a name=
+          "_Toc101758513"></a><a name="_Toc100980880"></a><a name="_Toc100728562"></a><a name=
+          "_Toc100728249"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">HecMath</font></b></a><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5">
+          Class</font></b><br>
+          <br>
+           The objects returned from the <i>HecDss.</i>.read(…) methods and supplied to the
+          <i>HecDss</i>.write(…) method are HecMath objects.&nbsp; There are currently three types
+          of HecMath classes: TimeSeriesMath class, PairedDataMath class, and StreamRatingMath
+          class which represent time-series data, paired data, and stream rating data,
+          respectively.&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           An HecMath object can be created for writing to new DSS data by first creating a new
+          DataContainer as discussed in the sections "TimeSeriesContainer Class" and
+          "PairedDataContainer Class", and then calling the HecMath.createInstance() function with
+          the DataContainer object as the only parameter (e.g. myTimeSeriesMath =
+          HecMath.createInstance(myTimeSeriesContainer)).&nbsp; The methods for HecMath Objects,
+          are listed in below.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;">
+           HecMath Methods
+        </p>
+        <table border="1" width="520" cellspacing="0" cellpadding="0">
+          <thead>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>Method</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 <b>Returns</b>
+              </p>
+            </td>
+          </tr>
+          </thead>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>abs</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>accumulation</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>acos()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>add</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>add</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>applyMultipleLinearRegression</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string startTimeString,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string endTimeString,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sequence datasets,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;floating-point maxLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>asin()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>atan()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>ceil()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>centeredMovingAverage</b>(integer number,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 onlyValid,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 useReduced)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>conicInterpolation</b>(TimeSeriesMath dataset,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                inputType,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string outputType,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point storageFactor)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>convertValuesToEnglishUnits</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>convertValuesToMetricUnits</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>correlationCoefficients</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 LinearRegression
+              </p>
+              <p>
+                 Statistics
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>cos</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>cyclicAnalysis</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 sequence of TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>decayingBasinWetnessParameter</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath
+                tsPrecip,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point decayRate)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>divide</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>divide</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>estimateForMissingPrecipValues</b>(&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer maxMissing)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>estimateForMissingValues</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer maxMissing)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>exp()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>exponentiation</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>exponentiation</b>(HecMath tsMath)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>extractTimeSeriesDataForTimeSpecification</b>( &nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                timeLevel,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                range,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1
+                isInclusive,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+                intervalWindow,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 setAsIrregular)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>firstValidDate()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>firstValidValue()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>floor()</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>flowAccumulatorGageProcessor</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>fmod(</b>HecMath tsMath<b>)</b>
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>forwardMovingAverage</b>(integer number)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>forwardMovingAverage</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+                numberToAverageOver,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1
+                OnlyValidValues,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 useReduced)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 Hecmath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>generateDataPairs</b>(TimeSeriesMath dataset,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 sort)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 PairedDataMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>generateRegularIntervalTimeSeries</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                startTime,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                endTime,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                timeInterval,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                timeOffset,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;floating-point initialValue)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>getData</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 DataContainer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>getType</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 string
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>getUnits</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 string
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>gmean</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>hmean</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>integer_divide</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>integer_divide</b>(HecMath tsMath)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>interpolateDataAtRegularInterval</b>(&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+                timeInterval,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string timeOffset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>inverse</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>isEnglish</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 0/1
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>isMetric</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 0/1
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>isMuskingumRoutingStable</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+                subReachCount,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                muskingumK,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point muskingumX)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 string
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>lastValidDate</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>lastValidValue</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>log</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>log10</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>max</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>max</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>maxDate</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>mean</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>mean</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>med</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>mergePairedData</b>(PairedDataMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 PairedDataMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>mergeTimeSeries</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>min</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>min</b>(list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>minDate</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>modifiedPulsRouting</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath
+                dataset,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+                subReachCount,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point muskingumX)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>modulo</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>modulo</b>(HecMath tsMath)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>multipleLinearRegression</b>(sequence datasets,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                minLimit,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 PairedDataMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>multiply</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>multiply</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>muskingumRouting</b>(integer subReachCount,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                muskingumK,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point muskingumX)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>neg</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>numberInvalidValues</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>numberMissingValues</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>numberQuestionedValues</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>numberRejectedValues</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>numberValidValues</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 integer
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>olympicSmoothing</b>(integer number,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1
+                onlyValid,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 useReduced)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p1(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p2(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p5(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p10(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p20(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p25(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p75(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p80(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p89(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p90(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p95(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>p99(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>periodConstants</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>polynomialTransformation</b>(&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>polynomialTransformationWithIntegral</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>product(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>ratingTableInterpolation</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>replaceSpecificValues(</b>HecDouble from,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HecDouble to)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>reverseRatingTableInterpolation</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>rms(</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>round</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>roundOff</b>(integer digits, integer place)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithConstantValue</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String
+                durationStr,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point rejectTolerance,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point questionTolerance,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minThreshold,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer maxMissing)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithDurationMagnitude</b>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String
+                durationStr,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                minRejectLimit,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                minQuestionLimit,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                maxRejectLimit,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxQuestionLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithForwardMovingAverage</b>(&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer numberToAverageOver,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point changeLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithForwardMovingAverage</b>(&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer number,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point changeLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 setMissing, string invalidQuality)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithMaxMin</b>(floating-point min,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point max,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point rate,&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 setMissing,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string invalidQuality)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithMaxMin</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minValueLimit,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxValueLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point changeLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithMaxMin</b>(&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minValueLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                maxValueLimit,&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point changeLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0/1 setInvalidToSpecified,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                invalidValueReplacement,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string qualityFlagForInvalidValue)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithMaxMin</b>(&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minRejectLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                minQuestionLimit,&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxQuestionLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxRejectLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>screenWithRateOfChange</b>(&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minRejectLimit,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                minQuestionLimit,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+                maxQuestionLimit,&nbsp;&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point maxRejectLimit)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setCurve</b>(string name)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setCurve</b>(integer number)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setData</b>(DataContainer data)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setLocation</b>(string location)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setParameter</b>(string parameter)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setPathname</b>(string pathname)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setTimeInterval</b>(string interval)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setType</b>(string type)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setUnits</b>(string units)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setVersion</b>(string version)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>setWatershed</b>(string watershed)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 None
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>shiftAdjustment</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>shiftInTime</b>(string timeShift)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>sign</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>sin</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>skewCoefficient</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>snapToRegularInterval</b>(string timeInterval,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string timeOffset,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string timeBackward,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string timeForward)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>sqrt</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>standardDeviation</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>standardDeviation (</b><br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>straddleStaggerRouting</b>(integer avgCount,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer lagCount,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer subReachCount)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>subtract</b>(floating-point constant)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>subtract</b>(TimeSeriesMath dataset)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>successiveDifferences</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>sum</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 floating-point
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>sum (</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>tan</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>timeDerivative</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>transformTimeSeries</b>(string timeInterval,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string timeOffset,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string functionType)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>transformTimeSeries</b>(<b>&nbsp;</b><br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset,&nbsp;<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string functionType)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>truncate</b>()
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>twoVariableRatingTableInterpolation</b>(<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset1,<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TimeSeriesMath dataset2)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 TimeSeriesMath
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" width="298">
+              <p>
+                 <b>var (</b>list of HecMath tsMathArray)
+              </p>
+            </td>
+            <td valign="top" width="119">
+              <p>
+                 HecMath
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p>
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch5-DataEntry.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Recognized NCDC Formats</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "obtainingncdcdata.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="importing.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="dataentryimportandexport.htm">Data Entry, Import and
+        Export</a> <font class="d2h_breadcrumbslinkseparator">&gt;</font> <a class=
+        "d2h_breadcrumbsnormal" href="importingncdcdata.htm">Importing NCDC Data</a>
+      </div>
+      <p style=" margin-left: 0pt; text-indent: 0pt; tab-stops: 0pt;">
+        <br>
+         <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Recognized NCDC
+        Formats</b></font><br>
+        <br>
+         The plug-in has been tested with NCDC 3200, 3210, 3220, 3240 and 3260 formats in all
+        forms.&nbsp; It has also been tested with LCD, GSOD and 3505 delimited formats.&nbsp; It
+        will not import data from non-delimited LCD, GSOD and 3505 formats.&nbsp; If you have a
+        choice for your format, we recommend comma delimited with station names. Many of the
+        parameter types in 3200, 3220, LCD, GSOD and 3505 formats do not have the units or type
+        assigned by the importer and they may need to be edited in later, if needed.
+      </p>
+      <p class="bodytextindent1" style=" margin-left: 0px;">
+         Examples of these formats are:
+      </p>
+      <ol>
+        <li>
+          3240 Comma Delimited:<br>
+           COOPID,CD,ELEM,UN,YEAR,MO,DA,TIME,HOUR01,F,F,TIME,HOUR02…<br>
+           ------,--,----,--,----,--,--,----,------,-,-,----,------<br>
+           041112,00,HPCP,HI,1970,09,01,0100, 00000,g, ,0200, 00000,…<br>
+           041112,00,HPCP,HI,1970,09,04,0100, 00000, , ,0200, 00000,…
+          041112,00,HPCP,HI,1970,10,01,0100, 00000,g, ,0200, 00000,…<br>
+           …<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          3240 Space Delimited with Station Name:<br>
+           COOPID STATION
+          NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          CD ELEM UN YEAR MO DA TIME HOUR01<br>
+           ------ ------------------------------ -- ---- -- ---- -- -- ---- ------041112 BROOKS
+          FARNHAM RANCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00 HPCP HI 1970
+          09 01 0100&nbsp; 00000<br>
+           041112 BROOKS FARNHAM RANCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          00 HPCP HI 1970 09 04 0100&nbsp; 00000 041112 BROOKS FARNHAM
+          RANCH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00 HPCP HI 1970 10 01
+          0100&nbsp; 00000<br>
+           …<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3240 fixed:<br>
+           HPD04111200HPCPHI19700900010010100 00000g<br>
+           HPD04111200HPCPHI19700900010012500 00000&nbsp;<br>
+           HPD04111200HPCPHI19700900040011900 00005&nbsp;<br>
+           HPD04111200HPCPHI19700900040012500 00005&nbsp;<br>
+           HPD04111200HPCPHI19701000010010100 00000g32<br>
+           &nbsp;
+        </li>
+        <li>
+          40 variable:HPD<br>
+           04111200HPCPHI19701000010020100 00000g 2500
+          00000&nbsp;HPD04111200HPCPHI19701000180080400 00003&nbsp; 0500 00010&nbsp; 0600
+          00012&nbsp; HPD04111200HPCPHI19701000200030100 99999[ 1200 99999] 2500 00000I<br>
+           …<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3260 Comma Delimited with Station Name and html headings:<br>
+           &lt;META http-equiv=Content-Type content="text/html; charset=utf-8"&gt;&lt;/HEAD&gt;<br>
+           &lt;BODY&gt;&lt;PRE&gt;COOPID,STATION
+          NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ,CD,ELEM,UN,YEAR,MO,DA,TIME, VALUE,F,F<br>
+           ------,------------------------------,--,----,--,----,--,--,----,------,-,-<br>
+           040897,BLUE
+          CANYON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ,00,QPCP,HI,1985,08,01,0015, 00000,g,<br>
+           040897,BLUE
+          CANYON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ,00,QPCP,HI,1985,08,01,2500, 00000, ,<br>
+           040897,BLUE
+          CANYON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ,00,QPCP,HI,1985,08,17,1500, 00003, ,<br>
+           040897,BLUE
+          CANYON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ,00,QPCP,HI,1985,08,17,1600, 00008, ,<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          3260 Variable with html headings:<br>
+           &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;<br>
+           &lt;HTML&gt;&lt;HEAD&gt;<br>
+           &lt;META http-equiv=Content-Type content="text/html; charset=utf-8"&gt;&lt;/HEAD&gt;<br>
+           &lt;BODY&gt;&lt;PRE&gt;15M04089700QPCPHI19850800010020015 00000g 2500 00000&nbsp;<br>
+           15M04089700QPCPHI19850800170041500 00003&nbsp; 1600 00008&nbsp; 1700 00002&nbsp; 2500
+          00013&nbsp;<br>
+           15M04089700QPCPHI19850800290051700 00004&nbsp; 1800 00011&nbsp; 1900 00003&nbsp; 2000
+          00002&nbsp; 2500 00020&nbsp;<br>
+           15M04089700QPCPHI19850800300021200 00001&nbsp; 2500 00001&nbsp;<br>
+           15M04089700QPCPHI19850900010020015 00000g 2500 00000&nbsp;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3260 Fixed with html headings:<br>
+           &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;<br>
+           &lt;HTML&gt;&lt;HEAD&gt;<br>
+           &lt;META http-equiv=Content-Type content="text/html; charset=utf-8"&gt;&lt;/HEAD&gt;<br>
+           &lt;BODY&gt;&lt;PRE&gt;15M04089700QPCPHI19850800010020015 00000g<br>
+           15M04089700QPCPHI19850800010022500 00000&nbsp;<br>
+           15M04089700QPCPHI19850800170041500 00003&nbsp;<br>
+           15M04089700QPCPHI19850800170041600 00008&nbsp;<br>
+           15M04089700QPCPHI19850800170041700 00002<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3200 Delimited:<br>
+           COOPID,WBANID,Prelim,year,month,day,Tmax,Tmin,Tobs,Tmean,Cdd,Hdd,Prcp,Flag<br>
+           042294,99999, ,1989,12,29,56,37,46,47,0,18,0, ,0, ,0<br>
+           042294,99999, ,1989,12,30,65,33,37,49,0,16,0, ,0, ,0<br>
+           042294,99999, ,1989,12,31,52,30,32,41,0,24,0, ,0,
+          ,0,42.8,53.0,32.6,65,25,0,636,0.03,0&nbsp;<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3200 Fixed:<br>
+           DLY29002201SNWD I19480399990310118 00005 10218 00005 10318 00012 10418 00016 10518
+          00016<br>
+           DLY29002201DYSWNA19480499990310199-99999M 0218 01100 10318 01100 10499-99999M 0518 01100
+          &nbsp;&nbsp;DLY29002201PRCPHI19480499990310118 00000 10218 00000 10318 00000 10418 00000
+          10518 00000&nbsp;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3210 Fixed:<br>
+           DLY00003017F2MNMD200401A1990310124 21018 00224 04020 00324 13023 00424 31018 00524
+          DLY00003017F5SCMD200401A1990310124 21023 00224 05022 00324 13025 00424 31022 00524
+          &nbsp;&nbsp;DLY00003017FMTMHR200401A1990310124 01810 00224 01258 00324 01341 00424 01551
+          00524&nbsp;<br>
+           &nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          3220 Fixed:<br>
+           MLY04111202CLDD D19859999990060100 00000&nbsp; 0200 00003&nbsp; 0300 00000&nbsp; 0400
+          00032B MLY04111202DP01NA19859999990060100 00002&nbsp; 0200 00002&nbsp; 0300 00008&nbsp;
+          0400 00000&nbsp; MLY04111202DP05NA19859999990060100 00000&nbsp; 0200 00001&nbsp; 0300
+          00001&nbsp; 0400 00000&nbsp;<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          3220 Delimited:<br>
+           COOPID,WBNID,CD,ELEM,UN,YEAR,A,S,MO,DA,&nbsp; JAN ,F,F,MO,DA,&nbsp; FEB
+          ,F,F,MO,DA,&nbsp; MAR<br>
+           ------,-----,--,----,--,----,-,-,--,--,------,-,-,--,--,------,-,-,--,--,------041112,99999,02,CLDD,
+          D,1985,9,9,01,00, 00000, , ,02,00, 00003, , ,03,00, 00000<br>
+           041112,99999,02,DP01,NA,1985,9,9,01,00, 00002, , ,02,00, 00002, , ,03,00, 00008<br>
+           &nbsp;&nbsp;
+        </li>
+        <li>
+          LCD Delimited:<br>
+           Month:, 12/2004<br>
+           Station Name:, "LOS ANGELES INTERNATIONAL AIRPORT" Call Sign:, LAX<br>
+           Day,Time,StationType,Maint Indic,SkyConditions,Visibility,Weather Type,Dry Bulb
+          01,0050,AO2 ,-,CLR ,10SM&nbsp;&nbsp; ,-,46&nbsp;&nbsp; ,&nbsp;&nbsp; 7.8,40&nbsp;&nbsp;
+          ,&nbsp;&nbsp; 4.3,31&nbsp;&nbsp; ,&nbsp;&nbsp; -.6, 56 , 3&nbsp;&nbsp; ,VRB,-,
+          01,0150,AO2 ,-,CLR ,10SM&nbsp;&nbsp; ,-,46&nbsp;&nbsp; ,&nbsp;&nbsp; 7.8,38&nbsp;&nbsp;
+          ,&nbsp;&nbsp; 3.5,27&nbsp;&nbsp; ,&nbsp; -2.8, 47 , 0&nbsp;&nbsp; ,000,-, 01,0250,AO2
+          ,-,CLR ,10SM&nbsp;&nbsp; ,-,45&nbsp;&nbsp; ,&nbsp;&nbsp; 7.2,36&nbsp;&nbsp; ,&nbsp;&nbsp;
+          2.3,22&nbsp;&nbsp; ,&nbsp; -5.6, 40 , 5&nbsp;&nbsp; ,010,-,<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          LCD Delimited:<br>
+           Month:,09/2002<br>
+           Station Name:, ASHEVILLE REGIONAL AIRPORT (AVL)<br>
+           DT,Hr1, Hr2, Hr3, Hr4, Hr5, Hr6, Hr7, Hr8, Hr9, Hr10, Hr11, Hr12, Hr13, Hr14, Hr15,<br>
+           1,----,----,T&nbsp;&nbsp;
+          ,----,----,----,----,----,----,----,----,----,----,----,----,----,----<br>
+           15,.05,.02,.03,.06,.01,.02,.02,T&nbsp;&nbsp; ,.01,T&nbsp;&nbsp;
+          ,.02,.09,.06,.02,.04,.05,.01,T&nbsp;&nbsp; ,.01,T&nbsp;<br>
+           ---,----,----,----,----,----,----,----,----,----,----,----,----,----,----,----,----<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <li>
+          GSOD Delimited<br>
+           STN---&nbsp; YEARMODA&nbsp;&nbsp;&nbsp; TEMP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          DEWP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SLP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          STP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VISIB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          WDSP&nbsp;&nbsp;&nbsp;&nbsp; MXSPD&nbsp;&nbsp; 010010&nbsp; 20000501&nbsp;&nbsp;&nbsp;
+          33.2&nbsp; 8&nbsp;&nbsp;&nbsp; 29.9&nbsp; 8&nbsp; 1013.4&nbsp; 8&nbsp; 1012.3&nbsp;
+          8&nbsp;&nbsp;&nbsp; 8.6&nbsp; 6&nbsp;&nbsp;&nbsp; 4.5&nbsp; 8&nbsp;&nbsp; 13.0&nbsp;
+          010010&nbsp; 20000502&nbsp;&nbsp;&nbsp; 29.4&nbsp; 8&nbsp;&nbsp;&nbsp; 26.5&nbsp; 8&nbsp;
+          1015.0&nbsp; 8&nbsp; 1013.8&nbsp; 8&nbsp;&nbsp;&nbsp; 4.1&nbsp; 6&nbsp;&nbsp;&nbsp;
+          5.7&nbsp; 8&nbsp;&nbsp; 12.0&nbsp; 010010&nbsp; 20000503&nbsp;&nbsp;&nbsp; 31.3&nbsp;
+          8&nbsp;&nbsp; &nbsp;28.7&nbsp; 8&nbsp; 1015.0&nbsp; 8&nbsp; 1013.8&nbsp;
+          8&nbsp;&nbsp;&nbsp; 6.0&nbsp; 6&nbsp;&nbsp;&nbsp; 2.2&nbsp; 8&nbsp;&nbsp;&nbsp; 5.1&nbsp;
+          010010&nbsp; 20000504&nbsp;&nbsp;&nbsp; 32.3&nbsp; 8&nbsp;&nbsp;&nbsp; 29.8&nbsp; 8&nbsp;
+          1000.4&nbsp; 8&nbsp;&nbsp; 999.2&nbsp; 8&nbsp;&nbsp;&nbsp; 2.4&nbsp; 5&nbsp;&nbsp;&nbsp;
+          8.3&nbsp; 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        </li>
+        <li>
+          3505 Delimited:<br>
+           AWS&nbsp; WBAN YR--MODAHRMN DIR SPD GUS CLG SKC L M H&nbsp; VSB WW WW WW W TEMP
+          DEWP&nbsp;&nbsp;&nbsp; SLP&nbsp;&nbsp; 722280 13876 200301010053 140&nbsp; 11 ***&nbsp;
+          49 OVC * * * 10.1 00 ** ** *&nbsp;&nbsp; 59&nbsp;&nbsp; 54 1003.8 722280 13876
+          200301010153 140&nbsp; 13 ***&nbsp; 25 OVC * * *&nbsp; 2.5 63 10 ** *&nbsp;&nbsp;
+          57&nbsp;&nbsp; 54 1003.7 722280 13876 200301010253 170&nbsp; 14&nbsp; 21&nbsp; 14 OVC * *
+          *&nbsp; 3.0 63 10 ** *&nbsp;&nbsp; 57&nbsp;&nbsp; 55 1003.7
+        </li>
+      </ol>
+      <p class="bodytextindent1">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

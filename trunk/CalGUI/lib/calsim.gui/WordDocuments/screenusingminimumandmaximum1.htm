@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Screen Using Minimum and Maximum</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "replacespecificvalues3.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="screenwithforwardmovingaverage1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "generalfunctions1.htm">General Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Toc100980813"><font size="5" face=
+          "SansSerif, Verdana, Arial, Helvetica"><b>Screen Using Minimum and
+          Maximum</b></font></a><br>
+          <br>
+           The <b>Screen Using Minimum and Maximum</b> function screens regular or irregular
+          interval time series data sets for possible erroneous values based on user specified
+          minimum-maximum value limits, and maximum absolute change.&nbsp; The maximum absolute
+          change is tested only when the previous time series value is screened as valid.&nbsp;
+          Only one test need to be specified.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           Data values failing the screening test can be assigned a user specified quality flag
+          and/or set to a specific value or to missing.&nbsp; The data sets may or may not contain
+          prior quality flags.&nbsp; If the user specifies setting quality flags for screened data,
+          they will be added to the resultant data sets if none already exists.
+        </p>
+        <ol>
+          <li>
+            Choose the <b>General</b> tab of the Math Functions screen and select the <b>Screen
+            Using Minimum and Maximum</b> operator.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.&nbsp;
+          </li>
+          <li>
+            In the <b>Minimum Value Limit</b> and/or <b>Maximum Value Limit</b> boxes, enter the
+            minimum and/or maximum valid value limits, respectively.&nbsp;
+          </li>
+          <li>
+            In the <b>Change Value Limit</b> box, enter a value to set maximum absolute change
+            allowed from the previous time series value if you want to test for this.
+          </li>
+          <li>
+            Select the <b>Set Invalid values to</b> checkbox and fill enter the value you want to
+            replace with for time series values failing the screening test.&nbsp; To set the value
+            to missing, leave that box empty.&nbsp;
+          </li>
+          <li>
+            Select the <b>Set Quality Flag</b> box if the data quality flag is to be set for data
+            values failing the screening test.&nbsp; If this box is checked, invalid data will be
+            flagged with the quality selected in the list to the right.&nbsp; The available quality
+            settings are:&nbsp; R(ejected), M(issing) and Q(uestionable).&nbsp;
+          </li>
+          <li>
+            Click <b>Compute</b>.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

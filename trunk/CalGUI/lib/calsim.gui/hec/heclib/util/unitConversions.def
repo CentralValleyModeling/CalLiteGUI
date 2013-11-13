@@ -1,0 +1,330 @@
+// UNIT DEFINITIONS
+//  UnitSystem;UnitName;UnitAliases...;...;
+
+//Baseflow
+SI;cms/km2
+English;cfs/mi2
+
+//Length
+SI;km;kilometer;kilometers
+SI;m;meter;metre;meters;metres;METERS
+SI;cm;centimeter;centimeters
+SI;mm;MM;millimeter;millimeters
+English;mi;mile;miles
+English;ft;feet;FEET;FT;foot
+English;in;inch;inches;INCHES;IN
+
+//Time
+SI;sec;second;seconds;SEC
+SI;min;minute;minutes;MIN
+SI;hr;hour;hours;HR;HOUR;HOURS
+English;sec;second;seconds;SEC
+English;min;minute;minutes;MIN
+English;hr;hour;hours;HR;HOUR;HOURS
+
+//Area
+SI;m2;sq m;sq meter;sq meters;square meters;M2
+SI;ha;hectare;hectares
+SI;1000 m2;1000 sq m;1000 sq meters;1000 M2
+SI;km2;sqkm;sq km;sq.km
+English;ft2;sq ft;square feet
+English;acre;acres;ACRES
+English;mile2;mi2;sq mi;sq mile;sq miles;square miles
+
+//Volume
+SI;m3;cu m;cu meter;cu meters;cubic meters;M3
+SI;km3;cu km
+SI;1000 m3;1000 cu m;1000 M3
+English;ft3;cu ft;cubic feet
+English;ac-ft;acft;acre-ft;acre-feet;ACFT
+English;kaf;1000 ac-ft;KAF
+English;mile3;cu mile;cu miles
+English;kgal;KGAL;tgal;TGAL;1000 gallon;1000 gallons
+English;gal;GAL;gallon;gallons
+English;mgal;MGAL;million gallon;millon gallons
+English;sdf;SDF;dsf;DSF;second-day-foot
+SI;mcm;1000000 m3
+
+//Rate
+SI;mm/day
+SI;mm/hr
+SI;kph
+SI;m/s
+SI;mm/deg-day
+SI;tonne/day
+English;in/day
+English;in/hr
+English;ft/s;ft/sec;fps
+English;mph
+English;in/deg-day
+English;ton/day
+
+//Volume Rate
+SI;cms;CMS;m3/sec;cu-meters/sec;m3/s;M3/S;M3/SEC
+SI;kcms;1000cms;KCMS
+English;cfs;CFS;ft3/sec;cu-ft/sec;cuft/sec;cusecs;FT3/SEC
+English;kcfs;1000 cfs;1000 ft3/sec;1000 cu-ft/sec;KCFS
+English;gpm;GPM;Gal/min;gallons per minute
+English;mgd;MGD;million gallons/day;
+English;KAF/mon;1000 ac-ft/mon;
+SI;mcm/mon;
+
+//Spin Rate
+SI;rpm;revolutions per minute;rev/min
+English;rpm;revolutions per minute;rev/min
+
+//Pressure
+SI;kPa;kN/m2
+English;in-hg
+SI;mm-hg
+English;psi;lbs/sqin
+SI;mb;millibar;millibars;mbar;mbars
+
+//Temperature
+SI;C;Centigrade;Celcius;Deg-C;DEG-C;DegC;degC;DEG C;deg C
+English;F;Fahrenheit;Deg-F;DEG-F;DegF;degF;DEG F;deg F
+
+//Angular
+SI;deg
+English;deg
+
+//Unitless
+SI;%;percent;PERCENT
+English;%;percent;PERCENT
+SI;unit
+English;unit
+
+// No unit
+SI;n/a
+English;n/a
+
+// pH
+SI;su
+English;su
+
+// Turbidity
+SI;jtu;JTU
+SI;ntu;NTU
+SI;fnu;FNU
+English;jtu;JTU
+English;ntu;NTU
+English;fnu;FNU
+
+// Mass/Volume
+SI;mg/l;millgrams/liter;milligrams per liter
+SI;g/l;gm/l;grams per liter
+English;g/l;gm/l;grams/liter;grams per liter
+English;ppm
+SI;gm/cm3
+
+// Weight
+English;lb;lbs
+
+// Electrical
+SI;umho/cm;umhos/cm
+English;umho/cm;umhos/cm
+SI;volt;Volt;VOLT;volts;Volts;VOLTS
+English;volt;Volt;VOLT;volts;Volts;VOLTS
+
+// Power
+SI;W
+SI;kW;KW
+SI;MW
+SI;GW
+SI;TW
+English;W
+English;kW;KW
+English;MW
+English;GW
+English;TW
+
+//Energy
+SI;Wh
+SI;kWh;KWH
+SI;MWh;MWH
+SI;GWh
+SI;TWh
+English;Wh
+English;kWh;KWH
+English;MWh;MWH
+English;GWh
+English;TWh
+
+// Solar Radiation
+SI;J/m2
+English;langley
+
+// Solar Irradiance
+SI;W/m2
+English;langley/min
+
+// Currency
+SI;$
+English;$
+
+// Length Conversions (SI/English based on 2.54cm/in)
+SI;cm>SI;mm;10.
+SI;m>SI;cm;100
+English;ft>SI;m;0.3048
+English;ft>SI;cm;30.48
+English;ft>SI;mm;304.8
+English;in>SI;m;.00254
+English;in>SI;cm;2.54
+English;in>SI;mm;25.4
+English;ft>English;in;12.
+English;mi>SI;km;1.609344
+English;mi>English;ft;5280.
+English;mi>SI;m;1609.344
+English;mi>English;ft;5280.
+
+// Currency Conversions
+English;$>SI;$;1
+SI;$>English;$;1
+
+// Time Conversions
+English;hr>SI;sec;3600
+English;min>SI;sec;60
+SI;hr>SI;sec;3600
+SI;min>SI;sec;60
+English;hr>English;sec;3600
+English;min>English;sec;60
+
+// Area Conversions
+English;acre>SI;m2;4046.8564224
+SI;km2>English;mile2;2.589988110336
+SI;m2>English;mile2;.002589988110336
+SI;m2>SI;ha;10000
+English;ft2>SI;m2;0.09290304
+English;mile2>English;acre;640
+SI;1000 m2>SI;m2;1000
+English;acre>SI;1000 m2;4.0468564224
+SI;km2>SI;m2;1000000
+SI;ha>English;acre;2.471
+English;ft2>SI;cm2;929.0304
+English;acre>SI;km2;.0040468564224
+
+// Volume Conversions
+English;ac-ft>SI;m3;1233.48183754752
+English;kaf>SI;m3;1233481.83754752
+English;kaf>SI;km3;0.00000123348183754752
+English;mile3>SI;km3;4.168181825440579584
+SI;km3>SI;m3;1000000000
+English;ac-ft>SI;km3;.00000123348183754752
+SI;kaf>SI;m3;1233481.83754752
+SI;kaf>English;ac-ft;1000
+English;mile3>SI;m3;4168181825.440579584
+English;mile3>English;ac-ft;3379200
+SI;1000 m3>SI;m3;1000
+English;ac-ft>SI;1000 m3;1.23348183754752
+English;kgal>SI;m3;3.7854
+English;gal>SI;m3;.0037854
+English;mgal>SI;m3;3785.4
+English;kgal>English;gal;1000.
+English;mgal>English;gal;1000000.
+SI;m3>English;ft3;35.314666721488590250438010354003
+English;sdf>English;ac-ft;1.9835
+English;sdf>SI;m3;2446.5755455488
+SI;mcm>SI;m3;1000000.
+English;kaf>SI;mcm;1.23348183754752
+
+// Rate Conversions
+English;mph>SI;kph;1.609344
+English;in/day>SI;mm/day;25.4
+English;in/hr>SI;mm/hr;25.4
+SI;mm/hr>SI;mm/day;24.
+English;in/hr>English;in/day;24.
+English;ft/s>SI;m/s;0.3048
+English;ft/s>SI;kph;1.09728
+SI;m/s>SI;kph;3.6
+English;in/deg-day>SI;mm/deg-day;45.72
+English;ton/day>SI;tonne/day;.90718474
+
+// Spin Rate Conversions
+English;rpm>SI;rpm;1.
+
+// Mass/Volume Conversions
+SI;mg/l>English;ppm;1
+English;g/l>SI;mg/l;1000.
+SI;mg/l>English;gm/cm3;1
+SI;g/l>SI;mg/l;1000.
+SI;gm/cm3>English;ppm;1
+
+// Volume Rate Conversions
+SI;cms>English;cfs;35.314666721488590250438010354003
+SI;cms>English;kcfs;0.035314666721488590250438010354003
+SI;cms>English;gpm;4.40286753
+English;gpm>English;cfs;8.02083384856051
+English;kcfs>English;cfs;1000
+SI;cms>English;mgd;22.8244
+SI;kcms>SI;cms;1000
+English;KAF/mon>SI;mcm/mon;1.23348183754752
+
+//Baseflow Conversions
+SI;cms/km2>English;cfs/mi2;0.07334029287
+English;cfs/mi2>SI;cms/km2;13.63506963024075
+
+// Electrical Conversions
+SI;kW>English;MW;.001
+SI;MW>English;MW;1.
+SI;GW>English;MW;1000.
+SI;TW>English;MW;1000000.
+SI;kW>SI;MW;.001
+SI;GW>SI;MW;1000.
+SI;TW>SI;MW;1000000.
+English;kW>English;MW;.001
+English;GW>English;MW;1000.
+English;TW>English;MW;1000000.
+
+SI;kWh>English;MWh;.001
+SI;GWh>English;MWh;1000.
+SI;TWh>English;MWh;1000000.
+SI;kWh>SI;MWh;.001
+SI;GWh>SI;MWh;1000.
+SI;TWh>SI;MWh;1000000.
+English;kWh>English;MWh;.001
+English;GWh>English;MWh;1000.
+English;TWh>English;MWh;1000000.
+
+// Pressure Conversions
+English;in-hg>SI;kPa;3.386388
+SI;mm-hg>SI;kPa;0.133322
+SI;kPa>SI;mb;10.
+English;psi>SI;kPa;6.894757
+English;in-hg>SI;mm-hg;25.4
+SI;mm-hg>English;psi;11582.904547
+English;in-hg>SI;mb;33.86388
+English;in-hg>English;psi;456.01986405511811023622047244094
+English;psi>SI;kPa;6.894757
+
+// Temperature Conversions
+English;F>SI;C;ARG 0|32.|-|5|*|9|/
+SI;C>English;F;ARG 0|9|*|5|/|32.|+
+
+// Weight Conversions
+English;lb>SI;gm;453.5924
+
+// Solar Radiation/Irradiance Conversion
+English;langley>SI;J/m2;41840
+English;langley/min>SI;W/m2;697.333
+
+// Cross System Conversions for Same units
+SI;sec>English;sec;1
+SI;min>English;min;1
+SI;hr>English;hr;1
+SI;%>English;%;1
+SI;ppm>English;ppm;1
+SI;su>English;su;1
+SI;mg/l>SI;gm/cm3;1
+SI;deg>English;deg;1
+SI;umho/cm>English;umho/cm;1
+SI;n/a>English;n/a;1
+SI;unit>English;unit;1
+SI;jtu>English;jtu;1
+SI;ntu>English;ntu;1
+SI;fnu>English;fnu;1
+SI;volt>English;volt;1
+SI;W>English;W;1.
+SI;MW>English;MW;1.
+SI;MWh>English;MWh;1.
+SI;Wh>English;Wh;1.
+SI;$>English;$;1.

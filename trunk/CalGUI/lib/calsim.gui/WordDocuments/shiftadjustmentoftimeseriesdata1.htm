@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Shift Adjustment of Time Series Data</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "setwatershednamefordataset1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="shifttimeseriesintime1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "_Toc100728354"><b>Shift Adjustment</b></a> <b>of Time Series Data</b></font><br>
+          <br>
+           <code>shiftAdjustment<font style=" font-weight: normal;">(TimeSeriesMath
+          tsData)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Derive a new time series data set by linear interpolation of values in the current time
+          series data set at the times defined by the time series data set <b>tsData</b>.&nbsp; If
+          times in the new time series precede the first data point in the current time series, the
+          value for these times is set to 0.0.&nbsp; If times in the new time series occur after
+          the last data point in the current time series, the value for these times is set to the
+          value of the last point in the current time series.&nbsp; Interpolation of values with
+          the <b>shiftAdjustment</b> function is shown below.
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           <img src="../ImagesExt/image39_20.png" border="0"><br>
+           Interpolation of Time Series Values using Shift Adjustment Function
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           &nbsp;
+        </p>
+        <p class="msonormal" style=" margin-left: 0.0px;">
+           Both time series data sets may be regular or irregular interval.&nbsp; Interpolated
+          points must be bracketed or coincident with valid (not missing) values in the original
+          time series, otherwise the values are set as missing.&nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <code>tsData</code> – A regular&nbsp; or irregular interval time series data set.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 0.0px; margin-top: 0pt; text-indent: 36pt;">
+           <code>tsInterp = tsValues.shiftAdjustment(tsData)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> A new TimeSeriesMath object.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch1-Introduction.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Pathnames</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "generalconceptsforhecdss.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="catalogs.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="introduction.htm">Introduction</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "generalconceptsforhecdss.htm">General Concepts for HEC-DSS</a>
+      </div>
+      <p style=
+      " margin-left: 0pt; text-indent: 0pt; margin-top: 0pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 0pt;">
+        <br>
+         <a name="_Toc18996138"><font size="5" face=
+        "SansSerif, Verdana, Arial, Helvetica"><b>Pathnames</b></font></a><br>
+        <br>
+         HEC-DSS references data sets, or records, by their <i>pathnames</i>.&nbsp; A pathname may
+        consist of up to 391 characters and is, by convention, separated into six parts, which may
+        be up to 64 characters each.&nbsp; Pathnames are automatically translated into all upper
+        case characters.&nbsp; They are separated into six parts (delimited by slashes "/") labeled
+        "A" through "F,” as follows:
+      </p>
+      <p align="left" class="bodytextindent1" style=" margin-left: 40.0px;">
+         /A/B/C/D/E/F/
+      </p>
+      <p class="bodytextindent1" style=
+      " margin-left: 0.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+         For regular-interval time series data, the part naming convention is:<br>
+         &nbsp;
+      </p>
+      <table cellpadding="0" height="175" width="438" border="0" cellspacing="0">
+        <tr>
+          <td valign="top" height="25" width="67" align="right">
+            <u>Part</u> 
+          </td>
+          <td valign="top" height="25" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="25" width="324">
+            <u>Description</u> 
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="26" width="67" align="right">
+            <b>A &nbsp;</b> 
+          </td>
+          <td valign="top" height="26" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="26" width="324">
+            Project, river, or basin name
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="25" width="67" align="right">
+            <b>B &nbsp;</b> 
+          </td>
+          <td valign="top" height="25" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="25" width="324">
+            Location
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="24" width="67" align="right">
+            <b>C &nbsp;</b> 
+          </td>
+          <td valign="top" height="24" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="24" width="324">
+            Data parameter
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="26" width="67" align="right">
+            <b>D &nbsp;</b> 
+          </td>
+          <td valign="top" height="26" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="26" width="324">
+            Starting date of block, in a 9 character military format
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="24" width="67" align="right">
+            <b>E &nbsp;</b> 
+          </td>
+          <td valign="top" height="24" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="24" width="324">
+            Time interval
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" height="25" width="67" align="right">
+            <b>F &nbsp;</b> 
+          </td>
+          <td valign="top" height="25" width="47">
+            &nbsp;
+          </td>
+          <td valign="top" height="25" width="324">
+            Additional user-defined descriptive information
+          </td>
+        </tr>
+      </table>
+      <p class="bodytextindent1" style=" margin-left: 0.0px;">
+        <br>
+         A typical regular-interval time series might be:<br>
+        <br>
+      </p>
+      <p class="bodytextindent1" style=
+      " margin-left: 40.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;" align="left">
+         /RED RIVER/BEND MARINA/FLOW/01JAN1995/1DAY/OBS/
+      </p>
+      <p class="bodytextindent1" style=
+      " margin-left: 72pt; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt; text-align: center;"
+       align="center">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

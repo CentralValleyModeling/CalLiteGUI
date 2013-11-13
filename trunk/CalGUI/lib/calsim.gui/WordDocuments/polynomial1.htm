@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch7-Math.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Polynomial</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "conicinterpolation1.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="polynomialwithintegral1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 10px; padding-right: 10px; padding-left: 22px; padding-top: 5px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="mathfunctions1.htm">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "hydrologicfunctions1.htm">Hydrologic Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><a name=
+          "_Toc104616365"></a><a name="_Toc104610416"></a><a name="_Toc101758474"></a><a name=
+          "_Toc100980841"></a><b><a name="_Toc19002716"></a><a name=
+          "_Toc6903217">Polynomial</a></b></font><br>
+          <br>
+           The <b>Polynomial</b> function computes a polynomial transform of a regular or irregular
+          interval time series data using the polynomial coefficients in a paired data set.&nbsp;
+          Missing values in the input time series data remain missing in the resultant time series
+          data set.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           A new time series can be computed from an existing time series with the polynomial
+          expression,
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=
+        " margin-left: 40.0px; text-indent: 0pt; margin-bottom: 0pt;">
+           TS2 (t) =&nbsp; B1* TS1(t) + B2* TS1(t) <sup>2</sup> + ... + Bn* TS1(t) <sup>n</sup>
+        </p>
+        <p class="msobodytextindent" style=
+        " margin-left: 0.0px; text-indent: 36pt; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           where Bn are the polynomial coefficients for term “n.”
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;Values for the polynomial coefficients are stored in the x-values of a paired data
+          set.&nbsp; Before the above equation is applied, values in the input time series are
+          adjusted by subtracting off the paired data “datum” value if defined.&nbsp; The x-units
+          and parameter type from the paired data set are applied to the resultant time series data
+          set.
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           &nbsp;
+        </p>
+        <p class="msobodytextindent" style=" margin-left: 0.0px; margin-bottom: 0pt;">
+           To compute the polynomial transform of a selected time series data set:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Hydrologic</b> tab of the Math Functions screen and select the
+            <b>Polynomial</b> operator.
+          </li>
+          <li>
+            From the <b>Selected Data Set</b> list, select a time series data set.&nbsp; If the
+            selected data set is not a time series, the remaining input boxes on the screen will be
+            unavailable.
+          </li>
+          <li>
+            From the <b>Polynomial Coefficients</b> list, select the paired data set containing the
+            polynomial coefficients.&nbsp; Only paired data sets will appear in this list, and you
+            may select only one data set at a time.
+          </li>
+          <li>
+            Click <b>Compute</b> to perform the polynomial transform of the selected time series
+            data set.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

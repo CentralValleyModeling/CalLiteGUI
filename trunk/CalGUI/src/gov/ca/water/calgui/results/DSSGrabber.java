@@ -166,7 +166,15 @@ public class DSSGrabber {
 
 		// TODO: Combine lookup tables AND review use of complex names
 
-		if (locationName.startsWith("SchVw")) {
+		if (locationName.startsWith("/")) {
+			// Handle names passed from WRIMS GUI
+			String parts[] = locationName.split("/");
+			title = locationName;
+			primaryDSSName = parts[2] + "/" + parts[3];
+			secondaryDSSName = "";
+			yLabel = "";
+			sLabel = "";
+		} else if (locationName.startsWith("SchVw")) {
 			// Schematic view uses Table5 in mainMenu; this should be combined with GUI_Links3 table
 			for (int i = 0; i < MainMenu.getLookups5Length(); i++) {
 				if (locationName.toUpperCase().endsWith(MainMenu.getLookups5(i, 0))) {

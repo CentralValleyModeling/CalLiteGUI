@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch1-Introduction.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>HEC-DSS Contrasted with Other Database Systems</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="background.htm" class="d2hpreviousenabled">Previous</a>
+            &nbsp; <a id="D2HNext" href="generalconceptsforhecdss.htm" class=
+            "d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="introduction.htm" class="d2h_breadcrumbsnormal">Introduction</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="overviewofthehecdatastoragesystem.htm"
+        class="d2h_breadcrumbsnormal">Overview of the HEC Data Storage System</a>
+      </div>
+      <p style=
+      " text-indent: 0pt; tab-stops: 0pt; margin-top: 0pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+        <br>
+         <a name="_Toc18996136"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+        "5">HEC-DSS Contrasted with Other Database Systems</font></b></a>
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         HEC-DSS is designed to be optimal for storing and retrieving large sets, or series, of
+        data.&nbsp; HEC-DSS incorporates a modified hashing algorithm and hierarchical design for
+        database accesses.&nbsp; This algorithm provides quick access to data sets and an efficient
+        means of adding new data sets to the database.&nbsp;&nbsp; Additionally, HEC-DSS provides a
+        flexible set of utility programs and is easy to add to a user’s application program.&nbsp;
+        These are the features that distinguish HEC-DSS from most commercial database programs and
+        make it optimal for scientific applications.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         HEC-DSS is designed specifically for the storage and retrieval of large sets, or series,
+        of data.&nbsp; These include daily flow values, hourly precipitation measurements, rating
+        tables, and pages of text information.&nbsp; HEC-DSS is not optimized for dealing with
+        small data sets or single data values, nor is it effective at conditional data searches
+        common to relational database systems.&nbsp; In contrast, most commercial databases are
+        designed for small sets of elemental data.&nbsp; Such elemental data includes employee
+        records, accounting data, and inventory of stock.&nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         Commercial databases usually employ a relational model in which data is stored in a
+        related manner.&nbsp; A relational database can be viewed essentially as a collection of
+        tables.&nbsp; This type of system requires the construction of a data definition or data
+        dictionary file.&nbsp; Although a relational database requires some initial setup, it can
+        effectively store short data sets comprised of both characters and numbers.&nbsp;
+        Relational database systems use the ANSI ratified Structured Query Language (SQL) to access
+        data.
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         While relational databases are ideal for elemental data sets, they are not as practical
+        for longer series of data.&nbsp; HEC-DSS, however, is designed for such sets of data.&nbsp;
+        HEC-DSS database files are not defined by a data definition file like the relational model
+        requires so there is no set up required by the user.&nbsp; (HEC-DSS data is defined by the
+        pathname and conventions used.)&nbsp; The type of data generally stored in HEC-DSS does not
+        lend itself well to a query language such as SQL although the selective catalog feature has
+        some similar capabilities.&nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         Also unlike many commercial database systems, the HEC-DSS was designed to be easily added
+        to a user’s application program.&nbsp; In traditional “C” and Fortran programs, only two or
+        three function calls are needed to access data.&nbsp; Those calls identify the database,
+        the pathname, and a time window (if desired).&nbsp; Besides these languages, an extensive
+        set of classes are available in both C++ and Java languages (including some access through
+        Visual Basic), which are the languages used to develop most HEC programs.&nbsp;
+      </p>
+      <p style=" margin-top: 0pt; margin-left: 0.0px; margin-bottom: 0pt; margin-right: 0pt;"
+      class="bodytextindent1">
+         &nbsp;
+      </p>
+    </div>
+  </body>
+</html>

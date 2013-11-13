@@ -1235,7 +1235,7 @@
 							</label>
 						</panel>
 					</panel>
-					<panel id="FacPict" name="FacPict" preferredsize="300,400">
+					<panel preferredsize="300,400" visible="false">
 						<gridbagconstraints insets="0,0,0,0"
 							anchor="GridBagConstraints.NORTH" gridx="2" gridy="0" />
 						<label id="map3" name="map3" icon="images/Banks_pumping_Plant.jpg" />
@@ -1898,86 +1898,71 @@
 							constraints="BorderLayout.LEFT">
 							<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
 								gridx="0" gridy="1" />
-
-							<label text="Time Period Quick Select:">
-								<gridbagconstraints insets="0,0,0,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
+							<label text="Month">
+								<gridbagconstraints insets="0,5,5,0"
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="0" />
 							</label>
-
-							<combobox id="cbotimeQS" name="cbotimeQS"
-								initclass="gov.ca.water.calgui.utils.ComboModel" Action="Time_SELECT" size="100,15">
-								<gridbagconstraints insets="0,0,5,0"
-									anchor="GridBagConstraints.WEST" gridx="1" gridy="0" gridwidth="1" />
-							</combobox>
-
-
-							<panel resizeable="false" layout="GridBagLayout">
-								<gridbagconstraints anchor="GridBagConstraints.NORTHWEST"
-									gridx="0" gridy="1" gridwidth="4" />
-
-								<label text="Start">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="0" gridy="0" />
-								</label>
-								<spinner id="spnStartMonth" name="spnStartMonth"
-									size="75,20" enabled="false">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="1" gridy="0" />
-								</spinner>
-								<spinner id="spnStartYear" name="spnStartYear" enabled="false">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="2" gridy="0" />
-								</spinner>
-
-								<label text="End">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="0" gridy="1" />
-								</label>
-								<spinner id="spnEndMonth" name="spnEndMonth"
-									size="75,20" enabled="false">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="1" gridy="1" />
-								</spinner>
-								<spinner id="spnEndYear" name="spnEndYear" enabled="false">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-									gridx="2" gridy="1" />
-								</spinner>
-							</panel>
+							<label text="Year">
+								<gridbagconstraints insets="0,5,5,0"
+									anchor="GridBagConstraints.WEST" gridx="2" gridy="0" />
+							</label>
+							<label text="Start ">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
+							</label>
+							<spinner id="spnStartMonth" name="spnStartMonth"
+								preferredsize="75,25" minimumsize="50,20">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="1" gridy="1" />
+							</spinner>
+							<spinner id="spnStartYear" name="spnStartYear"
+								preferredsize="75,25" minimumsize="50,20">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="2" gridy="1" />
+							</spinner>
+							<label text="End">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
+							</label>
+							<spinner id="spnEndMonth" name="spnEndMonth"
+								preferredsize="75,25" minimumsize="50,20">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
+							</spinner>
+							<spinner id="spnEndYear" name="spnEndYear" preferredsize="75,25"
+								minimumsize="50,20">
+								<gridbagconstraints insets="0,0,5,3"
+									anchor="GridBagConstraints.WEST" gridx="2" gridy="2" />
+							</spinner>
 							<hbox>
 								<gridbagconstraints insets="5,0,5,3"
-									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" gridwidth="4" />
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" gridwidth="3" />
 								<label text="Display Units for Flows: " />
 								<buttongroup id="rep4">
 									<radiobutton id="rdbCFS" name="rdbCFS" text="CFS"
-										selected="true">
-										<gridbagconstraints insets="0,0,5,3"
-											anchor="GridBagConstraints.WEST" gridx="2" gridy="3" />
-									</radiobutton>
-									<radiobutton id="rdbTAF" name="rdbTAF" text="TAF per year">
-										<gridbagconstraints insets="0,0,5,3"
-											anchor="GridBagConstraints.WEST" gridx="3" gridy="3" />
-									</radiobutton>
+										selected="true" />
+									<radiobutton id="rdbTAF" name="rdbTAF" text="TAFY" />
 								</buttongroup>
 							</hbox>
 							<checkbox name="RepckbTimeSeriesPlot" id="RepckbTimeSeriesPlot"
 								text="Time series plot" selected="true">
 								<gridbagconstraints insets="0,0,5,3"
-									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" gridwidth="1" />
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" gridwidth="2" />
 							</checkbox>
 							<checkbox name="RepckbExceedancePlot" id="RepckbExceedancePlot"
 								text="Exceedance plot">
 								<gridbagconstraints insets="0,0,0,0"
-									anchor="GridBagConstraints.WEST" gridx="0" gridy="5" gridwidth="1" />
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="5" gridwidth="2" />
 							</checkbox>
 							<checkbox name="RepckbBAWPlot" id="RepckbBAWPlot"
 								enabled="true" text="Box and whiskers plot">
 								<gridbagconstraints insets="0,0,0,0"
-									anchor="GridBagConstraints.WEST" gridx="1" gridy="5" gridwidth="1" />
+									anchor="GridBagConstraints.WEST" gridx="2" gridy="5" gridwidth="1" />
 							</checkbox>
 							<panel id="controls2" resizeable="true" border="TitledBorder"
 								layout="GridBagLayout" enabled="false">
 								<gridbagconstraints insets="0,0,0,3"
-									anchor="GridBagConstraints.WEST" gridx="0" gridy="6" gridwidth="4" />
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="6" gridwidth="3" />
 								<checkbox name="RepchkMonOct" text="Oct" font="Tahoma-Normal-11"
 									enabled="false">
 									<gridbagconstraints insets="0,5,0,0"
@@ -2076,7 +2061,7 @@
 							<panel id="controls3" border="TitledBorder" resizeable="true"
 								layout="GridBagLayout" enabled="true">
 								<gridbagconstraints insets="0,0,5,3"
-									anchor="GridBagConstraints.WEST" gridx="0" gridy="9" gridwidth="4" />
+									anchor="GridBagConstraints.WEST" gridx="0" gridy="9" gridwidth="3" />
 
 								<label text="Statistic" font="Tahoma-Bold-10">
 									<gridbagconstraints insets="0,10,0,0" gridx="0"
@@ -2811,6 +2796,131 @@
 									</checkbox>
 								</panel>
 
+								<panel id="DShort" name="Delivery Shortages" layout="GridBagLayout">
+									<label text="SWP Delivery Shortages " font="Tahoma-BOLD-14"
+										foreground="3366FF" preferredsize="250,20" ipady="10">
+										<gridbagconstraints insets="0,0,0,0"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="1"
+											gridwidth="2" />
+									</label>
+									<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
+										<gridbagconstraints insets="0,0,0,0"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="2" />
+									</label>
+									<checkbox name="ckbp851" id="ckbp851" text="Water Rights ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
+									</checkbox>
+									<checkbox name="ckbp852" id="ckbp852" text="Ag NOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
+									</checkbox>
+									<checkbox name="ckbp853" id="ckbp853" text="Ag SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
+									</checkbox>
+									<checkbox name="ckbp854" id="ckbp854" text="Ag Total ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
+									</checkbox>
+									<checkbox name="ckbp855" id="ckbp855" text="M and I NOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="7" />
+									</checkbox>
+									<checkbox name="ckbp856" id="ckbp856" text="M and I SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="8" />
+									</checkbox>
+									<checkbox name="ckbp857" id="ckbp857" text="M and I Total ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="9" />
+									</checkbox>
+									<checkbox name="ckbp858" id="ckbp858" text="MWD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
+									</checkbox>
+									<checkbox name="ckbp859" id="ckbp859" text="Other ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="11" />
+									</checkbox>
+									<checkbox name="ckbp860" id="ckbp860" text="Losses ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="12" />
+									</checkbox>
+									<checkbox name="ckbp861" id="ckbp861" text="Total NOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="13" />
+									</checkbox>
+									<checkbox name="ckbp862" id="ckbp862" text="Total SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="14" />
+									</checkbox>
+									<checkbox name="ckbp863" id="ckbp863" text="Total Shortage ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="15" />
+									</checkbox>
+
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="1" gridy="16" />
+									</label>
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="1" gridy="17" />
+									</label>
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="1" gridy="18" />
+									</label>
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="1" gridy="19" />
+									</label>
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="1" gridy="20" />
+									</label>
+
+
+									<label text="CVP SOD Delivery Shortages" font="Tahoma-BOLD-14"
+										foreground="3366FF" preferredsize="250,20">
+										<gridbagconstraints insets="0,0,0,0"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="1" />
+									</label>
+									<label text=" " font="Tahoma-BOLD" preferredsize="110,15">
+										<gridbagconstraints insets="0,0,0,0"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="2" />
+									</label>
+									<checkbox name="ckbp881" id="ckbp881" text="Ag SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="3" />
+									</checkbox>
+									<checkbox name="ckbp882" id="ckbp882" text="M and I SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="4" />
+									</checkbox>
+									<checkbox name="ckbp883" id="ckbp883" text="Exchange SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="5" />
+									</checkbox>
+									<checkbox name="ckbp884" id="ckbp884" text="Refuge SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="6" />
+									</checkbox>
+									<checkbox name="ckbp885" id="ckbp885" text="Losses SOD ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="7" />
+									</checkbox>
+									<checkbox name="ckbp886" id="ckbp886" text="Total SOD Shortage ">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="10" gridy="8" />
+									</checkbox>
+									<label text="    ">
+										<gridbagconstraints anchor="GridBagConstraints.WEST"
+											gridx="10" gridy="13" />
+									</label>
+								</panel>
+
 							</tabbedpane>
 						</panel>
 					</panel>
@@ -2819,13 +2929,16 @@
 				</panel>
 
 				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12"
-					layout="GridBagLayout">
-				
-					<panel name="WRIMS" id="WRIMS" layout="BorderLayout" preferredsize="800,600">
+	layout="GridBagLayout">
+
+					<panel name="WRIMS" id="WRIMS" layout="BorderLayout"
+						preferredsize="800,600">
 						<gridbagconstraints gridx="0" gridy="1" />
 					</panel>
-			
-			
+					<button text="Controls ..." ActionCommand="AC_Controls">
+						<gridbagconstraints gridx="0" gridy="2" />
+					</button>
+
 				</panel>
 
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"

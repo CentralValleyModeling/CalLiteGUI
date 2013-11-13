@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Cyclic Analysis (Time Series)</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="cosinetrigonometricfunction1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "decayingbasinwetnessparameter1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 0px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" tab-stops: 63.0pt; margin-bottom: 0pt;">
+           <a name="CyclicAnalysis"></a><a name="_Toc104616448"></a><a name="_Toc104610499"></a><a
+          name="_Toc101758558"></a><a name="_Toc100980925"></a><a name="_Toc100728607"></a><a name=
+          "_Toc100728294"></a><a name="_Toc19007566"></a><a name="_Toc19005571"></a> <b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="3">&nbsp;&nbsp;&nbsp;</font></b><font size=
+          "3"><br>
+          </font> <a name="_Toc6903134"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Cyclic Analysis</font></b></a><b><font face="SansSerif, Verdana, Arial, Helvetica"
+          size="5"> (Time Series)</font></b><br>
+          <br>
+           cyclicAnalysis()<br>
+          <br>
+           Derive a set of cyclic statistics from the current regular interval time series data
+          set.&nbsp; The time series data set must have a time interval of “1HOUR”, “1DAY” or
+          “1MONTH.”&nbsp; The function sorts the time series values into statistical "bins"
+          relevant to the time interval.&nbsp; Values for the 1HOUR interval data are sorted into
+          24 bins representing the hours of the day, 0100 to 2400.&nbsp; The 1DAY interval data is
+          apportioned to 365 bins for the days of the year.&nbsp; The 1MONTH interval data is
+          sorted into 12 bins for the months of the year.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The format of the resultant data sets is as a “pseudo” time series for the year
+          3000.&nbsp; For example, the cyclic analysis of one month of hourly interval data will
+          produce pseudo time series data sets having 24 hourly values for the day January 1,
+          3000.&nbsp; If the statistical parameter is the “maximum” value, then the 24 values
+          represent the maximum value occurring at that hour of the day in the current time
+          series.&nbsp; The cyclic analysis of daily interval data will produce pseudo time series
+          data sets having 365 daily values for the year 3000.&nbsp; The cyclic analysis of monthly
+          interval data will result in pseudo time series data sets having 12 monthly values for
+          the year 3000.&nbsp;&nbsp;&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Fourteen pseudo time series data sets are derived by the cyclic analysis function for
+          the following statistical parameters:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Number of values processed for each time interval
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Maximum value
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Time of maximum value
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Minimum value
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Time of minimum value
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Average value
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Probability exceedence percentiles for 5%, 10%, 25%, 50% (median value), 75%,
+          90%, and 95%
+        </p>
+        <p style=
+        " text-indent: -18pt; tab-stops: 126.0pt; margin-top: 0pt; margin-left: 46.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           § &nbsp;Standard deviation
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The 14 pseudo time series of cyclic statistics are returned by the function as an array
+          of time series data sets.&nbsp; The parameter part of the record path for each time
+          series is modified to indicate the type of the statistical parameter.&nbsp; For a flow
+          record, the parameter "FLOW" would become "FLOW-MAX" for the maximum values statistics,
+          "FLOW-P5" for the 5% percentile statistics, etc.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b> Takes no parameters
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b> <code>cyclicData = tsData.cyclicAnalysis()</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A sequence of 14 TimeSeriesMath objects, each of which is a pseudo time
+          series data sets representing a statistical parameter.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> Throws an hec.hecmath.HecMathException if the time series
+          is not regular interval or does not have a time interval of "1HOUR”, "1DAY", or "1MONTH”.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Generate a Regular Interval Time Series</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="generatedatapairsfromtwotimeseries1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="getdatacontainer1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 63.0pt; margin-top: 0pt; margin-left: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           <a name="GenerateRegularIntervalTimeSeries">&nbsp;</a><a name="_Toc104616459"></a><a
+          name="_Toc104610510"></a><a name="_Toc101758569"></a><a name="_Toc100980936"></a><a name=
+          "_Toc100728618"></a><a name="_Toc100728305"></a><a name="_Toc19007579"></a><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5"><a name="_Toc19005584"></a><a name=
+          "_Toc14888785"></a></font></b><br>
+           <a name="_Toc6903145"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Generate a Regular Interval Time Series</font></b></a><br>
+          <br>
+           <code>generateRegularIntervalTimeSeries</code>(string&nbsp;startTimeString,
+        </p>
+        <p style=" tab-stops: 144.0pt; margin-left: 0.0px;" class="msonormal">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          string&nbsp;endTimeString,
+        </p>
+        <p style=" tab-stops: 144.0pt; margin-left: 0.0px;" class="msonormal">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          string&nbsp;timeIntervalString,
+        </p>
+        <p style=" tab-stops: 144.0pt; margin-left: 0.0px;" class="msonormal">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          string&nbsp;timeOffsetString,
+        </p>
+        <p style=" tab-stops: 144.0pt; margin-left: 0.0px;" class="msonormal">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          floating-point&nbsp;initialValue <b>)</b>
+        </p>
+        <p style=" tab-stops: 144.0pt; margin-left: 0.0px;" class="msonormal">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Generate a new regular interval time series data set from scratch with times and values
+          specified by the parameters.&nbsp; This is a function provided by the TimeSeriesMath
+          module, and not an object method.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The parameters <b>startTimeString</b> and <b>endTimeString</b> are strings used to
+          specify the beginning and ending time of the generated data set.&nbsp; These two
+          parameters have the form of the standard HEC time string (e.g. "01JAN2001 0100").&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The regular time interval is specified by <b>timeIntervalString</b>, and is a valid HEC
+          time increment string (e.g. “1MIN”, “15MIN”, “1HOUR”, “6HOUR”, “1DAY”, “1MONTH”).&nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <code><font style=" font-weight: normal;">timeOffsetString</font></code> is used to
+          shift times in the resultant time series from the standard interval time.&nbsp; As an
+          example, the offset could be used to shift times in regular hourly interval data from the
+          top of the hour to 6 minutes past the hour.&nbsp; The parameter has the form "nT”, where
+          "n" is an integer number and "T" is one of the time increments: "M(INUTES)”, "D(AYS)”,
+          "H(OUR)”, "W(EEKS)”, "MON(THS)" or "Y(EARS)" ( characters in the parenthesis are optional
+          ).&nbsp; For example, a time offset of 9 minutes would be expressed as "9M" or "9MIN.”
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Values in the time series data set are initialized to <b>initialValue</b>.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>startTimeString</code> - a string specifying a standard HEC time defining the time
+          series data start date/time.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>endTimeString</code> - a string specifying a standard HEC time defining the time
+          series data end date/time.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>timeIntervalString</code> - a string specifying a valid DSS regular time interval
+          which defines the time interval of the new time series.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>timeOffsetString</code> – a string specifying the offset of the new time points
+          from the regular interval time. This string may be an empty string or None.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           <code>initialValue</code> –a floating-point number set to the initial value for all time
+          series points. Set to HecMath.UNDEFINED to set all values to missing.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>newTsData =</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <b>TimeSeriesMath<code>.generateRegularIntervalTimeSeries(</code></b>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “01FEB2002 0100”,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “28FEB2002 2400”,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “1HOUR”,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “0M”,</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100.)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b> A new regular interval TimeSeriesMath object initialized to <code><font
+          style=" font-weight: normal;">initialValue</font></code>.&nbsp; Data units and type are
+          unset.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:</b> &nbsp;<code><font style=
+          " font-weight: normal;">Throws</font> <font style=" font-weight: normal;">a</font></code>
+          hec.hecmath.HecMathException if time parameters cannot be successfully interpreted.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

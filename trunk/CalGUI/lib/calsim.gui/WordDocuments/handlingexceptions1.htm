@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Handling Exceptions</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="modulesfunctionsandmethods1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href="displayingmessages1.htm"
+            class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="scriptingbasics1.htm" class=
+        "d2h_breadcrumbsnormal">Scripting Basics</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="_Toc104616394"></a><a name="_Toc104610445"></a><a name="_Toc101758503"></a><a
+          name="_Toc100980870"></a><a name="_Toc100728552"></a><a name="_Toc100728239"></a><a name=
+          "_Toc19007502"></a><a name="_Toc19005507"></a><a name="_Toc19004583"></a><a name=
+          "_Toc19005506"></a><a name="_Toc19007501"></a><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5">Handling Exceptions</font></b><br>
+          <br>
+           Certain errors within a Python program can cause Python to raise an exception.&nbsp; An
+          exception that is not handled by the program will cause the program to display error
+          information in the console window and halt the program.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Python provides structured exception handling with the following constructs:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           try :
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           &nbsp; <i>try-group</i>
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           except :
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           &nbsp; <i>except-group</i>
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           [else :
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp; <i>else-group</i>]
+        </p>
+        <p style=" margin-left: 0.0px;" class="htmlbody35">
+           &nbsp;
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           try :
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           <i>&nbsp; try-group</i>
+        </p>
+        <p style=" page-break-after: avoid; margin-left: 28.0px;" class="htmlbody35">
+           finally :
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp; <i>finally-group</i>
+        </p>
+        <p style=" margin-left: 108pt;" class="htmlbody35">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           In the try-except-else construct, if an exception is raised during execution of the
+          try-group, the control immediately transfers to the first line of the except-group.&nbsp;
+          If no exception is raised during execution of the try-group, the control transfers to the
+          first line of the else-group, if present.&nbsp; If there is no exception raised and no
+          else-group is specified, the control transfers to the first line after the except-group.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           In the try-finally construct, control is transferred to the first line of the
+          finally-group when either an exception is raised during the execution of the try-group or
+          the try-group completes without an exception.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The two constructs cannot be combined into a try-except-finally construct, but the same
+          effect can be obtained by making a try-except-else construct the try-group of a
+          try-finally construct.
+        </p>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <table cellpadding="0" cellspacing="0" width="516" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 387pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 186.7pt;">
+            <td valign="top" width="516" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 186.7pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 387pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="example35">
+                 <a name="_Toc104615203"></a><a name="_Toc104610766"></a><a name=
+                "_Toc19007786">Example</a>: Exception Handling
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 try :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; try :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string_1.find(substring) # may raise an
+                exception
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; except :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print substring + “ is not in “ +
+                string_1
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # do some stuff that might raise
+                another exception
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;…
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; else :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print substring + “ is in “ + string_1
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # do some stuff that might raise
+                another exception
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 finally :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;&nbsp;&nbsp; print “No matter what, we get here!”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <p style=" margin-top: 0pt;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           More exception handling information, including filtering on specific types of
+          exceptions, exception handler chains, and raising exceptions, is provided in Python
+          tutorials and references listed at the official Python website: www.python.org.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

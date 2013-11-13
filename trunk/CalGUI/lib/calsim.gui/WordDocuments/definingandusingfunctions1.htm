@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Defining and Using Functions</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="looping1.htm" class="d2hpreviousenabled">Previous</a> &nbsp;
+            <a id="D2HNext" href="modulesfunctionsandmethods1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="scriptingbasics1.htm" class=
+        "d2h_breadcrumbsnormal">Scripting Basics</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+           <a name="_Toc104616392"></a><a name="_Toc104610443"></a><a name=
+          "_Toc101758501"></a><b><font face="SansSerif, Verdana, Arial, Helvetica" size="5"><a
+          name="_Toc100980868"></a><a name="_Toc100728550"></a><a name="_Toc100728237"></a><a name=
+          "_Toc19007499"></a><a name="_Toc19005504">Defining and Using Functions</a></font></b><br>
+          <br>
+           In Python, functions are defined with the syntax:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           def functionName([arguments]) :
+        </p>
+        <p style=" margin-left: 28.0px;" class="htmlbody35">
+           &nbsp;&nbsp;&nbsp; function-body
+        </p>
+        <p style=" margin-left: 108pt;" class="htmlbody35">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           Function names follow the same naming convention as variable names specified in the
+          section "Data Types".&nbsp; The arguments are specified as a comma-delimited list of
+          variable names that will be used within the function-body.&nbsp; These variables will be
+          positionally assigned the values used in the function call.&nbsp; More complex methods of
+          specifying function arguments are specified in Python tutorials and references listed at
+          the official Python website: www.python.org.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           A function must be defined in a Python program before it can be called.&nbsp; Therefore,
+          function definitions must occur earlier in the program than calls to those functions.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           A function may optionally return a value or sequence of values.<br>
+          <br>
+        </p>
+        <table cellpadding="0" cellspacing="0" width="516" border="1" style=
+        " border-left: medium none; margin-left: 0pt; border-bottom: medium none; border-right: medium none; border-collapse: collapse; width: 387pt; border-top: medium none;"
+         class="msonormaltable">
+          <TBODY>
+          <tr style=" height: 211.9pt;">
+            <td valign="top" width="516" style=
+            " padding-right: 5.4pt; padding-bottom: 0pt; height: 211.9pt; border-left: windowtext 1pt solid; border-bottom: windowtext 1pt solid; padding-left: 5.4pt; padding-top: 0pt; border-right: windowtext 1pt solid; width: 387pt; border-top: windowtext 1pt solid;">
+              <p style=" margin-bottom: 0pt;" class="example35">
+                 <a name="_Toc104615201"></a><a name="_Toc104610764"></a><a name=
+                "_Toc19007784">Exampl</a>e: Defining and Using Functions
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                <br>
+                 def printString(stringToPrint) :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; “Prints a tag plus the supplied string”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; tag = “function printString : “
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; print tag + stringToPrint
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 def addString(string_1, string_2) :
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; “Concatenates 2 strings and returns the result”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; concatenatedString = string_1 + string_2
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp; return concatenatedString
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 &nbsp;
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 testString = “this is a test”
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 printString(testString)
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 wholeString = addString(“part1:”, “part2”)
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 printString(wholeString)
+              </p>
+              <p style=" margin-left: 36pt;" class="htmlbody35">
+                 printString(addString(“this is “, “another test”))
+              </p>
+            </td>
+          </tr>
+          </TBODY>
+        </table>
+        <h3 style=" margin-bottom: 6pt;">
+           <a name="_Toc104616393"></a><a name="_Toc104610444"></a><a name="_Toc101758502"></a><a
+          name="_Toc100980869"></a><a name="_Toc100728551"></a><a name="_Toc100728238"></a><a name=
+          "_Toc19007500"></a><a name="_Toc19005505"></a>&nbsp;
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>

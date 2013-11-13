@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link type="text/css" href="../Theme/nav.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/C1H_HTML.css" rel="stylesheet">
+    <link type="text/css" href="../LinksExt/Ch3-DisplayAndEdit.css" rel="stylesheet">
+    <meta content="ComponentOne Doc-To-Help v.2009.2.0.480" name="Generator">
+    <meta content="(Default) v.21" name="D2HTheme">
+    <title>Adding and Inserting Rows</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " padding-left: 0px; margin-left: 0px; margin-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; padding-right: 0px; margin-right: 0px;">
+    <div id="nsbanner" style=
+    " padding-left: 0px; left: 0px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
+      <div id="TitleRow" style=
+      " padding-left: 22px; width: 100%; padding-top: 4px; padding-bottom: 4px; padding-right: 10px;">
+        <div id="ienav">
+          <p class="linknav" align="left">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "clearingtablecells.htm">Previous</a> &nbsp; <a id="D2HNext" class="d2hnextenabled"
+            href="deletingrowsandcolumns.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-left: 22px; padding-top: 5px; padding-bottom: 10px; padding-right: 10px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="displayingandeditingdata.htm">Displaying and Editing
+        Data</a> <font class="d2h_breadcrumbslinkseparator">&gt;</font> <a class=
+        "d2h_breadcrumbsnormal" href="editingtabulardata.htm">Editing Tabular Data</a>
+      </div>
+      <h3 style=" margin-left: 36pt; tab-stops: 36.0pt 54.0pt; text-indent: -36pt;">
+         <a name="_Toc18997083">Adding and Inserting Rows</a>
+      </h3>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         &nbsp;
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         Depending on what type of data is being edited in a table, rows can be inserted, appended,
+        or added to the beginning or end of the table.
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         &nbsp;
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         Appending rows is automatic when <b>Allow Editing</b> is set.&nbsp; When the <b>Edit
+        &#8594;</b> <b>Allow Editing</b> menu option is checked, two blank rows automatically
+        appear at the end of the table.&nbsp; When ever you enter data in a row at the bottom of
+        the table, an additional blank row will be appended.&nbsp; When you save the data, any
+        blank rows at the end of the table are removed automatically.&nbsp;
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         &nbsp;
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         <img src="../ImagesExt/image19_13.jpg">
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         Extend Data Set window for regular interval data
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         &nbsp;
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         For regular interval time series data, rows can only be inserted at the beginning or end
+        of the data set.&nbsp; For irregular interval time series data and paired data, rows can be
+        inserted between any existing table row.&nbsp; To insert a row into the table:
+      </p>
+      <p class="msonormal" style=" margin-left: 0.0px;">
+         &nbsp;
+      </p>
+      <ol>
+        <li>
+          Using your mouse pointer, click on the row you would like to insert rows next to and then
+          select the <b>Edit &#8594; Insert Rows</b> menu option.&nbsp;&nbsp;
+        </li>
+        <li>
+          The <b>Extend Data Set</b> dialog will display, see figure above. This dialog may be
+          different from what’s pictured in the figure above&nbsp;depending on what type of data is
+          displayed in the table.&nbsp;&nbsp;
+        </li>
+        <li>
+          For irregular interval time series data, see the figure shown&nbsp;below, you have the
+          option to <b>Insert between</b> the selected dates, <b>Insert before</b> the first date,
+          and <b>Append after</b> the last date. Regular interval data can only have data inserted
+          before and after the existing time steps.&nbsp; Each choice requires you to enter a
+          <b>Number Rows</b> value.&nbsp; The <b>Number Rows</b> value represents the number of
+          rows that will be added to the table at the given area.&nbsp; You can enter a value
+          directly in the Number Rows field or use the up and down arrows.<br>
+          <br>
+           <img style=" margin-left: 0.0px;" src="../ImagesExt/image19_14.jpg"><br>
+           Extend Data set window for irregular interval data<br>
+          <br>
+        </li>
+        <li>
+          Irregular interval time series data requires an Interval to be selected.&nbsp; By default
+          the 1HOUR interval is set.&nbsp; Select an Interval using the corresponding dropdown
+          list.&nbsp; If you would like the data and time filled for each inserted row, be sure the
+          <b>Set the data and time for each row</b> checkbox is checked.
+        </li>
+        <li>
+          Paired data tables row inserts require only entering the number of rows you would like to
+          insert, see the figure&nbsp;below.&nbsp; Paired data tables also allow you to add
+          additional columns through the <b>Edit &#8594; Insert Column</b> menu option.<br>
+          <br>
+           <img src="../ImagesExt/image19_15.png"><br>
+           Insert Rows window for paired data<br>
+          <br>
+        </li>
+        <li>
+          Once you are done entering information for the insert, click <b>OK</b>.&nbsp;&nbsp;
+        </li>
+        <li>
+          The entered number of blank rows will be inserted at that row, moving the original row
+          that you selected down.&nbsp;
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

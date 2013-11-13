@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch8-Scripting.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Correlation Coefficients</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="convertvaluestometricsiunits1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "cosinetrigonometricfunction1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="scripting1.htm" class="d2h_breadcrumbsnormal">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="mathfunctions2.htm" class=
+        "d2h_breadcrumbsnormal">Math Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=
+        " tab-stops: 63.0pt; margin-top: 9pt; margin-left: 0pt; margin-bottom: 6pt; margin-right: 0pt;">
+          <br>
+           <a name="CorrelationCoefficients"></a><a name="_Toc104616446"></a><a name=
+          "_Toc104610497"></a><a name="_Toc101758556"></a><a name="_Toc100980923"></a><a name=
+          "_Toc100728605"></a><a name="_Toc100728292"></a><a name="_Toc19007563"></a><a name=
+          "_Toc19005568"></a><a name="_Toc14888772"></a><a name="_Toc6903132"><b><font face=
+          "SansSerif, Verdana, Arial, Helvetica" size="5">Correlation
+          Coefficients</font></b></a><br>
+          <br>
+           <code>correlationCoefficients</code>(TimeSeriesMath tsData)<br>
+          <br>
+           Computes the linear regression and other correlation coefficients between data in the
+          current time series and <code><font style=
+          " font-weight: normal;">tsData</font></code>.&nbsp; Values in the current time series and
+          <code><font style=" font-weight: normal;">tsData</font></code> are matched by time to
+          form data pairs for the correlation analysis.&nbsp;&nbsp; The data sets may be either
+          regular or irregular time interval data.<br>
+          <br>
+           The correlations statistics computed by the function are:<br>
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Number of Valid Values
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Regression Constant
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Regression Coefficient
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Determination Coefficient
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Standard Error of Regression
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Adjusted Determination Coefficient
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           Adjusted Standard Error of Regression
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           These values are contained in a LinearRegressionStatistics object.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           The current TimeSeriesMath object forms the values of the independent variable
+          (x-values), while values of the second time series comprise the dependent variable
+          (y-values).&nbsp; The linear regression coefficients thus express how values in the
+          second data set can be derived from values in the primary data set:
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+        class="bodytextindent155">
+           TS2(t) = a + b * TS1(t)
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           where&nbsp; “a” is the regression constant and “b” the regression coefficient.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           &nbsp;
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>See also:</b>&nbsp; LinearRegressionStatistics
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Parameters:</b> tsData &nbsp;- A TimeSeriesMath object that forms the dependent
+          variable for the regression analysis
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Example:</b>
+        </p>
+        <p style=" text-indent: 36pt; margin-top: 0pt; margin-left: 0.0px;" class=
+        "bodytextindent155">
+           <code>linearRegressionData =</code>
+        </p>
+        <p style=
+        " text-indent: 36pt; margin-top: 0pt; margin-left: 28.0px; margin-bottom: 0pt; margin-right: 0pt;"
+         class="bodytextindent155">
+           <code>tsData.correlationCoefficients(otherTsData)</code>
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Returns:</b>A LinearRegressionStatistics object holding the correlation data.
+        </p>
+        <p style=" margin-top: 0pt; margin-left: 0.0px;" class="bodytextindent155">
+           <b>Generated Exceptions:&nbsp;</b> <code><font style=" font-weight: normal;">Throws
+          an</font></code> hec.hecmath.HecMathException if the times in the current time series do
+          not exactly match times in tsData.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

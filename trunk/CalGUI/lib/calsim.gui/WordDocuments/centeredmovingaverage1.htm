@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link href="../Theme/nav.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/C1H_HTML.css" type="text/css" rel="stylesheet">
+    <link href="../LinksExt/Ch7-Math.css" type="text/css" rel="stylesheet">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Centered Moving Average</title>
+  </head>
+  <body style=
+  " padding-right: 0px; margin-top: 0px; margin-left: 0px; padding-left: 0px; padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; margin-right: 0px;"
+   relpart="../" background-color="transparent">
+    <div id="nsbanner" style=
+    " padding-right: 0px; left: 0px; padding-bottom: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-right: 10px; padding-bottom: 4px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" href="smoothingfunctions1.htm" class=
+            "d2hpreviousenabled">Previous</a> &nbsp; <a id="D2HNext" href=
+            "olympicsmoothingaverage1.htm" class="d2hnextenabled">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="nstext" style=
+    " padding-right: 10px; padding-bottom: 10px; padding-left: 22px; padding-top: 5px;" valign=
+    "bottom" class="d2h_main_nstext">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a href="mathfunctions1.htm" class="d2h_breadcrumbsnormal">Math Functions</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a href="smoothingfunctions1.htm" class=
+        "d2h_breadcrumbsnormal">Smoothing Functions</a>
+      </div>
+      <div style=" margin-top: 0pt; margin-bottom: 0pt;" class="section1">
+        <p style=" margin-left: 0pt;">
+          <br>
+           <a name="_Ref6034881"><b><font face="SansSerif, Verdana, Arial, Helvetica" size=
+          "5">Centered Moving Average</font></b></a><br>
+          <br>
+           The <b>Centered Moving Average</b> function computes a centered moving average of “NAVG”
+          values for regular or irregular interval time series data.&nbsp; The number of values to
+          average over (“NAVG”) must be an odd integer greater than 2.&nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The <b>Only Valid Values</b> option pertains to when the averaging interval contains
+          missing values.&nbsp; If checked, the option sets the value in the resultant data set to
+          missing.&nbsp; If unselected, the option computes a smoothed value from the valid values
+          in the interval.
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           The <b>Use Reduced Number of Values</b> option pertains to the first and last NAVG/2
+          values in the resultant data.&nbsp; If selected, the option computes smoothed values at
+          the beginning and ending of the data set from a reduced number of values of the original
+          data set.&nbsp; If unselected, the option sets the first and last NAVG/2 values in the
+          resultant data to missing.
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           <img src="../ImagesExt/image38_41.jpg">
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           Centered Moving Average
+        </p>
+        <p style=" margin-bottom: 0pt;" class="msobodytextindent">
+           &nbsp;
+        </p>
+        <p style=" margin-left: 0.0px; margin-bottom: 0pt;" class="msobodytextindent">
+           To compute the centered moving average for time series data:
+        </p>
+        <ol>
+          <li>
+            Choose the <b>Smoothing</b> tab of the Math Functions screen and select the <b>Centered
+            Moving Average</b> operator, as shown in the figure above.
+          </li>
+          <li>
+            Select a data set to apply the function from the <b>Selected Data Set</b> pull-down
+            list at the top of the screen or multiple data sets from the list in the lower portion
+            of the screen.&nbsp; If you include the data set selected in the top <b>Selected Data
+            Set</b>, the operation on that set will only be done once.&nbsp;
+          </li>
+          <li>
+            In the <b>Number to Average Over</b> box, enter a value to set the number of values for
+            the moving average.&nbsp; This number must be an odd number greater than two (2).
+          </li>
+          <li>
+            Select the <b>Only Valid Values</b> box to compute a smoothed value only if all the
+            values in the averaging interval are valid (no missing values).&nbsp; If there are one
+            or more missing values, the value in the resultant time series data is then set to
+            missing.&nbsp; If the box is not checked, the value in the resultant time series data
+            is computed using the remaining valid values in the averaging interval.
+          </li>
+          <li>
+            Select the <b>Use Reduced Number of Values</b> box to compute a moving average from a
+            reduced number of time series values near the beginning and ending of a time
+            series.&nbsp; At these locations, the moving average interval becomes truncated and
+            there are not “Number to Average Over” values for averaging.&nbsp; If unchecked, values
+            in the resultant time series data at these locations will be set to missing.
+          </li>
+          <li>
+            Click <b>Compute</b> to perform a centered moving average smoothing of the selected
+            data.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+    <link rel="stylesheet" type="text/css" href="../Theme/nav.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/C1H_HTML.css">
+    <link rel="stylesheet" type="text/css" href="../LinksExt/Ch8-Scripting.css">
+    <meta name="Generator" content="ComponentOne Doc-To-Help v.2009.2.0.480">
+    <meta name="D2HTheme" content="(Default) v.21">
+    <title>Screen for Erroneous Values Based on Constant Value</title>
+  </head>
+  <body relpart="../" background-color="transparent" style=
+  " margin-left: 0px; padding-bottom: 0px; margin-top: 0px; padding-right: 0px; margin-bottom: 0px; margin-right: 0px; padding-left: 0px; padding-top: 0px;">
+    <div id="nsbanner" style=
+    " padding-bottom: 0px; padding-right: 0px; left: 0px; padding-left: 0px; padding-top: 0px;">
+      <div id="TitleRow" style=
+      " padding-bottom: 4px; padding-right: 10px; padding-left: 22px; padding-top: 4px; width: 100%;">
+        <div id="ienav">
+          <p align="left" class="linknav">
+             <a id="D2HPrevious" class="d2hpreviousenabled" href=
+            "roundofftospecifiedprecision1.htm">Previous</a> &nbsp; <a id="D2HNext" class=
+            "d2hnextenabled" href="screenforerroneousvaluesbasedondurationmagnitude1.htm">Next</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>
+       &nbsp;
+    </p>
+    <div id="nstext" valign="bottom" class="d2h_main_nstext" style=
+    " padding-bottom: 0px; padding-right: 10px; padding-left: 22px; padding-top: 0px;">
+      <div id="d2h_breadcrumbs" class="d2h_breadcrumbs">
+        <a class="d2h_breadcrumbsnormal" href="scripting1.htm">Scripting</a> <font class=
+        "d2h_breadcrumbslinkseparator">&gt;</font> <a class="d2h_breadcrumbsnormal" href=
+        "mathfunctions2.htm">Math Functions</a>
+      </div>
+      <div class="section1" style=" margin-top: 0pt; margin-bottom: 0pt;">
+        <p style=
+        " margin-left: 0pt; margin-top: 9pt; margin-bottom: 6pt; margin-right: 0pt; tab-stops: 63.0pt;">
+          <br>
+           <font size="5" face="SansSerif, Verdana, Arial, Helvetica"><b>Screen for Erroneous
+          Values Based on Constant Value</b></font>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;&nbsp;<br>
+           <code>screenWithConstantValue<font style=" font-weight: normal;">(string
+          duration,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          rejectTolerance,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          questionTolerance,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point
+          minThreshold,</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code><font style=" font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer
+          maxMissing)</font></code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Flag values in time series whose values do not change more than a specified amount over
+          a specified duation as questionable or rejected.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           Values in the time series are screened for quality. All (non-missing) values whose
+          difference over the specified duration is below rejectTolerance are marked with a
+          rejected quality flag. Other whose whose difference over the specified duration is below
+          questionTolerance are marked with a questioned quality flag. Other values are marked with
+          an okay quality flag unless they are already marked as rejected or questioned. Only
+          values above the specified minThreshold value are screened as described. Only time
+          periods that contain no more that maxMissing missing values are screened as described.
+        </p>
+        <p class="bodytextindent155" style=" margin-top: 0pt;">
+           &nbsp;
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Parameters:</b>
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           tsc - The time series to derive from.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           durationStr - The time period over which to perform the test, of the form nX, where in
+          is an integer and X is one of Minutes, Hours, or Days, which can be abbreviated to one or
+          more characters.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           rejectTolerance - Values will be marked as rejected if they do not differ by more than
+          this amount over the specified duration.&nbsp; To disable marking values as rejected, set
+          this tolerance to less than zero.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           questionTolerance - Values will be marked as questioned if they do not differ by more
+          than this amount over the specified duration.&nbsp; To disable marking values as
+          questioned, set this tolerance to less than zero.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           minThreshold - Values will be screened only if they are greater than this value.
+        </p>
+        <p class="bodytextindent155" style=
+        " margin-left: 28.0px; margin-top: 0pt; margin-bottom: 0pt; margin-right: 0pt;">
+           maxMissing - The maximum number of missing values to tolerate in the specified duration
+          for screening purposes.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Example:</b>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>&nbsp;newDataSet = dataset.screenWithConstantValue(string duration,</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point rejectTolerance,</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point questionTolerance,</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; floating-point minThreshold,</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; integer maxMissing)</code>
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           <b>Returns:</b> A copy of the time series with values with the quality set as described.
+        </p>
+        <p class="bodytextindent155" style=" margin-left: 0.0px; margin-top: 0pt;">
+           &nbsp;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
