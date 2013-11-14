@@ -727,7 +727,7 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="91" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
-						<label icon="images/DWR_logo_small.gif" visible="false">
+						<label icon="images/NEW_DWR_LOGO_3inch_72dpi.jpg" visible="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
 						</label>
