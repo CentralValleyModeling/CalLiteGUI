@@ -64,6 +64,7 @@ public class DisplayFrame {
 		String names = "";
 		String locations = "";
 		String dateRange = "";
+		String filename = "";
 
 		String[] groupParts = displayGroup.split(";");
 		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -95,6 +96,8 @@ public class DisplayFrame {
 				names = groupParts[i].substring(5);
 			else if (groupParts[i].startsWith("Index-"))
 				locations = groupParts[i].substring(6);
+			else if (groupParts[i].startsWith("File-"))
+				filename = groupParts[i].substring(5);
 			else {
 				// Check to see if the groupPart parses as mmmyyyy-mmmyyy
 				Pattern p = Pattern.compile("\\w\\w\\w\\d\\d\\d\\d-\\w\\w\\w\\d\\d\\d\\d");
@@ -107,12 +110,19 @@ public class DisplayFrame {
 		}
 
 		dssGrabber.setIsCFS(isCFS);
+		// System.out.println(displayGroup);
+		// System.out.println(names + "!");
+		// System.out.println(locations + "!");
+		// System.out.println(filename);
 
-		for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
-			RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
-			if (item.isSelected())
-				dssGrabber.setBase(item.toString());
-		}
+		if (!filename.equals(""))
+			dssGrabber.setBase(filename);
+		else
+			for (int i = 0; i < lstScenarios.getModel().getSize(); i++) {
+				RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i);
+				if (item.isSelected())
+					dssGrabber.setBase(item.toString());
+			}
 
 		String locationNames[] = locations.split(",");
 		String namesText[] = names.split(",");
@@ -124,6 +134,7 @@ public class DisplayFrame {
 			else
 				dssGrabber.setLocation(locationNames[i]);
 
+			System.out.println(locationNames[i]);
 			String message = null;
 			if (dssGrabber.getPrimaryDSSName() == null)
 				message = "No GUI table entry found for " + namesText[i] + "/" + locationNames[i] + ".";

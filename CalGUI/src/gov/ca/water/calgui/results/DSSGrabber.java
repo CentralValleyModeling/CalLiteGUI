@@ -46,6 +46,8 @@ public class DSSGrabber {
 	static final double TAF_DAY_2_CFS = 504.166667;
 
 	private final JList lstScenarios;
+	private JList lstSVFilenames = null;
+
 	private String baseName;
 	private String primaryDSSName;
 	private String secondaryDSSName;
@@ -73,6 +75,15 @@ public class DSSGrabber {
 
 		this.lstScenarios = list;
 
+	}
+
+	/**
+	 * Sets the (optional) SVFilenames
+	 * 
+	 * @param list
+	 */
+	public void setSVFilenames(JList list) {
+		lstSVFilenames = list;
 	}
 
 	/**
@@ -165,6 +176,7 @@ public class DSSGrabber {
 	public void setLocation(String locationName) {
 
 		// TODO: Combine lookup tables AND review use of complex names
+		locationName = locationName.trim();
 
 		if (locationName.startsWith("/")) {
 			// Handle names passed from WRIMS GUI
@@ -411,9 +423,11 @@ public class DSSGrabber {
 
 				int j = 0;
 				for (int i = 0; i < scenarios; i++) {
-					// TODO: Not sure why this changed?
-					// String scenarioName = (String) lstScenarios.getModel().getElementAt(i);
-					String scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
+					String scenarioName;
+					if (baseName.contains("_SV.DSS"))
+						scenarioName = baseName;
+					else
+						scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 					if (!baseName.equals(scenarioName)) {
 						j = j + 1;
 						results[j] = getOneSeries(scenarioName, primaryDSSName);
