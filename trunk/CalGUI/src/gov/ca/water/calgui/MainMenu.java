@@ -942,13 +942,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		if (lcName.equals("tabbedpane1")) {
 
-			System.out.println(menu.getLocation());
-			System.out.println(menu.getHeight());
-			System.out.println(menu.getWidth());
 			menu.setSize(150, 20);
 
-			System.out.println(menu.getComponent(0).getName());
-			System.out.println(menu.isVisible());
+			// System.out.println(menu.getLocation());
+			// System.out.println(menu.getHeight());
+			// System.out.println(menu.getWidth());
+			// System.out.println(menu.getComponent(0).getName());
+			// System.out.println(menu.isVisible());
 
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
@@ -1254,9 +1254,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			for (int i = 0; i < rows.length; i++) {
 
 				String[] parts = array[i].getName().split("::");
-				System.out.println(array[i]);
-				DisplayFrame
-				        .showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2], lstScenarios);
+				if (parts[1].contains(("_SV.DSS"))) {
+					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
+					        + ";File-" + parts[1], lstScenarios);
+				} else {
+					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2],
+					        lstScenarios);
+				}
 			}
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
