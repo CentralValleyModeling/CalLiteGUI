@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 
+import calsim.app.Project;
+
 /**
  * Class to grab (load) DSS time series for a set of scenarios passed in a JList. Each scenario is a string that corresponds to a
  * fully qualified (?) DSS file name. The DSS_Grabber instance provides access to the following:
@@ -46,7 +48,6 @@ public class DSSGrabber {
 	static final double TAF_DAY_2_CFS = 504.166667;
 
 	private final JList lstScenarios;
-	private JList lstSVFilenames = null;
 
 	private String baseName;
 	private String primaryDSSName;
@@ -71,19 +72,12 @@ public class DSSGrabber {
 	private double[][] annualCFSs;
 	private double[][] annualCFSsDiff;
 
+	private Project project = MainMenu.getProject();
+
 	public DSSGrabber(JList list) {
 
 		this.lstScenarios = list;
 
-	}
-
-	/**
-	 * Sets the (optional) SVFilenames
-	 * 
-	 * @param list
-	 */
-	public void setSVFilenames(JList list) {
-		lstSVFilenames = list;
 	}
 
 	/**
@@ -424,9 +418,26 @@ public class DSSGrabber {
 				int j = 0;
 				for (int i = 0; i < scenarios; i++) {
 					String scenarioName;
-					if (baseName.contains("_SV.DSS"))
-						scenarioName = baseName;
-					else
+					if (baseName.contains("_SV.DSS")) {
+						// For SVars, use WRIMS GUI Project object to determine input files
+						switch (i) {
+						case 0:
+							scenarioName = project.getSVFile();
+							break;
+						case 1:
+							scenarioName = project.getSV2File();
+							break;
+						case 2:
+							scenarioName = project.getSV3File();
+							break;
+						case 3:
+							scenarioName = project.getSV4File();
+							break;
+						default:
+							scenarioName = "";
+							break;
+						}
+					} else
 						scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
 					if (!baseName.equals(scenarioName)) {
 						j = j + 1;
