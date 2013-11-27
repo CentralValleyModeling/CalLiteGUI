@@ -278,6 +278,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			AppUtils.setCurrentProject(project);
 			AppUtils.baseOn = true;
 
+			desktop.setJMenuBar(menu);
+			menu.setVisible(true);
+
 		}
 
 		catch (Exception e) {
