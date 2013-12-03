@@ -11,6 +11,7 @@ import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Component;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -21,6 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,6 +35,7 @@ import java.util.TimeZone;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -68,7 +71,7 @@ public class FileAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private int action_WSIDI;
-	private final int[] regFlags;
+	private static int[] regFlags;
 	private static String runRecordFolderName; // Name for subfolder under scenarios directory to contain generated files for each
 	                                           // run
 
@@ -213,7 +216,7 @@ public class FileAction implements ActionListener {
 						// *** Determine if scenario has changed.
 
 						// Get current scenario settings
-						StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+						StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl, regFlags);
 
 						// Read existing file
 
@@ -307,7 +310,7 @@ public class FileAction implements ActionListener {
 
 										((JTextField) swix.find("run_txfScen")).setText(scen2);
 										setFilenameTooltips();
-										sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+										sb = buildScenarioString(swix, regUserEdits, dTableModels, gl, regFlags);
 										saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
 
 										// Force setup of scenario schema because there is a change
@@ -456,7 +459,8 @@ public class FileAction implements ActionListener {
 
 				action_WSIDI = 0;
 				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
-				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+				// regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+				regFlags = GUIUtils.setControlValues(file, swix, gl);
 				action_WSIDI = 1;
 				setFilenameTooltips();
 			}
@@ -1394,7 +1398,7 @@ public class FileAction implements ActionListener {
 	public static void saveFile(String scen, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels,
 	        GUILinks gl) {
 
-		StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+		StringBuffer sb = buildScenarioString(swix, regUserEdits, dTableModels, gl, regFlags);
 
 		FileUtils.createNewFile(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 		File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -1421,7 +1425,7 @@ public class FileAction implements ActionListener {
 	 * @return
 	 */
 	public static StringBuffer buildScenarioString(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
-	        GUILinks gl) {
+	        GUILinks gl, int[] RegFlags) {
 
 		StringBuffer sb = new StringBuffer();
 
@@ -1460,6 +1464,21 @@ public class FileAction implements ActionListener {
 			}
 		}
 		sb.append("END USERDEFINEDFLAGS" + NL);
+
+		// Get flags for Regulation Options
+		String sRegFlags = "";
+		sb.append("REGULATIONOPTIONS" + NL);
+		for (int i = 0; i < RegFlags.length; i++) {
+			if (i == 0) {
+				sRegFlags = String.valueOf(RegFlags[i]);
+			} else {
+				sRegFlags = sRegFlags + "|" + String.valueOf(RegFlags[i]);
+			}
+
+		}
+		sb.append(sRegFlags + NL);
+		sb.append("END REGULATIONOPTIONS" + NL);
+
 		return sb;
 	}
 
@@ -1478,7 +1497,7 @@ public class FileAction implements ActionListener {
 		Boolean result = true;
 		JPanel mainmenu = (JPanel) swix.find("mainmenu");
 
-		StringBuffer sbInMemory = buildScenarioString(swix, regUserEdits, dTableModels, gl);
+		StringBuffer sbInMemory = buildScenarioString(swix, regUserEdits, dTableModels, gl, regFlags);
 
 		// Read existing file specified in UI
 
@@ -1487,8 +1506,21 @@ public class FileAction implements ActionListener {
 		StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
 		if (sbInMemory.toString().equals(sbExisting.toString())) {
-			result = JOptionPane.showConfirmDialog(mainmenu, "Are you sure you want to exit?", "CalLite Gui",
-			        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+
+			JOptionPane jOpt = new JOptionPane("Are you sure you want to exit?", JOptionPane.QUESTION_MESSAGE,
+			        JOptionPane.OK_CANCEL_OPTION);
+			JDialog jDia = jOpt.createDialog(mainmenu, "CalLite Gui");
+
+			URL imgURL = mainmenu.getClass().getResource("/images/CalLiteIcon.png");
+			jDia.setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
+			jDia.setVisible(true);
+
+			int iresult = (Integer) jOpt.getValue();
+			result = iresult == JOptionPane.OK_OPTION;
+
+			// result = jOpt.showConfirmDialog(mainmenu, "Are you sure you want to exit?", "CalLite Gui", JOptionPane.YES_NO_OPTION)
+			// == JOptionPane.YES_OPTION;
+
 		} else {
 
 			int n = JOptionPane.showConfirmDialog(mainmenu,
