@@ -186,7 +186,7 @@ public class RegListener implements ItemListener {
 							if (NAFlag.equals("FALSE") || ckbName.equals("ckbReg_TRNTY") || ckbName.equals("ckbReg_PUMP")) {
 
 							} else {
-								// RegFlags[rID] = 2;
+								RegFlags[rID] = 2;
 							}
 						}
 

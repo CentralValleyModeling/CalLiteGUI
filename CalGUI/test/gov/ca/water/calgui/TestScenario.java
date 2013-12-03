@@ -115,7 +115,7 @@ public class TestScenario {
 
 		((JTextField) mm.getSwix().find("run_txfScen")).setText("D1641.cls");
 		mm.fileAction.setFilenameTooltips();
-		StringBuffer sb = FileAction.buildScenarioString(mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl);
+		StringBuffer sb = FileAction.buildScenarioString(mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
 		FileAction.saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\D1641.cls");
 
 		// 5. Generate

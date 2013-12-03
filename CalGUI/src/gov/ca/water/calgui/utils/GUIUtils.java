@@ -453,68 +453,32 @@ public class GUIUtils {
 		String delims = "[|]";
 		int QSel = 0;
 
-		try {
-			fs = new FileInputStream(f);
-			in = new InputStreamReader(fs);
-			br = new BufferedReader(in);
+		/*
+		 * try { fs = new FileInputStream(f); in = new InputStreamReader(fs); br = new BufferedReader(in);
+		 * 
+		 * while (true) { textinLine = br.readLine(); if (textinLine == null) break; if (textinLine.equals("DATATABLEMODELS"))
+		 * break; String[] tokens = textinLine.split(delims);
+		 * 
+		 * comp = tokens[0]; if (tokens.length > 1) value = tokens[1]; else value = null;
+		 * 
+		 * if (comp.startsWith("rdbRegQS")) {
+		 * 
+		 * // final int tID = Integer.parseInt(gl.tableIDForCtrl(comp)); // String stID = String.valueOf(tID); // int rID =
+		 * Integer.parseInt(gl.RIDForCtrl(comp));
+		 * 
+		 * if (comp.startsWith("rdbRegQS_D1641") && value.startsWith("true")) { QSel = 1; // for (int i = 0; i < RegFlags.length;
+		 * i++) { // RegFlags[rID] = 1; // } } else if (comp.startsWith("rdbRegQS_1641") && value.startsWith("true")) { QSel = 1; //
+		 * for (int i = 0; i < RegFlags.length; i++) { // RegFlags[rID] = 1; // } } else if (comp.startsWith("rdbRegQS_D1485") &&
+		 * value.startsWith("true")) { // for (int i = 0; i < RegFlags.length; i++) { // RegFlags[rID] = 3; // } QSel = 3; } else if
+		 * (comp.startsWith("rdbRegQS_UD") && value.startsWith("true")) { // if (comp.equals("ckbReg_TRNTY")) { // } else if
+		 * (comp.equals("ckbReg_PUMP")) { // } else { // RegFlags[rID] = 2; // } // RegFlags[rID] = 1; QSel = 2; } } }
+		 * 
+		 * fs.close(); in.close(); br.close();
+		 * 
+		 * } catch (FileNotFoundException e) { log.debug(e.getMessage()); } catch (IOException e) { log.debug(e.getMessage()); }
+		 */
 
-			while (true) {
-				textinLine = br.readLine();
-				if (textinLine == null)
-					break;
-				if (textinLine.equals("DATATABLEMODELS"))
-					break;
-				String[] tokens = textinLine.split(delims);
-
-				comp = tokens[0];
-				if (tokens.length > 1)
-					value = tokens[1];
-				else
-					value = null;
-
-				if (comp.startsWith("rdbRegQS")) {
-
-					// final int tID = Integer.parseInt(gl.tableIDForCtrl(comp));
-					// String stID = String.valueOf(tID);
-					// int rID = Integer.parseInt(gl.RIDForCtrl(comp));
-
-					if (comp.startsWith("rdbRegQS_D1641") && value.startsWith("true")) {
-						QSel = 1;
-						// for (int i = 0; i < RegFlags.length; i++) {
-						// RegFlags[rID] = 1;
-						// }
-					} else if (comp.startsWith("rdbRegQS_1641") && value.startsWith("true")) {
-						QSel = 1;
-						// for (int i = 0; i < RegFlags.length; i++) {
-						// RegFlags[rID] = 1;
-						// }
-					} else if (comp.startsWith("rdbRegQS_D1485") && value.startsWith("true")) {
-						// for (int i = 0; i < RegFlags.length; i++) {
-						// RegFlags[rID] = 3;
-						// }
-						QSel = 3;
-					} else if (comp.startsWith("rdbRegQS_UD") && value.startsWith("true")) {
-						// if (comp.equals("ckbReg_TRNTY")) {
-						// } else if (comp.equals("ckbReg_PUMP")) {
-						// } else {
-						// RegFlags[rID] = 2;
-						// }
-						// RegFlags[rID] = 1;
-						QSel = 2;
-					}
-				}
-			}
-
-			fs.close();
-			in.close();
-			br.close();
-
-		} catch (FileNotFoundException e) {
-			log.debug(e.getMessage());
-		} catch (IOException e) {
-			log.debug(e.getMessage());
-		}
-
+		QSel = 1;
 		final int[] RegFlags = new int[40];
 
 		try {
@@ -548,6 +512,39 @@ public class GUIUtils {
 						}
 					}
 
+				}
+			}
+
+			fs.close();
+			in.close();
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			log.debug(e.getMessage());
+		} catch (IOException e) {
+			log.debug(e.getMessage());
+		}
+
+		// final int[] RegFlags = new int[40];
+
+		try {
+			fs = new FileInputStream(f);
+			in = new InputStreamReader(fs);
+			br = new BufferedReader(in);
+
+			while (true) {
+				textinLine = br.readLine();
+				if (textinLine == null)
+					break;
+				if (textinLine.equals("REGULATIONOPTIONS"))
+					break;
+			}
+
+			if (textinLine != null) {
+				textinLine = br.readLine();
+				String[] sRegFlags = textinLine.split(delims);
+				for (int i = 0; i < sRegFlags.length; i++) {
+					RegFlags[i] = Integer.parseInt(sRegFlags[i]);
 				}
 			}
 
