@@ -117,18 +117,9 @@ goal WHSSI_force {WHSSI < WHS_stor_chg_max - int_WHS_stor_chg * WHS_stor_chg_max
    C_Delta = Surplus Delta outflow 
    D_CCWD = Diversions at Contra Costa Water District */
    
-define D_Jones_EXP1 {std kind 'flow-delivery' units 'cfs'}
-define D_Jones_EXP2 {std kind 'flow-delivery' units 'cfs'}
-
-!define D_Banks_EXP1 {std kind 'flow-delivery' units 'cfs'}
-define D_Banks_EXP2 {std kind 'flow-delivery' units 'cfs'}
-
 define C_Delta_CVP {std kind 'FLOW-CHANNEL' units 'CFS'}
 define C_Delta_SWP {std kind 'FLOW-CHANNEL' units 'CFS'}
 define C_Delta_ANN {std kind 'FLOW-CHANNEL' units 'CFS'}
-
-goal CVPArcSplit {D_Jones_CVP = D_Jones_EXP1 + D_Jones_EXP2 }
-goal SWPArcSplit {D_Banks_SWP = D_Banks_EXP1 + D_Banks_EXP2 }
 
 goal SrpArcSplit {C_Delta = C_Delta_CVP + C_Delta_SWP + C_Delta_ANN + C_Delta_whlcv + C_Delta_whljp}
 
@@ -154,9 +145,8 @@ goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
 
 
-  
 if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {
-
+  
 ! The projects share available export capacity when EI is controlling.
 
 
@@ -164,92 +154,90 @@ if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {
 !When NOT controlling in the Upstream cycle, EI sharing logic is turned off and protections are implemented to prevent one project from incurring the carriage
 !costs of another project aggressively pressing against the EI constraint in the remaining cycles.
 define EI_control_on {
-	case EI_control {
-		condition	c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. eiexpctrl[Upstream] - d_exptd[Upstream] < 0.01
-		value		1.
-	}
-	case otherwise {
-		condition	always
-		value		0.
-	}
+    case EI_control {
+        condition   c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. 
+                    eiexpctrl[Upstream] - d_exptd[Upstream] < 0.01 !.and.
+!                    MRDO_final < C_SacSJR[Upstream] + 0.1
+        value       1.
+    }
+    case otherwise {
+        condition   always
+        value       0.
+    }
 }
 
-
+! Attempt to split export even during EI control situations
 goal EI_split_swp {
     lhs     D_Banks_EXP1
     case ei_control {
-    condition	EI_control_on > 0.5
+    condition   EI_control_on > 0.5
      rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_therm - ExpRatio*c_therm[Upstream]
-     lhs>rhs    penalty 1290
-     lhs<rhs    penalty 0
-}}
+     lhs>rhs    penalty 1285
+     lhs<rhs    penalty 0}
+}
 goal EI_split_cvp {
     lhs     D_Jones_EXP1
     case ei_control {
-    condition	EI_control_on > 0.5
+    condition   EI_control_on > 0.5
      rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_wkytn_m + ExpRatio*c_kswck_m + ExpRatio*c_nimbus_m 
                               - ExpRatio*c_wkytn_m[Upstream] - ExpRatio*c_kswck_m[Upstream] - ExpRatio*c_nimbus_m[Upstream]
-     lhs>rhs    penalty 1290
-     lhs<rhs    penalty 0
-}}
-
+     lhs>rhs    penalty 1285
+     lhs<rhs    penalty 0}
+}
 goal No_EI_split_swp1 {
     lhs     D_Banks_SWP
     case no_ei_control {
-    condition	EI_control_on < 0.5
+    condition   EI_control_on < 0.5 .and. MRDO_final < C_SacSJR[Upstream] + 0.1
     rhs        D_Banks_SWP[Upstream]
     lhs>rhs    penalty 0
-    lhs<rhs	penalty 1290
-}}
-
+    lhs<rhs penalty 1290}
+}
 goal No_EI_split_swp2 {
     lhs     C_Delta_SWP
     case no_ei_control {
-    condition	EI_control_on < 0.5 .and. S_SLSWP[Upstream] > swprulecv[Upstream] + 0.01
+    condition   EI_control_on < 0.5 .and. S_SLSWP[Upstream] > swprulecv[Upstream] + 0.01
     rhs        C_Delta_SWP[Upstream]
     lhs<rhs    penalty 0
-    lhs>rhs    penalty 1290
-}}
-
+    lhs>rhs    penalty 1290}
+}
 goal No_EI_split_cvp1 {
     lhs     D_Jones_CVP
     case no_ei_control {
-    condition	EI_control_on < 0.5
+    condition   EI_control_on < 0.5 .and. MRDO_final < C_SacSJR[Upstream] + 0.1
     rhs        D_Jones_CVP[Upstream]
     lhs>rhs    penalty 0
-    lhs<rhs	penalty 1290
-}}
-
+    lhs<rhs penalty 1290}
+}
 goal No_EI_split_cvp2 {
     lhs     C_Delta_CVP
     case no_ei_control {
-    condition	EI_control_on < 0.5 .and. S_SLCVP[Upstream] > cvprulecv[Upstream] + 0.01
+    condition   EI_control_on < 0.5 .and. S_SLCVP[Upstream] > cvprulecv[Upstream] + 0.01
     rhs        C_Delta_CVP[Upstream]
     lhs<rhs    penalty 0
-    lhs>rhs    penalty 1290
-}}
-
+    lhs>rhs    penalty 1290}
+}
 
 ! Only apply sharing logic under the AprilMay pulse flow export contraint when this constraint was controlling operations in the Upstream cycle.
 goal AprMay_split_swp {
     lhs     D_Banks_EXP1
      case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1  .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
-
+        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. 
+                       c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. 
+                       aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
      rhs        0.5*AprMayExpCtrl
-     lhs>rhs    penalty 1290
+     lhs>rhs    penalty 1285
      lhs<rhs    penalty 0
      }
 }
 goal AprMay_split_cvp {
     lhs     D_Jones_EXP1 
      case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
+        condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. 
+                       c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. 
+                       aprmayexpctrl[Upstream] - d_exptd[Upstream] < 0.01
      rhs        0.5*AprMayExpCtrl
-     lhs>rhs    penalty 1290
+     lhs>rhs    penalty 1285
      lhs<rhs        penalty 0
      }
 }
-
-
 }

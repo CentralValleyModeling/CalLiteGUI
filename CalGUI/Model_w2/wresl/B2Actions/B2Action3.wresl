@@ -65,11 +65,11 @@ goal b2action3_MaxCap {    ! Prevents Non-Pulse portion of month to be greater t
   lhs    D_Jones_cvp + D_Banks_cvp
   case April {
     condition     month == APR .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
-    rhs           JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin
+    rhs           JonesCapPermit*14.0/daysin + min(JonesCapPermit, PulseExpRes)*0.5*16.0/daysin
     lhs<rhs       penalty 0 }
   case May {
     condition     month == MAY .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1 .and. int(B2Action3)==1
-    rhs           JonesCapPermit*16.0/daysin + PulseExpRes*0.5*15.0/daysin
+    rhs           JonesCapPermit*16.0/daysin + min(JonesCapPermit, PulseExpRes)*0.5*15.0/daysin
     lhs<rhs       penalty 0 }
 }
 

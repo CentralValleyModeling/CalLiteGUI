@@ -22,6 +22,20 @@ define wyt_SAC {
          where      wateryear=wateryear}
 }
 
+! ================ INDICES AS DEFINED BY CVP (CHANGE IN MAR) =====================
+! the 40-30-30 index for Sacramento Basin as defined by the CVP (changes in March)
+define wyt_SAC_cvp {
+     case OCTtoFEB {
+            condition       month >= OCT .and. month <= FEB
+        select      SACindex
+        from            wytypes
+        where       wateryear=wateryear - 1.}
+     case rest {
+        condition   always
+        select      SACindex
+        from        wytypes
+        where       wateryear=wateryear}
+}
 
 ! the Shasta index as defined by the CVP (changes in March)
 define wyt_SHASTA_cvp {
@@ -156,6 +170,19 @@ define wyt_SJR_prv2 {
          from        wytypeSJR
          where        wateryear=wateryear -2. }
         }
+		
+! Definition of Mar-Feb contract month
+define contract_month {
+    case marthrusep {
+        condition month >= 6
+        value month - 5 }
+    case octthrufeb {
+        condition month <= 5
+        value month + 7  }
+    case otherwise {
+        condition always
+        value 0 }
+}
         
 
 /* H. Canada DWR 04/26/12

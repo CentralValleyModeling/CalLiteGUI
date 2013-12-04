@@ -15,7 +15,7 @@ Modify Inflow by considering Hood dicu
 define ExportActual {alias  D_Jones+D_Banks KIND 'EXPORT-PRJ' units 'CFS'  }
 
 ! Delta Inflow defined as in DWRSIM Algorithm Description for Export Ratio
-define Inflow {alias C_Hood_ANN+D_Hood_NP-I_HOOD+AD_Mokelumne+C_YoloBP+AD_SJR+AD_Calaveras+I_MarshCr kind 'INFLOW-DELTA' UNITS 'CFS'   }
+define Inflow {alias C_Hood_ANN+D_Hood_NP-I_HOOD+AD_Mokelumne+C_YoloBP+C_SJRVER+AD_SJRCalALL+I_MarshCr kind 'INFLOW-DELTA' UNITS 'CFS'   }
 
 ! EI allowable export variable - MAXIMUM ALLOWABLE EXPORT due to EXPORT RATIO
 define EiExpCtrl {std kind 'EXPORT-CTRL-EI' units 'CFS'}
@@ -78,7 +78,7 @@ define esjrir_m    {
 goal export_SJRIR_comply { lhs ExportActual 
         case EISJR_UDEF 
              {condition EISJR_DLTSW == 2
-             rhs esjrir_o + esjrir_m*AD_SJR 
+             rhs esjrir_o + esjrir_m*VERNQ
              lhs<rhs penalty 0
              lhs>rhs penalty 999999 
              }

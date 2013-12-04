@@ -74,8 +74,9 @@ goal limitD114 {D114 < target_114GCID                                          !
 !constraining D114 to be sum of all deliveries off GCC
 goal totalD114 {D114 = D143A + D143B + D145A + D145B + L143 - C_TC_GC}
 
-goal setL143 {0.87 * L143 = 0.13 * D143A + 0.13 * D143B + 0.13 * D145A + 0.13 * D145B - 0.13 * C_TC_GC}  !set conveyance loss ... in Calsim this is .13 * C142B, but D114 is the closest 
-                                  !thing we have in CalLite to C142B
+!set conveyance loss 
+!in Calsim this is .13 * C142B, but D114 is the closest thing we have in CalLite to C142B
+goal setL143 {0.87 * L143 = 0.13 * D143A + 0.13 * D143B + 0.13 * D145A + 0.13 * D145B - 0.13 * C_TC_GC}  
 
 ! WBA8S ------------------------------------------------------------------------------------------------
 goal setL129A {L129A = D129A * ConvLs_18301}  !set conveyance loss

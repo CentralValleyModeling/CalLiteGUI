@@ -123,7 +123,7 @@ goal CVCReleaseCont {C_Wkytn_whlcv + C_Kswck_whlcv + C_Nimbus_whlcv = C_Delta_wh
 ! For output only
 define CVC_AllocDv {alias CVC_Alloc Units 'taf'}
 define remaincvc_dv {alias RemainWheelCVC kind 'output' units 'taf'}
-define maxJonescalcDV {alias maxJonescalc Units 'cfs'}
+define maxJonescalcDV {alias maxJonescalc kind 'output' units 'cfs'}
 
 !---------------------- JPOD ----------------------
 
@@ -131,7 +131,7 @@ define maxJonescalcDV {alias maxJonescalc Units 'cfs'}
 	define wheelCap {select cap from WheelCap where year=wateryear }
 
 	! Allow JPOD Wheeling only when Tracy is running at its capacity
-	define Jones_int {
+/*	define Jones_int {
 	    case JonesMax {
 	      condition D_Jones[BASE] + 0.5 > maxJonesCalc
 	      value 1.0}
@@ -139,7 +139,7 @@ define maxJonescalcDV {alias maxJonescalc Units 'cfs'}
 	      condition always
 	      value 0.0}
 	      }
-
+*/
 	! Amount of CVP water Wheeled to CVP San Luis this year (TAF)
 	define usedWheelAmt {
 	  case OCT {
@@ -161,7 +161,7 @@ define maxJonescalcDV {alias maxJonescalc Units 'cfs'}
 	define CVPWHLcap {value max(BanksMaxAllow - D_Banks[BASE],0.)}
 
 	! Allow JPOD up to the cap if no B2 action is on
-	goal maxJPOD_CVP {D_Banks_cvpwhl < min(CVPWHLcap*Jones_int, remWheelCap*taf_cfs) }
+	goal maxJPOD_CVP {D_Banks_cvpwhl < 0} !min(CVPWHLcap*Jones_int, remWheelCap*taf_cfs) }
 
 	! Releases for JPOD go to wheeling or carriage water
 	goal JPODReleaseCont {C_Wkytn_whljp + C_Kswck_whljp + C_Nimbus_whljp = C_Delta_whljp + D_Banks_whlrels}

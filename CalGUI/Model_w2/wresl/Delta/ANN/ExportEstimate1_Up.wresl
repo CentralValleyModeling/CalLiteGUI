@@ -31,7 +31,7 @@ define exp_est_SWP {alias EstSWPSodExp kind 'EXPORT-ESTIMATE' units 'CFS'}
   dem_totcvps_pex*taf_cfs*perdel_cvpex_s - dem_d607b_pex*taf_cfs*perdel_cvpex_s - dem_d608b_pex*taf_cfs*perdel_cvpex_s  +
   CVP_prf_ratio_s*(dem_totcvps_prf*taf_cfs*perdel_cvprf_s - dem_d607c_prf*taf_cfs*perdel_cvprf_s - dem_d608c_prf*taf_cfs*perdel_cvprf_s)  +
   max(0.0, CVP_pag_ratio_s*dem_d607a_pag*taf_cfs*perdel_cvpag_s + dem_d607d_pls*taf_cfs + dem_d607b_pex*taf_cfs*perdel_cvpex_s +
-  CVP_prf_ratio_s*dem_d607c_prf*taf_cfs*perdel_cvprf_s + dem_d608b_pex*taf_cfs*perdel_cvpex_s + CVP_prf_ratio_s*dem_d608c_prf*taf_cfs*perdel_cvprf_s - I_JamesBP)}
+  CVP_prf_ratio_s*dem_d607c_prf*taf_cfs*perdel_cvprf_s + dem_d608b_pex*taf_cfs*perdel_cvpex_s + CVP_prf_ratio_s*dem_d608c_prf*taf_cfs*perdel_cvprf_s - I_MDOTA)}
 
 define exp_est_CVPDem {alias EstCVPSodDem kind 'EXPORT-ESTIMATE' units 'CFS'}
 

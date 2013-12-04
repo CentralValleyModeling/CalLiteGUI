@@ -7,7 +7,7 @@ Nazrul Islam DWR (02/04/2011)
 **************************************/
  
 
-define C_SJR  {alias AD_SJR kind 'FLOW-ACCRDEPL'  units 'CFS'}
+define C_SJR  {alias C_SJRVER kind 'FLOW-ACCRDEPL'  units 'CFS'}
 define C_MoklmnR  {alias Ad_Mokelumne kind 'FLOW-ACCRDEPL'  units 'CFS'}
 
 define I_Trnty_S2D {alias I_Trnty kind 'FLOW-INFLOW' units 'CFS'} !Trinity Lake inflow
@@ -28,15 +28,15 @@ define I_Stockton_S2D {alias I_Stockton kind 'FLOW-INFLOW' units 'CFS'} !Local A
 define I_Kern_S2D {alias I_Kern kind 'FLOW-INFLOW' units 'CFS'} !Kern River Interties flow
 define I_Nimbus_S2D {alias I_Nimbus kind 'FLOW-INFLOW' units 'CFS'} !Local inflow into Nimbus (I9), NEEDED FOR COA ONLY
 define I_KellyRidge_S2D {alias I_KellyRidge kind 'FLOW-INFLOW' units 'CFS'} !Local inflow at Kelly Ridge (I200), NEEDED FOR COA ONLY
-define I_JamesBP_S2D {alias I_JamesBP kind 'FLOW-INFLOW' units 'CFS'} !James Bypass flows into the Mendota Pool
-define AD_CALAVERAS_S2D {alias AD_CALAVERAS kind 'FLOW-ACCRDEPL' units 'CFS'}
+define I_MDOTA_S2D {alias I_MDOTA kind 'FLOW-INFLOW' units 'CFS'} !James Bypass flows into the Mendota Pool
+define AD_CALAVERAS_S2D {alias AD_SJRCalALL kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_CASTAIC {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_CASTAIC_S2D {alias AD_CASTAIC kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_MOKELUMNE_S2D {alias AD_MOKELUMNE kind 'FLOW-ACCRDEPL' units 'CFS'}
 define I_CVCWHEEL {std kind 'FLOW-INFLOW' units 'CFS'} 
 goal set_CVCWHEEL_0 {I_CVCWHEEL = 0}
-define SJR_ANN_S2D {alias SJR_ANNsv kind 'FLOW-ACCRDEPL' units 'CFS'}
-define AD_JAMESBP_S2D {alias AD_JAMESBP kind 'FLOW-ACCRDEPL' units 'CFS'}
+!define SJR_ANN_S2D {alias SJR_ANNsv kind 'FLOW-ACCRDEPL' units 'CFS'}
+if int(Dynamic_SJR)==0 {define AD_JAMESBP_S2D {alias AD_JAMESBP kind 'FLOW-ACCRDEPL' units 'CFS'}}
 
 !Various reservoir target levels that weren't previously in the DV file
 define S_TrntyLevel1dv {alias S_Trntylevel1 kind 'STORAGE-LEVEL' units 'TAF'}

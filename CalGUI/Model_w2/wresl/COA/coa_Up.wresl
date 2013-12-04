@@ -66,7 +66,6 @@ define int_IBU_UWFE     {INTEGER std kind 'INTEGER' UNITS 'NONE'}               
 ! Define maximum values for the above two decision variables.  These simply need to be
 ! sufficiently large such that the variable will never exceed the value, but small enough
 ! to avoid truncation/roundoff errors in the force constraints.
-
 define WHS_stor_chg_max {value 3000.*taf_cfs}
 define IBU_UWFE_max     {value 9999999.}
 
@@ -117,18 +116,9 @@ goal WHSSI_force {WHSSI < WHS_stor_chg_max - int_WHS_stor_chg * WHS_stor_chg_max
    C_Delta = Surplus Delta outflow 
    D_CCWD = Diversions at Contra Costa Water District */
    
-define D_Jones_EXP1 {std kind 'flow-delivery' units 'cfs'}
-define D_Jones_EXP2 {std kind 'flow-delivery' units 'cfs'}
-
-!define D_Banks_EXP1 {std kind 'flow-delivery' units 'cfs'}
-define D_Banks_EXP2 {std kind 'flow-delivery' units 'cfs'}
-
 define C_Delta_CVP {std kind 'FLOW-CHANNEL' units 'CFS'}
 define C_Delta_SWP {std kind 'FLOW-CHANNEL' units 'CFS'}
 define C_Delta_ANN {std kind 'FLOW-CHANNEL' units 'CFS'}
-
-goal CVPArcSplit {D_Jones_CVP = D_Jones_EXP1 + D_Jones_EXP2 }
-goal SWPArcSplit {D_Banks_SWP = D_Banks_EXP1 + D_Banks_EXP2 }
 
 goal SrpArcSplit {C_Delta = C_Delta_CVP + C_Delta_SWP + C_Delta_ANN + C_Delta_whlcv + C_Delta_whljp}
 
@@ -153,94 +143,55 @@ goal setUNUSED_FS { D_Banks_EXP2 < UNUSED_FS }
 goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
   
-! Attempt to split export even during EI control situations
 
-/*goal EI_split_swp {
-    lhs     D_Banks_EXP1
-     rhs        0.5*EiExpCtrl
-     lhs>rhs    penalty 1290
-     lhs<rhs    penalty 0
-}
-goal EI_split_cvp {
-    lhs     D_Jones_EXP1
-     rhs        0.5*EiExpCtrl
-     lhs>rhs    penalty 1290
-     lhs<rhs    penalty 0
-}
-
-! Attempt to split export even during April-May pulse and Vamp control situations
-goal AprMay_split_swp {
-    lhs     D_Banks_EXP1
-     case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1
-     rhs        0.5*AprMayExpCtrl
-     lhs>rhs    penalty 1290
-     lhs<rhs    penalty 0
-     }
-}
-goal AprMay_split_cvp {
-    lhs     D_Jones_EXP1 
-     case AprMay {
-        condition      range(month,apr,may) .and. VAMP_DLTSW == 1
-     rhs        0.5*AprMayExpCtrl
-     lhs>rhs    penalty 1290
-     lhs<rhs        penalty 0
-     }
-}
-*/
-
-/*goal swp_upstream_control {
-	lhs	D_banks_exp1 - C_OROVL_IBU
-	rhs	banksminpump
-	lhs>rhs	penalty 1000
-	lhs<rhs penalty 0
-}
-
-goal cvp_upstream_control {
-	lhs	D_jones_exp1
-	rhs	Jonesminpump
-	lhs>rhs	penalty 1000
-	lhs<rhs penalty 0
-}
-*/
 
 /*
-The goal temp_exp_penalty was added so that releases from upstream storage in support of exports beyond that necessary for H&S is penalized.
-The penalty is set such that upstream releases will be made solely for flood control, instream flow requirements, in-basin use.  The purpose is to determine
-project operations when based solely on upstream control objectives and not on exports.  The export pumps will still divert incidental water that is available.
-The goal temp_DO_penalty places a further penalty on Delta outflow that is above what is required.  This temporary penalty was necessary to maintain the balance of 
-weights between exports and Delta surplus.  Furthermore, a temporary penalty had to be placed on excess flows in the Trinity River.  This is to maintain the balance of
-weights between surplus Delta outflow and excess Trinity Flow upon which Trinity import decisions are made.
+The goal temp_exp_penalty was added so that releases from upstream storage 
+in support of exports beyond that necessary for H&S are penalized.
+The penalty is set such that upstream releases will be made solely for flood 
+control, instream flow requirements, in-basin use.  The purpose is to determine
+project operations when based solely on upstream control objectives and not on 
+exports.  The export pumps will still divert incidental water that is available.
+The goal temp_DO_penalty places a further penalty on Delta outflow that is above 
+what is required.  This temporary penalty was necessary to maintain the balance of 
+weights between exports and Delta surplus.  Furthermore, a temporary penalty had to 
+be placed on excess flows in the Trinity River.  This is to maintain the balance of
+weights between surplus Delta outflow and excess Trinity Flow upon which Trinity 
+import decisions are made.
 */
 goal temp_exp_penalty {
-	lhs	D_exptd
-	rhs	Jonesminpump + banksminpump
-	lhs>rhs penalty 1285
-	lhs<rhs penalty 0
+    lhs D_exptd
+    rhs Jonesminpump + banksminpump
+    lhs>rhs penalty 1285
+    lhs<rhs penalty 0
 }
 
 goal temp_DO_penalty {
-	lhs	C_Delta
-	rhs	0
-	lhs>rhs	penalty 1285
-	lhs<rhs penalty 0
+    lhs C_Delta
+    rhs 0
+    lhs>rhs penalty 1285
+    lhs<rhs penalty 0
 }
 
 
 goal temp_trin_penalty {
-	lhs	C_Lwstn_EXC
-	rhs	0
-	lhs>rhs		penalty 1285
+    lhs C_Lwstn_EXC
+    rhs 0
+    lhs>rhs     penalty 1285
 }
 
+! The following goals are only necessary in CalLite.  C209_*_exc are closure terms for
+! DSA 69 diversions and have high negative weights (-9000).  They need to be further
+! penalized in this instance while we have high penalties on exports and delta outflow
+! to prevent their unintentional use.  
 goal temp_C209_np_exc_penalty {
-	lhs	C209_np_exc
-	rhs	0
-	lhs>rhs		penalty 1285
+    lhs C209_np_exc
+    rhs 0
+    lhs>rhs     penalty 1285
 }
 
 goal temp_C209_prj_exc_penalty {
-	lhs	C209_prj_exc
-	rhs	0
-	lhs>rhs		penalty 1285
+    lhs C209_prj_exc
+    rhs 0
+    lhs>rhs     penalty 1285
 }

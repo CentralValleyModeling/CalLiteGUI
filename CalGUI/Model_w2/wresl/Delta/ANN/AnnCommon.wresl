@@ -116,7 +116,7 @@ define ANNcap_out {alias ANNcap kind 'FLOW' units 'CFS'}
 ! Yolo Bypass is simulated dynamically
 ! Mokelumne/Consumnes R. is simulated with SJR in previous cycles
 define sac_oth { lower unbounded kind 'FLOW-INFLOW' units 'CFS' }
-goal def_sac_oth { sac_oth = C_YoloBP + AD_Mokelumne  + AD_Calaveras - C_NBA } 
+goal def_sac_oth { sac_oth = C_YoloBP + AD_Mokelumne  + AD_SJRCalALL - C_NBA } 
 
 !*************************************************************************************************************
 ! Currently known inflows: Mokelumne R., Consumnes R. and Calaveras R. | Yolo Bypass not known.
@@ -174,39 +174,9 @@ define net_delta_cuDV { ALIAS net_DICU KIND 'NET-DICU' UNITS 'CFS' }
 
 !*************************************************************************************************************
 ! other defines (Seventh input to ANN DLL)
-!define VernWQfinal {timeseries kind 'Salinity-EC' units 'umhos/cm'}
-define VernWQfinal_v {timeseries kind 'Salinity-EC' units 'umhos/cm'}
-define VernWQfinal_vo {timeseries kind 'Salinity-EC' units 'umhos/cm'}
-define VernWQfinalsv {
-    case VAMPon {
-        condition VAMP_DLTSW == 1
-        value VernWQfinal_v}
-    case VAMPD1485on {
-    	condition VAMP_DLTSW == 3
-    	value VernWQfinal_v}
-    case otherwise {
-        condition always
-        value VernWQfinal_vo}  !take VAMP "off" hydrology
-}
+if int(Dynamic_SJR)==0 {define VernWQfinalSV { value VernWQfinal_set }}
+          
 define VernWQfinal     {std kind 'Salinity-EC' units 'umhos/cm'}
 goal setVernWQfinal {VernWQfinal = VernWQfinalsv}
 
-define SJR_ann_est_v {timeseries kind 'ANN-PARAMETER' units 'CFS'}
-define SJR_ann_est_vo {timeseries kind 'ANN-PARAMETER' units 'CFS'}
-define SJR_ann_est {
-    case VAMPon {
-        condition VAMP_DLTSW == 1
-        value SJR_ann_est_v}
-    case VAMPD1485on {
-    	condition VAMP_DLTSW == 3
-    	value SJR_ann_est_v}
-    case otherwise {
-        condition always
-        value SJR_ann_est_vo}
-}
-
-
-!define SJR_ANN     {timeseries kind 'FLOW-CHANNEL'  units 'CFS'}
 !*************************************************************************************************************
-
-

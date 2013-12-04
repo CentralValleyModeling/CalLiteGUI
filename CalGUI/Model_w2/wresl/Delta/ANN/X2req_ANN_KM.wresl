@@ -118,6 +118,7 @@ define DO_req_X2roe_nocap {
           value          0.0  }
 }
 define DO_req_X2roe {value min(flowcap_roe, DO_req_X2roe_nocap) }
+define DO_req_X2roeDV {alias DO_req_X2roe kind 'debug' units 'none'} !Testing
 
 ! Compute the resulting X2 if this flow was the Delta outflow for the entire period for KM X2
 define X2_roe  {
@@ -179,6 +180,7 @@ define DO_req_X2chs_nocap {
 }
 
 define DO_req_X2chs {value min(flowcap_chs, DO_req_X2chs_nocap)}
+define DO_req_X2chsDV {alias DO_req_X2chs kind 'debug' units 'none'} !Testing
 
 ! Compute the resulting X2 if this flow was the Delta outflow for the entire period for KM X2
 define X2_chs  {
@@ -191,7 +193,7 @@ define X2_chs  {
      case StandardOff {
           condition      always
           value          X2_roe   }    }
-
+define x2_chsDV {alias x2_chs kind 'debug' units 'none'} !Testing
 ! ******************************************************************************************
 ! Set the begin and end day for the standard -- Confluence always met last
 define begday_cnf {
@@ -252,7 +254,7 @@ define DO_req_X2cnf_nocap {
          value           0.0  }   }
 
 define DO_req_X2cnf {value min(flowcap_cnf, DO_req_X2cnf_nocap) }
- 
+define DO_req_X2cnfDV {alias DO_req_X2cnf kind 'debug' units 'none'} !Testing
 
 
 

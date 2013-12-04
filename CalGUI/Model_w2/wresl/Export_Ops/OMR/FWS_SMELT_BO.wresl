@@ -601,9 +601,9 @@ define OMR_RPA_5day {
 define OMR_RPA_FWS {value max(OMR_RPA_14day,(OMR_RPA_5day+389.)/1.02)}
 
 !QA/QC
-/*
+
 define OMR_RPA14d {alias OMR_RPA_14day  kind 'FLOW-REG' units 'CFS'} ! for output
 define OMR_RPA5d {alias OMR_RPA_5day  kind 'FLOW-REG' units 'CFS'}
 define OMR_RPA_FWSdv {alias OMR_RPA_FWS  kind 'FLOW-REG' units 'CFS'} 
-*/
+
 !

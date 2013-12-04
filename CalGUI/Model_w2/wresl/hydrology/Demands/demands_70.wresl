@@ -16,18 +16,15 @@ for now to replicate Calsim ***/
 ! for cutbacks) and value from American_PRJ_WR.table, which is then multiplied by monthly percent.  
 ! Exceptions are D162 demands, which only use the timeseries adjusted for cutbacks.
 /*** SacAmerican node deliveries ***/
-! Placer County Water Agency (CVP project and WR water for Sac Suburban, Roseville, etc ) - SRWRP - above confluence of American River on Sacramento River
-define adj_D162e_pmi {value dem_D162e_pmi * perdel_cvpmi_sys}
-!NOTE values for D162a_psc, D162b_psc, D162c_psc are handled further down (same as Calsim), could move them up here.
 
 ! Sac County WA (SMUD transfer)   Annual project demand
 define dem1_D167b_pmi_a {    
     case Future{
         condition int(LOD_Future) == 1 
-        select SCWA_176b from American_PRJ_WR_2030 where index=2}
+        select SCWA_167b from American_PRJ_WR_2030 where index=2}
     case otherwise{
         condition always
-        select SCWA_176b from American_PRJ_WR_2005 where index=2}}
+        select SCWA_167b from American_PRJ_WR_2005 where index=2}}
 
 define adj_D167b_pmi {value min(dem_D167b_pmi_a, dem1_D167b_pmi_a * perdel_cvpmi_sys) * perdem_70SCWA * taf_cfs} !Adjust contract amount for CVP cuts
  
@@ -132,15 +129,12 @@ define adj_D9b_pmi {value adj_D9b_pmi_ann * perdem_70SMUD * taf_cfs}
 
 !Set up DSA 70 diversion arc (and sub arc) splits
 define d162_prj     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'}
-define d162_pmi     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'}
 define d162_psc     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'}
 define d162a_psc    {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'} 
 define d162b_psc    {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'} 
 define d162c_psc    {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'} 
-define d162e_pmi     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'} 
-goal set_d162_prj   {d162_prj = d162_psc + d162_pmi}
+goal set_d162_prj   {d162_prj = d162_psc}
 goal set_d162_psc   {d162_psc = d162a_psc + d162b_psc + d162c_psc} 
-goal set_d162_pmi   {d162_pmi = d162e_pmi} 
 
 define d167_prj     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'}
 define d167_pmi     {STD KIND 'FLOW-DELIVERY' UNITS 'CFS'}
@@ -180,7 +174,6 @@ here for now ***/
 goal limit_d162a_psc {d162a_psc < dem_D162a_psc} 
 goal limit_d162b_psc {d162b_psc < dem_D162b_psc} 
 goal limit_d162c_psc {d162c_psc < dem_D162c_psc} 
-goal limit_d162e_pmi {d162e_pmi < adj_D162e_pmi} 
 
 goal limit_d167b_pmi {d167b_pmi < adj_D167b_pmi}
 
@@ -204,7 +197,6 @@ goal limit_d9_pag   {d9_pag < 0.}
 define ad_d162a_psc {value perdel_cvpsc_sys * dem_d162a_psc}
 define ad_d162b_psc {value perdel_cvpsc_sys * dem_d162b_psc}
 define ad_d162c_psc {value perdel_cvpsc_sys * dem_d162c_psc}
-define ad_d162e_pmi {value adj_d162e_pmi}
 define ad_d167b_pmi {value adj_d167b_pmi}
 define ad_d8b_pmi  {value adj_d8b_pmi}
 define ad_d8e_pmi  {value adj_d8e_pmi}
@@ -220,8 +212,7 @@ define ad_d9b_pmi  {value adj_d9b_pmi} ! Does not contribute to Diversion Requir
 of CalLite Folsom inflow I_Folsm, and this shouldn't matter because the time series for dem_d300_pmi_ann
 is all 0s, so there would never be deliveries here anyway */
 !***************************************************
-define ad_sum_70_prj    {value max((ad_d162a_psc + ad_d162b_psc + ad_d162c_psc + ad_d162e_pmi + 
-                    ad_d167b_pmi +
+define ad_sum_70_prj    {value max((ad_d162a_psc + ad_d162b_psc + ad_d162c_psc + ad_d167b_pmi +
                     ad_d8b_pmi + ad_d8e_pmi + ad_d8f_pmi + ad_d8g_pmi + ad_d8h_pmi + ad_d8i_pmi +
                     ad_d9a_pmi),
                     0.00001)}
@@ -235,7 +226,6 @@ define extra_70_prjdv  {alias extra_70_prj  units 'cfs'}
 define extra_d162a_psc {value extra_70_prj*(ad_d162a_psc/ad_sum_70_prj)}
 define extra_d162b_psc {value extra_70_prj*(ad_d162b_psc/ad_sum_70_prj)}
 define extra_d162c_psc {value extra_70_prj*(ad_d162c_psc/ad_sum_70_prj)}
-define extra_d162e_pmi {value extra_70_prj*(ad_d162e_pmi/ad_sum_70_prj)}
 define extra_d167b_pmi {value extra_70_prj*(ad_d167b_pmi/ad_sum_70_prj)}
 define extra_d8b_pmi   {value extra_70_prj*(ad_d8b_pmi/ad_sum_70_prj)}
 define extra_d8e_pmi   {value extra_70_prj*(ad_d8e_pmi/ad_sum_70_prj)}
@@ -249,7 +239,6 @@ define extra_d9a_pmi   {value extra_70_prj*(ad_d9a_pmi/ad_sum_70_prj)}
 goal reduce_d162a_psc      {d162a_psc < ad_d162a_psc - extra_d162a_psc}
 goal reduce_d162b_psc      {d162b_psc < ad_d162b_psc - extra_d162b_psc}
 goal reduce_d162c_psc      {d162c_psc < ad_d162c_psc - extra_d162c_psc}
-goal reduce_d162e_pmi      {d162e_pmi < ad_d162e_pmi - extra_d162e_pmi}
 goal reduce_d167b_pmi      {d167b_pmi < ad_d167b_pmi - extra_d167b_pmi}
 goal reduce_d8b_pmi        {d8b_pmi < ad_d8b_pmi - extra_d8b_pmi}
 goal reduce_d8e_pmi        {d8e_pmi < ad_d8e_pmi - extra_d8e_pmi}

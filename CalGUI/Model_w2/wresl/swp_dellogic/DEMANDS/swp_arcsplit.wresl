@@ -274,8 +274,8 @@ goal totalD816_prj { D816_PRJ = D816_PLS }
 /**** CalLite Replacements:*****/
 goal totalD_Napa         { D_Napa         = D403B_PRJ}                                              !1
 goal totalD_Solano       { D_Solano       = D403C_PRJ}                                              !1
-goal totalD_Sbay         { D_Sbay         = D810_PRJ+D813_PRJ+D814_PRJ+D815_PRJ
-                                           +D816_PRJ}                                               !7+ E811}  
+/*goal totalD_Sbay         { D_Sbay         = D810_PRJ+D813_PRJ+D814_PRJ+D815_PRJ
+                                           +D816_PRJ}   */ !Implemented in connectivity-table.wresl  
 goal totalD_ONeillFBSWP  { D_ONeillFBSWP  = D803_PRJ+D802A_PRJ}   
 goal totalD_DosAmigosSWP { D_DosAmigosSWP = D824_PRJ+D826_PRJ+D827_PRJ+D828_PRJ+D829_PRJ }          !5+ D821=0
 goal totalD_Emp2Dud      { D_Emp2Dud      = D846_PRJ+D847_PRJ+D848_PRJ+D849_PRJ}                    !4

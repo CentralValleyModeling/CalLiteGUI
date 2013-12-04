@@ -10,6 +10,9 @@ This is the main file which 'includes' all Delta Operations and Constraints code
 !Include external DLL information
 !INCLUDE  'DeltaExtFuncs_7inpANN.wresl'
 
+if int(Dynamic_SJR)==0  {INCLUDE 'Ann\AnnSJRTimeseries.wresl'}
+if int(Dynamic_SJR)==1  {INCLUDE 'Ann\AnnSJRDynamic.wresl'}
+
 ! Contains files for implementation of Artifical Neural Network's for salinity control.
 INCLUDE 'Ann\AnnCommon.wresl'
 

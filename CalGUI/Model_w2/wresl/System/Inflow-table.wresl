@@ -16,4 +16,4 @@ define I_Stockton {timeseries kind 'FLOW-INFLOW' units 'CFS'} !Local Accretion a
 define I_Kern {timeseries kind 'FLOW-INFLOW' units 'CFS'} !Kern River Interties flow
 define I_Nimbus {timeseries kind 'FLOW-INFLOW' units 'CFS'} !Local inflow into Nimbus (I9), NEEDED FOR COA ONLY
 define I_KellyRidge {timeseries kind 'FLOW-INFLOW' units 'CFS'} !Local inflow at Kelly Ridge (I200), NEEDED FOR COA ONLY
-define I_JamesBP {timeseries kind 'FLOW-INFLOW' units 'CFS'} !James Bypass flows into the Mendota Pool
+if int(Dynamic_SJR)==0 {define I_MDOTA {timeseries kind 'FLOW-INFLOW' units 'TAF' convert 'CFS'}} !James Bypass flows into the Mendota Pool

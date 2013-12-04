@@ -104,7 +104,6 @@ define CVPRULEcalc {
 }
 
 
-
 define CvpRuleCalc1 {
     case RClowshasta {
         condition 	S_Shsta(-1) < 1500.
@@ -116,7 +115,7 @@ define CvpRuleCalc1 {
     }
     case otherwise {
     	condition	always
-	value		max(S_SLCVPLevel2,min(CvpRuleCalc,CVP_Rule_Cap_Shasta,S_SLCVPLevel4))
+    	value		max(S_SLCVPLevel2,min(CvpRuleCalc,CVP_Rule_Cap_Shasta,S_SLCVPLevel4))
     }
 }
 goal setCVPRULECV { CVPRULECV = CVPRuleCalc1 }
