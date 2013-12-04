@@ -23,16 +23,15 @@ define exp_est_SWPRC {alias EstSWPSodRC kind 'EXPORT-ESTIMATE' units 'CFS'}
 !define EstSWPSodExp {value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,0.75*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs))}
 
 define est_oro_release{
-	case verylow {condition s_orovl[upstream] <= 1250.0 
-	value 300.0}
-	case low {condition s_orovl[upstream]>1250.0 .and. s_orovl[upstream] <= 1800.0 
-	value  0.25*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
-	case high {condition s_orovl[upstream]>1800.0 .and. s_orovl[upstream] <= 2200.0 
-	value 0.50*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
-	case veryhigh { condition always 
-	value 0.75*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+    case verylow {condition s_orovl[upstream] <= 1250.0 
+    value 300.0}
+    case low {condition s_orovl[upstream]>1250.0 .and. s_orovl[upstream] <= 1800.0 
+    value  0.25*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+    case high {condition s_orovl[upstream]>1800.0 .and. s_orovl[upstream] <= 2200.0 
+    value 0.50*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
+    case veryhigh { condition always 
+    value 0.75*(S_Orovl(-1) - 1000. - DrainTar_buffer)*taf_cfs}
 }
-
 
 define EstSWPSodExp {value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300., est_oro_release))}
 
@@ -45,13 +44,13 @@ define exp_estSWPlim3  {alias max(300.,est_oro_release) kind 'debug' units 'cfs'
 ! export for south-of-delta CVP: demand
 
 define EstCVPSodDem {value
-  CVP_pag_ratio_s*(dem_totcvps_pag*taf_cfs*perdel_cvpag_s - dem_d607a_pag*taf_cfs*perdel_cvpag_s) +
-  dem_totcvps_pls*taf_cfs - dem_d607d_pls*taf_cfs +
+  CVP_pag_ratio_s*(dem_totcvps_pag*taf_cfs*perdel_cvpag_s - dem_D_MDOTAa_pag*taf_cfs*perdel_cvpag_s) +
+  dem_totcvps_pls*taf_cfs - dem_D_MDOTAd_pls*taf_cfs +
   CVP_pmi_ratio_s*dem_totcvps_pmi*taf_cfs*perdel_cvpmi_s  +
-  dem_totcvps_pex*taf_cfs*perdel_cvpex_s - dem_d607b_pex*taf_cfs*perdel_cvpex_s - dem_d608b_pex*taf_cfs*perdel_cvpex_s  +
-  CVP_prf_ratio_s*(dem_totcvps_prf*taf_cfs*perdel_cvprf_s - dem_d607c_prf*taf_cfs*perdel_cvprf_s - dem_d608c_prf*taf_cfs*perdel_cvprf_s)  +
-  max(0.0, CVP_pag_ratio_s*dem_d607a_pag*taf_cfs*perdel_cvpag_s + dem_d607d_pls*taf_cfs + dem_d607b_pex*taf_cfs*perdel_cvpex_s +
-  CVP_prf_ratio_s*dem_d607c_prf*taf_cfs*perdel_cvprf_s + dem_d608b_pex*taf_cfs*perdel_cvpex_s + CVP_prf_ratio_s*dem_d608c_prf*taf_cfs*perdel_cvprf_s - I_JamesBP)}
+  dem_totcvps_pex*taf_cfs*perdel_cvpex_s - dem_D_MDOTAb_pex*taf_cfs*perdel_cvpex_s - dem_d608b_pex*taf_cfs*perdel_cvpex_s  +
+  CVP_prf_ratio_s*(dem_totcvps_prf*taf_cfs*perdel_cvprf_s - dem_D_MDOTAc_prf*taf_cfs*perdel_cvprf_s - dem_d608c_prf*taf_cfs*perdel_cvprf_s)  +
+  max(0.0, CVP_pag_ratio_s*dem_D_MDOTAa_pag*taf_cfs*perdel_cvpag_s + dem_D_MDOTAd_pls*taf_cfs + dem_D_MDOTAb_pex*taf_cfs*perdel_cvpex_s +
+  CVP_prf_ratio_s*dem_D_MDOTAc_prf*taf_cfs*perdel_cvprf_s + dem_d608b_pex*taf_cfs*perdel_cvpex_s + CVP_prf_ratio_s*dem_d608c_prf*taf_cfs*perdel_cvprf_s - I_MDOTA)}
 
 define exp_est_CVPDem {alias EstCVPSodDem kind 'EXPORT-ESTIMATE' units 'CFS'}
 
@@ -74,8 +73,9 @@ define JonesMinPumpLevel {
 ! export for south-of-delta CVP: demand + rulecurve
 if int(PBwheel_ON)==0{
 	define maxJonescalc1 {value min(JonesMaxAllow,
-                     4400+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs,
-                     4200+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs+perdel_cvpag_s*CVP_pag_ratio_s*dem_D701_pag*taf_cfs+dem_D702_pls*taf_cfs) }
+						 4400+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs,
+						 4200+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs+perdel_cvpag_s*CVP_pag_ratio_s*dem_D701_pag*taf_cfs+dem_D702_pls*taf_cfs) }
+
 	define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
 }
 

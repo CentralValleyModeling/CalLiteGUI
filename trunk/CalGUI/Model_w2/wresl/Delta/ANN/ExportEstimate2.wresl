@@ -22,7 +22,7 @@ define pulse_cap {
             value         EstSWPSodExp+EstCVPSodExp }
         case otherwise {
             condition     always
-			value min(EstSWPSodExp+EstCVPSodExp, max(1500.0, AD_SJR_Pulse))}
+			value min(EstSWPSodExp+EstCVPSodExp, max(1500.0, AD_SJR_PULSE))}
 }
 
 if int(AN_DLTSW)==3 .and. int(CH_DLTSW)==3 {

@@ -36,7 +36,6 @@ define perdem_70SCWA   {timeseries kind 'DELIVERY-PATTERN' units 'NONE'} !MI mon
 define dem_D162a_psc   {timeseries kind 'DEMAND-CVP-SC' units 'CFS'} !Settlement contract demand--Settlement Contracts
 define dem_D162b_psc   {timeseries kind 'DEMAND-CVP-SC' units 'CFS'} !Settlement contract demand--Natomas Central MWC
 define dem_D162c_psc   {timeseries kind 'DEMAND-CVP-SC' units 'CFS'} !Settlement contract demand--Pleasant Grove-Verona MWC
-define dem_D162e_pmi   {timeseries kind 'DEMAND-CVP-MI' units 'CFS'} !Project demand--PCWA SRWRP (Sac above American)
 
 !The following are annual demands on the Sacramento River (below American) 
 define dem_D167b_pmi_a   {timeseries kind 'DEMAND-CVP-MI' units 'TAF'}  !Annual demands for Sac County WA

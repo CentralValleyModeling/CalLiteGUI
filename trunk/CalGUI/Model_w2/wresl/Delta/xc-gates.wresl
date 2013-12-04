@@ -85,8 +85,8 @@ define numberofdaysopen {
 	case D1485{
 		condition DCC_DLTSW == 3
 		value WQCP_days_open }
-	case D1641orUserDefined{
-		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
+	case D1641UserDefinedOFF{
+		condition always
 		value min(WQCP_days_open, NMFS_days_open) }
 }
 define DaysOpenStd {alias numberofdaysopen kind 'GATE-DAYS-OPEN' units 'NONE'}
@@ -164,9 +164,6 @@ define DXC_est {
 
 define DXC_estdv {alias DXC_est kind 'GATE-DAYS-OPEN' units 'NONE'}
 
-if int(DCC_DLTSW)==3 {goal setDXC {DXC_daysopen = No_flood_DCC_closure*numberofdaysopen*int_NDO_above + No_flood_DCC_closure*daysin*int_NDO_below}}
-if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {goal setDXC {DXC_daysopen = DXC_est * int_SAC_below}}
-
 define No_flood_DCC_closure {
 	case D1641{
 		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
@@ -178,6 +175,10 @@ define No_flood_DCC_closure {
 		condition	always
 		value		0.}
 }
+if int(DCC_DLTSW)==3 {goal setDXC {DXC_daysopen = No_flood_DCC_closure*numberofdaysopen*int_NDO_above + No_flood_DCC_closure*daysin*int_NDO_below}}
+if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {goal setDXC {DXC_daysopen = DXC_est * int_SAC_below}}
+
+
 
 ! Determines flow in DXC, implementing equation described above
 ! If flow is above 25,000, DXC flow = 0 since the gates are closed

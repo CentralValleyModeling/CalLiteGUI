@@ -7,7 +7,8 @@ Read option switches for lookup table
 **************************************/
 
 /* Hydro Climate Dashboard*/
-define LOD_Future         {select Option from GUI_HydroClimate where Index=1} !Export_Ops\OMR\OMR_constraint_CL.wresl
+!LOD_Future now handled in main file
+!define LOD_Future         {select Option from GUI_HydroClimate where Index=1} !Export_Ops\OMR\OMR_constraint_CL.wresl
 define X2_SLR             {select Option from GUI_HydroClimate where Index=2}  
 define  X2_ANN_KM {                                                           !Delta\ANN\lastX2_ANN_KM.wresl 
     case KM { condition X2_SLR == 0
@@ -49,6 +50,14 @@ define X2ROE_DLTSW  {
            condition always
            select OPTION from gui_Regs where Index = 6}
 }
+define X2Udef_Select { 
+    case X2_Udef {
+	condition X2_DLTSW == 2
+	select X2Active from GUI_X2Active where month=month} !X2 active momth table 	
+   case otherwise {
+	condition always 
+	value 0}
+	}
 define VAMP_DLTSW   {select OPTION from gui_Regs where Index = 7} 
 define TRNTY_DLTSW     {select OPTION from gui_Regs where Index = 14}
 define PUMP_DLTSW     {select OPTION from gui_Regs where Index = 15}   
@@ -68,6 +77,7 @@ define OMRBOON            {select Option from GUI_RPAsOtherRegs where Index=4} !
 define ClearCrkBOswitch   {select Option from GUI_RPAsOtherRegs where Index=5} !BO and B2Actions\B2Action1Repeat.wresl
 !define BOExportEst_switch {select Option from options where Index=6} !cvp_dellogic\CVP_delivery_logic_south\Export_index_delivery_CVP.wresl
 !define BOON_SWP           {select Option from options where Index=7}!swp_dellogic\WSI_DI\delcar_swp.wresl
+
 /*NON-D1641 Delta Flow Switches     */ 
 define QOMR_DLTSW   {select OPTION from GUI_RPAsOtherRegs where Index = 8}
 define QWEST_DLTSW  {select OPTION from GUI_RPAsOtherRegs where Index = 9}
@@ -86,10 +96,17 @@ define B2Action7          {select Option from GUI_RPAsOtherRegs where Index=17} 
 define CVC_ON             {select Option from GUI_Operations where Index=1} !Wheeling\wheelcap.wresl 
 !define JPOD_ON            {select Option from GUI_Operations where Index=2} !Wheeling\wheelcap.wresl 
 define IntertieSwitch     {select Option from GUI_Operations where Index=3} !Export_Ops\intertie.wresl
-
 define CVPDedBanksSwitch  {value 0} ! use as place holder
 define SWPShastaSwitch    {value 0} ! use as place holder
  
- 
+ /* San Joaquin Switches */
+define VAMP_Flow          {select Option from GUI_SJR where Index=1} !VAMP_Flow -  VAMP pulse flows (Apr 15-May 15)
+define Vern_RPA           {select Option from GUI_SJR where Index=2} !Vern_RPA -  Vernalis RPA 60-day pulse flow (April-May).
+define D1641_Base         {select Option from GUI_SJR where Index=3} !D1641_Base -  Vernalis D-1641 baseflows (Feb-Apr 14, May 16-June) 
+define D1641_SALINITY     {select Option from GUI_SJR where Index=4} !D1641_SALINITY  - Vernalis D-1641 salinity criteria
+define STAN_RPA           {select Option from GUI_SJR where Index=5} !STAN_RPA - Stanislaus RPA flows. Turn on or off
+define REST_REQ           {select Option from GUI_SJR where Index=6} !REST_REQ - SJR Restoration flows.  Allow user to switch between interim=0 and full=1 flows
+!Dynamic_SJR now handled in main file
+!define Dynamic_SJR	  {select Option from GUI_SJR where Index=7} !Dynamic_SJR - Turns on dynamic SJR
 
  

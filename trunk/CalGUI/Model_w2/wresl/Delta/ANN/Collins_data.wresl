@@ -92,7 +92,7 @@ define CO_b_sv {
                     VERNWQFINAL(-4),VERNWQFINAL(-3),VERNWQFINAL(-2),VERNWQFINAL(-1),VERNWQFINALsv,
                     int(daysindv(-4)),int(daysindv(-3)),int(daysindv(-2)),int(daysindv(-1)),daysin,
                     CO_EC_STD_sv,line_CO_lo,line_CO_hi,
-                    int(CO),int(intercept),int(monthly_avg),month,wateryear,4)}
+                    int(CO),int(intercept),int(ann_type),month,wateryear,4)}
   case other {
     condition  always
     value 999999.}
@@ -116,7 +116,7 @@ define CO_m_sv {
                     VERNWQFINAL(-4),VERNWQFINAL(-3),VERNWQFINAL(-2),VERNWQFINAL(-1),VERNWQFINALsv,
                     int(daysindv(-4)),int(daysindv(-3)),int(daysindv(-2)),int(daysindv(-1)),daysin,
                     CO_EC_STD_sv,line_CO_lo,line_CO_hi,
-                    int(CO),int(slope),int(monthly_avg),month,wateryear,4)}
+                    int(CO),int(slope),int(ann_type),month,wateryear,4)}
   case other {
     condition  always
     value 0.}

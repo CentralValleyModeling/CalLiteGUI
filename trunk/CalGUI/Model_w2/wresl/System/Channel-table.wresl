@@ -70,14 +70,21 @@ define C_SJRCD {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' uni
 define C_SJRMI {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !San Joaquin River D/S of Modford Island
 define C_SJRSTo {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !San Joaquin River D/S of Stockton
 define C_SJRCal {std kind 'FLOW-CHANNEL' units 'CFS'} !San Joaquin River D/S of Calaveras
-define C_SJRVer {std kind 'FLOW-CHANNEL' units 'CFS'} !San Joaquin River D/S of Vernalis
-define C_Vrnlis {std kind 'FLOW-CHANNEL' units 'CFS'} !Between Vernalis and Coney Island
+define C_OldRiver {std kind 'FLOW-CHANNEL' units 'CFS'} !Between San Joaquin River to Coney Island
+define C_SJROldR {std kind 'FLOW-CHANNEL' units 'CFS'} !San Joaquin River to Calaveras
 define C_IndnSl {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !Indian Slough component of OMR (CCWD)
 define C_OMR {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !Old and Middle Rivers from Rock Slough to Venice Island (CCWD)
 define C_ConyIS {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !Coney Island to Rock Slough (neg. flow is towards the pumps)
 define D_ExpTD {std kind 'FLOW-DELIVERY' units 'CFS'} !Between Coney Island and Pumping Plants
 define C_BnkExp {lower 0. upper 25000. kind 'FLOW-CHANNEL' units 'CFS'} !Banks Exports from Delta
 define C_SBay {lower 0. upper 10000.*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !SWP Aqueduct Downstream of South Bay Aqueduct (C803)
+define C809 {lower 0. upper 430. kind 'FLOW-CHANNEL' units 'CFS'} !SWP South Bay Pumping Plants        - 430cfs for upper reachs w/ SBA improvement project
+define C810 {lower 0. upper 430. kind 'FLOW-CHANNEL' units 'CFS'} !SWP South Bay Reach 1-4  Alameda Z7 - 430cfs for upper reachs w/ SBA improvement project
+define C811 {lower 0. upper 430. kind 'FLOW-CHANNEL' units 'CFS'} !Diversion To SWP Lake Del Valle     - 430cfs for upper reachs w/ SBA improvement project
+define C812 {lower 0. upper 363. kind 'FLOW-CHANNEL' units 'CFS'} !SWP Lake Del Valle Return           - 363cfs for Del Valle pipeline/SBA improvement project
+define C813 {lower 0. upper 305. kind 'FLOW-CHANNEL' units 'CFS'} !SWP South Bay Reach 5-6  Alameda Z7 - 305cfs for Sunol pipeline/SBA improvement project
+define C814 {lower 0. upper 184. kind 'FLOW-CHANNEL' units 'CFS'} !SWP South Bay Reach 7-8  Alameda CO - 184cfs for Santa Clara pipeline/SBA improvement project
+define C815 {lower 0. upper 184. kind 'FLOW-CHANNEL' units 'CFS'} !South Bay Reach 9  Santa Clara VWD  - 184cfs for Santa Clara pipeline/SBA improvement project
 define C_UpDMC {lower 0. upper 4200. kind 'FLOW-CHANNEL' units 'CFS'} !Upper DMC
 define C_Intrti {lower 0. upper 10000. kind 'FLOW-CHANNEL' units 'CFS'} !DMC/CA Intertie
 define C_OFBSWP {lower 0. upper 10000. kind 'FLOW-CHANNEL' units 'CFS'} !SWP bypass flow to California Aquect  (C805)
@@ -88,7 +95,7 @@ define C_SLCVP {lower 0. upper 8000. kind 'FLOW-CHANNEL' units 'CFS'} !CVP SAN L
 define C_SWPJU {lower 0. upper 8465. kind 'FLOW-CHANNEL' units 'CFS'} !SWP Joint Use (C807)
 define C_CVPJU {std kind 'FLOW-CHANNEL' units 'CFS'} !CVP Joint Use (D704)
 define C_CVPDMC {lower 0 upper 3500 kind 'FLOW-CHANNEL' units 'CFS'} !DMC to Mendota Pool (C708)
-define C_MPool {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Flow to Exchange Contractors and Refuges from Sack Dam
+if int(Dynamic_SJR)==0 {define C_Mdota {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'}} !Flow to Exchange Contractors and Refuges from Sack Dam
 define C_DsAmgS {lower 0. upper 8465. kind 'FLOW-CHANNEL' units 'CFS'} !Dos Amigos SWP
 define C_DsAmgC {lower 0. upper 4635. kind 'FLOW-CHANNEL' units 'CFS'} !Dos Amigos CVP
 define C_JtUTerm {lower 0. upper 8100. kind 'FLOW-CHANNEL' units 'CFS'} !End of Joint Use

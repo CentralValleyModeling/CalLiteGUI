@@ -121,7 +121,9 @@ goal Diversion_D_CVPJU_LDMC {D_CVPJU_LDMC=D_CVPJU_LDMC_P}
 define D_SWPJUCVP {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at SWPJUCVP 
 define D_CVPJUSWP {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at CVPJUSWP
 
-define D_MENDOTAPL {std kind 'FLOW-DELIVERY' units 'CFS'} !Diversions from Mendota Pool (D607[ABCD] D608[BC])
+define D_MENDOTAPL {std kind 'FLOW-DELIVERY' units 'CFS'} !Diversions from Mendota Pool (D_MDOTA[ABCD] D608[BC])
+define D_MDOTA {std kind 'FLOW-DELIVERY' units 'CFS'} 
+goal SUM_DMDOTA {D_MDOTA = D_MDOTAA + D_MDOTAD}
 
 define D_DosAmigosSWP_P {std kind 'FLOW-DELIVERY' units 'CFS'} !Proejct Diversion at Dos Amigos SWP
 define D_DosAmigosSWP {std kind 'FLOW-DELIVERY' units 'CFS'} !Diversion at Dos Amigos SWP

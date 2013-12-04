@@ -25,19 +25,32 @@ define frcst_fea {
 
 define co_final_dv {std kind 'carryover' units 'taf'}
 define co_available_dv {std kind 'carryover' units 'taf'}
-
-define S_SLSWP_effective {
+define co_correction {
 	case Jan {
-        	condition month == JAN
-                value max(S_SLSWP(-1) - co_final_dv(-1), 0.0)}
-        case FebtoMar {
-                condition month >= FEB .and. month <= MAR
-                value max(S_SLSWP(-1) - co_available_dv(-1), 0.0)}
-        case Rest {
-                condition always
-                value S_SLSWP(-1)}
+		condition	month == jan
+		value		max(0.,co_final_dv(-1) - max(0., co_final_dv(-1) - (S_SLSWP(-1) - 42.)))
+	}
+	case FebToMarFullSL {
+		condition	month >= feb .and. month <= mar .and. S_SLSWP(-1) >= 1067
+		value		max(0.,co_available_dv(-1) - swp_co_total(-1)*cfs_taf(-1) - min(max(0.,co_available_dv(-1) - swp_co_total(-1)*cfs_taf(-1)), swp_IN_total(-1)*cfs_taf(-1) + max(0.,6680.-D_Banks(-1)) * cfs_taf(-1)))
+	}
+	case FebToMarOth {
+		condition	month >= feb .and. month <= mar
+		value		max(0.,co_available_dv(-1) - swp_co_total(-1)*cfs_taf(-1) - min(max(0.,co_available_dv(-1) - swp_co_total(-1)*cfs_taf(-1)), swp_IN_total(-1)*cfs_taf(-1)))
+	}
+	case otherwise {
+		condition	always
+		value		0.
+	}
 }
-
+define co_correction_ {alias co_correction kind 'carryover' units 'taf'}
+		
+define S_SLSWP_effective {case JantoMar {
+                       condition range(month,jan,mar)
+                       value max(S_SLSWP(-1) - co_correction, 0.0)}
+                     case Rest {
+                       condition always
+                       value S_SLSWP(-1)}}
 
 define WSI_SWP {
     case JantoMay {

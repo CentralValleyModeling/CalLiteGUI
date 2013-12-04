@@ -9,7 +9,7 @@ Z.Q. Richard Chen; DWR; (02/07/2011)
 
 !maximum export given the sacramento river flow
 !define netDeltaInflow {std kind 'FLOW-INFLOW' units 'CFS'} 
-define netDeltaInflow {alias AD_SJR + AD_Calaveras + AD_Mokelumne /* + C_YoloBP*/ + I_MarshCr - D_CCWD - C_NBA - net_delta_cuDV kind 'FLOW-INFLOW' units 'CFS'}
+define netDeltaInflow {alias C_SJRVER + AD_SJRCalALL + AD_Mokelumne /* + C_YoloBP*/ + I_MarshCr - D_CCWD - C_NBA - net_delta_cuDV kind 'FLOW-INFLOW' units 'CFS'}
 
 define JP_MaxExport {lower unbounded upper unbounded kind 'FLOW' units 'CFS'}
 goal setJPMax {

@@ -375,49 +375,9 @@ goal short_ADHst {short_AD_Hst=AD_Hst_Actual-AD_Hst}
 
 !Delta
 define AD_Mokelumne {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
-define AD_Calaveras {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
-define AD_SJR_vo {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
-define AD_SJR_VAMP_vo {timeseries kind 'FLOW-CHANNEL' units 'CFS'}
-define AD_SJR_Pulse_vo {timeseries kind 'FLOW-CHANNEL' units 'CFS'}
-define AD_SJR_v {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
-define AD_SJR_VAMP_v {timeseries kind 'FLOW-CHANNEL' units 'CFS'}
-define AD_SJR_Pulse_v {timeseries kind 'FLOW-CHANNEL' units 'CFS'}
-define AD_SJR {
-	case VAMPon {
-		condition VAMP_DLTSW == 1
-		value AD_SJR_v}
-    	case VAMPD1485on {
-    		condition VAMP_DLTSW == 3
-    		value AD_SJR_v}
-	case otherwise {
-		condition always
-		value AD_SJR_vo}
-}
-define AD_SJR_VAMP {
-	case VAMPon {
-		condition VAMP_DLTSW == 1
-		value AD_SJR_VAMP_v}
-    	case VAMPD1485on {
-    		condition VAMP_DLTSW == 3
-    		value AD_SJR_VAMP_v}
-    	case otherwise {
-		condition always
-		value AD_SJR_VAMP_vo}
-}
-define AD_SJR_Pulse {
-	case VAMPon {
-		condition VAMP_DLTSW == 1
-		value AD_SJR_Pulse_v}
-    	case VAMPD1485on {
-    		condition VAMP_DLTSW == 3
-    		value AD_SJR_Pulse_v}
-    	case otherwise {
-		condition always
-		value AD_SJR_Pulse_vo}
-}
-
-
 
 !South of Delta
-define AD_JamesBP {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
+if int(Dynamic_SJR)==0 {define AD_JamesBP {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}} !James Bypass flows into the Mendota Pool
 !define AD_Castaic {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
+
+

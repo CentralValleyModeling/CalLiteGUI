@@ -25,16 +25,31 @@ define BanksDaysNoIncr { value daysin - BanksDaysIncr}
 
 ! Finds the Max Pump Capacity with the allowable increase
 !define BanksCapPermit2 {select PermitCap2 from BanksLimits where month=month}
-define BanksMax1 {
-    case Increase {
-         condition  AD_SJR_VAMP > 1000.0
-         value      max(BanksCapPermit,
-                        min(BanksCapPermit1 + AD_SJR_VAMP/3.0, BanksCapPermit2) - EWAReservedCap) }
-    case NoIncrease {
-         condition  always
-         value      BanksCapPermit }
+if int(PBwheel_ON) == 1 {	!D1485
+	define BanksMax1 {
+		case Increase {
+			 condition  AD_SJR_VAMP > 1000.0
+			 value min(BanksCapPermit + AD_SJR_VAMP/3.0, BanksCapPhys) } !BanksCapPermit2) }
+	!         value      max(BanksCapPermit,
+	!                        min(BanksCapPermit1 + AD_SJR_VAMP/3.0, BanksCapPermit2) - EWAReservedCap) }
+		case NoIncrease {
+			 condition  always
+			 value      BanksCapPermit }
+	}
 }
-
+if int(PBwheel_ON) == 0 {	!D1641
+	define BanksMax1 {
+		case Increase {
+			 condition  AD_SJR_VAMP > 1000.0
+	!		 value min(BanksCapPermit + AD_SJR_VAMP/3.0, BanksCapPermit2) }
+	         value      max(BanksCapPermit,
+	                        min(BanksCapPermit1 + AD_SJR_VAMP/3.0, BanksCapPermit2) - EWAReservedCap) }
+		case NoIncrease {
+			 condition  always
+			 value      BanksCapPermit }
+	}
+}
+	
 ! Limit Pumping to allowable, weight for days in which increase is allowed
 define BanksMaxAllow {value BanksMax1*BanksDaysIncr/daysin + BanksCapPermit*BanksDaysNoIncr/daysin }
 

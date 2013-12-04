@@ -7,17 +7,6 @@ Z.Q. Richard Chen, DWR 05/25/2011
 Set X2Roe_DLTSW switch to control X2_Reo_Trigger
 *************************************/
 
-define X2Udef_Select { 
-    case X2_Udef {
-	condition X2_DLTSW == 2
-	select X2Active from GUI_X2Active where month=month} !X2 active momth table 	
-   case otherwise {
-	condition always 
-	value 0}
-	}
-
-
-
 ! X2 setup for WQCP and FWS Action 4 requirements
 ! define FallX2 {select Option from options where Index=1} 
 
@@ -132,7 +121,8 @@ define daysX2_roe {
           condition      always
           value          0.    }
 }
-define daysX2_chs {
+!Defined elsewhere because needed for Vernalis_min
+/*define daysX2_chs {
      case Udef {
           condition      X2Udef_Select == 1
           value 0 }
@@ -153,7 +143,7 @@ define daysX2_chs {
      case StandardOff {
           condition      always
           value          0.    }
-}
+}*/
 define daysX2_cnf {
      case Udef {
           condition      X2Udef_Select == 1

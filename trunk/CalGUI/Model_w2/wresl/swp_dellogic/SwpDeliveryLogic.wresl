@@ -6,6 +6,14 @@ Nazrul Islam DWR 05/20/2010
 Include all SWP delivery logic files.
 ************************************/
 
+!Move steps 2 and 3 to front because of wsi-di dependence on Article 56 carryover.
+!Step 2: Define delivery parameters for each contractor:
+INCLUDE '\demands\swp_arcsplit.wresl'
+
+!Step 3: Keep a running account of actual deliveries made to each contractor
+INCLUDE '\deliveries\sumswpdel.wresl'
+INCLUDE '\deliveries\swp_delivery_summary.wresl'
+
 !Step 1: Determine SWP allocation (use either WSI-DI or CAM):
   !Option 1a - WSI-DI Procedure:
 INCLUDE '\wsi_di\wsi_swp.wresl'
@@ -17,13 +25,8 @@ INCLUDE '\wsi_di\delcar_swp.wresl'
   !Option 1b - CAM Procedure (note - must also include CAM cycle in main file):
 !INCLUDE '\allocation\swp_allocation.wresl'
 
-!Step 2: Define delivery parameters for each contractor:
-INCLUDE '\demands\swp_arcsplit.wresl'
+!Step 2b: Define demands for each contractor
 INCLUDE '\demands\swp_demands_s.wresl'
-
-!Step 3: Keep a running account of actual deliveries made to each contractor
-INCLUDE '\deliveries\sumswpdel.wresl'
-INCLUDE '\deliveries\swp_delivery_summary.wresl'
 
 !Step 4: Distribute SWP allocation to each contractor
 INCLUDE '\allocation\swp_contractor_perdel_A.wresl'

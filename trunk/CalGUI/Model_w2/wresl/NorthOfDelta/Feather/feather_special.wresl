@@ -5,7 +5,6 @@ Z.Q. Richard Chen DWR 5/06/2010
 
 Special Feather River Flow Requirments
 
-
 **************************************/
 
 !=========================================================================
@@ -22,26 +21,24 @@ define nov_trigger_cfs {                    !2500 cfs
         from      feather_fish_203
         where   month = NOV}
 
-define D_Banks_EXP1 {std kind 'flow-delivery' units 'cfs'}
-
 define minflow_C_Therm {        
   case October {                            !minflow_C_Therm + 500 = 500 cfs
     condition month == OCT
-    value   0
+    value   0.
   }
   case November1 {                     
     condition   month == NOV .AND.
         int(C_Therm(prevOCT)) <= oct_trigger_cfs
-    value   0
+    value   0.
   }
   case November2 {              
     condition month == NOV .AND.
         S_Orovl(prevOCT)+1. >= s_OrovlLevel5(prevOCT)
-    value   0
+    value   0.
   }
   case November3 {
-    condition month == NOV .and. D_Banks_exp1(prevOCT) <= 300.1
-    value  0
+    condition month == NOV .and. D_Banks_exp1(prevOCT) < 300.1
+    value  0.
   }
   case November4 {                         !minflow_C_Therm + 500 = C_Therm(prevOCT) cfs
     condition month == NOV
@@ -70,7 +67,7 @@ define minflow_C_Therm {
   }
   case otherwise {                         !minflow_C_Therm + 500 = 500 cfs
     condition always
-    value   0
+    value   0.
   }
 }
 
@@ -195,6 +192,7 @@ goal lim_C_Orovl_PP135 {
     rhs C_Orovl_PP135_max_
     lhs<rhs penalty 0
     lhs>rhs penalty 99999}
+
 
 define C_Orovl_Rem_max {alias C_Orovl_Rem_max_ kind 'upper-bound' units 'cfs'}
 define C_Orovl_PP135_max {alias C_Orovl_PP135_max_ kind 'upper-bound' units 'cfs'}

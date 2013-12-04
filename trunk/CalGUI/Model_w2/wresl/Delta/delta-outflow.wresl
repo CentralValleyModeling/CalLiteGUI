@@ -104,6 +104,9 @@ define NDOFlow60std {
     condition always
     value           2500.0 }
 }
+!Testing
+define NDOFlow60stdDV {alias NDOFlow60std kind 'FLOW' units 'CFS'}   
+define NDOcheckDV {alias NDO(-1) kind 'FLOW' units 'CFS'}
 
 ! Days met in previous month
 define daysMetFlow60 {
@@ -138,6 +141,8 @@ define NDOFlow60 {
     condition   always
     value     2500.0 }
 }
+!Testing
+define NDOFlow60dv {alias NDOFlow60 kind 'FLOW' units 'CFS'}
 
 ! 60-day Flow requirement
 define DO_req_flw3 {value NDOFlow60}

@@ -139,11 +139,13 @@ define buffSWP_AprAug {select buffer from ExportEstimate_SWP where month = Apr}
 define buffSWP_MayAug {select buffer from ExportEstimate_SWP where month = May}
 
 ! SJR in flood - if C639 over 16,000 cfs
+
+
 define floodSJRdv {std kind 'trigger' UNITS 'NONE'}
 define floodSJR {
     case Wet {
-        condition month>=MAR .and. month <= MAY .and. AD_SJR_VAMP > 16000.     !C639[VAMP_AND_DO] > 16000.
-        value 1.}
+        condition month>=MAR .and. month <= MAY .and. AD_SJR_VAMP > 16000.     
+        value 1.}        
     case MarthruMay {
         condition month>=APR .and. month <= MAY
         value floodSJRdv(-1)}
@@ -344,3 +346,5 @@ define deltar_drymn_dv	{alias deltar_drymin	 kind 'swp_debug' units 'taf'}
 define swp_alloc_1dv    {alias swp_allocation_1 kind 'swp_debug' units 'taf'}
 define swp_alloc_2dv    {alias swp_allocation_2 kind 'swp_debug' units 'taf'}
 define swp_alloc_3dv    {alias swp_allocation_3 kind 'swp_debug' units 'taf'}
+
+
