@@ -19,6 +19,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import javax.swing.AbstractButton;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JMenu;
@@ -836,6 +837,36 @@ public class GUIUtils {
 		_controlFrame = null;
 
 		return;
+	}
+
+	/**
+	 * Method to find first JButton within a Swing container with indicated text. Used to find controls in WRIMS GUI.
+	 * 
+	 * @param comp
+	 *            - containing component
+	 * @param l
+	 *            - string to match
+	 * 
+	 * @return JButton component inside container with text matching string, or null if not found.
+	 */
+
+	public static Component findFirstButtonWithLabel(Component comp, String l) {
+		System.out.println(comp.getClass().toString());
+		if ((comp instanceof JButton)) {
+			System.out.println(((JButton) comp).getText());
+			if (((JButton) comp).getText().equals(l))
+				return comp;
+		}
+
+		if (comp instanceof Container) {
+			Container container = (Container) comp;
+			for (int i = 0; i < container.getComponentCount(); i++) {
+				Component comp2 = findFirstButtonWithLabel(container.getComponent(i), l);
+				if (comp2 != null)
+					return comp2;
+			}
+		}
+		return null;
 	}
 
 }

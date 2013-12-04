@@ -100,8 +100,11 @@ import vista.gui.VistaUtils;
 import vista.set.DataReference;
 import vista.set.Group;
 import calsim.app.AppUtils;
+import calsim.app.DerivedTimeSeries;
 import calsim.app.Project;
+import calsim.gui.CalLiteGUIMainPanel;
 import calsim.gui.CalLiteGUIPanelWrapper;
+import calsim.gui.DtsTreePanel;
 import calsim.gui.GuiUtils;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
@@ -257,6 +260,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			// Replace WRIMS GUI display action with CalLite GUI action
 
+			CalLiteGUIMainPanel clgpanel = GuiUtils.getCLGPanel();
+
 			JButton retrieveBtn = GuiUtils.getCLGPanel().getRetrievePanel().getRetrieveBtn();
 
 			for (ActionListener al : retrieveBtn.getActionListeners()) {
@@ -271,6 +276,23 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 				}
 			});
+			Component openButtonComponent = GUIUtils.findFirstButtonWithLabel(GuiUtils.getCLGPanel(), "Open");
+			if (openButtonComponent != null) {
+				JButton openButton = (JButton) openButtonComponent;
+				for (ActionListener al : openButton.getActionListeners()) {
+					openButton.removeActionListener(al);
+				}
+
+				openButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						retrieve2();
+
+					}
+				});
+
+			}
 
 			// Create a WRIMS GUI project for WRIMS GUI to work off of
 
@@ -1233,6 +1255,59 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 * 
 	 */
 	void retrieve() {
+		if (!AppUtils.baseOn) {
+			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
+			        JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		try {
+			String noRowsString = "";
+			JTable _table = GuiUtils.getCLGPanel().getRetrievePanel().getTable();
+			if (_table.getRowCount() == 0)
+				noRowsString = " after using \"Filter\" to load variables";
+			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
+			if (_group == null || _table.getSelectedRowCount() == 0) {
+				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
+				        JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			int[] rows = _table.getSelectedRows(); // checked if count > 0 above
+			DataReference[] array = new DataReference[rows.length];
+			for (int i = 0; i < rows.length; i++)
+				array[i] = _group.getDataReference(rows[i]);
+			// GuiUtils.displayData(array);
+			for (int i = 0; i < rows.length; i++) {
+
+				String[] parts = array[i].getName().split("::");
+				if (parts[1].contains(("_SV.DSS"))) {
+					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
+					        + ";File-" + parts[1], lstScenarios);
+				} else {
+					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2],
+					        lstScenarios);
+				}
+			}
+		} catch (Exception e) {
+			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+		}
+	}
+
+	/**
+	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
+	 * 
+	 */
+	void retrieve2() {
+
+		DtsTreePanel dtsp = GuiUtils.getCLGPanel().getDtsTreePanel();
+		DerivedTimeSeries dts = dtsp.getDTS();
+		Vector bParts = dts.getBParts();
+		Vector cParts = dts.getCParts();
+		Vector opIDs = dts.getOpIds();
+
+		for (int i = 0; i < bParts.size(); i++) {
+			System.out.println(i + ": " + opIDs.get(i) + ":" + bParts.get(i) + ": " + cParts.get(i));
+		}
+
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
 			        JOptionPane.WARNING_MESSAGE);
