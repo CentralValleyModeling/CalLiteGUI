@@ -1,0 +1,7 @@
+GUI_BDCP_FacilityControl
+Facility  Option   
+1	1          !Jones IF Export :ON(1) OFF(0)  !index   Option    !user	switch
+2       1          !Banks IF Export :ON(1) OFF(0)
+3       0          !CCWD  IF Export :ON(1) OFF(0)
+4       1          !      TD Export :ON(1) OFF(0)
+5       1          !Fremonto Weir Notch ON=1; OFF=0  !1   0   
