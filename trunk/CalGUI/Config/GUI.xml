@@ -183,17 +183,10 @@
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="0" gridy="1" />
 								</radiobutton>
-							</buttongroup>
-							<buttongroup>
-								<radiobutton id="run_rdbD1641a" name="run_rdbD1641a"
-									text="D-1641" minimumsize="80,20" enabled="true">
-									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="1" gridy="0" />
-								</radiobutton>
 								<radiobutton id="run_rdbBO1" name="run_rdbBO1" text="D-1485"
 									minimumsize="80,20" selected="True">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
-										gridx="1" gridy="1" />
+										gridx="0" gridy="2" />
 								</radiobutton>
 							</buttongroup>
 						</panel>
