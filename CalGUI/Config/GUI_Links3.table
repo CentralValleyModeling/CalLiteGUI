@@ -89,41 +89,6 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 518	null	null	null	null	null
 519	null	null	null	null	null
 520	null	null	null	null	null
-801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
-802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
-803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
-804	SHORT_AD_REDBLF/SHORTAGE-FLOW	null	Shortage	SHORT_AD_REDBLF	null
-805	SHORT_AD_SACAME/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACAME	null
-806	SHORT_AD_SACFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACFEA	null
-807	SHORT_AD_THERM/SHORTAGE-FLOW	null	Shortage	SHORT_AD_THERM	null
-808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_WILKNS	null
-809	SHORT_AD_YOLOBP/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YOLOBP	null
-810	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YUBFEA	null
-851	short_swp_pwr/delivery-shortage-swp	null	Shortage	short_swp_pwr	null
-852	short_swp_pag_n/delivery-shortage-swp	null	Shortage	short_swp_pag_n	null
-853	short_swp_pag_s/delivery-shortage-swp	null	Shortage	short_swp_pag_s	null
-854	short_swp_pag/delivery-shortage-swp	null	Shortage	short_swp_pag	null
-855	short_swp_pmi_n/delivery-shortage-swp	null	Shortage	short_swp_pmi_n	null
-856	short_swp_pmi_s/delivery-shortage-swp	null	Shortage	short_swp_pmi_s	null
-857	short_swp_pmi/delivery-shortage-swp	null	Shortage	short_swp_pmi	null
-858	short_swp_mwd/delivery-shortage-swp	null	Shortage	short_swp_mwd	null
-859	short_swp_oth/delivery-shortage-swp	null	Shortage	short_swp_oth	null
-860	short_swp_pls/delivery-shortage-swp	null	Shortage	short_swp_pls	null
-861	short_swp_tot_n/delivery-shortage-swp	null	Shortage	short_swp_tot_n	null
-862	short_swp_tot_s/delivery-shortage-swp	null	Shortage	short_swp_tot_s	null
-863	short_swp_total/delivery-shortage-swp	null	Shortage	short_swp_total	null
-881	short_cvp_pag_s/delivery-shortage-cvp	null	Shortage	short_cvp_pag_s	null
-882	short_cvp_pmi_s/delivery-shortage-cvp	null	Shortage	short_cvp_pmi_s	null
-883	short_cvp_pex_s/delivery-shortage-cvp	null	Shortage	short_cvp_pex_s	null
-884	short_cvp_prf_s/delivery-shortage-cvp	null	Shortage	short_cvp_prf_s	null
-885	short_cvp_pls_s/delivery-shortage-cvp	null	Shortage	short_cvp_pls_s	null
-886	short_cvp_tot_s/delivery-shortage-cvp	null	Shortage	short_cvp_tot_s	null
-901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Net_Delta_Outflow	Detla_OutFlow_Criteria
-902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento_River_at_Rio_Vista	Sacramento_River_Flow_Criteria_at_Rio_Vista
-903	C_SJR/FLOW-ACCRDEPL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San_Joaquin_River_at_Vernalis	San_Joaquin_River_Flow_Criteria_at_Vernalis
-904	EXTRAWATER_NDO/EXTRAWATER	null	Extra Water Needed	Net_Delta_Outflow	null
-905	EXTRAWATER_RIOVISTA/EXTRAWATER	null	Extra Water Needed	Sacramento_River_at_Rio_Vista	null
-906	EXTRAWATER_SJR/EXTRAWATER	null	Extra Water Needed	San_Joaquin_River_at_Vernalis	null
 600	S_MELON/STORAGE	null	Storage	New Melones Reservoir Storage	null
 601	S_PEDRO/STORAGE	null	Storage	New Don Pedro Reservoir Storage	null
 602	S_MCLRE/STORAGE	null	Storage	Mclure Reservoir Storage	null
@@ -139,3 +104,37 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 612	D_MERCED1/FLOW-DELIVERY+D_MERCED2/FLOW-DELIVERY+D_MERCED3/FLOW-DELIVERY	null	Deliveries	Deliveries of Merced	null
 613	D_MDRCNL/FLOW-DELIVERY+D_FKCNL/FLOW-DELIVERY	null	Deliveries	Deliveries of Friant	null
 614	VERNWQFINAL/SALINITY-EC	null	Electrical Conductivity	Vernalis Salinity	Salinity Standard
+801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
+802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
+803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
+804	SHORT_AD_REDBLF/SHORTAGE-FLOW	null	Shortage	SHORT_AD_REDBLF	null
+805	SHORT_AD_SACAME/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACAME	null
+806	SHORT_AD_SACFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACFEA	null
+807	SHORT_AD_THERM/SHORTAGE-FLOW	null	Shortage	SHORT_AD_THERM	null
+808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_WILKNS	null
+809	SHORT_AD_YOLOBP/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YOLOBP	null
+810	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YUBFEA	null
+901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Net_Delta_Outflow	Detla_OutFlow_Criteria
+902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento_River_at_Rio_Vista	Sacramento_River_Flow_Criteria_at_Rio_Vista
+903	C_SJR/FLOW-ACCRDEPL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San_Joaquin_River_at_Vernalis	San_Joaquin_River_Flow_Criteria_at_Vernalis
+904	EXTRAWATER_NDO/EXTRAWATER	null	Extra Water Needed	Net_Delta_Outflow	null
+905	EXTRAWATER_RIOVISTA/EXTRAWATER	null	Extra Water Needed	Sacramento_River_at_Rio_Vista	null
+906	EXTRAWATER_SJR/EXTRAWATER	null	Extra Water Needed	San_Joaquin_River_at_Vernalis	null
+851	SHORT_SWP_PWR/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pwr	null
+853	SHORT_SWP_PAG_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pag_s	null
+854	SHORT_SWP_PAG/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pag	null
+855	SHORT_SWP_PMI_N/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi_n	null
+856	SHORT_SWP_PMI_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi_s	null
+857	SHORT_SWP_PMI/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi	null
+858	SHORT_SWP_MWD/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_mwd	null
+859	SHORT_SWP_OTH/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_oth	null
+860	SHORT_SWP_PLS/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pls	null
+861	SHORT_SWP_TOT_N/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_tot_n	null
+862	SHORT_SWP_TOT_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_tot_s	null
+863	SHORT_SWP_TOTAL/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_total	null
+881	SHORT_CVP_PAG_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pag_s	null
+882	SHORT_CVP_PMI_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pmi_s	null
+883	SHORT_CVP_PEX_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pex_s	null
+884	SHORT_CVP_PRF_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_prf_s	null
+885	SHORT_CVP_PLS_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pls_s	null
+886	SHORT_CVP_TOT_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_tot_s	null
