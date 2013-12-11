@@ -30,8 +30,11 @@ tab = "   "
 class StudyTabCl:
    
    # constructor: initialize class parameters
-   def __init__(self):
+   def __init__(self, configPath):
 
+      self.configPath = configPath
+      print "Config Path: "+ self.configPath
+   
       # assign other class variables
       self.report = True
 
