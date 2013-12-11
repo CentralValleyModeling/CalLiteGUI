@@ -18,6 +18,7 @@ from java.io import *
 from java.util import *
 from javax.swing import *
 from java.lang import *
+import sys
 
 # Main class
 
@@ -26,21 +27,29 @@ thisFileDir = os.path.dirname(os.path.realpath(__file__))
 
 class Main:
 
+   
    # constructor: initialize class parameters
    def main():
+   
+   # parse config file and find dv dss path
+   
 
         #studyDvName=r"D:\cvwrsm\trunk\CalGUI\Scenarios\Run_Details\wsidi_example\DSS\genwsidi_dv.dss";
         studyDvName=os.path.join(thisFileDir, r"..\Scenarios\Run_Details\wsidi_example\DSS\genwsidi_dv.dss");
         # WSI-DI curve labels and DSS pathnames
-	crvName = ['SWP','CVP_SYS'] 
-	crvWsiVar = ['WSI_ACTUAL_SWP','WSI_ACT_CVP_SYS'] 
+        crvName = ['SWP','CVP_SYS'] 
+        crvWsiVar = ['WSI_ACTUAL_SWP','WSI_ACT_CVP_SYS'] 
         crvDiVar = ['DI_ACTUAL_SWP','DI_ACT_CVP_SYS']
         
         # maximum value(TAF) for WSI-DI curve; same value used for WSI and DO components
         crvMax = [20000,20000]
       
-       	s=StudyTabCl()
-       	s.runForWsi(studyDvName,crvName,crvWsiVar,crvDiVar,crvMax)
+        configPath = sys.argv[1]
+        print configPath
+        
+        
+        s=StudyTabCl(configPath)
+        s.runForWsi(studyDvName,crvName,crvWsiVar,crvDiVar,crvMax)
 
   
    if __name__ == "__main__":
