@@ -22,6 +22,7 @@ from javax.swing import *
 from java.lang import *
 
 import subprocess
+from scripts.wrims2 import Utils
 
 thisFileDir = os.path.dirname(os.path.realpath(__file__))
 tab = "   "
@@ -35,6 +36,25 @@ class StudyTabCl:
       self.configPath = configPath
       print "Config Path: "+ self.configPath
    
+      try:
+        self._cMap=Utils.getConfigMap(configPath)
+        self.dvarFile=self._cMap.get("DvarFile")
+        self.dvarFile=self.dvarFile.replace('\"','').replace('\'','')
+      except:
+        print '# Error in parsing config file: '+configPath
+
+      
+      if ":" not in self.dvarFile:
+        self.dvarFile = os.path.join(os.path.dirname(self.configPath), self.dvarFile)
+        print "dvarFile: " + self.dvarFile
+
+      self.f=open(os.path.join(thisFileDir, "_wsidi_study.bat"),'w')
+
+      self.f.write(r'%~dp0..\runConfig_calgui '+self.configPath+'\n')
+      self.f.close()
+            
+
+
       # assign other class variables
       self.report = True
 
@@ -49,12 +69,13 @@ class StudyTabCl:
       print tab+ "Running Model"
    
       #os.system('WRIMSv2_Engine.bat')
-      subprocess.call(os.path.join(thisFileDir, r"wsidi_study.bat"))
+      subprocess.call(os.path.join(thisFileDir, "_wsidi_study.bat"))
       return 0
 
    # run WSI-DI procedure
-   def runForWsi(self,studyDvName,crvName,crvWsiVar,crvDiVar,crvMax):
+   def runForWsi(self,crvName,crvWsiVar,crvDiVar,crvMax):
 
+      studyDvName = self.dvarFile
       print "Set parameters"
 
       #newPath = os.path.join('../bin/','')

@@ -5,13 +5,13 @@ rem ##############################
 
 set lib_home=%~dp0/vscript/lib/
 set vista_home=%lib_home%/vista
-rem set hec_home=%lib_home%/hecdss/
-rem set wrims2_home=%~dp0/lib/
-rem set misc_home=%lib_home%/misc/
+set hec_home=%lib_home%/hecdss/
+set wrims2_home=%~dp0/lib/
+set misc_home=%lib_home%/misc/
 set jre_home=%~dp0../jre6/
 
-echo "%~dp0"
-echo %~dp0
+rem echo "%~dp0"
+rem echo %~dp0
 
 setlocal
 rem ###############
