@@ -32,10 +32,7 @@ class Main:
    def main():
    
    # parse config file and find dv dss path
-   
 
-        #studyDvName=r"D:\cvwrsm\trunk\CalGUI\Scenarios\Run_Details\wsidi_example\DSS\genwsidi_dv.dss";
-        studyDvName=os.path.join(thisFileDir, r"..\Scenarios\Run_Details\wsidi_example\DSS\genwsidi_dv.dss");
         # WSI-DI curve labels and DSS pathnames
         crvName = ['SWP','CVP_SYS'] 
         crvWsiVar = ['WSI_ACTUAL_SWP','WSI_ACT_CVP_SYS'] 
@@ -45,11 +42,11 @@ class Main:
         crvMax = [20000,20000]
       
         configPath = sys.argv[1]
-        print configPath
+
         
         
         s=StudyTabCl(configPath)
-        s.runForWsi(studyDvName,crvName,crvWsiVar,crvDiVar,crvMax)
+        s.runForWsi(crvName,crvWsiVar,crvDiVar,crvMax)
 
   
    if __name__ == "__main__":
