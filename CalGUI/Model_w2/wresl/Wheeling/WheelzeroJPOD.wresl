@@ -14,3 +14,5 @@ goal wheel_Nm_2 {C_Nimbus_whljp = 0.0}
 goal zeroBanksJPOD {D_Banks_cvpwhl = 0.}
 goal zeroCarriageJPOD {C_Delta_whljp = 0.}
 
+!Zero out Sac Flow Reop adjustment
+goal zeroC400_whljp {C_Hood_whljp = 0.0}
