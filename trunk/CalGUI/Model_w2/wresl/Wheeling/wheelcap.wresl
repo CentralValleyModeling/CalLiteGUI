@@ -54,7 +54,7 @@ define OMR_Ctrl {
 }
 define B2Action3_Ctrl {
 	case controlling {
-		condition	range(month,apr,may) .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1
+		condition	range(month,apr,may) .and. int(B2Action3)==1 .and. VAMP_DLTSW == 1
 		value		0.
 	}
 	case otherwise {
@@ -64,7 +64,7 @@ define B2Action3_Ctrl {
 }
 
 !define wheeling_ctrl {value min(BO_Banks_Ctrl, BO_Jones_Ctrl, OMR_Ctrl)}
-define wheeling_ctrl {value min(BO_Ctrl, OMR_Ctrl, B2Action3_Ctrl)}
+define wheeling_ctrl {value 1.} !min(BO_Ctrl, OMR_Ctrl, B2Action3_Ctrl)}
 define whlctrl_dv {alias wheeling_ctrl kind 'output' units 'cfs'}
 define BOCtrl_dv {alias BO_Ctrl kind 'output' units 'cfs'}
 define BOBanksCtrl_dv {alias BO_Banks_Ctrl kind 'output' units 'cfs'}
@@ -131,15 +131,15 @@ define maxJonescalcDV {alias maxJonescalc kind 'output' units 'cfs'}
 	define wheelCap {select cap from WheelCap where year=wateryear }
 
 	! Allow JPOD Wheeling only when Tracy is running at its capacity
-/*	define Jones_int {
+	define Jones_int {
 	    case JonesMax {
-	      condition D_Jones[BASE] + 0.5 > maxJonesCalc
+	      condition D_Jones[B2_BO] + 0.5 > maxJonesCalc
 	      value 1.0}
 	    case Rest {
 	      condition always
 	      value 0.0}
 	      }
-*/
+
 	! Amount of CVP water Wheeled to CVP San Luis this year (TAF)
 	define usedWheelAmt {
 	  case OCT {
@@ -161,7 +161,8 @@ define maxJonescalcDV {alias maxJonescalc kind 'output' units 'cfs'}
 	define CVPWHLcap {value max(BanksMaxAllow - D_Banks[BASE],0.)}
 
 	! Allow JPOD up to the cap if no B2 action is on
-	goal maxJPOD_CVP {D_Banks_cvpwhl < 0} !min(CVPWHLcap*Jones_int, remWheelCap*taf_cfs) }
+	if int(JPOD_ON)==1 {goal maxJPOD_CVP {D_Banks_cvpwhl < min(CVPWHLcap*Jones_int, remWheelCap*taf_cfs)}}
+	else {goal maxJPOD_CVP {D_Banks_cvpwhl < 0}}
 
 	! Releases for JPOD go to wheeling or carriage water
 	goal JPODReleaseCont {C_Wkytn_whljp + C_Kswck_whljp + C_Nimbus_whljp = C_Delta_whljp + D_Banks_whlrels}
