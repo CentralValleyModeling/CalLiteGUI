@@ -54,16 +54,8 @@ if int(PBwheel_ON) == 0 {	!D1641
 define BanksMaxAllow {value BanksMax1*BanksDaysIncr/daysin + BanksCapPermit*BanksDaysNoIncr/daysin }
 
 ! Limit Pumping to Allowable and Physical Capacity, whichever is less
-goal banksLessThanAllow { D_Banks < BanksMaxAllow}
+goal banksLessThanAllow { D_Banks_swp_TD + D_Banks_cvp_TD + D_Banks_WTS_TD1 < BanksMaxAllow}
 goal banksLessThanPhys  { D_Banks < BanksCapPhys}
-
- /**needs to be revised for IF and WTS
-!goal banksLessThanAllow { D_Banks_SWP_TD + D_Banks_CVP_TD + D_Banks_WTS_TD1 < BanksMaxAllow}  
-
-! Limit Pumping with added WTS and EWA pumping
-goal banksLessThanResrvd { D_Banks_SWP_TD + D_Banks_CVP_TD + D_Banks_WTS_TD + D_Banks_EWA_TD
-                          < BanksMaxAllow + EWAReservedCap}
-**/
 
 ! Output Allowable Pumping Cap for Checking Only
 define BanksAllowOut {alias BanksMaxAllow kind 'EXPORT-CTRL-BANKS' UNITS 'CFS' }

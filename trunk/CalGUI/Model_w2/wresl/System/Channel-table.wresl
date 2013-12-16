@@ -8,6 +8,8 @@ define C_Wkytn_MIF {std kind 'FLOW-MIN-INSTREAM' units 'CFS'}
 define C_Wkytn_EXC {std kind 'FLOW-EXCESS-INSTREAM' units 'CFS'}
 goal C_Wkytntotal {C_Wkytn=C_Wkytn_MIF+C_Wkytn_EXC}
 define C_Shsta {lower 0. upper 4858.*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !SACRAMENTO RIVER DOWNSTREAM OF SHASTA LAKE
+define C_ShstaE_01 {lower 0. upper 900000 kind 'FLOW-CHANNEL' units 'CFS'} !Enlarged Shasta Fills
+define C_ShstaE_02 {lower 0. upper 900000 kind 'FLOW-CHANNEL' units 'CFS'} !Enlarged Shasta Releases
 define C_Kswck {lower 0. upper 100000. kind 'FLOW-CHANNEL' units 'CFS'} !SACRAMENTO RIVER DOWNSTREAM OF KESWICK RESERVOIR (C5)
 define C_Kswck_MIF {std kind 'FLOW-MIN-INSTREAM' units 'CFS'}
 define C_Kswck_EXC {std kind 'FLOW-EXCESS-INSTREAM' units 'CFS'}
@@ -49,6 +51,9 @@ define C_HSt_MIF {std kind 'FLOW-MIN-INSTREAM' units 'CFS'}
 define C_HSt_EXC {std kind 'FLOW-EXCESS-INSTREAM' units 'CFS'}
 goal C_HSttotal {C_HSt=C_HSt_MIF+C_HSt_EXC}
 define C_YoloBP {std kind 'FLOW-CHANNEL' units 'CFS'} !YOLO BYPASS
+
+define C_Freeport {lower 0. upper 11000.*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !Sacramento River at Freeport
+
 define C_Hood {lower 0. upper 11000.*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !Sacramento River at Hood
 define C_Hood_ANN{lower 0 upper 11000*taf_cfs kind 'FLOW-ANN' units 'CFS'} !For ANN calculations
 goal C_HoodTotal {C_Hood = C_Hood_Ann}

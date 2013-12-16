@@ -36,7 +36,9 @@ define est_oro_release{
 
  
 define EstSWPSodExp { 
-    case BO { condition int(OMRBOON) == 1 
+    case IF_ { condition int(JonesIFSwitch) == 1 .or. int(BanksIFSwitch) == 1
+        value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,est_oro_release))}
+    case BO { condition int(BOON_SWP) == 1 
         value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), EstSWPMaxExp_RPA, max(300.,est_oro_release))}
     case D1641_B2 { condition always
         value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,est_oro_release))}
@@ -69,10 +71,10 @@ define exp_est_CVPRC {alias EstCVPSodRC kind 'EXPORT-ESTIMATE' units 'CFS'}
 ! minimum Jones pumping
 define JonesMinPumpLevel {
         case JonesShastaLow {
-                condition S_Shsta(-1) < 1500.0
+                condition S_Shsta(-1) + S_ShstaE(-1) < 1500.0
                 value 600.0 }
         case Joneslowshastafolsom {
-                condition S_Folsm(-1) < 400. .and. S_Shsta(-1) < 2000. !Better reflection of actual operations by trying to keep
+                condition S_Folsm(-1) < 400. .and. S_Shsta(-1) + S_ShstaE(-1) < 2000. !Better reflection of actual operations by trying to keep
                 value 800.  }                                                           !water from being released for SL storage during low storage
         case JonesShastaHigh {
                 condition always
@@ -80,37 +82,37 @@ define JonesMinPumpLevel {
 }
 ! export for south-of-delta CVP: demand + rulecurve
 if int(PBwheel_ON)==0{
-	define maxJonescalc1 {value min(JonesMaxAllow,
-						 4400+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs,
-						 4200+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs+perdel_cvpag_s*CVP_pag_ratio_s*dem_D701_pag*taf_cfs+dem_D702_pls*taf_cfs) }
+define maxJonescalc1 {value min(JonesMaxAllow,
+                     4400+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs,
+                     4200+perdel_cvpag_s*CVP_pag_ratio_s*dem_D700_pag*taf_cfs+perdel_cvpag_s*CVP_pag_ratio_s*dem_D701_pag*taf_cfs+dem_D702_pls*taf_cfs) }
 
-	define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
+define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
 }
 
 define CVPexportcap {value maxJonescalc+ CVPDedBanksSwitch*BanksMaxAllowCVP}
 
 define EstCVPMaxExp_B2 {
        case Action2On {
-            condition month >= DEC .and. month <= JAN .and. int(B2Action2On)==1
+            condition month >= DEC .and. month <= JAN .and. int(B2Action2)==1
             value     max(JonesMinPumpLevel,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base) } ! - redAction2)}
        case Action7On {
-            condition month >= FEB .and. month <= MAR .and. int(B2Action7On)==1
+            condition month >= FEB .and. month <= MAR .and. int(B2Action7)==1
             value     max(JonesMinPumpLevel,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base) } ! - (ResAction7/2.)*taf_cfs)}
        case Action6On {
-            condition month == APR .and. int(B2Action6On)==1
+            condition month == APR .and. int(B2Action6)==1
             value     PulseExpRes*0.5 }
        case Action4On {
-            condition month == MAY .and. int(B2Action4On)==1
+            condition month == MAY .and. int(B2Action4)==1
             value     PulseExpRes*0.5 }
        case Action3OnAPR {
-            condition month == APR .and. int(B2Action3On)==1
+            condition month == APR .and. int(B2Action3)==1
             value     min(min(CVPexportcap, max(0.0, EstCVPSodDem + EstCVPSodRC)*14.0/daysin + PulseExpRes*0.5*16.0/daysin), JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin) }
        case Action3OnMAY {
-            condition month == MAY .and. int(B2Action3On)==1
+            condition month == MAY .and. int(B2Action3)==1
             value     min(3000.*16.0/daysin + PulseExpRes*0.5*15.0/daysin, JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin) }
        case Action5On {
-            condition month == JUN .and. int(B2Action5On)==1
-            value     min(D_Jones_cvp(-1)*0.5 + D_Banks_cvp(-1)*0.5 + min(CVPexportcap, max(0.0, EstCVPSodDem + EstCVPSodRC)*0.5), 3000.0) }
+            condition month == JUN .and. int(B2Action5)==1
+            value     min(D_Jones_cvp_TD(-1)*0.5 + D_Banks_cvp_TD(-1)*0.5 + min(CVPexportcap, max(0.0, EstCVPSodDem + EstCVPSodRC)*0.5), 3000.0) }
        case Action5Off {
             condition month == JUN
             value     3000.0}
@@ -123,7 +125,9 @@ define EstCVPMaxExp_B2 {
 define EstCVPMaxExp_RPA {select estimate from ExportEstimate_CVP where month = month }
 
 define EstCVPSodExp { 
-    case BO { condition int(OMRBOON) == 1 
+    case IF_ { condition int(JonesIFSwitch) == 1 .or. int(BanksIFSwitch) == 1
+        value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC))}
+    case BO { condition int(BOON_CVP) == 1 
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_RPA )}
     case D1641_B2 { condition always
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_B2)}

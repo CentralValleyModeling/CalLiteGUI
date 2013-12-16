@@ -1,7 +1,15 @@
+/**********************
+Connectivity-table.wresl
+
+Z.Q. Richard Chen DWR 10/5/2012
+
+Add 3 nodes CCWDIF, SODIF, and Freeport in order to implement IF operation.
+***********************/
 goal continuityTrnty {I_Trnty-C_Trnty-F_Trnty-E_Trnty=S_Trnty*taf_cfs-S_Trnty(-1)*taf_cfs} !CLAIR ENGLE LAKE
 goal continuityLwstn {C_Trnty+I_Lewiston-D_ClearTu-C_Lwstn=0.} !Lewiston Lake
 goal continuityWkytn {I_Wkytn+D_ClearTu-D_Spring-C_Wkytn-F_Wkytn-E_Wkytn=S_Wkytn*taf_cfs-S_Wkytn(-1)*taf_cfs} !Whiskeytown Lake
-goal continuityShsta {I_Shsta-C_Shsta-F_Shsta-E_Shsta=S_Shsta*taf_cfs-S_Shsta(-1)*taf_cfs} !Shasta Lake
+goal continuityShsta {I_Shsta+C_ShstaE_02-C_Shsta-C_ShstaE_01-F_Shsta-E_Shsta=S_Shsta*taf_cfs-S_Shsta(-1)*taf_cfs} !Shasta Lake
+goal continuityShstaE {C_ShstaE_01-C_ShstaE_02-F_ShstaE-E_ShstaE=S_ShstaE*taf_cfs-S_ShstaE(-1)*taf_cfs} !CVP SHASTA ENLARGEMENT
 goal continuityKswck {C_Shsta+D_Spring+AD_Kswck_Actual-C_Kswck=0.} !Keswick Reservoir
 goal continuityRedBlf {C_Kswck+C_Wkytn+AD_Redblf_Actual-C_RedBlf-D_RedBlf=0.} !Red Bluf node
 goal continuityWilkns {C_RedBlf+AD_Wilkns_Actual-C_Wilkns-D_Wilkns=0.} !Wilkins Slough
@@ -15,7 +23,11 @@ goal continuityNimbus {C_Folsm+AD_Nimbus_Actual-C_Nimbus-D_Nimbus=0.} !Nimbus no
 goal continuityHSt {C_Nimbus+AD_HSt_Actual-C_HSt-D_HSt=0.} !H Street node
 goal continuitySacAme {C_SacFea+C_HSt+AD_SacAme_Actual-C_SacAme-D_SacAme-D_SacWeir=0.} !Sacramento American River junction
 goal continuityYoloBP {D_FreWeir+AD_YoloBP_Actual+D_SacWeir-C_YoloBP=0.} !Yolo Bypass
-goal continuityHOOD {C_SacAme+I_Hood-C_Hood-D_Hood=0.} !
+
+goal continuityFreeport {C_SacAme-C_Freeport=0.} !
+goal continuityHOOD {C_Freeport+I_Hood-C_Hood-D_Hood =0.} !
+goal continuityHoodIF {D_HoodIF - D_CCWDIF -D_SODIF = 0.} !Delta Isolated Facility 
+
 goal continuityDxc {C_Hood-C_SacDXC-C_DXC=0.} !Delta Cross Channel
 goal continuityNDelta {C_YoloBP+C_SacDXC-C_SacND-C_NBA=0.} !North Delta node (Yolo
 goal continuityNBA {C_NBA-D_Solano-D_Napa-D_Vallejo-D_FVB=0.} !North Bay Aqueduct
@@ -32,8 +44,10 @@ goal continuitySJRSto {C_SJRCal+I_Stockton-C_SJRSto-D_Stockton=0.} !San Joaquin 
 goal continuitySJRCal {C_SJROldR+AD_SJRCalALL-C_SJRCal=0.} !Calaveras River
 goal continuitySJRDelta {C_SJRVer-C_OldRiver-C_SJROldR=0.} !San Joaquin entering Delta
 goal continuityConeyIs {C_OldRiver+I_ConeyIS-D_ExpTD-C_ConyIS-D_ConeyIs=0.} !Coney Island
-goal continuityOMR {C_ConyIS+C_IndnSl-C_OMR-D_CCWDVCOR=0.} !Conta Costa Water District diversion and West Delta flow
-goal continuityJones {D_ExpTD-D_Jones-C_BnkExp=0.} !Jones PP (Fedural)
+
+goal continuityOMR {C_ConyIS+C_IndnSl+D_CCWDIF-C_OMR-D_CCWDVCOR=0.} !Conta Costa Water District diversion and West Delta flow
+goal continuityJones {D_ExpTD+D_SODIF-D_Jones-C_BnkExp=0.} !Jones PP (Fedural)
+
 goal continuityBanks {C_BnkExp-D_Banks=0.} !Banks PP (State)
 goal continuityUpDMC {D_Jones-C_UpDMC-C_Intrti-D_UpDMC=0.} !Upper DMC
 goal continuitySBay {D_Banks+C_Intrti-C_SBay-D_SBay=0.} !South Bay Diversion

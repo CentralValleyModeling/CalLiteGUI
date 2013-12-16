@@ -3,7 +3,7 @@
 ! The index in the first column refers to water type:
 !     Water Rights Water = 1
 !     Project Water (not including PL 101-514) = 2
-!     Project Water (PL 101-514) = 2
+!     Project Water (PL 101-514) = 3
 !
 !    note: pl 101-514 not broken out for SJWD
 !

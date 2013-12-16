@@ -12,7 +12,9 @@ Modify Inflow by considering Hood dicu
 **************************************/
 
 ! Delta Export defined as in DWRSIM Algorithm Description for Export Ratio
-define ExportActual {alias  D_Jones+D_Banks KIND 'EXPORT-PRJ' units 'CFS'  }
+!define ExportActual {alias  D_Jones+D_Banks KIND 'EXPORT-PRJ' units 'CFS'  }
+define ExportActualTD {alias D_Jones_TD+D_Banks_TD KIND 'EXPORT-PRJ' units 'CFS'  }
+define ExportActualIF {alias D_Jones_IF+D_Banks_IF KIND 'EXPORT-PRJ' units 'CFS'  }
 
 ! Delta Inflow defined as in DWRSIM Algorithm Description for Export Ratio
 define Inflow {alias C_Hood_ANN+D_Hood_NP-I_HOOD+AD_Mokelumne+C_YoloBP+C_SJRVER+AD_SJRCalALL+I_MarshCr kind 'INFLOW-DELTA' UNITS 'CFS'   }
@@ -49,7 +51,7 @@ define ExpRatio_ {alias ExpRatio KIND 'EI-RATIO-STD' UNITS 'NONE'}
 goal find_max_export {EiExpCtrl = ExpRatio*Inflow}
 
 ! Restrict exports to be less than that allowable by EI ratio
-goal export_comply { ExportActual < EiExpCtrl }
+goal export_comply { ExportActualTD < EiExpCtrl }
 
 !Export-San Joaquin River Inflow Ratio    added by Richard Chen 4/11/2011
 define esjrir_o    { 
@@ -75,7 +77,7 @@ define esjrir_m    {
 !Max South Delta Exports <= "offset" + "multiplier" * SJR Inflow at Vernalis
 !goal export_SJRIR_comply { ExportActual   <  esjrir_o + esjrir_m*AD_SJR }  
 
-goal export_SJRIR_comply { lhs ExportActual 
+goal export_SJRIR_comply { lhs ExportActualTD 
         case EISJR_UDEF 
              {condition EISJR_DLTSW == 2
              rhs esjrir_o + esjrir_m*VERNQ

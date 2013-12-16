@@ -61,10 +61,10 @@ define exp_est_CVPRC {alias EstCVPSodRC kind 'EXPORT-ESTIMATE' units 'CFS'}
 ! minimum Jones pumping
 define JonesMinPumpLevel {
         case JonesShastaLow {
-                condition S_Shsta(-1) < 1500.0
+                condition S_Shsta(-1) + S_ShstaE(-1) < 1500.0
                 value 600.0 }
         case Joneslowshastafolsom {
-                condition S_Folsm(-1) < 400. .and. S_Shsta(-1) < 2000. !Better reflection of actual operations by trying to keep
+                condition S_Folsm(-1) < 400. .and. S_Shsta(-1) + S_ShstaE(-1) < 2000. !Better reflection of actual operations by trying to keep
                 value 800.  }                                                           !water from being released for SL storage during low storage
         case JonesShastaHigh {
                 condition always

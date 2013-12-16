@@ -84,7 +84,7 @@ define cvpdel_d104_pmi { ! Actual MI Deliveries at node 104
        value     0 }
        }
 
-define d300_pmi {timeseries kind 'flow-delivery' units 'cfs'}
+/*define d300_pmi {timeseries kind 'flow-delivery' units 'cfs'}
 
 define cvpdel_d300_pmi {
 
@@ -95,7 +95,7 @@ define cvpdel_d300_pmi {
        case      otherwise {
        condition always
        value     0 }
-       }
+       }*/
 
 define cvpdel_d8_pmi {
 
@@ -119,7 +119,7 @@ define cvpdel_d9_pmi {
        value     0 }
        }
 
-define cvpdel_d162_pmi {    !added by ejc 1/07/02
+/*define cvpdel_d162_pmi {    !added by ejc 1/07/02
 
        case      MAR  {
        condition month == MAR .and. wateryear > 1922
@@ -128,7 +128,7 @@ define cvpdel_d162_pmi {    !added by ejc 1/07/02
        case      otherwise {
        condition always
        value     0 }
-       }
+       }*/
 
 define cvpdel_d167_pmi {    !added by ejc 1/07/02
 
@@ -156,8 +156,8 @@ define cvpdel_d168_pmi {    !added by ejc 1/07/02
        value     0 }
        }
 
-define cvpdel_d_mi_n {value cvpdel_d104_pmi + cvpdel_d300_pmi + cvpdel_d8_pmi + cvpdel_d9_pmi
-                          + cvpdel_d162_pmi + cvpdel_d167_pmi + cvpdel_d168_pmi}
+define cvpdel_d_mi_n {value cvpdel_d104_pmi /*+ cvpdel_d300_pmi*/ + cvpdel_d8_pmi + cvpdel_d9_pmi
+                          /*+ cvpdel_d162_pmi*/ + cvpdel_d167_pmi + cvpdel_d168_pmi}
 
 
 ! =============================== Settlement Deliveries ==========================

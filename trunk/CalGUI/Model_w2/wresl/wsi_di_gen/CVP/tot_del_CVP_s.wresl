@@ -46,11 +46,11 @@ define cvpdel_d706 {
        value     0 }
        }
 
-define cvpdel_d607A {
+define cvpdel_D_MDOTAA {
 
        case      MAR  {
        condition month == MAR .and. wateryear > 1922
-       sum(i=-1,-12,-1) D607A(i) * cfs_taf(i) }
+       sum(i=-1,-12,-1) D_MDOTAA(i) * cfs_taf(i) }
 
        case      otherwise {
        condition always
@@ -146,7 +146,7 @@ define cvpdel_d710 {
        }
 
 ! Actual Ag Deliveries
-define cvpdel_d_ag_s {value cvpdel_d700 + cvpdel_d701 + cvpdel_d706 + cvpdel_d607A + cvpdel_d833 + cvpdel_d835 + cvpdel_d836 + cvpdel_d837 + cvpdel_d839 + cvpdel_d841 + cvpdel_d843 + cvpdel_d710 }
+define cvpdel_d_ag_s {value cvpdel_d700 + cvpdel_d701 + cvpdel_d706 + cvpdel_D_MDOTAA + cvpdel_d833 + cvpdel_d835 + cvpdel_d836 + cvpdel_d837 + cvpdel_d839 + cvpdel_d841 + cvpdel_d843 + cvpdel_d710 }
 
 
 ! ============================== MI Deliveries =================================
@@ -189,11 +189,11 @@ define cvpdel_d707 {
        value     0 }
        }
 
-define cvpdel_d607B {
+define cvpdel_D_MDOTAB {
 
        case      MAR  {
        condition month == MAR .and. wateryear > 1922
-       sum(i=-1,-12,-1) D607B(i) * cfs_taf(i) }
+       sum(i=-1,-12,-1) D_MDOTAB(i) * cfs_taf(i) }
 
        case      otherwise {
        condition always
@@ -212,7 +212,7 @@ define cvpdel_d608B {
        }
 
 ! Actual Exchange Deliveries
-define cvpdel_d_ex_s {value cvpdel_d707 + cvpdel_d607B + cvpdel_d608B }
+define cvpdel_d_ex_s {value cvpdel_d707 + cvpdel_D_MDOTAB + cvpdel_d608B }
 
 
 ! ================================= Refuge Deliveries =============================
@@ -228,11 +228,11 @@ define cvpdel_d708 {
        value     0 }
        }
 
-define cvpdel_d607C {
+define cvpdel_D_MDOTAC {
 
        case      MAR  {
        condition month == MAR .and. wateryear > 1922
-       sum(i=-1,-12,-1) D607C_PRF(i) * cfs_taf(i) }
+       sum(i=-1,-12,-1) D_MDOTAC_PRF(i) * cfs_taf(i) }
 
        case      otherwise {
        condition always
@@ -262,7 +262,7 @@ define cvpdel_d856 {
        }
 
 ! Actual Refuge Deliveries
-define cvpdel_d_ref_s { value cvpdel_d708 + cvpdel_d607C + cvpdel_d608C + cvpdel_d856 }
+define cvpdel_d_ref_s { value cvpdel_d708 + cvpdel_D_MDOTAC + cvpdel_d608C + cvpdel_d856 }
 
 ! ======================== Loss Deliveries =================================
 
@@ -277,11 +277,11 @@ define cvpdel_d702 {
        value     0 }
        }
 
-define cvpdel_d607D {
+define cvpdel_D_MDOTAD {
 
        case      MAR  {
        condition month == MAR .and. wateryear > 1922
-       sum(i=-1,-12,-1) D607D(i) * cfs_taf(i) }
+       sum(i=-1,-12,-1) D_MDOTAD(i) * cfs_taf(i) }
 
        case      otherwise {
        condition always
@@ -344,7 +344,7 @@ define cvpdel_d845 {
        }
 
 ! Actual Total Losses
-define cvpdel_d_ls_s { value cvpdel_d702 + cvpdel_d607D + cvpdel_d834 + cvpdel_d838 + cvpdel_d840 + cvpdel_d842 + cvpdel_d845}
+define cvpdel_d_ls_s { value cvpdel_d702 + cvpdel_D_MDOTAD + cvpdel_d834 + cvpdel_d838 + cvpdel_d840 + cvpdel_d842 + cvpdel_d845}
 
 
 ! ======================== Actual Total Deliveries =================================
