@@ -55,7 +55,7 @@ if int(CH_DLTSW)==3 {
 	define req_sac_est_ch {alias est_req_sac_ch kind 'ESTIMATE' units 'CFS'}
 
 	goal target_sac{
-	  lhs C_Hood_ANN 
+	  lhs C_Hood_ANN - C_Hood_Reop
 	!/* Don't use this goal if IF is available as alternate export pathway
 	  case NegCarriageBoth{
 		condition EM_m_sv >= 1.0 .or. RS_m_1_sv >= 1.0 .or. AN_m_sv >= 1.0 .or. CH_m_sv >= 1.0
@@ -73,7 +73,7 @@ if int(CH_DLTSW)==3 {
 
 if int(CH_DLTSW) == 0 .or. int(AN_DLTSW) == 0 {
 	goal target_sac{
-	  lhs C_Hood_ANN 
+	  lhs C_Hood_ANN - C_Hood_Reop
 	!/* Don't use this goal if IF is available as alternate export pathway
 	  case NegCarriageBoth{
 		condition EM_m_sv >= 1.0 .or. RS_m_1_sv >= 1.0 

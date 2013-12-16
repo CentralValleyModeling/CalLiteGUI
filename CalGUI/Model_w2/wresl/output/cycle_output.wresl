@@ -20,8 +20,8 @@ define[local] eiexpctrlUP       {alias eiexpctrl[UPSTREAM]      KIND 'debug' uni
 define[local] aprmayexpctrlUP       {alias aprmayexpctrl[UPSTREAM]      KIND 'debug' units 'cfs'}
 define[local] aprmaybanksctrlUP       {alias aprmaybanksctrl[UPSTREAM]      KIND 'debug' units 'cfs'}
 define[local] aprmayjonesctrlUP       {alias aprmayjonesctrl[UPSTREAM]      KIND 'debug' units 'cfs'}
-define[local] C209_np_exc_up	{alias C209_np_exc KIND 'FLOW-CHANNEL' UNITS 'CFS'}
-define[local] C209_prj_exc_up	{alias c209_prj KIND 'FLOW-CHANNEL' UNITS 'CFS'}
+define[local] C209_np_exc_up    {alias C209_np_exc KIND 'FLOW-CHANNEL' UNITS 'CFS'}
+define[local] C209_prj_exc_up   {alias c209_prj KIND 'FLOW-CHANNEL' UNITS 'CFS'}
 
 define[local] D_BanksBASE  {alias D_Banks[BASE]     KIND 'FLOW-DELIVERY' UNITS 'CFS'}
 define[local] D_Banks_swpBASE  {alias D_Banks_swp[BASE]     KIND 'FLOW-DELIVERY' UNITS 'CFS'}
@@ -98,8 +98,8 @@ define[local] C_HOOD_EXCUP {alias C_HOOD_EXC[UPSTREAM] kind 'debug' units 'CFS'}
 define[local] C_HOOD_EXCBASE {alias C_HOOD_EXC[BASE] kind 'debug' units 'CFS'}
 define[local] C_HOOD_ANNUP {alias C_HOOD_ANN[UPSTREAM] kind 'debug' units 'CFS'}
 define[local] C_HOOD_ANNBASE {alias C_HOOD_ANN[BASE] kind 'debug' units 'CFS'}
-define[local] C_HOODbase 	{alias C_HOOD[BASE] kind 'debug' units 'cfs'}
-define[local] C_HOODup 		{alias C_HOOD[UPSTREAM] kind 'debug' units 'cfs'}
+define[local] C_HOODbase    {alias C_HOOD[BASE] kind 'debug' units 'cfs'}
+define[local] C_HOODup      {alias C_HOOD[UPSTREAM] kind 'debug' units 'cfs'}
 
 define[local] C_HST_MIFUP {alias C_HST_MIF[UPSTREAM] kind 'debug' units 'CFS'}
 define[local] C_HST_MIFBASE {alias C_HST_MIF[BASE] kind 'debug' units 'CFS'}
@@ -150,8 +150,8 @@ define[local] C_YOLOBP_MIFUP {alias C_YOLOBP_MIF[UPSTREAM] kind 'debug' units 'C
 define[local] C_YOLOBP_MIFBASE {alias C_YOLOBP_MIF[BASE] kind 'debug' units 'CFS'}
 define[local] C_YOLOBP_EXCUP {alias C_YOLOBP_EXC[UPSTREAM] kind 'debug' units 'CFS'}
 define[local] C_YOLOBP_EXCBASE {alias C_YOLOBP_EXC[BASE] kind 'debug' units 'CFS'}
-define[local] C_YOLOBPup 	{alias C_YOLOBP[UPSTREAM] kind 'debug' units 'cfs'}
-define[local] C_YOLOBPbase 	{alias C_YOLOBP[BASE] kind 'debug' units 'cfs'}
+define[local] C_YOLOBPup    {alias C_YOLOBP[UPSTREAM] kind 'debug' units 'cfs'}
+define[local] C_YOLOBPbase  {alias C_YOLOBP[BASE] kind 'debug' units 'cfs'}
 
 define[local] C_YUBFEA_MIFUP {alias C_YUBFEA_MIF[UPSTREAM] kind 'debug' units 'CFS'}
 define[local] C_YUBFEA_MIFBASE {alias C_YUBFEA_MIF[BASE] kind 'debug' units 'CFS'}
@@ -210,17 +210,135 @@ define[local] S_OROVLLEVEL3DVBASE {alias S_OROVLLEVEL3DV[BASE] kind 'debug' unit
 define[local] S_OROVLLEVEL4DVBASE {alias S_OROVLLEVEL4DV[BASE] kind 'debug' units 'TAF'}
 
 
-define[local] C_OrovlUp 	{alias C_Orovl[UPSTREAM] kind 'debug' units 'cfs'}
-define[local] C_OrovlBase	{alias C_Orovl[BASE] kind 'debug' units 'cfs'}
+define[local] C_OrovlUp     {alias C_Orovl[UPSTREAM] kind 'debug' units 'cfs'}
+define[local] C_OrovlBase   {alias C_Orovl[BASE] kind 'debug' units 'cfs'}
 
 define[local] exest_SWPDemB     {alias exp_est_SWPDem[BASE] kind 'debug' units 'cfs'}
-define[local] exest_SWPRCB	{alias exp_est_SWPRC[BASE] kind 'debug' units 'cfs'}
-define[local] exest_CVPDemB 	{alias exp_est_CVPDem[Base] kind 'debug' units 'cfs'}
-define[local] exest_CVPRCB 	{alias exp_est_CVPRC[BASE] kind 'debug' units 'cfs'}
-define[local] C_Orovl_IBU_B 	{alias C_Orovl_IBU[Base] kind 'debug' units 'cfs'}
-define[local] C_Orovl_EXP_B	{alias C_Orovl_EXP[BASE] kind 'debug' units 'cfs'}
-define[local] C_Orovl_IBU_U 	{alias C_Orovl_IBU[UPSTREAM] kind 'debug' units 'cfs'}
-define[local] C_Orovl_EXP_U	{alias C_Orovl_EXP[UPSTREAM] kind 'debug' units 'cfs'}
+define[local] exest_SWPRCB  {alias exp_est_SWPRC[BASE] kind 'debug' units 'cfs'}
+define[local] exest_CVPDemB     {alias exp_est_CVPDem[Base] kind 'debug' units 'cfs'}
+define[local] exest_CVPRCB  {alias exp_est_CVPRC[BASE] kind 'debug' units 'cfs'}
+define[local] C_Orovl_IBU_B     {alias C_Orovl_IBU[Base] kind 'debug' units 'cfs'}
+define[local] C_Orovl_EXP_B {alias C_Orovl_EXP[BASE] kind 'debug' units 'cfs'}
+define[local] C_Orovl_IBU_U     {alias C_Orovl_IBU[UPSTREAM] kind 'debug' units 'cfs'}
+define[local] C_Orovl_EXP_U {alias C_Orovl_EXP[UPSTREAM] kind 'debug' units 'cfs'}
+
+!define bypassdv_up {alias bypassdv[upstream] kind 'debug' units 'cfs'}
+!define ndddv_up {alias ndddv[upstream] kind 'debug' units 'cfs'}
+define d_hoodif_up {alias d_hoodif[upstream] kind 'debug' units 'cfs'}
+define c_hood_up {alias c_hood[upstream] kind 'debug' units 'cfs'}
+define c_sacsjr_up {alias c_sacsjr[upstream] kind 'debug' units 'cfs'}
+define d_exptd_up {alias d_exptd[upstream] kind 'debug' units 'cfs'}
+define c_freeport_up {alias c_freeport[upstream] kind 'debug' units 'cfs'}
+define c_delta_up {alias c_delta[upstream] kind 'debug' units 'cfs'}
+define c_kswck_up {alias c_kswck[upstream] kind 'debug' units 'cfs'}
+define c_nimbus_up {alias c_nimbus[upstream] kind 'debug' units 'cfs'}
+define c_orovl_up {alias c_orovl[upstream] kind 'debug' units 'cfs'}
+define c_omr_up {alias c_omr[upstream] kind 'debug' units 'cfs'}
+define d_banks_up {alias d_banks[upstream] kind 'debug' units 'cfs'}
+define d_banks_td_up {alias d_banks_td[upstream] kind 'debug' units 'cfs'}
+define d_jones_up {alias d_jones[upstream] kind 'debug' units 'cfs'}
+define d_jones_td_up {alias d_jones_td[upstream] kind 'debug' units 'cfs'}
+define d_deltareqd_up {alias d_deltareqd[upstream] kind 'debug' units 'cfs'}
+define d_freweir_up {alias d_freweir[upstream] kind 'debug' units 'cfs'}
+
+define bypassdv_base {alias bypassdv[base] kind 'debug' units 'cfs'}
+define ndddv_base {alias ndddv[base] kind 'debug' units 'cfs'}
+define d_hoodif_base {alias d_hoodif[base] kind 'debug' units 'cfs'}
+define c_hood_base {alias c_hood[base] kind 'debug' units 'cfs'}
+define c_sacsjr_base {alias c_sacsjr[base] kind 'debug' units 'cfs'}
+define d_exptd_base {alias d_exptd[base] kind 'debug' units 'cfs'}
+define c_freeport_base {alias c_freeport[base] kind 'debug' units 'cfs'}
+define c_delta_base {alias c_delta[base] kind 'debug' units 'cfs'}
+define c_kswck_base {alias c_kswck[base] kind 'debug' units 'cfs'}
+define c_nimbus_base {alias c_nimbus[base] kind 'debug' units 'cfs'}
+define c_orovl_base {alias c_orovl[base] kind 'debug' units 'cfs'}
+define c_omr_base {alias c_omr[base] kind 'debug' units 'cfs'}
+define d_banks_base {alias d_banks[base] kind 'debug' units 'cfs'}
+define d_banks_td_base {alias d_banks_td[base] kind 'debug' units 'cfs'}
+define d_jones_base {alias d_jones[base] kind 'debug' units 'cfs'}
+define d_jones_td_base {alias d_jones_td[base] kind 'debug' units 'cfs'}
+define d_deltareqd_base {alias d_deltareqd[base] kind 'debug' units 'cfs'}
+define d_freweir_base {alias d_freweir[base] kind 'debug' units 'cfs'}
+
+define bypassdv_B2_BO {alias bypassdv[B2_BO] kind 'debug' units 'cfs'}
+define ndddv_B2_BO {alias ndddv[B2_BO] kind 'debug' units 'cfs'}
+define d_hoodif_B2_BO {alias d_hoodif[B2_BO] kind 'debug' units 'cfs'}
+define c_hood_B2_BO {alias c_hood[B2_BO] kind 'debug' units 'cfs'}
+define c_freeport_B2_BO {alias c_freeport[B2_BO] kind 'debug' units 'cfs'}
+define c_delta_B2_BO {alias c_delta[B2_BO] kind 'debug' units 'cfs'}
+define c_kswck_B2_BO {alias c_kswck[B2_BO] kind 'debug' units 'cfs'}
+define c_nimbus_B2_BO {alias c_nimbus[B2_BO] kind 'debug' units 'cfs'}
+define c_orovl_B2_BO {alias c_orovl[B2_BO] kind 'debug' units 'cfs'}
+define c_omr_B2_BO {alias c_omr[B2_BO] kind 'debug' units 'cfs'}
+define d_banks_B2_BO {alias d_banks[B2_BO] kind 'debug' units 'cfs'}
+define d_banks_td_B2_BO {alias d_banks_td[B2_BO] kind 'debug' units 'cfs'}
+define d_jones_B2_BO {alias d_jones[B2_BO] kind 'debug' units 'cfs'}
+define d_jones_td_B2_BO {alias d_jones_td[B2_BO] kind 'debug' units 'cfs'}
+define d_deltareqd_B2_BO {alias d_deltareqd[B2_BO] kind 'debug' units 'cfs'}
+define d_freweir_B2_BO {alias d_freweir[B2_BO] kind 'debug' units 'cfs'}
+
+
+/***
+define bypassdv_daily1 {alias bypassdv[daily1] kind 'debug' units 'cfs'}
+define bypassdv_daily2 {alias bypassdv[daily2] kind 'debug' units 'cfs'}
+
+define ndddv_daily1 {alias ndddv[daily1] kind 'debug' units 'cfs'}
+define ndddv_daily2 {alias ndddv[daily2] kind 'debug' units 'cfs'}
+
+!define c_freeport_bfmin_daily1 {alias c_freeport_bfmin[daily1] kind 'debug' units 'cfs'}
+!define c_freeport_bfmin_daily2 {alias c_freeport_bfmin[daily2] kind 'debug' units 'cfs'}
+
+!define c_freeport_hoodif_daily1 {alias c_freeport_hoodif[daily1] kind 'debug' units 'cfs'}
+!define c_freeport_hoodif_daily2 {alias c_freeport_hoodif[daily2] kind 'debug' units 'cfs'}
+
+define d_hoodif_daily1 {alias d_hoodif[daily1] kind 'debug' units 'cfs'}
+define d_hoodif_daily2 {alias d_hoodif[daily2] kind 'debug' units 'cfs'}
+
+define c_hood_daily1 {alias c_hood[daily1] kind 'debug' units 'cfs'}
+define c_hood_daily2 {alias c_hood[daily2] kind 'debug' units 'cfs'}
+
+define c_sacsjr_daily1 {alias c_sacsjr[daily1] kind 'debug' units 'cfs'}
+define c_sacsjr_daily2 {alias c_sacsjr[daily2] kind 'debug' units 'cfs'}
+
+define d_exptd_daily1 {alias d_exptd[daily1] kind 'debug' units 'cfs'}
+define d_exptd_daily2 {alias d_exptd[daily2] kind 'debug' units 'cfs'}
+
+define c_freeport_daily1 {alias c_freeport[daily1] kind 'debug' units 'cfs'}
+define c_freeport_daily2 {alias c_freeport[daily2] kind 'debug' units 'cfs'}
+
+define c_delta_daily1 {alias c_delta[daily1] kind 'debug' units 'cfs'}
+define c_delta_daily2 {alias c_delta[daily2] kind 'debug' units 'cfs'}
+
+define c_kswck_daily1 {alias c_kswck[daily1] kind 'debug' units 'cfs'}
+define c_kswck_daily2 {alias c_kswck[daily2] kind 'debug' units 'cfs'}
+
+define c_nimbus_daily1 {alias c_nimbus[daily1] kind 'debug' units 'cfs'}
+define c_nimbus_daily2 {alias c_nimbus[daily2] kind 'debug' units 'cfs'}
+
+define c_orovl_daily1 {alias c_orovl[daily1] kind 'debug' units 'cfs'}
+define c_orovl_daily2 {alias c_orovl[daily2] kind 'debug' units 'cfs'}
+
+define c_omr_daily1 {alias c_omr[daily1] kind 'debug' units 'cfs'}
+define c_omr_daily2 {alias c_omr[daily2] kind 'debug' units 'cfs'}
+
+define d_banks_daily1 {alias d_banks[daily1] kind 'debug' units 'cfs'}
+define d_banks_daily2 {alias d_banks[daily2] kind 'debug' units 'cfs'}
+
+define d_banks_td_daily1 {alias d_banks_td[daily1] kind 'debug' units 'cfs'}
+define d_banks_td_daily2 {alias d_banks_td[daily2] kind 'debug' units 'cfs'}
+
+define d_jones_daily1 {alias d_jones[daily1] kind 'debug' units 'cfs'}
+define d_jones_daily2 {alias d_jones[daily2] kind 'debug' units 'cfs'}
+
+define d_jones_td_daily1 {alias d_jones_td[daily1] kind 'debug' units 'cfs'}
+define d_jones_td_daily2 {alias d_jones_td[daily2] kind 'debug' units 'cfs'}
+
+define d_deltareqd_daily1 {alias d_deltareqd[daily1] kind 'debug' units 'cfs'}
+define d_deltareqd_daily2 {alias d_deltareqd[daily2] kind 'debug' units 'cfs'}
+
+define d_freweir_daily1 {alias d_freweir[daily1] kind 'debug' units 'cfs'}
+define d_freweir_daily2 {alias d_freweir[daily2] kind 'debug' units 'cfs'}
+***/
 
 define[local] dxc_daysopenUP	{alias dxc_daysopen [UPSTREAM] kind 'debug' units 'NONE'}
 define[local] C_SacSJRUP	{alias C_SacSJR [UPSTREAM] kind 'debug' units 'CFS'}

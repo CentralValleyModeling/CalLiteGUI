@@ -17,7 +17,7 @@ INCLUDE '\CVP_delivery_logic_system\Delivery_carryover_split_CVP_system.wresl' !
 INCLUDE '\CVP_delivery_logic_system\CVPcut_system.wresl' ! Develops system wide cutback numbers, and Cuts back NOD deliveries based on difference between 
                                                         ! delivery target defined above and minimum of annual 
                                                         ! contract demands and annual diversion requirements
-!INCLUDE '\CVP_delivery_logic_system\sum_cvp_reduced_demands.wresl'  ! computes reduced demands for use in the 
+INCLUDE '\CVP_delivery_logic_system\sum_cvp_reduced_demands.wresl'  ! computes reduced demands for use in the 
                                                                 ! WSI-DI curve generation code only
-                                                                ! commented out for now until we decide how handle WSI-DI curve generation
+                                                                
                                                                 

@@ -6,6 +6,9 @@ Z.Q. Richard Chen DWR (02/07/2011)
 Read option switches for lookup table
 **************************************/
 
+/* Run Settings Dashboard */
+define RunBasis {select Option from GUI_RunBasis where Index=1}
+
 /* Hydro Climate Dashboard*/
 !LOD_Future now handled in main file
 !define LOD_Future         {select Option from GUI_HydroClimate where Index=1} !Export_Ops\OMR\OMR_constraint_CL.wresl
@@ -18,7 +21,10 @@ define  X2_ANN_KM {                                                           !D
     condition always 
     value 0}}
     
-define Climate_Proj       {select Option from GUI_HydroClimate where Index=3} !Place Holder at this time
+define CC_Timeframe {select Option from GUI_HydroClimate where Index = 4}
+define CC_Num {select Option from GUI_HydroClimate where Index = 5}
+define Climate_Proj {value CC_Timeframe + CC_Num} 
+!define Climate_Proj       {select Option from GUI_HydroClimate where Index=3} !Place Holder at this time
 
 
 /* South of Delta SWP and CVP options*/
@@ -75,8 +81,9 @@ define Action_4_1_2       {select Option from GUI_RPAsOtherRegs where Index=2} !
 define Action_4_2_1       {select Option from GUI_RPAsOtherRegs where Index=3} !Export_Ops\NMFS_SALMON_BO_SJR.wresl 
 define OMRBOON            {select Option from GUI_RPAsOtherRegs where Index=4} !whether implement FWS Action : no action: value=0; action: value=1
 define ClearCrkBOswitch   {select Option from GUI_RPAsOtherRegs where Index=5} !BO and B2Actions\B2Action1Repeat.wresl
-!define BOExportEst_switch {select Option from options where Index=6} !cvp_dellogic\CVP_delivery_logic_south\Export_index_delivery_CVP.wresl
-!define BOON_SWP           {select Option from options where Index=7}!swp_dellogic\WSI_DI\delcar_swp.wresl
+define BOON_CVP		  {select Option from GUI_RPAsOtherRegs where Index=6}!swp_dellogic\WSI_DI\delcar_cvp_s.wresl
+define BOON_SWP           {select Option from GUI_RPAsOtherRegs where Index=7}!swp_dellogic\WSI_DI\delcar_swp.wresl
+!define ExpIndex_switch	  {select Option from GUI_RPAsOtherRegs where Index=19}!Export Index Delivery CVP
 
 /*NON-D1641 Delta Flow Switches     */ 
 define QOMR_DLTSW   {select OPTION from GUI_RPAsOtherRegs where Index = 8}
@@ -99,6 +106,9 @@ define IntertieSwitch     {select Option from GUI_Operations where Index=3} !Exp
 define CVPDedBanksSwitch  {value 0} ! use as place holder
 define SWPShastaSwitch    {value 0} ! use as place holder
  
+/* Water Management Action*/
+define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Facility=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
+ 
  /* San Joaquin Switches */
 define VAMP_Flow          {select Option from GUI_SJR where Index=1} !VAMP_Flow -  VAMP pulse flows (Apr 15-May 15)
 define Vern_RPA           {select Option from GUI_SJR where Index=2} !Vern_RPA -  Vernalis RPA 60-day pulse flow (April-May).
@@ -108,5 +118,10 @@ define STAN_RPA           {select Option from GUI_SJR where Index=5} !STAN_RPA -
 define REST_REQ           {select Option from GUI_SJR where Index=6} !REST_REQ - SJR Restoration flows.  Allow user to switch between interim=0 and full=1 flows
 !Dynamic_SJR now handled in main file
 !define Dynamic_SJR	  {select Option from GUI_SJR where Index=7} !Dynamic_SJR - Turns on dynamic SJR
+
+/* Facility options*/
+define EnlargShastaOn    {select Option from GUI_EnlargedShasta where Index=1} 
+define EnlargShastaSize  {select Option from GUI_EnlargedShasta where Index=2} 
+
 
  

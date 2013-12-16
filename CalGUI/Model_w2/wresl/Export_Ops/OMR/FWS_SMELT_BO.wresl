@@ -173,8 +173,76 @@ define A2_OMR_Targ{
 !Sacramento Executive Airport air temperature is assumed to correlate with the three stations (Antioch, Mossdale, and Rio Vista) on a monthly basis.
 !Then, assuming the avergae monthly temperature occurs in mid-month, daily water temperature is estiamted by interpolation.
 !Dates of occurence for each year is pre-processed and provided as an input to CALSIM II.
-define temp_trig_mo    {select WMonth from FWS_BO_A3_Temp where  YEAR= wateryear}
-define temp_trig_da    {select Day from FWS_BO_A3_Temp where  YEAR= wateryear}
+define temp_trig_mo    {
+    case NoClimateChange {
+    	condition Climate_Proj == 0
+	select WMonth_0 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario1 {
+    	condition Climate_Proj == 1
+    	select WMonth_1 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario2 {
+    	condition Climate_Proj == 2
+    	select WMonth_2 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario3 {
+    	condition Climate_Proj == 3
+    	select WMonth_3 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario4 {
+    	condition Climate_Proj == 4
+    	select WMonth_4 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario5 {
+    	condition Climate_Proj == 5
+    	select WMonth_5 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario6 {
+    	condition Climate_Proj == 6
+    	select WMonth_6 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario7 {
+    	condition Climate_Proj == 7
+    	select WMonth_7 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario8 {
+    	condition Climate_Proj == 8
+    	select WMonth_8 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario9 {
+    	condition Climate_Proj == 9
+    	select WMonth_9 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario10 {
+    	condition Climate_Proj == 10
+    	select WMonth_10 from FWS_BO_A3_Temp where  YEAR= wateryear}    	
+    }
+define temp_trig_da    {
+    case NoClimateChange {
+    	condition Climate_Proj == 0
+    	select Day_0 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario1 {
+    	condition Climate_Proj == 1
+    	select Day_1 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario2 {
+    	condition Climate_Proj == 2
+    	select Day_2 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario3 {
+    	condition Climate_Proj == 3
+    	select Day_3 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario4 {
+    	condition Climate_Proj == 4
+    	select Day_4 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario5 {
+    	condition Climate_Proj == 5
+    	select Day_5 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario6 {
+    	condition Climate_Proj == 6
+    	select Day_6 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario7 {
+    	condition Climate_Proj == 7
+    	select Day_7 from FWS_BO_A3_Temp where  YEAR= wateryear}
+    case CC_Scenario8 {
+    	condition Climate_Proj == 8
+    	select Day_8 from FWS_BO_A3_Temp where  YEAR= wateryear}    	
+    case CC_Scenario9 {
+    	condition Climate_Proj == 9
+    	select Day_9 from FWS_BO_A3_Temp where  YEAR= wateryear}    	
+    case CC_Scenario10 {
+    	condition Climate_Proj == 10
+    	select Day_10 from FWS_BO_A3_Temp where  YEAR= wateryear}    	    	
+   }
 
 !define temp_trig_modv {alias temp_trig_mo kind 'TRIGGER' units 'NONE'}
 !define temp_trig_dadv {alias temp_trig_da kind 'TRIGGER' units 'NONE'}

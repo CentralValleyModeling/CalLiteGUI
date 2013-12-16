@@ -15,8 +15,6 @@ selection of preBO vs BO procedures.
 ! This code generates values used for preBO allocation procedures
 define PulseHidv {std kind 'counter' UNITS 'NONE'}
 define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}
-!define SJR_ANN     {timeseries kind 'FLOW-CHANNEL'  units 'CFS'}
-
 define SJR_ANN     {std kind 'FLOW-CHANNEL'  units 'CFS'}
 goal setSJR_ANN {SJR_ANN = C_SJRVER}
 
@@ -37,6 +35,7 @@ define BanksCapPermit1_ {
 		condition always
 		select PermitCap1_D1641 from BanksLimits where month=month}	
 }
+
 define BanksCapPermit2_ {select PermitCap2 from BanksLimits where month=month}
 define EWAReservedCap_ {select EWACap from BanksLimits where month=month}
 define BanksCapPermit_ {value min(BanksCapPermit1_, BanksCapPermit2_ - EWAReservedCap_) }
@@ -65,8 +64,6 @@ define PulseExpRes1 {
         value       0.0}
 }
 
-define B2Action4On {timeseries kind 'TRIGGER' units 'NONE'}
-
 ! ***********************************************************
 ! Read in inputs used for BO allocation procedures
 define estCVPExp_MarBO {select estimate from ExportEstimate_CVP where month = Mar}
@@ -79,7 +76,7 @@ define estCVPExp_WetApr {select WetSJR from ExportEstimate_CVP where month = Apr
 define estCVPExp_WetMay {select WetSJR from ExportEstimate_CVP where month = May}
 define estCVPExp_WetJun {select WetSJR from ExportEstimate_CVP where month = Jun}
 
-!is this a 60-20-20 wet year?
+! is this a 60-20-20 wet year?
 define wetSJR {
     case Wet {
         condition wyt_SJR == 1
@@ -100,31 +97,30 @@ define buffCVP_AprAug {select buffer from ExportEstimate_CVP where month = Apr}
 define buffCVP_MayAug {select buffer from ExportEstimate_CVP where month = May}
 
 ! Define estimated exports for preBO (based on B2) and BO conditions.
-define estCVPExp_Mar {select estimate from ExportEstimate_CVP where month = Mar}
-define estCVPExp_Apr {select estimate from ExportEstimate_CVP where month = Apr}
-define estCVPExp_May {select estimate from ExportEstimate_CVP where month = May}
-define estCVPExp_Jun {select estimate from ExportEstimate_CVP where month = Jun}
-define estCVPExp_JulAug {select estimate from ExportEstimate_CVP where month = Jul}
-/*
 define estCVPExp_Mar {
+	case D1485 {
+		condition int(RunBasis) == 0
+			value 4600.}
     case preBO {
-        condition int(BOExportEst_switch) == 0
+        condition int(BOON_CVP) == 0
             value 4600. - 50. * taf_cfs }   
     case BO {                              
-        condition int(BOExportEst_switch) == 1
+        condition int(BOON_CVP) == 1
             value estCVPExp_MarBO }
     case other {
         condition always
             value 0.}
 }
-define estCVPExp_Mar_DV {alias estCVPExp_Mar kind 'debug' units 'cfs'}
 
 define estCVPExp_Apr {
+	case D1485 {
+		condition int(RunBasis) == 0
+			value 4600.	}
     case preBO {
-        condition int(BOExportEst_switch) == 0
+        condition int(BOON_CVP) == 0
             value 1125. }
     case BO {
-        condition int(BOExportEst_switch) == 1
+        condition int(BOON_CVP) == 1
             value max(estCVPExp_AprBO, wetSJR*estCVPExp_WetApr) }
     case other {
         condition always
@@ -132,17 +128,20 @@ define estCVPExp_Apr {
 }
 
 define estCVPExp_May {
+	case D1485 {
+		condition int(RunBasis) == 0
+			value 4600.}
     case preBO_B2Action4On {
-        condition int(BOExportEst_switch) == 0 .and. month == MAY .and. int(B2Action4On) == 1
+        condition int(BOON_CVP) == 0 .and. month == MAY .and. int(B2Action4) == 1
             value PulseExpRes1*0.5 }
     case preBO_B2Action4Off {
-        condition int(BOExportEst_switch) == 0 .and. month == MAY .and. int(B2Action4On) == 0
+        condition int(BOON_CVP) == 0 .and. month == MAY .and. int(B2Action4) == 0
             value PulseExpRes1*0.5*15./31. + 3000.*16./31. }
     case preBO_otherwise {
-        condition int(BOExportEst_switch) == 0
+        condition int(BOON_CVP) == 0
             value 1125. }
     case BO {
-        condition int(BOExportEst_switch) == 1
+        condition int(BOON_CVP) == 1
             value max(estCVPExp_MayBO, wetSJR*estCVPExp_WetMay) }
     case other {
         condition always
@@ -150,11 +149,14 @@ define estCVPExp_May {
 }
 
 define estCVPExp_Jun {
+	case D1485 {
+		condition int(RunBasis) == 0
+			value 4600.}
     case preBO {
-        condition int(BOExportEst_switch) == 0
+        condition int(BOON_CVP) == 0
             value 3000. }
     case BO {
-        condition int(BOExportEst_switch) == 1
+        condition int(BOON_CVP) == 1
             value max(estCVPExp_JunBO, wetSJR*estCVPExp_WetJun) }
     case other {
         condition always
@@ -162,49 +164,43 @@ define estCVPExp_Jun {
 }
 
 define estCVPExp_JulAug {
+	case D1485 {
+		condition int(RunBasis) == 0
+			value 4600.}
     case preBO {
-        condition int(BOExportEst_switch) == 0
+        condition int(BOON_CVP) == 0
             value 4600. }
     case BO {
-        condition int(BOExportEst_switch) == 1
+        condition int(BOON_CVP) == 1
             value estCVPExp_JulAugBO }
     case other {
         condition always
             value 0.}
 }
-*/
 
 ! Estimate Export Capability for use in determining delivery target limitations
 define CVPDelCapEst {
     case March {
         condition month==MAR
         value estCVPExp_Mar*cfs_taf
-            + max(estCVPExp_Apr, wetSJR*estCVPExp_WetApr)*cfs_taf(1)
-            + max(estCVPExp_May, wetSJR*estCVPExp_WetMay)*cfs_taf(2)
-            + max(estCVPExp_Jun, wetSJR*estCVPExp_WetJun)*cfs_taf(3)
-!            + estCVPExp_Apr*cfs_taf(1)
-!            + estCVPExp_May*cfs_taf(2)
-!            + estCVPExp_Jun*cfs_taf(3)
+            + estCVPExp_Apr*cfs_taf(1)
+            + estCVPExp_May*cfs_taf(2)
+            + estCVPExp_Jun*cfs_taf(3)
             + estCVPExp_JulAug*cfs_taf(4)
             + estCVPExp_JulAug*cfs_taf(5)
             + S_SLCVP(-1) - buffCVP_MarAug + jbypass_del + AnnualBanksCVP }
-	case April {
+    case April {
         condition month == APR
-        value max(estCVPExp_Apr, wetSJR*estCVPExp_WetApr)*cfs_taf
-            + max(estCVPExp_May, wetSJR*estCVPExp_WetMay)*cfs_taf(1)
-            + max(estCVPExp_Jun, wetSJR*estCVPExp_WetJun)*cfs_taf(2)
-!        value estCVPExp_Apr*cfs_taf
-!            + estCVPExp_May*cfs_taf(1)
-!            + estCVPExp_Jun*cfs_taf(2)
+        value estCVPExp_Apr*cfs_taf
+            + estCVPExp_May*cfs_taf(1)
+            + estCVPExp_Jun*cfs_taf(2)
             + estCVPExp_JulAug*cfs_taf(3)
             + estCVPExp_JulAug*cfs_taf(4)
             + S_SLCVP(-1) - buffCVP_AprAug + jbypass_del + AnnualBanksCVP }
     case May {
         condition month == MAY
-        value max(estCVPExp_May, wetSJR*estCVPExp_WetMay)*cfs_taf
-            + max(estCVPExp_Jun, wetSJR*estCVPExp_WetJun)*cfs_taf(1)
-!        value estCVPExp_May*cfs_taf
-!            + estCVPExp_Jun*cfs_taf(1)
+        value estCVPExp_May*cfs_taf
+            + estCVPExp_Jun*cfs_taf(1)
             + estCVPExp_JulAug*cfs_taf(2)
             + estCVPExp_JulAug*cfs_taf(3)
             + S_SLCVP(-1) - buffCVP_MayAug + jbypass_del + AnnualBanksCVP }

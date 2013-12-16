@@ -13,11 +13,61 @@ River Index (SRI) - Sum of Oroville Lake Inflows (I_Orovl) since 1-OCT.
 ************************************/
 
 define frcst_fea {
-    case JantoMay  {
-        condition   month >= JAN .and. month <=MAY
-        select      frcst_fea
+    case JantoMay0  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 0
+        select      frcst_fea_0
         from        feather_runoff_forecast
-        where       wateryear=wateryear, month=month  }
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay1  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 1
+        select      frcst_fea_1
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay2  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 2
+        select      frcst_fea_2
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay3  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 3
+        select      frcst_fea_3
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay4  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 4
+        select      frcst_fea_4
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay5  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 5
+        select      frcst_fea_5
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay6  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 6
+        select      frcst_fea_6
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay7  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 7
+        select      frcst_fea_7
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay8  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 8
+        select      frcst_fea_8
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay9  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 9
+        select      frcst_fea_9
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }        
+    case JantoMay10  {
+        condition   month >= JAN .and. month <=MAY .and. Climate_Proj == 10
+        select      frcst_fea_10
+        from        feather_runoff_forecast
+        where       wateryear=wateryear, month=month  }                
   case other {
     condition   always
     value       0.0 }

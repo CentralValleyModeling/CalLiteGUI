@@ -71,14 +71,58 @@ define F_Shsta {std kind 'FLOW-SPILL-NON-RECOV' units 'CFS'}
 define E_Shsta {lower unbounded kind 'EVAPORATION' units 'CFS'}
 define A_Shsta {std kind 'SURFACE-AREA' units 'ACRES'}
 define evap_S_Shsta {timeseries kind 'EVAPORATION-RATE' units 'IN'}
-define A_Shstalast {select area from res_info given storage=1000*S_Shsta(-1) use linear where res_num=4}
-define A_Shstaforward {select area from res_info given storage=1050*S_Shsta(-1) use linear where res_num=4}
-define A_Shstaback {select area from res_info given storage=950*S_Shsta(-1) use linear where res_num=4}
-define coefev_Shsta {value (A_Shstaforward - A_Shstaback)/(100*max(0.01,S_Shsta(-1)))}
-goal area_Shsta {A_Shsta=A_Shstalast+1000*coefev_Shsta*S_Shsta-1000*coefev_Shsta*S_Shsta(-1)}
+define A_Shstalast {select area from res_info given storage=1000*(S_Shsta(-1)+S_ShstaE(-1))  use linear where res_num=4}
+define A_Shstaforward {select area from res_info given storage=1050*(S_Shsta(-1)+S_ShstaE(-1))  use linear where res_num=4}
+define A_Shstaback {select area from res_info given storage=950*(S_Shsta(-1)+S_ShstaE(-1))  use linear where res_num=4}
+define coefev_Shsta {value (A_Shstaforward - A_Shstaback)/(100*max(0.01,(S_Shsta(-1)+S_ShstaE(-1)) ))}
+goal area_Shsta {A_Shsta=A_Shstalast+1000*coefev_Shsta*(S_Shsta+S_ShstaE)-1000*coefev_Shsta*(S_Shsta(-1)+S_ShstaE(-1)) }
 goal evap_Shsta {E_Shsta*cfs_af=(evap_S_Shsta/24)*A_Shstalast+(evap_S_Shsta/24)*A_Shsta}
 define relcap_Shsta {select discharge from res_info given storage=1000*S_Shsta(-1) use linear where res_num=4}
 goal maxrelease_Shsta {C_Shsta<relcap_Shsta}
+define EnlargeShSize {
+    case Enlarg256 {
+    	condition  EnlargShastaOn  == 1. .AND. EnlargShastaSize == 1.
+	value 256.}
+    case Enlarg443 {
+    	condition  EnlargShastaOn  == 1. .AND. EnlargShastaSize == 2.
+	value 443.}    
+    case Enlarg634 {
+    	condition  EnlargShastaOn  == 1. .AND. EnlargShastaSize == 3.
+	value 634.}
+    case other  {
+    	condition   always
+	value 0.}
+}
+define S_ShstaElevel1 {value 0.0}
+define S_ShstaE_1 {std kind 'STORAGE-ZONE' units 'TAF'}
+goal S_ShstaEZone1 {S_ShstaE_1 < S_ShstaElevel1}
+define S_ShstaElevel2 {value 0.0}
+define S_ShstaE_2 {std kind 'STORAGE-ZONE' units 'TAF'}
+goal S_ShstaEZone2 {S_ShstaE_2 < S_ShstaElevel2-S_ShstaElevel1}
+!Level 3 only changes for 443 and 634 size increases
+define S_ShstaElevel3 {
+    case nochange {
+    	condition EnlargShastaOn  == 1. .AND. EnlargShastaSize > 1.
+	value EnlargeShSize}
+    case other  {
+    	condition   always
+	value 0.}
+}
+define S_ShstaE_3 {std kind 'STORAGE-ZONE' units 'TAF'}
+goal S_ShstaEZone3 {S_ShstaE_3 < S_ShstaElevel3-S_ShstaElevel2}
+define S_ShstaElevel4 {value EnlargeShSize}
+define S_ShstaE_4 {std kind 'STORAGE-ZONE' units 'TAF'}
+goal S_ShstaEZone4 {S_ShstaE_4 < S_ShstaElevel4-S_ShstaElevel3}
+define S_ShstaElevel5 {value EnlargeShSize}
+define S_ShstaE_5 {std kind 'STORAGE-ZONE' units 'TAF'}
+goal S_ShstaEZone5 {S_ShstaE_5 < S_ShstaElevel5-S_ShstaElevel4}
+define S_ShstaE {std kind 'STORAGE' units 'TAF'} !SHASTA ENLARGEMENT
+goal storage_ShstaE {S_ShstaE=S_ShstaE_1+S_ShstaE_2+S_ShstaE_3+S_ShstaE_4+S_ShstaE_5}
+define F_ShstaE {std kind 'FLOW-SPILL-NON-RECOV' units 'CFS'}
+define E_ShstaE {lower unbounded kind 'EVAPORATION' units 'CFS'}
+goal evap_ShstaE {E_ShstaE*cfs_af=0.0}
+define relcap_ShstaE {select discharge from res_info given storage=1000*S_ShstaE(-1) use linear where res_num=44}
+goal maxrelease_ShstaE {C_ShstaE_02<relcap_ShstaE}
 define S_Orovllevel1 {value 29.6}
 define S_Orovl_1 {std kind 'STORAGE-ZONE' units 'TAF'}
 goal S_OrovlZone1 {S_Orovl_1 < S_Orovllevel1}

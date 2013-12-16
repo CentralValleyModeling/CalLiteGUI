@@ -20,7 +20,7 @@ goal set_DI_CVP_s {
      lhs  DI_act_CVP_s
      case MAR {
           condition      month == MAR
-          rhs            tot_del_cvp_s + S_TRNTY(prevSEP) + S_SHSTA(prevSEP) + S_FOLSM(prevSEP) + S_SLCVP(prevSEP) }
+          rhs            tot_del_cvp_s + S_TRNTY(prevSEP) + S_SHSTA(prevSEP) + S_SHSTAE(prevSEP) + S_FOLSM(prevSEP) + S_SLCVP(prevSEP) }
 
      case other {
           condition      always
@@ -33,7 +33,7 @@ goal set_DI_CVP_sys {
      lhs  DI_act_CVP_sys
      case MAR {
           condition      month == MAR
-          rhs            tot_del_cvp_n + tot_del_cvp_s + S_TRNTY(prevSEP) + S_SHSTA(prevSEP) + S_FOLSM(prevSEP) + S_SLCVP(prevSEP) }
+          rhs            tot_del_cvp_n + tot_del_cvp_s + S_TRNTY(prevSEP) + S_SHSTA(prevSEP) + S_SHSTAE(prevSEP) + S_FOLSM(prevSEP) + S_SLCVP(prevSEP) }
 
      case other {
           condition      always

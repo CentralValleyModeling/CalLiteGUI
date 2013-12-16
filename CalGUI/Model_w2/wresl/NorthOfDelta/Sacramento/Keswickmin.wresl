@@ -7,11 +7,21 @@ Sets minimum flow on Sacramento River below Keswick.  Minimum flow is a maximum 
 timeseries and a temperature surrogate.
 *************************************/
 
+/***define KesTrig {
+    case Oct {
+        condition month == OCT
+        value S_Shsta(prevSep)}
+    case rest {
+        condition always
+        value S_Shsta(-1)}
+}***/
+
 define minflow_C_Kswck {timeseries kind 'flow-min-required' units 'CFS'}
 
-define tempcntrl_surrogate {value 3250.}
+define tempCtrl_surrogate {value 3250.}
+!define tempCtrl_surrogate {select flow from SAC_TemperatureControl given trigger=KesTrig use linear where month=month}
 
-define effective_C_Keswick_min { value max(minflow_C_Kswck,tempcntrl_surrogate) }
+define effective_C_Keswick_min { value max(minflow_C_Kswck,tempCtrl_surrogate) }
 
 ! goal Keswickmin {C_Kswck_MIF < effective_C_Keswick_min}  
 

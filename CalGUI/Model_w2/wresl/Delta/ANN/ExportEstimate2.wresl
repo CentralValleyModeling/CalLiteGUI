@@ -82,7 +82,7 @@ else {
 }
 
 define EstTotExpTD {
-    value     EstTotExp 
+    value     min(EstTotExp, max(3000., min(max_IF_cap,11000.) - JonesMaxAllow - BanksMaxAllow))
 }
 
 define exp_est_total {alias EstTotExp kind 'EXPORT-ESTIMATE' units 'CFS'}

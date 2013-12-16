@@ -35,5 +35,15 @@ define CvpTotalDel {alias D_UpDMC_pag + D_CVPJU_LDMC_pag + D_MendotaPl_pag + D_S
                           D_CVPJU_LDMC_prf + D_MendotaPl_prf + D_CVPRfg_854_prf+ ! RF
                           D_UpDMC_pls + D_MendotaPl_pls + D_DsAmgosCVP_pls  ! LS
                           kind 'FLOW-DELIVERY' units 'CFS' }
-
+define del_cvp_pag_n {alias D104_pag + D171_pag + D172_pag + D174_pag + D178_pag kind 'delivery-cvp' units 'cfs'}
+	
+define del_cvp_pmi_n {alias D104_pmi + D167b_pmi /*+ D168c + d300_pmi*/ + d8_pmi + d9_pmi kind 'delivery-cvp' units 'cfs'}
+	
+define del_cvp_prf_n {alias D143B_prf /*- L143B*/ + D145B_prf + D182B_prf/* - L145B*/ kind 'delivery-cvp' units 'cfs'}
+	
+define del_cvp_psc_n {alias D104_psc + D143A_psc + D122A_psc + D145A_psc + D122B_psc /*+ D183_psc*/ + D129A_psc  +
+	                           D128_psc + D163_psc + D165_psc + D162_psc
+		  		   kind  'delivery-cvp'
+    	                     	   units 'cfs'}
+    	                     	   
 define del_cvp_total_n {alias D_RedBlf_p + D_Wilkns_p + D_SacAme_p + D_Nimbus_p + D_Folsm_p kind 'DELIVERY-CVP' units 'CFS' }

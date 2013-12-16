@@ -54,7 +54,11 @@ goal Diversion_HSt {D_HSt=D_HSt_NP}
 define demand_D_Hood_NP {timeseries kind 'NETDICU_POS' units 'CFS'}
 define D_Hood_NP {lower 0. upper demand_D_Hood_NP kind 'FLOW-DELIVERY' units 'CFS'} !NET DELTA ISLAND CONSUMPTIVE USE (NET DICU) - POSITIVE VALUES
 define D_Hood {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at Hood
-goal Diversion_Hood {D_Hood=D_Hood_NP}
+
+define D_HoodIF {std kind 'FLOW-DELIVERY' units 'CFS'} !Total delivery by Isolated Facility
+define D_CCWDIF {std kind 'FLOW-DELIVERY' units 'CFS'} !CCWD delivery  by Isolated Facility
+define D_SODIF {std kind 'FLOW-DELIVERY' units 'CFS'} !SOD delivery by Isolated Facility
+goal Diversion_Hood {D_Hood=D_Hood_NP + D_HoodIF}
 
 /** Net_DICU component**/
 define demand_D_BrananIs_NP {timeseries kind 'NETDICU_POS' units  'CFS'}
@@ -82,6 +86,9 @@ define demand_D_ConeyIs_NP {timeseries kind 'NETDICU_POS' units  'CFS'}
 define D_ConeyIs_NP {lower 0. upper demand_D_ConeyIs_NP kind 'FLOW-DELIVERY' units 'CFS'} !NET DELTA ISLAND CONSUMPTIVE USE (NET DICU) - POSITIVE VALUES
 define D_ConeyIs {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at Coney Island
 goal Diversion_ConeyIs {D_ConeyIs=D_ConeyIs_NP}
+
+!Don't allow OMR criteria to affect DICU
+goal set_D_ConeyIs_NP {D_ConeyIs_NP > demand_D_ConeyIs_NP}
 
 
 define D_Antioch_NP {std kind 'FLOW-DELIVERY' units 'CFS'}! Non-Project Diversion at Antioch

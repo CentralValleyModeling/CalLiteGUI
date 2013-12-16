@@ -13,7 +13,7 @@ HORB is Head of Old River Barrier
 DICU is Delta Island Consumptive Use
 *************************************/
 
-!San Joaquin Vernalis Flows from previous model cycles
+!San Joaquin Vernalis Flows from previous model cycles - code moved to Dynamic_SJR_Setup_cyc6.wresl
 /*define VernQ {
      case April {
           condition month == apr
@@ -50,7 +50,7 @@ define casedef {
    }
 
 !Define case to use appropriate coef. for flow splits when HORB is in and closed
-define casedef_HORB {
+/***define casedef_HORB {
 ! HORB Spring operations and appropriate coefficients for spring months - barriers are in and operated
      case SpringHORB{
          condition  month == APR .OR. month == MAY
@@ -58,6 +58,23 @@ define casedef_HORB {
 ! HORB Fall operations and appropriate coefficients for fall months - barriers are in and operated
      case FallHORB{
          condition  month == SEP .OR. month == OCT .OR. month == NOV
+         value  6.}
+     case default {
+         condition  always
+         value  casedef}
+   }***/
+
+!PP_ELT April 2011 refinement assumptions
+!Define case to use appropriate coef. for flow splits when HORB is in and closed
+define casedef_HORB {
+! HORB operations and appropriate coefficients for January through May months - barriers are in and operated.
+! Assuming Jan - Mar and Jun HORB installation is similar to the SpringHORB (Apr-May).
+     case JanMayHORB{
+         condition  month >= JAN .AND. month <= JUN
+         value  5.}
+! HORB operations and appropriate coefficients for October - November barriers are in and operated
+     case OctNovHORB{
+         condition  month == OCT .OR. month == NOV
          value  6.}
      case default {
          condition  always
@@ -73,7 +90,31 @@ define coefA_HORB {select coefA from OMRiverFlowEq2 where cond = casedef_HORB}
 define coefB_HORB {select coefB from OMRiverFlowEq2 where cond = casedef_HORB}
 define coefC_HORB {select coefC from OMRiverFlowEq2 where cond = casedef_HORB}
 
-define coefA{
+!Define percentage of time that HORB are open based on SJR flow
+define PerOpen_HORB {
+      case drier {
+         condition  VernQ < 5000
+	 select SJR_Dry from HORB_Open where month = month}
+      case wetter {
+         condition  VernQ > 5000 .AND. VernQ < 10000
+	 select SJR_Wet from HORB_Open where month = month}
+      case otherwise {
+         condition always
+         select SJR_High from HORB_Open where month = month}
+	   }
+
+define PerOpen_HORBdv {alias PerOpen_HORB kind 'DEBUG' units 'FRACTION'}
+
+! PP_ELT Refinement Scenario 4c and 4d assumptions
+define coefA{ value coefA_init * PerOpen_HORB + coefA_HORB * (1-PerOpen_HORB)}
+define coefB{ value coefB_init * PerOpen_HORB + coefB_HORB * (1-PerOpen_HORB)}
+define coefC{ value coefC_init * PerOpen_HORB + coefC_HORB * (1-PerOpen_HORB)}
+
+define coefAdv {alias coefA kind 'DEBUG' units 'NONE'}
+define coefBdv {alias coefB kind 'DEBUG' units 'NONE'}
+define coefCdv {alias coefC kind 'DEBUG' units 'NONE'}
+
+/***define coefA{
      case HORB_Sep{
          condition Month == SEP .and. casedef_HORB == 6.
          value coefA_init * 15./30. + coefA_HORB * 15./30.}
@@ -113,7 +154,7 @@ define coefC{
      case otherwise{
          condition always
          value coefC_init}
-}
+}***/
 
 ! Total South of Delta Pumping and Depletions
 define Qsod {lower -99999*taf_cfs upper 99999*taf_cfs kind 'FLOW-DELIVERY' units 'CFS'}

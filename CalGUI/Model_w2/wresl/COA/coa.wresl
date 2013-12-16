@@ -144,9 +144,7 @@ goal setUNUSED_FS { D_Banks_EXP2 < UNUSED_FS }
 goal setUNUSED_SS { D_Jones_EXP2 < UNUSED_SS }
 
 
-
-if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {
-  
+if int(EI_DLTSW)==1 .or. int(EI_DLTSW)==2 {  
 ! The projects share available export capacity when EI is controlling.
 
 
@@ -166,21 +164,25 @@ define EI_control_on {
     }
 }
 
+define EI_control_onDV {alias EI_control_on kind 'control-switch' units 'none'}
+
 ! Attempt to split export even during EI control situations
 goal EI_split_swp {
-    lhs     D_Banks_EXP1
+    lhs     D_Banks_EXP1_TD
     case ei_control {
     condition   EI_control_on > 0.5
-     rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_therm - ExpRatio*c_therm[Upstream]
+     rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_therm - ExpRatio*c_therm[Upstream] /*- ExpRatio*D_Banks_EXP1_IF
+     			+ ExpRatio*D_Jones_exp2[Upstream] - ExpRatio*D_Jones_exp2*/
      lhs>rhs    penalty 1285
      lhs<rhs    penalty 0}
 }
 goal EI_split_cvp {
-    lhs     D_Jones_EXP1
+    lhs     D_Jones_EXP1_TD
     case ei_control {
     condition   EI_control_on > 0.5
      rhs        0.5*EiExpCtrl[Upstream] + ExpRatio*c_wkytn_m + ExpRatio*c_kswck_m + ExpRatio*c_nimbus_m 
                               - ExpRatio*c_wkytn_m[Upstream] - ExpRatio*c_kswck_m[Upstream] - ExpRatio*c_nimbus_m[Upstream]
+                               /*- ExpRatio*D_Jones_EXP1_IF + ExpRatio*D_Banks_exp2[Upstream] - ExpRatio*D_Banks_exp2*/                              
      lhs>rhs    penalty 1285
      lhs<rhs    penalty 0}
 }
@@ -219,7 +221,7 @@ goal No_EI_split_cvp2 {
 
 ! Only apply sharing logic under the AprilMay pulse flow export contraint when this constraint was controlling operations in the Upstream cycle.
 goal AprMay_split_swp {
-    lhs     D_Banks_EXP1
+    lhs     D_Banks_EXP1_TD
      case AprMay {
         condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. 
                        c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. 
@@ -230,7 +232,7 @@ goal AprMay_split_swp {
      }
 }
 goal AprMay_split_cvp {
-    lhs     D_Jones_EXP1 
+    lhs     D_Jones_EXP1_TD 
      case AprMay {
         condition      range(month,apr,may) .and. VAMP_DLTSW == 1 .and. 
                        c_delta_swp[Upstream] + c_delta_cvp[Upstream] > 0.1 .and. 
@@ -240,4 +242,5 @@ goal AprMay_split_cvp {
      lhs<rhs        penalty 0
      }
 }
+
 }

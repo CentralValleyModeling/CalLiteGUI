@@ -227,9 +227,61 @@ define endday_flw4 {value   daysin }
 else {
 
 	define January_PMI {
-		select  pmi
-		from    eightriver
-		where   wateryear=wateryear
+	    case no_ClimateChange {
+	    	condition Climate_Proj == 0
+			select  pmi_0
+			from    eightriver
+			where   wateryear=wateryear}
+	    case CCScenario1 {
+	    	condition Climate_Proj == 1
+			select  pmi_1
+			from    eightriver
+			where   wateryear=wateryear}
+	    case CCScenario2 {
+	    	condition Climate_Proj == 2
+			select  pmi_2
+			from    eightriver
+			where   wateryear=wateryear}	
+	    case CCScenario3 {
+	    	condition Climate_Proj == 3
+			select  pmi_3
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario4 {
+	    	condition Climate_Proj == 4
+			select  pmi_4
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario5 {
+	    	condition Climate_Proj == 5
+			select  pmi_5
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario6 {
+	    	condition Climate_Proj == 6
+			select  pmi_6
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario7 {
+	    	condition Climate_Proj == 7
+			select  pmi_7
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario8 {
+	    	condition Climate_Proj == 8
+			select  pmi_8
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario9 {
+	    	condition Climate_Proj == 9
+			select  pmi_9
+			from    eightriver
+			where   wateryear=wateryear	}	
+	    case CCScenario10 {
+	    	condition Climate_Proj == 10
+			select  pmi_10
+			from    eightriver
+			where   wateryear=wateryear	}			
 	}
 
 	!define NDOreqflowstd {select flow from NDO_flow_std where month=month, wyt_SAC=wyt_SAC}

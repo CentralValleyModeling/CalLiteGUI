@@ -42,7 +42,7 @@ goal set_NCP {C_Wilkns_MIF < minflow_C_Wilkns}
 goal setncptoMin { !Keeps excess releases from Shasta during dry periods
     lhs C_Wilkns_EXC
     case lowshasta {
-        condition S_Shsta(-1) < 1900.
+        condition S_Shsta(-1) + S_ShstaE(-1) < 1900.
         rhs 0.
 ! this weight is way too high - it will override COA
 !        lhs>rhs penalty 3000 }

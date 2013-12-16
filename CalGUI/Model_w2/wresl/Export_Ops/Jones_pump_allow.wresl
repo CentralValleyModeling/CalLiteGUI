@@ -39,7 +39,7 @@ define JonesMaxAllow {value JonesMax1*JonesDaysIncr/daysin + JonesCapPermit*Jone
 
 ! Limit Pumping to Allowable and Physical Capacity, whichever is less
 ! goal JonesLessThanAllow { C_Jones_TD < JonesMaxAllow} /** need to review for IF implementation **/
-goal JonesLessThanAllow { D_Jones < JonesMaxAllow}
+goal JonesLessThanAllow { D_Jones_TD < JonesMaxAllow}
 goal JonesLessThanPhys  { D_Jones < JonesCapPhys}
 
 ! Output Allowable Pumping Cap for Checking Only
@@ -48,10 +48,10 @@ define JonesAllowOut {alias JonesMaxAllow kind 'EXPORT-CTRL-JONES' UNITS 'CFS' }
 ! Jones PP Minimum Cap
 define Jonesminpump {
     case Joneslowshasta {
-        condition S_Shsta(-1) < 1500.
+        condition S_Shsta(-1)  + S_ShstaE(-1) < 1500.
         value 600. }
     case Joneslowshastafolsom {
-        condition S_Folsm(-1) < 400. .and. S_Shsta(-1) < 2000. !Better reflection of actual operations by trying to keep
+        condition S_Folsm(-1) < 400. .and. S_Shsta(-1)  + S_ShstaE(-1) < 2000. !Better reflection of actual operations by trying to keep
         value 800. }                                           !water from being released for SL storage during low storage
     case Joneshighshasta   {                                   !conditions in the NOD.
         condition always
@@ -62,12 +62,12 @@ define JonesMinPumpDV {alias JonesMinPump kind 'EXPORT-CTRL-JONES' units 'cfs'}
 goal setJonesminpump {
     lhs D_Jones_cvp
     case Joneslowshasta {
-        condition S_Shsta(-1) < 1500.
+        condition S_Shsta(-1)  + S_ShstaE(-1) < 1500.
     rhs Jonesminpump
         lhs>rhs penalty 0 !65*taf_cfs + 1
         lhs<rhs penalty 2700 }
     case Joneslowshastafolsom {
-        condition S_Folsm(-1) < 400. .and. S_Shsta(-1) < 2000. !Better reflection of actual operations by trying to keep
+        condition S_Folsm(-1) < 400. .and. S_Shsta(-1)  + S_ShstaE(-1) < 2000. !Better reflection of actual operations by trying to keep
         rhs Jonesminpump                                                       !water from being released for SL storage during low storage
         lhs>rhs penalty 0 !65*taf_cfs + 1                                         !conditions in the NOD.
         lhs<rhs penalty 2700 }

@@ -83,7 +83,7 @@ goal Export_limit_during_pulse_mon {
 
 ! Limit the actual export to the day weighted average allowable export for each month.
 goal Limit_Exports {
-    lhs  ExportActual
+    lhs  ExportActualTD
         case APR_MAY {
             condition     range(month,apr,may)
             rhs           AprMayExpCtrl
@@ -130,7 +130,7 @@ goal Export_limit_Banks_pulse_mon {
 }
 
 goal Export_limit_D_Jones {  ! Prevents Non-Pulse portion of month from being greater than Physical Capacity
-    lhs    D_Jones /** Need to change to D_Jones_TD for IF implementation **/
+    lhs    D_Jones_TD /** Need to change to D_Jones_TD for IF implementation **/
 !        case no_vamp {   !Richard Chen added for VAMP switch
 !                condition     VAMP_DLTSW == 0 .and. range(month,apr,may)
 !                rhs           JonesCapPermit     
@@ -142,7 +142,7 @@ goal Export_limit_D_Jones {  ! Prevents Non-Pulse portion of month from being gr
 }
 
 goal Export_limit_D_Banks {  ! Prevents Non-Pulse portion of month from being greater than Physical Capacity
-    lhs    D_Banks
+    lhs    D_Banks_TD
 !        case no_vamp {   !Richard Chen added for VAMP switch
 !                condition     VAMP_DLTSW == 0 .and. range(month,apr,may)
 !                rhs           BanksCapPermit     
