@@ -1224,7 +1224,8 @@ public class FileAction implements ActionListener {
 				configMap.put("RunPath", scenRunDir_absPath);
 				configMap.put("ConfigFilePath", new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName")
 				        + scen_subscen + ".config").getAbsolutePath());
-
+				configMap.put("ConfigFilePath_wsidi", new File(configMap.get("ScenarioPath"), configMap.get("ScenarioName")
+				        + scen_subscen + "_wsidi.config").getAbsolutePath());
 				updateSaveStatusFile(statusFilename, "Writing Scenario Config.");
 
 				// replace vars in config template file
@@ -1232,7 +1233,6 @@ public class FileAction implements ActionListener {
 				String configText = wrimsv2.wreslparser.elements.Tools.readFileAsString(System.getProperty("user.dir")
 				        + "\\Model_w2\\config.template");
 
-				configText = configText.replace("{MainFile}", "run\\main.wresl");
 				configText = configText.replace("{SvarFile}", configMap.get("SvarFile"));
 				configText = configText.replace("{SvarFPart}", configMap.get("SvarFPart"));
 				configText = configText.replace("{InitFile}", configMap.get("InitFile"));
@@ -1245,13 +1245,24 @@ public class FileAction implements ActionListener {
 				configText = configText.replace("{StartDay}", configMap.get("StartDay"));
 				configText = configText.replace("{EndDay}", configMap.get("EndDay"));
 
+				String configText_wsidi = configText.replace("{MainFile}", "run\\main_wsidi.wresl");
+				String configText_simple = configText.replace("{MainFile}", "run\\main.wresl");
+
 				File configFile = new File(configMap.get("ConfigFilePath"));
 
 				PrintWriter configFilePW = new PrintWriter(new BufferedWriter(new FileWriter(configFile)));
 
-				configFilePW.print(configText);
+				configFilePW.print(configText_simple);
 				configFilePW.flush();
 				configFilePW.close();
+
+				File configFile_wsidi = new File(configMap.get("ConfigFilePath_wsidi"));
+
+				PrintWriter configFilePW_wsidi = new PrintWriter(new BufferedWriter(new FileWriter(configFile_wsidi)));
+
+				configFilePW_wsidi.print(configText_wsidi);
+				configFilePW_wsidi.flush();
+				configFilePW_wsidi.close();
 
 				// ==========
 
