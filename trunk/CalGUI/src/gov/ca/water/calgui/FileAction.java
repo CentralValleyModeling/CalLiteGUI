@@ -618,7 +618,7 @@ public class FileAction implements ActionListener {
 	 * @throws IOException
 	 */
 	public static void writeScenarioTables(final String runDir, ArrayList<String> links, Boolean[] UDFlags, SwingEngine swix,
-	        int[] RegFlags) throws IOException {
+	        int[] RegFlags, int iCC) throws IOException {
 
 		String openFileName = "";
 		File f = null;
@@ -718,6 +718,22 @@ public class FileAction implements ActionListener {
 					option = value;
 					outstring = (index + "\t" + option + "\t" + descr + NL);
 					tableFile_BufferedWriter_.write(outstring);
+
+				} else if (c instanceof JCheckBox && swixControlName.startsWith("hyd_ckb")) {
+
+					// Component is a checkbox, but special case for multiple climate change realizations. The GUI_Links2.table
+					// file is assumed to have a link entry for *each* climate change checkbox in the group, and should
+					// write out only one line in the new .table file corresponding to the current realization.
+
+					if (swixControlName.startsWith("hyd_ckb" + iCC)) {
+						val = ((AbstractButton) c).isSelected();
+						value = val.toString();
+
+						// if (value.startsWith("true")) {
+						outstring = (index + "\t" + option + "\t" + descr + NL);
+						tableFile_BufferedWriter_.write(outstring);
+						// }
+					}
 
 				} else if (c instanceof JCheckBox) {
 
@@ -967,30 +983,39 @@ public class FileAction implements ActionListener {
 
 			// Multiple realizations
 
-			for (int i = 1; i <= 5; i++)
+			for (int i = 1; i <= 5; i++) {
 				if (realizationIsSelected[i - 1]) {
 
 					// Set only one realization in scenario
-
-					for (int j = 1; j <= 5; j++)
-						((JCheckBox) swix.find("hyd_ckb" + i)).setSelected((i == j));
+					for (int j = 1; j <= 5; j++) {
+						((JCheckBox) swix.find("hyd_ckb" + j)).setSelected((i == j));
+					}
 
 					// save
 					saveFile(FilenameUtils.removeExtension(scen) + "_CC" + i + ".cls", swix, regUserEdits, dTableModels, gl);
 
 					// build
-					setup1Scenario(scen, "_CC" + i, desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+					// Work around to ensure only one climate option is in GUI_Hydroclimate
+
+					setup1Scenario(scen, "_CC" + i, desktop, swix, regUserEdits, dTableModels, gl, RegFlags, i);
 
 					// TODO: delete realization scenario file
 
 				}
+			}
 			// restore current realizations for in-memory scenario
-			for (int i = 1; i <= 5; i++)
+			for (int i = 1; i <= 5; i++) {
 				((JCheckBox) swix.find("hyd_ckb" + i)).setSelected(realizationIsSelected[i - 1]);
+			}
 		}
 
-		else
-			setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
+		else {
+			for (int i = 1; i <= 5; i++) {
+				if (realizationIsSelected[i - 1]) {
+					setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags, i);
+				}
+			}
+		}
 
 	}
 
@@ -1007,7 +1032,8 @@ public class FileAction implements ActionListener {
 	 * @param RegFlags
 	 */
 	public static void setup1Scenario(final String scen, final String scen_subscen, final JFrame desktop, final SwingEngine swix,
-	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags) {
+	        final Boolean[] regUserEdits, final DataFileTableModel[] dTableModels, final GUILinks gl, final int[] RegFlags,
+	        final int iCC) {
 
 		final String scenWithoutExt = FilenameUtils.removeExtension(scen);
 		final String statusFilename = System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
@@ -1095,9 +1121,9 @@ public class FileAction implements ActionListener {
 
 				try {
 					// write to "Generated" folder
-					writeScenarioTables(scenGeneratedDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags);
+					writeScenarioTables(scenGeneratedDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags, iCC);
 					// write to "Run" folder
-					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags);
+					writeScenarioTables(scenRunDir_absPath + "\\Lookup", links2Lines, regUserEdits, swix, RegFlags, iCC);
 				} catch (IOException e1) {
 					log.debug(e1);
 					success = false;
