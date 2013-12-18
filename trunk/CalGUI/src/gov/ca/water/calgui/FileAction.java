@@ -1272,7 +1272,7 @@ public class FileAction implements ActionListener {
 				configText = configText.replace("{SvarFPart}", configMap.get("SvarFPart"));
 				configText = configText.replace("{InitFile}", configMap.get("InitFile"));
 				configText = configText.replace("{InitFPart}", configMap.get("InitFPart"));
-				configText = configText.replace("{DvarFile}", configMap.get("DvarFile"));
+				// configText = configText.replace("{DvarFile}", configMap.get("DvarFile"));
 				configText = configText.replace("{StartYear}", configMap.get("StartYear"));
 				configText = configText.replace("{StartMonth}", configMap.get("StartMonth"));
 				configText = configText.replace("{EndYear}", configMap.get("EndYear"));
@@ -1280,16 +1280,10 @@ public class FileAction implements ActionListener {
 				configText = configText.replace("{StartDay}", configMap.get("StartDay"));
 				configText = configText.replace("{EndDay}", configMap.get("EndDay"));
 
+				// wsidi run config file
 				String configText_wsidi = configText.replace("{MainFile}", "run\\main_wsidi.wresl");
-				String configText_simple = configText.replace("{MainFile}", "run\\main.wresl");
-
-				File configFile = new File(configMap.get("ConfigFilePath"));
-
-				PrintWriter configFilePW = new PrintWriter(new BufferedWriter(new FileWriter(configFile)));
-
-				configFilePW.print(configText_simple);
-				configFilePW.flush();
-				configFilePW.close();
+				configText_wsidi = configText_wsidi.replace("{DvarFile}", FilenameUtils.getBaseName(configMap.get("DvarFile"))
+				        + "_wsidi.dss");
 
 				File configFile_wsidi = new File(configMap.get("ConfigFilePath_wsidi"));
 
@@ -1298,6 +1292,18 @@ public class FileAction implements ActionListener {
 				configFilePW_wsidi.print(configText_wsidi);
 				configFilePW_wsidi.flush();
 				configFilePW_wsidi.close();
+
+				// normal run config file
+				String configText_simple = configText.replace("{MainFile}", "run\\main.wresl");
+				configText_simple = configText_simple.replace("{DvarFile}", configMap.get("DvarFile"));
+
+				File configFile = new File(configMap.get("ConfigFilePath"));
+
+				PrintWriter configFilePW = new PrintWriter(new BufferedWriter(new FileWriter(configFile)));
+
+				configFilePW.print(configText_simple);
+				configFilePW.flush();
+				configFilePW.close();
 
 				// ==========
 
