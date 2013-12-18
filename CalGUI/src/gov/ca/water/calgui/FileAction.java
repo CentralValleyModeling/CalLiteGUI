@@ -725,7 +725,12 @@ public class FileAction implements ActionListener {
 					// file is assumed to have a link entry for *each* climate change checkbox in the group, and should
 					// write out only one line in the new .table file corresponding to the current realization.
 
-					if (swixControlName.startsWith("hyd_ckb" + iCC)) {
+					if (iCC == 0 && swixControlName.startsWith("hyd_ckb1")) {
+						option = "0";
+						descr = "!No CC";
+						outstring = (index + "\t" + option + "\t" + descr + NL);
+						tableFile_BufferedWriter_.write(outstring);
+					} else if (swixControlName.startsWith("hyd_ckb" + iCC)) {
 						val = ((AbstractButton) c).isSelected();
 						value = val.toString();
 
@@ -1009,12 +1014,16 @@ public class FileAction implements ActionListener {
 			}
 		}
 
-		else {
+		else if (((JCheckBox) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount == 1)) {
 			for (int i = 1; i <= 5; i++) {
 				if (realizationIsSelected[i - 1]) {
 					setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags, i);
 				}
 			}
+		}
+
+		else {
+			setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags, 0);
 		}
 
 	}
