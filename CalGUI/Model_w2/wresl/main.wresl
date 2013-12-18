@@ -569,7 +569,7 @@ INCLUDE [LOCAL] 'Wheeling\wheelfixes.wresl'
     }
 
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
-INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
+!INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
