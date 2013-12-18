@@ -15,6 +15,7 @@ from vista.app import *
 from vista.graph import *
 from vista.set import *
 from vista.db.dss import *
+import os
 
 tab = "   "
 
@@ -22,7 +23,7 @@ tab = "   "
 class WsiDiGenCl:
 
    # constructor: initialize class parameters
-   def __init__(self,name,wsiVar,diVar,wsiMax,dvName):
+   def __init__(self,configPath,name,wsiVar,diVar,wsiMax,dvName):
        # assign passed constructor arguments
        self.name = name   # wsi-di profile name
        self.wsiVar = wsiVar   # wsi variable
@@ -30,11 +31,13 @@ class WsiDiGenCl:
        self.wsiMax_ub = wsiMax
        self.wsiMax = wsiMax   # maximum wsi variable value
        self.stdyDvName = dvName   # study DV name
+       self.configPath = configPath
     
-       # set path to run directory based on location of dv file
-       file = File(dvName)
-       dir = File(file.getParent())
-       self.runDir = dir.getParent()+File.separator+"run"   # run directory
+       # set path to run directory based on location of config file
+       #file = File(dvName)
+       #dir = File(file.getParent())
+       #self.runDir = dir.getParent()+File.separator+"run"   # run directory
+       self.runDir = os.path.join(os.path.dirname(self.configPath),'run')
               
        # set other class variables
        value = 0.0
