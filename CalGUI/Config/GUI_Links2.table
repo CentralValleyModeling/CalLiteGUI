@@ -12,7 +12,6 @@ hyd_ckb2	GUI_HydroClimate.table	4	2	"Climate Change Scenarios 2"	Hydroclimate	n/
 hyd_ckb3	GUI_HydroClimate.table	4	3	"Climate Change Scenarios 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_ckb4	GUI_HydroClimate.table	4	4	"Climate Change Scenarios 4"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_ckb5	GUI_HydroClimate.table	4	5	"Climate Change Scenarios 5"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_null	GUI_HydroClimate.table	5	0	Placeholder for Climate Projection Period	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbCurSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbFutSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbUD1	GUI_SODdemand.table	0	2	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
