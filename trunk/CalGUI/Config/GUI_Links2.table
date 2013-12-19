@@ -1,17 +1,17 @@
 GUIid	Table name	Index	Option	Description	Dashboard	Data tables	SwitchID	TableID	D1485/D1641	N/A_D1641	N/A_NOREGULATION	N/A_USER_DEFINED	N/A_D1485	RegID
-hyd_rdb2005	GUI_HydroClimate.table	1	0	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdb2030	GUI_HydroClimate.table	1	1	"Level of Development, LOD_Future = 1 for future and 0 for existing"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdbCCEL	GUI_HydroClimate.table	1	2	"Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_rdbCCLL	GUI_HydroClimate.table	1	3	"Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdb2005	GUI_HydroClimate.table	1	0	"Level of Development, LOD_Future = 1 for future and 0 for existing, Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdb2030	GUI_HydroClimate.table	1	1	"Level of Development, LOD_Future = 1 for future and 0 for existing, Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdbCCEL	GUI_HydroClimate.table	1	2	"Level of Development, LOD_Future = 1 for future and 0 for existing, Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_rdbCCLL	GUI_HydroClimate.table	1	3	"Level of Development, LOD_Future = 1 for future and 0 for existing, Climate Change - ELT2025 = 2, LLT2060 = 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb1	GUI_HydroClimate.table	2	3	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2	GUI_HydroClimate.table	2	2	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb3	GUI_HydroClimate.table	2	1	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb4	GUI_HydroClimate.table	2	0	Calculate X2 by using ANN or KM equation: ANN: value>=1; KM: value =0;	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ckb1	GUI_HydroClimate.table	4	1	"Climate Change Scenarios 1"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ckb2	GUI_HydroClimate.table	4	2	"Climate Change Scenarios 2"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ckb3	GUI_HydroClimate.table	4	3	"Climate Change Scenarios 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ckb4	GUI_HydroClimate.table	4	4	"Climate Change Scenarios 4"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ckb5	GUI_HydroClimate.table	4	5	"Climate Change Scenarios 5"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ckb1	GUI_HydroClimate.table	4	1	"Climate Change Scenario 1"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ckb2	GUI_HydroClimate.table	4	2	"Climate Change Scenario 2"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ckb3	GUI_HydroClimate.table	4	3	"Climate Change Scenario 3"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ckb4	GUI_HydroClimate.table	4	4	"Climate Change Scenario 4"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ckb5	GUI_HydroClimate.table	4	5	"Climate Change Scenario 5"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbCurSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbFutSWP	GUI_SODdemand.table	0	1	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 dem_rdbUD1	GUI_SODdemand.table	0	2	SWP demand type  1=non-user-defined demands  2=user-defined demands	Demands	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -82,3 +82,4 @@ fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	Jones IF Export :ON(1) OFF(0)  !ind
 fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	Banks IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	CCWD  IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	      TD Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	Fremont Weir Notch ON=1; OFF=0  !1   0	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
