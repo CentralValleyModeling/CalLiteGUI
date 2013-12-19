@@ -79,3 +79,7 @@ ckbRegSJR4	GUI_SJR.table	4	-1	ckbRegSJR4	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n
 ckbRegSJR5	GUI_SJR.table	5	-1	ckbRegSJR5	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
 ckbRegSJR6	GUI_SJR.table	6	-1	ckbRegSJR6	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
 ckbRegSJR7	GUI_SJR.table	7	-1	ckbRegSJR7	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	Jones IF Export :ON(1) OFF(0)  !index   Option    !user	switch	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	Banks IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	CCWD  IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	      TD Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
