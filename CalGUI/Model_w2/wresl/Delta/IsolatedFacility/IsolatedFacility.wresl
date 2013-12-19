@@ -14,10 +14,10 @@ define IFPercentFlow {select perc_flow from IsolatedFacility where month=month}
 define CCWDmaxIF   {select CCWDmax from IsolatedFacility where month=month}
 
 !Switches that turn IF arcs ON and OFF
-define JonesIFSwitch   {select Option from GUI_BDCP_FacilityControl where Facility = 1}
-define BanksIFSwitch   {select Option from GUI_BDCP_FacilityControl where Facility = 2}
-define CCWDIFSwitch    {select Option from GUI_BDCP_FacilityControl where Facility = 3}
-define TDExports       {select Option from GUI_BDCP_FacilityControl where Facility = 4}
+define JonesIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 1}
+define BanksIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 2}
+define CCWDIFSwitch    {select Option from GUI_BDCP_FacilityControl where Index = 3}
+define TDExports       {select Option from GUI_BDCP_FacilityControl where Index = 4}
 
 goal setActivateJonesIF { D_Jones_IF  < JonesIFSwitch * 99999.}
 goal setActivateBanksIF { D_Banks_IF  < BanksIFSwitch * 99999.}
