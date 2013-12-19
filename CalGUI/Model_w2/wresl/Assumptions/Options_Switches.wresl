@@ -20,12 +20,21 @@ define  X2_ANN_KM {                                                           !D
     case SLR { 
     condition always 
     value 0}}
-    
-define CC_Timeframe {select Option from GUI_HydroClimate where Index = 4}
-define CC_Num {select Option from GUI_HydroClimate where Index = 5}
-define Climate_Proj {value CC_Timeframe + CC_Num} 
-!define Climate_Proj       {select Option from GUI_HydroClimate where Index=3} !Place Holder at this time
 
+  
+define CC_Term {select Option from GUI_HydroClimate where Index = 1}
+define CC_Scenario {select Option from GUI_HydroClimate where Index = 4}
+define Climate_Proj {
+	case LLT{
+		condition int(CC_Term) == 3
+		value CC_Scenario + 5}
+	case ELT{
+		condition int(CC_Term) == 2
+		value CC_Scenario}
+	case NO_CC{
+		condition always
+		value 0} 
+}
 
 /* South of Delta SWP and CVP options*/
 !Read in user-defined SWP demand type, 1 = not user-defined, 
@@ -107,7 +116,7 @@ define CVPDedBanksSwitch  {value 0} ! use as place holder
 define SWPShastaSwitch    {value 0} ! use as place holder
  
 /* Water Management Action*/
-define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Facility=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
+define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Index=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
  
  /* San Joaquin Switches */
 define VAMP_Flow          {select Option from GUI_SJR where Index=1} !VAMP_Flow -  VAMP pulse flows (Apr 15-May 15)
