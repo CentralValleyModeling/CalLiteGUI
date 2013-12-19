@@ -17,8 +17,16 @@ initial {
 	svar NDO_DLTSW {select Option from GUI_Regs where Index = 3}
 	svar AN_DLTSW {select OPTION from GUI_Regs where Index = 12}  !D-1485
 	svar CH_DLTSW {select OPTION from GUI_Regs where Index = 13}  !D-1485
-    svar Dynamic_SJR {select Option from GUI_SJR where Index=7} !Turns on dynamic SJR       
-    svar LOD_Future {select Option from GUI_HydroClimate where Index=1}
+    svar Dynamic_SJR {select Option from GUI_SJR where Index=7} !Turns on dynamic SJR
+    svar LOD_Future { !Existing Level of Development
+    	case currentLvl{
+    		condition int(clProjPer) == 0 
+    		value 0 }
+    	case otherwise{ !Covers Future Level of Development and Climate Change
+    		condition always
+    		value 1}} 
+	svar SLR {select Option from GUI_HydroClimate where Index=2}    		          
+    !svar LOD_Future {select Option from GUI_HydroClimate where Index=1}
 }
  
 SEQUENCE CYCLE1 {
@@ -212,7 +220,12 @@ MODEL block2 {
 
 MODEL block3 {
     define getFinalMrdo {EXTERNAL f90}  ! OBJ code file must be located in run\external directory for compilation
-    INCLUDE  'Delta\DeltaExtFuncs_7inpANN.wresl'
+    if int(SLR) == 0 .or. int(SLR) == 1{
+    	INCLUDE  'Delta\DeltaExtFuncs_7inpANN.wresl'}
+    elseif int(SLR) == 2{
+    	INCLUDE  'Delta\DeltaExtFuncs_7inpANNslr15cm.wresl'}
+    elseif int(SLR) == 3{
+    	INCLUDE  'Delta\DeltaExtFuncs_7inpANNslr45cm.wresl'}
     INCLUDE  'swp_dellogic\allocation\co_extfcn.wresl'
 
     INCLUDE 'System\System.wresl'
