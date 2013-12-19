@@ -998,11 +998,6 @@
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
 							</checkbox>
-							<checkbox name="fac_ckb44" id="fac_ckb44" text="CCWD IF Export"
-								minimumsize="340,20">
-								<gridbagconstraints insets="0,0,0,0"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3" />
-							</checkbox>
 							<checkbox name="fac_ckb45" id="fac_ckb45" text="TD Export"
 								minimumsize="340,20">
 								<gridbagconstraints insets="0,0,0,0"
