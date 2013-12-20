@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -39,8 +40,20 @@ public class OpAction implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
-		if (ae.getActionCommand().startsWith("Op_TableEdit")) {
+
+		if (ae.getActionCommand().startsWith("Op_Generate")) {
+			try {
+
+				Runtime rt = Runtime.getRuntime();
+				Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\wsidi_generator_test.bat");
+				int exitVal = proc.waitFor();
+				log.debug("Return from batch run " + exitVal);
+			} catch (Throwable t) {
+				JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
+				log.debug(t.getStackTrace());
+			}
+
+		} else if (ae.getActionCommand().startsWith("Op_TableEdit")) {
 			TitledBorder title = null;
 			JComponent component = (JComponent) ae.getSource();
 			if (ae.getSource() instanceof JButton) {
