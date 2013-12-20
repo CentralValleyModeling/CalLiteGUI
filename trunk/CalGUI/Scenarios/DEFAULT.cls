@@ -8,9 +8,9 @@ spnRunEndMonth|Sep
 spnRunEndYear|2003
 run_rdbDet|true
 run_rdbProb|false
+run_rdbBO1|false
 run_rdbD1641|false
 run_rdbBO|true
-run_rdbBO1|false
 hyd_rdb2005|false
 hyd_rdb2030|true
 hyd_rdbCCEL|false
@@ -80,7 +80,6 @@ fac_txf18| 0.65
 fac_txf19| 0.6 
 fac_ckb42|false
 fac_ckb43|false
-fac_ckb44|false
 fac_ckb45|false
 fac_ckb13|false
 fac_ckb33|false
