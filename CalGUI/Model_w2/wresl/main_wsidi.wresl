@@ -18,14 +18,15 @@ initial {
 	svar AN_DLTSW {select OPTION from GUI_Regs where Index = 12}  !D-1485
 	svar CH_DLTSW {select OPTION from GUI_Regs where Index = 13}  !D-1485
     svar Dynamic_SJR {select Option from GUI_SJR where Index=7} !Turns on dynamic SJR
+    svar clProjPer {select Option from GUI_HydroClimate where Index=1} 
     svar LOD_Future { !Existing Level of Development
     	case currentLvl{
     		condition int(clProjPer) == 0 
     		value 0 }
     	case otherwise{ !Covers Future Level of Development and Climate Change
     		condition always
-    		value 1}} 
-	svar SLR {select Option from GUI_HydroClimate where Index=2}    		          
+    		value 1}}
+    svar SLR {select Option from GUI_HydroClimate where Index=2}
     !svar LOD_Future {select Option from GUI_HydroClimate where Index=1}
 }
  
