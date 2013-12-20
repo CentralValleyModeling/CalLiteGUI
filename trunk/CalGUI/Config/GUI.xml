@@ -1703,27 +1703,37 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" gridwidth="1" />
 							</radiobutton>
 						</buttongroup>
-						<button id="op_btn1" name="op_btn1" text="Edit SWP Curves"
-							enabled="true" ActionCommand="Op_TableEdit">
-							<gridbagconstraints insets="0,20,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
-						</button>
-						<button id="op_btn2" name="op_btn2" text="Edit CVP Curves"
-							enabled="true" ActionCommand="Op_TableEdit">
-							<gridbagconstraints insets="0,10,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
-						</button>
-						<button id="op_btn2a" name="op_btn2a" text="Generate Curves"
-							enabled="true" ActionCommand="Op_TableEdit">
-							<gridbagconstraints insets="0,10,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="2" />
-						</button>
-						<button id="op_btn2b" name="op_btn2b" text="Read Curves"
-							enabled="true" ActionCommand="Op_TableEdit">
-							<gridbagconstraints insets="0,10,5,5"
-								anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="2" />
-						</button>
-
+						<hbox>
+							<gridbagconstraints insets="0,30,0,0"
+								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
+								gridwidth="2" />
+							<button id="op_btn2a" name="op_btn2a" text="Generate..."
+								enabled="true" ActionCommand="Op_Generate">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
+							</button>
+							<glue />
+							<button id="op_btn2b" name="op_btn2b" text="Read..."
+								enabled="true" ActionCommand="Op_TableEdit">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
+							</button>
+							<button id="op_btn2c" name="op_btn2b" text="Defaults"
+								enabled="true" ActionCommand="Op_TableEdit">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
+							</button>
+							<button id="op_btn1" name="op_btn1" text="Edit SWP"
+								enabled="true" ActionCommand="Op_TableEdit">
+								<gridbagconstraints insets="0,20,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="3" gridy="1" />
+							</button>
+							<button id="op_btn2" name="op_btn2" text="Edit CVP"
+								enabled="true" ActionCommand="Op_TableEdit">
+								<gridbagconstraints insets="0,10,5,5"
+									anchor="GridBagConstraints.NORTHWEST" gridx="4" gridy="1" />
+							</button>
+						</hbox>
 						<panel name="op_pan2" id="op_pan2" layout="GridBagLayout">
 							<gridbagconstraints insets="0,20,5,5"
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3"
