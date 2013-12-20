@@ -851,9 +851,9 @@ public class GUIUtils {
 	 */
 
 	public static Component findFirstButtonWithLabel(Component comp, String l) {
-		System.out.println(comp.getClass().toString());
+		// System.out.println(comp.getClass().toString());
 		if ((comp instanceof JButton)) {
-			System.out.println(((JButton) comp).getText());
+			// System.out.println(((JButton) comp).getText());
 			if (((JButton) comp).getText().equals(l))
 				return comp;
 		}

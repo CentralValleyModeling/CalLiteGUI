@@ -104,7 +104,6 @@ import calsim.app.DerivedTimeSeries;
 import calsim.app.Project;
 import calsim.gui.CalLiteGUIMainPanel;
 import calsim.gui.CalLiteGUIPanelWrapper;
-import calsim.gui.DtsTreePanel;
 import calsim.gui.GuiUtils;
 
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
@@ -302,6 +301,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			desktop.setJMenuBar(menu);
 			menu.setVisible(true);
+
+			// __dts = GuiUtils.getCLGPanel().getDtsTreePanel().getDTS();
 
 		}
 
@@ -1277,6 +1278,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				array[i] = _group.getDataReference(rows[i]);
 			// GuiUtils.displayData(array);
 			for (int i = 0; i < rows.length; i++) {
+				System.out.println(array[i]);
 
 				String[] parts = array[i].getName().split("::");
 				if (parts[1].contains(("_SV.DSS"))) {
@@ -1296,16 +1298,23 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
 	 * 
 	 */
+
 	void retrieve2() {
 
-		DtsTreePanel dtsp = GuiUtils.getCLGPanel().getDtsTreePanel();
-		DerivedTimeSeries dts = dtsp.getDTS();
+		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
 		Vector bParts = dts.getBParts();
+		Vector varTypes = dts.getVarTypes();
+		if (bParts.size() < 1) {
+			JOptionPane.showMessageDialog(null, "Specify one or more variables", "Variable(s) Not Specified",
+			        JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+
 		Vector cParts = dts.getCParts();
 		Vector opIDs = dts.getOpIds();
 
 		for (int i = 0; i < bParts.size(); i++) {
-			System.out.println(i + ": " + opIDs.get(i) + ":" + bParts.get(i) + ": " + cParts.get(i));
+			System.out.println(i + ": " + opIDs.get(i) + ":" + varTypes.get(i) + ":" + bParts.get(i) + ": " + cParts.get(i));
 		}
 
 		if (!AppUtils.baseOn) {
@@ -1319,6 +1328,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			if (_table.getRowCount() == 0)
 				noRowsString = " after using \"Filter\" to load variables";
 			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
+
 			if (_group == null || _table.getSelectedRowCount() == 0) {
 				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
 				        JOptionPane.INFORMATION_MESSAGE);
