@@ -298,10 +298,10 @@ goal set_GP570_min_pag {GP570_min_pag < annual_GP570_min_pag * taf_cfs * MID_dis
 define annual_GP570_min_prv{
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select demand  from Merced_GP570_ann_demand_Fut where number = 1}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
 	select demand  from Merced_GP570_ann_demand_Ext where number = 1}
 }
 
@@ -387,10 +387,10 @@ goal set_GP570_ND {GP570_ND = D571_ND}
 define demand_D571_MI_B {
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem571_MI_B from urban_demand2_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
 	select dem571_MI_B from urban_demand2_Ext where month = month}
     }
 
@@ -417,10 +417,10 @@ M&I for City of Merced - met by groundwater
 define demand_D571_MI_A {
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem571_MI_A from urban_demand2_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
 	select dem571_MI_A from urban_demand2_Ext where month = month}
     }
 
@@ -489,10 +489,10 @@ West of Merced ID and Non-District areas in DAU 210 and 212 M&I pumping- all met
 define demand_D574_MI_A{
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem574_MI_A from urban_demand2_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
 	select dem574_MI_A from urban_demand2_Ext where month = month}
     }
 

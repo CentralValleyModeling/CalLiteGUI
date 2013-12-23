@@ -66,12 +66,12 @@
 */
 define MercedIDadd2month {
     case FutureMayOnly {
-        condition month == may .and. LOD_Future == 1 
+        condition month == may .and. LOD_DLTSW >= 1 
             select MercedID from VAMP_alloc_Fut
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
     case ExistingMayOnly {
-        condition month == may .and. LOD_Future == 0 
+        condition month == may .and. LOD_DLTSW == 0 
             select MercedID from VAMP_alloc_Ext
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }    
@@ -85,12 +85,12 @@ define MercedIDadd2month {
 */
 define OIDadd2month {
     case FutureMayOnly {
-        condition month == may .and. LOD_Future == 1 
+        condition month == may .and. LOD_DLTSW >= 1 
             select OID from VAMP_alloc_Fut
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
     case ExistingMayOnly {
-        condition month == may .and. LOD_Future == 0 
+        condition month == may .and. LOD_DLTSW == 0 
             select OID from VAMP_alloc_Ext
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
@@ -104,12 +104,12 @@ define OIDadd2month {
 */
 define Exchangeadd2month {
     case FutureMayOnly {
-        condition month == may .and. LOD_Future == 1 
+        condition month == may .and. LOD_DLTSW >= 1 
             select Exchange from VAMP_alloc_Fut
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
     case ExistingMayOnly {
-        condition month == may .and. LOD_Future == 0 
+        condition month == may .and. LOD_DLTSW == 0 
             select Exchange from VAMP_alloc_Ext
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
@@ -123,12 +123,12 @@ define Exchangeadd2month {
 */
 define MIDTIDadd2month {
     case FutureMayOnly {
-        condition month == may .and. LOD_Future == 1 
+        condition month == may .and. LOD_DLTSW >= 1 
             select MIDTID from VAMP_alloc_Fut
             given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
     case ExistingMayOnly {
-            condition month == may .and. LOD_Future == 0 
+            condition month == may .and. LOD_DLTSW == 0 
                 select MIDTID from VAMP_alloc_Ext
                 given deficiency=15.*VAMP_deficiency*cfs_TAF/31. + VAMP_release(-1)*cfs_TAF(-1)
             use linear }
@@ -145,10 +145,10 @@ define MIDTIDadd2month {
 ! Merced VAMP required release for April and May from McClure in TAF for the half month.
 define MercedIDadd {
     case FutureApril {
-        condition month == apr .and. LOD_Future == 1
+        condition month == apr .and. LOD_DLTSW >= 1
             select MercedID from VAMP_alloc_Fut given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case ExistingApril {
-            condition month == apr .and. LOD_Future == 0
+            condition month == apr .and. LOD_DLTSW == 0
             select MercedID from VAMP_alloc_Ext given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case MayOnly {
         condition month == may
@@ -170,10 +170,10 @@ goal setMercedIDaddApr {
 ! Oakdale VAMP required release for April and May from New Melones in TAF for the half month.
 define OIDadd {
     case FutureApril {
-        condition month == apr .and. LOD_Future == 1
+        condition month == apr .and. LOD_DLTSW >= 1
         select OID from VAMP_alloc_Fut given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case ExistingApril {
-        condition month == apr .and. LOD_Future == 0
+        condition month == apr .and. LOD_DLTSW == 0
         select OID from VAMP_alloc_Ext given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case MayOnly {
         condition month == may
@@ -196,10 +196,10 @@ goal setOIDaddApr {
 ! Exchange VAMP required release for April and May from DMC in TAF for the half month.
 define Exchangeadd {
     case FutureApril {
-        condition month == apr .and. LOD_Future == 1
+        condition month == apr .and. LOD_DLTSW >= 1
         select Exchange from VAMP_alloc_Fut given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case ExistingApril {
-        condition month == apr .and. LOD_Future == 0
+        condition month == apr .and. LOD_DLTSW == 0
         select Exchange from VAMP_alloc_Ext given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case MayOnly {
         condition month == may
@@ -222,10 +222,10 @@ goal setExchangeaddApr {
 ! Modesto and Turlock VAMP required release for April and May from Don Pedro in TAF for the half month.
 define MIDTIDadd {
     case FutureApril {
-        condition month == apr .and. LOD_Future == 1
+        condition month == apr .and. LOD_DLTSW >= 1
         select MIDTID from VAMP_alloc_Fut given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case ExistingApril {
-            condition month == apr .and. LOD_Future == 0
+            condition month == apr .and. LOD_DLTSW == 0
         select MIDTID from VAMP_alloc_Ext given deficiency=16.*VAMP_deficiency*cfs_TAF/30. use linear }
     case MayOnly {
         condition month == may

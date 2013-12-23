@@ -391,10 +391,10 @@ goal aggr_R_SJRVER_West { R_SJRVERWest = R_SJRVERb }
 
 define SLDR_614 {
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select drain_flow from SLDR_Fut where yrtype=WYT_SJR, month=month }
     case Existing{
-	condition LOD_Future == 0 
+	condition LOD_DLTSW == 0 
         select drain_flow from SLDR_Ext where yrtype=WYT_SJR, month=month }
 }
 

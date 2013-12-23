@@ -19,10 +19,10 @@ Delivery arc splits between project Ag, M & I and refuges.
 
 define sjr_ag_dist {
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select sjr_dist from sjr_monthly_data_Fut where month=month }
     case Existing{
-	condition LOD_Future == 0   ! existing condition
+	condition LOD_DLTSW == 0   ! existing condition
 	select sjr_dist from sjr_monthly_data_Ext where month=month }
 }
 

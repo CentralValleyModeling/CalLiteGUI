@@ -78,10 +78,10 @@ define EC_MP_Ag_Return { value EC_Mendota_Pool + 500.0 }
 
 define EC_Grassland_B  {
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select EC_Grassland_B from EC_Table_WestRtn_Fut where month = month}
     case Existing{
-	condition LOD_Future == 0 
+	condition LOD_DLTSW == 0 
         select EC_Grassland_B from EC_Table_WestRtn_Ext where month = month}
 }
 define EC_Grassland_B_CL{alias EC_Grassland_B } 

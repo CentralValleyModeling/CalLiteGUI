@@ -10,8 +10,6 @@ Read option switches for lookup table
 define RunBasis {select Option from GUI_RunBasis where Index=1}
 
 /* Hydro Climate Dashboard*/
-!LOD_Future now handled in main file
-!define LOD_Future         {select Option from GUI_HydroClimate where Index=1} !Export_Ops\OMR\OMR_constraint_CL.wresl
 define X2_SLR             {select Option from GUI_HydroClimate where Index=2}  
 define  X2_ANN_KM {                                                           !Delta\ANN\lastX2_ANN_KM.wresl 
     case KM { condition X2_SLR == 0
@@ -21,15 +19,14 @@ define  X2_ANN_KM {                                                           !D
     condition always 
     value 0}}
 
-  
-define CC_Term {select Option from GUI_HydroClimate where Index = 1}
 define CC_Scenario {select Option from GUI_HydroClimate where Index = 4}
+
 define Climate_Proj {
 	case LLT{
-		condition int(CC_Term) == 3
+		condition int(LOD_DLTSW) == 3
 		value CC_Scenario + 5}
 	case ELT{
-		condition int(CC_Term) == 2
+		condition int(LOD_DLTSW) == 2
 		value CC_Scenario}
 	case NO_CC{
 		condition always
