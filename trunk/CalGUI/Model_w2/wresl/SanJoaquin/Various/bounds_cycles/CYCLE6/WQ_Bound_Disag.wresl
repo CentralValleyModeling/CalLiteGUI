@@ -1053,8 +1053,8 @@ define VERNWQNONPULSEDV {alias VERNWQNONPULSE kind 'Salinity-EC' units 'umhos/cm
 define VERNWQPULSEDV {alias VERNWQPULSE kind 'Salinity-EC' units 'umhos/cm'}
 
 !define VernWQfinal {alias VernWQfinalSV kind 'Salinity-EC' units 'umhos/cm'}
-define VernWQfinal  {std kind 'Salinity-EC' units 'umhos/cm'}
-goal setVernWQfinal {VernWQfinal = VernWQfinalSV}
+!define VernWQfinal  {std kind 'Salinity-EC' units 'umhos/cm'}
+!goal setVernWQfinal {VernWQfinal = VernWQfinalSV}
 
 
 !For Flow
