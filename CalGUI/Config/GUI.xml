@@ -1712,22 +1712,25 @@
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 							</button>
-							<glue />
+							<glue preferredsize="5,5" />
 							<button id="op_btn2b" name="op_btn2b" text="Read..."
 								enabled="true" ActionCommand="Op_TableEdit">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
 							</button>
+							<glue preferredsize="5,5" />
 							<button id="op_btn2c" name="op_btn2b" text="Defaults"
-								enabled="true" ActionCommand="Op_TableEdit">
+								enabled="true" ActionCommand="Reg_Default">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
 							</button>
+							<glue preferredsize="25,5" />
 							<button id="op_btn1" name="op_btn1" text="Edit SWP"
 								enabled="true" ActionCommand="Op_TableEdit">
 								<gridbagconstraints insets="0,20,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="3" gridy="1" />
 							</button>
+							<glue preferredsize="5,5" />
 							<button id="op_btn2" name="op_btn2" text="Edit CVP"
 								enabled="true" ActionCommand="Op_TableEdit">
 								<gridbagconstraints insets="0,10,5,5"
@@ -1859,6 +1862,11 @@
 								</table>
 							</scrollpane>
 						</HBox>
+						<label id="op_WSIDI_Status" name="op_WSIDI_Status"
+							text="Default for BO/CC (Unedited)">
+							<gridbagconstraints insets="0,0,5,5" gridx="0"
+								gridy="4" gridwidth="5" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
 					</panel>
 
 				</panel>
