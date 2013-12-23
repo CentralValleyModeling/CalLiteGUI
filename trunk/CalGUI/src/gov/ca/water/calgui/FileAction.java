@@ -910,6 +910,17 @@ public class FileAction implements ActionListener {
 
 	}
 
+	/**
+	 * Sets up CalLite_w2.bat file to run WSI-DI
+	 * 
+	 * @param batFileName
+	 * @param ScenarioFile
+	 * @param noIterations
+	 */
+	public static void setupMainBatchFile_WSIDI(String batFileName, final File ScenarioFile, final int iterations) {
+
+	}
+
 	public static void setupMainBatchFile(String batFileName, final File[] allScenarioFiles, final String[] subBatchFileNameArray) {
 
 		if (batFileName == null || batFileName.isEmpty())
