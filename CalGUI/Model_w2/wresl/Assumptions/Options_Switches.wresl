@@ -113,7 +113,7 @@ define CVPDedBanksSwitch  {value 0} ! use as place holder
 define SWPShastaSwitch    {value 0} ! use as place holder
  
 /* Water Management Action*/
-define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Index=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
+define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Facility=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
  
  /* San Joaquin Switches */
 define VAMP_Flow          {select Option from GUI_SJR where Index=1} !VAMP_Flow -  VAMP pulse flows (Apr 15-May 15)
@@ -128,6 +128,6 @@ define REST_REQ           {select Option from GUI_SJR where Index=6} !REST_REQ -
 /* Facility options*/
 define EnlargShastaOn    {select Option from GUI_EnlargedShasta where Index=1} 
 define EnlargShastaSize  {select Option from GUI_EnlargedShasta where Index=2} 
-
+define TDExports       	 {select Option from GUI_BDCP_FacilityControl where Facility = 4}
 
  
