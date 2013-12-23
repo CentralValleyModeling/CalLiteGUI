@@ -1653,7 +1653,7 @@ public class FileAction implements ActionListener {
 	}
 
 	/**
-	 * Check if date selection is valid
+	 * Checks if date selection is valid for scenario currently in memory
 	 * 
 	 * @param swix
 	 */
@@ -1677,14 +1677,28 @@ public class FileAction implements ActionListener {
 		}
 	}
 
-	// File[] expandedScenarioFiles = expandScenarioList(batchScenFileDialog.fc.getSelectedFiles(), swix);
+	/**
+	 * Loops over scenarios selected for current (batch) run and creates expanded list reflecting embedded climatological hydrologic
+	 * alternatives
+	 * 
+	 * @param scenFiles
+	 * @param swix
+	 * @return
+	 */
 	private File[] expandScenarioList(File[] scenFiles, SwingEngine swix) {
-		// TODO: Save current UI
+
 		ArrayList<String> expandedList = new ArrayList<String>();
+
+		// Loop over list of scenarios in current batch
+
 		for (File sf : scenFiles) {
+
 			action_WSIDI = 0;
 			regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
 			boolean[] realizationIsSelected = new boolean[5];
+
+			// Count selected climate change realizations
+
 			int scenarioCCCount = 0;
 			for (int i = 1; i <= 5; i++) {
 				realizationIsSelected[i - 1] = ((JCheckBox) swix.find("hyd_ckb" + i)).isSelected();
@@ -1692,6 +1706,9 @@ public class FileAction implements ActionListener {
 					scenarioCCCount++;
 				}
 			}
+
+			// Add one or many subscenarios
+
 			if (scenarioCCCount < 2)
 				expandedList.add(sf.getAbsolutePath());
 			else
@@ -1701,10 +1718,11 @@ public class FileAction implements ActionListener {
 					}
 				}
 		}
+
 		File[] expandedScenFiles = new File[expandedList.size()];
 		for (int i = 0; i < expandedList.size(); i++)
 			expandedScenFiles[i] = new File(expandedList.get(i));
-		// TODO: Restore UI from saved file
+
 		return expandedScenFiles;
 	}
 }
