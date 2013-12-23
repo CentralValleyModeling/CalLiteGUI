@@ -18,10 +18,10 @@ define D408_RS_max {value 350.} !cfs
 define D408_OR_max {value 250.} !cfs
 
 !Victoria Canal (Alternative) Intake capacity [D408_VC_max, units cfs]
-!define LOD_Future {select Option from options where Index=9}
+!define LOD_DLTSW {select Option from options where Index=9}
 define D408_VC_max {
     case CCWD_Future{
-        condition int(LOD_Future) == 1 
+        condition int(LOD_DLTSW) >= 1 
         value 250.} !cfs
     case otherwise{
         condition always

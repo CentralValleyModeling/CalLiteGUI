@@ -18,16 +18,8 @@ initial {
 	svar AN_DLTSW {select OPTION from GUI_Regs where Index = 12}  !D-1485
 	svar CH_DLTSW {select OPTION from GUI_Regs where Index = 13}  !D-1485
     svar Dynamic_SJR {select Option from GUI_SJR where Index=7} !Turns on dynamic SJR
-    svar clProjPer {select Option from GUI_HydroClimate where Index=1} 
-    svar LOD_Future { !Existing Level of Development
-    	case currentLvl{
-    		condition int(clProjPer) == 0 
-    		value 0 }
-    	case otherwise{ !Covers Future Level of Development and Climate Change
-    		condition always
-    		value 1}}
-    svar SLR {select Option from GUI_HydroClimate where Index=2}
-    !svar LOD_Future {select Option from GUI_HydroClimate where Index=1}
+    svar LOD_DLTSW {select Option from GUI_HydroClimate where Index=1} 
+    svar SLR_DLTSW {select Option from GUI_HydroClimate where Index=3}
 }
  
 SEQUENCE CYCLE1 {
@@ -106,25 +98,25 @@ model block1 {
 
     INCLUDE '\sanjoaquin\SanJoaquinCoreA.wresl'
         
-    if int(LOD_Future)==1 {
+    if int(LOD_DLTSW)>=1 {
         INCLUDE '\sanjoaquin\Delta\COSMA_dmd.wresl' 
     } 
 
     INCLUDE '\sanjoaquin\SanJoaquinCoreB.wresl'
 
-    if int(LOD_Future)==1 {
+    if int(LOD_DLTSW)>=1 {
         INCLUDE '\sanjoaquin\Calaveras\Calaveras_Dems_StocktonDWSP.wresl' 
     } 
-    elseif int(LOD_Future)==0 {
+    elseif int(LOD_DLTSW)==0 {
         INCLUDE '\sanjoaquin\Calaveras\Calaveras_Dems.wresl' 
     }   
 
     INCLUDE '\sanjoaquin\Delta\DWSP_arc_split.wresl' 
 
-    if int(LOD_Future)==1 {
+    if int(LOD_DLTSW)>=1 {
         INCLUDE '\sanjoaquin\Delta\cosma_restrict.wresl' 
     } 
-    elseif int(LOD_Future)==0 {
+    elseif int(LOD_DLTSW)==0 {
         INCLUDE '\sanjoaquin\Delta\COSMA_zeroset.wresl'
     }   
     
@@ -170,25 +162,25 @@ MODEL block2 {
         INCLUDE '\sanjoaquin\SanJoaquinCoreA.wresl'
     }
 
-    if int(LOD_Future)==1 .and. int(Dynamic_SJR)==1 {
+    if int(LOD_DLTSW)>=1 .and. int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Delta\COSMA_dmd.wresl' 
     } 
 
     if int(Dynamic_SJR)==1 {    INCLUDE '\sanjoaquin\SanJoaquinCoreB.wresl'}
 
-    if int(LOD_Future)==1 .and. int(Dynamic_SJR)==1 {
+    if int(LOD_DLTSW)>=1 .and. int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Calaveras\Calaveras_Dems_StocktonDWSP.wresl' 
     } 
-    elseif int(LOD_Future)==0 .and. int(Dynamic_SJR)==1 {
+    elseif int(LOD_DLTSW)==0 .and. int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Calaveras\Calaveras_Dems.wresl' 
     }   
 
     if int(Dynamic_SJR)==1 {    INCLUDE '\sanjoaquin\Delta\DWSP_arc_split.wresl' }
 
-    if int(LOD_Future)==1 .and. int(Dynamic_SJR)==1 {
+    if int(LOD_DLTSW)>=1 .and. int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Delta\cosma_restrict.wresl' 
     } 
-    elseif int(LOD_Future)==0 .and. int(Dynamic_SJR)==1 {
+    elseif int(LOD_DLTSW)==0 .and. int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Delta\COSMA_zeroset.wresl'
     }   
 
@@ -221,12 +213,14 @@ MODEL block2 {
 
 MODEL block3 {
     define getFinalMrdo {EXTERNAL f90}  ! OBJ code file must be located in run\external directory for compilation
-    if int(SLR) == 0 .or. int(SLR) == 1{
+    
+    if int(SLR_DLTSW) == 0 {
     	INCLUDE  'Delta\DeltaExtFuncs_7inpANN.wresl'}
-    elseif int(SLR) == 2{
+    elseif int(SLR_DLTSW) == 1{
     	INCLUDE  'Delta\DeltaExtFuncs_7inpANNslr15cm.wresl'}
-    elseif int(SLR) == 3{
+    elseif int(SLR_DLTSW) == 2{
     	INCLUDE  'Delta\DeltaExtFuncs_7inpANNslr45cm.wresl'}
+    	
     INCLUDE  'swp_dellogic\allocation\co_extfcn.wresl'
 
     INCLUDE 'System\System.wresl'

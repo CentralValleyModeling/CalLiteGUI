@@ -164,10 +164,10 @@ East of Turlock ID M&I pumping- all met by GW (A)
 ! Define East of Turlock ID M & I demand
 define demand_D549_MI_A {
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem549_MI_A from urban_demand2_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select dem549_MI_A from urban_demand2_Ext where month = month}
 }
 
@@ -201,10 +201,10 @@ define D549_pag_factor {
         condition month==mar .and. cuaw_549_pag>=25.*taf_cfs
         value .6 }
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select factD549 from sjr_monthly_data_Fut where month=month }
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select factD549 from sjr_monthly_data_Ext where month=month }
 }
 
@@ -212,20 +212,20 @@ define D549_pag_factor {
 ! Determine from lookup table minimum Turlock ID ground water pumping
 define GP548_min_pag_limit{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select min548pag from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select min548pag from TuolGWPUMP_Ext where month = month}
 }
     
 ! Determine from lookup table maximum Turlock ID ground water pumping
 define GP548_max_pag_lim1{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select max548pag  from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select max548pag  from TuolGWPUMP_Ext where month = month}
 }
 
@@ -235,10 +235,10 @@ define GP548_max_pag_limit {value GP548_max_pag_lim1 - GP548_min_pag_limit}
 ! Determine from lookup table minimum private ground water pumping
 define GP548_min_prv_limit{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select min548prv  from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select min548prv from TuolGWPUMP_Ext where month = month}
 }
 
@@ -257,10 +257,10 @@ Turlock ID M&I pumping - all met by GW (B)
 ! Define Turlock ID M & I demand
 define demand_D549_MI_B{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem549_MI_B from urban_demand2_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select dem549_MI_B from urban_demand2_Ext where month = month}
 }
     
@@ -399,10 +399,10 @@ goal set_dloss_551 {dloss_551_pag = C550 * (1.-(1.1*.75)) - GP550_pag * (1.-(1.1
 ! Limit on diversions from SJR to DAU 208 is 50 cfs (defined in lookup table)
 define D_SJRMER_limit {
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select D_SJRMER_lim from sjr_monthly_data_Fut where month=month }
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select D_SJRMER_lim from sjr_monthly_data_Ext where month=month } ! NO  D_SJRMER_lim in sjr_monthly_data_Ext.table
 }
 
@@ -421,10 +421,10 @@ East bank of San Joaquin, Merced to Tuolumne M&I pumping - all met by GW (A)
 ! Define East bank of San Joaquin, Merced to Tuolumne M & I demand
 define demand_D551_MI_A{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem551_MI_A from urban_demand2_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select dem551_MI_A from urban_demand2_Ext where month = month}
     }
     
@@ -448,10 +448,10 @@ goal set_D78_seep {D78_SEEP = S78_seep * taf_cfs}
 ! Determine Modesto MI demand from lookup table
 define demand_D78A_mi {
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select demand_d78_mi from sjr_monthly_data_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select demand_d78_mi from sjr_monthly_data_Ext where month = month}
 }
 
@@ -459,10 +459,10 @@ define demand_D78A_mi {
 ! Limit on Modesto MI deliveries given in lookup table
 define  D78_MI_limit {
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select limit_d78_mi from sjr_monthly_data_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select limit_d78_mi from sjr_monthly_data_Ext where month = month}
 }
 
@@ -480,10 +480,10 @@ goal set_R550a {R550a = D78A * 0.}
 
 define demand_D533_mi_A  {
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem533_mi_A  from urban_demand1_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select dem533_mi_A  from urban_demand1_Ext where month = month}
 }
 
@@ -521,10 +521,10 @@ define D533_pag_factor {
         condition month==mar .and. cuaw_533_pag>=12.*taf_cfs
         value .6 }
    case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select factD533 from sjr_monthly_data_Fut where month=month }
    case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select factD533 from sjr_monthly_data_Ext where month=month }
 }
 
@@ -535,30 +535,30 @@ Modesto ID demand delivery is 1. min private pumping, 2. min district pumping,
 ! Determine from lookup table minimum private ground water pumping
 define GP532_min_prv_limit{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select min532prv  from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select min532prv from TuolGWPUMP_Ext where month = month}
 }
 
 ! Determine from lookup table minimum Modesto ID ground water pumping
 define GP532_min_pag_limit{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select min532pag  from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select min532pag from TuolGWPUMP_Ext where month = month}
 }
 
 ! Determine from lookup table maximum Modesto ID ground water pumping
 define GP532_max_pag_lim1{
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select max532pag  from TuolGWPUMP_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select max532pag from TuolGWPUMP_Ext where month = month}
 }
 
@@ -745,10 +745,10 @@ goal set_R_SJRSTANb {R_SJRSTANb = dloss_535_pag }
 ! From lookup table, place limit on SJR diversions for non-district use
 define D_SJRTUOLA_limit {
     case FUTURE {
-        condition LOD_Future == 1 
+        condition LOD_DLTSW >= 1 
         select D_SJRTUOLA_lim from sjr_monthly_data_Fut where month=month }
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select D_SJRTUOLA_lim from sjr_monthly_data_Ext where month=month }
 }
 
@@ -763,10 +763,10 @@ East Bank of San Joaquin Tuolumne to Stanislaus M&I pumping - all met by GW (A)
 
 define demand_D535_MI_A {
     case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem535_MI_A   from urban_demand1_Fut where month = month}
     case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
         select dem535_MI_A  from urban_demand1_Ext where month = month}
 }
     

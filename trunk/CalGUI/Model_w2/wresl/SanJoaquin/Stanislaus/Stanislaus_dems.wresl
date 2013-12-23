@@ -197,10 +197,10 @@ goal set_GP530_ND {GP530_ND = D531_ND}
 define demand_D531_mi_A {
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem531_MI_A from urban_demand1_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
     select dem531_MI_A from urban_demand1_Ext where month = month}
     }
 
@@ -219,10 +219,10 @@ goal set_GP530_mi_A {GP530_mi_A = D531_mi_A}
 define demand_D531_mi_B {
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem531_MI_B from urban_demand1_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
     select dem531_MI_B from urban_demand1_Ext where month = month}
     }
 
@@ -251,10 +251,10 @@ District MI pumping with Oakdale ID Boundaries - all met by GW (B)
 define demand_D523_MI_B  {
 
         case Future {
-        condition LOD_Future == 1   ! future condition
+        condition LOD_DLTSW >= 1   ! future condition
         select dem523_MI_B from urban_demand1_Fut where month = month}
         case Existing{
-        condition LOD_Future == 0   ! existing condition
+        condition LOD_DLTSW == 0   ! existing condition
     select dem523_MI_B from urban_demand1_Ext where month = month}
     }
 

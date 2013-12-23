@@ -57,7 +57,7 @@ define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}
 */
 define VAMP_Req {
     case AprDoubleStep { 
-        condition    month == apr .and. wyt_SJR + wyt_SJR_prv1 <= 5 .and. VAMP_Flow == 1 .and. LOD_Future == 1 ! trunoff for existing condition LOD_Future == 0
+        condition    month == apr .and. wyt_SJR + wyt_SJR_prv1 <= 5 .and. VAMP_Flow == 1 .and. LOD_DLTSW >= 1 ! trunoff for existing condition LOD_DLTSW == 0
         select        DoubleStep from VAMP_req given Base=C_SJRVER[SJR_WQ2] use maximum }
     case AprRelax {
         condition    month == apr .and. wyt_SJR + wyt_SJR_prv1 + wyt_SJR_prv2 >= 14 .and. VAMP_Flow == 1 
