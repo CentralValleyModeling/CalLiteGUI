@@ -1,5 +1,5 @@
 GUI_BDCP_FacilityControl
-Facility  Option   
+Index  Option   
 1		0          !Jones IF Export :ON(1) OFF(0)  !index   Option    !user	switch
 2       0          !Banks IF Export :ON(1) OFF(0)
 3       0          !CCWD  IF Export :ON(1) OFF(0)

@@ -1,0 +1,16 @@
+/**
+BaseStudyResults.wresl
+
+Nazrul Islam, DWR, 10/13/2010
+
+These time series is taken from CalSim B2 study. 
+**/
+
+! STUDY 3 RESULTS
+! Minimum Required flows
+define C_Wkytn_MIF_b2 {timeseries kind 'FLOW-MIN-INSTREAM' units 'CFS'}
+define C_Kswck_MIF_b2 {timeseries kind 'FLOW-MIN-INSTREAM' units 'CFS'}
+define C_Nimbus_mif_b2 {timeseries kind 'FLOW-MIN-INSTREAM' units 'CFS'}
+
+! B2 action triggers
+! Are defined by GUI switches in the Options_Switches.wresl file
