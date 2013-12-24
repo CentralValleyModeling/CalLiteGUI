@@ -228,40 +228,30 @@ Code adopted from OCAP 2008 study by Holly Canada, DWR
 
 goal fixPB1 {
      lhs     D_Banks_whlpb
-     case Wheeling {
-     condition wheeling_ctrl > .1 .and. (CVC_ON + JPOD_ON)>.1
      rhs     D_Banks_whlpb[BASE]
      lhs>rhs penalty 99999
      lhs<rhs penalty 99999}
 }
 goal fixPB3 {
      lhs     C_Kswck_whlPB
-     case Wheeling {
-     condition wheeling_ctrl > .1 .and. (CVC_ON + JPOD_ON)>.1
      rhs     C_Kswck_whlPB[BASE]
      lhs>rhs penalty 99999
      lhs<rhs penalty 99999}
 }
 goal fixPB4 {
      lhs     C_Nimbus_whlPB
-     case Wheeling {
-     condition wheeling_ctrl > .1 .and. (CVC_ON + JPOD_ON)>.1
      rhs     C_Nimbus_whlPB[BASE]
      lhs>rhs penalty 99999
      lhs<rhs penalty 99999}
 }
 goal fixPB5 {
      lhs     C_wkytn_whlPB
-     case Wheeling {
-     condition wheeling_ctrl > .1 .and. (CVC_ON + JPOD_ON)>.1
      rhs     C_wkytn_whlPB[BASE]
      lhs>rhs penalty 99999
      lhs<rhs penalty 99999}
 }
 goal fixPB6 {
      lhs     D_spring_whlPB
-     case Wheeling {
-     condition wheeling_ctrl > .1 .and. (CVC_ON + JPOD_ON)>.1
      rhs     D_spring_whlPB[BASE]
      lhs>rhs penalty 99999
      lhs<rhs penalty 99999}

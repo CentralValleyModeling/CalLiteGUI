@@ -64,7 +64,7 @@ define B2Action3_Ctrl {
 }
 
 !define wheeling_ctrl {value min(BO_Banks_Ctrl, BO_Jones_Ctrl, OMR_Ctrl)}
-define wheeling_ctrl {value 1.} !min(BO_Ctrl, OMR_Ctrl, B2Action3_Ctrl)}
+define wheeling_ctrl {value min(BO_Ctrl, OMR_Ctrl, B2Action3_Ctrl)}
 define whlctrl_dv {alias wheeling_ctrl kind 'output' units 'cfs'}
 define BOCtrl_dv {alias BO_Ctrl kind 'output' units 'cfs'}
 define BOBanksCtrl_dv {alias BO_Banks_Ctrl kind 'output' units 'cfs'}

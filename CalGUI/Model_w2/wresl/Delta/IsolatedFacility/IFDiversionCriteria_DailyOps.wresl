@@ -233,9 +233,6 @@ define bypassdv {alias bypass kind 'FLOW-DELIVERY' units 'cfs'}
 
 goal setbypass { C_Freeport_BFMIN = bypass}
 
-!switch for IF
-define IF_OnOff {value max(0.,JonesIFSwitch,BanksIFSwitch,CCWDIFSwitch)}
-
 !define maximum pumping capacity
 define max_pumptotal {value BanksCapPhys*BanksIFSwitch + JonesCapPhys*JonesIFSwitch + 270*CCWDIFSwitch}!Maximum CCWD demand is 264.75 cfs
 

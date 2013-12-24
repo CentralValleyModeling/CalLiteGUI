@@ -39,23 +39,23 @@ ckbReg_AN	GUI_Regs.table	12	-1	AN_DLTSW -  Antioch for D-1485 (shared control wi
 ckbReg_AN	GUI_Regs.table	13	-1	CH_DLTSW -  Chipps Island for D-1485(shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a	13
 ckbReg_TRNTY	GUI_Regs.table	14	-1	TRNTY_DLTSW -  Trinity Minimum Flows	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a	14
 ckbReg_PUMP	GUI_Regs.table	15	-1	PUMP_DLTSW -  Permitted pumping limits at Jones and Banks	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a	15
-ckbRegbo2	GUI_RPAsOtherRegs.table	1	-1	FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	16
-ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	NMFS BO Action 4.1.2: No action: value=0; Action: value =1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	17
-ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	NMFS BO Action 4.2.1: No action: value=0; Action: value =1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	18
-ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	FWS BO Action: No action: value=0; Action: value =1;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	19
-ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1; 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	20
-n/a	GUI_RPAsOtherRegs.table	6	-1	"CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	21
-n/a	GUI_RPAsOtherRegs.table	7	-1	"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	22
-ckbReg2	GUI_RPAsOtherRegs.table	8	-2	   QOMR_DLTSW; user defined  2	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
-ckbReg1	GUI_RPAsOtherRegs.table	9	-2	   QWEST_DLTSW; user defined  2	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
-ckbReg10	GUI_RPAsOtherRegs.table	10	-2	   EISJR_DLTSW; user defined  2	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
-ckbReg11	GUI_RPAsOtherRegs.table	11	-1	B2 Action 1: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
-ckbReg12	GUI_RPAsOtherRegs.table	12	-1	B2 Action 2: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
-ckbReg13	GUI_RPAsOtherRegs.table	13	-1	B2 Action 3: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
-ckbReg14	GUI_RPAsOtherRegs.table	14	-1	B2 Action 4: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
-ckbReg15	GUI_RPAsOtherRegs.table	15	-1	B2 Action 5: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
-ckbReg16	GUI_RPAsOtherRegs.table	16	-1	B2 Action 6: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
-ckbReg17	GUI_RPAsOtherRegs.table	17	-1	B2 Action 7: No action: value=0; Action: value =1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
+ckbRegbo2	GUI_RPAsOtherRegs.table	1	-1	"Fall_X2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	16
+ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	"Action_4_1_2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	17
+ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	"Action_4_2_1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	18
+ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	"ORMROON";	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	19
+ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	"ClearCrkBOswitch" 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	20
+n/a	GUI_RPAsOtherRegs.table	6	-1	"BOON_CVP"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	21
+n/a	GUI_RPAsOtherRegs.table	7	-1	"BOON_SWP"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	22
+ckbReg2	GUI_RPAsOtherRegs.table	8	-2	"QOMR_DLTSW"	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
+ckbReg1	GUI_RPAsOtherRegs.table	9	-2	"QWEST_DLTSW"	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
+ckbReg10	GUI_RPAsOtherRegs.table	10	-2	"EISJR_DLTSW"	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
+ckbReg11	GUI_RPAsOtherRegs.table	11	-1	"B2Action1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
+ckbReg12	GUI_RPAsOtherRegs.table	12	-1	"B2Action2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
+ckbReg13	GUI_RPAsOtherRegs.table	13	-1	"B2Action3"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
+ckbReg14	GUI_RPAsOtherRegs.table	14	-1	"B2Action4"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
+ckbReg15	GUI_RPAsOtherRegs.table	15	-1	"B2Action5"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
+ckbReg16	GUI_RPAsOtherRegs.table	16	-1	"B2Action6"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
+ckbReg17	GUI_RPAsOtherRegs.table	17	-1	"B2Action7"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
 ckbReg18	n/a	n/a	n/a	Edit the fraction of unimpaired flow as flow criteria	Regulations	perc_UnimparedFlow	16	16	n/a	n/a	n/a	n/a	n/a	33
 op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	34
 op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	35
@@ -63,16 +63,16 @@ op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	Operations	n/a	n/a
 op_rdb9	GUI_Operations.table	4	-1	"Payback Wheeling (D-1485):  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	37
 op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9	n/a	n/a	n/a	n/a	n/a	n/a
 op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10	n/a	n/a	n/a	n/a	n/a	n/a
-VAMP_Flow	GUI_SJR.table	1	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-Vern_RPA 	GUI_SJR.table	2	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-D1641_Base	GUI_SJR.table	3	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-D1641_SALINITY	GUI_SJR.table	4	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-STAN_RPA	GUI_SJR.table	5	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-SJR_interim	GUI_SJR.table	6	0	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-SJR_full	GUI_SJR.table	6	1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-Dynamic_SJR	GUI_SJR.table	7	-1	SJR Switches	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
-fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	Jones IF Export :ON(1) OFF(0)  !index   Option    !user	switch	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	Banks IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	CCWD  IF Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	TD Export :ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	Fremont Weir Notch ON=1; OFF=0  !1   0	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
+VAMP_Flow	GUI_SJR.table	1	-1	"VAMP_Flow - VAMP_Flow -  VAMP pulse flows (Apr 15-May 15). 1=on, 0=off"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+Vern_RPA 	GUI_SJR.table	2	-1	"Vern_RPA -  Vernalis RPA 60-day pulse flow (April-May). 1=on, 0=off"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+D1641_Base	GUI_SJR.table	3	-1	"D1641_Base -  Vernalis D-1641 baseflows (Feb-Apr 14, May 16-June). 1=on, 0=off"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+D1641_SALINITY	GUI_SJR.table	4	-1	"D1641_SALINITY  - Vernalis D-1641 salinity criteria. 1=on, 0=off"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+STAN_RPA	GUI_SJR.table	5	-1	"STAN_RPA  - Stanislaus RPA flows. 1=on, 0=off"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+SJR_interim	GUI_SJR.table	6	0	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+SJR_full	GUI_SJR.table	6	1	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+Dynamic_SJR	GUI_SJR.table	7	-1	"0=timeseries, 1=dynamic SJR calculation"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	n/a
+fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	"JonesIFSwitch - Jones IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	"BanksIFSwitch - Banks IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	"CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	"TDExports: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	"fremont_notch_on - Fremont Weir Notch ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  

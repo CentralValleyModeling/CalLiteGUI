@@ -19,11 +19,11 @@ define SJRatio_MaxExp{
                 }
         case High_flow{
                 condition Vernalis >= 6000.
-                value 999999. !Vernalis / 4.
+                value Vernalis / 4.
                 }
         case Interim{
                 condition always
-                value 999999. !1500.
+                value 1500.
                 }
        }
 */
@@ -39,8 +39,8 @@ define SJR_indicator2 {value 6. - wyt_SJR_prv2}
 define NMforecast1SV {timeseries kind 'forecast' units 'taf'}
 
 define SJRatio_MaxExp{
-    case EISJR_UDEF {                             !
-         condition EISJR_DLTSW == 2
+    case EISJR_UDEF {                             
+         condition EISJR_DLTSW == 2 .or. int(IF_SWPorCVP_OnOff) == 1
          value 999999. 
          }
     case Flood_flow{
@@ -49,25 +49,25 @@ define SJRatio_MaxExp{
         }
     case mult_drought{
         condition (SJR_indicator + SJR_indicator1 + SJR_indicator2) <= 6.  .AND. NMforecast1SV <= 1000
-        value 999999. !Vernalis
+        value Vernalis
         }
     case critical{
         condition wyt_SJR == 5
-        value 999999. !Vernalis
+        value Vernalis
         }
         case dry{
         condition wyt_SJR == 4
-        value 999999. !Vernalis / 2.
+        value Vernalis / 2.
         }
     case BelowN{
         condition wyt_SJR == 3
-        value 999999. !Vernalis / 3.
+        value Vernalis / 3.
             }
     case AN_Wet{
         condition always !wyt_SJR 2 and 1
-        value 999999. !Vernalis / 4.
+        value Vernalis / 4.
         }
-       }
+}
 
 !*********************************************************************************************
 define SJRatio_MaxExpdv {alias SJRatio_MaxExp kind 'NMFS' units 'NONE'}
