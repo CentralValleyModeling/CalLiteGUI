@@ -42,10 +42,10 @@ class Main:
         crvMax = [20000,20000]
       
         configPath = sys.argv[1]
-
+        iterations = sys.argv[2]
         
         
-        s=StudyTabCl(configPath)
+        s=StudyTabCl(configPath,iterations)
         s.runForWsi(crvName,crvWsiVar,crvDiVar,crvMax)
 
   
