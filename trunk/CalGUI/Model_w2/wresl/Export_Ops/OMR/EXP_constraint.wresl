@@ -25,7 +25,14 @@ define HandS_minpump {
 }
 ! Take the most restrictive of the NMFS export restrictions but consider the Health
 !   and safety level export that must be allowed
-define MAXEXP_RPA {value min(NMFS_MaxExp, NMFS_MaxExp_DCC, FWS_MaxExp_X2)}
+define MAXEXP_RPA {
+	case IF_On {
+		condition int(IF_SWPorCVP_Onoff)==1
+		value min(NMFS_MaxExp, NMFS_MaxExp_DCC, FWS_MaxExp_X2)}
+	case IF_Off {
+		condition always
+		value max( min(NMFS_MaxExp, NMFS_MaxExp_DCC, FWS_MaxExp_X2), HandS_minpump)}
+}
 !
 ! **********************************************************************************************
 !
@@ -63,17 +70,19 @@ goal set_MAXEXP_RPA_CVP {
     }
     
 define MAXEXP_RPA_CVPdv {alias MAXEXP_RPA_CVP kind 'EXPORT-LIMIT' units 'CFS'}
-/***
+
+if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
 goal set_MAXEXP_RPA {
     lhs     D_banks_swp_TD + D_jones_TD
     case BOSWITCHON {
-    condition FallX2 == 1 .or. Action_4_1_2 == 1 .or. Action_4_2_1 == 1
-    rhs     MAXEXP_RPA
+		condition FallX2 == 1 .or. Action_4_1_2 == 1 .or. Action_4_2_1 == 1
+		rhs     MAXEXP_RPA
     lhs<rhs penalty    0}
     }
+}
 
 define MAXEXP_RPAdv {alias MAXEXP_RPA kind 'EXPORT-LIMIT' units 'CFS'}
-***/
+
 
 /***
 goal set_MAXEXP_RPA_SWP {
@@ -88,14 +97,13 @@ goal set_MAXEXP_RPA_CVP {
     lhs<rhs penalty    0}
 ***/
 
+if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
 goal set_HandSminpump {
     lhs     D_Jones_TD + D_Banks_TD + D_Jones_IF + D_Banks_IF
-    case IF_on {
-     condition  max(JonesIFSwitch,BanksIFSwitch) > 0.5
     rhs     HandS_minpump
     lhs>rhs penalty 0
     lhs<rhs penalty 90000}
-}    
+}
 
 !Limit Partner use of LV by export constraints.
 goal constrain_LVP {D_jones_TD + D_banks_TD /*+ D408_P_WHL_SF_E1*/  < maxexp_rpa}

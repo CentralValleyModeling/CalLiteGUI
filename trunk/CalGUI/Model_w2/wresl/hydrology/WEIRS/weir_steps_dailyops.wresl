@@ -84,7 +84,7 @@ define qsacFth31dv {alias qsacFth31 kind 'flow-channel' units 'cfs'}
 
 define gate11flow {      !Flow for the gate at 11.5 ft elevation
     case Sep_Jun {condition month <=JUN .or. month==SEP
-        value 100.}
+        value 100. * fremont_notch_on}
     case other { condition always
         value 0. }  }
 

@@ -70,11 +70,19 @@ define casedef_HORB {
 ! HORB operations and appropriate coefficients for January through May months - barriers are in and operated.
 ! Assuming Jan - Mar and Jun HORB installation is similar to the SpringHORB (Apr-May).
      case JanMayHORB{
-         condition  month >= JAN .AND. month <= JUN
+         condition  month >= JAN .AND. month <= JUN .and. int(IF_SWPorCVP_OnOff) == 1
          value  5.}
 ! HORB operations and appropriate coefficients for October - November barriers are in and operated
      case OctNovHORB{
-         condition  month == OCT .OR. month == NOV
+		condition  month >= OCT .and. month <= NOV .and. int(IF_SWPorCVP_OnOff) == 1
+         value  6.}
+! HORB Spring operations and appropriate coefficients for spring months - barriers are in and operated
+     case SpringHORB{
+         condition  month == APR .OR. month == MAY
+         value  5.}
+! HORB Fall operations and appropriate coefficients for fall months - barriers are in and operated
+     case FallHORB{
+         condition  month == SEP .OR. month == OCT .OR. month == NOV
          value  6.}
      case default {
          condition  always
@@ -92,16 +100,27 @@ define coefC_HORB {select coefC from OMRiverFlowEq2 where cond = casedef_HORB}
 
 !Define percentage of time that HORB are open based on SJR flow
 define PerOpen_HORB {
-      case drier {
-         condition  VernQ < 5000
-	 select SJR_Dry from HORB_Open where month = month}
-      case wetter {
-         condition  VernQ > 5000 .AND. VernQ < 10000
-	 select SJR_Wet from HORB_Open where month = month}
-      case otherwise {
-         condition always
-         select SJR_High from HORB_Open where month = month}
-	   }
+	case drier {
+        condition  VernQ < 5000 .and. int(IF_SWPorCVP_OnOff) == 1
+		select SJR_Dry from HORB_Open where month = month}
+	case wetter {
+        condition  VernQ > 5000 .AND. VernQ < 10000 .and. int(IF_SWPorCVP_OnOff) == 1
+		select SJR_Wet from HORB_Open where month = month}
+    case otherwise {
+        condition int(IF_SWPorCVP_OnOff) == 1
+        select SJR_High from HORB_Open where month = month}
+    case HORB_Sep{
+        condition Month == SEP .and. casedef_HORB == 6.
+        value 0.5}
+    case HORB{
+! ***** REMOVED Type 5 Spring HORB WHILE USING FWS Delta Smelt BO RPAs
+!         condition casedef_HORB == 5. .or. casedef_HORB == 6.
+        condition casedef_HORB == 6.
+        value 0.}
+    case otherwise{
+        condition always
+        value 1.}
+}
 
 define PerOpen_HORBdv {alias PerOpen_HORB kind 'DEBUG' units 'FRACTION'}
 

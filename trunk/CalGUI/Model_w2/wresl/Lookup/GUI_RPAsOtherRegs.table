@@ -1,31 +1,37 @@
-! set different option for CalLite model
-!1       1   !FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;
-!2       1   !NMFS BO Action 4.1.2: No action: value=0; Action: value =1;
-!3       1   !NMFS BO Action 4.2.1: No action: value=0; Action: value =1;
-!4       1   !FWS BO Action: No action: value=0; Action: value =1;
-!5       1   !NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1; 
-!6       1   !CVP export estimate method: pre-BO estimate: value=0, BO estimate: value =1
-!7       1   !SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 
-!8       2    !   QOMR_DLTSW; user defined  2
-!9       2    !   QWEST_DLTSW; user defined  2
-!10      2    !   EISJR_DLTSW; user defined  2
+! set RPA and B2 Action options for CalLite model
+!1	0	!Fall_X2 (FWS RPA Action 4): Off (D-1641) = 0; On (BO) = 1
+!2	0	!Action_4_1_2 - Delta Cross Channel (NMFS BO Action 4.1.2): Off=0; On=1
+!3	0	!Action_4_2_1 - SJR Inflow to Export Ratio (NMFS BO Action 4.2.1): Off=0; On=1
+!4	0	!ORMROON - Old and Middle River (FWS RPA Action 1-3): Off=0; On=1;
+!5	0	!ClearCrkBOswitch - Clear Creek (NMFS RPA Action 1.1.1): Off=0; On=1
+!6	0	!BOON_CVP (CVP delivery logic south): pre-BO estimate = 0, BO estimate = 1
+!7	0	!BOON_SWP (SWP export estimate method): pre-BO estimate = 0, BO estimate = 1
+!8	0	!QOMR_DLTSW: Off = 0; On = 1; User Defined = 2
+!9	0	!QWEST_DLTSW: Off = 0; On = 1; User Defined = 2
+!10	0	!EISJR_DLTSW: Off = 0; On = 1; User Defined = 2
+!11	0   !B2Action1: Off=0; On=1
+!12	0   !B2Action2: Off=0; On=1
+!13	0   !B2Action3: Off=0; On=1
+!14	0   !B2Action4: Off=0; On=1
+!15	0   !B2Action5: Off=0; On=1
+!16	0   !B2Action6: Off=0; On=1
+!17	0   !B2Action7: Off=0; On=1
 GUI_RPAsOtherRegs
 Index	Option
-1	1	!FWS Fall X2 BO option; No action (D1641) = 0; Fall X2 (BO) on = 1;
-2	1	!NMFS BO Action 4.1.2: No action: value=0; Action: value =1;
-3	1	!NMFS BO Action 4.2.1: No action: value=0; Action: value =1;
-4	1	!FWS BO Action: No action: value=0; Action: value =1;
-5	1	!NMFS BO Action 1.1.1 (clear Creek): No action: value=0; Action: value =1;
-6	0	!"CVP Delivery Logic South: pre-BO estimate: value=0, BO estimate: value =1"
-7	0	!"SWP export estimate method: pre-BO estimate: value=0, BO estimate: value =1 "
-8	0	!QOMR_DLTSW; user defined  2
-9	0	!QWEST_DLTSW; user defined  2
-10	0	!EISJR_DLTSW; user defined  2
-11   1   !B2 Action 1: No action: value=0; Action: value =1
-12   1   !B2 Action 2: No action: value=0; Action: value =1
-13   1   !B2 Action 3: No action: value=0; Action: value =1
-14   1   !B2 Action 4: No action: value=0; Action: value =1
-15   1   !B2 Action 5: No action: value=0; Action: value =1
-16   1   !B2 Action 6: No action: value=0; Action: value =1
-17   1   !B2 Action 7: No action: value=0; Action: value =1
-19   0   !Export Index Delivery CVP [currently off in Option_switches]
+1	0	!Fall_X2
+2	0	!Action_4_1_2
+3	0	!Action_4_2_1
+4	0	!ORMROON
+5	0	!ClearCrkBOswitch
+6	0	!BOON_CVP
+7	0	!BOON_SWP
+8	0	!QOMR_DLTSW
+9	0	!QWEST_DLTSW
+10	0	!EISJR_DLTSW
+11	0   !B2Action1
+12	0   !B2Action2
+13	0   !B2Action3
+14	0   !B2Action4
+15	0   !B2Action5
+16	0   !B2Action6
+17	0   !B2Action7

@@ -89,7 +89,6 @@ define OMRBOON            {select Option from GUI_RPAsOtherRegs where Index=4} !
 define ClearCrkBOswitch   {select Option from GUI_RPAsOtherRegs where Index=5} !BO and B2Actions\B2Action1Repeat.wresl
 define BOON_CVP		  {select Option from GUI_RPAsOtherRegs where Index=6}!swp_dellogic\WSI_DI\delcar_cvp_s.wresl
 define BOON_SWP           {select Option from GUI_RPAsOtherRegs where Index=7}!swp_dellogic\WSI_DI\delcar_swp.wresl
-!define ExpIndex_switch	  {select Option from GUI_RPAsOtherRegs where Index=19}!Export Index Delivery CVP
 
 /*NON-D1641 Delta Flow Switches     */ 
 define QOMR_DLTSW   {select OPTION from GUI_RPAsOtherRegs where Index = 8}

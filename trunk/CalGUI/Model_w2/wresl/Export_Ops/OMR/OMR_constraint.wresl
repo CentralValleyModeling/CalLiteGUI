@@ -116,7 +116,16 @@ define OMR_req {
 
 define OMR_reqdv {alias OMR_req kind 'FLOW' units 'CFS'}
 define OMR_RPA_LF {value -99999.}
-define OMR_RPA {value max(OMR_RPA_FWS,OMR_RPA_LF,OMR_req)}
+define OMR_RPA {
+    case IF_ {
+    	condition 	int(IF_SWPorCVP_OnOff) == 1
+		value		max(OMR_RPA_FWS,OMR_RPA_LF,OMR_req)}
+	case otherwise {
+		condition	always
+		value		max(OMR_RPA_FWS,OMR_RPA_LF)
+	}
+}
+define OMR_RPAdv {alias OMR_RPA kind 'OUTPUT' units 'CFS'}
 
 !define OMR_RPA {
 !	case Dec {
@@ -174,9 +183,12 @@ define C408_limit_init {
      case Jun{
           condition month==JUN .and. OMR_RPA >= -12000.
           value OMR_RPA}
+	 case IF_On{
+			condition int(IF_SWPorCVP_OnOff)==1
+			value OMR_RPA}
      case otherwise{
           condition always
-          value OMR_RPA}  !-99999.}
+          value -99999.}
 }
 !
 
@@ -191,8 +203,25 @@ define Qomr_noExpdv {alias Qomr_noExp kind 'FLOW-CHANNEL' units 'CFS'}
 !define C408_limit {value min(C408_limit_init,Qomr_HandS)}
 define SOD_Q_NoExp {value demand_D_CCWDVCOR + netDICU_SOD}
 define OMRFlow_NoExp {value coefA * VERNQ + coefC + coefB*SOD_Q_NoExp} 
-define C408_limit {value min(C408_limit_init,OMRFlow_NoExp)}
+define C408_limit {
+	case IFon {
+		condition int(IF_SWPorCVP_OnOff)==1
+		value min(C408_limit_init,OMRFlow_NoExp)}
+	case IFoff {
+		condition always
+		value min(C408_limit_init,Qomr_noExp)}
+}
 define C408_LBound  {alias C408_limit kind 'FLOW-LBOUND' units 'CFS'}
+
+define coefA_DV {alias coefA kind 'DEBUG' units 'NONE'}
+define coefB_DV {alias coefB kind 'DEBUG' units 'NONE'}
+define coefC_DV {alias coefC kind 'DEBUG' units 'NONE'}
+define VERNQ_DV {alias VERNQ kind 'DEBUG' units 'NONE'}
+define SOD_Q_NoExp_DV {alias SOD_Q_NoExp kind 'DEBUG' units 'NONE'}
+define C408_limit_init_DV {alias C408_limit_init kind 'DEBUG' units 'NONE'}
+define AD_SJR_VAMP_DV {alias AD_SJR_VAMP kind 'DEBUG' units 'NONE'}
+define Qsod_noExp_DV {alias Qsod_noExp kind 'DEBUG' units 'NONE'}
+define OMRFlow_NoExp_DV {alias OMRFlow_NoExp kind 'DEBUG' units 'NONE'}
 
 ! User Defined OMR flow added 4/20/2011, Richard Chen
 define Qomr_Udef   { 

@@ -49,16 +49,74 @@ define CVP_Rule_Sha_Cut {
 define CVP_rule_2 {alias CVP_Rule_Sha_Cut units 'NONE'}
 
 !Drain target for San Luis.  The drain target is the target storage level for San Luis at the end of October.
+define CVPRuleDrainTar {
+	case IF_CVP {   !Change for the IF operations
+		condition	int(JonesIFSwitch) == 1
+		value init_CVPRuleDrainTar}
+	case otherwise {
+		condition	always
+		value		init_CVPRuleDrainTar + max(acvpdel_tot_s - 2000.,0.)*0.1}   
+}		
+                           
+define ExpAmtMon {
+	case IF_CVP{
+		condition int(JonesIFSwitch) == 1
+		value 180.} ! roughly 3000 cfs for the month    Change for the IF operations
+	case otherwise {
+		condition	always
+		value		60.}
+}
 
-!define CVPRuleDrainTar {value init_CVPRuleDrainTar
-!                            + max(acvpdel_tot_s - 2000.,0.)*0.1}                          
-define CVPRuleDrainTar {value init_CVPRuleDrainTar}  !Change for the IF operations                            
-!define ExpAmtMon {value 60.}
-define ExpAmtMon {value 180.} ! roughly 3000 cfs for the month    Change for the IF operations
 
 !The following code develops the rule curve for San Luis, using the above values obtained from lookup tables. 
 
-define CVPRULEcalc {  !Changes in values for the IF operations  
+define CVPRULEcalcNoIF {
+     case Oct {
+          condition month == oct
+          value     max(CVPRuleDrainTar, CVP_Rule_Max * CVP_Rule_Sha_Cut * month/6.)}
+     case NovToDec {
+          condition month >= nov .and. month <= dec
+          value     max(CVPRuleDrainTar, CVP_Rule_Max * CVP_Rule_Sha_Cut * month/6., CVPRULECV(-1))}
+     
+     case JanThruFeb {
+          condition month >= jan .and. month <= feb
+          value     max(CVPRuleDrainTar, CVP_Rule_Max * CVP_Rule_Sha_Cut * month/6., CVPRULECV(-1))}
+     case MarthruApr {
+          condition month >= mar .and. month <= apr
+          value     max(CVPRuleDrainTar, CVP_Rule_DelTar)}
+     case May {
+          condition month == may
+          value max(CVPRuleDrainTar,
+                    min(max(S_SLCVP(-1) - (CVPdemfinal_may - ExpAmtMon),
+                            CVPRULECV(-1)    - (CVPdemfinal_may - ExpAmtMon)),
+                        CVPRuleDrainTar + (CVPdemfinal_jun + CVPdemfinal_jul + CVPdemfinal_aug + CVPdemfinal_sep - 4. * ExpAmtMon)))}
+     case June {
+          condition month == jun
+          value max(CVPRuleDrainTar,
+                    min(max(S_SLCVP(-1) - (CVPdemfinal_jun - ExpAmtMon)*(0.5),  
+                            CVPRULECV(-1)    - (CVPdemfinal_jun - ExpAmtMon)*(0.5)), 
+                        CVPRuleDrainTar + (CVPdemfinal_jul + CVPdemfinal_aug + CVPdemfinal_sep - 3. * ExpAmtMon)))}
+     case July {
+          condition month == jul
+          value max(CVPRuleDrainTar,
+                    min(max(S_SLCVP(-1) - (CVPdemfinal_jul - ExpAmtMon)*(0.25),  
+                            CVPRULECV(-1)    - (CVPdemfinal_jul - ExpAmtMon)*(0.25)), 
+                        CVPRuleDrainTar + (CVPdemfinal_aug + CVPdemfinal_sep - 2. * ExpAmtMon)))}
+     case August {
+          condition month == aug
+          value max(CVPRuleDrainTar,
+                    min(max(S_SLCVP(-1) - (CVPdemfinal_aug - ExpAmtMon),
+                            CVPRULECV(-1)    - (CVPdemfinal_aug - ExpAmtMon)),
+                        CVPRuleDrainTar + (CVPdemfinal_sep - ExpAmtMon)))}
+     case Sep {
+          condition always
+          value max(CVPRuleDrainTar,
+                    min(max(S_SLCVP(-1) - (CVPdemfinal_sep - ExpAmtMon),
+                            CVPRULECV(-1)    - (CVPdemfinal_sep - ExpAmtMon)),
+                        CVPRuleDrainTar))}
+}
+
+define CVPRULEcalcIF {  !Changes in values for the IF operations   
      case Oct {
           condition month == oct
 !          value     max(CVPRuleDrainTar, CVP_Rule_Max * CVP_Rule_Sha_Cut * month/6.)}
@@ -112,6 +170,16 @@ define CVPRULEcalc {  !Changes in values for the IF operations
                         CVPRuleDrainTar)}
 }
 
+define CVPRuleCalc {
+	case IF_CVP {
+		condition	int(JonesIFSwitch) == 1
+		value		CVPRULEcalcIF
+	}
+	case otherwise {
+		condition	always
+		value		CVPRULEcalcNoIF
+	}
+}
 
 define CvpRuleCalc1 {
     case RClowshasta {

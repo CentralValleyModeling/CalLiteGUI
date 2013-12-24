@@ -18,13 +18,8 @@ define maxJonescalc1 {value min(JonesMaxAllow,
 define maxJonescalc {value min(maxJonescalc1 + Intertie_Cap, JonesMaxAllow)}
 
 ! Set Up Integer constraints to determine when Jones is pumping max
-define jonesatmax {std kind 'flow-delivery' units 'cfs'}
-define jonesbelowmax {std kind 'flow-delivery' units 'cfs'}
 define jones_int_pb {INTEGER std kind 'INTEGER' units 'NONE'}
-
-goal force_jones_int_pb {D_jones + 0.5 - maxJonescalc = jonesatmax - jonesbelowmax}
-goal force_at {jonesatmax < jones_int_pb * 9999999.0}
-goal force_below {jonesbelowmax < 9999999.0 - jones_int_pb * 9999999.0}
+goal set_jones_int_pb {maxJonescalc*jones_int_pb < d_jones}
 
 ! Set wheeling cap as min of 1600 or amount to CVP rule curve after Jones pumping
 define wheelCap {
