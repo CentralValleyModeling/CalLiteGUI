@@ -31,10 +31,12 @@ tab = "   "
 class StudyTabCl:
    
    # constructor: initialize class parameters
-   def __init__(self, configPath):
+   def __init__(self, configPath, iterations):
 
       self.configPath = configPath
+      self.iterations = int(iterations)
       print "Config Path: "+ self.configPath
+      print "Iterations : "+ str(self.iterations)
    
       try:
         self._cMap=Utils.getConfigMap(configPath)
@@ -82,7 +84,7 @@ class StudyTabCl:
       #os.chdir(newPath)
 
       # number of Calsim runs needed (convergence)
-      numRun = 3
+      numRun = self.iterations
 
       # establish variable for WsiDiGenerator (WRIMS java class)
       wd = []

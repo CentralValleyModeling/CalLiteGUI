@@ -917,8 +917,44 @@ public class FileAction implements ActionListener {
 	 * @param ScenarioFile
 	 * @param noIterations
 	 */
-	public static void setupMainBatchFile_WSIDI(String batFileName, final File ScenarioFile, final int iterations) {
+	public static void setupMainBatchFile_WSIDI(String batFileName, final File scenarioFile, final int iterations) {
 
+		if (batFileName == null || batFileName.isEmpty())
+			batFileName = "CalLite_w2.bat";
+
+		String del = "";
+
+		String scenarioName = FilenameUtils.removeExtension(scenarioFile.getName());
+
+		String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\" + scenarioName)
+		        .getAbsolutePath();
+
+		String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
+		String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
+
+		del = del + "del /F /Q " + progressFilePath + "\n";
+		del = del + "del /F /Q " + wreslCheckFilePath + "\n";
+
+		File batchFile = null;
+
+		batchFile = new File(System.getProperty("user.dir"), batFileName);
+
+		PrintWriter batchFilePW;
+		String cmd = "Model_w2\\vscript.bat Model_w2\\vscript\\Main.py " + "\""
+		        + new File(scenarioPath, scenarioName + "_wsidi.config").getAbsolutePath() + "\" " + iterations;
+		try {
+			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile)));
+
+			batchFilePW.println(del);
+			batchFilePW.println();
+			batchFilePW.println(cmd);
+
+			batchFilePW.flush();
+			batchFilePW.close();
+
+		} catch (IOException e) {
+			log.debug(e);
+		}
 	}
 
 	public static void setupMainBatchFile(String batFileName, final File[] allScenarioFiles, final String[] subBatchFileNameArray) {
