@@ -5,7 +5,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
@@ -89,13 +88,16 @@ public class PopulateDTable {
 					 * RegUserEdits[tID] = true;
 					 */
 					RegUserEdits[tID] = true;
-					JButton btn = (JButton) swix.find("btnRegDef");
-					btn.setEnabled(true);
+					// JButton btn = (JButton) swix.find("btnRegDef");
+					// btn.setEnabled(true);
 
 					String stID = String.valueOf(tID);
 					String comp = gl.tableIDForCtrl(stID);
-					int rID = Integer.parseInt(gl.RIDForCtrl(comp));
-					RegFlags[rID] = 2;
+					if (comp != null) {
+
+						int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+						RegFlags[rID] = 2;
+					}
 
 				}
 			});

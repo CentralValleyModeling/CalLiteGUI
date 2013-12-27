@@ -1472,6 +1472,31 @@ public class FileAction implements ActionListener {
 
 				}
 
+				updateSaveStatusFile(statusFilename, "Writing GUI facilities table files.");
+
+				GUITables = new ArrayList<String>();
+				GUITables = GUIUtils.getGUITables(links2Lines, "Facilities");
+
+				for (int i = 0; i < GUITables.size(); i++) {
+					String[] parts = GUITables.get(i).toString().split("[|]");
+					String cName = parts[0].trim();
+					String tableName = gl.tableNameForCtrl(cName);
+					if (!tableName.equals("n/a")) {
+						// System.out.println("Output to " + tableName);
+						int tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+						if (dTableModels[tID] == null) {
+							// System.out.println("Table not initialized - " + tableName);
+						} else {
+							// WriteGUI operations table files to "Generated" Folder
+							dTableModels[tID].writeToFile(scenGeneratedDir_absPath + "\\Lookup\\", tableName);
+							// WriteGUI operations table files to "Run" Folder
+							dTableModels[tID].writeToFile(scenRunDir_absPath + "\\Lookup\\", tableName);
+						}
+
+					}
+
+				}
+
 				if (success)
 					checkFile.createNewFile();
 
@@ -1550,6 +1575,9 @@ public class FileAction implements ActionListener {
 		sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
 
 		guiTables = GUIUtils.getGUITables(guiLinks, "Operations");
+		sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
+
+		guiTables = GUIUtils.getGUITables(guiLinks, "Facilities");
 		sb = GUIUtils.getTableModelData(dTableModels, guiTables, gl, sb, swix);
 
 		sb.append("END DATATABLEMODELS" + NL);

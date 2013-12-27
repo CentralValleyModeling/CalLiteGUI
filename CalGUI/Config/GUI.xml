@@ -1005,48 +1005,49 @@
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" />
 							</checkbox>
-							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits">
+							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits" ActionCommand="Fac_TableEdit">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 							</button>
 
 							<button text="Hood Bypass Assumptions" name="btnFacHood"
-								id="btnFacHood">
+								id="btnFacHood" ActionCommand="Fac_TableEdit">
 								<gridbagconstraints insets="15,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="11" />
+									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
 							</button>
 
-							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse">
+							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse"  ActionCommand="Fac_TableEdit" enabled="false">
 								<gridbagconstraints insets="15,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="12" />
+									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="10" />
 							</button>
 
-							<hbox preferredsize="600,500">
+
+							<hbox preferredsize="600,400" visible="true">
 								<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
-								<scrollpane id="fac_scr1" preferredsize="600,500"
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" gridwidth = "3"/>
+								<scrollpane id="fac_scr1" name="fac_scr1" preferredsize="600,400"
 									layout="BorderLayout">
-									<table id="tblIF1" minimumsize="600,500">
+									<table id="tblIF1" name ="tblIF1" minimumsize="600,500">
 									</table>
 								</scrollpane>
 							</hbox>
 
-							<hbox preferredsize="600,500">
+							<hbox preferredsize="600,500" visible="false">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
 								<scrollpane id="fac_scr2" preferredsize="600,500"
 									layout="BorderLayout">
-									<table id="tblIF2" minimumsize="600,500">
+									<table id="tblIF2" name="tblIF2" minimumsize="600,500">
 									</table>
 								</scrollpane>
 							</hbox>
 
-							<hbox preferredsize="600,500">
+							<hbox preferredsize="600,500" visible="false">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" />
 								<scrollpane id="fac_scr3" preferredsize="600,500"
 									layout="BorderLayout">
-									<table id="tblIF3" minimumsize="600,500">
+									<table id="tblIF3" name="tblIF3" minimumsize="600,500">
 									</table>
 								</scrollpane>
 							</hbox>
@@ -1082,7 +1083,7 @@
 							<scrollpane preferredsize="150,215" layout="BorderLayout">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2" />
-								<table id="tblBanks" minimumsize="150,215">
+								<table id="tblBanks" name="tblBanks" minimumsize="150,215">
 								</table>
 							</scrollpane>
 							<checkbox text="CCFB intake linked to existing permit"

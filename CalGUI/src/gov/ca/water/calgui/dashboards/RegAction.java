@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.util.StringTokenizer;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -95,8 +94,8 @@ public class RegAction implements ActionListener {
 			}
 			RegUserEdits[tID] = false;
 
-			JButton btn = (JButton) swix.find("btnRegDef");
-			btn.setEnabled(false);
+			// JButton btn = (JButton) swix.find("btnRegDef");
+			// btn.setEnabled(false);
 		} else if (ae.getActionCommand().startsWith("Reg_1641")) {
 			String cName = "";
 			JComponent scr = (JComponent) swix.find("scrRegValues");
