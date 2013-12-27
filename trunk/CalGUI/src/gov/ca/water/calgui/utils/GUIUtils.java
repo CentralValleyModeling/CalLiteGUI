@@ -258,7 +258,7 @@ public class GUIUtils {
 				// int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
 					// System.out.println("Table not initialized: " + cName);
-				} else if (!ckb.isSelected() && !cName.startsWith("op_btn")) { // option checked off
+				} else if (!ckb.isSelected() && !cName.startsWith("op_btn") && !cName.startsWith("btnFac")) { // option checked off
 					// System.out.println("Table not selected: + cName");
 				} else {
 					Object[][] dataArr;

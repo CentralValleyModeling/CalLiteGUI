@@ -39,7 +39,7 @@ public class FacListener implements ItemListener {
 					GUIUtils.toggleVisComponent(panel, true);
 					GUIUtils.toggleEnComponentAndChildren(panel, e.getStateChange() == ItemEvent.SELECTED);
 
-					((JPanel) swix.find("FacPict")).setVisible(false);
+					// ((JPanel) swix.find("FacPict")).setVisible(false);
 
 				}
 			}

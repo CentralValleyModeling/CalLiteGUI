@@ -557,7 +557,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			}
 
 			GUIUtils.setMouseListener(facilities, this);
-			swix.setActionListener(facilities, new FacilitiesAction(swix));
+			swix.setActionListener(facilities, new FacilitiesAction(swix, regUserEditFlags, dTableModels, gl, regFlags));
 
 			swix.setActionListener(swix.find("Custom"), new CustomResultsAction(swix));
 

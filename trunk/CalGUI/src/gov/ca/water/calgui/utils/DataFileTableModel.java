@@ -320,6 +320,54 @@ public class DataFileTableModel extends AbstractTableModel {
 							data.addElement(allValues.get(c * rowCount + r));
 						}
 					}
+				} else if (st1.countTokens() == 5) {
+
+					String firstColumnName = columnNames.get(0);
+					String secondColumnName = columnNames.get(1);
+					String thirdColumnName = columnNames.get(2);
+					String fourthColumnName = columnNames.get(3);
+					String fifthColumnName = columnNames.get(4);
+
+					columnNames.clear();
+					columnNames.addElement(firstColumnName);
+					columnNames.addElement(secondColumnName);
+					columnNames.addElement(thirdColumnName);
+					columnNames.addElement(fourthColumnName);
+					columnNames.addElement(fifthColumnName);
+					String lastColID = "-1";
+					int rowCount = 0;
+
+					ArrayList<String> allValues = new ArrayList<String>();
+					while (aLine != null) {
+
+						StringTokenizer st2 = new StringTokenizer(aLine, "\t| ");
+						if (st2.countTokens() > 3) {
+
+							String aMon = st2.nextToken();
+							String aValue1 = st2.nextToken();
+							String aValue2 = st2.nextToken();
+							String aValue3 = st2.nextToken();
+							String aValue4 = st2.nextToken();
+
+							rowCount++;
+							allValues.add(aMon);
+							allValues.add(aValue1);
+							allValues.add(aValue2);
+							allValues.add(aValue3);
+							allValues.add(aValue4);
+						}
+						aLine = br.readLine();
+					}
+					int colct = columnNames.size();
+					int idx = 0;
+					for (int r = 0; r < rowCount; r++) {
+
+						// data.addElement(allValues.get(idx)); // month
+						for (int c = 0; c < colct; c++) {
+							data.addElement(allValues.get(idx));
+							idx++;
+						}
+					}
 
 				} else {
 					// CASE 3: FOUR COLUMNS (year type, month, value1, value2)
@@ -737,6 +785,11 @@ public class DataFileTableModel extends AbstractTableModel {
 				for (int j = 0; j < 12; j++) {
 					output.println(data.elementAt(j * 4) + " " + data.elementAt(j * 4 + 1) + " " + data.elementAt(j * 4 + 2) + " "
 					        + data.elementAt(j * 4 + 3));
+				}
+			} else if (columnNames.size() == 5) {
+				for (int i = 1; i <= data.size() / 5; i++) {
+					output.println(data.elementAt(i * 5 - 5) + " " + data.elementAt(i * 5 - 4) + " " + data.elementAt(i * 5 - 3)
+					        + " " + data.elementAt(i * 5 - 2) + " " + data.elementAt(i * 5 - 1));
 				}
 			} else if (columnNames.size() == 6) {
 				// 5 WYT x 12 Months x 1 value
