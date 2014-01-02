@@ -99,7 +99,7 @@ define buffCVP_MayAug {select buffer from ExportEstimate_CVP where month = May}
 ! Define estimated exports for preBO (based on B2) and BO conditions.
 define estCVPExp_Mar {
 	case D1485 {
-		condition int(RunBasis) == 0
+		condition int(PBwheel_ON) == 1
 			value 4600.}
     case preBO {
         condition int(BOON_CVP) == 0 .or. int(jonesifswitch)  == 1
@@ -114,7 +114,7 @@ define estCVPExp_Mar {
 
 define estCVPExp_Apr {
 	case D1485 {
-		condition int(RunBasis) == 0
+		condition int(PBwheel_ON) == 1
 			value 4600.	}
     case preBO {
         condition int(BOON_CVP) == 0 .or. int(jonesifswitch)  == 1
@@ -129,7 +129,7 @@ define estCVPExp_Apr {
 
 define estCVPExp_May {
 	case D1485 {
-		condition int(RunBasis) == 0
+		condition int(PBwheel_ON) == 1
 			value 4600.}
     case preBO_B2Action4On {
         condition int(BOON_CVP) == 0 .and. month == MAY .and. int(B2Action4) == 1
@@ -156,7 +156,7 @@ define estCVPExp_May {
 
 define estCVPExp_Jun {
 	case D1485 {
-		condition int(RunBasis) == 0
+		condition int(PBwheel_ON) == 1
 			value 4600.}
     case preBO {
         condition int(BOON_CVP) == 0 .or. int(jonesifswitch) == 1
@@ -171,7 +171,7 @@ define estCVPExp_Jun {
 
 define estCVPExp_JulAug {
 	case D1485 {
-		condition int(RunBasis) == 0
+		condition int(PBwheel_ON) == 1
 			value 4600.}
     case preBO {
         condition int(BOON_CVP) == 0 .or. int(jonesifswitch) == 1
