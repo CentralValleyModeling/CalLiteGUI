@@ -6,9 +6,6 @@ Z.Q. Richard Chen DWR (02/07/2011)
 Read option switches for lookup table
 **************************************/
 
-/* Run Settings Dashboard */
-define RunBasis {select Option from GUI_RunBasis where Index=1}
-
 /* Hydro Climate Dashboard*/
 define X2_SLR             {select Option from GUI_HydroClimate where Index=2}  
 define  X2_ANN_KM {                                                           !Delta\ANN\lastX2_ANN_KM.wresl 
