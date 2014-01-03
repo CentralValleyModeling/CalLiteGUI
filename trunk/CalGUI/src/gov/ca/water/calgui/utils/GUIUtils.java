@@ -740,10 +740,17 @@ public class GUIUtils {
 	public static String[] getHydDSSStrings(SwingEngine swix) {
 
 		String result[] = new String[8];
+		String lookup = "error";
 
 		// Start with run type
 
-		String lookup = ((JRadioButton) swix.find("run_rdbD1641")).isSelected() ? "1" : "2";
+		if (((JRadioButton) swix.find("run_rdbD1641")).isSelected()) {
+			lookup = "1";
+		} else if (((JRadioButton) swix.find("run_rdbBO")).isSelected()) {
+			lookup = "2";
+		} else if (((JRadioButton) swix.find("run_rdbD1485")).isSelected()) {
+			lookup = "3";
+		}
 
 		// Then add in Level of Development/Climate Change
 
