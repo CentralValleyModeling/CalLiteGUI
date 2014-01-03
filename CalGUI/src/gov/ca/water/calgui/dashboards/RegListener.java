@@ -78,7 +78,8 @@ public class RegListener implements ItemListener {
 					btn.setEnabled(enabled);
 
 					if (RegFlags == null) {
-						RegFlags = new int[40];
+						// RegFlags = new int[40];
+						RegFlags = new int[50];
 					}
 
 					if (!cName.startsWith("rdbRegQS_UD")) {
@@ -125,6 +126,7 @@ public class RegListener implements ItemListener {
 						String ckbName;
 						Boolean b;
 						int rID;
+						((JRadioButton) swix.find("SJR_full")).setSelected(true); // Hard Coded Selection P.Ho
 						for (int i = 0; i < lineCount; i++) {
 							ckbName = lookups[i][0];
 							JCheckBox ckb = (JCheckBox) swix.find(ckbName);
@@ -270,5 +272,4 @@ public class RegListener implements ItemListener {
 			}
 		}
 	}
-
 }
