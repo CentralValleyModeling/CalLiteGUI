@@ -1,7 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.utils.DataFileTableModel;
-import gov.ca.water.calgui.utils.ExcelAdapter;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 
@@ -225,8 +224,8 @@ public class RegulationSetup {
 			// ((JRadioButton) swix.find("btnRegUD")).setVisible(false);
 		} else {
 
-			JRadioButton btn1 = (JRadioButton) swix.find("rdbRegQS_UD");
-			boolean enabled = btn1.isEnabled();
+			// JRadioButton btn1 = (JRadioButton) swix.find("rdbRegQS_UD");
+			// boolean enabled = btn1.isEnabled();
 
 			/*
 			 * ((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled); ((JRadioButton)
@@ -248,7 +247,7 @@ public class RegulationSetup {
 				}
 			} else {
 				int iOpt;
-				String sRegPlan;
+				// String sRegPlan;
 
 				if (sReset.equals("null")) {
 
@@ -311,8 +310,8 @@ public class RegulationSetup {
 				@Override
 				public void keyTyped(KeyEvent ke) {
 
-					int l = t.getSelectedRow();
-					int c = t.getSelectedColumn();
+					// int l = t.getSelectedRow();
+					// int c = t.getSelectedColumn();
 
 					// t.setValueAt(Character.toString(ke.getKeyChar()),l,c);
 					// t.editCellAt(l, c);
@@ -350,7 +349,7 @@ public class RegulationSetup {
 
 			t.revalidate();
 
-			ExcelAdapter myAd = new ExcelAdapter(t);
+			// ExcelAdapter myAd = new ExcelAdapter(t);
 
 		}
 		return dTableModels;

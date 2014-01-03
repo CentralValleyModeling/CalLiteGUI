@@ -106,8 +106,8 @@ public class PopulateDTable {
 				@Override
 				public void keyTyped(KeyEvent ke) {
 
-					int l = t.getSelectedRow();
-					int c = t.getSelectedColumn();
+					// int l = t.getSelectedRow();
+					// int c = t.getSelectedColumn();
 
 					// t.setValueAt(Character.toString(ke.getKeyChar()),l,c);
 					// t.editCellAt(l, c);

@@ -624,7 +624,7 @@ public class FileAction implements ActionListener {
 		File f = null;
 		BufferedWriter tableFile_BufferedWriter_ = null;
 		String line = "", outstring = "";
-		String swixControlName = "", tableFileName = "", descr = "", value = "", option = "", cID = "";
+		String swixControlName = "", tableFileName = "", descr = "", value = "", option = "";
 		Boolean val;
 		int tID;
 		int index = 0;

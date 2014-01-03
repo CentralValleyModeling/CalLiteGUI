@@ -23,7 +23,6 @@ import org.swixml.SwingEngine;
 public class HydListener implements ItemListener {
 	private final JFrame desktop;
 	private final SwingEngine swix;
-	private JComponent component;
 	private final Boolean[] RegUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;

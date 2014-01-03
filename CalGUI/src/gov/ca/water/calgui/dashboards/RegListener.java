@@ -27,7 +27,6 @@ import org.swixml.SwingEngine;
 
 public class RegListener implements ItemListener {
 	private final SwingEngine swix;
-	private JComponent component;
 	private Boolean[] RegUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
@@ -48,14 +47,12 @@ public class RegListener implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
-		// TODO Auto-generated method stub
+
 		JComponent component = (JComponent) ie.getItem();
 		// TODO: EXTERNALIZE
-
 		// was "e.getItemSelected"
 		String cName = component.getName();
 		if (cName != null) {
-			// System.out.println(cName);
 
 			if (cName.startsWith("rdbRegQS")) {
 
