@@ -480,7 +480,8 @@ public class GUIUtils {
 		 */
 
 		QSel = 1;
-		final int[] RegFlags = new int[40];
+		// final int[] RegFlags = new int[40];
+		final int[] RegFlags = new int[50];
 
 		try {
 			fs = new FileInputStream(f);
