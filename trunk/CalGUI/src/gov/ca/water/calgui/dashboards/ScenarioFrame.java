@@ -4,7 +4,9 @@ package gov.ca.water.calgui.dashboards;
  * ProgressFrame - simple frame to show progress passed by method setText();
  */
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -12,21 +14,20 @@ import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.Vector;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import org.swixml.SwingEngine;
 
-
-import rma.awt.JButtonGroup;
-
 public class ScenarioFrame extends JFrame {
 	private JLabel lblscen1;
-	private JButtonGroup btngrp;
-	private JRadioButton rdbAll;
-	private JRadioButton rdbDiff;
 	private JButton btnComp;
 	private JList lstScen;
-
 
 	public ScenarioFrame(String title, final SwingEngine swix) {
 
@@ -55,6 +56,7 @@ public class ScenarioFrame extends JFrame {
 		// populate with file list.
 		File dir = new File(".//Scenarios");
 		FilenameFilter filter = new FilenameFilter() {
+			@Override
 			public boolean accept(File dir, String name) {
 				return name.toLowerCase().endsWith(".cls");
 			}
@@ -82,15 +84,16 @@ public class ScenarioFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Object[] selected = lstScen.getSelectedValues();
 				if (selected.length < 1) {
-					JOptionPane.showMessageDialog(null, "You must select at least one scenario file to display.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "You must select at least one scenario file to display.", "Error",
+					        JOptionPane.ERROR_MESSAGE);
 				} else {
-					Object list[] = new Object[1+selected.length];
+					Object list[] = new Object[1 + selected.length];
 					list[0] = "Current_Scenario";
 					for (int i = 0; i < selected.length; i++)
-						list[i+1] = selected[i];
+						list[i + 1] = selected[i];
 					ScenarioTable sTable = new ScenarioTable(list, swix);
 					sTable.setVisible(true);
-					
+
 				}
 			}
 		});

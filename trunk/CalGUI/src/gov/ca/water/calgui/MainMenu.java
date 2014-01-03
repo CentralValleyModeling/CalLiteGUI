@@ -102,10 +102,15 @@ import vista.set.Group;
 import calsim.app.AppUtils;
 import calsim.app.DerivedTimeSeries;
 import calsim.app.Project;
-import calsim.gui.CalLiteGUIMainPanel;
 import calsim.gui.CalLiteGUIPanelWrapper;
 import calsim.gui.GuiUtils;
 
+/**
+ * Main class for CalLite GUI
+ * 
+ * @author tslawecki
+ * 
+ */
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
         ComponentListener, KeyEventDispatcher {
 
@@ -152,7 +157,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	static FileDialog fdDSSFiles;
 
 	static public String lookups[][];
-	static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
+	// static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
 	static String table5[][]; // Holds DSS Schematic link values
 
 	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO configuration. Set False initially
@@ -259,8 +264,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			// Replace WRIMS GUI display action with CalLite GUI action
 
-			CalLiteGUIMainPanel clgpanel = GuiUtils.getCLGPanel();
-
 			JButton retrieveBtn = GuiUtils.getCLGPanel().getRetrievePanel().getRetrieveBtn();
 
 			for (ActionListener al : retrieveBtn.getActionListeners()) {
@@ -327,19 +330,19 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				table5[i][5] = tokens[5];
 			}
 
-			// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
-			// init file, etc.)
-			ArrayList<String> guiLinks4 = new ArrayList<String>();
-			guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
-			table4 = new String[guiLinks4.size()][5];
-			for (int i = 0; i < guiLinks4.size(); i++) {
-				String tokens[] = guiLinks4.get(i).split("\t");
-				table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-				table4[i][1] = tokens[4];
-				table4[i][2] = tokens[5];
-				table4[i][3] = tokens[6];
-				table4[i][4] = tokens[7];
-			}
+			// // Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
+			// // init file, etc.)
+			// ArrayList<String> guiLinks4 = new ArrayList<String>();
+			// guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
+			// table4 = new String[guiLinks4.size()][5];
+			// for (int i = 0; i < guiLinks4.size(); i++) {
+			// String tokens[] = guiLinks4.get(i).split("\t");
+			// table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
+			// table4[i][1] = tokens[4];
+			// table4[i][2] = tokens[5];
+			// table4[i][3] = tokens[6];
+			// table4[i][4] = tokens[7];
+			// }
 
 			// Set up month spinners
 			JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");

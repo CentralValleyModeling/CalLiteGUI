@@ -5,7 +5,6 @@ import gov.ca.dsm2.input.parser.Parser;
 import gov.ca.dsm2.input.parser.Tables;
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.ScenarioMonitor;
-import gov.ca.water.calgui.utils.ProgressDialog;
 import gov.ca.water.calgui.utils.Utils;
 
 import java.io.FileInputStream;
@@ -82,7 +81,6 @@ public class Report extends SwingWorker<Void, String> {
 	 */
 
 	private InputStream inputStream;
-	private ProgressDialog progressDialog;
 	private String outputFilename;
 	private boolean isInitialized = false;
 
