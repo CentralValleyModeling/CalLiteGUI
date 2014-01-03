@@ -598,6 +598,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
+			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 
 			// Count threads and update selector appropriately
