@@ -68,7 +68,7 @@ public class TestScenario {
 
 		// 3. Generate
 
-		FileAction.setupScenario("default.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
+		RunUtils.setupScenario("default.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
 		        mm.regFlags);
 
 		// 4. Wait for save to complete ..
@@ -114,13 +114,13 @@ public class TestScenario {
 		// 4. Save
 
 		((JTextField) mm.getSwix().find("run_txfScen")).setText("D1641.cls");
-		mm.fileAction.setFilenameTooltips();
-		StringBuffer sb = FileAction.buildScenarioString(mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
-		FileAction.saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\D1641.cls");
+		RunUtils.setFilenameTooltips();
+		StringBuffer sb = RunUtils.buildScenarioString(mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
+		RunUtils.saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\D1641.cls");
 
 		// 5. Generate
 
-		FileAction.setupScenario("D1641.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
+		RunUtils.setupScenario("D1641.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
 		        mm.regFlags);
 
 		// 6. Wait for save to complete ..
