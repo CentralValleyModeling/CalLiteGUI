@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -24,34 +24,27 @@ import org.swixml.SwingEngine;
 
 public class OpAction implements ActionListener {
 	private final SwingEngine swix;
-	private final Boolean[] RegUserEdits;
+	private final Boolean[] regUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private static Logger log = Logger.getLogger(OpAction.class.getName());
-	private final int[] RegFlags;
+	private final int[] regFlags;
+	private JFrame desktop;
 
-	public OpAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl, int[] RegFlags) {
+	public OpAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
+	        int[] regFlags) {
 		this.swix = swix;
-		this.RegUserEdits = RegUserEdits;
+		this.regUserEdits = regUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
-		this.RegFlags = RegFlags;
+		this.regFlags = regFlags;
+		this.desktop = desktop;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getActionCommand().startsWith("Op_Generate")) {
-			try {
-
-				Runtime rt = Runtime.getRuntime();
-				Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\wsidi_generator_test.bat");
-				int exitVal = proc.waitFor();
-				log.debug("Return from batch run " + exitVal);
-			} catch (Throwable t) {
-				JOptionPane.showMessageDialog(null, t.getMessage(), "Run failure!", JOptionPane.ERROR_MESSAGE);
-				log.debug(t.getStackTrace());
-			}
 
 		} else if (ae.getActionCommand().startsWith("Op_TableEdit")) {
 			TitledBorder title = null;
@@ -72,7 +65,7 @@ public class OpAction implements ActionListener {
 			component.setVisible(true);
 			component.setEnabled(true);
 			// String cID = cName.substring(6);
-			PopulateDTable.populate(cName, table, component, swix, RegUserEdits, dTableModels, gl, RegFlags);
+			PopulateDTable.populate(cName, table, component, swix, regUserEdits, dTableModels, gl, regFlags);
 
 			// pan.setBorder(title);
 			// JComponent box = (JComponent) swix.find("Op_Box");

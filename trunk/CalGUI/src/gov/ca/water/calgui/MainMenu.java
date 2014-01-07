@@ -170,6 +170,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	ProgressMonitor pMon;
 
 	public JList lstScenarios;
+
 	public FileAction fileAction; // Listener for FileActions is public to facilitate testing
 
 	/**
@@ -518,6 +519,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			jtp.addChangeListener(this);
 			((JTabbedPane) swix.find("variables")).addChangeListener(this);
 
+			RunUtils.initRunUtils(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags);
 			fileAction = new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI, regFlags);
 			swix.setActionListener(menu, fileAction);
 			GUIUtils.setMenuListener(menu, this);
@@ -535,7 +537,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, regUserEditFlags,
 			        dTableModels, gl, action_WSIDI));
 
-			swix.setActionListener(operations, new OpAction(swix, regUserEditFlags, dTableModels, gl, regFlags));
+			swix.setActionListener(operations, new OpAction(desktop, swix, regUserEditFlags, dTableModels, gl, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
 
 			swix.setActionListener(demands, new DemAction(swix));
@@ -590,7 +592,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			desktop.addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent we) {
-					if (FileAction.checkForScenarioChange(swix, dTableModels, regUserEditFlags, gl) == true) {
+					if (RunUtils.checkForScenarioChange(swix, dTableModels, regUserEditFlags, gl) == true) {
 						System.exit(0);
 					}
 
