@@ -740,46 +740,61 @@ public class GUIUtils {
 	 */
 	public static String[] getHydDSSStrings(SwingEngine swix) {
 
-		String result[] = new String[8];
+		String result[] = new String[9];
 		String lookup = "error";
+		String label = "";
 
 		// Start with run type
 
 		if (((JRadioButton) swix.find("run_rdbD1641")).isSelected()) {
 			lookup = "1";
+			label = "D1641";
 		} else if (((JRadioButton) swix.find("run_rdbBO")).isSelected()) {
 			lookup = "2";
+			label = "BO";
 		} else if (((JRadioButton) swix.find("run_rdbD1485")).isSelected()) {
 			lookup = "3";
+			label = "D1485";
 		}
 
 		// Then add in Level of Development/Climate Change
 
-		if (((JRadioButton) swix.find("hyd_rdb2005")).isSelected())
+		if (((JRadioButton) swix.find("hyd_rdb2005")).isSelected()) {
 			lookup = lookup + "110";
-		else if (((JRadioButton) swix.find("hyd_rdb2030")).isSelected())
+			label = label + "-Current LOD";
+		} else if (((JRadioButton) swix.find("hyd_rdb2030")).isSelected()) {
 			lookup = lookup + "210";
-		else {
+			label = label + "-Future LOD";
+		} else {
 
-			if (((JRadioButton) swix.find("hyd_rdbCCEL")).isSelected())
+			if (((JRadioButton) swix.find("hyd_rdbCCEL")).isSelected()) {
 				lookup = lookup + "31";
-			else if (((JRadioButton) swix.find("hyd_rdbCCLL")).isSelected())
+				label = label + "-Early CC";
+			} else if (((JRadioButton) swix.find("hyd_rdbCCLL")).isSelected()) {
 				lookup = lookup + "41";
-
+				label = label + "-Late CC";
+			}
 			// Select FIRST available climate change scenario
 
-			if (((JCheckBox) swix.find("hyd_ckb1")).isSelected())
+			if (((JCheckBox) swix.find("hyd_ckb1")).isSelected()) {
 				lookup = lookup + "1";
-			else if (((JCheckBox) swix.find("hyd_ckb2")).isSelected())
+				label = label + "1";
+			} else if (((JCheckBox) swix.find("hyd_ckb2")).isSelected()) {
 				lookup = lookup + "2";
-			else if (((JCheckBox) swix.find("hyd_ckb3")).isSelected())
+				label = label + "2";
+			} else if (((JCheckBox) swix.find("hyd_ckb3")).isSelected()) {
 				lookup = lookup + "3";
-			else if (((JCheckBox) swix.find("hyd_ckb4")).isSelected())
+				label = label + "3";
+			} else if (((JCheckBox) swix.find("hyd_ckb4")).isSelected()) {
 				lookup = lookup + "4";
-			else if (((JCheckBox) swix.find("hyd_ckb5")).isSelected())
+				label = label + "4";
+			} else if (((JCheckBox) swix.find("hyd_ckb5")).isSelected()) {
 				lookup = lookup + "5";
-			else
+				label = label + "5";
+			} else {
 				lookup = lookup + "0";
+				label = label + "0";
+			}
 		}
 
 		// Read Schematic_DSS_link4.table and place in Table4 (for assigning SV, init file, etc.)
@@ -800,6 +815,7 @@ public class GUIUtils {
 				result[5] = tokens[8]; // CVP file
 				result[6] = tokens[9]; // SWP file
 				result[7] = tokens[10]; // Suffix for CVP/SWP files in WSI_DI directory
+				result[8] = label;
 			}
 		}
 
