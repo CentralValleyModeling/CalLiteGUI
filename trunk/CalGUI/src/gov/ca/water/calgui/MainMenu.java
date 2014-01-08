@@ -446,6 +446,16 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// pan.setBorder(title);
 			component1.setVisible(false);
 			table1.setVisible(false);
+
+			// Change WSI/DI Status Label
+			String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
+			JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
+			String oldText = lab.getText();
+
+			String selHyd = hydDSSStrings[8];
+
+			String[] parts = oldText.split("\\(");
+			lab.setText(selHyd + " (Unedited)");
 		}
 
 		catch (Exception e) {

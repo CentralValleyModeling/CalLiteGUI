@@ -3,6 +3,7 @@ package gov.ca.water.calgui.dashboards;
 import gov.ca.water.calgui.CalLiteHelp;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
+import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.TextTransfer;
 
@@ -127,7 +128,7 @@ public class OpAction implements ActionListener {
 							// Check if fileformat is correct
 							cont = checkFileFormat(fileCVP);
 							if (!cont) {
-								JOptionPane.showMessageDialog(fc, "The selected file is not a valid SWP data table file.",
+								JOptionPane.showMessageDialog(fc, "The selected file is not a valid CVP data table file.",
 								        "CalLite Gui", JOptionPane.INFORMATION_MESSAGE);
 							} else {
 
@@ -155,8 +156,9 @@ public class OpAction implements ActionListener {
 								        dTableModels, gl, regFlags);
 
 								// Need to add first part of string
-								String[] parts = oldText.split("\\(");
-								lab.setText(parts[0].trim() + " (Unedited)");
+								String newPart = "WSI/DI read from [";
+								newPart = newPart + fileCVP.getName() + "," + fileSWP.getName() + "]";
+								lab.setText(newPart + " (Unedited)");
 							}
 						}
 					}
@@ -210,8 +212,9 @@ public class OpAction implements ActionListener {
 
 				regUserEdits[tID] = false;
 
-				String[] parts = oldText.split("\\(");
-				lab.setText(parts[0].trim() + " (Unedited)");
+				String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
+				String selHyd = hydDSSStrings[8];
+				lab.setText(selHyd + " (Unedited)");
 			}
 
 		} else if (ae.getActionCommand().startsWith("Op_Paste")) {

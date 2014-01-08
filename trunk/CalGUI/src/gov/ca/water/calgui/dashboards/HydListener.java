@@ -223,6 +223,15 @@ public class HydListener implements ItemListener {
 				table.setModel(dTableModels[tID]);
 
 			}
+			// Change WSI/DI Status Label
+			JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
+			String oldText = lab.getText();
+
+			String selHyd = hydDSSStrings[8];
+
+			String[] parts = oldText.split("\\(");
+			lab.setText(selHyd + " (Unedited)");
+
 		}
 	}
 
