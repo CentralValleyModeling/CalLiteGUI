@@ -1716,14 +1716,14 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 							</button>
 							<glue preferredsize="5,5" />
-							<button id="op_btn2b" name="op_btn2b" text="Read..."
-								enabled="true" ActionCommand="Op_TableEdit">
+							<button id="op_btn2b" name="op_btn2b" text="Read"
+								enabled="true" ActionCommand="Op_Read">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
 							</button>
 							<glue preferredsize="5,5" />
 							<button id="op_btn2c" name="op_btn2b" text="Defaults"
-								enabled="true" ActionCommand="Reg_Default">
+								enabled="true" ActionCommand="Op_Default">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="1" />
 							</button>

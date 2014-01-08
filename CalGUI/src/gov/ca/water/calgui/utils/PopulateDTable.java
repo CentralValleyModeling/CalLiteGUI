@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -92,11 +93,25 @@ public class PopulateDTable {
 					// btn.setEnabled(true);
 
 					String stID = String.valueOf(tID);
-					String comp = gl.tableIDForCtrl(stID);
-					if (comp != null) {
+					String comp = gl.ctrlFortableID(stID);
 
-						int rID = Integer.parseInt(gl.RIDForCtrl(comp));
-						RegFlags[rID] = 2;
+					if (comp != null) {
+						String tableName = gl.tableNameForCtrl(comp);
+
+						// Change caption on operations panel
+						if (tableName.startsWith("wsi_di")) {
+							JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
+							String oldText = lab.getText();
+							String[] parts = oldText.split("\\(");
+							lab.setText(parts[0].trim() + " (Edited)");
+						}
+
+						String stRID = gl.RIDForCtrl(comp);
+
+						if (!stRID.equals("n/a")) {
+							int rID = Integer.parseInt(gl.RIDForCtrl(comp));
+							RegFlags[rID] = 2;
+						}
 					}
 
 				}
