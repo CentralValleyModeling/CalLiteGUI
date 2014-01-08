@@ -211,12 +211,11 @@ public class HydListener implements ItemListener {
 				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString()); // TODO: CONFIRM THIS IS NOW
 				                                                                                        // SUPERFLUOUS
 
-				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + hydDSSStrings[7]
-				        + ".table";
+				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + hydDSSStrings[7] + ".table";
 				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-				fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + hydDSSStrings[7] + ".table";
+				fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + hydDSSStrings[7] + ".table";
 				tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 				dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
