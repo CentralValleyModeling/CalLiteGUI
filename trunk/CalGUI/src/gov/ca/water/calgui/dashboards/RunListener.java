@@ -123,12 +123,13 @@ public class RunListener implements ItemListener {
 
 								// Force CVP and SWP tables to be reset from files
 
-								String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + result[7]
+								String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + result[7]
 								        + ".table";
 								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 
-								fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + result[7] + ".table";
+								fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_cvp_sys_" + result[7]
+								        + ".table";
 								tID = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
 								dTableModels[tID] = new DataFileTableModel(fileName, tID);
 

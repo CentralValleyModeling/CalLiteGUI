@@ -8,7 +8,10 @@ import gov.ca.water.calgui.utils.TextTransfer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 import javax.swing.BorderFactory;
@@ -108,38 +111,54 @@ public class OpAction implements ActionListener {
 
 					File fileSWP = fc.getSelectedFile();
 
-					// Get CVP File
-					fc.setDialogTitle("Select WSI/DI CVP data table file");
-					retval = fc.showOpenDialog(fc);
-					if (retval == JFileChooser.APPROVE_OPTION) {
-						File fileCVP = fc.getSelectedFile();
+					// Check if fileformat is correct
+					cont = checkFileFormat(fileSWP);
+					if (!cont) {
+						JOptionPane.showMessageDialog(fc, "The selected file is not a valid SWP data table file.", "CalLite Gui",
+						        JOptionPane.INFORMATION_MESSAGE);
+					} else {
 
-						int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
-						dTableModels[tID] = new DataFileTableModel(fileSWP.getAbsolutePath(), tID);
+						// Get CVP File
+						fc.setDialogTitle("Select WSI/DI CVP data table file");
+						retval = fc.showOpenDialog(fc);
+						if (retval == JFileChooser.APPROVE_OPTION) {
+							File fileCVP = fc.getSelectedFile();
 
-						int tID1 = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
-						dTableModels[tID1] = new DataFileTableModel(fileCVP.getAbsolutePath(), tID1);
+							// Check if fileformat is correct
+							cont = checkFileFormat(fileCVP);
+							if (!cont) {
+								JOptionPane.showMessageDialog(fc, "The selected file is not a valid SWP data table file.",
+								        "CalLite Gui", JOptionPane.INFORMATION_MESSAGE);
+							} else {
 
-						JTable table = (JTable) swix.find("tblOpValues");
-						pan = (JPanel) swix.find("op_panTab");
-						pan.setBorder(BorderFactory.createTitledBorder("SWP"));
-						JComponent component = (JComponent) swix.find("scrOpValues");
-						component.setVisible(true);
-						component.setEnabled(true);
-						table.setVisible(true);
-						JPanel mainmenu = (JPanel) swix.find("mainmenu");
-						mainmenu.revalidate();
-						JComponent component1 = (JComponent) swix.find("scrOpValues");
+								int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
+								dTableModels[tID] = new DataFileTableModel(fileSWP.getAbsolutePath(), tID);
 
-						dTableModels = PopulateDTable.populate("op_btn2", table, component1, swix, regUserEdits, dTableModels, gl,
-						        regFlags);
+								int tID1 = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
+								dTableModels[tID1] = new DataFileTableModel(fileCVP.getAbsolutePath(), tID1);
 
-						dTableModels = PopulateDTable.populate("op_btn1", table, component1, swix, regUserEdits, dTableModels, gl,
-						        regFlags);
+								JTable table = (JTable) swix.find("tblOpValues");
+								pan = (JPanel) swix.find("op_panTab");
+								pan.setBorder(BorderFactory.createTitledBorder("SWP"));
+								JComponent component = (JComponent) swix.find("scrOpValues");
+								component.setVisible(true);
+								component.setEnabled(true);
+								table.setVisible(true);
+								JPanel mainmenu = (JPanel) swix.find("mainmenu");
+								mainmenu.revalidate();
+								JComponent component1 = (JComponent) swix.find("scrOpValues");
 
-						// Need to add first part of string
-						String[] parts = oldText.split("\\(");
-						lab.setText(parts[0].trim() + " (Unedited)");
+								dTableModels = PopulateDTable.populate("op_btn2", table, component1, swix, regUserEdits,
+								        dTableModels, gl, regFlags);
+
+								dTableModels = PopulateDTable.populate("op_btn1", table, component1, swix, regUserEdits,
+								        dTableModels, gl, regFlags);
+
+								// Need to add first part of string
+								String[] parts = oldText.split("\\(");
+								lab.setText(parts[0].trim() + " (Unedited)");
+							}
+						}
 					}
 				}
 
@@ -262,6 +281,36 @@ public class OpAction implements ActionListener {
 			result = true;
 			break;
 		}
+		return result;
+	}
+
+	public Boolean checkFileFormat(File f) {
+		Boolean result = true;
+		String aLine;
+
+		try {
+
+			FileInputStream fin = new FileInputStream(f);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+			aLine = br.readLine();// Skip title line;
+			aLine = br.readLine();// Skip header line;
+
+			if (aLine != null) {
+				aLine = br.readLine(); // first data line
+				StringTokenizer st1 = new StringTokenizer(aLine, "\t| ");
+				if (st1.countTokens() == 2) {
+					result = true;
+				} else {
+					result = false;
+				}
+
+			}
+			br.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return result;
 	}
 
