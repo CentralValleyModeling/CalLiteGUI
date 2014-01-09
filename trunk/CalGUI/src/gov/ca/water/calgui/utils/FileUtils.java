@@ -391,7 +391,7 @@ public class FileUtils {
 
 	public static StringBuffer reverseStringBuffer(StringBuffer sb, String delim) {
 		String[] strArray = sb.toString().split(delim);
-		List result = new LinkedList();
+		List<String> result = new LinkedList<String>();
 
 		for (int i = 0; i < strArray.length; i++) {
 			result.add(strArray[i]);

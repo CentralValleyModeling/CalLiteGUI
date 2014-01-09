@@ -6,12 +6,8 @@ import org.junit.Test;
 
 public class TestScenarioMonitor {
 
-	ScenarioMonitor sm;
-
 	@Before
 	public void setUp() throws Exception {
-
-		sm = new ScenarioMonitor();
 
 	}
 
@@ -22,9 +18,9 @@ public class TestScenarioMonitor {
 	@Test
 	public void test() throws InterruptedException {
 
-		sm.start();
+		ScenarioMonitor.start();
 		Thread.sleep(2000);
-		sm.add("Test");
+		ScenarioMonitor.add("Test");
 		Thread.sleep(2000);
 		System.out.println("end");
 	}

@@ -34,15 +34,13 @@ import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
 public class ReportAction implements ActionListener {
-	private final JFrame desktop;
 	private final SwingEngine swix;
 	private final JList lstScenarios;
 	private static Logger log = Logger.getLogger(ReportAction.class.getName());
 
 	public ReportAction(JFrame desktop, SwingEngine swix) {
-		this.desktop = desktop;
-		this.swix = swix;
 
+		this.swix = swix;
 		lstScenarios = (JList) swix.find("SelectedList");
 	}
 

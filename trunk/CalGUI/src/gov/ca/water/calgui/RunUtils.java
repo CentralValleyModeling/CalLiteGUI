@@ -70,8 +70,9 @@ public class RunUtils {
 	                                           // run
 
 	private static Properties properties = new Properties();
-	private static Logger log = Logger.getLogger(RunUtils.class.getName());
 	private static SwingWorker<Void, String> worker_setupScenario = null;
+	private static Boolean isWSIDIGeneration;
+	private static Logger log = Logger.getLogger(RunUtils.class.getName());
 
 	/**
 	 * Constructor for RunUtils
@@ -107,11 +108,44 @@ public class RunUtils {
 
 	}
 
-	public static String getRunRecordFolderName() {
-		return runRecordFolderName;
+	/**
+	 * Validates scenario currently in memory and then saves and runs WSI-DI generation. THis is done by calling doSingleEither with
+	 * the boolean isWSIDI set to true.
+	 * 
+	 * @param ae
+	 * @param mainmenu
+	 * @param scen
+	 */
+	public static void doSingleAsWSIDI(ActionEvent ae, JPanel mainmenu, String scen) {
+
+		isWSIDIGeneration = true;
+		doSingleEither(ae, mainmenu, scen);
+
 	}
 
+	/**
+	 * Validates scenario currently in memory and then saves and runs as a regular scenario. This is done by calling doSingleEither
+	 * with the boolean isWSIDI set to false.
+	 * 
+	 * @param ae
+	 * @param mainmenu
+	 * @param scen
+	 */
 	public static void doSingle(ActionEvent ae, JPanel mainmenu, String scen) {
+		isWSIDIGeneration = false;
+		doSingleEither(ae, mainmenu, scen);
+
+	}
+
+	/**
+	 * Validates, then runs either a regular scenario or a WSI-DI generation run depending on value of isWSIDI falg.
+	 * 
+	 * @param ae
+	 * @param mainmenu
+	 * @param scen
+	 */
+	private static void doSingleEither(ActionEvent ae, JPanel mainmenu, String scen) {
+
 		if (!scen.equals("")) {
 
 			// Make sure there isn't a current run in background.
@@ -253,7 +287,6 @@ public class RunUtils {
 									try {
 										Thread.sleep(2000);
 									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
 								} else {
@@ -274,6 +307,7 @@ public class RunUtils {
 						File[] expandedScenarioFiles = expandScenarioList(scenArray, swix);
 
 						// generate batch file
+
 						int maxWaitInSeconds = 60;
 
 						for (File sf : expandedScenarioFiles) {
@@ -290,44 +324,58 @@ public class RunUtils {
 
 								}
 							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
 								log.debug("Problem with wait for save");
 							}
 
 						}
 
-						// how many simultaneous run?
-						int numberOfSimultaneousRun = GUIUtils.simultaneousRuns;
-						// how many sub batch files?
-						int numberOfSubBatch = (int) Math.ceil((float) expandedScenarioFiles.length / numberOfSimultaneousRun);
-						// sub batch file name array
-						String[] subBatchFileNameArray = new String[numberOfSubBatch];
-						for (int j = 0; j < numberOfSubBatch; j++) {
-							subBatchFileNameArray[j] = "group_" + j + ".bat";
-						}
+						if (isWSIDIGeneration) {
 
-						for (int j = 0; j < numberOfSubBatch; j++) {
+							if (expandedScenarioFiles.length > 1) {
 
-							subBatchFileNameArray[j] = "group_" + j + ".bat";
-							File subBatchFile = new File(System.getProperty("user.dir"), subBatchFileNameArray[j]);
-							FileUtils.deleteDir(subBatchFile);
-							List<String> groupScenFileNameList = new ArrayList<String>();
-							for (int i = j * numberOfSimultaneousRun; i < Math.min((j + 1) * numberOfSimultaneousRun,
-							        expandedScenarioFiles.length); i++) {
+								JOptionPane.showMessageDialog(mainmenu,
+								        "WSIDI generation only allowed for a single hydroclimate realization.");
 
-								String scenFileName = expandedScenarioFiles[i].getName();
-								groupScenFileNameList.add(scenFileName);
-								ScenarioMonitor.add(FilenameUtils.removeExtension(scenFileName));
+							} else {
+
+								setupMainBatchFile_WSIDI(null, null, 3);
+								runBatch();
 
 							}
+						} else {
 
-							setupBatchFile(subBatchFileNameArray[j], groupScenFileNameList, true);
+							int numberOfSimultaneousRun = GUIUtils.simultaneousRuns;
+							int numberOfSubBatch = (int) Math.ceil((float) expandedScenarioFiles.length / numberOfSimultaneousRun);
+							String[] subBatchFileNameArray = new String[numberOfSubBatch];
+
+							for (int j = 0; j < numberOfSubBatch; j++) {
+								subBatchFileNameArray[j] = "group_" + j + ".bat";
+							}
+
+							for (int j = 0; j < numberOfSubBatch; j++) {
+
+								subBatchFileNameArray[j] = "group_" + j + ".bat";
+								File subBatchFile = new File(System.getProperty("user.dir"), subBatchFileNameArray[j]);
+								FileUtils.deleteDir(subBatchFile);
+								List<String> groupScenFileNameList = new ArrayList<String>();
+								for (int i = j * numberOfSimultaneousRun; i < Math.min((j + 1) * numberOfSimultaneousRun,
+								        expandedScenarioFiles.length); i++) {
+
+									String scenFileName = expandedScenarioFiles[i].getName();
+									groupScenFileNameList.add(scenFileName);
+									ScenarioMonitor.add(FilenameUtils.removeExtension(scenFileName));
+
+								}
+
+								setupBatchFile(subBatchFileNameArray[j], groupScenFileNameList, true);
+							}
+
+							// generate main batch file
+							setupMainBatchFile(null, expandedScenarioFiles, subBatchFileNameArray);
+
+							runBatch();
 						}
 
-						// generate main batch file
-						setupMainBatchFile(null, expandedScenarioFiles, subBatchFileNameArray);
-
-						runBatch();
 					}
 					btn.setEnabled(true);
 					mainmenu.revalidate();
@@ -335,9 +383,8 @@ public class RunUtils {
 
 			}
 		} else {
-			JFrame frame = new JFrame("Error");
 
-			// show a joptionpane dialog using showMessageDialog
+			JFrame frame = new JFrame("Error");
 			JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
 
 		}
@@ -880,10 +927,10 @@ public class RunUtils {
 				batchFilePW.println("start /wait " + subBat);
 				batchFilePW.println();
 			}
-			for (String subBat : subBatchFileNameArray) {
-				// batchFilePW.println("del /F /Q " + subBat);
-				batchFilePW.println();
-			}
+			// for (String subBat : subBatchFileNameArray) {
+			// // batchFilePW.println("del /F /Q " + subBat);
+			// batchFilePW.println();
+			// }
 			batchFilePW.flush();
 			batchFilePW.close();
 
