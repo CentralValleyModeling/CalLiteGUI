@@ -8,7 +8,6 @@ import gov.ca.water.calgui.MainMenu;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -180,11 +179,9 @@ public class SchematicMain {
 				Toolkit.getDefaultToolkit().beep();
 			else {
 				JList lstScenarios = null;
-				JFrame desktop = null;
 				if (mainMenu.lstScenarios.getModel().getSize() == 0)
 					JOptionPane.showMessageDialog(null, "No scenarios loaded", "Error", JOptionPane.ERROR_MESSAGE);
 				else {
-					desktop = (JFrame) swix.find("desktop");
 					lstScenarios = (JList) swix.find("SelectedList");
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + label + ";Index-" + "SchVw" + label,
 					        lstScenarios);

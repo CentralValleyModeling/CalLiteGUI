@@ -63,13 +63,13 @@ public class TestScenario {
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\default.cls");
 
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl);
+		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl);
 
 		// 3. Generate
 
-		RunUtils.setupScenario("default.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
-		        mm.regFlags);
+		RunUtils.setupScenario("default.cls", "", MainMenu.desktop, MainMenu.getSwix(), mm.regUserEditFlags, mm.dTableModels,
+		        mm.gl, mm.regFlags);
 
 		// 4. Wait for save to complete ..
 
@@ -104,23 +104,24 @@ public class TestScenario {
 		// 2. Load default scenario
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\default.cls");
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, mm.getSwix(), mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl);
+		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl);
 
 		// 3. Set to D1641 by simulating quick-select of rdbRegQS_D1641
 
-		((JRadioButton) (mm.getSwix().find("rdbRegQS_D1641"))).setSelected(true);
+		((JRadioButton) (MainMenu.getSwix().find("rdbRegQS_D1641"))).setSelected(true);
 
 		// 4. Save
 
-		((JTextField) mm.getSwix().find("run_txfScen")).setText("D1641.cls");
+		((JTextField) MainMenu.getSwix().find("run_txfScen")).setText("D1641.cls");
 		RunUtils.setFilenameTooltips();
-		StringBuffer sb = RunUtils.buildScenarioString(mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
+		StringBuffer sb = RunUtils
+		        .buildScenarioString(MainMenu.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl, mm.regFlags);
 		RunUtils.saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\D1641.cls");
 
 		// 5. Generate
 
-		RunUtils.setupScenario("D1641.cls", "", MainMenu.desktop, mm.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
+		RunUtils.setupScenario("D1641.cls", "", MainMenu.desktop, MainMenu.getSwix(), mm.regUserEditFlags, mm.dTableModels, mm.gl,
 		        mm.regFlags);
 
 		// 6. Wait for save to complete ..
