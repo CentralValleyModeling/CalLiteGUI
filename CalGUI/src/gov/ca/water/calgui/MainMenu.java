@@ -450,11 +450,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// Change WSI/DI Status Label
 			String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
 			JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
-			String oldText = lab.getText();
-
 			String selHyd = hydDSSStrings[8];
-
-			String[] parts = oldText.split("\\(");
 			lab.setText(selHyd + " (Unedited)");
 		}
 
@@ -498,11 +494,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		try {
 
-			SchematicMain schemView = new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///"
-			        + System.getProperty("user.dir") + "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
-			SchematicMain schemView2 = new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///"
-			        + System.getProperty("user.dir") + "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2,
-			        21.0, 15.0);
+			new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
+			        + "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
+			new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
+			        + "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2, 21.0, 15.0);
 		} catch (Exception e) {
 			log.debug("Could not load schematic views. " + e);
 		}
@@ -659,6 +654,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	}
 
 	public Action Time_SELECT = new AbstractAction() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -4407276439543982958L;
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
@@ -798,7 +798,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 * @wbp.parser.entryPoint
 	 */
 	public static JRadioButton getSelection(ButtonGroup group) {
-		for (Enumeration e = group.getElements(); e.hasMoreElements();) {
+		for (Enumeration<?> e = group.getElements(); e.hasMoreElements();) {
 			JRadioButton b = (JRadioButton) e.nextElement();
 			if (b.getModel() == group.getSelection()) {
 				return b;
@@ -1318,16 +1318,16 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	void retrieve2() {
 
 		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
-		Vector bParts = dts.getBParts();
-		Vector varTypes = dts.getVarTypes();
+		Vector<?> bParts = dts.getBParts();
+		Vector<?> varTypes = dts.getVarTypes();
 		if (bParts.size() < 1) {
 			JOptionPane.showMessageDialog(null, "Specify one or more variables", "Variable(s) Not Specified",
 			        JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
-		Vector cParts = dts.getCParts();
-		Vector opIDs = dts.getOpIds();
+		Vector<?> cParts = dts.getCParts();
+		Vector<?> opIDs = dts.getOpIds();
 
 		for (int i = 0; i < bParts.size(); i++) {
 			System.out.println(i + ": " + opIDs.get(i) + ":" + varTypes.get(i) + ":" + bParts.get(i) + ": " + cParts.get(i));

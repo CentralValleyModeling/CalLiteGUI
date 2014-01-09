@@ -15,17 +15,6 @@ public final class TextTransfer implements ClipboardOwner {
 
 	private static Logger log = Logger.getLogger(TextTransfer.class.getName());
 
-	public static void main(String... aArguments) {
-		TextTransfer textTransfer = new TextTransfer();
-		/*
-		 * //display what is currently on the clipboard System.out.println("Clipboard contains:" +
-		 * textTransfer.getClipboardContents() );
-		 * 
-		 * //change the contents and then re-display textTransfer.setClipboardContents("blah, blah, blah");
-		 * System.out.println("Clipboard contains:" + textTransfer.getClipboardContents() );
-		 */
-	}
-
 	/**
 	 * Empty implementation of the ClipboardOwner interface.
 	 */

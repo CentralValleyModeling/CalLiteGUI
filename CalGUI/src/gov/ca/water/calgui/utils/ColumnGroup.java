@@ -22,7 +22,7 @@ import javax.swing.table.TableColumn;
 
 public class ColumnGroup {
 	protected TableCellRenderer renderer;
-	protected Vector v;
+	protected Vector<Object> v;
 	protected String text;
 	protected int margin = 0;
 
@@ -52,7 +52,7 @@ public class ColumnGroup {
 			this.renderer = renderer;
 		}
 		this.text = text;
-		v = new Vector();
+		v = new Vector<Object>();
 	}
 
 	/**
@@ -72,15 +72,15 @@ public class ColumnGroup {
 	 * @param v
 	 *            ColumnGroups
 	 */
-	public Vector getColumnGroups(TableColumn c, Vector g) {
+	public Vector<ColumnGroup> getColumnGroups(TableColumn c, Vector<ColumnGroup> g) {
 		g.addElement(this);
 		if (v.contains(c))
 			return g;
-		Enumeration e = v.elements();
+		Enumeration<Object> e = v.elements();
 		while (e.hasMoreElements()) {
 			Object obj = e.nextElement();
 			if (obj instanceof ColumnGroup) {
-				Vector groups = ((ColumnGroup) obj).getColumnGroups(c, (Vector) g.clone());
+				Vector<ColumnGroup> groups = ((ColumnGroup) obj).getColumnGroups(c, (Vector<ColumnGroup>) g.clone());
 				if (groups != null)
 					return groups;
 			}
@@ -106,7 +106,7 @@ public class ColumnGroup {
 		Component comp = renderer.getTableCellRendererComponent(table, getHeaderValue(), false, false, -1, -1);
 		int height = comp.getPreferredSize().height;
 		int width = 0;
-		Enumeration e = v.elements();
+		Enumeration<Object> e = v.elements();
 		while (e.hasMoreElements()) {
 			Object obj = e.nextElement();
 			if (obj instanceof TableColumn) {
@@ -122,7 +122,7 @@ public class ColumnGroup {
 
 	public void setColumnMargin(int margin) {
 		this.margin = margin;
-		Enumeration e = v.elements();
+		Enumeration<Object> e = v.elements();
 		while (e.hasMoreElements()) {
 			Object obj = e.nextElement();
 			if (obj instanceof ColumnGroup) {

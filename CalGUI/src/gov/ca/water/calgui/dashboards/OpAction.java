@@ -40,7 +40,6 @@ public class OpAction implements ActionListener {
 	private final GUILinks gl;
 	private static Logger log = Logger.getLogger(OpAction.class.getName());
 	private final int[] regFlags;
-	private JFrame desktop;
 
 	public OpAction(JFrame desktop, SwingEngine swix, Boolean[] regUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        int[] regFlags) {
@@ -49,7 +48,6 @@ public class OpAction implements ActionListener {
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.regFlags = regFlags;
-		this.desktop = desktop;
 	}
 
 	@Override

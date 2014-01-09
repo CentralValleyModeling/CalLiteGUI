@@ -11,7 +11,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 
@@ -51,7 +50,8 @@ public class GoogleMapTab {
 
 		try {
 			URL url = new URL(urlString);
-			HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
+			url.openConnection();
+			// HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
 			// Object objData = urlConnect.getContent();
 		} catch (UnknownHostException e) {
 

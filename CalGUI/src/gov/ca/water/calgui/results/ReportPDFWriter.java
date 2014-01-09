@@ -50,7 +50,6 @@ public class ReportPDFWriter implements Writer {
 	private PdfWriter writer;
 	private PdfPTable summaryTable;
 	private Font bigFont;
-	private Font smallFont;
 	private Font subtitleFont;
 	private Font smallBoldFont;
 	private String dateStr;
@@ -89,7 +88,6 @@ public class ReportPDFWriter implements Writer {
 		// Check if file is already open
 
 		bigFont = FontFactory.getFont("Arial", 14);
-		smallFont = FontFactory.getFont("Arial", 10);
 		smallBoldFont = FontFactory.getFont("Arial", 10);
 		smallBoldFont.setStyle(Font.BOLD);
 		subtitleFont = FontFactory.getFont("Arial", 10);

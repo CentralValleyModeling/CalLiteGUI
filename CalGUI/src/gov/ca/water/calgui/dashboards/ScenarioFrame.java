@@ -25,6 +25,10 @@ import javax.swing.SwingConstants;
 import org.swixml.SwingEngine;
 
 public class ScenarioFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7326034958907170615L;
 	private JLabel lblscen1;
 	private JButton btnComp;
 	private JList lstScen;
@@ -61,7 +65,7 @@ public class ScenarioFrame extends JFrame {
 				return name.toLowerCase().endsWith(".cls");
 			}
 		};
-		Vector filelist = new Vector(Arrays.asList(dir.list(filter)));
+		Vector<String> filelist = new Vector<String>(Arrays.asList(dir.list(filter)));
 		lstScen.setListData(filelist);
 		JScrollPane scrollingList = new JScrollPane(lstScen);
 		c.gridx = 0;

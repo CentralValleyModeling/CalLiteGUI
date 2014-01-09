@@ -34,6 +34,10 @@ import javax.swing.table.TableColumn;
 
 public class SummaryTablePanel extends JPanel implements ActionListener, ComponentListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1707702265756648942L;
 	int n[][][];
 	double x[][][];
 	double xx[][][];
@@ -491,6 +495,10 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 
 	public class SimpleTableModel extends AbstractTableModel {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -7777566463291833750L;
 		protected Vector<String> data;
 		protected Vector<String> columnNames;
 
