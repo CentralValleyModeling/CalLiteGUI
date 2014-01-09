@@ -71,11 +71,11 @@ public class RunUtils {
 
 	private static Properties properties = new Properties();
 	private static SwingWorker<Void, String> worker_setupScenario = null;
-	private static Boolean isWSIDIGeneration;
+	private static Boolean isWSIDIGeneration = false;
 	private static Logger log = Logger.getLogger(RunUtils.class.getName());
 
 	/**
-	 * Constructor for RunUtils
+	 * Initializer for RunUtils
 	 * 
 	 * @param desktop
 	 * @param swix
@@ -120,6 +120,7 @@ public class RunUtils {
 
 		isWSIDIGeneration = true;
 		doSingleEither(ae, mainmenu, scen);
+		isWSIDIGeneration = false;
 
 	}
 
@@ -138,7 +139,7 @@ public class RunUtils {
 	}
 
 	/**
-	 * Validates, then runs either a regular scenario or a WSI-DI generation run depending on value of isWSIDI falg.
+	 * Validates, then runs either a regular scenario or a WSI-DI generation run depending on value of RunUtils.isWSIDI falg.
 	 * 
 	 * @param ae
 	 * @param mainmenu
@@ -299,7 +300,6 @@ public class RunUtils {
 					}
 					if (okToRun) {
 
-						// delete previous generated batch file
 						deleteBatchFile();
 
 						f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
@@ -338,7 +338,7 @@ public class RunUtils {
 
 							} else {
 
-								setupMainBatchFile_WSIDI(null, null, 3);
+								setupMainBatchFile_WSIDI(null, scen, 3);
 								runBatch();
 
 							}
@@ -390,6 +390,11 @@ public class RunUtils {
 		}
 	}
 
+	/**
+	 * Sets up and runs multiple scenarios in a batch run - invoked only from FileAction.actionPerformed()
+	 * 
+	 * @param ae
+	 */
 	public static void doBatch(ActionEvent ae) {
 		FileDialog batchScenFileDialog = new FileDialog(null, null, "CLS", true);
 		batchScenFileDialog.actionPerformed(ae);
@@ -849,18 +854,17 @@ public class RunUtils {
 	 * Sets up CalLite_w2.bat file to run WSI-DI
 	 * 
 	 * @param batFileName
-	 * @param ScenarioFile
+	 * @param ScenarioName
 	 * @param noIterations
 	 */
-	public static void setupMainBatchFile_WSIDI(String batFileName, final File scenarioFile, final int iterations) {
+	public static void setupMainBatchFile_WSIDI(String batFileName, String scenarioFileName, final int iterations) {
 
 		if (batFileName == null || batFileName.isEmpty())
 			batFileName = "CalLite_w2.bat";
 
 		String del = "";
 
-		String scenarioName = FilenameUtils.removeExtension(scenarioFile.getName());
-
+		String scenarioName = scenarioFileName.substring(0, scenarioFileName.length() - 4);
 		String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\" + scenarioName)
 		        .getAbsolutePath();
 

@@ -124,7 +124,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	static JHelp helpViewer = null;
 	public static JFrame desktop;
 	static JFrame help;
-	JPanel runsettings;
 	JPanel mainmenu;
 	JPanel demands;
 	JPanel schematics;
@@ -571,11 +570,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.setActionListener(swix.find("Custom"), new CustomResultsAction(swix));
 
-			swix.setActionListener(runsettings, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
-			        regFlags));
+			swix.setActionListener(swix.find("runsettings"), new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl,
+			        action_WSIDI, regFlags));
 			((JSlider) swix.find("run_sldThreads")).addChangeListener(this);
-			GUIUtils.setCheckBoxorRadioButtonItemListener(runsettings, new RunListener(desktop, swix, regUserEditFlags,
-			        dTableModels, gl, action_WSIDI));
+			GUIUtils.setCheckBoxorRadioButtonItemListener(swix.find("runsettings"), new RunListener(desktop, swix,
+			        regUserEditFlags, dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(schematics, new SchematicAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
