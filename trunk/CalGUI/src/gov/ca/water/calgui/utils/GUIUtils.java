@@ -450,7 +450,6 @@ public class GUIUtils {
 
 		String textinLine;
 		String comp;
-		String value;
 		String delims = "[|]";
 		int QSel = 0;
 
@@ -497,10 +496,6 @@ public class GUIUtils {
 				String[] tokens = textinLine.split(delims);
 
 				comp = tokens[0];
-				if (tokens.length > 1)
-					value = tokens[1];
-				else
-					value = null;
 
 				if (comp.startsWith("ckbReg")) {
 

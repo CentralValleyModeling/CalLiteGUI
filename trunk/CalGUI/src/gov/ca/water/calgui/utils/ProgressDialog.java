@@ -12,8 +12,6 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import org.apache.log4j.Logger;
-
 /**
  * 
  * ProgressFrame - Dialog shows status of runs and of PDF report generation
@@ -24,8 +22,6 @@ import org.apache.log4j.Logger;
 public class ProgressDialog extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = -606008444073979623L;
-
-	private static Logger log = Logger.getLogger(ProgressDialog.class.getName());
 
 	private final JList list;
 	private final JLabel label;

@@ -28,6 +28,10 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class MonthlyTablePanel extends JPanel implements ActionListener, ComponentListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel panel;
 	JScrollPane scrollPane;
 
@@ -203,6 +207,10 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 	}
 
 	class SimpleTableModel2 extends AbstractTableModel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		protected Vector<String> data;
 		protected Vector<String> columnNames;
 

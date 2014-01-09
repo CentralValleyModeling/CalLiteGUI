@@ -525,10 +525,6 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 	}
 
-	private void Work(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs) {
-
-	}
-
 	@Override
 	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
 		// TODO Auto-generated method stub

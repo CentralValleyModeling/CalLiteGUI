@@ -73,7 +73,6 @@ public class DataFileTableModel extends AbstractTableModel {
 		String aLine;
 		data = new Vector<Object>();
 		columnNames = new Vector<String>();
-		String firstColumnName = "";
 		String secondColumnName = "";
 		ArrayList<String> allValues = new ArrayList<String>();
 		ArrayList<String> allValues1 = new ArrayList<String>();
@@ -108,7 +107,7 @@ public class DataFileTableModel extends AbstractTableModel {
 							columnNames.addElement(st1.nextToken());
 						}
 					} else {
-						firstColumnName = st1.nextToken();
+						st1.nextToken();
 						secondColumnName = st1.nextToken();
 						st1.nextToken();
 
@@ -334,7 +333,6 @@ public class DataFileTableModel extends AbstractTableModel {
 					columnNames.addElement(thirdColumnName);
 					columnNames.addElement(fourthColumnName);
 					columnNames.addElement(fifthColumnName);
-					String lastColID = "-1";
 					int rowCount = 0;
 
 					ArrayList<String> allValues = new ArrayList<String>();
@@ -438,7 +436,6 @@ public class DataFileTableModel extends AbstractTableModel {
 						columnNames.addElement(secondColumnName);
 						columnNames.addElement(thirdColumnName);
 						columnNames.addElement(fourthColumnName);
-						String lastColID = "-1";
 						int rowCount = 0;
 
 						ArrayList<String> allValues = new ArrayList<String>();

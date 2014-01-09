@@ -12,6 +12,10 @@ import org.apache.log4j.Logger;
 
 public class NumericTextField extends JTextField {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2314410705390899848L;
 	private float minimum;
 	private float maximum;
 	private static Logger log = Logger.getLogger(NumericTextField.class.getName());
@@ -41,6 +45,10 @@ public class NumericTextField extends JTextField {
 	}
 
 	private class NumericDocument extends PlainDocument {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 234219857118535655L;
 		// The regular expression to match input against (zero or more digits)
 		private final Pattern DIGITS = Pattern.compile("(\\d*)|[0-9]{0,15}[.]{1}[0-9]{0,15}");
 
