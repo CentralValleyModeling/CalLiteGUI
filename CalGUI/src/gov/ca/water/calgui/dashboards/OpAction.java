@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.CalLiteHelp;
+import gov.ca.water.calgui.RunUtils;
 import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
@@ -25,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -54,6 +56,10 @@ public class OpAction implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getActionCommand().startsWith("Op_Generate")) {
+
+			JPanel mainmenu = (JPanel) swix.find("mainmenu");
+			String scen = ((JTextField) swix.find("run_txfScen")).getText();
+			RunUtils.doSingleAsWSIDI(ae, mainmenu, scen);
 
 		} else if (ae.getActionCommand().startsWith("Op_TableEdit")) {
 			TitledBorder title = null;
