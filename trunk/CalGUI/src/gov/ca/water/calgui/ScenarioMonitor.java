@@ -159,6 +159,7 @@ public class ScenarioMonitor {
 
 		File scenSavingFile = new File(scenDir_absPath + "\\save.txt");
 		File scenWRESLCHECKFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main=.log");
+		File scenWRESLCHECK_WSIDIFile = new File(scenDir_absPath + "\\RUN\\=WreslCheck_main_wsidi=.log");
 		File scenPROGRESSFile = new File(scenDir_absPath + "\\Run\\PROGRESS.txt");
 
 		if (!scenSavingFile.exists())
@@ -171,12 +172,15 @@ public class ScenarioMonitor {
 		if (!text.contains("Save complete"))
 			return "SAVING - " + text;
 
-		if (!scenWRESLCHECKFile.exists())
+		if (!scenWRESLCHECKFile.exists() && !scenWRESLCHECK_WSIDIFile.exists())
 			return "SAVED";
 
 		if (!scenPROGRESSFile.exists()) {
 
-			text = lastLine(scenWRESLCHECKFile);
+			if (scenWRESLCHECK_WSIDIFile.exists())
+				text = lastLine(scenWRESLCHECK_WSIDIFile);
+			else
+				text = lastLine(scenWRESLCHECKFile);
 			if (text.contains("unopenable!"))
 				return "PARSING - unable to read parsing log";
 			if (text.contains("Empty!"))

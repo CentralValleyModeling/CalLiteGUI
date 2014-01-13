@@ -339,6 +339,7 @@ public class RunUtils {
 							} else {
 
 								setupMainBatchFile_WSIDI(null, scen, 3);
+								ScenarioMonitor.add(FilenameUtils.removeExtension(scen));
 								runBatch();
 
 							}
