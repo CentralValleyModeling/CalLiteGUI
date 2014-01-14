@@ -175,6 +175,15 @@ public class ScenarioMonitor {
 		if (!scenWRESLCHECKFile.exists() && !scenWRESLCHECK_WSIDIFile.exists())
 			return "SAVED";
 
+		String infoWSIDI = "";
+		if (scenWRESLCHECK_WSIDIFile.exists()) {
+			File scenWSIDIIterationFile = new File(scenDir_absPath + "\\RUN\\wsidi.log");
+			if (!scenWSIDIIterationFile.exists())
+				infoWSIDI = "(WSIDI) ";
+			else
+				infoWSIDI = "(WSIDI " + lastLine(scenWSIDIIterationFile) + ") ";
+		}
+
 		if (!scenPROGRESSFile.exists()) {
 
 			if (scenWRESLCHECK_WSIDIFile.exists())
@@ -182,25 +191,25 @@ public class ScenarioMonitor {
 			else
 				text = lastLine(scenWRESLCHECKFile);
 			if (text.contains("unopenable!"))
-				return "PARSING - unable to read parsing log";
+				return (infoWSIDI + "PARSING - unable to read parsing log");
 			if (text.contains("Empty!"))
-				return ("PARSING - parsing started");
+				return (infoWSIDI + "PARSING - parsing started");
 			if (!text.contains("Total errors:"))
-				return "PARSING - " + text;
+				return (infoWSIDI + "PARSING - " + text);
 			else
-				return "PARSING - Parsing complete - " + text;
+				return ("infoWSIDI + PARSING - Parsing complete - " + text);
 
 		} else {
 
 			text = lastLine(scenPROGRESSFile);
 			if (text.contains("unopenable!"))
-				return "RUNNING - unable to read progress.txt";
+				return (infoWSIDI + "RUNNING - unable to read progress.txt");
 			if (text.contains("Empty!"))
-				return "RUNNING - run starting";
+				return (infoWSIDI + "RUNNING - run starting");
 			if (text.contains("Run completed."))
-				return "DONE - run completed";
+				return (infoWSIDI + "DONE - run completed");
 			if (text.contains("Run failed."))
-				return "DONE - run failed.";
+				return (infoWSIDI + "DONE - run failed.");
 			else {
 				String parts[] = text.split(" ");
 				if (parts.length == 4) {
@@ -213,7 +222,7 @@ public class ScenarioMonitor {
 						// System.out.println("Error");
 					}
 				}
-				return "RUNNING - " + text;
+				return (infoWSIDI + "RUNNING - " + text);
 			}
 		}
 	}
