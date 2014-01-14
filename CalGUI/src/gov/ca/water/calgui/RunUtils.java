@@ -871,13 +871,13 @@ public class RunUtils {
 
 		String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
 		String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
-		String wsidiIterationLogPath = new File(scenarioPath, "run\\wsidi_iteration.log").getAbsolutePath();
-		String wsidiGeneratedTablesPath = new File(scenarioPath, "run\\lookup\\wsi_di_*.table").getAbsolutePath();
+		String wsidiIterationLogPath = new File(scenarioPath, "run\\wsidi.log").getAbsolutePath();
+		// String wsidiGeneratedTablesPath = new File(scenarioPath, "run\\lookup\\wsi_di_???_sys_*.table").getAbsolutePath();
 
 		del = del + "del /F /Q " + progressFilePath + "\r\n";
 		del = del + "del /F /Q " + wreslCheckFilePath + "\r\n";
 		del = del + "del /F /Q " + wsidiIterationLogPath + "\r\n";
-		del = del + "del /F /Q " + wsidiGeneratedTablesPath + "\r\n";
+		// del = del + "del /F /Q " + wsidiGeneratedTablesPath + "\r\n";
 
 		File batchFile = null;
 
