@@ -106,6 +106,11 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 
 			Vector<String> data = new Vector<String>();
 			double sum = 0;
+			double[] mins, maxs, avgs;
+			mins = new double[13];
+			maxs = new double[13];
+			avgs = new double[13];
+			int years = 0;
 			int wy = 0;
 			for (int i = first; i < tsc.numberValues; i++) {
 				ht.set(tsc.times[i]);
@@ -116,13 +121,35 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 					if (i != first && dss_Grabber.getOriginalUnits().equals("CFS"))
 						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
 					data.addElement(Integer.toString(wy));
+					years++;
 				}
 				sum = sum + tsc.values[i];
+				m = (m + 2) % 12;
+				avgs[m] = avgs[m] + tsc.values[i];
+				mins[m] = (years == 1) ? tsc.values[i] : Math.min(mins[m], tsc.values[i]);
+				maxs[m] = (years == 1) ? tsc.values[i] : Math.max(maxs[m], tsc.values[i]);
 				data.addElement(df1.format(tsc.values[i]));
 			}
 			if (dss_Grabber.getOriginalUnits().equals("CFS")) {
 				data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy)));
 			}
+
+			data.addElement("Min");
+			for (int i = 0; i < 12; i++)
+				data.addElement(df1.format(mins[i]));
+			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+				data.addElement("");
+
+			data.addElement("Max");
+			for (int i = 0; i < 12; i++)
+				data.addElement(df1.format(maxs[i]));
+			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+				data.addElement("");
+			data.addElement("Avg");
+			for (int i = 0; i < 12; i++)
+				data.addElement(df1.format(avgs[i] / years));
+			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+				data.addElement("");
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);
 			JTable table = new JTable(model);
