@@ -71,7 +71,7 @@ class StudyTabCl:
       print tab+ "Running Model"
    
       #os.system('WRIMSv2_Engine.bat')
-      subprocess.call("cmd /c start "+os.path.join(thisFileDir, "_wsidi_study.bat"))
+      subprocess.call(os.path.join(thisFileDir, "_wsidi_study.bat"))
       return 0
 
    # run WSI-DI procedure
