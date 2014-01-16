@@ -1318,6 +1318,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
 		Vector<?> bParts = dts.getBParts();
+		Vector<?> dtsNames = dts.getDtsNames();
+		System.out.println(dtsNames.size());
 		Vector<?> varTypes = dts.getVarTypes();
 		if (bParts.size() < 1) {
 			JOptionPane.showMessageDialog(null, "Specify one or more variables", "Variable(s) Not Specified",
@@ -1329,7 +1331,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		Vector<?> opIDs = dts.getOpIds();
 
 		for (int i = 0; i < bParts.size(); i++) {
-			System.out.println(i + ": " + opIDs.get(i) + ":" + varTypes.get(i) + ":" + bParts.get(i) + ": " + cParts.get(i));
+			System.out.println(i + ": " + dtsNames.get(i) + ": " + opIDs.get(i) + ":" + varTypes.get(i) + ":" + bParts.get(i)
+			        + ": " + cParts.get(i));
 		}
 
 		if (!AppUtils.baseOn) {
@@ -1357,13 +1360,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			for (int i = 0; i < rows.length; i++) {
 
 				String[] parts = array[i].getName().split("::");
-				if (parts[1].contains(("_SV.DSS"))) {
-					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
-					        + ";File-" + parts[1], lstScenarios);
-				} else {
-					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2],
-					        lstScenarios);
-				}
+				DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
+				        + ";File-" + parts[1], lstScenarios, dts);
+
 			}
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);

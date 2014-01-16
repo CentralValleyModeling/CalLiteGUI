@@ -197,7 +197,7 @@ public class ScenarioMonitor {
 			if (!text.contains("Total errors:"))
 				return (infoWSIDI + "PARSING - " + text);
 			else
-				return ("infoWSIDI + PARSING - Parsing complete - " + text);
+				return (infoWSIDI + "PARSING - Parsing complete - " + text);
 
 		} else {
 
