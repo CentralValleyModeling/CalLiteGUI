@@ -32,6 +32,7 @@ public class ScenarioMonitor {
 	private static Logger log = Logger.getLogger(ScenarioMonitor.class.getName());
 	private static String runRecordFolderName;
 	private static ProgressDialog progressDialog;
+	private static int wsdiIterations;
 
 	private static boolean saving = false;
 	private static final HashMap<String, Pair<String, Date>> scenarioList = new HashMap<String, Pair<String, Date>>();
@@ -103,6 +104,7 @@ public class ScenarioMonitor {
 		try {
 			properties.load(FileAction.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
 			runRecordFolderName = properties.getProperty("runrecord.dir", "Run_Records");
+			wsdiIterations = Integer.parseInt(properties.getProperty("wsidi.iterations"));
 		} catch (Exception e) {
 			log.debug("Problem loading properties. " + e.getMessage());
 		}
@@ -177,7 +179,7 @@ public class ScenarioMonitor {
 
 		String infoWSIDI = "";
 		if (scenWRESLCHECK_WSIDIFile.exists()) {
-			File scenWSIDIIterationFile = new File(scenDir_absPath + "\\RUN\\wsidi.log");
+			File scenWSIDIIterationFile = new File(scenDir_absPath + "\\RUN\\wsidi_iteration.log");
 			if (!scenWSIDIIterationFile.exists())
 				infoWSIDI = "(WSIDI) ";
 			else
@@ -206,8 +208,16 @@ public class ScenarioMonitor {
 				return (infoWSIDI + "RUNNING - unable to read progress.txt");
 			if (text.contains("Empty!"))
 				return (infoWSIDI + "RUNNING - run starting");
-			if (text.contains("Run completed."))
+			if (text.contains("Run completed.")) {
+				File scenWSIDIIterationFile = new File(scenDir_absPath + "\\RUN\\wsidi_iteration.log");
+				if (scenWSIDIIterationFile.exists()) {
+					String strIter = lastLine(scenWSIDIIterationFile);
+					if (strIter.endsWith(Integer.toString(wsdiIterations) + "/" + Integer.toString(wsdiIterations))) {
+						RunUtils.loadGeneratedWSIDI(scenDir_absPath);
+					}
+				}
 				return (infoWSIDI + "DONE - run completed");
+			}
 			if (text.contains("Run failed."))
 				return (infoWSIDI + "DONE - run failed.");
 			else {

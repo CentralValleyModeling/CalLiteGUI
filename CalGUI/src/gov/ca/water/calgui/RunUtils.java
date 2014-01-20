@@ -5,6 +5,7 @@ import gov.ca.water.calgui.utils.FileUtils;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
+import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 
@@ -28,8 +29,10 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -37,6 +40,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
@@ -73,6 +77,7 @@ public class RunUtils {
 	private static SwingWorker<Void, String> worker_setupScenario = null;
 	private static Boolean isWSIDIGeneration = false;
 	private static Logger log = Logger.getLogger(RunUtils.class.getName());
+	private static int wsdiIterations;
 
 	/**
 	 * Initializer for RunUtils
@@ -100,6 +105,7 @@ public class RunUtils {
 
 			properties.load(RunUtils.class.getClassLoader().getResourceAsStream("callite-gui.properties"));
 			runRecordFolderName = properties.getProperty("runrecord.dir", "Run_Records");
+			wsdiIterations = Integer.parseInt(properties.getProperty("wsidi.iterations"));
 
 		} catch (Exception e) {
 
@@ -338,7 +344,7 @@ public class RunUtils {
 
 							} else {
 
-								setupMainBatchFile_WSIDI(null, scen, 3);
+								setupMainBatchFile_WSIDI(null, scen, wsdiIterations);
 								ScenarioMonitor.add(FilenameUtils.removeExtension(scen));
 								runBatch();
 
@@ -1743,5 +1749,32 @@ public class RunUtils {
 			expandedScenFiles[i] = new File(expandedList.get(i));
 
 		return expandedScenFiles;
+	}
+
+	public static void loadGeneratedWSIDI(String scenDir_absPath) {
+
+		JPanel mainmenu = (JPanel) swix.find("mainmenu");
+		JTable table = (JTable) swix.find("tblOpValues");
+		JPanel pan = (JPanel) swix.find("op_panTab");
+		pan.setBorder(BorderFactory.createTitledBorder("SWP"));
+		JComponent component = (JComponent) swix.find("scrOpValues");
+		component.setVisible(true);
+		component.setEnabled(true);
+		table.setVisible(true);
+		mainmenu.revalidate();
+		JComponent component1 = (JComponent) swix.find("scrOpValues");
+
+		File fileSWP = new File(scenDir_absPath + "\\RUN\\Lookup\\wsi_di_swp.table");
+		int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
+		dTableModels[tID] = new DataFileTableModel(fileSWP.getAbsolutePath(), tID);
+
+		File fileCVP = new File(scenDir_absPath + "\\RUN\\Lookup\\wsi_di_cvp_sys.table");
+		int tID1 = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
+		dTableModels[tID1] = new DataFileTableModel(fileCVP.getAbsolutePath(), tID1);
+
+		dTableModels = PopulateDTable.populate("op_btn2", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
+
+		dTableModels = PopulateDTable.populate("op_btn1", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
+
 	}
 }
