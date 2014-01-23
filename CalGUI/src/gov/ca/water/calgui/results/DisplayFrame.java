@@ -504,7 +504,7 @@ public class DisplayFrame {
 			}
 
 		dssGrabber.setDateRange(dateRange);
-		dssGrabber.setLocation(dts.getName());
+		dssGrabber.setLocation("@@" + dts.getName());
 
 		TimeSeriesContainer[] primary_Results = dssGrabber.getPrimarySeries("DUMMY");
 		TimeSeriesContainer[] secondary_Results = dssGrabber.getSecondarySeries();
@@ -522,27 +522,27 @@ public class DisplayFrame {
 
 		JTabbedPane tabbedpane = new JTabbedPane();
 
-		// if (doSummaryTable) {
-		// SummaryTablePanel stp;
-		// if (doDifference)
-		// stp = new SummaryTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-		// diff_Results, null, summaryTags, "", dssGrabber);
-		// else
-		// stp = new SummaryTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, summaryTags,
-		// dssGrabber.getSLabel(), dssGrabber, doBase);
-		// tabbedpane.insertTab("Summary - " + dssGrabber.getBase(), null, stp, null, 0);
-		// }
+		if (doSummaryTable) {
+			SummaryTablePanel stp;
+			if (doDifference)
+				stp = new SummaryTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+				        diff_Results, null, summaryTags, "", dssGrabber);
+			else
+				stp = new SummaryTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, summaryTags,
+				        dssGrabber.getSLabel(), dssGrabber, doBase);
+			tabbedpane.insertTab("Summary - " + dssGrabber.getBase(), null, stp, null, 0);
+		}
 
-		// if (doMonthlyTable) {
-		// MonthlyTablePanel mtp;
-		// if (doDifference) {
-		// mtp = new MonthlyTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-		// diff_Results, null, dssGrabber, "");
-		// } else
-		// mtp = new MonthlyTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, dssGrabber,
-		// dssGrabber.getSLabel(), doBase);
-		// tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
-		// }
+		if (doMonthlyTable) {
+			MonthlyTablePanel mtp;
+			if (doDifference) {
+				mtp = new MonthlyTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+				        diff_Results, null, dssGrabber, "");
+			} else
+				mtp = new MonthlyTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, dssGrabber,
+				        dssGrabber.getSLabel(), doBase);
+			tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
+		}
 
 		Date lower = new Date();
 		JSpinner m = (JSpinner) swix.find("spnStartMonth");

@@ -41,12 +41,28 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 
 	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSSGrabber dss_Grabber,
 	        String sName) {
-		this(title, tscs, stscs, dss_Grabber, sName, false);
+		this(title, tscs, stscs, dss_Grabber, null, sName, false);
+
+	}
+
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSSGrabber2 dss_Grabber,
+	        String sName) {
+		this(title, tscs, stscs, null, dss_Grabber, sName, false);
 
 	}
 
 	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSSGrabber dss_Grabber,
 	        String sName, boolean isBase) {
+		this(title, tscs, stscs, dss_Grabber, null, sName, isBase);
+	}
+
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSSGrabber2 dss_Grabber,
+	        String sName, boolean isBase) {
+		this(title, tscs, stscs, null, dss_Grabber, sName, isBase);
+	}
+
+	public MonthlyTablePanel(String title, TimeSeriesContainer[] tscs, TimeSeriesContainer[] stscs, DSSGrabber dss_Grabber,
+	        DSSGrabber2 dss_Grabber2, String sName, boolean isBase) {
 
 		super();
 
@@ -74,7 +90,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Jul");
 		columns.addElement("Aug");
 		columns.addElement("Sep");
-		if (dss_Grabber.getOriginalUnits().equals("CFS")) {
+		boolean isCFS = dss_Grabber == null ? dss_Grabber2.getOriginalUnits().equals("CFS") : dss_Grabber.getOriginalUnits()
+		        .equals("CFS");
+		if (isCFS) {
 			columns.addElement("Ann (TAF)");
 		}
 
@@ -118,8 +136,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				int m = ht.month();
 				wy = (m < 10) ? y : y + 1;
 				if ((i - first) % 12 == 0) {
-					if (i != first && dss_Grabber.getOriginalUnits().equals("CFS"))
-						data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy - 1)));
+					if (i != first && isCFS)
+						data.addElement(df1.format(dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy - 1) : dss_Grabber
+						        .getAnnualTAF(s, wy - 1)));
 					data.addElement(Integer.toString(wy));
 					years++;
 				}
@@ -130,25 +149,25 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				maxs[m] = (years == 1) ? tsc.values[i] : Math.max(maxs[m], tsc.values[i]);
 				data.addElement(df1.format(tsc.values[i]));
 			}
-			if (dss_Grabber.getOriginalUnits().equals("CFS")) {
-				data.addElement(df1.format(dss_Grabber.getAnnualTAF(s, wy)));
+			if (isCFS) {
+				data.addElement(df1.format(dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy) : dss_Grabber.getAnnualTAF(s, wy)));
 			}
 
 			data.addElement("Min");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(mins[i]));
-			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+			if (isCFS)
 				data.addElement("");
 
 			data.addElement("Max");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(maxs[i]));
-			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+			if (isCFS)
 				data.addElement("");
 			data.addElement("Avg");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(avgs[i] / years));
-			if (dss_Grabber.getOriginalUnits().equals("CFS"))
+			if (isCFS)
 				data.addElement("");
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);

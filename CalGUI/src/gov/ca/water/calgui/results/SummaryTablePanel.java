@@ -128,12 +128,33 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
 	        DSSGrabber dss_Grabber) {
 
-		this(title, tscs, stscs, tagString, sName, dss_Grabber, false);
+		this(title, tscs, stscs, tagString, sName, dss_Grabber, null, false);
+
+	}
+
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
+	        DSSGrabber2 dss_Grabber) {
+
+		this(title, tscs, stscs, tagString, sName, null, dss_Grabber, false);
 
 	}
 
 	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
 	        DSSGrabber dss_Grabber, boolean isBase) {
+
+		this(title, tscs, stscs, tagString, sName, dss_Grabber, null, isBase);
+
+	}
+
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
+	        DSSGrabber2 dss_Grabber, boolean isBase) {
+
+		this(title, tscs, stscs, tagString, sName, null, dss_Grabber, isBase);
+
+	}
+
+	public SummaryTablePanel(String title, TimeSeriesContainer tscs[], TimeSeriesContainer stscs[], String tagString, String sName,
+	        DSSGrabber dss_Grabber, DSSGrabber2 dss_Grabber2, boolean isBase) {
 
 		super();
 
@@ -162,6 +183,9 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 		columns.addElement("Aug");
 		columns.addElement("Sep");
 		columns.addElement("All (TAF)");
+
+		boolean isCFS = dss_Grabber == null ? dss_Grabber2.getOriginalUnits().equals("CFS") : dss_Grabber.getOriginalUnits()
+		        .equals("CFS");
 
 		// loop over all Primary datasets
 
@@ -231,13 +255,13 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 					update(5, ylt[wy - 1920][8], tsc.values[i], m);
 					update(5, 0, tsc.values[i], m);
 				}
-				if (isNewWY && dss_Grabber.getOriginalUnits().equals("CFS")) {
+				if (isNewWY && isCFS) {
 					// Calculate values based on annual totals
 					double value;
 					if (title.contains("Difference"))
-						value = dss_Grabber.getAnnualTAFDiff(t, wy);
+						value = dss_Grabber == null ? dss_Grabber2.getAnnualTAFDiff(t, wy) : dss_Grabber.getAnnualTAFDiff(t, wy);
 					else
-						value = dss_Grabber.getAnnualTAF(t, wy);
+						value = dss_Grabber == null ? dss_Grabber2.getAnnualTAF(t, wy) : dss_Grabber.getAnnualTAF(t, wy);
 
 					update2(0, 0, value, m);
 					update2(1, ylt[ySac403030 - 1920][1], value, m);
@@ -334,7 +358,7 @@ public class SummaryTablePanel extends JPanel implements ActionListener, Compone
 										i3m = i3 + 10;
 									else if (i3 < 12)
 										i3m = i3 - 2;
-									else if (dss_Grabber.getOriginalUnits().contains("CFS"))
+									else if (isCFS)
 										i3m = 13;
 									else
 										i3m = 0;
