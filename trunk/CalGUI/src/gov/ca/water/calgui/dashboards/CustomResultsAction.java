@@ -7,6 +7,7 @@ import gov.ca.water.calgui.utils.GUIUtils;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
 import org.swixml.SwingEngine;
@@ -34,6 +35,8 @@ public class CustomResultsAction implements ActionListener {
 
 			ControlFrame cf = GUIUtils.getControlFrame();
 			cf.display();
+			if (cf.getExtendedState() == JFrame.ICONIFIED)
+				cf.setExtendedState(JFrame.NORMAL);
 
 		}
 

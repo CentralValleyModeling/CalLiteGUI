@@ -371,8 +371,9 @@ public class DSSGrabber2 {
 		else if (baseName == null)
 			result = "Base scenario is not set in DSSGrabber.";
 		else if (primaryDSSName == null)
-			result = "Base scenario is not set in DSSGrabber.";
-		log.debug(result);
+			result = "Location is not set in DSSGrabber.";
+		if (result != null)
+			log.debug(result);
 		return result;
 	}
 
@@ -469,10 +470,11 @@ public class DSSGrabber2 {
 				interimResult = getOneSeries_WRIMS(dssFilename, dssName, interimDTS);
 			} else {
 				// Operand is a DSS time series
+				primaryDSSName = (dts.getBPartAt(i) + "//" + dts.getCPartAt(i));
 				if (dts.getVarTypeAt(i).equals("DVAR")) {
-					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "//" + dts.getCPartAt(i)));
+					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "/" + dts.getCPartAt(i)));
 				} else {
-					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "//" + dts.getCPartAt(i)));
+					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "/" + dts.getCPartAt(i)));
 				}
 			}
 			if (i == 0)

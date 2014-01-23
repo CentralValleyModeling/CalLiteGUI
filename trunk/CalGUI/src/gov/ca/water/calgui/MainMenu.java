@@ -35,6 +35,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -1010,8 +1011,21 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				if (((JTabbedPane) c).getSelectedIndex() == 6) { // Quick Results
 					ControlFrame cf = GUIUtils.getControlFrame();
 					if (cf != null) {
-						WindowEvent wev = new WindowEvent(cf, WindowEvent.WINDOW_CLOSING);
-						cf.dispatchEvent(wev);
+
+						JPanel p = (JPanel) swix.find("controls");
+						GridBagConstraints gbc = new GridBagConstraints();
+
+						gbc.gridx = 0;
+						gbc.gridy = 0;
+						gbc.gridheight = 1;
+						gbc.anchor = GridBagConstraints.NORTHWEST;
+						p.add(swix.find("ss"), gbc);
+
+						gbc.gridy = 1;
+						p.add(swix.find("Display"), gbc);
+
+						((JPanel) swix.find("Reporting")).invalidate();
+
 						GUIUtils.closeControlFrame();
 
 					}
@@ -1317,22 +1331,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	void retrieve2() {
 
 		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
-		Vector<?> bParts = dts.getBParts();
-		Vector<?> dtsNames = dts.getDtsNames();
-		System.out.println(dtsNames.size());
-		Vector<?> varTypes = dts.getVarTypes();
-		if (bParts.size() < 1) {
-			JOptionPane.showMessageDialog(null, "Specify one or more variables", "Variable(s) Not Specified",
-			        JOptionPane.WARNING_MESSAGE);
+
+		if (dts.getBParts().size() < 1) {
+			JOptionPane.showMessageDialog(null, "Specify a DTS or MTS", "Nothing to Display", JOptionPane.WARNING_MESSAGE);
 			return;
-		}
-
-		Vector<?> cParts = dts.getCParts();
-		Vector<?> opIDs = dts.getOpIds();
-
-		for (int i = 0; i < bParts.size(); i++) {
-			System.out.println(i + ": " + dtsNames.get(i) + ": " + opIDs.get(i) + ":" + varTypes.get(i) + ":" + bParts.get(i)
-			        + ": " + cParts.get(i));
 		}
 
 		if (!AppUtils.baseOn) {
@@ -1341,29 +1343,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			return;
 		}
 		try {
-			String noRowsString = "";
-			JTable _table = GuiUtils.getCLGPanel().getRetrievePanel().getTable();
-			if (_table.getRowCount() == 0)
-				noRowsString = " after using \"Filter\" to load variables";
-			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
+			DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-;Index-;File-", lstScenarios, dts);
 
-			if (_group == null || _table.getSelectedRowCount() == 0) {
-				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
-				        JOptionPane.INFORMATION_MESSAGE);
-				return;
-			}
-			int[] rows = _table.getSelectedRows(); // checked if count > 0 above
-			DataReference[] array = new DataReference[rows.length];
-			for (int i = 0; i < rows.length; i++)
-				array[i] = _group.getDataReference(rows[i]);
-			// GuiUtils.displayData(array);
-			for (int i = 0; i < rows.length; i++) {
-
-				String[] parts = array[i].getName().split("::");
-				DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
-				        + ";File-" + parts[1], lstScenarios, dts);
-
-			}
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
 		}

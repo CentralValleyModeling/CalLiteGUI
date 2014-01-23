@@ -1,15 +1,22 @@
 package gov.ca.water.calgui.results;
 
+import gov.ca.water.calgui.MainMenu;
+import gov.ca.water.calgui.utils.GUIUtils;
+
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.swixml.SwingEngine;
+
+import COM.objectspace.jgl.Container;
 
 /**
  * Floating frame to display Quick Result scenario and display panels
@@ -28,9 +35,11 @@ public class ControlFrame extends JFrame implements WindowListener {
 	 * @param swix_in
 	 *            Reference to SwingEngine containing basic GUI
 	 */
-	public ControlFrame(SwingEngine swix_in) {
+	public ControlFrame() {
 
-		swix = swix_in;
+		swix = MainMenu.getSwix();
+		removeClose(this);
+
 		JPanel p = new JPanel(new GridBagLayout());
 		add(p);
 
@@ -50,6 +59,24 @@ public class ControlFrame extends JFrame implements WindowListener {
 		setTitle("Result Display Controls");
 
 		addWindowListener(this);
+
+	}
+
+	private void removeClose(Component comp) {
+		System.out.println(comp.toString());
+		if (comp instanceof JButton) {
+			String accName = ((JButton) comp).getAccessibleContext().getAccessibleName();
+			System.out.println(accName);
+			if (accName.equals("Close"))
+				comp.getParent().remove(comp);
+		}
+		System.out.println(comp instanceof Container);
+		if (comp instanceof Container) {
+			Component[] comps = ((java.awt.Container) comp).getComponents();
+			for (int x = 0, y = comps.length; x < y; x++) {
+				removeClose(comps[x]);
+			}
+		}
 	}
 
 	/**
@@ -58,12 +85,15 @@ public class ControlFrame extends JFrame implements WindowListener {
 	 */
 	public void display() {
 
+		setSize(new Dimension(460, 768));
 		JFrame f = (JFrame) swix.find("desktop");
 		int right = f.getWidth() + f.getLocation().x;
 		if (right + getWidth() < java.awt.Toolkit.getDefaultToolkit().getScreenSize().width)
 			setLocation(right, 0);
-
+		else
+			setLocation(0, 0);
 		setVisible(true);
+		setExtendedState(JFrame.NORMAL);
 	}
 
 	@Override
@@ -73,27 +103,12 @@ public class ControlFrame extends JFrame implements WindowListener {
 
 	@Override
 	public void windowClosed(WindowEvent arg0) {
+		GUIUtils.closeControlFrame();
 
 	}
 
 	@Override
 	public void windowClosing(WindowEvent arg0) {
-
-		// Move scenario management and display panels back into GUI
-
-		JPanel p = (JPanel) swix.find("controls");
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.gridx = 0;
-		c.gridy = 0;
-		c.gridheight = 1;
-		c.anchor = GridBagConstraints.NORTHWEST;
-		p.add(swix.find("ss"), c);
-
-		c.gridy = 1;
-		p.add(swix.find("Display"), c);
-
-		((JPanel) swix.find("Reporting")).invalidate();
 
 	}
 
