@@ -36,6 +36,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -1775,6 +1776,11 @@ public class RunUtils {
 		dTableModels = PopulateDTable.populate("op_btn2", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
 
 		dTableModels = PopulateDTable.populate("op_btn1", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
+
+		JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
+		String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
+		String selHyd = hydDSSStrings[8];
+		lab.setText(selHyd + " (Generated)");
 
 	}
 }
