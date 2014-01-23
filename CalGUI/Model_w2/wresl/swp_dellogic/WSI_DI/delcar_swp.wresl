@@ -257,8 +257,8 @@ define swp_allocation_1 {
 	  case IF_ {
     	condition 	int(BanksIFSwitch) == 1
 		value		max(wsidi_swpdel,deltar_drymin)}
-      case BOSWITCHON {                 !BO option,  Richard Chen 11/08/2010
-        condition int(BOON_SWP) == 1  
+      case BO {                 !BO option,  Richard Chen 11/08/2010
+        condition int(RunBasis_DLTSW) == 2
             value max(min(wsidi_swpdel,deltar_expmax),deltar_drymin) }
       case otherwise {
             condition always    !D1641      

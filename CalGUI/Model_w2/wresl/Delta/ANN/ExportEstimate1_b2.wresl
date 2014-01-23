@@ -38,7 +38,7 @@ define est_oro_release{
 define EstSWPSodExp { 
     case IF_ { condition int(IF_SWPorCVP_OnOff) == 1
         value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,est_oro_release))}
-    case BO { condition int(BOON_SWP) == 1 
+    case BO { condition int(RunBasis_DLTSW) == 2 
         value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), EstSWPMaxExp_RPA, max(300.,est_oro_release))}
     case D1641_B2 { condition always
         value min(BanksMaxAllow, max(300.0, EstSWPSodDem + EstSWPSodRC), max(300.,est_oro_release))}
@@ -127,7 +127,7 @@ define EstCVPMaxExp_RPA {select estimate from ExportEstimate_CVP where month = m
 define EstCVPSodExp { 
     case IF_ { condition int(IF_SWPorCVP_OnOff) == 1
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC))}
-    case BO { condition int(BOON_CVP) == 1 
+    case BO { int(RunBasis_DLTSW) == 2 
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_RPA )}
     case D1641_B2 { condition always
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_B2)}

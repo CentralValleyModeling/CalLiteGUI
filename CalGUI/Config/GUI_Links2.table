@@ -44,18 +44,16 @@ ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	"Action_4_1_2"	Regulations	n/a	n/a	n/a	n/
 ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	"Action_4_2_1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	18
 ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	"ORMROON";	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	19
 ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	"ClearCrkBOswitch" 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	20
-n/a	GUI_RPAsOtherRegs.table	6	-1	"BOON_CVP"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	21
-n/a	GUI_RPAsOtherRegs.table	7	-1	"BOON_SWP"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	22
-ckbReg2	GUI_RPAsOtherRegs.table	8	-2	"QOMR_DLTSW"	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
-ckbReg1	GUI_RPAsOtherRegs.table	9	-2	"QWEST_DLTSW"	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
-ckbReg10	GUI_RPAsOtherRegs.table	10	-2	"EISJR_DLTSW"	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
-ckbReg11	GUI_RPAsOtherRegs.table	11	-1	"B2Action1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
-ckbReg12	GUI_RPAsOtherRegs.table	12	-1	"B2Action2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
-ckbReg13	GUI_RPAsOtherRegs.table	13	-1	"B2Action3"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
-ckbReg14	GUI_RPAsOtherRegs.table	14	-1	"B2Action4"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
-ckbReg15	GUI_RPAsOtherRegs.table	15	-1	"B2Action5"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
-ckbReg16	GUI_RPAsOtherRegs.table	16	-1	"B2Action6"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
-ckbReg17	GUI_RPAsOtherRegs.table	17	-1	"B2Action7"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
+ckbReg2	GUI_RPAsOtherRegs.table	6	-2	"QOMR_DLTSW"	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
+ckbReg1	GUI_RPAsOtherRegs.table	7	-2	"QWEST_DLTSW"	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
+ckbReg10	GUI_RPAsOtherRegs.table	8	-2	"EISJR_DLTSW"	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
+ckbReg11	GUI_RPAsOtherRegs.table	9	-1	"B2Action1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
+ckbReg12	GUI_RPAsOtherRegs.table	10	-1	"B2Action2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
+ckbReg13	GUI_RPAsOtherRegs.table	11	-1	"B2Action3"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
+ckbReg14	GUI_RPAsOtherRegs.table	12	-1	"B2Action4"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
+ckbReg15	GUI_RPAsOtherRegs.table	13	-1	"B2Action5"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
+ckbReg16	GUI_RPAsOtherRegs.table	14	-1	"B2Action6"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
+ckbReg17	GUI_RPAsOtherRegs.table	15	-1	"B2Action7"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
 ckbReg18	n/a	n/a	n/a	Edit the fraction of unimpaired flow as flow criteria	Regulations	perc_UnimparedFlow	16	16	n/a	n/a	n/a	n/a	n/a	33
 op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	34
 op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	35
