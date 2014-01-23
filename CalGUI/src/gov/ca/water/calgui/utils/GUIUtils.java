@@ -1,6 +1,5 @@
 package gov.ca.water.calgui.utils;
 
-import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.ControlFrame;
 
 import java.awt.Component;
@@ -847,7 +846,7 @@ public class GUIUtils {
 	public static ControlFrame getControlFrame() {
 
 		if (_controlFrame == null)
-			_controlFrame = new ControlFrame(MainMenu.getSwix());
+			_controlFrame = new ControlFrame();
 		return _controlFrame;
 	}
 
