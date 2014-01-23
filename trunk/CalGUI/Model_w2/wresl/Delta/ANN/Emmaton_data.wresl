@@ -65,6 +65,11 @@ define EM_EC_STD_lookup {
   case DRegsOff{
     condition EM_DLTSW == 0
     value 99.0}
+  case AprToAug_IFon {
+    condition         month >=APR .and. month <=AUG .and. (banksifswitch > 0.5 .or. jonesifswitch > 0.5)
+    select            ECstandard_BDCP
+    from              salinity_std_emt_new
+    where             month=month,wyt_SAC=wyt_ann}
   case AprToAug {
     condition         month >=APR .and. month <=AUG
     select            ECstandard

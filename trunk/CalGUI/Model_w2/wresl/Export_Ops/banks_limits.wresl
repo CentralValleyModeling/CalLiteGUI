@@ -11,14 +11,26 @@ Even though EWA regulation is not modeled, but the EWA capacity is modeled in Ca
 
  
 define BanksCapPermit1 {
+	case IFon {
+		condition banksifswitch > 0.5 .or. jonesifswitch > 0.5
+		select PermitCap1_BDCP from BanksLimits where month=month}
 	case D1485 {
 		condition PUMP_DLTSW == 3
 		select PermitCap1_D1485 from BanksLimits where month=month}
 	case D1641 {
 		condition always
 		select PermitCap1_D1641 from BanksLimits where month=month}
-}		
-define BanksCapPermit2 {select PermitCap2 from BanksLimits where month=month}
+}
+		
+define BanksCapPermit2 {
+	case IFon {
+		condition banksifswitch > 0.5 .or. jonesifswitch > 0.5
+		select PermitCap2_BDCP from BanksLimits where month=month}
+	case IFoff {
+		condition always
+		select PermitCap2 from BanksLimits where month=month}
+}
+
 define EWAReservedCap {select EWACap from BanksLimits where month=month}
 
 ! Permitted capacity (Standard Allowable)
