@@ -175,7 +175,15 @@ public class DSSGrabber2 {
 		// TODO: Combine lookup tables AND review use of complex names
 		locationName = locationName.trim();
 
-		if (locationName.startsWith("/")) {
+		if (locationName.startsWith("@@")) {
+			// @@ indicates MTS/DTS title
+			locationName = locationName.substring(2, locationName.length());
+			primaryDSSName = locationName;
+			secondaryDSSName = "";
+			yLabel = "";
+			sLabel = "";
+			title = locationName;
+		} else if (locationName.startsWith("/")) {
 			// Handle names passed from WRIMS GUI
 			String parts[] = locationName.split("/");
 			title = locationName;
@@ -460,8 +468,6 @@ public class DSSGrabber2 {
 
 		TimeSeriesContainer result = null;
 		for (int i = 0; i < dts.getNumberOfDataReferences(); i++) {
-			String DSSFilenameWRIMS = dssFilename;
-			String dssNameWRIMS = dssName;
 			TimeSeriesContainer interimResult;
 			if (!((String) dtsNames.get(i)).isEmpty()) {
 				// Operand is reference to another DTS - Find definition
@@ -482,22 +488,22 @@ public class DSSGrabber2 {
 			else
 				switch (dts.getOperationIdAt(i)) {
 
-				case 0:
+				case 1:
 					for (int j = 0; j < interimResult.numberValues; j++)
 						result.values[j] = result.values[j] + interimResult.values[j];
 					break;
 
-				case 1:
+				case 2:
 					for (int j = 0; j < interimResult.numberValues; j++)
 						result.values[j] = result.values[j] - interimResult.values[j];
 					break;
 
-				case 2:
+				case 3:
 					for (int j = 0; j < interimResult.numberValues; j++)
 						result.values[j] = result.values[j] * interimResult.values[j];
 					break;
 
-				case 3:
+				case 4:
 					for (int j = 0; j < interimResult.numberValues; j++)
 						result.values[j] = result.values[j] / interimResult.values[j];
 					break;
