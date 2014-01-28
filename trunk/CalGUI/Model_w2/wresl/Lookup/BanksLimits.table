@@ -6,7 +6,7 @@
 ! CVPDedCap = Capacity reserved for dedicated CVP wheeling
 ! EWACap = Capacity in addition to PermitCap1 or reserved from PermitCap2 for use for reop related to Environmental water
 BanksLimits
-month  PermitCap1_D1641	PermitCap1_D1485  	PermitCap1_BDCP	PermitCap2  PermitCapt2_BDCP	PhysCap    DaysIncr  CVPDedCap  EWACap
+month  PermitCap1_D1641	PermitCap1_D1485  	PermitCap1_BDCP	PermitCap2  PermitCap2_BDCP	PhysCap    DaysIncr  CVPDedCap  EWACap
 1        6680.       	6680.					10300.			8500.      10300. 			10300.      0         0.         0.
 2        6680.       	6680.					10300.			8500.      10300. 			10300.      0         0.         0.
 3        6680.       	6680.					10300.			8500.      10300. 			10300.      17        0.         0.

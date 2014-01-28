@@ -127,7 +127,7 @@ define EstCVPMaxExp_RPA {select estimate from ExportEstimate_CVP where month = m
 define EstCVPSodExp { 
     case IF_ { condition int(IF_SWPorCVP_OnOff) == 1
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC))}
-    case BO { int(RunBasis_DLTSW) == 2 
+    case BO { condition int(RunBasis_DLTSW) == 2 
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_RPA )}
     case D1641_B2 { condition always
         value min(CVPexportcap, max(JonesMinPumpLevel, EstCVPSodDem + EstCVPSodRC), EstCVPMaxExp_B2)}
