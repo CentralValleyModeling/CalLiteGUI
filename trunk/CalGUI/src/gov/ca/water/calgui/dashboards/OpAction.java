@@ -181,42 +181,55 @@ public class OpAction implements ActionListener {
 
 			if (cont) {
 
-				String comp = "op_btn1";
-				String stID = gl.tableIDForCtrl(comp);
-				int tID = Integer.parseInt(stID);
-
-				DataFileTableModel tm = dTableModels[tID];
-
-				int size = tm.datafiles.length;
-				if (size == 1) {
-					tm.initVectors();
-				} else if (size == 2) {
-					tm.initVectors2();
-				}
-
-				JTable table = (JTable) swix.find("tblOpValues");
-				table.repaint();
-
-				regUserEdits[tID] = false;
-
-				comp = "op_btn2";
-				stID = gl.tableIDForCtrl(comp);
-				tID = Integer.parseInt(stID);
-
-				tm = dTableModels[tID];
-
-				size = tm.datafiles.length;
-				if (size == 1) {
-					tm.initVectors();
-				} else if (size == 2) {
-					tm.initVectors2();
-				}
-
-				table.repaint();
-
-				regUserEdits[tID] = false;
-
+				/*
+				 * String comp = "op_btn1"; String stID = gl.tableIDForCtrl(comp); int tID = Integer.parseInt(stID);
+				 * 
+				 * DataFileTableModel tm = dTableModels[tID];
+				 * 
+				 * int size = tm.datafiles.length; if (size == 1) { tm.initVectors(); } else if (size == 2) { tm.initVectors2(); }
+				 * 
+				 * JTable table = (JTable) swix.find("tblOpValues"); table.repaint();
+				 * 
+				 * regUserEdits[tID] = false;
+				 * 
+				 * comp = "op_btn2"; stID = gl.tableIDForCtrl(comp); tID = Integer.parseInt(stID);
+				 * 
+				 * tm = dTableModels[tID];
+				 * 
+				 * size = tm.datafiles.length; if (size == 1) { tm.initVectors(); } else if (size == 2) { tm.initVectors2(); }
+				 * 
+				 * table.repaint();
+				 */
 				String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
+				String defDir_Lookup = GUIUtils.defaultLookupDirectoryString();
+
+				JPanel mainmenu = (JPanel) swix.find("mainmenu");
+				JTable table = (JTable) swix.find("tblOpValues");
+				pan.setBorder(BorderFactory.createTitledBorder("SWP"));
+				JComponent component = (JComponent) swix.find("scrOpValues");
+				component.setVisible(true);
+				component.setEnabled(true);
+				table.setVisible(true);
+				mainmenu.revalidate();
+				JComponent component1 = (JComponent) swix.find("scrOpValues");
+
+				File fileSWP = new File(defDir_Lookup + hydDSSStrings[6]);
+				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));
+				dTableModels[tID] = new DataFileTableModel(fileSWP.getAbsolutePath(), tID);
+
+				File fileCVP = new File(defDir_Lookup + hydDSSStrings[5]);
+				int tID1 = Integer.parseInt(gl.tableIDForCtrl("op_btn2"));
+				dTableModels[tID1] = new DataFileTableModel(fileCVP.getAbsolutePath(), tID1);
+
+				dTableModels = PopulateDTable
+				        .populate("op_btn2", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
+
+				dTableModels = PopulateDTable
+				        .populate("op_btn1", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
+
+				regUserEdits[tID] = false;
+				regUserEdits[tID1] = false;
+
 				String selHyd = hydDSSStrings[8];
 				lab.setText(selHyd + " (Unedited)");
 			}
