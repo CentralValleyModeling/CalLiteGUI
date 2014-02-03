@@ -464,29 +464,40 @@ public class DSSGrabber2 {
 
 	private TimeSeriesContainer getOneSeries_WRIMS(String dssFilename, String dssName, DerivedTimeSeries dts2) {
 
-		Vector<?> dtsNames = dts.getDtsNames();
+		Vector<?> dtsNames = dts2.getDtsNames();
 
 		TimeSeriesContainer result = null;
-		for (int i = 0; i < dts.getNumberOfDataReferences(); i++) {
+		for (int i = 0; i < dts2.getNumberOfDataReferences(); i++) {
 			TimeSeriesContainer interimResult;
 			if (!((String) dtsNames.get(i)).isEmpty()) {
-				// Operand is reference to another DTS - Find definition
-				DerivedTimeSeries interimDTS = null;
-				// TODO: GET DTS
-				interimResult = getOneSeries_WRIMS(dssFilename, dssName, interimDTS);
+				// Operand is reference to another DTS
+				DerivedTimeSeries adt = MainMenu.getProject().getDTS((String) dtsNames.get(i));
+				System.out.println((String) dtsNames.get(i) + ":" + adt.getName());
+				interimResult = getOneSeries_WRIMS(dssFilename, dssName, adt);
 			} else {
 				// Operand is a DSS time series
-				primaryDSSName = (dts.getBPartAt(i) + "//" + dts.getCPartAt(i));
-				if (dts.getVarTypeAt(i).equals("DVAR")) {
-					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "/" + dts.getCPartAt(i)));
+				primaryDSSName = (dts2.getBPartAt(i) + "//" + dts2.getCPartAt(i));
+				if (dts2.getVarTypeAt(i).equals("DVAR")) {
+					interimResult = getOneSeries(dssFilename, (dts2.getBPartAt(i) + "/" + dts2.getCPartAt(i)));
 				} else {
-					interimResult = getOneSeries(dssFilename, (dts.getBPartAt(i) + "/" + dts.getCPartAt(i)));
+					String svFilename = "";
+
+					if (dssFilename.equals(project.getDVFile()))
+						svFilename = project.getSVFile();
+					else if (dssFilename.equals(project.getDV2File()))
+						svFilename = project.getSV2File();
+					else if (dssFilename.equals(project.getDV3File()))
+						svFilename = project.getSV3File();
+					else if (dssFilename.equals(project.getDV4File()))
+						svFilename = project.getSV4File();
+
+					interimResult = getOneSeries(svFilename, (dts2.getBPartAt(i) + "/" + dts2.getCPartAt(i)));
 				}
 			}
 			if (i == 0)
 				result = interimResult;
 			else
-				switch (dts.getOperationIdAt(i)) {
+				switch (dts2.getOperationIdAt(i)) {
 
 				case 1:
 					for (int j = 0; j < interimResult.numberValues; j++)

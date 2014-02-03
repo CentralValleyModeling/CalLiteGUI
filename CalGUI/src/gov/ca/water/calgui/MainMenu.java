@@ -1310,7 +1310,11 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				System.out.println(array[i]);
 
 				String[] parts = array[i].getName().split("::");
-				if (parts[1].contains(("_SV.DSS"))) {
+				String[] parts2 = parts[2].split("/");
+				parts[2] = "/" + parts2[1] + "/" + parts2[2] + "/" + parts2[3] + "/" + parts[3] + "/" + parts2[5] + "/" + parts2[6]
+				        + "/";
+
+				if (parts[1].toUpperCase().contains(("_SV.DSS"))) {
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
 					        + ";File-" + parts[1], lstScenarios);
 				} else {

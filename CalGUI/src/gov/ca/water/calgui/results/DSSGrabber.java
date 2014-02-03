@@ -418,7 +418,7 @@ public class DSSGrabber {
 				int j = 0;
 				for (int i = 0; i < scenarios; i++) {
 					String scenarioName;
-					if (baseName.contains("_SV.DSS")) {
+					if (baseName.toUpperCase().contains("_SV.DSS")) {
 						// For SVars, use WRIMS GUI Project object to determine input files
 						switch (i) {
 						case 0:
