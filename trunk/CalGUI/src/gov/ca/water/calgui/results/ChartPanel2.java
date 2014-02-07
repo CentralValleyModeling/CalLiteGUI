@@ -97,7 +97,7 @@ public class ChartPanel2 extends JPanel implements Printable {
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					ht.set(tscs[i].times[j]);
 					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
-					System.out.println(new Month(ht.month(), ht.year()));
+					// System.out.println(new Month(ht.month(), ht.year()));
 				}
 
 				dataset.addSeries(series[i]);
@@ -105,6 +105,8 @@ public class ChartPanel2 extends JPanel implements Printable {
 					ymin = tscs[i].minimumValue();
 				if (ymax < tscs[i].maxmimumValue())
 					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+				// System.out.println(series[i].getTimePeriod(0));
+				// System.out.println(series[i].getTimePeriod(series[i].getItemCount() - 1));
 
 			}
 
