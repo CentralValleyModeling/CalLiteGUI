@@ -15,6 +15,7 @@ import javax.swing.JList;
 
 import org.apache.log4j.Logger;
 
+import calsim.app.AppUtils;
 import calsim.app.Project;
 
 /**
@@ -40,6 +41,7 @@ public class WRIMSGUILinks {
 		project.setDV2File("");
 		project.setDV3File("");
 		project.setDV4File("");
+		AppUtils.baseOn = false;
 
 		// Find and set files
 
@@ -50,6 +52,8 @@ public class WRIMSGUILinks {
 
 			String svFileName = findSVFileName(dvFileName);
 			project.setSVFile(svFileName);
+
+			AppUtils.baseOn = true;
 
 		} else {
 
@@ -62,6 +66,7 @@ public class WRIMSGUILinks {
 				if (item.isSelected()) {
 					project.setDVFile(dvFileName);
 					project.setSVFile(svFileName);
+					AppUtils.baseOn = true;
 				} else {
 					dssCount++;
 					switch (dssCount) {

@@ -102,6 +102,7 @@ import vista.set.DataReference;
 import vista.set.Group;
 import calsim.app.AppUtils;
 import calsim.app.DerivedTimeSeries;
+import calsim.app.MultipleTimeSeries;
 import calsim.app.Project;
 import calsim.gui.CalLiteGUIPanelWrapper;
 import calsim.gui.GuiUtils;
@@ -301,7 +302,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			project = new Project();
 			AppUtils.setCurrentProject(project);
-			AppUtils.baseOn = true;
+			AppUtils.baseOn = false;
 
 			desktop.setJMenuBar(menu);
 			menu.setVisible(true);
@@ -1334,20 +1335,24 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	void retrieve2() {
 
-		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
-
-		if (dts.getBParts().size() < 1) {
-			JOptionPane.showMessageDialog(null, "Specify a DTS or MTS", "Nothing to Display", JOptionPane.WARNING_MESSAGE);
-			return;
-		}
-
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
 			        JOptionPane.WARNING_MESSAGE);
 			return;
 		}
+
+		DerivedTimeSeries dts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getDTS();
+		MultipleTimeSeries mts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getMTS();
+
+		if (((mts == null) && (dts == null)) || ((dts != null) && (dts.getBParts().size() < 1))
+		        || ((mts != null) && (mts.getNumberOfDataReferences() < 1))) {
+			JOptionPane.showMessageDialog(null, "Specify DTS or MTS data references", "Nothing to Display",
+			        JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+
 		try {
-			DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-;Index-;File-", lstScenarios, dts);
+			DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-;Index-;File-", lstScenarios, dts, mts);
 
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
