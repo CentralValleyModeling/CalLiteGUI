@@ -535,7 +535,7 @@ public class DisplayFrame {
 
 				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
-			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, true, lower, upper, doBase,
+			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, false, lower, upper, doBase,
 			        mts);
 			tabbedpane.insertTab("Test", null, cp, null, 0);
 
