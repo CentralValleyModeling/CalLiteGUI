@@ -26,6 +26,7 @@ import org.jfree.data.time.Month;
 import org.swixml.SwingEngine;
 
 import calsim.app.DerivedTimeSeries;
+import calsim.app.MultipleTimeSeries;
 
 /**
  * DisplayFrame class provides a frame for showing charts.
@@ -423,10 +424,12 @@ public class DisplayFrame {
 	 * @param displayGroup
 	 * @param lstScenarios
 	 * @param dts
+	 * @param mts
 	 */
-	public static void showDisplayFrames_WRIMS(String displayGroup, JList lstScenarios, DerivedTimeSeries dts) {
+	public static void showDisplayFrames_WRIMS(String displayGroup, JList lstScenarios, DerivedTimeSeries dts,
+	        MultipleTimeSeries mts) {
 
-		DSSGrabber2 dssGrabber = new DSSGrabber2(lstScenarios, dts);
+		DSSGrabber2 dssGrabber = new DSSGrabber2(lstScenarios, dts, mts);
 		boolean doComparison = false;
 		boolean doDifference = false;
 		boolean doTimeSeries = false;
@@ -487,6 +490,8 @@ public class DisplayFrame {
 			}
 		}
 
+		JTabbedPane tabbedpane = new JTabbedPane();
+
 		dssGrabber.setIsCFS(isCFS);
 
 		// System.out.println(displayGroup);
@@ -504,45 +509,6 @@ public class DisplayFrame {
 			}
 
 		dssGrabber.setDateRange(dateRange);
-		dssGrabber.setLocation("@@" + dts.getName());
-
-		TimeSeriesContainer[] primary_Results = dssGrabber.getPrimarySeries("DUMMY");
-		TimeSeriesContainer[] secondary_Results = dssGrabber.getSecondarySeries();
-
-		if (isCFS == true) {
-			dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
-		} else {
-			dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
-		}
-
-		TimeSeriesContainer[] diff_Results = dssGrabber.getDifferenceSeries(primary_Results);
-		TimeSeriesContainer[][] exc_Results = dssGrabber.getExceedanceSeries(primary_Results);
-		TimeSeriesContainer[][] sexc_Results = dssGrabber.getExceedanceSeries(secondary_Results);
-		TimeSeriesContainer[][] dexc_Results = dssGrabber.getExceedanceSeries2(primary_Results);
-
-		JTabbedPane tabbedpane = new JTabbedPane();
-
-		if (doSummaryTable) {
-			SummaryTablePanel stp;
-			if (doDifference)
-				stp = new SummaryTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-				        diff_Results, null, summaryTags, "", dssGrabber);
-			else
-				stp = new SummaryTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, summaryTags,
-				        dssGrabber.getSLabel(), dssGrabber, doBase);
-			tabbedpane.insertTab("Summary - " + dssGrabber.getBase(), null, stp, null, 0);
-		}
-
-		if (doMonthlyTable) {
-			MonthlyTablePanel mtp;
-			if (doDifference) {
-				mtp = new MonthlyTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-				        diff_Results, null, dssGrabber, "");
-			} else
-				mtp = new MonthlyTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, dssGrabber,
-				        dssGrabber.getSLabel(), doBase);
-			tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
-		}
 
 		Date lower = new Date();
 		JSpinner m = (JSpinner) swix.find("spnStartMonth");
@@ -554,86 +520,146 @@ public class DisplayFrame {
 		y = (JSpinner) swix.find("spnEndYear");
 		upper.setTime((new Month(Utils.monthToInt((String) m.getValue()), (Integer) y.getValue()).getLastMillisecond()));
 
-		ChartPanel1 cp3;
-		if (doBoxPlot) {
-			tabbedpane.insertTab("Box Plot", null, new BoxPlotChartPanel(dssGrabber.getTitle(), dssGrabber.getYLabel(),
-			        primary_Results, null, lower, upper, dssGrabber.getSLabel(), doBase), null, 0);
-		}
-		if (doExceedance) {
-			boolean plottedOne = false; // Check if any monthly plots
-			                            // were
-			                            // done
-			for (int m1 = 0; m1 < 12; m1++)
-				if (exceedMonths.contains(monthNames[m1])) {
-					if (doDifference)
-						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")"
-						        + " - Difference from " + primary_Results[0].fileName, dssGrabber.getYLabel(), dexc_Results[m1],
-						        null, true, upper, lower, dssGrabber.getSLabel());
-					else
-						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
-						        dssGrabber.getYLabel(), exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true,
-						        upper, lower, dssGrabber.getSLabel(), doBase);
-					plottedOne = true;
-					tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
-				}
-			if (exceedMonths.contains("ALL") || !plottedOne) {
-				if (doDifference)
-					cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
-					        + primary_Results[0].fileName, dssGrabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
-					        dssGrabber.getSLabel());
-				else
-					cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (all months)", dssGrabber.getYLabel(),
-					        exc_Results[13], sexc_Results == null ? null : sexc_Results[13], true, upper, lower,
-					        dssGrabber.getSLabel(), doBase);
-				tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
+		if (mts != null) {
+
+			// Handle MTS
+
+			dssGrabber.setLocation("@@" + mts.getName());
+			int n = mts.getNumberOfDataReferences();
+			int s = lstScenarios.getModel().getSize();
+
+			TimeSeriesContainer[][] results = new TimeSeriesContainer[n][s];
+			for (int i = 0; i < n; i++) {
+				String mtsDSSName = mts.getVarTypeAt(i);
+				System.out.println(i + ' ' + mtsDSSName);
+
+				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
-			if (exceedMonths.contains("Annual")) {
-				if (dssGrabber.getOriginalUnits().equals("CFS")) {
-					if (doDifference)
-						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
-						        + primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true, upper,
-						        lower, dssGrabber.getSLabel());
-					else
+			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, true, lower, upper, doBase,
+			        mts);
+			tabbedpane.insertTab("Test", null, cp, null, 0);
 
-						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (Annual Total)", "Annual Total Volume (TAF)",
-						        exc_Results[12], sexc_Results == null ? null : sexc_Results[12], true, upper, lower,
-						        dssGrabber.getSLabel(), doBase);
-					tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
-				} else {
-					JPanel panel = new JPanel();
-					panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
-					tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
-				}
-			}
-		}
+		} else {
 
-		ChartPanel1 cp1;
-		ChartPanel1 cp2;
+			// Handle DTS
+			dssGrabber.setLocation("@@" + dts.getName());
 
-		if (doTimeSeries) {
+			TimeSeriesContainer[] primary_Results = dssGrabber.getPrimarySeries("DUMMY");
+			TimeSeriesContainer[] secondary_Results = dssGrabber.getSecondarySeries();
 
-			if (doBase) {
-				cp2 = new ChartPanel1(dssGrabber.getTitle(), dssGrabber.getYLabel(), primary_Results, secondary_Results, false,
-				        upper, lower, dssGrabber.getSLabel(), doBase);
-				tabbedpane.insertTab("Time Series", null, cp2, null, 0);
-
-			} else if (primary_Results.length < 2) {
-				JPanel panel = new JPanel();
-				panel.add(new JLabel("No chart - need two or more time series."));
-				tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
+			if (isCFS == true) {
+				dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
 			} else {
+				dssGrabber.calcTAFforCFS(primary_Results, secondary_Results);
+			}
+
+			TimeSeriesContainer[] diff_Results = dssGrabber.getDifferenceSeries(primary_Results);
+			TimeSeriesContainer[][] exc_Results = dssGrabber.getExceedanceSeries(primary_Results);
+			TimeSeriesContainer[][] sexc_Results = dssGrabber.getExceedanceSeries(secondary_Results);
+			TimeSeriesContainer[][] dexc_Results = dssGrabber.getExceedanceSeries2(primary_Results);
+
+			if (doSummaryTable) {
+				SummaryTablePanel stp;
+				if (doDifference)
+					stp = new SummaryTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+					        diff_Results, null, summaryTags, "", dssGrabber);
+				else
+					stp = new SummaryTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, summaryTags,
+					        dssGrabber.getSLabel(), dssGrabber, doBase);
+				tabbedpane.insertTab("Summary - " + dssGrabber.getBase(), null, stp, null, 0);
+			}
+
+			if (doMonthlyTable) {
+				MonthlyTablePanel mtp;
 				if (doDifference) {
-					cp2 = new ChartPanel1(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
-					        dssGrabber.getYLabel(), diff_Results, null, false, upper, lower, dssGrabber.getSLabel());
-					tabbedpane.insertTab("Difference", null, cp2, null, 0);
-				} else if (doComparison) {
-					cp1 = new ChartPanel1(dssGrabber.getTitle() + " - Comparison ", dssGrabber.getYLabel(), primary_Results,
-					        secondary_Results, false, upper, lower, dssGrabber.getSLabel());
-					tabbedpane.insertTab("Comparison", null, cp1, null, 0);
+					mtp = new MonthlyTablePanel(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+					        diff_Results, null, dssGrabber, "");
+				} else
+					mtp = new MonthlyTablePanel(dssGrabber.getTitle(), primary_Results, secondary_Results, dssGrabber,
+					        dssGrabber.getSLabel(), doBase);
+				tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
+			}
+
+			if (doBoxPlot) {
+				tabbedpane.insertTab("Box Plot", null, new BoxPlotChartPanel(dssGrabber.getTitle(), dssGrabber.getYLabel(),
+				        primary_Results, null, lower, upper, dssGrabber.getSLabel(), doBase), null, 0);
+			}
+			ChartPanel1 cp3;
+			if (doExceedance) {
+				boolean plottedOne = false; // Check if any monthly plots
+				                            // were
+				                            // done
+				for (int m1 = 0; m1 < 12; m1++)
+					if (exceedMonths.contains(monthNames[m1])) {
+						if (doDifference)
+							cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")"
+							        + " - Difference from " + primary_Results[0].fileName, dssGrabber.getYLabel(),
+							        dexc_Results[m1], null, true, upper, lower, dssGrabber.getSLabel());
+						else
+							cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (" + monthNames[m1] + ")",
+							        dssGrabber.getYLabel(), exc_Results[m1], sexc_Results == null ? null : sexc_Results[m1], true,
+							        upper, lower, dssGrabber.getSLabel(), doBase);
+						plottedOne = true;
+						tabbedpane.insertTab("Exceedance (" + monthNames[m1] + ")", null, cp3, null, 0);
+					}
+				if (exceedMonths.contains("ALL") || !plottedOne) {
+					if (doDifference)
+						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (all months)" + " - Difference from "
+						        + primary_Results[0].fileName, dssGrabber.getYLabel(), dexc_Results[13], null, true, upper, lower,
+						        dssGrabber.getSLabel());
+					else
+						cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (all months)", dssGrabber.getYLabel(),
+						        exc_Results[13], sexc_Results == null ? null : sexc_Results[13], true, upper, lower,
+						        dssGrabber.getSLabel(), doBase);
+					tabbedpane.insertTab("Exceedance (all)", null, cp3, null, 0);
+				}
+				if (exceedMonths.contains("Annual")) {
+					if (dssGrabber.getOriginalUnits().equals("CFS")) {
+						if (doDifference)
+							cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (annual total)" + " - Difference from "
+							        + primary_Results[0].fileName, "Annual Total Volume (TAF)", dexc_Results[12], null, true,
+							        upper, lower, dssGrabber.getSLabel());
+						else
+
+							cp3 = new ChartPanel1(dssGrabber.getTitle() + " - Exceedance (Annual Total)",
+							        "Annual Total Volume (TAF)", exc_Results[12], sexc_Results == null ? null : sexc_Results[12],
+							        true, upper, lower, dssGrabber.getSLabel(), doBase);
+						tabbedpane.insertTab("Exceedance (annual total)", null, cp3, null, 0);
+					} else {
+						JPanel panel = new JPanel();
+						panel.add(new JLabel("No chart - annual totals are only calculated for flows."));
+						tabbedpane.insertTab("Exceedance (Annual Total)", null, panel, null, 0);
+					}
+				}
+			}
+
+			ChartPanel1 cp1;
+			ChartPanel1 cp2;
+
+			if (doTimeSeries) {
+
+				if (doBase) {
+					cp2 = new ChartPanel1(dssGrabber.getTitle(), dssGrabber.getYLabel(), primary_Results, secondary_Results, false,
+					        upper, lower, dssGrabber.getSLabel(), doBase);
+					tabbedpane.insertTab("Time Series", null, cp2, null, 0);
+
+				} else if (primary_Results.length < 2) {
+					JPanel panel = new JPanel();
+					panel.add(new JLabel("No chart - need two or more time series."));
+					tabbedpane.insertTab(doDifference ? "Difference" : "Comparison", null, panel, null, 0);
+				} else {
+					if (doDifference) {
+						cp2 = new ChartPanel1(dssGrabber.getTitle() + " - Difference from " + primary_Results[0].fileName,
+						        dssGrabber.getYLabel(), diff_Results, null, false, upper, lower, dssGrabber.getSLabel());
+						tabbedpane.insertTab("Difference", null, cp2, null, 0);
+					} else if (doComparison) {
+						cp1 = new ChartPanel1(dssGrabber.getTitle() + " - Comparison ", dssGrabber.getYLabel(), primary_Results,
+						        secondary_Results, false, upper, lower, dssGrabber.getSLabel());
+						tabbedpane.insertTab("Comparison", null, cp1, null, 0);
+					}
 				}
 			}
 		}
-
 		// Show the frame
 		JFrame frame = new JFrame();
 

@@ -851,9 +851,10 @@ public class GUIUtils {
 	}
 
 	public static void closeControlFrame() {
-		_controlFrame.dispose();
-		_controlFrame = null;
-
+		if (_controlFrame != null) {
+			_controlFrame.dispose();
+			_controlFrame = null;
+		}
 		return;
 	}
 

@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 
 import calsim.app.DerivedTimeSeries;
+import calsim.app.MultipleTimeSeries;
 import calsim.app.Project;
 
 /**
@@ -50,6 +51,7 @@ public class DSSGrabber2 {
 
 	private final JList lstScenarios;
 	private final DerivedTimeSeries dts;
+	private final MultipleTimeSeries mts;
 
 	private String baseName;
 	private String primaryDSSName;
@@ -76,10 +78,11 @@ public class DSSGrabber2 {
 
 	private Project project = MainMenu.getProject();
 
-	public DSSGrabber2(JList list, DerivedTimeSeries dts) {
+	public DSSGrabber2(JList list, DerivedTimeSeries dts, MultipleTimeSeries mts) {
 
 		this.lstScenarios = list;
 		this.dts = dts;
+		this.mts = mts;
 
 	}
 
@@ -462,6 +465,61 @@ public class DSSGrabber2 {
 		return results;
 	}
 
+	public TimeSeriesContainer[] getMultipleTimeSeries(int mtsI) {
+
+		TimeSeriesContainer[] results = null;
+
+		if (checkReadiness() != null)
+			throw new NullPointerException(checkReadiness());
+
+		else {
+
+			// Store number of scenarios
+
+			scenarios = lstScenarios.getModel().getSize();
+			results = new TimeSeriesContainer[scenarios];
+
+			// Base first
+
+			results[0] = getOneSeries_WRIMS(baseName, mtsI, mts);
+			originalUnits = results[0].units;
+
+			// Then scenarios
+
+			int j = 0;
+			for (int i = 0; i < scenarios; i++) {
+				String scenarioName;
+				if (baseName.contains("_SV.DSS")) {
+					// For SVars, use WRIMS GUI Project object to determine input files
+					switch (i) {
+					case 0:
+						scenarioName = project.getSVFile();
+						break;
+					case 1:
+						scenarioName = project.getSV2File();
+						break;
+					case 2:
+						scenarioName = project.getSV3File();
+						break;
+					case 3:
+						scenarioName = project.getSV4File();
+						break;
+					default:
+						scenarioName = "";
+						break;
+					}
+				} else
+					scenarioName = ((RBListItem) lstScenarios.getModel().getElementAt(i)).toString();
+				if (!baseName.equals(scenarioName)) {
+					j = j + 1;
+					results[j] = getOneSeries_WRIMS(scenarioName, mtsI, mts);
+				}
+			}
+		}
+
+		return results;
+	}
+
 	private TimeSeriesContainer getOneSeries_WRIMS(String dssFilename, String dssName, DerivedTimeSeries dts2) {
 
 		Vector<?> dtsNames = dts2.getDtsNames();
@@ -527,6 +585,37 @@ public class DSSGrabber2 {
 		}
 		return result;
 
+	}
+
+	private TimeSeriesContainer getOneSeries_WRIMS(String dssFilename, int i, MultipleTimeSeries mts2) {
+
+		TimeSeriesContainer result = null;
+		if (mts2.getVarTypeAt(i).equals("DTS")) {
+			// Operand is reference to a DTS
+			DerivedTimeSeries adt = MainMenu.getProject().getDTS(mts.getDTSNameAt(i));
+			System.out.println(mts.getDTSNameAt(i) + ":" + adt.getName());
+			result = getOneSeries_WRIMS(dssFilename, "", adt);
+		} else {
+			// Operand is a DSS time series
+			primaryDSSName = (mts2.getBPartAt(i) + "//" + mts2.getCPartAt(i));
+			if (mts2.getVarTypeAt(i).equals("DVAR")) {
+				result = getOneSeries(dssFilename, (mts2.getBPartAt(i) + "/" + mts2.getCPartAt(i)));
+			} else {
+				String svFilename = "";
+
+				if (dssFilename.equals(project.getDVFile()))
+					svFilename = project.getSVFile();
+				else if (dssFilename.equals(project.getDV2File()))
+					svFilename = project.getSV2File();
+				else if (dssFilename.equals(project.getDV3File()))
+					svFilename = project.getSV3File();
+				else if (dssFilename.equals(project.getDV4File()))
+					svFilename = project.getSV4File();
+
+				result = getOneSeries(svFilename, (mts2.getBPartAt(i) + "/" + mts2.getCPartAt(i)));
+			}
+		}
+		return result;
 	}
 
 	/**
