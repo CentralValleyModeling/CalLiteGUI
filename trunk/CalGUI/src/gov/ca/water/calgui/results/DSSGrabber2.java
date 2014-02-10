@@ -590,11 +590,12 @@ public class DSSGrabber2 {
 	private TimeSeriesContainer getOneSeries_WRIMS(String dssFilename, int i, MultipleTimeSeries mts2) {
 
 		TimeSeriesContainer result = null;
-		if (mts2.getVarTypeAt(i).equals("DTS")) {
+		if (!mts2.getDTSNameAt(i).equals("")) {
 			// Operand is reference to a DTS
 			DerivedTimeSeries adt = MainMenu.getProject().getDTS(mts.getDTSNameAt(i));
-			System.out.println(mts.getDTSNameAt(i) + ":" + adt.getName());
 			result = getOneSeries_WRIMS(dssFilename, "", adt);
+			primaryDSSName = mts.getDTSNameAt(i);
+
 		} else {
 			// Operand is a DSS time series
 			primaryDSSName = (mts2.getBPartAt(i) + "//" + mts2.getCPartAt(i));

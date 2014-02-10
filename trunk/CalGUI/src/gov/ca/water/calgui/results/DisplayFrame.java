@@ -531,7 +531,7 @@ public class DisplayFrame {
 			TimeSeriesContainer[][] results = new TimeSeriesContainer[n][s];
 			for (int i = 0; i < n; i++) {
 				String mtsDSSName = mts.getVarTypeAt(i);
-				System.out.println(i + ' ' + mtsDSSName);
+				System.out.println(n + ' ' + i + ' ' + mtsDSSName);
 
 				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
