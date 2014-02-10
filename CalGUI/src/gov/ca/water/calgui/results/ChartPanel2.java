@@ -91,8 +91,8 @@ public class ChartPanel2 extends JPanel implements Printable {
 			HecTime ht = new HecTime();
 
 			for (int i = 0; i < tscs.length; i++) {
-				series[i] = new TimeSeries(mts.getVarTypeAt(mtsI).equals("DTS") ? mts.getDTSNameAt(mtsI) : mts.getBPartAt(mtsI)
-				        + "/" + mts.getCPartAt(mtsI));
+				series[i] = new TimeSeries(mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
+				        : mts.getDTSNameAt(mtsI));
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					ht.set(tscs[i].times[j]);
