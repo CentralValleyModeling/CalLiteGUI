@@ -87,17 +87,21 @@ public class ChartPanel2 extends JPanel implements Printable {
 		for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
 
 			TimeSeriesContainer[] tscs = mtscs[mtsI];
-			TimeSeries[] series = new TimeSeries[(isBase ? 1 : mtscs.length)];
+
+			TimeSeries[] series = new TimeSeries[tscs.length];
 			HecTime ht = new HecTime();
 
 			for (int i = 0; i < tscs.length; i++) {
-				series[i] = new TimeSeries(mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
-				        : mts.getDTSNameAt(mtsI));
+
+				series[i] = new TimeSeries(tscs[i].fileName
+				        + ": "
+				        + (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
+				                : mts.getDTSNameAt(mtsI)));
+
 				primaries++;
 				for (int j = 0; j < tscs[i].numberValues; j++) {
 					ht.set(tscs[i].times[j]);
 					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
-					// System.out.println(new Month(ht.month(), ht.year()));
 				}
 
 				dataset.addSeries(series[i]);
@@ -105,8 +109,6 @@ public class ChartPanel2 extends JPanel implements Printable {
 					ymin = tscs[i].minimumValue();
 				if (ymax < tscs[i].maxmimumValue())
 					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
-				// System.out.println(series[i].getTimePeriod(0));
-				// System.out.println(series[i].getTimePeriod(series[i].getItemCount() - 1));
 
 			}
 

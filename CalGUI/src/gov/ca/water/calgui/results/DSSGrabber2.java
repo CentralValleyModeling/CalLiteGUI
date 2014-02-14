@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 
-import vista.report.GuiUtils;
 import calsim.app.DerivedTimeSeries;
 import calsim.app.MultipleTimeSeries;
 import calsim.app.Project;
@@ -85,8 +84,7 @@ public class DSSGrabber2 {
 		this.dts = dts;
 		this.mts = mts;
 
-		GuiUtils.getStatusPanel();
-		GuiUtils.setStatus("Entered DSSGrabber");
+		// GuiUtils.setStatus("Entered DSSGrabber");
 
 	}
 
@@ -284,7 +282,7 @@ public class DSSGrabber2 {
 	 */
 	private TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
 
-		GuiUtils.setStatus("Reading " + dssName + " from " + dssFilename + ".");
+		// GuiUtils.setStatus("Reading " + dssName + " from " + dssFilename + ".");
 
 		HecDss hD;
 		TimeSeriesContainer result = null;

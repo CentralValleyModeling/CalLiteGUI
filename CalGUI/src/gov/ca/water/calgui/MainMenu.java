@@ -169,6 +169,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	JTabbedPane jtp;
 	JMenuBar menu;
 	ProgressMonitor pMon;
+	JPanel statusPanel;
 
 	public JList lstScenarios;
 
@@ -262,7 +263,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
 			pw.getPanel().setSize(900, 650);
 			p.add(pw.getPanel(), BorderLayout.NORTH);
-			p.add(GuiUtils.getStatusPanel(), BorderLayout.CENTER);
+			statusPanel = GuiUtils.getStatusPanel();
+			p.add(statusPanel, BorderLayout.CENTER);
 			GuiUtils.setStatus("Initialized.");
 
 			// Replace WRIMS GUI display action with CalLite GUI action
