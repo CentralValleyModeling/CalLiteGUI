@@ -173,8 +173,8 @@
 							<gridbagconstraints anchor="GridBagConstraints.WEST"
 								gridx="1" gridy="60" gridwidth="2" />
 							<buttongroup>
-								<radiobutton id="run_rdbD1485" name="run_rdbD1485" text="D-1485"
-									minimumsize="80,20" selected="True">
+								<radiobutton id="run_rdbD1485" name="run_rdbD1485"
+									text="D-1485" minimumsize="80,20" selected="True">
 									<gridbagconstraints anchor="GridBagConstraints.WEST"
 										gridx="0" gridy="0" />
 								</radiobutton>
@@ -300,9 +300,8 @@
 								</radiobutton>
 							</buttongroup>
 							<buttongroup>
-								<radiobutton id="hyd_ANNKM" name="hyd_ANNKM"
-									text="KM Equation" selected="true" minimumsize="240,20"
-									visible="false">
+								<radiobutton id="hyd_ANNKM" name="hyd_ANNKM" text="KM Equation"
+									selected="true" minimumsize="240,20" visible="false">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 								</radiobutton>
@@ -1005,7 +1004,8 @@
 								<gridbagconstraints insets="0,0,0,0"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="4" />
 							</checkbox>
-							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits" ActionCommand="Fac_TableEdit">
+							<button text="Diversion Limits" name="btnFacLimits" id="btnFacLimits"
+								ActionCommand="Fac_TableEdit">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10" />
 							</button>
@@ -1016,7 +1016,8 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
 							</button>
 
-							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse"  ActionCommand="Fac_TableEdit" enabled="false">
+							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse"
+								ActionCommand="Fac_TableEdit" enabled="false">
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="10" />
 							</button>
@@ -1024,10 +1025,11 @@
 
 							<hbox preferredsize="600,400" visible="true">
 								<gridbagconstraints insets="0,10,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13" gridwidth = "3"/>
-								<scrollpane id="fac_scr1" name="fac_scr1" preferredsize="600,400"
-									layout="BorderLayout">
-									<table id="tblIF1" name ="tblIF1" minimumsize="600,500">
+									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13"
+									gridwidth="3" />
+								<scrollpane id="fac_scr1" name="fac_scr1"
+									preferredsize="600,400" layout="BorderLayout">
+									<table id="tblIF1" name="tblIF1" minimumsize="600,500">
 									</table>
 								</scrollpane>
 							</hbox>
@@ -1716,8 +1718,8 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1" />
 							</button>
 							<glue preferredsize="5,5" />
-							<button id="op_btn2b" name="op_btn2b" text="Read"
-								enabled="true" ActionCommand="Op_Read">
+							<button id="op_btn2b" name="op_btn2b" text="Read" enabled="true"
+								ActionCommand="Op_Read">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="1" />
 							</button>
@@ -2961,16 +2963,21 @@
 				</panel>
 
 				<panel id="Custom" name="Custom Results" font="Tahoma-Italic-12"
-					layout="GridBagLayout">
-
+					layout="GridBagLayout" border="LineBorder(grey,1)">
+					<hbox>
+						<gridbagconstraints gridx="0" gridy="0" insets="5,5,5,5" />
+						<button text="Controls ..." ActionCommand="AC_Controls">
+						</button>
+						<button text="Load List/Tree" enabled="false">
+						</button>
+						<button text="Save List/Tree" enabled="false">
+						</button>
+					</hbox>
 					<panel name="WRIMS" id="WRIMS" layout="BorderLayout"
-						preferredsize="800,600">
-						<gridbagconstraints gridx="0" gridy="1" />
+						preferredsize="900,600">
+						<gridbagconstraints gridx="0" gridy="1"
+							gridwidth="3" anchor="GridBagConstraints.NORTH" />
 					</panel>
-					<button text="Controls ..." ActionCommand="AC_Controls">
-						<gridbagconstraints gridx="0" gridy="2" />
-					</button>
-
 				</panel>
 
 				<panel id="schematics" name="Map View" font="Tahoma-Italic-12"

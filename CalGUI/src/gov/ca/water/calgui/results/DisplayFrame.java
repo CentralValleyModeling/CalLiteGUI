@@ -531,14 +531,15 @@ public class DisplayFrame {
 			TimeSeriesContainer[][] results = new TimeSeriesContainer[n][s];
 			for (int i = 0; i < n; i++) {
 				String mtsDSSName = mts.getVarTypeAt(i);
-				System.out.println(n + ' ' + i + ' ' + mtsDSSName);
-
 				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
 			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, false, lower, upper, doBase,
 			        mts);
-			tabbedpane.insertTab("Test", null, cp, null, 0);
+			tabbedpane.insertTab("Time Series", null, cp, null, 0);
 
+			MonthlyTablePanel2 mtp = new MonthlyTablePanel2(dssGrabber.getTitle(), results, dssGrabber, dssGrabber.getSLabel(),
+			        doBase);
+			tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
 		} else {
 
 			// Handle DTS
