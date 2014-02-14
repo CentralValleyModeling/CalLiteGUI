@@ -530,7 +530,6 @@ public class DisplayFrame {
 
 			TimeSeriesContainer[][] results = new TimeSeriesContainer[n][s];
 			for (int i = 0; i < n; i++) {
-				String mtsDSSName = mts.getVarTypeAt(i);
 				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
 			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, false, lower, upper, doBase,
