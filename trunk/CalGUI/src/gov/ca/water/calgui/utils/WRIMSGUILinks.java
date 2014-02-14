@@ -11,7 +11,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import javax.swing.JFileChooser;
 import javax.swing.JList;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 
@@ -116,15 +118,42 @@ public class WRIMSGUILinks {
 			scanner.close();
 
 		} catch (IOException e) {
-			log.info(clsF.getName() + " not openable");
+			log.info(clsF.getName() + " not openable - checking for like-named SV file");
 		}
 
-		// Build string pointing to "Scenarios/Run_Details/scenarioname/Run/DSS/svfilename"
-
 		if (!svFileName.equals("")) {
+
+			// Found in CLS - Build string pointing to "Scenarios/Run_Details/scenarioname/Run/DSS/svfilename"
+
 			String svPathString = dvFileName.substring(0, dvFileName.length() - 7); // Strip out "_DV.DSS"
 			int i = svPathString.lastIndexOf("\\"); // find rightmost "/"
 			svFileName = svPathString.substring(0, i) + "\\Run_Details" + svPathString.substring(i) + "\\Run\\DSS\\" + svFileName;
+		} else {
+
+			// Not found in CLS: first, check if there's a corresponding SV.DSS
+			if (dvFileName.substring(dvFileName.length() - 6, dvFileName.length()).toUpperCase().equals("DV.DSS")) {
+				svFileName = dvFileName.substring(0, dvFileName.length() - 6) + "SV.dss";
+				File svF = new File(svFileName);
+				if (svF.exists() && !svF.isDirectory())
+					log.info("Found like-named SV file - " + svFileName);
+				else
+					svFileName = "";
+
+				if (svFileName.equals("")) {
+
+					// No corresponding SV.DSS - get file from file dialog!
+
+					JFileChooser fc = new JFileChooser();
+					fc.setCurrentDirectory(new File(dvFileName));
+					fc.setDialogTitle("Set SV file for " + dvFileName);
+					fc.setFileFilter(new FileNameExtensionFilter("DSS File *.dss", "dss"));
+					if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+						svFileName = fc.getSelectedFile().getAbsolutePath();
+						log.info("SV file set - " + svFileName);
+					} else
+						log.info("No SV file set for " + dvFileName + "!");
+				}
+			}
 		}
 
 		return svFileName;
