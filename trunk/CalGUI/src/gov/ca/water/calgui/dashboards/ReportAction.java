@@ -286,6 +286,7 @@ public class ReportAction implements ActionListener {
 						aLine = br.readLine();
 					}
 					br.close();
+
 				} catch (Exception e1) {
 					log.debug(e1.getMessage());
 				}
@@ -344,6 +345,7 @@ public class ReportAction implements ActionListener {
 							n = n + 1;
 						}
 					}
+
 					try {
 
 						PrintStream output = new PrintStream(outputStream);
@@ -353,6 +355,7 @@ public class ReportAction implements ActionListener {
 
 						output.close();
 						outputStream.close();
+
 					} catch (IOException ex) {
 						log.debug(ex.getMessage());
 					}

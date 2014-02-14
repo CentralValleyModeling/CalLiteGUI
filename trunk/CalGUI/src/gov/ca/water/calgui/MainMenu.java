@@ -257,12 +257,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			// Put WRIMS GUI message panel in Custom Results tab
 
 			JPanel p = (JPanel) swix.find("WRIMS");
-			p.setSize(800, 600);
+			p.setSize(900, 650);
 
 			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
-			pw.getPanel().setSize(800, 600);
+			pw.getPanel().setSize(900, 650);
 			p.add(pw.getPanel(), BorderLayout.NORTH);
-			p.add(GuiUtils.getStatusPanel(), BorderLayout.SOUTH);
+			p.add(GuiUtils.getStatusPanel(), BorderLayout.CENTER);
+			GuiUtils.setStatus("Initialized.");
 
 			// Replace WRIMS GUI display action with CalLite GUI action
 
