@@ -29,8 +29,8 @@ import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
+import gov.ca.water.calgui.utils.WRIMSGUILinks;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -104,7 +104,6 @@ import calsim.app.AppUtils;
 import calsim.app.DerivedTimeSeries;
 import calsim.app.MultipleTimeSeries;
 import calsim.app.Project;
-import calsim.gui.CalLiteGUIPanelWrapper;
 import calsim.gui.GuiUtils;
 
 /**
@@ -172,6 +171,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	JPanel statusPanel;
 
 	public JList lstScenarios;
+	public JLabel statusLabel; // TODO: Move to WRIMSGUILink if possible
 
 	public FileAction fileAction; // Listener for FileActions is public to facilitate testing
 
@@ -257,15 +257,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			// Put WRIMS GUI message panel in Custom Results tab
 
-			JPanel p = (JPanel) swix.find("WRIMS");
-			p.setSize(900, 650);
+			WRIMSGUILinks.buildWRIMSGUI((JPanel) swix.find("WRIMS"));
+			WRIMSGUILinks.setStatus("Initialized.");
 
-			CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(desktop);
-			pw.getPanel().setSize(900, 650);
-			p.add(pw.getPanel(), BorderLayout.NORTH);
-			statusPanel = GuiUtils.getStatusPanel();
-			p.add(statusPanel, BorderLayout.CENTER);
-			GuiUtils.setStatus("Initialized.");
+			statusLabel = (JLabel) statusPanel.getComponent(2);
 
 			// Replace WRIMS GUI display action with CalLite GUI action
 
@@ -1329,6 +1324,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
 		}
+		statusLabel.setText("Well??");
 	}
 
 	/**
@@ -1360,5 +1356,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
 		}
+		statusLabel.setText("Well??");
 	}
 }

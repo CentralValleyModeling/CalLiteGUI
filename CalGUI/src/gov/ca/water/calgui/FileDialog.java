@@ -443,7 +443,7 @@ public class FileDialog implements ActionListener {
 			setBackground(list.getBackground());
 			setForeground(list.getForeground());
 			setText(((RBListItem) value).toString2());
-			this.setToolTipText(value.toString());
+			this.setToolTipText(value.toString() + " 	\n" + ((RBListItem) value).getSVFilename());
 			return this;
 		}
 	}
