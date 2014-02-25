@@ -6,19 +6,24 @@ package gov.ca.water.calgui.utils;
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.RBListItem;
 
+import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 
 import calsim.app.AppUtils;
 import calsim.app.Project;
+import calsim.gui.CalLiteGUIPanelWrapper;
+import calsim.gui.GuiUtils;
 
 /**
  * 
@@ -30,6 +35,26 @@ import calsim.app.Project;
 public class WRIMSGUILinks {
 
 	static Logger log = Logger.getLogger(WRIMSGUILinks.class.getName());
+
+	private static JLabel statusLabel;
+
+	public static void setStatus(String text) {
+		statusLabel.setText(text);
+	}
+
+	public static void buildWRIMSGUI(JPanel p) {
+
+		p.setSize(900, 650);
+
+		CalLiteGUIPanelWrapper pw = new CalLiteGUIPanelWrapper(MainMenu.desktop);
+		pw.getPanel().setSize(900, 650);
+		p.add(pw.getPanel(), BorderLayout.NORTH);
+		JPanel statusPanel = GuiUtils.getStatusPanel();
+		p.add(statusPanel, BorderLayout.CENTER);
+		GuiUtils.setStatus("Initialized.");
+
+		statusLabel = (JLabel) statusPanel.getComponent(2);
+	}
 
 	/**
 	 * Update WRIMS GUI project file names from file list
@@ -49,11 +74,17 @@ public class WRIMSGUILinks {
 
 		if (theList.getModel().getSize() == 1) {
 
-			String dvFileName = ((RBListItem) theList.getModel().getElementAt(0)).toString();
+			RBListItem item = (RBListItem) theList.getModel().getElementAt(0);
+			String dvFileName = item.toString();
 			project.setDVFile(dvFileName);
 
-			String svFileName = findSVFileName(dvFileName);
+			String svFileName = item.getSVFilename();
+			if (svFileName.equals("")) {
+				svFileName = findSVFileName(dvFileName);
+				item.setSVFilename(svFileName);
+			}
 			project.setSVFile(svFileName);
+			System.out.println("List of 1 - " + svFileName + " - " + dvFileName);
 
 			AppUtils.baseOn = true;
 
@@ -64,7 +95,11 @@ public class WRIMSGUILinks {
 
 				RBListItem item = (RBListItem) theList.getModel().getElementAt(i);
 				String dvFileName = item.toString();
-				String svFileName = findSVFileName(dvFileName);
+				String svFileName = item.getSVFilename();
+				if (svFileName.equals("")) {
+					svFileName = findSVFileName(dvFileName);
+					item.setSVFilename(svFileName);
+				}
 				if (item.isSelected()) {
 					project.setDVFile(dvFileName);
 					project.setSVFile(svFileName);

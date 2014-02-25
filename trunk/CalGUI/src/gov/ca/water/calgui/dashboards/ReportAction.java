@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.CalLiteHelp;
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.Report;
 import gov.ca.water.calgui.utils.SimpleFileFilter;
@@ -18,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -32,6 +35,8 @@ import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
+
+import calsim.app.Project;
 
 public class ReportAction implements ActionListener {
 	private final SwingEngine swix;
@@ -344,6 +349,19 @@ public class ReportAction implements ActionListener {
 							lstArray[n] = item.toString();
 							n = n + 1;
 						}
+					}
+
+					// Store contents of Project
+
+					Project p = MainMenu.getProject();
+					List<String> pList = new ArrayList<String>();
+
+					for (int i = 0; i < p.getNumberOfMTS(); i++) {
+
+					}
+
+					for (int i = 0; i < p.getNumberOfDTS(); i++) {
+
 					}
 
 					try {
