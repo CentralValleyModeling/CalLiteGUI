@@ -107,7 +107,7 @@ define CVC_ON             {select Option from GUI_Operations where Index=1} !Whe
 !define JPOD_ON            {select Option from GUI_Operations where Index=2} !Wheeling\wheelcap.wresl 
 define IntertieSwitch     {select Option from GUI_Operations where Index=3} !Export_Ops\intertie.wresl
 define CVPDedBanksSwitch  {value 0} ! use as place holder
-define SWPShastaSwitch    {value 0} ! use as place holder
+!define SWPShastaSwitch    {value 0} ! use as place holder
  
 /* Water Management Action*/
 define fremont_notch_on   {select Option from GUI_BDCP_FacilityControl where Index=5}  !hydrology\WEIRS\weir_steps_dailyops.wresl
@@ -126,5 +126,8 @@ define REST_REQ           {select Option from GUI_SJR where Index=6} !REST_REQ -
 define EnlargShastaOn    {select Option from GUI_EnlargedShasta where Index=1} 
 define EnlargShastaSize  {select Option from GUI_EnlargedShasta where Index=2} 
 define TDExports       	 {select Option from GUI_BDCP_FacilityControl where Index = 4}
-
- 
+define LVEM_Cap			{select Option from GUI_LosVaqueros where Index = 2} ! - Los Vaqueros Maximum Capacity [160 TAF]
+define LVEM_VC			{select Option from GUI_LosVaqueros where Index = 3} ! - Alternate Intake (Victoria Canal) Diversion Capacity [250 cfs] 
+define LVEM_OR			{select Option from GUI_LosVaqueros where Index = 4} ! - Old RIver Diversion Capacity [250 cfs]
+define LVEM_RS			{select Option from GUI_LosVaqueros where Index = 5} ! - Rock Slough Diversion Capacity [350 cfs]
+define LVEM_WQ			{select Option from GUI_LosVaqueros where Index = 6} ! - Target Maximum Salinity at Delivery [65 mg/L Cl]
