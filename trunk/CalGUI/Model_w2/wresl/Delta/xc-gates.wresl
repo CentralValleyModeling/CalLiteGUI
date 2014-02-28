@@ -81,18 +81,11 @@ define WQCP_days_open   {       !DCC_DLTSW switch added 10/04/2010 by Z.Q. Richa
         value 0} 
        }
 
-define numberofdaysopen {
-	case D1485{
-		condition DCC_DLTSW == 3
-		value WQCP_days_open }
-	case D1641UserDefinedOFF{
-		condition always
-		value min(WQCP_days_open, NMFS_days_open) }
-}
-define DaysOpenStd {alias numberofdaysopen kind 'GATE-DAYS-OPEN' units 'NONE'}
 
 
 if int(DCC_DLTSW)==3 {
+	define numberofdaysopen {value WQCP_days_open}
+	define DaysOpenStd {alias numberofdaysopen kind 'GATE-DAYS-OPEN' units 'NONE'}
 	define fract_open_abv   {value numberofdaysopen/daysin }   ! Fraction of month gates are open if NDOI above 12000
 	define fract_open_blw   {value 1.} !Fraction of month gates are open if NDOI is less thas 12000
 
@@ -123,9 +116,10 @@ if int(DCC_DLTSW)==3 {
 
 
 
-
-
 if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {
+	define numberofdaysopen {value min(WQCP_days_open, NMFS_days_open) }
+	define DaysOpenStd {alias numberofdaysopen kind 'GATE-DAYS-OPEN' units 'NONE'}
+	
 	! The following variables are zero or one if their corresponding condition is false or true, respectively
 	define fract_open   {value numberofdaysopen/daysin }   ! Fraction of month gates are open
 	define SAC_threshold  { value 25000.0} ! Sac flow at which gates will be closed
