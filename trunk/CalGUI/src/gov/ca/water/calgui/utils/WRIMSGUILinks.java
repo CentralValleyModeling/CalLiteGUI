@@ -40,8 +40,14 @@ public class WRIMSGUILinks {
 
 	public static void setStatus(String text) {
 		statusLabel.setText(text);
+		statusLabel.invalidate();
 	}
 
+	/**
+	 * Builds the WRIMS GUI panel for use in CalLite GUI while extracting a reference to the status label.
+	 * 
+	 * @param p
+	 */
 	public static void buildWRIMSGUI(JPanel p) {
 
 		p.setSize(900, 650);
