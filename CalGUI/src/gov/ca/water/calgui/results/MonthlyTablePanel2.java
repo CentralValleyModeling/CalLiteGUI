@@ -81,6 +81,7 @@ public class MonthlyTablePanel2 extends JPanel implements ActionListener, Compon
 		for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
 
 			TimeSeriesContainer tscs[] = mtscs[mtsI];
+			dss_Grabber2.calcTAFforCFS(tscs, null);
 
 			for (int s = 0; s < tscs.length; s++) {
 

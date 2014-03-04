@@ -3,6 +3,7 @@ package gov.ca.water.calgui.results;
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.utils.Prefix;
 import gov.ca.water.calgui.utils.Utils;
+import gov.ca.water.calgui.utils.WRIMSGUILinks;
 import hec.heclib.dss.HecDss;
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
@@ -12,9 +13,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.concurrent.ExecutionException;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
 
@@ -280,9 +283,8 @@ public class DSSGrabber2 {
 	 *            shifted one month earlier.
 	 * @return HEC TimeSeriesContainer with times, values, number of values, and file name.
 	 */
-	private TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
 
-		// GuiUtils.setStatus("Reading " + dssName + " from " + dssFilename + ".");
+	private TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
@@ -390,6 +392,39 @@ public class DSSGrabber2 {
 		if (result != null)
 			log.debug(result);
 		return result;
+	}
+
+	private TimeSeriesContainer getOneSeries_temp(String filename, String dssname) {
+		GetOneSeriesSW g = new GetOneSeriesSW(filename, dssname);
+		g.execute();
+		TimeSeriesContainer result = null;
+		try {
+			result = g.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			log.debug("Interrupted during GetOneSeries");
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			log.debug("Execution error during GetOneSeries");
+		}
+		return (result);
+	}
+
+	private class GetOneSeriesSW extends SwingWorker<TimeSeriesContainer, String> {
+
+		private String filename;
+		private String dssname;
+
+		private GetOneSeriesSW(String filename, String dssname) {
+			this.filename = filename;
+			this.dssname = dssname;
+			WRIMSGUILinks.setStatus("Reading " + dssname + " from " + filename + ".");
+		}
+
+		@Override
+		protected TimeSeriesContainer doInBackground() throws Exception {
+			return getOneSeries(filename, dssname);
+		}
 	}
 
 	/**

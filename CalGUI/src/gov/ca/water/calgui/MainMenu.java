@@ -168,10 +168,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	JTabbedPane jtp;
 	JMenuBar menu;
 	ProgressMonitor pMon;
-	JPanel statusPanel;
 
 	public JList lstScenarios;
-	public JLabel statusLabel; // TODO: Move to WRIMSGUILink if possible
 
 	public FileAction fileAction; // Listener for FileActions is public to facilitate testing
 
@@ -259,8 +257,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			WRIMSGUILinks.buildWRIMSGUI((JPanel) swix.find("WRIMS"));
 			WRIMSGUILinks.setStatus("Initialized.");
-
-			statusLabel = (JLabel) statusPanel.getComponent(2);
 
 			// Replace WRIMS GUI display action with CalLite GUI action
 
@@ -1324,7 +1320,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
 		}
-		statusLabel.setText("Well??");
+		WRIMSGUILinks.setStatus("Well??");
 	}
 
 	/**
@@ -1333,6 +1329,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 	 */
 
 	void retrieve2() {
+
+		WRIMSGUILinks.setStatus("Retrieve2");
 
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
@@ -1356,6 +1354,6 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		} catch (Exception e) {
 			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
 		}
-		statusLabel.setText("Well??");
+		WRIMSGUILinks.setStatus("Done??");
 	}
 }
