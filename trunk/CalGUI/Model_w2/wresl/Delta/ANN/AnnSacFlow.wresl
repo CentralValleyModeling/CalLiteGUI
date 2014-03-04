@@ -26,25 +26,33 @@ goal setAnnSacFlow { C_Hood_mif + C_YoloBP_mif < AnnSacReq}***/
 
 !required sac flow for estimated exports considering all ann stations:
 !define AnnSacReq {value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExp/0.65+6000.)}
+
+if int(AN_DLTSW)==3 {
 define AnnSacReq {
     case JunSep_D1485 {
-		condition month>=Jun .and. month<=Sep .and. int(AN_DLTSW)==3
+		condition month>=Jun .and. month<=Sep
 		value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac),EstTotExpTD/0.65+7000.)}	
+	case OctMay_IF_On_D1485 {
+		condition int(IF_SWPorCVP_OnOff)== 1
+		value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac)}
+	case OctMay_IF_off_D1485 {
+		condition always
+		value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac),EstTotExpTD/0.65+7000.)}
+}
+}
+
+else {
+define AnnSacReq {
 	case JunSep_D1641 {
 		condition month>=Jun .and. month<=Sep
 		value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExpTD/0.65+7000.)}
-	case OctMay_IF_On_D1485 {
-		condition int(IF_SWPorCVP_OnOff)== 1 .and. int(AN_DLTSW)==3
-		value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac)}
 	case OctMay_IF_On_D1641 {
 		condition int(IF_SWPorCVP_OnOff)== 1
 		value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
-	case OctMay_IF_off_D1485 {
-		condition int(IF_SWPorCVP_OnOff)== 0 .and. int(AN_DLTSW)==3
-		value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac,ANReqSac,CHReqSac),EstTotExpTD/0.65+7000.)}
 	case OctMay_IF_off_D1641 {
 		condition always
 		value min(max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac),EstTotExpTD/0.65+7000.)}	
+}
 }
 
 !define AnnSacReq {value max(0.0,RSReqSac,JPReqSac,EMReqSac,COReqSac)}
