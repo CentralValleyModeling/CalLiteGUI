@@ -132,16 +132,17 @@ define sac_oth_est_ { alias sac_oth_est kind 'FLOW-INFLOW' units 'CFS'}
 ! define the other flows that go into making the export component
 define D514A {timeseries kind 'FLOW-DELIVERY' units 'CFS'} !Riparian Diversion from Delta for COSMA Ag DWSP
 define D514B {timeseries kind 'FLOW-DELIVERY' units 'CFS'} !DWSP Diversion M&I
-define demand_D420 {timeseries kind 'DEMAND' units 'cfs' }
+!define demand_D420 {timeseries kind 'DEMAND' units 'cfs' }
 define D514A_1_VAMP {timeseries kind 'FLOW-DELIVERY' units 'CFS'}
 define D514B_VAMP {timeseries kind 'FLOW-DELIVERY' units 'CFS'}
-define lim_CVP_ann {timeseries kind 'allocation-limit' units 'cfs'}
+!define lim_CVP_ann {timeseries kind 'allocation-limit' units 'cfs'}
 
 define exp_oth { lower unbounded kind 'FLOW-EXPORTS' units 'CFS' }
 goal def_exp_oth { exp_oth = D_CCWD + D514A + D514B }
 
 define D514A_2_est {value 0.0}  !DWSP, diversion for area of origin, in cfs
-define D408D416_est {value min(demand_D420,lim_CVP_ann)}
+!define D408D416_est {value min(demand_D420,lim_CVP_ann)}
+define D408D416_est {value demand_D420}
 
 define exp_oth_est { value D408D416_est + D514A_1_VAMP + D514A_2_est + D514B_VAMP}
 
