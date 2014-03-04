@@ -24,6 +24,7 @@ initial {
 	svar JonesIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 1}
 	svar BanksIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 2}
 	svar CCWDIFSwitch    {select Option from GUI_BDCP_FacilityControl where Index = 3}
+	svar LVEM_switch	 {select Option from GUI_LosVaqueros where Index = 1}
 }
  
 SEQUENCE CYCLE1 {
@@ -84,6 +85,7 @@ model block1 {
 
     INCLUDE '\sanjoaquin\Various\definitions\SJR_GWPumpingSplits.wresl'
     INCLUDE '\Restoration\AprPartInflow.wresl'
+	INCLUDE '\System_SJR\SystemTables_SJR\DMC_MP.wresl'
     INCLUDE '\System_SJR\System_SJR.wresl'
     INCLUDE '\sanjoaquin\IntegratedOperations\IntegratedOperationsCommon1.wresl'
 
@@ -153,6 +155,7 @@ MODEL block2 {
     
     if int(Dynamic_SJR)==0 { INCLUDE '\sanjoaquin\Timeseries_SJR_Setup.wresl' }     
 
+	INCLUDE '\System_SJR\SystemTables_SJR\DMC_MP.wresl'
     if int(Dynamic_SJR)==1 {
         INCLUDE '\sanjoaquin\Dynamic_SJR_Setup_cyc6.wresl'
         INCLUDE '\sanjoaquin\Various\definitions\SJR_GWPumpingSplits.wresl'
@@ -238,11 +241,11 @@ MODEL block3 {
 }
 
 MODEL block4 {
-    INCLUDE 'Assumptions\assumption.wresl'
+!    INCLUDE 'Assumptions\assumption.wresl'
     INCLUDE 'hydrology\demands\demands_defs.wresl'
-    INCLUDE 'swp_dellogic\SwpDeliveryLogic.wresl'
     INCLUDE 'cvp_dellogic\CVP_delivery_Logic_system.wresl'
     INCLUDE 'cvp_dellogic\CVP_delivery_Logic_south.wresl' 
+    INCLUDE 'swp_dellogic\SwpDeliveryLogic.wresl'
     INCLUDE 'swp_dellogic\conveyance_limits.wresl'
     INCLUDE 'hydrology\demands\demands.wresl'
     INCLUDE 'NorthofDelta\NOD.wresl'
@@ -267,6 +270,31 @@ MODEL block4 {
     if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
     	INCLUDE 'system\weight-table-BDCP.wresl'
     }
+}
+
+MODEL LVEM0 {
+	INCLUDE 'CCWD\LVEM_System.wresl'
+	INCLUDE 'CCWD\UserInput.wresl'
+}
+
+MODEL LVEM1 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_BASE.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+}
+
+MODEL LVEM2 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_B2_BO.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+}
+
+MODEL LVEM3 {
+	INCLUDE 'CCWD\WQ_Calcs\WQ_Calcs_B2_BO.wresl'
 }
 
 MODEL SJRBASE {         !CYCLE 1
@@ -343,6 +371,14 @@ INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_monthops.wresl'
 
 INCLUDE model Block4
 
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_System.wresl'
+	INCLUDE 'CCWD\UserInput.wresl'
+}
+else {
+	INCLUDE 'CCWD\STATIC_LVEM.WRESL'
+}
+
 INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa_Up.wresl'
@@ -352,6 +388,10 @@ if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates_D1485_Up.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+}
+
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
@@ -359,6 +399,13 @@ INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'
    
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_BASE.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+}
 }
 
 
@@ -370,6 +417,14 @@ INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_UPSTREAM.wresl'
 
 INCLUDE model Block4
 
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_System.wresl'
+	INCLUDE 'CCWD\UserInput.wresl'
+}
+else {
+	INCLUDE 'CCWD\STATIC_LVEM.WRESL'
+}
+
 INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa.wresl'
@@ -378,6 +433,10 @@ INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+}
 
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
@@ -390,6 +449,13 @@ else {INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'   }
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE_INIT.wresl'
 
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_BASE.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+}
 }
 
 
@@ -402,6 +468,14 @@ INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_BASE.wresl'
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 INCLUDE model Block4
 
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_System.wresl'
+	INCLUDE 'CCWD\UserInput.wresl'
+}
+else {
+	INCLUDE 'CCWD\STATIC_LVEM.WRESL'
+}
+
 INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'B2Actions\B2SetBaseline.wresl'                    
@@ -410,6 +484,10 @@ INCLUDE [LOCAL] 'B2Actions\B2BanksFix.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_B2.wresl'
 INCLUDE [LOCAL] 'Delta\Delta_reduced_calls.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+}
 
 ! BO Code
 INCLUDE [LOCAL] 'Export_Ops\OMR\DELTA_RPA_init.wresl'
@@ -440,6 +518,13 @@ else {INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'   }
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
 
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_B2_BO.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+}
 }
 
 
@@ -449,6 +534,14 @@ INCLUDE model Block3
 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 INCLUDE model Block4
 
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_System.wresl'
+	INCLUDE 'CCWD\UserInput.wresl'
+}
+else {
+	INCLUDE 'CCWD\STATIC_LVEM.WRESL'
+}
+
 INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_B2_BO.wresl'  
 INCLUDE [LOCAL] 'B2Actions\B2SetBaseline.wresl'                    
 INCLUDE [LOCAL] 'B2Actions\B2ActionsDeltaRepeat.wresl'      
@@ -456,6 +549,10 @@ INCLUDE [LOCAL] 'B2Actions\B2BanksFix.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_B2.wresl'
 INCLUDE [LOCAL] 'Delta\Delta_reduced_calls.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\LVM_Ops1.wresl'
+}
 
 ! BO Code
 INCLUDE [LOCAL] 'Export_Ops\OMR\DELTA_RPA_init.wresl'
@@ -498,5 +595,13 @@ INCLUDE [LOCAL] 'output\DV_ouput.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
 
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
+
+if LVEM_switch > 0.5 {
+	INCLUDE 'CCWD\CCWD_Ops\CCWD_LVFill_OMR_B2_BO.wresl'
+	INCLUDE 'CCWD\LVM_Ops2.wresl'
+	INCLUDE 'CCWD\LVE\Wheeling_off.wresl'
+	INCLUDE 'CCWD\CalLiteConnection.wresl'
+	INCLUDE 'CCWD\WQ_Calcs\WQ_Calcs_B2_BO.wresl'
+}
 }
 
