@@ -156,14 +156,14 @@ define floodSJR {
 }
 goal savefloodSJR {floodSJRdv=floodSJR}
 
-define wetSJR {
+/*define wetSJR {
     case Wet {
         condition wyt_SJR == 1     !the 60-20-20 index for San Joaquin basin
         value 1.}
     case other {
         condition always
         value 0.}
-}
+} */
 
 ! Estimate Export Capability for use in determining delivery target limitations
 define SWPDelCapEst {
