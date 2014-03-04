@@ -93,13 +93,9 @@ goal set_D_ConeyIs_NP {D_ConeyIs_NP > demand_D_ConeyIs_NP}
 
 define D_Antioch_NP {std kind 'FLOW-DELIVERY' units 'CFS'}! Non-Project Diversion at Antioch
 define D_Antioch {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at Antioch
-goal Diversion_Antioch {D_Antioch=D_Antioch_NP}
-define demand_D_CCWDVCOR {timeseries kind 'DEMAND' units 'CFS'}!Non-Project Diversion (Victoria Canal and Old River) to CCWD
-define demand_D_CCWDINTK {timeseries kind 'DEMAND' units 'CFS'}!Non-Project Diversion (Intake) to CCWD  
+goal Diversion_Antioch {D_Antioch=D_Antioch_NP} 
 define D_CCWDVCOR {std kind 'FLOW-DELIVERY' units 'CFS'} 
 define D_CCWDINTK {std kind 'FLOW-DELIVERY' units 'CFS'} 
-goal Diversion_OMR {D_CCWDVCOR = demand_D_CCWDVCOR}
-goal Diversion_CCWDIntak {D_CCWDINTK < demand_D_CCWDINTK}
 define D_CCWD {alias D_CCWDVCOR+D_CCWDINTK kind 'FLOW-DELIVERY' units 'CFS'} !Diversion to CCWD
 define D_Vallejo {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at Vallejo
 define D_Napa {std kind 'FLOW-DELIVERY' units 'CFS'}! Diversion at Napa

@@ -22,7 +22,7 @@ define jones_int_pb {INTEGER std kind 'INTEGER' units 'NONE'}
 goal set_jones_int_pb {maxJonescalc*jones_int_pb < d_jones}
 
 ! Set wheeling cap as min of 1600 or amount to CVP rule curve after Jones pumping
-define wheelCap {
+define wheelCap_pb {
     case JulStorHi {
     condition   month == JUL .and. S_Shsta(-1) >= 2400. .and. S_slcvp(-1) <= 500.
     value       1600. /*97.5*taf_cfs*/ }
@@ -40,7 +40,7 @@ define wheelCap {
 !define wheelcapDV {std kind 'test' units 'cfs'}
 !goal tester1 {wheelcapDV = wheelcap}
 
-goal wheeling1e { D_Banks_whlpb < wheelCap*jones_int_pb }
+goal wheeling1e { D_Banks_whlpb < wheelCap_pb*jones_int_pb }
 
 
 /*

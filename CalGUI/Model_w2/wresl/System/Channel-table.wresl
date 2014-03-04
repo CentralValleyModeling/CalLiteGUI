@@ -99,7 +99,7 @@ define C_SLSWP {lower 0. upper 8900. kind 'FLOW-CHANNEL' units 'CFS'} !SWP SAN L
 define C_SLCVP {lower 0. upper 8000. kind 'FLOW-CHANNEL' units 'CFS'} !CVP SAN LUIS RESERVOIR Release (C11)
 define C_SWPJU {lower 0. upper 8465. kind 'FLOW-CHANNEL' units 'CFS'} !SWP Joint Use (C807)
 define C_CVPJU {std kind 'FLOW-CHANNEL' units 'CFS'} !CVP Joint Use (D704)
-define C_CVPDMC {lower 0 upper 3500 kind 'FLOW-CHANNEL' units 'CFS'} !DMC to Mendota Pool (C708)
+!define C_CVPDMC {lower 0 upper 3500 kind 'FLOW-CHANNEL' units 'CFS'} !DMC to Mendota Pool (C708)
 if int(Dynamic_SJR)==0 {define C_Mdota {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'}} !Flow to Exchange Contractors and Refuges from Sack Dam
 define C_DsAmgS {lower 0. upper 8465. kind 'FLOW-CHANNEL' units 'CFS'} !Dos Amigos SWP
 define C_DsAmgC {lower 0. upper 4635. kind 'FLOW-CHANNEL' units 'CFS'} !Dos Amigos CVP

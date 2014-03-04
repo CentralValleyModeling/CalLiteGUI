@@ -83,7 +83,7 @@ define C76 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Stanislaus R b
 define C_PEDRO {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !New Don Pedro Release
 define C_Nhgan {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !New Hogan Release
 
-define C_SJRCAL {lower 0. upper 9999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !
+!define C_SJRCAL {lower 0. upper 9999*taf_cfs kind 'FLOW-CHANNEL' units 'CFS'} !
 define C505 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Calaveras River below Bellota
 define C506 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Calaveras River below Stockton E ID
 define C507 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Calavaras River
@@ -91,4 +91,4 @@ define C_Calav {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Calaveras 
 define C509 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Calaveras River to SEWD
 define C501 {lower 0 upper 99999 kind 'FLOW-CHANNEL' units 'CFS'} !Cosumnes River
 
-define C_CVPDMC {lower 0 upper 3500 kind 'FLOW-CHANNEL' units 'CFS'} !Lower DMC to Mendota Pool
+!define C_CVPDMC {lower 0 upper 3500 kind 'FLOW-CHANNEL' units 'CFS'} !Lower DMC to Mendota Pool
