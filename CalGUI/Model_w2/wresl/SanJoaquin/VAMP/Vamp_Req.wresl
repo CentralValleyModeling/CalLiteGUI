@@ -44,7 +44,7 @@
 !#####################################################################################################
 
 ! VAMP flow requirement decision variable for output.
-define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}
+!define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}
 /*
  VAMP flow requirement:
  April triggers a pulse flow for the VAMP requirement.

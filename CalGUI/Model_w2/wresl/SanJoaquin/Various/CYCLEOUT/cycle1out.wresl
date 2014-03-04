@@ -141,7 +141,7 @@ define C_SJRLNDR_c1 {alias C_SJRLNDR[SJRBASE] kind 'flow-cycle1' units 'cfs'}
 define C_TUOL_c1 {alias C_TUOL[SJRBASE] kind 'flow-cycle1' units 'cfs'}
 
 define I18_rest_bal_c1 {alias I18_rest_bal[SJRBASE] kind 'flow-cycle1' units 'cfs'}
-define NMforecast1dv {alias NMforecast1dv[sjrbase] kind 'forecast' units 'taf'}
+!define NMforecast1dv {alias NMforecast1dv[sjrbase] kind 'forecast' units 'taf'}
 
 ! Added for GI model testing
 define C_STANGDWNmifcycle1 {std kind 'flow-cycle1' units 'cfs' }
