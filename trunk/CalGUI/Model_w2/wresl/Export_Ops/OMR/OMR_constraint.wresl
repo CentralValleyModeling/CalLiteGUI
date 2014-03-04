@@ -11,6 +11,8 @@ Hao Xie 9/22/2011 change D408_limit caculation
 /*
 Set maximum intake capacities.  Intakes can be turned off by setting capacity to zero.
 */
+
+/*
 !Rock Slough Intake capacity [D408_RS_max, units cfs]
 define D408_RS_max {value 350.} !cfs
 
@@ -27,7 +29,7 @@ define D408_VC_max {
         condition always
         value 0.}
 }        
-
+*/
 
 
 ! Get the minimum flow required at OMR
@@ -201,7 +203,7 @@ define Qomr_HandSdv {alias Qomr_HandS kind 'FLOW-CHANNEL' units 'CFS'}
 define Qomr_noExp { value coefA*AD_SJR_VAMP+coefb*Qsod_noExp+coefc}
 define Qomr_noExpdv {alias Qomr_noExp kind 'FLOW-CHANNEL' units 'CFS'}
 !define C408_limit {value min(C408_limit_init,Qomr_HandS)}
-define SOD_Q_NoExp {value demand_D_CCWDVCOR + netDICU_SOD}
+define SOD_Q_NoExp {value D_CCWDVCOR[BASE] + netDICU_SOD}
 define OMRFlow_NoExp {value coefA * VERNQ + coefC + coefB*SOD_Q_NoExp} 
 define C408_limit {
 	case IFon {
