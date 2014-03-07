@@ -30,16 +30,22 @@ public class CustomResultsAction implements ActionListener {
 			CalLiteHelp calLiteHelp = new CalLiteHelp();
 			calLiteHelp.showHelp(label);
 
-		}
-		if (actionEvent.getActionCommand().equals("AC_Controls")) {
+		} else if (actionEvent.getActionCommand().equals("AC_Controls")) {
 
 			ControlFrame cf = GUIUtils.getControlFrame();
 			cf.display();
 			if (cf.getExtendedState() == JFrame.ICONIFIED)
 				cf.setExtendedState(JFrame.NORMAL);
 
-		}
+		} else if (actionEvent.getActionCommand().equals("CR_LoadList")) {
 
+			GUIUtils.readCGR();
+
+		} else if (actionEvent.getActionCommand().equals("CR_SaveList")) {
+
+			GUIUtils.writeCGR();
+
+		}
 	}
 
 }

@@ -1,5 +1,6 @@
 package gov.ca.water.calgui.utils;
 
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.ControlFrame;
 
 import java.awt.Component;
@@ -10,18 +11,26 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JList;
 import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -35,6 +44,11 @@ import javax.swing.text.JTextComponent;
 
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
+
+import calsim.app.DerivedTimeSeries;
+import calsim.app.MultipleTimeSeries;
+import calsim.app.Project;
+import calsim.gui.GuiUtils;
 
 public class GUIUtils {
 
@@ -886,6 +900,198 @@ public class GUIUtils {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Reads QuickResults output list, Custom Results Dts Tree
+	 */
+	public static void readCGR() {
+
+		String aLine;
+		Vector<String> data = new Vector<String>();
+
+		JFileChooser fc = new JFileChooser();
+		fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite GUI Report File (*.cgr)"));
+		fc.setCurrentDirectory(new File(".//Config"));
+
+		File file = null;
+		String filename = null;
+
+		int retval = fc.showOpenDialog(null);
+		if (retval == JFileChooser.APPROVE_OPTION) {
+			// ... The user selected a file, get it, use it.
+			file = fc.getSelectedFile();
+			filename = file.toString();
+
+			try {
+
+				FileInputStream fin = new FileInputStream(filename);
+				BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+
+				aLine = br.readLine();
+				while ((aLine != null) && !aLine.startsWith("===== Dts Tree =====")) {
+					data.add(aLine);
+					aLine = br.readLine();
+				}
+				if (aLine != null) {
+
+					GuiUtils.getCLGPanel().getDtsTreePanel().getCurrentModel().readData(filename + ".tree.xml", "");
+
+					Project p = MainMenu.getProject();
+
+					p.clearMTSList();
+					int mtsCount = Integer.valueOf(br.readLine());
+					for (int i = 0; i < mtsCount; i++) {
+						MultipleTimeSeries mts = new MultipleTimeSeries();
+						mts.setName(br.readLine());
+						int dataCount = Integer.valueOf(br.readLine());
+						for (int j = 0; j < dataCount; j++) {
+							mts.insertAt(j);
+							String dataParts[] = (br.readLine()).split(";");
+							mts.setBPartAt(j, dataParts[0]);
+							mts.setCPartAt(j, dataParts[1]);
+							mts.setVarTypeAt(j, dataParts[2]);
+							if (dataParts.length > 3)
+								mts.setDTSNameAt(j, dataParts[3]);
+						}
+						p.add(mts);
+					}
+
+					p.clearDTSList();
+					int dtsCount = Integer.valueOf(br.readLine());
+					for (int i = 0; i < dtsCount; i++) {
+						DerivedTimeSeries dts = new DerivedTimeSeries();
+						dts.setName(br.readLine());
+						int dataCount = Integer.valueOf(br.readLine());
+						for (int j = 0; j < dataCount; j++) {
+							dts.insertAt(j);
+							String dataParts[] = (br.readLine()).split(";");
+							dts.setBPartAt(j, dataParts[0]);
+							dts.setCPartAt(j, dataParts[1]);
+							dts.setVarTypeAt(j, dataParts[2]);
+							dts.setOperationIdAt(j, Integer.valueOf(dataParts[3]));
+							if (dataParts.length > 4)
+								dts.setDTSNameAt(j, dataParts[4]);
+						}
+						p.add(dts);
+					}
+					System.out.println(p.getNumberOfDTS() + "  " + p.getNumberOfMTS());
+
+				}
+
+				br.close();
+
+			} catch (Exception e1) {
+				log.debug(e1.getMessage());
+			}
+
+			JList lstReports = (JList) (MainMenu.getSwix()).find("lstReports");
+			lstReports.setListData(data);
+		}
+	}
+
+	/**
+	 * Writes Quick Results list, Custom Results Dts Tree to file.
+	 */
+
+	public static void writeCGR() {
+
+		JFileChooser fc = new JFileChooser();
+		fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite Report File (*.cgr)"));
+		fc.setCurrentDirectory(new File(".//Config"));
+
+		File file = null;
+		String filename = null;
+		int retval = fc.showSaveDialog(null);
+		if (retval == JFileChooser.APPROVE_OPTION) {
+
+			// ... The user selected a file, get it, use it.
+
+			file = fc.getSelectedFile();
+			filename = file.toString();
+			if (!filename.toUpperCase().endsWith(".CGR") && !filename.endsWith("."))
+				filename = filename + ".cgr";
+
+			boolean saveFlag = true;
+			if (new File(filename).exists())
+				saveFlag = (JOptionPane.showConfirmDialog(null, "The display list file '" + filename
+				        + "' already exists. Press OK to overwrite.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
+
+			if (saveFlag) {
+				OutputStream outputStream;
+				try {
+					outputStream = new FileOutputStream(filename);
+				} catch (FileNotFoundException e2) {
+
+					log.debug(e2.getMessage());
+
+					return;
+				}
+
+				// Store previous list items
+				JList lstReports = (JList) (MainMenu.getSwix()).find("lstReports");
+				int size = lstReports.getModel().getSize(); // 4
+				int n;
+				n = 0;
+				String[] lstArray = new String[size];
+				for (int i = 0; i < size; i++) {
+					Object item = lstReports.getModel().getElementAt(i);
+					if (item.toString() != " ") {
+						lstArray[n] = item.toString();
+						n = n + 1;
+					}
+				}
+
+				// Store contents of Project
+
+				List<String> pList = new ArrayList<String>();
+				pList.add("===== Dts Tree =====");
+
+				Project p = MainMenu.getProject();
+				pList.add(String.valueOf(p.getNumberOfMTS()));
+				for (int i = 0; i < p.getNumberOfMTS(); i++) {
+					MultipleTimeSeries mts = p.getMTSList()[i];
+					pList.add(mts.getName());
+					pList.add(String.valueOf(mts.getNumberOfDataReferences()));
+					for (int j = 0; j < mts.getNumberOfDataReferences(); j++) {
+						pList.add(mts.getBPartAt(j) + ";" + mts.getCPartAt(j) + ";" + mts.getVarTypeAt(j) + ";"
+						        + mts.getDTSNameAt(i));
+					}
+
+				}
+
+				pList.add(String.valueOf(p.getNumberOfDTS()));
+				for (int i = 0; i < p.getNumberOfDTS(); i++) {
+					DerivedTimeSeries dts = p.getDTSList()[i];
+					pList.add(dts.getName());
+					pList.add(String.valueOf(dts.getNumberOfDataReferences()));
+					for (int j = 0; j < dts.getNumberOfDataReferences(); j++) {
+						pList.add(dts.getBPartAt(j) + ";" + dts.getCPartAt(j) + ";" + dts.getVarTypeAt(j) + ";"
+						        + String.valueOf(dts.getOperationIdAt(j)) + ";" + dts.getDTSNameAt(j));
+					}
+
+				}
+
+				try {
+
+					PrintStream output = new PrintStream(outputStream);
+					for (int i = 0; i < n; i++) {
+						output.println(lstArray[i]);
+					}
+
+					for (int i = 0; i < pList.size(); i++) {
+						output.println(pList.get(i));
+					}
+					output.close();
+					outputStream.close();
+
+					GuiUtils.getCLGPanel().getDtsTreePanel().getCurrentModel().saveFile(filename + ".tree.xml");
+
+				} catch (IOException ex) {
+					log.debug(ex.getMessage());
+				}
+			}
+		}
 	}
 
 }

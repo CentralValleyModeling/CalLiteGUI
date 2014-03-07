@@ -1,30 +1,20 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.CalLiteHelp;
-import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.DisplayFrame;
 import gov.ca.water.calgui.results.Report;
-import gov.ca.water.calgui.utils.SimpleFileFilter;
+import gov.ca.water.calgui.utils.GUIUtils;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -36,12 +26,13 @@ import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
-import calsim.app.Project;
+import calsim.gui.DtsTreeModel;
 
 public class ReportAction implements ActionListener {
 	private final SwingEngine swix;
 	private final JList lstScenarios;
 	private static Logger log = Logger.getLogger(ReportAction.class.getName());
+	static DtsTreeModel dtm;
 
 	public ReportAction(JFrame desktop, SwingEngine swix) {
 
@@ -52,7 +43,6 @@ public class ReportAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		// TODO Auto-generated method stub
 		if (e.getActionCommand().startsWith("AC_PresetClear")) {
 
 			JPanel presets = (JPanel) swix.find("presets");
@@ -258,127 +248,13 @@ public class ReportAction implements ActionListener {
 
 		else if (e.getActionCommand().startsWith("Rep_LoadList")) {
 
-			String aLine;
-			Vector<String> data = new Vector<String>();
-
-			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite GUI Report File (*.cgr)"));
-			fc.setCurrentDirectory(new File(".//Config"));
-
-			File file = null;
-			String filename = null;
-			JPanel mainmenu = (JPanel) swix.find("mainmenu");
-
-			int retval = fc.showOpenDialog(mainmenu);
-			if (retval == JFileChooser.APPROVE_OPTION) {
-				// ... The user selected a file, get it, use it.
-				file = fc.getSelectedFile();
-				filename = file.toString();
-
-				try {
-
-					FileInputStream fin = new FileInputStream(filename);
-					BufferedReader br = new BufferedReader(new InputStreamReader(fin));
-
-					// Read until first non-comment line
-					aLine = br.readLine();
-					while (aLine.startsWith("!") && aLine != null) {
-						aLine = br.readLine();
-					}
-					// aLine = br.readLine();// Skip title line;
-					while (aLine != null) {
-						data.add(aLine);
-						aLine = br.readLine();
-					}
-					br.close();
-
-				} catch (Exception e1) {
-					log.debug(e1.getMessage());
-				}
-
-				JList lstReports = (JList) swix.find("lstReports");
-				lstReports.setListData(data);
-			}
+			GUIUtils.readCGR();
 
 		}
 
 		else if (e.getActionCommand().startsWith("Rep_SaveList")) {
 
-			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter("cgr", "CalLite Report File (*.cgr)"));
-			fc.setCurrentDirectory(new File(".//Config"));
-
-			File file = null;
-			String filename = null;
-			JPanel mainmenu = (JPanel) swix.find("mainmenu");
-			int retval = fc.showSaveDialog(mainmenu);
-			if (retval == JFileChooser.APPROVE_OPTION) {
-
-				// ... The user selected a file, get it, use it.
-
-				file = fc.getSelectedFile();
-				filename = file.toString();
-				if (!filename.toUpperCase().endsWith(".CGR") && !filename.endsWith("."))
-					filename = filename + ".cgr";
-
-				boolean saveFlag = true;
-				if (new File(filename).exists())
-					saveFlag = (JOptionPane.showConfirmDialog(mainmenu, "The display list file '" + filename
-					        + "' already exists. Press OK to overwrite.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION);
-
-				if (saveFlag) {
-					OutputStream outputStream;
-					try {
-						outputStream = new FileOutputStream(filename);
-					} catch (FileNotFoundException e2) {
-
-						log.debug(e2.getMessage());
-
-						return;
-					}
-
-					// Store previous list items
-					JList lstReports = (JList) swix.find("lstReports");
-					int size = lstReports.getModel().getSize(); // 4
-					int n;
-					n = 0;
-					String[] lstArray = new String[size];
-					for (int i = 0; i < size; i++) {
-						Object item = lstReports.getModel().getElementAt(i);
-						if (item.toString() != " ") {
-							lstArray[n] = item.toString();
-							n = n + 1;
-						}
-					}
-
-					// Store contents of Project
-
-					Project p = MainMenu.getProject();
-					List<String> pList = new ArrayList<String>();
-
-					for (int i = 0; i < p.getNumberOfMTS(); i++) {
-
-					}
-
-					for (int i = 0; i < p.getNumberOfDTS(); i++) {
-
-					}
-
-					try {
-
-						PrintStream output = new PrintStream(outputStream);
-						for (int i = 0; i < n; i++) {
-							output.println(lstArray[i]);
-						}
-
-						output.close();
-						outputStream.close();
-
-					} catch (IOException ex) {
-						log.debug(ex.getMessage());
-					}
-				}
-			}
+			GUIUtils.writeCGR();
 		}
 
 		else if (e.getActionCommand().startsWith("Rep_DispAll")) {
@@ -419,5 +295,4 @@ public class ReportAction implements ActionListener {
 
 		}
 	}
-
 }

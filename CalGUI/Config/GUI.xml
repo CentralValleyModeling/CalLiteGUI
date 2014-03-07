@@ -2968,9 +2968,9 @@
 						<gridbagconstraints gridx="0" gridy="0" insets="5,5,5,5" />
 						<button text="Controls ..." ActionCommand="AC_Controls">
 						</button>
-						<button text="Load List/Tree" enabled="false">
+						<button text="Load List/Tree" ActionCommand="CR_LoadList" enabled="true">
 						</button>
-						<button text="Save List/Tree" enabled="false">
+						<button text="Save List/Tree" ActionCommand="CR_SaveList" enabled="true">
 						</button>
 					</hbox>
 					<panel name="WRIMS" id="WRIMS" layout="BorderLayout"
