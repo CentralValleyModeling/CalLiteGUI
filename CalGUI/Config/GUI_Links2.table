@@ -69,6 +69,10 @@ STAN_RPA	GUI_SJR.table	5	-1	"STAN_RPA  - Stanislaus RPA flows. 1=on, 0=off"	Regu
 SJR_interim	GUI_SJR.table	6	0	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	43
 SJR_full	GUI_SJR.table	6	1	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	44
 Dynamic_SJR	GUI_SJR.table	7	-1	"0=timeseries, 1=dynamic SJR calculation"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	37
+fac_ckb2	GUI_EnlargedShasta.table	1	0	"EnlargedShastaSwitch - Shasta Enlargement: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_rdb1	GUI_EnlargedShasta.table	2	1	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_rdb2	GUI_EnlargedShasta.table	2	2	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_rdb3	GUI_EnlargedShasta.table	2	3	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	"JonesIFSwitch - Jones IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	"BanksIFSwitch - Banks IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	"CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
