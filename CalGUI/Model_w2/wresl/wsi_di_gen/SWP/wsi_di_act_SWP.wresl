@@ -13,7 +13,7 @@ define set_DI_SWP {
 
      case other {
           condition      always
-          value            0.0 }
+          value            -1.0 }
      }
 
 
@@ -26,7 +26,7 @@ define set_WSI_SWP {
 
      case other {
           condition      always
-          value          0.0 }
+          value          -1.0 }
      }
 
 define WSI_actual_SWP {alias set_WSI_SWP kind 'WATER-SUPPLY-INDEX' units 'TAF'}
