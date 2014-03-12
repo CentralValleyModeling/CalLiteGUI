@@ -494,11 +494,6 @@ public class DisplayFrame {
 
 		dssGrabber.setIsCFS(isCFS);
 
-		// System.out.println(displayGroup);
-		// System.out.println(names + "!");
-		// System.out.println(locations + "!");
-		// System.out.println(filename);
-
 		if (!filename.equals(""))
 			dssGrabber.setBase(filename);
 		else
@@ -532,13 +527,19 @@ public class DisplayFrame {
 			for (int i = 0; i < n; i++) {
 				results[i] = dssGrabber.getMultipleTimeSeries(i);
 			}
+
+			MonthlyTablePanel2 mtp = new MonthlyTablePanel2(dssGrabber.getTitle(), results, dssGrabber, dssGrabber.getSLabel(),
+			        doBase, mts);
+			tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
+
+			SummaryTablePanel2 stp = new SummaryTablePanel2(dssGrabber.getTitle(), results, summaryTags, dssGrabber.getSLabel(),
+			        dssGrabber, doBase, mts);
+			tabbedpane.insertTab("Summary - " + dssGrabber.getBase(), null, stp, null, 0);
+
 			ChartPanel2 cp = new ChartPanel2(dssGrabber.getTitle(), dssGrabber.getYLabel(), results, false, lower, upper, doBase,
 			        mts);
 			tabbedpane.insertTab("Time Series", null, cp, null, 0);
 
-			MonthlyTablePanel2 mtp = new MonthlyTablePanel2(dssGrabber.getTitle(), results, dssGrabber, dssGrabber.getSLabel(),
-			        doBase);
-			tabbedpane.insertTab("Monthly - " + dssGrabber.getBase(), null, mtp, null, 0);
 		} else {
 
 			// Handle DTS

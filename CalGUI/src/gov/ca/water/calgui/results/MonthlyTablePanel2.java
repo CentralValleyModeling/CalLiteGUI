@@ -27,6 +27,8 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import calsim.app.MultipleTimeSeries;
+
 /**
  * Monthly table panel for mts
  * 
@@ -45,7 +47,8 @@ public class MonthlyTablePanel2 extends JPanel implements ActionListener, Compon
 	final String CELL_BREAK = "\t";
 	final Clipboard CLIPBOARD = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-	public MonthlyTablePanel2(String title, TimeSeriesContainer[][] mtscs, DSSGrabber2 dss_Grabber2, String sName, boolean isBase) {
+	public MonthlyTablePanel2(String title, TimeSeriesContainer[][] mtscs, DSSGrabber2 dss_Grabber2, String sName, boolean isBase,
+	        MultipleTimeSeries mts) {
 
 		super();
 
@@ -85,10 +88,11 @@ public class MonthlyTablePanel2 extends JPanel implements ActionListener, Compon
 
 			for (int s = 0; s < tscs.length; s++) {
 
-				String sLabel = sName;
 				TimeSeriesContainer tsc;
 				tsc = tscs[s];
-				sLabel = title;
+				String sLabel = (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI) : mts
+				        .getDTSNameAt(mtsI));
+
 				JLabel label = new JLabel();
 				label.setText(sLabel + " (" + tsc.units + ") - " + tsc.fileName);
 				panel.add(label);
