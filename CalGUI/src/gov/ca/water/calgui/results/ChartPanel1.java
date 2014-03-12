@@ -356,6 +356,10 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 		// Finish up window
 
+		p1.setMaximumDrawHeight(1200);
+		p1.setMaximumDrawWidth(1920);
+		p1.setMinimumDrawHeight(480);
+		p1.setMinimumDrawWidth(640);
 		p1.setPreferredSize(new Dimension(800, 600));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(p1);
@@ -368,6 +372,10 @@ public class ChartPanel1 extends JPanel implements Printable {
 
 			setChartOptions(chartXY, stscs, isExceed, isBase, ymax, ymin, primaries);
 			final ChartPanel p2 = new ChartPanel(chartXY);
+			p2.setMaximumDrawHeight(1200);
+			p2.setMaximumDrawWidth(1920);
+			p2.setMinimumDrawHeight(480);
+			p2.setMinimumDrawWidth(640);
 			p2.setVisible(false);
 			p2.setPreferredSize(new Dimension(800, 600));
 			p2.setMaximumSize(new Dimension(1920, 1200));

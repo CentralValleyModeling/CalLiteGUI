@@ -591,10 +591,25 @@ public class DSSGrabber2 {
 					interimResult = getOneSeries(svFilename, (dts2.getBPartAt(i) + "/" + dts2.getCPartAt(i)));
 				}
 			}
-			if (i == 0)
+			if (i == 0) {
+
+				// First time through, copy Interim result into result
 				result = interimResult;
-			else
+				if (dts2.getOperationIdAt(i) < 1)
+
+					// Iff operation is "?", treat as a control and convert to on/off
+					for (int j = 0; j < interimResult.numberValues; j++)
+						result.values[j] = (result.values[j] > 0.1) ? 9876.5 : 0;
+			} else
 				switch (dts2.getOperationIdAt(i)) {
+
+				case 0:
+
+					// Iff operation is "?", treat as a control
+
+					for (int j = 0; j < interimResult.numberValues; j++)
+						result.values[j] = ((result.values[j] > 0.1) && (interimResult.values[j] > 0.1)) ? 9876.5 : 0;
+					break;
 
 				case 1:
 					for (int j = 0; j < interimResult.numberValues; j++)
