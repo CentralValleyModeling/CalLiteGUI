@@ -1015,14 +1015,7 @@
 								<gridbagconstraints insets="15,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="10" />
 							</button>
-
-							<button text="Post-Pulse Operation" name="btnFacPulse" id="btnFacPulse"
-								ActionCommand="Fac_TableEdit" enabled="false">
-								<gridbagconstraints insets="15,5,5,5"
-									anchor="GridBagConstraints.NORTHWEST" gridx="2" gridy="10" />
-							</button>
-
-
+						
 							<hbox preferredsize="600,400" visible="true">
 								<gridbagconstraints insets="0,10,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="13"
