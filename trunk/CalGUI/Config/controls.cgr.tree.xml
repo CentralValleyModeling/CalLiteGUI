@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<dts_master>
+  <node level="0" name="Dts Directory">
+    <node level="1" name="FOLSOM-C.MTS" />
+    <node level="1" name="FOLSOM-MIFS.DTS" />
+    <node level="1" name="FOLSOM.MTS" />
+  </node>
+  <DTS name="FOLSOM-MIFS.DTS">
+    <row operator="?" dts="" vartype="DVAR" bpart="C_NIMBUS_EXCBASE" cpart="DEBUG" />
+    <row operator="?" dts="" vartype="DVAR" bpart="C_HST_EXCBASE" cpart="DEBUG" />
+  </DTS>
+  <MTS name="FOLSOM.MTS">
+    <row dts="" vartype="DVAR" bpart="C_FOLSM" cpart="FLOW-CHANNEL" />
+    <row dts="FOLSOM-MIFS.DTS" vartype="DVAR" bpart="C_FOLSM" cpart="FLOW-CHANNEL" />
+  </MTS>
+  <MTS name="FOLSOM-C.MTS">
+    <row dts="" vartype="DVAR" bpart="C_NIMBUS_EXCBASE" cpart="DEBUG" />
+    <row dts="" vartype="DVAR" bpart="C_HST_EXCBASE" cpart="DEBUG" />
+    <row dts="FOLSOM-MIFS.DTS" vartype="DVAR" bpart="" cpart="" />
+  </MTS>
+</dts_master>
+

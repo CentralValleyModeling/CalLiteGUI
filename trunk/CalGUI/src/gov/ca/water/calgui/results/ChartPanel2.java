@@ -146,7 +146,7 @@ public class ChartPanel2 extends JPanel implements Printable {
 			plot.setRangeAxis(1, axis2);
 			plot.setDataset(1, dataset2);
 			XYAreaRenderer r = new XYAreaRenderer();
-			r.setSeriesPaint(0, ChartColor.LIGHT_GRAY);
+			r.setSeriesPaint(0, new Color(240, 240, 255));
 			plot.setRenderer(1, r);
 			plot.mapDatasetToRangeAxis(1, 1);
 		}

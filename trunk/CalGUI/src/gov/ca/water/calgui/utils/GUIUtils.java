@@ -936,45 +936,53 @@ public class GUIUtils {
 				if (aLine != null) {
 
 					GuiUtils.getCLGPanel().getDtsTreePanel().getCurrentModel().readData(filename + ".tree.xml", "");
+					Vector<MultipleTimeSeries> mts = GuiUtils.getCLGPanel().getDtsTreePanel().getCurrentModel().getPrjMts();
+					Vector<DerivedTimeSeries> dts = GuiUtils.getCLGPanel().getDtsTreePanel().getCurrentModel().getPrjDts();
 
 					Project p = MainMenu.getProject();
 
 					p.clearMTSList();
-					int mtsCount = Integer.valueOf(br.readLine());
-					for (int i = 0; i < mtsCount; i++) {
-						MultipleTimeSeries mts = new MultipleTimeSeries();
-						mts.setName(br.readLine());
-						int dataCount = Integer.valueOf(br.readLine());
-						for (int j = 0; j < dataCount; j++) {
-							mts.insertAt(j);
-							String dataParts[] = (br.readLine()).split(";");
-							mts.setBPartAt(j, dataParts[0]);
-							mts.setCPartAt(j, dataParts[1]);
-							mts.setVarTypeAt(j, dataParts[2]);
-							if (dataParts.length > 3)
-								mts.setDTSNameAt(j, dataParts[3]);
-						}
-						p.add(mts);
-					}
+
+					for (int i = 0; i < mts.size(); i++)
+						p.add(mts.get(i));
+
+					// int mtsCount = Integer.valueOf(br.readLine());
+					// for (int i = 0; i < mtsCount; i++) {
+					// MultipleTimeSeries mts = new MultipleTimeSeries();
+					// mts.setName(br.readLine());
+					// int dataCount = Integer.valueOf(br.readLine());
+					// for (int j = 0; j < dataCount; j++) {
+					// mts.insertAt(j);
+					// String dataParts[] = (br.readLine()).split(";");
+					// mts.setBPartAt(j, dataParts[0]);
+					// mts.setCPartAt(j, dataParts[1]);
+					// mts.setVarTypeAt(j, dataParts[2]);
+					// if (dataParts.length > 3)
+					// mts.setDTSNameAt(j, dataParts[3]);
+					// }
+					// // p.add(mts);
+					// }
 
 					p.clearDTSList();
-					int dtsCount = Integer.valueOf(br.readLine());
-					for (int i = 0; i < dtsCount; i++) {
-						DerivedTimeSeries dts = new DerivedTimeSeries();
-						dts.setName(br.readLine());
-						int dataCount = Integer.valueOf(br.readLine());
-						for (int j = 0; j < dataCount; j++) {
-							dts.insertAt(j);
-							String dataParts[] = (br.readLine()).split(";");
-							dts.setBPartAt(j, dataParts[0]);
-							dts.setCPartAt(j, dataParts[1]);
-							dts.setVarTypeAt(j, dataParts[2]);
-							dts.setOperationIdAt(j, Integer.valueOf(dataParts[3]));
-							if (dataParts.length > 4)
-								dts.setDTSNameAt(j, dataParts[4]);
-						}
-						p.add(dts);
-					}
+					for (int i = 0; i < dts.size(); i++)
+						p.add(dts.get(i));
+					// int dtsCount = Integer.valueOf(br.readLine());
+					// for (int i = 0; i < dtsCount; i++) {
+					// DerivedTimeSeries dts = new DerivedTimeSeries();
+					// dts.setName(br.readLine());
+					// int dataCount = Integer.valueOf(br.readLine());
+					// for (int j = 0; j < dataCount; j++) {
+					// dts.insertAt(j);
+					// String dataParts[] = (br.readLine()).split(";");
+					// dts.setBPartAt(j, dataParts[0]);
+					// dts.setCPartAt(j, dataParts[1]);
+					// dts.setVarTypeAt(j, dataParts[2]);
+					// dts.setOperationIdAt(j, Integer.valueOf(dataParts[3]));
+					// if (dataParts.length > 4)
+					// dts.setDTSNameAt(j, dataParts[4]);
+					// }
+					// p.add(dts);
+					// }
 					System.out.println(p.getNumberOfDTS() + "  " + p.getNumberOfMTS());
 
 				}
