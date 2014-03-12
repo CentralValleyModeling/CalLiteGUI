@@ -34,9 +34,11 @@ import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.CombinedDomainXYPlot;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYAreaRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.util.RectangleInsets;
 import org.jfree.data.Range;
@@ -83,6 +85,7 @@ public class ChartPanel2 extends JPanel implements Printable {
 		int primaries = 0;
 
 		TimeSeriesCollection dataset = new TimeSeriesCollection();
+		TimeSeriesCollection dataset2 = new TimeSeriesCollection();
 
 		for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
 
@@ -104,12 +107,22 @@ public class ChartPanel2 extends JPanel implements Printable {
 					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
 				}
 
-				dataset.addSeries(series[i]);
-				if (ymin > tscs[i].minimumValue())
-					ymin = tscs[i].minimumValue();
-				if (ymax < tscs[i].maxmimumValue())
-					ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+				if (tscs[i].maxmimumValue() == 9876.5) {
 
+					// If max value is 9876.5, it's a control data series to be shown as an XYArea
+
+					series[i].setKey(mts.getDTSNameAt(mtsI));
+					dataset2.addSeries(series[i]);
+				} else {
+
+					// Otherwise it's just a regular time series
+
+					dataset.addSeries(series[i]);
+					if (ymin > tscs[i].minimumValue())
+						ymin = tscs[i].minimumValue();
+					if (ymax < tscs[i].maxmimumValue())
+						ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+				}
 			}
 
 		}
@@ -123,9 +136,27 @@ public class ChartPanel2 extends JPanel implements Printable {
 
 		setChartOptions(chart, null, isExceed, isBase, ymax, ymin, primaries);
 		XYPlot plot = (XYPlot) chart.getPlot();
+		if (dataset2.getSeriesCount() > 0) {
+
+			// Add axis for displaying control data series
+
+			NumberAxis axis2 = new NumberAxis("");
+			axis2.setVisible(false);
+			axis2.setRange(0, 9876.5);
+			plot.setRangeAxis(1, axis2);
+			plot.setDataset(1, dataset2);
+			XYAreaRenderer r = new XYAreaRenderer();
+			r.setSeriesPaint(0, ChartColor.LIGHT_GRAY);
+			plot.setRenderer(1, r);
+			plot.mapDatasetToRangeAxis(1, 1);
+		}
 		ValueAxis axis = plot.getDomainAxis();
 
 		final ChartPanel p1 = new ChartPanel(chart);
+		p1.setMaximumDrawHeight(1200);
+		p1.setMaximumDrawWidth(1920);
+		p1.setMinimumDrawHeight(480);
+		p1.setMinimumDrawWidth(640);
 
 		// Copy title, all data series to clipboard
 
