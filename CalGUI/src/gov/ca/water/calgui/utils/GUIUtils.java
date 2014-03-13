@@ -251,6 +251,7 @@ public class GUIUtils {
 	public static StringBuffer getTableModelData(DataFileTableModel[] dTableModels, ArrayList<String> GUITables, GUILinks gl,
 	        StringBuffer sb, SwingEngine swix) {
 		final String NL = System.getProperty("line.separator");
+		AbstractButton ckb = null;
 
 		if (dTableModels == null) {
 			System.out.println("Tables not initialized");
@@ -265,8 +266,8 @@ public class GUIUtils {
 					tID = 0;
 				} else {
 					tID = Integer.parseInt(gl.tableIDForCtrl(cName));
+					ckb = (AbstractButton) swix.find(cName);
 				}
-				AbstractButton ckb = (AbstractButton) swix.find(cName);
 
 				// int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
