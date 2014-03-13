@@ -1777,10 +1777,11 @@ public class RunUtils {
 
 		dTableModels = PopulateDTable.populate("op_btn1", table, component1, swix, regUserEdits, dTableModels, gl, regFlags);
 
+		wsdiIterations = Integer.parseInt(properties.getProperty("wsidi.iterations"));
 		JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
 		String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
 		String selHyd = hydDSSStrings[8];
-		lab.setText(selHyd + " (Generated)");
+		lab.setText(selHyd + " (Generated via " + wsdiIterations + " iterations)");
 
 	}
 }
