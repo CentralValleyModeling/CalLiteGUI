@@ -78,6 +78,12 @@ fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	"BanksIFSwitch - Banks IF Export: O
 fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	"CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	"TDExports: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	"fremont_notch_on - Fremont Weir Notch ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
+fac_ckb3	GUI_LosVaqueros.table	1	0	"LVEM_switch - Los Vaqueros Expansion: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf8	GUI_LosVaqueros.table	2	-1	"LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf9	GUI_LosVaqueros.table	3	-1	"LVEM_VC - Alternate Intake (Victoria Canal) Diversion Capacity [250 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf10	GUI_LosVaqueros.table	4	-1	"LVEM_OR - Old RIver Diversion Capacity [250 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf11	GUI_LosVaqueros.table	5	-1	"LVEM_RS - Rock Slough Diversion Capacity [350 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf12	GUI_LosVaqueros.table	6	-1	"LVEM_WQ - Target Maximum Salinity at Delivery [65 mg/L Cl]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 btnFacHood	n/a	n/a	n/a	Edit Hood Bypass Table	Facilities	IFBypassFlows_vs_SAC	1	11	n/a	n/a	n/a	n/a	n/a	n/a
 btnFacLimits	n/a	n/a	n/a	Edit Diversion Table	Facilities	IsolatedFacility	2	12	n/a	n/a	n/a	n/a	n/a	n/a
 run_rdbD1485	GUI_RunBasis.table	1	0	Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
