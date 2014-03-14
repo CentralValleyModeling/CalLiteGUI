@@ -67,11 +67,11 @@ fac_txf7| 2300
 fac_rdb1|false
 fac_rdb2|false
 fac_rdb3|false
-fac_txf8| 500 
-fac_txf9| 250 
-fac_txf10| 420 
-fac_txf11| 350 
-fac_txf12| 65 
+fac_txf8|160
+fac_txf9|250
+fac_txf10|250
+fac_txf11|350
+fac_txf12|65
 fac_txf13| 100 
 fac_txf15| 0.85 
 fac_txf16| 0.04 
@@ -170,5 +170,5 @@ END DATATABLEMODELS
 USERDEFINEDFLAGS
 END USERDEFINEDFLAGS
 REGULATIONOPTIONS
-0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0
+0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0
 END REGULATIONOPTIONS

@@ -679,7 +679,7 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
-								text="Sacramento Valley Conunctive Use" minimumsize="240,20"
+								text="Sacramento Valley Conjunctive Use" minimumsize="240,20"
 								enabled="true">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
@@ -873,43 +873,48 @@
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0" />
 							</label>
-							<textfield text=" 500 " name="fac_txf8" id="fac_txf8">
-								<gridbagconstraints insets="0,0,5,5"
+							<numtextfield id="fac_txf8" name="fac_txf8" enabled="true"
+								MinVal="0" MaxVal="9999" columns="4" text="160">
+									<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="0" />
-							</textfield>
+							</numtextfield>																				
 							<label id="fac_txf9_t"
-								text="CCWD Alternate Intake Project Diversion Capacity (cfs)">
+								text="CCWD Alternate Intake (Victoria Canal) Diversion Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</label>
-							<textfield text=" 250 " name="fac_txf9" id="fac_txf9">
-								<gridbagconstraints insets="0,0,5,5"
+							<numtextfield id="fac_txf9" name="fac_txf9" enabled="false"
+								MinVal="0" MaxVal="9999" columns="4" text="250">
+									<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="3" />
-							</textfield>
+							</numtextfield>						
 							<label id="fac_txf10_t" text="CCWD Old River Diversion Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="" gridy="4" />
 							</label>
-							<textfield text=" 420 " name="fac_txf10" id="fac_txf10">
-								<gridbagconstraints insets="0,0,5,5"
+							<numtextfield id="fac_txf10" name="fac_txf10" enabled="false"
+								MinVal="0" MaxVal="9999" columns="4" text="250">
+									<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="4" />
-							</textfield>
+							</numtextfield>						
 							<label id="fac_txf11_t" text="CCWD Rock Slough Diversion Capacity (cfs)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="5" />
 							</label>
-							<textfield text=" 350 " name="fac_txf11" id="fac_txf11">
-								<gridbagconstraints insets="0,0,5,5"
+							<numtextfield id="fac_txf11" name="fac_txf11" enabled="false"
+								MinVal="0" MaxVal="9999" columns="4" text="350">
+									<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="5" />
-							</textfield>
+							</numtextfield>
 							<label id="fac_txf12_t" text="CCWD Target Maximum Chloride at Delivery (mg/L)">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="6" />
 							</label>
-							<textfield text=" 65 " name="fac_txf12" id="fac_txf12">
-								<gridbagconstraints insets="0,0,5,5"
+							<numtextfield id="fac_txf12" name="fac_txf12" enabled="false"
+								MinVal="0" MaxVal="9999" columns="4" text="65">
+									<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="6" />
-							</textfield>
+							</numtextfield>
 
 						</panel>
 						<panel name="fac_pan5" id="fac_pan5" resizeable="false"
