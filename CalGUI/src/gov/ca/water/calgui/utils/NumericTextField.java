@@ -59,14 +59,15 @@ public class NumericTextField extends JTextField {
 			String s1 = s.substring(0, offs);
 			String s2 = s.substring(offs, super.getLength());
 			String sfinal = s1 + str + s2;
+			sfinal = sfinal.trim();
 
 			try {
 				float f = Float.valueOf(sfinal).floatValue();
 				float min = getMinVal();
 				float max = getMaxVal();
 
-				if (str != null && DIGITS.matcher(str).matches() && f >= min && f <= max)
-					super.insertString(offs, str, a);
+				if (str != null && DIGITS.matcher(sfinal).matches() && f >= min && f <= max)
+					super.insertString(offs, sfinal, a);
 
 			} catch (NumberFormatException e) {
 
