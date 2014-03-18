@@ -753,6 +753,13 @@ public class RunUtils {
 					outstring = (index + "\t" + option + "\t" + descr + NL);
 					tableFile_BufferedWriter_.write(outstring);
 
+					// EDIT: DKR 18Mar2014: hardcoded temporarily
+					// check to see if the Shasta Enlargment option is turned off
+					// if (index == 1 && option.startsWith("0") && tableFileName.startsWith("GUI_EnlargedShasta.table")) {
+					// outstring = ("2\t0\tSize of enlargement: 0 " + NL);
+					// tableFile_BufferedWriter_.write(outstring);
+					// }
+
 				} else if (c instanceof JRadioButton) {
 
 					// Component is a Radiobutton. The GUI_Links2.table file is assumed to have a link entry for *each* radiobutton
