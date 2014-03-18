@@ -3,7 +3,7 @@ hyd_rdb2005	GUI_HydroClimate.table	1	0	LOD_DLTSW: Level of Development: 0=Existi
 hyd_rdb2030	GUI_HydroClimate.table	1	1	LOD_DLTSW: Level of Development: 0=Existing LOD (No CC); 1=Future LOD (No CC); 2=ELT CC; 3=LLT CC	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdbCCEL	GUI_HydroClimate.table	1	2	LOD_DLTSW: Level of Development: 0=Existing LOD (No CC); 1=Future LOD (No CC); 2=ELT CC; 3=LLT CC	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdbCCLL	GUI_HydroClimate.table	1	3	LOD_DLTSW: Level of Development: 0=Existing LOD (No CC); 1=Future LOD (No CC); 2=ELT CC; 3=LLT CC	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-hyd_ANNKM	GUI_HydroClimate.table	2	1	X2_SLR: Calculate X2 by using ANN or KM equation: ANN=1; KM=0"	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+hyd_ANNKM	GUI_HydroClimate.table	2	1	"X2_SLR: Calculate X2 by using ANN or KM equation: ANN=1; KM=0"""	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb1	GUI_HydroClimate.table	3	2	SLR_DLTSW: Sea Level Rise Scenario: 0=Base (No SLR); 1=15cm SLR; 2=45cm SLR	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb2	GUI_HydroClimate.table	3	1	SLR_DLTSW: Sea Level Rise Scenario: 0=Base (No SLR); 1=15cm SLR; 2=45cm SLR	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 hyd_rdb3	GUI_HydroClimate.table	3	0	SLR_DLTSW: Sea Level Rise Scenario: 0=Base (No SLR); 1=15cm SLR; 2=45cm SLR	Hydroclimate	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
@@ -39,21 +39,21 @@ ckbReg_AN	GUI_Regs.table	12	-1	AN_DLTSW -  Antioch for D-1485 (shared control wi
 ckbReg_AN	GUI_Regs.table	13	-1	CH_DLTSW -  Chipps Island for D-1485(shared control with Chipps)	Regulations	n/a	n/a	n/a	n/a	1	n/a	1	n/a	13
 ckbReg_TRNTY	GUI_Regs.table	14	-1	TRNTY_DLTSW -  Trinity Minimum Flows	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a	14
 ckbReg_PUMP	GUI_Regs.table	15	-1	PUMP_DLTSW -  Permitted pumping limits at Jones and Banks	Regulations	n/a	n/a	n/a	n/a	n/a	1	1	n/a	15
-ckbRegbo2	GUI_RPAsOtherRegs.table	1	-1	"Fall_X2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	16
-ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	"Action_4_1_2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	17
-ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	"Action_4_2_1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	18
-ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	"ORMROON";	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	19
-ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	"ClearCrkBOswitch" 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	20
-ckbReg2	GUI_RPAsOtherRegs.table	6	-2	"QOMR_DLTSW"	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
-ckbReg1	GUI_RPAsOtherRegs.table	7	-2	"QWEST_DLTSW"	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
-ckbReg10	GUI_RPAsOtherRegs.table	8	-2	"EISJR_DLTSW"	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
-ckbReg11	GUI_RPAsOtherRegs.table	9	-1	"B2Action1"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
-ckbReg12	GUI_RPAsOtherRegs.table	10	-1	"B2Action2"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
-ckbReg13	GUI_RPAsOtherRegs.table	11	-1	"B2Action3"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
-ckbReg14	GUI_RPAsOtherRegs.table	12	-1	"B2Action4"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
-ckbReg15	GUI_RPAsOtherRegs.table	13	-1	"B2Action5"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
-ckbReg16	GUI_RPAsOtherRegs.table	14	-1	"B2Action6"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
-ckbReg17	GUI_RPAsOtherRegs.table	15	-1	"B2Action7"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
+ckbRegbo2	GUI_RPAsOtherRegs.table	1	-1	Fall_X2	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	16
+ckbRegbo4	GUI_RPAsOtherRegs.table	2	-1	Action_4_1_2	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	17
+ckbRegbo5	GUI_RPAsOtherRegs.table	3	-1	Action_4_2_1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	18
+ckbRegbo1	GUI_RPAsOtherRegs.table	4	-1	ORMROON;	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	19
+ckbRegbo3	GUI_RPAsOtherRegs.table	5	-1	ClearCrkBOswitch 	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	20
+ckbReg2	GUI_RPAsOtherRegs.table	6	-2	QOMR_DLTSW	Regulations	gui_qomr	2	6	n/a	n/a	n/a	n/a	n/a	23
+ckbReg1	GUI_RPAsOtherRegs.table	7	-2	QWEST_DLTSW	Regulations	gui_qwest	1	7	n/a	n/a	n/a	n/a	n/a	24
+ckbReg10	GUI_RPAsOtherRegs.table	8	-2	EISJR_DLTSW	Regulations	gui_EIsjr	10	8	n/a	n/a	n/a	n/a	n/a	25
+ckbReg11	GUI_RPAsOtherRegs.table	9	-1	B2Action1	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	26
+ckbReg12	GUI_RPAsOtherRegs.table	10	-1	B2Action2	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	27
+ckbReg13	GUI_RPAsOtherRegs.table	11	-1	B2Action3	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	28
+ckbReg14	GUI_RPAsOtherRegs.table	12	-1	B2Action4	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	29
+ckbReg15	GUI_RPAsOtherRegs.table	13	-1	B2Action5	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	30
+ckbReg16	GUI_RPAsOtherRegs.table	14	-1	B2Action6	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	31
+ckbReg17	GUI_RPAsOtherRegs.table	15	-1	B2Action7	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	32
 ckbReg18	n/a	n/a	n/a	Edit the fraction of unimpaired flow as flow criteria	Regulations	perc_UnimparedFlow	16	16	n/a	n/a	n/a	n/a	n/a	33
 op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	34
 op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	35
@@ -66,26 +66,28 @@ Vern_RPA 	GUI_SJR.table	2	-1	"Vern_RPA -  Vernalis RPA 60-day pulse flow (April-
 D1641_Base	GUI_SJR.table	3	-1	"D1641_Base -  Vernalis D-1641 baseflows (Feb-Apr 14, May 16-June). 1=on, 0=off"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	38
 D1641_SALINITY	GUI_SJR.table	4	-1	"D1641_SALINITY  - Vernalis D-1641 salinity criteria. 1=on, 0=off"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	39
 STAN_RPA	GUI_SJR.table	5	-1	"STAN_RPA  - Stanislaus RPA flows. 1=on, 0=off"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	42
-SJR_interim	GUI_SJR.table	6	0	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	43
-SJR_full	GUI_SJR.table	6	1	"REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	44
+SJR_interim	GUI_SJR.table	6	0	REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	43
+SJR_full	GUI_SJR.table	6	1	REST_REO - SJR Restoration flows.  0=interim flows; 1=full flows	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	44
 Dynamic_SJR	GUI_SJR.table	7	-1	"0=timeseries, 1=dynamic SJR calculation"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	37
-fac_ckb2	GUI_EnlargedShasta.table	1	0	"EnlargedShastaSwitch - Shasta Enlargement: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb2	GUI_EnlargedShasta.table	1	0	EnlargedShastaSwitch - Shasta Enlargement: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_rdb0	GUI_EnlargedShasta.table	2	0	Size of enlargement: 0	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_rdb1	GUI_EnlargedShasta.table	2	1	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_rdb2	GUI_EnlargedShasta.table	2	2	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_rdb3	GUI_EnlargedShasta.table	2	3	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	"JonesIFSwitch - Jones IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	"BanksIFSwitch - Banks IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	"CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	"TDExports: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	"fremont_notch_on - Fremont Weir Notch ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
-fac_ckb3	GUI_LosVaqueros.table	1	0	"LVEM_switch - Los Vaqueros Expansion: ON(1) OFF(0)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf8	GUI_LosVaqueros.table	2	-1	"LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf9	GUI_LosVaqueros.table	3	-1	"LVEM_VC - Alternate Intake (Victoria Canal) Diversion Capacity [250 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf10	GUI_LosVaqueros.table	4	-1	"LVEM_OR - Old RIver Diversion Capacity [250 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf11	GUI_LosVaqueros.table	5	-1	"LVEM_RS - Rock Slough Diversion Capacity [350 cfs]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf12	GUI_LosVaqueros.table	6	-1	"LVEM_WQ - Target Maximum Salinity at Delivery [65 mg/L Cl]"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	JonesIFSwitch - Jones IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	BanksIFSwitch - Banks IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	TDExports: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	fremont_notch_on - Fremont Weir Notch ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
+fac_ckb3	GUI_LosVaqueros.table	1	0	LVEM_switch - Los Vaqueros Expansion: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf8	GUI_LosVaqueros.table	2	-1	LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf9	GUI_LosVaqueros.table	3	-1	LVEM_VC - Alternate Intake (Victoria Canal) Diversion Capacity [250 cfs]	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf10	GUI_LosVaqueros.table	4	-1	LVEM_OR - Old RIver Diversion Capacity [250 cfs]	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf11	GUI_LosVaqueros.table	5	-1	LVEM_RS - Rock Slough Diversion Capacity [350 cfs]	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf12	GUI_LosVaqueros.table	6	-1	LVEM_WQ - Target Maximum Salinity at Delivery [65 mg/L Cl]	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 btnFacHood	n/a	n/a	n/a	Edit Hood Bypass Table	Facilities	IFBypassFlows_vs_SAC	1	11	n/a	n/a	n/a	n/a	n/a	n/a
 btnFacLimits	n/a	n/a	n/a	Edit Diversion Table	Facilities	IsolatedFacility	2	12	n/a	n/a	n/a	n/a	n/a	n/a
-run_rdbD1485	GUI_RunBasis.table	1	0	Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-run_rdbD1641	GUI_RunBasis.table	1	1	Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-run_rdbBO	GUI_RunBasis.table	1	2	Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+run_rdbD1485	GUI_RunBasis.table	1	0	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+run_rdbD1641	GUI_RunBasis.table	1	1	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+run_rdbBO	GUI_RunBasis.table	1	2	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+fac_txf8	GUI_LosVaqueros.table	2	-1	LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a

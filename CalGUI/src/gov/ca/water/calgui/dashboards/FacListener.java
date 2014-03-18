@@ -7,6 +7,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 import org.swixml.SwingEngine;
 
@@ -41,6 +42,13 @@ public class FacListener implements ItemListener {
 
 					// ((JPanel) swix.find("FacPict")).setVisible(false);
 
+					// EDIT: DKR 18Mar2014: 1st checks for the name of the Shasta Enlargement cotrol was changed
+					if (cName.startsWith("fac_ckb2")) {
+						// EDIT: DKR 18Mar2014: Finds "None" radiobutton, and toggle if option for shasta enlargement is not
+						// selected
+						JRadioButton rdb = (JRadioButton) swix.find("fac_rdb0");
+						rdb.setSelected(e.getStateChange() != ItemEvent.SELECTED);
+					}
 				}
 			}
 		}
