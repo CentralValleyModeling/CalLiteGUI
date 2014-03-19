@@ -124,3 +124,5 @@ goal setDVNSTANGDWN { D_STANGDWN = D_STANGDWNA1 + D_STANGDWNA + D_STANGDWNB + D_
 define  D_SJRMDOTA {std kind 'flow-delivery' units 'cfs'}
 goal setDVNSJRMDOTA { D_SJRMDOTA = D_MDOTAA + D_MDOTAD }
 
+define D_MERCED1 {std kind 'flow-delivery' units 'cfs'}				!R.HOANG 03192014
+goal setDVNMERCED {D_MERCED1 = D_MERCED1A+D_MERCED1B+D_MERCED1c}
