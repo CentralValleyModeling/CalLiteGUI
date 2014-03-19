@@ -64,6 +64,7 @@ fac_txf4| 1000
 fac_txf5| 3000 
 fac_txf6| 2000 
 fac_txf7| 2300 
+fac_rdb0|true
 fac_rdb1|false
 fac_rdb2|false
 fac_rdb3|false

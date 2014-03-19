@@ -90,4 +90,4 @@ btnFacLimits	n/a	n/a	n/a	Edit Diversion Table	Facilities	IsolatedFacility	2	12	n
 run_rdbD1485	GUI_RunBasis.table	1	0	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 run_rdbD1641	GUI_RunBasis.table	1	1	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 run_rdbBO	GUI_RunBasis.table	1	2	"Run-Basis:  0 = D-1485, 1 = PreBo, 2 = BO"	runsettings	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_txf8	GUI_LosVaqueros.table	2	-1	LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+
