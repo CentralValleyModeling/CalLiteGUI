@@ -142,11 +142,11 @@ public class ChartPanel2 extends JPanel implements Printable {
 
 			NumberAxis axis2 = new NumberAxis("");
 			axis2.setVisible(false);
-			axis2.setRange(4938.0, 4938.5);
+			axis2.setRange(4938.0, 4938.1);
 			plot.setRangeAxis(1, axis2);
 			plot.setDataset(1, dataset2);
 			XYAreaRenderer r = new XYAreaRenderer();
-			r.setSeriesPaint(0, new Color(240, 240, 255));
+			r.setSeriesPaint(0, new Color(224, 255, 224));
 			plot.setRenderer(1, r);
 			plot.mapDatasetToRangeAxis(1, 1);
 		}
