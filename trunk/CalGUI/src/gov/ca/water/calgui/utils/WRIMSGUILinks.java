@@ -39,6 +39,7 @@ public class WRIMSGUILinks {
 	private static JLabel statusLabel;
 
 	public static void setStatus(String text) {
+		System.out.println(">>>" + text);
 		statusLabel.setText(text);
 		statusLabel.invalidate();
 	}
@@ -83,14 +84,21 @@ public class WRIMSGUILinks {
 			RBListItem item = (RBListItem) theList.getModel().getElementAt(0);
 			String dvFileName = item.toString();
 			project.setDVFile(dvFileName);
+			project.setDVHashtable();
 
 			String svFileName = item.getSVFilename();
 			if (svFileName.equals("")) {
 				svFileName = findSVFileName(dvFileName);
 				item.setSVFilename(svFileName);
 			}
+
 			project.setSVFile(svFileName);
-			System.out.println("List of 1 - " + svFileName + " - " + dvFileName);
+			if (!(svFileName == null)) {
+				File svFile = new File(svFileName);
+				if (svFile.exists() && !svFile.isDirectory()) {
+					project.setSVHashtable();
+				}
+			}
 
 			AppUtils.baseOn = true;
 
