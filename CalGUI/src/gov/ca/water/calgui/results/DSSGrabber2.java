@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
@@ -284,7 +285,7 @@ public class DSSGrabber2 {
 	 * @return HEC TimeSeriesContainer with times, values, number of values, and file name.
 	 */
 
-	private TimeSeriesContainer getOneSeries(String dssFilename, String dssName) {
+	private TimeSeriesContainer getOneSeries_(String dssFilename, String dssName) {
 
 		HecDss hD;
 		TimeSeriesContainer result = null;
@@ -394,7 +395,7 @@ public class DSSGrabber2 {
 		return result;
 	}
 
-	private TimeSeriesContainer getOneSeries_temp(String filename, String dssname) {
+	private TimeSeriesContainer getOneSeries(String filename, String dssname) {
 		GetOneSeriesSW g = new GetOneSeriesSW(filename, dssname);
 		g.execute();
 		TimeSeriesContainer result = null;
@@ -418,12 +419,22 @@ public class DSSGrabber2 {
 		private GetOneSeriesSW(String filename, String dssname) {
 			this.filename = filename;
 			this.dssname = dssname;
-			WRIMSGUILinks.setStatus("Reading " + dssname + " from " + filename + ".");
+			publish("Reading " + dssname + " from " + filename + ".");
 		}
 
 		@Override
 		protected TimeSeriesContainer doInBackground() throws Exception {
-			return getOneSeries(filename, dssname);
+			return getOneSeries_(filename, dssname);
+		}
+
+		@Override
+		protected void process(final List<String> chunks) {
+			WRIMSGUILinks.setStatus(chunks.get(chunks.size() - 1));
+		}
+
+		@Override
+		protected void done() {
+			WRIMSGUILinks.setStatus("Done reading " + dssname + " from " + filename + ".");
 		}
 	}
 
