@@ -116,7 +116,7 @@ if int(DCC_DLTSW)==3 {
 
 
 
-if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {
+else {
 	define numberofdaysopen {value min(WQCP_days_open, NMFS_days_open) }
 	define DaysOpenStd {alias numberofdaysopen kind 'GATE-DAYS-OPEN' units 'NONE'}
 	
@@ -141,37 +141,56 @@ if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {
 
 ! Records actual number of days gates are open (only set when flow is below 25000 cfs)
 define DXC_daysopen {lower unbounded kind 'GATE-DAYS-OPEN' units 'NONE'}
+
+if int(DCC_DLTSW)==3 {
 define DXC_est { 
-	case D1641{
-		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
-		value numberofdaysopen}
 	case D1485_Spec {
-		condition C_SacSjr[Upstream] >= 12001 .and. C_Hood[Upstream] < 25000 .and. DCC_DLTSW == 3
+		condition C_SacSjr[Upstream] >= 12001 .and. C_Hood[Upstream] < 25000
 		value numberofdaysopen}
 	case D1485_NDOI_LT_12000 {
-		condition C_SacSjr[Upstream] < 12001 .and. DCC_DLTSW == 3
+		condition C_SacSjr[Upstream] < 12001
 		value daysin}
 	case otherwise {
 		condition always
 		value 0.}
-}
-
-define DXC_estdv {alias DXC_est kind 'GATE-DAYS-OPEN' units 'NONE'}
-
+	}
+	
 define No_flood_DCC_closure {
-	case D1641{
-		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
-		value 0.}
 	case NoFlood_D1485 {
 		condition	DCC_DLTSW == 3 .and. C_Hood[Upstream] < 25000
 		value		1.}
 	case otherwise {
 		condition	always
 		value		0.}
+	}
+	
+goal setDXC {DXC_daysopen = No_flood_DCC_closure*numberofdaysopen*int_NDO_above + No_flood_DCC_closure*daysin*int_NDO_below}
 }
-if int(DCC_DLTSW)==3 {goal setDXC {DXC_daysopen = No_flood_DCC_closure*numberofdaysopen*int_NDO_above + No_flood_DCC_closure*daysin*int_NDO_below}}
-if int(DCC_DLTSW)==1 .or. int(DCC_DLTSW)==2 {goal setDXC {DXC_daysopen = DXC_est * int_SAC_below}}
 
+else {
+define DXC_est { 
+	case D1641{
+		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
+		value numberofdaysopen}
+	case otherwise {
+		condition always
+		value 0.}
+	}
+
+define No_flood_DCC_closure {
+	case D1641{
+		condition DCC_DLTSW == 1 .or. DCC_DLTSW == 2
+		value 0.}
+	case otherwise {
+		condition	always
+		value		0.}
+	}
+	
+goal setDXC {DXC_daysopen = DXC_est * int_SAC_below}
+}
+
+
+define DXC_estdv {alias DXC_est kind 'GATE-DAYS-OPEN' units 'NONE'}
 
 
 ! Determines flow in DXC, implementing equation described above
