@@ -10,3 +10,29 @@ Writing GUI operations table files.
 Writing GUI facilities table files.
 Save complete
 Save complete
+Creating new Run directory.
+Creating new Generated directory.
+Writing GUI tables.
+Copying demand tables.
+Creating study.sty.
+Writing WRIMSv2 Batchfile.
+Writing Scenario Config.
+Copying WRIMSv2 DLL.
+Writing GUI regulations table files.
+Writing GUI operations table files.
+Writing GUI facilities table files.
+Save complete
+Save complete
+Creating new Run directory.
+Creating new Generated directory.
+Writing GUI tables.
+Copying demand tables.
+Creating study.sty.
+Writing WRIMSv2 Batchfile.
+Writing Scenario Config.
+Copying WRIMSv2 DLL.
+Writing GUI regulations table files.
+Writing GUI operations table files.
+Writing GUI facilities table files.
+Save complete
+Save complete
