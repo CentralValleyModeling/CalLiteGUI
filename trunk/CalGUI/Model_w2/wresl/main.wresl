@@ -351,6 +351,7 @@ MODEL SJR_WQ2 {         !CYCLE 4
 
 MODEL VAMP_AND_DO {           !CYCLE 5
     INCLUDE model block1
+	if int(Dynamic_SJR)==0 {define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}}
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'  
     INCLUDE '\sanjoaquin\Friant\SJR_Rest_Pulse_Local.wresl'     !Turns on SJRR Operations
