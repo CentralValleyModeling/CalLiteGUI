@@ -14,7 +14,7 @@ selection of preBO vs BO procedures.
 ! (code is adapted from B2VampCommon.wresl)
 ! This code generates values used for preBO allocation procedures
 define PulseHidv {std kind 'counter' UNITS 'NONE'}
-define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}
+if int(Dynamic_SJR)==1 {define VAMP_reqdv {std kind 'flow-requirement' units 'cfs'}}
 define SJR_ANN     {std kind 'FLOW-CHANNEL'  units 'CFS'}
 goal setSJR_ANN {SJR_ANN = C_SJRVER}
 
