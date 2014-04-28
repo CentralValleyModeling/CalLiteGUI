@@ -131,14 +131,14 @@ ckbRegbo2|true
 ckbRegbo3|true
 ckbRegbo4|true
 ckbRegbo5|true
-Dynamic_SJR|true
-D1641_Base|false
-D1641_SALINITY|false
-VAMP_Flow|false
-Vern_RPA|false
-STAN_RPA|false
-SJR_interim|true
-SJR_full|false
+Dynamic_SJR|false
+D1641_Base|true
+D1641_SALINITY|true
+VAMP_Flow|true
+Vern_RPA|true
+STAN_RPA|true
+SJR_interim|false
+SJR_full|true
 ckbReg1|false
 ckbReg2|false
 ckbReg10|false
@@ -171,5 +171,5 @@ END DATATABLEMODELS
 USERDEFINEDFLAGS
 END USERDEFINEDFLAGS
 REGULATIONOPTIONS
-0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0
+0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0|0|0
 END REGULATIONOPTIONS
