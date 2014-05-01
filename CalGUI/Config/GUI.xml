@@ -658,7 +658,7 @@
 							preferredsize="260,160" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
-							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="true"
+							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="false"
 								text="North of Delta Offstream Storage" minimumsize="240,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
@@ -680,7 +680,7 @@
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
 								text="Sacramento Valley Conjunctive Use" minimumsize="240,20"
-								enabled="true">
+								enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 							</checkbox>
@@ -707,17 +707,17 @@
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							<checkbox name="fac_ckb8" id="fac_ckb8"
-								text="Fremont Weir - Yolo Bypass" minimumsize="240,20" enabled="true">
+								text="Fremont Weir - Yolo Bypass" minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
 							<checkbox name="fac_ckb9" id="fac_ckb9" text="DWSC East Bypass"
-								minimumsize="240,20" enabled="true">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
 							<checkbox name="fac_ckb10" id="fac_ckb10" text="Stone Lakes Bypass"
-								minimumsize="240,20" enabled="true">
+								minimumsize="240,20" enabled="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
@@ -1149,15 +1149,15 @@
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="1" gridy="10" />
 							</textfield>
-							<checkbox name="fac_ckb14" id="fac_ckb14">
+							<checkbox name="fac_ckb14" id="fac_ckb14" enabled="false">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="2" gridy="10" />
 							</checkbox>
-							<checkbox name="fac_ckb15" id="fac_ckb15">
+							<checkbox name="fac_ckb15" id="fac_ckb15" enabled="false">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="3" gridy="10" />
 							</checkbox>
-							<checkbox name="fac_ckb16" id="fac_ckb16">
+							<checkbox name="fac_ckb16" id="fac_ckb16" enabled="false">
 								<gridbagconstraints insets="0,5,5,5"
 									anchor="GridBagConstraints.WEST" gridx="4" gridy="10" />
 							</checkbox>
