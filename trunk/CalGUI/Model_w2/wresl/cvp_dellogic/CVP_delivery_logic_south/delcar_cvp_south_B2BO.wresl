@@ -75,6 +75,8 @@ define PulseExpRes1 {
         value       0.0}
 }
 
+define B2Action4On {timeseries kind 'TRIGGER' units 'NONE'}
+
 ! ***********************************************************
 ! Read in inputs used for BO allocation procedures
 define estCVPExp_MarBO {select estimate from ExportEstimate_CVP where month = Mar}
@@ -143,16 +145,16 @@ define estCVPExp_May {
 		condition int(RunBasis_DLTSW) == 0 
 			value 4600.}
     case preBO_B2Action4On {
-        condition int(RunBasis_DLTSW) == 1  .and. month == MAY .and. int(B2Action4) == 1
+        condition int(RunBasis_DLTSW) == 1  .and. month == MAY .and. int(B2Action4) == 1 .and. int(B2Action4On)==1
             value PulseExpRes1*0.5 }
 	case BO_IF_B2Action4On {
-        condition int(jonesifswitch) == 1 .and. month == MAY .and. int(B2Action4) == 1
+        condition int(jonesifswitch) == 1 .and. month == MAY .and. int(B2Action4) == 1 .and. int(B2Action4On)==1
             value PulseExpRes1*0.5 }
     case preBO_B2Action4Off {
-        condition int(RunBasis_DLTSW) == 1  .and. month == MAY .and. int(B2Action4) == 0
+        condition int(RunBasis_DLTSW) == 1  .and. month == MAY .and. int(B2Action4) == 0 .and. int(B2Action4On)==0
             value PulseExpRes1*0.5*15./31. + 3000.*16./31. }
 	case BO_IF_B2Action4Off {
-        condition int(jonesifswitch) == 1 .and. month == MAY .and. int(B2Action4) == 0
+        condition int(jonesifswitch) == 1 .and. month == MAY .and. int(B2Action4) == 0 .and. int(B2Action4On)==0
             value PulseExpRes1*0.5*15./31. + 3000.*16./31. }
     case preBO_or_IF_otherwise {
         condition int(RunBasis_DLTSW) == 1 .or. int(jonesifswitch) == 1
