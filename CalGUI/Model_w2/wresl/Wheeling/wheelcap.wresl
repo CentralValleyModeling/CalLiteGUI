@@ -54,7 +54,7 @@ define OMR_Ctrl {
 }
 define B2Action3_Ctrl {
 	case controlling {
-		condition	range(month,apr,may) .and. int(B2Action3)==1 .and. VAMP_DLTSW == 1
+		condition	range(month,apr,may) .and. int(B2Action3)==1 .and. int(B2Action3On)==1 .and. VAMP_DLTSW == 1
 		value		0.
 	}
 	case otherwise {
