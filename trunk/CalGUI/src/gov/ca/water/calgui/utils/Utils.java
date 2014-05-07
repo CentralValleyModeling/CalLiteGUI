@@ -25,9 +25,9 @@ import vista.set.RegularTimeSeries;
 import vista.set.Stats;
 import vista.set.TimeSeries;
 import vista.time.SubTimeFormat;
+import vista.time.Time;
 import vista.time.TimeFactory;
 import vista.time.TimeWindow;
-import vista.time.Time;
 
 public class Utils {
 
@@ -81,7 +81,9 @@ public class Utils {
 			}
 			pa[i - 1] = p;
 			if (exact) {
-				pa[i - 1] = "^" + pa[i - 1] + "$";
+				if (p.length() > 0) {
+					pa[i - 1] = "^" + pa[i - 1] + "$";
+				}
 			}
 			i++;
 		}
@@ -126,7 +128,7 @@ public class Utils {
 			}
 		} else {
 			try {
-				DataReference[] refs = findpath(group, path, false);
+				DataReference[] refs = findpath(group, path, true);
 				if (refs == null) {
 					String msg = "No data found for " + group + " and " + path;
 					addMessage(msg);
@@ -152,6 +154,9 @@ public class Utils {
 		}
 		StringBuilder builder = new StringBuilder();
 		for (String part : parts) {
+			if (part.length() > 0) {
+				part = "^" + part + "$";
+			}
 			builder.append(part).append("/");
 		}
 		return builder.toString();
