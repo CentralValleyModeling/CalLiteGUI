@@ -13,7 +13,7 @@ END
 
 PATHNAME_MAPPING
 VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLOT		UNIT
-"Trinirty Storage"			S_SEPT		Exceedance	//S_Trnty/STORAGE//1MON//				//S_Trnty/STORAGE//1MON//				N		Y		DEFAULT
+"Trinity Storage"			S_SEPT		Exceedance	//S_Trnty/STORAGE//1MON//				//S_Trnty/STORAGE//1MON//				N		Y		DEFAULT
 "Shasta Storage"			S_SEPT		Exceedance	//S_Shsta/STORAGE//1MON//				//S_Shsta/STORAGE//1MON//				N		Y		DEFAULT		
 "FolSom Storage"			S_SEPT		Exceedance	//S_Folsm/STORAGE//1MON//				//S_Folsm/STORAGE//1MON//				N		Y		DEFAULT
 "NOD Storage"				S_SEPT		Exceedance_Post	//S_Trnty+S_Shsta+S_Folsm/STORAGE//1MON//		//S_Trnty+S_Shsta+S_Folsm/STORAGE//1MON//		N		Y		DEFAULT
