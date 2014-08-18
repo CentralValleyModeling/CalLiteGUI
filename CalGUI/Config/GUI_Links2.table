@@ -59,6 +59,8 @@ op_rdb6	GUI_Operations.table	1	-1	"Cross Valley Wheeling:  0 = off, 1 = on"	Oper
 op_rdb7	GUI_Operations.table	2	-1	"Joint Point of diversion Wheeling:  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	35
 op_rdb8	GUI_Operations.table	3	-1	"Intertie: 0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	36
 op_rdb9	GUI_Operations.table	4	-1	"Payback Wheeling (D-1485):  0 = off, 1 = on"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	37
+op_rdb1	GUI_Operations.table	5	0	"Allocation Method: 0 = WSI/DI, 1 = fixed, 2 = FAM"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
+op_rdb2	GUI_Operations.table	5	2	"Allocation Method: 0 = WSI/DI, 1 = fixed, 2 = FAM"	Operations	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 op_btn1	n/a	n/a	n/a	Edit SWP Curves	Operations	wsi_di_swp	1	9	n/a	n/a	n/a	n/a	n/a	n/a
 op_btn2	n/a	n/a	n/a	Edit CVP Curves	Operations	wsi_di_cvp_sys	2	10	n/a	n/a	n/a	n/a	n/a	n/a
 VAMP_Flow	GUI_SJR.table	1	-1	"VAMP_Flow - VAMP_Flow -  VAMP pulse flows (Apr 15-May 15). 1=on, 0=off"	Regulations	n/a	n/a	n/a	n/a	n/a	n/a	1	n/a	40

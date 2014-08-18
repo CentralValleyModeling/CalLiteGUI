@@ -12,6 +12,9 @@ to the value used in the previous month, which is always the value used in May.
 *************************************/
 
 define initial_del_target_cvp_sys {
+    case MarToMay_FAM {                                ! from the delivery-carryover table
+        condition AllocationSwitch == 2 .and. (month >= MAR .and. month <= MAY)
+    		value CVP_Delivery_Sys[FAM]}
     case MarToMay {                                ! from the delivery-carryover table
         condition month >= MAR .and. month <= MAY  ! curve in March through May.
             select del
