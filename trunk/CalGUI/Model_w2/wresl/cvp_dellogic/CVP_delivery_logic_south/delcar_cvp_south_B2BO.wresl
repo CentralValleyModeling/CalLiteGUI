@@ -247,6 +247,12 @@ define AnnDelCapEst {
 define AnnDelCapEstdv {alias AnnDelCapEst kind 'DELIV-CAPACITY' units 'TAF'}
 
 define del_first_cvp_s {
+  case MarToMay_FAM_IF {                                ! from the delivery-carryover table
+    condition AllocationSwitch == 2 .and. JonesIFSwitch ==1 .and. (month >= MAR .and. month <= MAY)
+    value min(AnnDelCapEst, CVP_Delivery_South[FAM])}
+  case MarToMay_FAM {                                ! from the delivery-carryover table
+    condition AllocationSwitch == 2 .and. (month >= MAR .and. month <= MAY)
+    value min(AnnDelCapEst, CVP_Delivery_South[FAM])}
   case MarMay {
     condition month >= MAR .and. month <= MAY
     value min(AnnDelCapEst, Export_Index_CVP_adj/factCVP_AprAug) }

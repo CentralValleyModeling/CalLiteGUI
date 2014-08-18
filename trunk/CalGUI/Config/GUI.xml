@@ -1701,7 +1701,7 @@
 									gridwidth="2" />
 							</radiobutton>
 							<radiobutton id="op_rdb2" name="op_rdb2"
-								text="Forecast Allocation Model" selected="false" enabled="false">
+								text="Forecast Allocation Model" selected="false" enabled="true">
 								<gridbagconstraints insets="10,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="2"
 									gridwidth="2" />

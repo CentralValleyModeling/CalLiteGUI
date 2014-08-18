@@ -252,8 +252,38 @@ define deltar_drymin {
     value      0}
 }
 
+! Get annual delivery from allocation model
+define SWPC_NTHRM_A56 {select Butte_TA from CAM_SWPDem_NOD where month= 99}
+define SWPC_STHRM_A56 {select Yuba_TA from CAM_SWPDem_NOD where month= 99}
+define NBV_A56 {select NB_TA from CAM_SWPDem_NOD where month= 99}
+
+define fam_swpdel {
+  case JantoJun {
+    condition  month >=JAN .and. month <=may .and. AllocationSwitch==2
+    value      SWP_Delivery[FAM] + 64.5 + SWPC_NTHRM_A56 + SWPC_STHRM_A56 + NBV_A56}
+  case start {
+    condition  wateryear==1922 .and. month==oct
+    value      0.}
+  case otherwise {
+    condition  always
+    value      0.}
+}
+define fam_swpdel_dv {alias fam_swpdel kind 'swp-delivery' units 'TAF'}
+
 ! This implements the two SL adjustments defined in the previous lines
 define swp_allocation_1 {
+      case FAM_IF{
+      	condition AllocationSwitch == 2 .and. int(BanksIFSwitch) == 1
+      	value max(fam_swpdel, deltar_drymin) 
+      }   
+      case FAM_BO{
+      	condition AllocationSwitch == 2 .and. int(RunBasis_DLTSW) == 2
+      	value max(min(fam_swpdel,deltar_expmax),deltar_drymin) 
+      }  
+      case FAM_Other{
+      	condition AllocationSwitch == 2
+      	value max(fam_swpdel, deltar_drymin) 
+      }
 	  case IF_ {
     	condition 	int(BanksIFSwitch) == 1
 		value		max(wsidi_swpdel,deltar_drymin)}
