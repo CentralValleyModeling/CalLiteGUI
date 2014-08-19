@@ -3,7 +3,7 @@ define pct_sjr_exp {value .125} !SJR IE level - Allowable percent of SJR flow th
 
 define(fm) max_swp_sjr_ie_fm {
 	case AprMay{
-		condition mv($m)==Apr .or. mv($m)==May
+		condition (mv($m)==Apr .or. mv($m)==May) .and. RunBasis_DLTSW==2
 		value max(700.,pct_sjr_exp*I33B_fm($m)*taf_cfs($m))*cfs_taf($m)
 	}
 	case other{
@@ -14,7 +14,7 @@ define(fm) max_swp_sjr_ie_fm {
 
 define(fm) max_cvp_sjr_ie_fm {
 	case AprMay{
-		condition mv($m)==Apr .or. mv($m)==May
+		condition (mv($m)==Apr .or. mv($m)==May) .and. RunBasis_DLTSW==2
 		value max(800.,pct_sjr_exp*I33B_fm($m)*taf_cfs($m))*cfs_taf($m)
 	}
 	case other{

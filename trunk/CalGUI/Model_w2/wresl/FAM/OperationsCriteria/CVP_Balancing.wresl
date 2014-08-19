@@ -7,7 +7,7 @@
 
 ! Ryan Wilbur 12-14-03
 
-define cvp_res_tar_adj {value 0.8}
+define cvp_res_tar_adj {value 0.6}
 
 ! trinity:
 ! May:
