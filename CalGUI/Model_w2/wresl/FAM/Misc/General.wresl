@@ -50,3 +50,5 @@ define wyt_SHASTA_cvp {
         from        wytypes
         where       wateryear=wateryear}
 }
+
+define RunBasis_DLTSW {select Option from GUI_RunBasis where Index=1}

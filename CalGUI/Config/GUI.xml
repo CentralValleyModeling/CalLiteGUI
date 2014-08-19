@@ -1752,13 +1752,13 @@
 								gridwidth="2" />
 							<label
 								text="Choose forecast allocation method to use instead of WSI/DI for both projects."
-								enabled="false">
+								enabled="True">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
 									gridwidth="2" />
 							</label>
 							<label text="Model will search for an optimal allocation percentage."
-								enabled="false">
+								enabled="True">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
 									gridwidth="2" />
@@ -1779,7 +1779,7 @@
 										gridwidth="1" />
 								</radiobutton>
 							</buttongroup>
-							<checkbox id="op_ckbSWP" name="op_ckbSWP" enabled="false"
+							<checkbox id="op_ckbSWP" name="op_ckbSWP" enabled="false" visible ="False"
 								text="Use Forecast Allocation Model for SWP" checked="true">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5"
@@ -1798,7 +1798,7 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="6"
 									gridwidth="1" />
 							</numtextfield>
-							<checkbox id="op_ckbCWP" name="op_ckbCWP" enabled="false"
+							<checkbox id="op_ckbCWP" name="op_ckbCWP" enabled="false" visible ="False"
 								text="Use Forecast Allocation Model for CVP" checked="true">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="10"

@@ -3,10 +3,26 @@
 ! Hongbing Yin 1/16/04
 
 ! trinity balance storage:
-goal(fm) set_S1_fm {S_Trnty($m) = S_Trnty($m-1) + I1_fm($m) - D1_fm($m) - C1_fm($m) - E1_fm($m)}
+goal(fm) set_S1_fm {
+	lhs S_Trnty($m)
+	case allmonths{
+		condition always
+		rhs S_Trnty($m-1) + I1_fm($m) - D1_fm($m) - C1_fm($m) - E1_fm($m)
+		lhs<rhs penalty 1000000 
+		lhs>rhs penalty 1000000
+	}
+}
 					    
 ! whiskeytown balance storage:
-goal(fm) set_S3_fm {S_Wkytn($m) = S_Wkytn($m-1) + I2_fm($m) + D1_fm($m) - D2_fm($m) - C2_fm($m) - E2_fm($m)}
+goal(fm) set_S3_fm {
+	lhs S_Wkytn($m)
+	case allmonths{
+		condition always
+		rhs S_Wkytn($m-1) + I2_fm($m) + D1_fm($m) - D2_fm($m) - C2_fm($m) - E2_fm($m)
+		lhs<rhs penalty 1000000 
+		lhs>rhs penalty 1000000
+	}
+}
 
 ! shasta balance storage:
 goal(fm) set_S4_fm {
