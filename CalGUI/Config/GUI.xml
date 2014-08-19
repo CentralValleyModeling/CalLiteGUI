@@ -1751,7 +1751,7 @@
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="3"
 								gridwidth="2" />
 							<label
-								text="Choose forecast allocation method to use instead of WSI/DI for either or both projects."
+								text="Choose forecast allocation method to use instead of WSI/DI for both projects."
 								enabled="false">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
@@ -1785,14 +1785,14 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="5"
 									gridwidth="1" />
 							</checkbox>
-							<label id="op_ntfSWP_t" name="op_ntfSTWP_t" text="SWP Allocation (%)"
+							<label id="op_ntfSWP_t" name="op_ntfSTWP_t" text="SWP Allocation (%)" visible ="False"
 								enabled="false">
 								<gridbagconstraints insets="0,20,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="6"
 									gridwidth="1" />
 							</label>
 							<numtextfield id="op_ntfSWP" name="op_ntfSWP" size="50,20"
-								minval="0" maxval="100" text="100" enabled="false" columns="5"
+								minval="0" maxval="100" text="100" enabled="false" visible = "false" columns="5"
 								HorizontalAlignment="RIGHT">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="6"
@@ -1805,26 +1805,26 @@
 									gridwidth="1" />
 							</checkbox>
 							<label id="op_ntfCWP1_t" name="op_ntfCWP1_t" text="CVP System (%)"
-								enabled="false">
+								enabled="false"  visible = "false">
 								<gridbagconstraints insets="0,20,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="11"
 									gridwidth="1" />
 							</label>
 							<numtextfield id="op_ntfCWP1" name="op_ntfCWP1"
-								size="50,20" MinVal="0" MaxVal="100" text="50" enabled="false"
+								size="50,20" MinVal="0" MaxVal="100" text="50" enabled="false" visible = "false"
 								columns="5" HorizontalAlignment="RIGHT">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="11"
 									gridwidth="1" />
 							</numtextfield>
 							<label id="op_ntfCWP2_t" name="op_ntfCWP2_t" text="CVP SOD (%)"
-								enabled="false">
+								enabled="false"  visible = "false">
 								<gridbagconstraints insets="0,20,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="12"
 									gridwidth="1" />
 							</label>
 							<numtextfield id="op_ntfCWP2" name="op_ntfCWP2"
-								size="50,20" minval="0" maxval="100" text="1" enabled="false"
+								size="50,20" minval="0" maxval="100" text="1" enabled="false"  visible = "false"
 								columns="5" HorizontalAlignment="RIGHT">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="1" gridy="12"
