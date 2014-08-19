@@ -804,7 +804,7 @@ public class RunUtils {
 		try {
 
 			Runtime rt = Runtime.getRuntime();
-			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
+			Process proc = rt.exec("cmd /c start /min " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
 			int exitVal = proc.waitFor();
 			log.debug("Return from batch run " + exitVal);
 		} catch (Throwable t) {
@@ -947,7 +947,7 @@ public class RunUtils {
 			batchFilePW.println(del);
 
 			for (String subBat : subBatchFileNameArray) {
-				batchFilePW.println("start /wait " + subBat);
+				batchFilePW.println("start /wait /min " + subBat);
 				batchFilePW.println();
 			}
 			// for (String subBat : subBatchFileNameArray) {

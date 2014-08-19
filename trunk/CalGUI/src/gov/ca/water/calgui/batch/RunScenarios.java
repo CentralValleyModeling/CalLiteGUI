@@ -16,8 +16,8 @@ public class RunScenarios {
 			String fn = "run_" + sc + ".bat";
 			Runtime rt = Runtime.getRuntime();
 			// Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
-			Process proc = rt.exec("cmd /c start " + System.getProperty("user.dir") + "\\" + fn);
-			 proc.waitFor();
+			Process proc = rt.exec("cmd /c start /min " + System.getProperty("user.dir") + "\\" + fn);
+			proc.waitFor();
 		}
 	}
 
