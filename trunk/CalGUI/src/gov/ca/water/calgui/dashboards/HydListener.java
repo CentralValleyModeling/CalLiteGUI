@@ -190,7 +190,7 @@ public class HydListener implements ItemListener {
 		// Yes or no: first determine which GUI_link4.table row to use
 
 		String hydDSSStrings[] = GUIUtils.getHydDSSStrings(swix);
-
+		System.out.println(hydDSSStrings[0]);
 		if (hydDSSStrings[1] != null) {
 
 			// Then update GUI values, files in Default\Lookup\directory
