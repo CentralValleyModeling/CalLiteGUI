@@ -9,11 +9,11 @@ CVP exports include Cross valley canal (CVC) and CVP Wheelings using TD and IF w
 
 define D_Banks_IF {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
 define D_Banks_TD {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
-goal setD_BanksTDIF { D_Banks = D_Banks_TD + D_Banks_IF }
+goal setD_BanksTDIF { D_Banks = D_Banks_TD}! + D_Banks_IF }
 
 define D_Jones_TD {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
 define D_Jones_IF {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
-goal setD_JonesTDIF { D_Jones = D_Jones_TD + D_Jones_IF }
+goal setD_JonesTDIF { D_Jones = D_Jones_TD}!  + D_Jones_IF }
 
 
 !define D_Jones_CVP {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
