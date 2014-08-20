@@ -1,4 +1,4 @@
-!!! This code implements the BDCP assumption to maintain limited flushing for south Delta water quality.
+!!! This code implements the CONV_ assumption to maintain limited flushing for south Delta water quality.
 !!! During Jul - Nov south delta exports are preferred to pump up to 3,000 cfs before diverting from north.
 !!! Assumes that D418_TD and D419_TD have a weight of negative two (-2).
 

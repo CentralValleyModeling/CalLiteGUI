@@ -1,4 +1,4 @@
-! These values tailored to address BDCP related Temperature Control Objectives
+! These values tailored to address CONV_ related Temperature Control Objectives
 SAC_TemperatureControl
 month   trigger    flow
 1              0       0

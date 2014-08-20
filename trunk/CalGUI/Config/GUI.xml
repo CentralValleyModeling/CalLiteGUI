@@ -674,24 +674,24 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 							<checkbox name="fac_ckb4" id="fac_ckb4" text="Temperance Flat"
-								minimumsize="240,20" enabled="false">
+								minimumsize="240,20" enabled="false" >
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
 								text="Sacramento Valley Conjunctive Use" minimumsize="240,20"
-								enabled="false">
+								enabled="false" >
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 							</checkbox>
 						</panel>
-						<panel resizeable="false"
+						<panel resizeable="false" visible ="False"
 							border="TitledBorder(Conveyance Facility Options)" preferredsize="260,80"
 							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							<checkbox name="fac_ckb6" id="fac_ckb6" text="Isolated Facility"
-								minimumsize="240,20" enabled="true" selected="false">
+								minimumsize="240,20" enabled="false" visible ="true" selected="false">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
 							</checkbox>
@@ -701,7 +701,7 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="1" />
 							</checkbox>
 						</panel>
-						<panel resizeable="false"
+						<panel resizeable="false" visible="false"
 							border="TitledBorder(Habitat Restoration Options)" preferredsize="260,100"
 							layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
