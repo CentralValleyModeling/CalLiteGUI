@@ -417,19 +417,21 @@ public class DSSGrabber2 {
 		private String dssname;
 
 		private GetOneSeriesSW(String filename, String dssname) {
+			WRIMSGUILinks.setStatus("STARTING!");
 			this.filename = filename;
 			this.dssname = dssname;
-			publish("Reading " + dssname + " from " + filename + ".");
 		}
 
 		@Override
 		protected TimeSeriesContainer doInBackground() throws Exception {
+			publish("Reading " + dssname + " from " + filename + ".");
 			return getOneSeries_(filename, dssname);
 		}
 
 		@Override
 		protected void process(final List<String> chunks) {
 			WRIMSGUILinks.setStatus(chunks.get(chunks.size() - 1));
+
 		}
 
 		@Override
