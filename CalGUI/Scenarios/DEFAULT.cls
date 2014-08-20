@@ -21,12 +21,12 @@ hyd_rdb3|true
 hyd_ANNKM|true
 btnDSS_Auto|true
 btnDSS_Manual|false
-hyd_DSS_SV|CL_FUTURE_BO_20140305_SV.DSS
+hyd_DSS_SV|CL_FUTURE_BO_20140808_SV.DSS
 hyd_DSS_SV_F|2020D09E
 hyd_DSS_Init|CL_INIT.dss
 hyd_DSS_Init_F|INITIAL
 hyd_DSS_Index|2210
-txf_Manual_SV|CL_FUTURE_BO_20140429_SV.DSS
+txf_Manual_SV|CL_FUTURE_BO_20140808_SV.DSS
 txf_Manual_SV_F|2020D09E
 txf_Manual_Init|CL_INIT.dss
 txf_Manual_Init_F|INITIAL
@@ -52,7 +52,7 @@ fac_ckb2|false
 fac_ckb3|false
 fac_ckb4|false
 fac_ckb5|false
-fac_ckb6|true
+fac_ckb6|false
 fac_ckb7|false
 fac_ckb8|false
 fac_ckb9|false

@@ -9,7 +9,7 @@ Alternate between 1500 and 3000 cfs for hi flow criteria.
 */
 
 !This portion of the code deals with EXPORT restrictions during the pulse period.
-define VAMP_reqdv_VAMP {timeseries kind 'flow-requirement' units 'cfs'}
+if int(Dynamic_SJR)==1 {define VAMP_reqdv_VAMP {timeseries kind 'flow-requirement' units 'cfs'}}
 
 define VAMP_reqdv_VAMP_set {
     case AprMayDynamic {

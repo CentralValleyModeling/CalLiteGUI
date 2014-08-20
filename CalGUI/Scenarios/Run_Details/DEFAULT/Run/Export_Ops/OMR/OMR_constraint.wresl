@@ -150,7 +150,7 @@ define OMR_RPAdv {alias OMR_RPA kind 'OUTPUT' units 'CFS'}
 define Qexp_pulseperiod  {
        case VAMP {
 !                condition month>=APR .and. month<=MAY .and. OMR_RPA >= -12000.
-                condition month>=APR .and. month<=MAY .and. int(B2Action3)==1 .and. OMR_RPA >= -12000.
+                condition month>=APR .and. month<=MAY .and. int(B2Action3)==1 .and. int(B2Action3On)==1 .and. OMR_RPA >= -12000.
                 value PulseExpRes}
        case None {
                 condition always
