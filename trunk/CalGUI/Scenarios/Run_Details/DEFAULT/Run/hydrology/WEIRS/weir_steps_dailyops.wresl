@@ -79,7 +79,7 @@ define qsacFth29dv {alias qsacFth29 kind 'flow-channel' units 'cfs'}
 define qsacFth30dv {alias qsacFth30 kind 'flow-channel' units 'cfs'}
 define qsacFth31dv {alias qsacFth31 kind 'flow-channel' units 'cfs'}
 
-!Estimation of additional Freemont weir monthly average spill based on daily spill estimations for flows over 23,100 cfs according to BDCP proposed notch.
+!Estimation of additional Freemont weir monthly average spill based on daily spill estimations for flows over 23,100 cfs according to CONV_ proposed notch.
 !Daily operation time frame defined in FRENothc_OnOff.table
 
 define gate11flow {      !Flow for the gate at 11.5 ft elevation
@@ -88,7 +88,7 @@ define gate11flow {      !Flow for the gate at 11.5 ft elevation
     case other { condition always
         value 0. }  }
 
-!Daily operation of notch. Modify lookup table FRENotch_OnOff to indicate the days the notch will be operating. BDCP Proposed Operation: DEC 1st through APR 30th
+!Daily operation of notch. Modify lookup table FRENotch_OnOff to indicate the days the notch will be operating. CONV_ Proposed Operation: DEC 1st through APR 30th
 define Notch_OnOff1 {select switch from FRE_Weir_Notch_OnOff where Day=1, month=month}
 define Notch_OnOff2 {select switch from FRE_Weir_Notch_OnOff where Day=2, month=month}
 define Notch_OnOff3 {select switch from FRE_Weir_Notch_OnOff where Day=3, month=month}

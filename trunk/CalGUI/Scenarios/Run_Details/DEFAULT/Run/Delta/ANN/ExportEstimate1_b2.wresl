@@ -93,25 +93,25 @@ define CVPexportcap {value maxJonescalc+ CVPDedBanksSwitch*BanksMaxAllowCVP}
 
 define EstCVPMaxExp_B2 {
        case Action2On {
-            condition month >= DEC .and. month <= JAN .and. int(B2Action2)==1
+            condition month >= DEC .and. month <= JAN .and. int(B2Action2)==1 .and. int(B2Action2On)==1
             value     max(JonesMinPumpLevel,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base) } ! - redAction2)}
        case Action7On {
-            condition month >= FEB .and. month <= MAR .and. int(B2Action7)==1
+            condition month >= FEB .and. month <= MAR .and. int(B2Action7)==1 .and. int(B2Action7On)==1
             value     max(JonesMinPumpLevel,D_Jones_cvp_B2Base + D_Banks_cvp_B2Base) } ! - (ResAction7/2.)*taf_cfs)}
        case Action6On {
-            condition month == APR .and. int(B2Action6)==1
+            condition month == APR .and. int(B2Action6)==1 .and. int(B2Action6On)==1
             value     PulseExpRes*0.5 }
        case Action4On {
-            condition month == MAY .and. int(B2Action4)==1
+            condition month == MAY .and. int(B2Action4)==1 .and. int(B2Action4On)==1
             value     PulseExpRes*0.5 }
        case Action3OnAPR {
-            condition month == APR .and. int(B2Action3)==1
+            condition month == APR .and. int(B2Action3)==1 .and. int(B2Action3On)==1
             value     min(min(CVPexportcap, max(0.0, EstCVPSodDem + EstCVPSodRC)*14.0/daysin + PulseExpRes*0.5*16.0/daysin), JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin) }
        case Action3OnMAY {
-            condition month == MAY .and. int(B2Action3)==1
+            condition month == MAY .and. int(B2Action3)==1 .and. int(B2Action3On)==1
             value     min(3000.*16.0/daysin + PulseExpRes*0.5*15.0/daysin, JonesCapPermit*14.0/daysin + PulseExpRes*0.5*16.0/daysin) }
        case Action5On {
-            condition month == JUN .and. int(B2Action5)==1
+            condition month == JUN .and. int(B2Action5)==1 .and. int(B2Action5On)==1
             value     min(D_Jones_cvp_TD(-1)*0.5 + D_Banks_cvp_TD(-1)*0.5 + min(CVPexportcap, max(0.0, EstCVPSodDem + EstCVPSodRC)*0.5), 3000.0) }
        case Action5Off {
             condition month == JUN

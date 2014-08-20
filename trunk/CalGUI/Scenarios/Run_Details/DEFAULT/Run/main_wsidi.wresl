@@ -21,48 +21,55 @@ initial {
     svar LOD_DLTSW {select Option from GUI_HydroClimate where Index=1} 
     svar SLR_DLTSW {select Option from GUI_HydroClimate where Index=3}
 	
-	svar JonesIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 1}
-	svar BanksIFSwitch   {select Option from GUI_BDCP_FacilityControl where Index = 2}
-	svar CCWDIFSwitch    {select Option from GUI_BDCP_FacilityControl where Index = 3}
+	svar JonesIFSwitch   {value 0}
+	svar BanksIFSwitch   {value 0}
+	svar CCWDIFSwitch    {value 0}
 	svar LVEM_switch	 {select Option from GUI_LosVaqueros where Index = 1}
+	svar AllocationSwitch   {select Option from GUI_Operations where Index=5} !Allocation method
 }
- 
+
 SEQUENCE CYCLE1 {
-    model   SJRBASE
-    condition int(Dynamic_SJR)==1
+    model   FAM
+    condition month>=Jan .and. month<=May .and. AllocationSwitch==2
     order   1
-    }
+	}
+ 
 SEQUENCE CYCLE2 {
-    model   SJR_WQ1
+    model   SJRBASE
     condition int(Dynamic_SJR)==1
     order   2
     }
 SEQUENCE CYCLE3 {
-    model   SJR_PULSE
-    condition (month==APR .or. month==MAY) .and. int(Dynamic_SJR)==1
+    model   SJR_WQ1
+    condition int(Dynamic_SJR)==1
     order   3
     }
 SEQUENCE CYCLE4 {
-    model   SJR_WQ2
-     condition (month==APR .or. month==MAY) .and. int(Dynamic_SJR)==1
+    model   SJR_PULSE
+    condition (month==APR .or. month==MAY) .and. int(Dynamic_SJR)==1
     order   4
     }
 SEQUENCE CYCLE5 {
+    model   SJR_WQ2
+     condition (month==APR .or. month==MAY) .and. int(Dynamic_SJR)==1
+    order   5
+    }
+SEQUENCE CYCLE6 {
     model   VAMP_AND_DO
     condition month>=APR .and. month<=SEP .and. int(Dynamic_SJR)==1
-    order   5
-    }   
-SEQUENCE CYCLE6 {
-    model   Upstream
     order   6
-    }
+    }   
 SEQUENCE CYCLE7 {
-    model   BASE
+    model   Upstream
     order   7
     }
 SEQUENCE CYCLE8 {
-    model   B2_BO
+    model   BASE
     order   8
+    }
+SEQUENCE CYCLE9 {
+    model   B2_BO
+    order   9
     }    
 /***SEQUENCE CYCLE9 {
     model   Daily1
@@ -73,9 +80,9 @@ SEQUENCE CYCLE10 {
     order   10
     }
 ***/    
-SEQUENCE CYCLE9 {
+SEQUENCE CYCLE10 {
     model   Wheeling
-    order   9
+    order   10
     }    
     
 model block1 {
@@ -297,7 +304,49 @@ MODEL LVEM3 {
 	INCLUDE 'CCWD\WQ_Calcs\WQ_Calcs_B2_BO.wresl'
 }
 
-MODEL SJRBASE {         !CYCLE 1
+MODEL FAM {              !CYCLE 1
+    define S44 {std kind 'STORAGE' units 'TAF'}
+    INCLUDE 'FAM\Misc\General.wresl'
+    INCLUDE 'FAM\Misc\GeneralInfo_Forecasted_CAMOnly2.wresl'
+
+    INCLUDE 'FAM\Network\channels.wresl'
+    INCLUDE 'FAM\Network\diversions.wresl'
+    INCLUDE 'FAM\Network\Inflows_Forecasted_90.wresl'
+    INCLUDE 'FAM\Regulations\WYT_Forecasted_90.wresl'
+    INCLUDE 'FAM\Demands\OrovilleDemands_Forecasted.wresl'
+    INCLUDE 'FAM\Demands\FolsomDemands_Forecasted.wresl'
+    INCLUDE 'FAM\Network\evaporation.wresl'
+    INCLUDE 'FAM\Network\noninfeasibility.wresl'
+    INCLUDE 'FAM\Network\storage.wresl'
+    INCLUDE 'FAM\Network\connectivity.wresl'
+
+    INCLUDE 'FAM\Demands\CVP.wresl'
+    INCLUDE 'FAM\Demands\North_NCP_Forecasted.wresl'
+    INCLUDE 'FAM\Demands\South_NCP_Forecasted.wresl'
+    INCLUDE 'FAM\Demands\SWP_PA.wresl'  ! deliver CO specified in table
+
+    INCLUDE 'FAM\OperationsCriteria\FloodConservation.wresl'
+    INCLUDE 'FAM\OperationsCriteria\CVP_Balancing.wresl'
+    INCLUDE 'FAM\OperationsCriteria\SWP_Carryover_X.wresl'
+    INCLUDE 'FAM\OperationsCriteria\IF.wresl'
+
+    INCLUDE 'FAM\Regulations\MinimumFlows_Forecasted.wresl'
+    INCLUDE 'FAM\Regulations\EIRatio.wresl'
+    INCLUDE 'FAM\Regulations\AprMayExport.wresl'
+    INCLUDE 'FAM\Regulations\BanksIncrease.wresl'
+    INCLUDE 'FAM\Regulations\DO_Forecasted.wresl'
+    INCLUDE 'FAM\Regulations\COA.wresl'
+
+    INCLUDE 'FAM\Regulations\OMR_low.wresl'
+    INCLUDE 'FAM\Regulations\SJR_IE.wresl'
+
+    INCLUDE 'FAM\Regulations\pumping_limit.wresl'
+
+    INCLUDE 'FAM\OperationsCriteria\Art21.wresl'
+    INCLUDE 'FAM\Misc\Objective.wresl'
+}
+
+MODEL SJRBASE {         !CYCLE 2
     INCLUDE model block1
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'
@@ -310,7 +359,7 @@ MODEL SJRBASE {         !CYCLE 1
     INCLUDE '\sanjoaquin\various\bounds_cycles\bounds_cycle1.wresl'
   }
 
-MODEL SJR_WQ1 {         !CYCLE 2
+MODEL SJR_WQ1 {         !CYCLE 3
     INCLUDE model block1
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'
@@ -323,7 +372,7 @@ MODEL SJR_WQ1 {         !CYCLE 2
     INCLUDE '\sanjoaquin\various\bounds_cycles\bounds_cycle2.wresl'
 }
 
-MODEL SJR_PULSE {            !CYCLE 3
+MODEL SJR_PULSE {            !CYCLE 4
     INCLUDE model block1
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'   
@@ -336,7 +385,7 @@ MODEL SJR_PULSE {            !CYCLE 3
     INCLUDE '\sanjoaquin\various\bounds_cycles\bounds_cycle3.wresl'
 }
 
-MODEL SJR_WQ2 {         !CYCLE 4
+MODEL SJR_WQ2 {         !CYCLE 5
     INCLUDE model block1
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'   
@@ -349,8 +398,9 @@ MODEL SJR_WQ2 {         !CYCLE 4
     INCLUDE '\sanjoaquin\various\bounds_cycles\bounds_cycle4.wresl'
 }
 
-MODEL VAMP_AND_DO {           !CYCLE 5
+MODEL VAMP_AND_DO {           !CYCLE 6
     INCLUDE model block1
+	
 
 !    INCLUDE 'sanjoaquin\Friant\SJR_Rest_Req_Off_Local.wresl'  
     INCLUDE '\sanjoaquin\Friant\SJR_Rest_Pulse_Local.wresl'     !Turns on SJRR Operations
@@ -363,7 +413,7 @@ MODEL VAMP_AND_DO {           !CYCLE 5
     INCLUDE '\sanjoaquin\various\bounds_cycles\bounds_cycle5.wresl'
 }
     
-MODEL Upstream {         !CYCLE 6
+MODEL Upstream {         !CYCLE 7
 INCLUDE model Block2
 INCLUDE model Block3
 
@@ -383,7 +433,7 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa_Up.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_up.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates_D1485_Up.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
@@ -392,11 +442,11 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'
+INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'
    
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
 
@@ -409,7 +459,7 @@ if LVEM_switch > 0.5 {
 }
 
 
-MODEL BASE {         !CYCLE 7
+MODEL BASE {         !CYCLE 8
 INCLUDE model Block2
 INCLUDE model Block3
 
@@ -429,7 +479,7 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
@@ -438,13 +488,13 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
-if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_UPSTREAM.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
-else {INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'   }
+!RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_UPSTREAM.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
+INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'   
 
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE_INIT.wresl'
 
@@ -459,13 +509,13 @@ if LVEM_switch > 0.5 {
 }
 
 
-MODEL B2_BO {         !CYCLE 8
+MODEL B2_BO {         !CYCLE 9
 INCLUDE model Block2
 INCLUDE model Block3
 
 INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_BASE.wresl'
 
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 INCLUDE model Block4
 
 if LVEM_switch > 0.5 {
@@ -506,13 +556,13 @@ INCLUDE [LOCAL] 'Delta\xc-gates.wresl'
 !INCLUDE[LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
-if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_BASE.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
-else {INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'   }
+!RH08142014 if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_BASE.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
+INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'   
 
 !INCLUDE 'output\DV_ouput.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
@@ -528,10 +578,10 @@ if LVEM_switch > 0.5 {
 }
 
 
-MODEL Wheeling {         !CYCLE 9
+MODEL Wheeling {         !CYCLE 10
 INCLUDE model Block2
 INCLUDE model Block3
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl' 
 INCLUDE model Block4
 
 if LVEM_switch > 0.5 {
@@ -580,16 +630,16 @@ else{INCLUDE 'Wheeling\wheelfixes.wresl'}
 !INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
-if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_B2_BO.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	
-INCLUDE [LOCAL] 'output\cycle_output_IF.wresl'		}
-else {
+!RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 { 
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_B2_BO.wresl' 
+!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	
+!RH08142014 INCLUDE [LOCAL] 'output\cycle_output_IF.wresl'		} 
+!RH08142014 else {                                                     
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
-INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_off.wresl'	}
+INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'	
 
 INCLUDE [LOCAL] 'output\DV_ouput.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
@@ -603,7 +653,6 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\CalLiteConnection.wresl'
 	INCLUDE 'CCWD\WQ_Calcs\WQ_Calcs_B2_BO.wresl'
 }
-
 INCLUDE 'wsi_di_gen\wsi_di_gen.wresl'
 }
 
