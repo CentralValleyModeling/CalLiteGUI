@@ -45,6 +45,11 @@ public class RunListener implements ItemListener {
 
 			if (cName.startsWith("run_rdb")) {
 
+				// Handling for FAM enabling
+				if (cName.equals("run_rdbD1485")) {
+					((JRadioButton) swix.find("op_rdb2")).setEnabled(ie.getStateChange() != ItemEvent.SELECTED);
+				}
+
 				// Handling for update of DSS files
 
 				// Confirm CWP/SWP overwrite;
