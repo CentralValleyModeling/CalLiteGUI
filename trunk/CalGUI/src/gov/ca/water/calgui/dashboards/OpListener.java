@@ -43,6 +43,10 @@ public class OpListener implements ItemListener {
 					JPanel pan2 = (JPanel) swix.find("op_pan2");
 					GUIUtils.toggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JRadioButton.class);
 					GUIUtils.toggleEnComponentAndChildren(pan2, e.getStateChange() == ItemEvent.SELECTED, JCheckBox.class);
+
+					// Toggle run_rdbD1485
+					((JRadioButton) swix.find("run_rdbD1485")).setEnabled(e.getStateChange() != ItemEvent.SELECTED);
+
 				} else if (cName.startsWith("op_rdb3")) {
 					JButton btn = (JButton) swix.find("op_btn3");
 					btn.setEnabled((e.getStateChange() == ItemEvent.SELECTED));
