@@ -433,7 +433,6 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa_Up.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_up.wresl'
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates_D1485_Up.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
@@ -479,7 +478,6 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroCVC.wresl'
 INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl' 
 INCLUDE [LOCAL] 'COA\coa.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1.wresl'
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates.wresl'}
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
@@ -491,9 +489,7 @@ if LVEM_switch > 0.5 {
 INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
-!RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_UPSTREAM.wresl'
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
+
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
 
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE_INIT.wresl'
@@ -515,7 +511,6 @@ INCLUDE model Block3
 
 INCLUDE [LOCAL] 'hydrology\WEIRS\weir_steps_dailyops_BASE.wresl'
 
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl'
 INCLUDE model Block4
 
 if LVEM_switch > 0.5 {
@@ -559,9 +554,6 @@ INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
-!RH08142014 if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_BASE.wresl'
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
 
 !INCLUDE 'output\DV_ouput.wresl'
@@ -581,7 +573,6 @@ if LVEM_switch > 0.5 {
 MODEL Wheeling {         !CYCLE 10
 INCLUDE model Block2
 INCLUDE model Block3
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IsolatedFacility.wresl' 
 INCLUDE model Block4
 
 if LVEM_switch > 0.5 {
@@ -632,12 +623,7 @@ INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
 INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
-
-!RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 { 
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_B2_BO.wresl' 
-!RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	
-!RH08142014 INCLUDE [LOCAL] 'output\cycle_output_IF.wresl'		} 
-!RH08142014 else {                                                     
+                                                  
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'	
 

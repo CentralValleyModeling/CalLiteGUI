@@ -76,11 +76,6 @@ fac_rdb0	GUI_EnlargedShasta.table	2	0	Size of enlargement: 0	Facilities	n/a	n/a	
 fac_rdb1	GUI_EnlargedShasta.table	2	1	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_rdb2	GUI_EnlargedShasta.table	2	2	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_rdb3	GUI_EnlargedShasta.table	2	3	"Size of enlargement: 1 = 6.5 feet (256 taf), 2 = 12.5 feet (443 taf), 3 = 18.5 feet (634 taf)"	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb42	GUI_BDCP_FacilityControl.table	1	0	JonesIFSwitch - Jones IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb43	GUI_BDCP_FacilityControl.table	2	0	BanksIFSwitch - Banks IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb44	GUI_BDCP_FacilityControl.table	3	0	CCWDIFSwitch - CCWD IF Export: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb45	GUI_BDCP_FacilityControl.table	4	0	TDExports: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
-fac_ckb8	GUI_BDCP_FacilityControl.table	5	0	fremont_notch_on - Fremont Weir Notch ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a  
 fac_ckb3	GUI_LosVaqueros.table	1	0	LVEM_switch - Los Vaqueros Expansion: ON(1) OFF(0)	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_txf8	GUI_LosVaqueros.table	2	-1	LVEM_Cap - Los Vaqueros User-Defined Maximum Capacity	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
 fac_txf9	GUI_LosVaqueros.table	3	-1	LVEM_VC - Alternate Intake (Victoria Canal) Diversion Capacity [250 cfs]	Facilities	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a
