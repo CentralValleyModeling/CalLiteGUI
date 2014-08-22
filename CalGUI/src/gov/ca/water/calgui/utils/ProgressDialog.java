@@ -67,7 +67,7 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		setLocation((dim.width - 400) / 2, (dim.height - 200) / 2);
 		java.net.URL imgURL = getClass().getResource("/images/CalLiteIcon.png");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(imgURL));
-		setAlwaysOnTop(false);
+		setAlwaysOnTop(true);
 		setModal(false);
 
 	}
