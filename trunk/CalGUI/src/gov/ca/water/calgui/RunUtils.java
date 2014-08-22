@@ -847,7 +847,7 @@ public class RunUtils {
 				String batchText = "%~dp0\\Model_w2\\runConfig_calgui " + configFilePath;
 
 				if (isParallel && i < scenList.size() - 1) {
-					batchFilePW.println("start " + batchText);
+					batchFilePW.println("start /min " + batchText);
 					batchFilePW.println("timeout 3");
 				} else {
 					batchFilePW.println("@title = \"" + batchText + "\"");
