@@ -442,11 +442,11 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria.wresl'
-INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'
+INCLUDE [LOCAL] 'Delta\IF_off.wresl'
    
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
 
@@ -488,13 +488,13 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 {
 !RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_UPSTREAM.wresl'
 !RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
-INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'   
+INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
 
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE_INIT.wresl'
 
@@ -556,13 +556,13 @@ INCLUDE [LOCAL] 'Delta\xc-gates.wresl'
 !INCLUDE[LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !RH08142014 if int(banksifswitch) > 0.5 .or. int(jonesifswitch) > 0.5 {
 !RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria_DailyOps_BASE.wresl'
 !RH08142014 INCLUDE [LOCAL] 'Delta\IsolatedFacility\IF_Daily_Constraint.wresl'	}
-INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'   
+INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
 
 !INCLUDE 'output\DV_ouput.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
@@ -630,7 +630,7 @@ else{INCLUDE 'Wheeling\wheelfixes.wresl'}
 !INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !RH08142014 if banksifswitch > 0.5 .or. jonesifswitch > 0.5 { 
@@ -639,7 +639,7 @@ INCLUDE [LOCAL] 'Delta\Conveyance\Split_IFTD.wresl'
 !RH08142014 INCLUDE [LOCAL] 'output\cycle_output_IF.wresl'		} 
 !RH08142014 else {                                                     
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
-INCLUDE [LOCAL] 'Delta\Conveyance\IF_off.wresl'	
+INCLUDE [LOCAL] 'Delta\IF_off.wresl'	
 
 INCLUDE [LOCAL] 'output\DV_ouput.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
