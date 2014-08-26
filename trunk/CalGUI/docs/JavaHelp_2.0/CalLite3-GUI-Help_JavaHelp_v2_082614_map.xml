@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
+
+<map version="1.0">
+  <mapID target="Dropdown Menus" url="menu-options.html"/>
+	<mapID target="Facilities" url="facilities.html"/>
+	<mapID target="Hydroclimate" url="hydroclimate.html"/>
+	<mapID target="Introduction" url="intro.html"/>
+	<mapID target="Operations" url="operations.html"/>
+	<mapID target="Regulations" url="regs.html"/>
+	<mapID target="Run Settings" url="run-settings.html"/>
+	<mapID target="Scenario Settings" url="scenario-settings.html"/>
+	<mapID target="Results" url="results.html"/>
+	<mapID target="Quick Results" url="quick.html"/>
+	<mapID target="Custom Results" url="custom.html"/>
+	<mapID target="Map View" url="map-view.html"/>
+	<mapID target="External PDF" url="ext-pdf.html"/>
+	<mapID target="Demands" url="demands.html"/>
+	<mapID target="D1641 Regulations" url="d1641.html"/>
+	<mapID target="BORPA regulations" url="borpa-reg.html"/>
+	<mapID target="Other regulations" url="other-regs.html"/>
+	<mapID target="imagembuhbedf679719990681748443" url="Images/imagembuhbedf679719990681748443.jpg"/>
+	<mapID target="Tutorial" url="tutorial.html"/>
+	<mapID target="toc" url="toc.htm" />
+  <mapID target="Cover_page" url="P.1_1.htm" />
+  <mapID target="CalLite_Help_1" url="P.2_1.htm" />
+  <mapID target="RemoteUrl82f5ff27" url="http://baydeltaoffice.water.ca.gov/modeling/hydrology/CalLite/index.cfm" />
+</map>

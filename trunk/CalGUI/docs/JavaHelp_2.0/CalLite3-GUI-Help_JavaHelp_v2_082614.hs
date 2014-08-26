@@ -4,8 +4,8 @@
 <helpset version="1.0">
   <title>CalLiteHelp_A</title>
    <maps>
-    <homeID>intro_html</homeID>
-    <mapref location="CalLite3-GUI-Help_JavaHelp20_082214_map.xml" />
+    <homeID>1_Introduction</homeID>
+    <mapref location="CalLite3-GUI-Help_JavaHelp_v2_082614_map.xml" />
   </maps>
 
   <view mergetype="javax.help.UniteAppendMerge">
@@ -13,7 +13,7 @@
     <label>Table of Contents</label>
     <label>Table of Contents</label>
     <type>javax.help.TOCView</type>
-    <data>CalLite3-GUI-Help_JavaHelp20_082214_toc.xml</data>
+    <data>CalLite3-GUI-Help_JavaHelp_v2_082614_toc.xml</data>
   </view>
 
   <view>
@@ -21,7 +21,7 @@
     <label>Index</label>
     <label>Index</label>
     <type>javax.help.IndexView</type>
-    <data>CalLite3-GUI-Help_JavaHelp20_082214_ndx.xml</data>
+    <data>CalLite3-GUI-Help_JavaHelp_v2_082614_ndx.xml</data>
   </view>
 
   <view>
@@ -29,7 +29,7 @@
     <label>Search</label>
     <label>Search</label>
     <type>javax.help.SearchView</type>
-    <data engine="com.sun.java.help.search.DefaultSearchEngine">CalLite3-GUI-Help_JavaHelp20_082214_JavaHelpSearch</data>
+    <data engine="com.sun.java.help.search.DefaultSearchEngine">CalLite3-GUI-Help_JavaHelp_v2_082614_JavaHelpSearch</data>
   </view>
 
 
