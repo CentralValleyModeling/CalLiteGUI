@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN" "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+<toc version="2.0">
+ <tocitem text="1. Introduction" target="1_Introduction" />
+ <tocitem text="2. Main Menu Options" target="Main_Menu_Options" />
+ <tocitem text="Scenario Settings" target="3_Scenario_Settings" >
+  <tocitem text="3.1. Run Settings" target="3_1_Run_Settings" />
+  <tocitem text="3.2. Hydroclimate" target="3_2_Hydroclimate" />
+  <tocitem text="3.3. Demands" target="3_3_Demands" />
+  <tocitem text="3.4. Facilities" target="3_4_Facilities" />
+  <tocitem text="3.5. Regulations" target="3_5_Regulations" >
+   <tocitem text="3.5.1. D1641 Regulations" target="3_5_1_D1641_Regulations" />
+   <tocitem text="3.5.2. BORPA regulations" target="3_5_2_BORPA_regulations" />
+   <tocitem text="3.5.3. Other regulations" target="3_5_3_Other_regulations" />
+   </tocitem>
+  <tocitem text="3.6. Operations" target="3_6_Operations" />
+  </tocitem>
+ <tocitem text="4. Results" target="4_Results" />
+ <tocitem text="Results">
+  <tocitem text="4.1. Quick" target="4_1_Quick" />
+  <tocitem text="4.2. Custom" target="4_2_Custom" />
+  <tocitem text="4.3. Schematics" target="4_3_Schematics" />
+  <tocitem text="4.4. External PDF" target="4_4_External_PDF" />
+  <tocitem text="4.5. Map Display" target="4_5_Map_Display" />
+  </tocitem>
+ <tocitem text="Tutorial">
+  <tocitem text="5. Tutorial" target="5_Tutorial" />
+  </tocitem>
+</toc>
