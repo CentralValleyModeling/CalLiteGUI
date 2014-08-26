@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="lib" path="lib/jh.jar"/>
 	<classpathentry excluding="**/.svn/|.svn/" kind="src" path="src"/>
 	<classpathentry kind="src" path="log4j"/>
 	<classpathentry kind="src" path="test"/>

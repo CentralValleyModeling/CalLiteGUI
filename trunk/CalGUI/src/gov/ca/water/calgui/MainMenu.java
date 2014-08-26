@@ -1155,8 +1155,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				JTabbedPane jtp = (JTabbedPane) swix.find("tabbedPane1");
 				int selIndex = jtp.getSelectedIndex();
 				String label = jtp.getTitleAt(selIndex);
-				helpViewer.setCurrentID(label);
-				help.setVisible(true);
+				CalLiteHelp calLiteHelp = new CalLiteHelp();
+				calLiteHelp.showHelp(label);
 			}
 		}
 		return false;
