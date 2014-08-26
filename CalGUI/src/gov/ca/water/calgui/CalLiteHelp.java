@@ -55,7 +55,7 @@ public class CalLiteHelp {
 			JFrame help = new JFrame("CalLite " + versionId + " GUI Help");
 			help.getContentPane().add(helpViewer);
 
-			helpViewer.setCurrentID(label);
+			// helpViewer.setCurrentID(label);
 			help.pack();
 			help.setVisible(true);
 
