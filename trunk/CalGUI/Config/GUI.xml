@@ -655,10 +655,10 @@
 				<panel id="facilities" name="Facilities" layout="FlowLayout(FlowLayout.LEFT)">
 					<panel id="facilities1" font="Tahoma-Bold-12" layout="GridBagLayout">
 						<panel resizeable="false" border="TitledBorder(Storage Facility Options)"
-							preferredsize="260,160" layout="GridBagLayout">
+							preferredsize="200,100" layout="GridBagLayout">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
-							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="false"
+							<checkbox name="fac_ckb1" id="fac_ckb1" enabled="false" visible ="false"
 								text="North of Delta Offstream Storage" minimumsize="240,20">
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="0" />
@@ -674,13 +674,13 @@
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="2" />
 							</checkbox>
 							<checkbox name="fac_ckb4" id="fac_ckb4" text="Temperance Flat"
-								minimumsize="240,20" enabled="false" >
+								minimumsize="240,20" enabled="false" visible ="false" >
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="3" />
 							</checkbox>
 							<checkbox name="fac_ckb5" id="fac_ckb5"
 								text="Sacramento Valley Conjunctive Use" minimumsize="240,20"
-								enabled="false" >
+								enabled="false" visible = "false" >
 								<gridbagconstraints insets="0,0,5,5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="4" />
 							</checkbox>
@@ -1339,7 +1339,7 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="7" anchor="GridBagConstraints.NORTHWEST" />
 							</checkbox>
-							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY" text="Trinity Minimum FLows"
+							<checkbox name="ckbReg_TRNTY" id="ckbReg_TRNTY" text="Trinity Minimum Flows"
 								seleted="true" enabled="false">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="8" anchor="GridBagConstraints.NORTHWEST" />
@@ -1757,7 +1757,7 @@
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="0"
 									gridwidth="2" />
 							</label>
-							<label text="Model will search for an optimal allocation percentage."
+							<label text="The model will search for an optimal allocation percentage."
 								enabled="True">
 								<gridbagconstraints insets="5,0,5,5"
 									anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
