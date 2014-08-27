@@ -15,6 +15,7 @@
 	<mapID target="Custom Results" url="custom.html"/>
 	<mapID target="Map View" url="map-view.html"/>
 	<mapID target="External PDF" url="ext-pdf.html"/>
+	<mapID target="Web Map" url="web-map.html" />
 	<mapID target="Demands" url="demands.html"/>
 	<mapID target="D1641 Regulations" url="d1641.html"/>
 	<mapID target="BORPA regulations" url="borpa-reg.html"/>
