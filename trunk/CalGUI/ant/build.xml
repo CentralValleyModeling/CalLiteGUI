@@ -8,10 +8,19 @@
 	<property file="build.properties" />
 
 	<path id="build.classpath">
+		<fileset dir="${lib.dir}">
+		  <include name="jh.jar"/>
+		  </fileset>
 		<fileset dir="${lib.dir}" includes="**/*.jar" />
 	</path>
 
+	<property name="myclasspath" refid="build.classpath"/> 
+	<echo message="Classpath = ${myclasspath}"/>
+	
 	<path id="deploy.classpath">
+		<fileset dir="${lib.dir}">
+		  <include name="jh.jar"/>
+		  </fileset>
 		<fileset dir="${deploy.dir}/lib" includes="**/*.jar"/>
 	</path>
 
@@ -118,12 +127,14 @@
 		<copy file="${src.dir}/callite-gui.properties" todir="${deploy.dir}" />
 
 	</target>
-
+	
+		
 	<target name="compile" depends="update-properties">
 
 		<javac srcdir="${src.dir}" destdir="${deploy.dir}/classes" debug="on" compiler="${build.compiler}">
 
 			<classpath refid="build.classpath" />
+			
 
 		</javac>
 
@@ -161,7 +172,8 @@
 				<pathelement path="${deploy.dir}/classes" />
 				<pathelement path="${deploy.dir}/test/testclasses" />
 				<pathelement path="${lib.dir}" />
-				<pathelement location="${lib.dir}/junit.jar" />
+				
+	     		<pathelement location="${lib.dir}/junit.jar" />
 				<pathelement location="${lib.dir}/swixml.jar" />
 				<pathelement location="${lib.dir}/commons-io-2.1.jar" />
 				<pathelement location="${lib.dir}/jdom.jar" />
@@ -221,7 +233,7 @@
 		<zip destfile="../${DSTAMP}_calgui_deploy.zip" basedir="${deploy.dir}" update="false" excludes="**/test/**">
 		</zip>
 
-
 	</target>
 
+	
 </project>
