@@ -1255,7 +1255,7 @@
 					layout="GridBagLayout">
 					<panel name="Quick Select" resizeable="false"
 						border="TitledBorder(Quick Select)" minimumsize="450,100"
-						preferredsize="450,100" layout="GridBagLayout">
+						preferredsize="450,130" layout="GridBagLayout">
 						<gridbagconstraints insets="5,5,25,5" gridx="0"
 							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
 						<Label
@@ -1275,7 +1275,7 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
-							<radiobutton text="D-1641" name="rdbRegQS_D1641" id="rdbRegQS_D1641">
+							<radiobutton text="D-1641   " name="rdbRegQS_D1641" id="rdbRegQS_D1641">
 								<gridbagconstraints insets="0,0,5,5" gridx="1"
 									gridy="5" anchor="GridBagConstraints.WEST" />
 							</radiobutton>
@@ -1286,8 +1286,8 @@
 							</radiobutton>
 							<radiobutton text="User Defined" name="rdbRegQS_UD"
 								id="rdbRegQS_UD">
-								<gridbagconstraints insets="0,0,5,5" gridx="3"
-									gridy="5" anchor="GridBagConstraints.WEST" minimumsize="340,20"
+								<gridbagconstraints insets="0,0,5,5" gridx="0"
+									gridy="15" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
 							</radiobutton>
 						</buttongroup>
