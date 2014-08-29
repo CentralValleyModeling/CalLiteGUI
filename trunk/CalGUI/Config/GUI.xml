@@ -251,7 +251,7 @@
 								</label>
 								<radiobutton id="hyd_rdb2005" name="hyd_rdb2005"
 									text="Current Level of Development" minimumsize="240,20"
-									selected="true">
+									selected="false">
 									<gridbagconstraints insets="0,0,5,5"
 										anchor="GridBagConstraints.WEST" gridx="0.5" gridy="1" />
 								</radiobutton>
