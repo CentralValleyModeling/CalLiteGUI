@@ -135,7 +135,7 @@ Dynamic_SJR|false
 D1641_Base|true
 D1641_SALINITY|true
 VAMP_Flow|true
-Vern_RPA|true
+Vern_RPA|false
 STAN_RPA|true
 SJR_interim|false
 SJR_full|true
