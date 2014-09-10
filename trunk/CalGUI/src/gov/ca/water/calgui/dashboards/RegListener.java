@@ -82,6 +82,17 @@ public class RegListener implements ItemListener {
 
 					if (!cName.startsWith("rdbRegQS_UD")) {
 
+						// Handling to set SJR controls based on LOD
+						JRadioButton hydrdb = (JRadioButton) swix.find("hyd_rdb2005");
+						if (hydrdb.isSelected()) {
+							JRadioButton regrdb = (JRadioButton) swix.find("SJR_interim");
+							regrdb.setSelected(true);
+						} else {
+							JRadioButton regrdb = (JRadioButton) swix.find("SJR_full");
+							regrdb.setSelected(true);
+						}
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), false);
+
 						int iSel = 0;
 
 						if (cName.startsWith("rdbRegQS_D1641")) {
@@ -124,7 +135,7 @@ public class RegListener implements ItemListener {
 						String ckbName;
 						Boolean b;
 						int rID;
-						((JRadioButton) swix.find("SJR_full")).setSelected(true); // Hard Coded Selection P.Ho
+						// ((JRadioButton) swix.find("SJR_full")).setSelected(true); // Hard Coded Selection P.Ho
 						for (int i = 0; i < lineCount; i++) {
 							ckbName = lookups[i][0];
 							JCheckBox ckb = (JCheckBox) swix.find(ckbName);
@@ -146,6 +157,8 @@ public class RegListener implements ItemListener {
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID - 1] = RegFlags[rID];
 					} else {
+
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
 
 						Scanner input = null;
 						try {
