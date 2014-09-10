@@ -263,9 +263,11 @@ public class RegulationSetup {
 				} else {
 					iOpt = 2;
 				}
-				if (dTableModels[tID] == null) {
-					dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
-				}
+
+				// DKR 10Set2014 - commented out if criterion to make table cahnge values
+				// if (dTableModels[tID] == null) {
+				dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+				// }
 			}
 
 			// dTableModels[tID].addTableModelListener(this);
