@@ -48,6 +48,23 @@ public class HydListener implements ItemListener {
 
 			if (cName.startsWith("hyd_rdb20")) {
 
+				// Handling to set SJR controls based on LOD
+				if (((JRadioButton) component).isSelected()) {
+					JRadioButton regrdb = (JRadioButton) swix.find("rdbRegQS_UD");
+					if (!regrdb.isSelected()) {
+						if (cName.equals("hyd_rdb2005")) {
+							regrdb = (JRadioButton) swix.find("SJR_interim");
+							regrdb.setSelected(true);
+						} else {
+							regrdb = (JRadioButton) swix.find("SJR_full");
+							regrdb.setSelected(true);
+						}
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), false);
+					} else {
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
+					}
+				}
+
 				// Handling for update of DSS files
 
 				// Confirm CWP/SWP overwrite;
@@ -115,6 +132,20 @@ public class HydListener implements ItemListener {
 					GUIUtils.toggleEnComponentAndChildren(swix.find("hyd_CC"), true);
 					updateHydrology(JOptionPane.NO_OPTION);
 
+				}
+
+				// Handling to set SJR controls based on LOD
+				if (((JRadioButton) component).isSelected()) {
+					JRadioButton regrdb = (JRadioButton) swix.find("rdbRegQS_UD");
+					if (!regrdb.isSelected()) {
+
+						regrdb = (JRadioButton) swix.find("SJR_full");
+						regrdb.setSelected(true);
+
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), false);
+					} else {
+						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
+					}
 				}
 
 			} else if (cName.startsWith("hyd_ckb")) {

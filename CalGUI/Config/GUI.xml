@@ -1524,7 +1524,7 @@
 									gridy="9" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
 							</checkbox>
-							<panel border="TitledBorder(San Joaquin River Restoration flows)"
+							<panel name="regpan2c" id="regpan2c" border="TitledBorder(San Joaquin River Restoration flows)"
 								layout="GridBagLayout" preferredsize="250,100" enabled="False">
 								<gridbagconstraints weightx="0.5"
 									anchor="GridBagConstraints.WEST" gridx="0" gridy="60" />
