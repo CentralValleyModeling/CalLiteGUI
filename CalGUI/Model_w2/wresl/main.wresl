@@ -618,7 +618,7 @@ else{INCLUDE 'Wheeling\wheelfixes.wresl'}
         INCLUDE '\output\SJR_cycle_output.wresl'
     }
 
-!INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
+INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
 INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
