@@ -1,4 +1,4 @@
-# A template file to compare calsim with callite
+# A template file to compare calsim with callite, calls files to produce the reports (HC)
 SCALAR
 NAME		VALUE
 FILE_BASE	D:/CalLiteWS/CalLite/BO/ModelTest/D1641_BOSetup/CalLite_BO_121710/DSS/CL_FUTURE_D1641MODELTEST020711_DV.DSS #input file 1
@@ -33,7 +33,8 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "Yolo Bypass"				DI		Average		//C_YoloBP/FLOW-CHANNEL//1MON//				//C_YoloBP/FLOW-CHANNEL//1MON//				N		N		DEFAULT
 "Mokelumne R"				DI		Average		//C_MoklmnR/FLOW-ACCRDEPL//1MON//			//C_MoklmnR/FLOW-ACCRDEPL//1MON//			N		N		DEFAULT
 "San Joaquin R d/s Vernalis"		DI		Average		//C_SJR/FLOW-ACCRDEPL//1MON//				//C_SJR/FLOW-ACCRDEPL//1MON//				N		N		DEFAULT
-"Delta Outflow"				DO		Average		//C_Delta/FLOW-CHANNEL//1MON//				//C_Delta/FLOW-CHANNEL//1MON//				B		N		DEFAULT
+"Total Delta Outflow"				DO		Average		//C_SACSJR/FLOW-CHANNEL//1MON//				//C_SACSJR/FLOW-CHANNEL//1MON//				B		N		DEFAULT
+"Surplus Outflow"				DO		Average		//C_Delta/FLOW-CHANNEL//1MON//				//C_Delta/FLOW-CHANNEL//1MON//				N		N		DEFAULT
 "Delta Outflow for X2 and NDO"		DO		Average		//D_DeltaReqd/FLOW-DELIVERY//1MON//			//D_DeltaReqd/FLOW-DELIVERY//1MON//			N		N		DEFAULT
 "Delta Exports"				DE		Average_post	//D_Banks_SWP+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	//D_Banks_SWP+D_Banks_CVP+D_Jones/FLOW-DELIVERY//1MON//	B		N		CFS2TAF
 "Banks SWP"				DE		Average		//D_Banks_SWP/FLOW-DELIVERY//1MON//			//D_Banks_SWP/FLOW-DELIVERY//1MON//			N		N		CFS2TAF
@@ -43,7 +44,7 @@ VARIABLE				VAR_CATEGORY	REPORT_TYPE 	PATH_BASE 						PATH_ALT						ROW_TYPE	PLO
 "Table A (Incl. Article 56)"		SWPSOD		Average		//SWP_TA_TOTAL/SWP_DELIVERY//1MON//			//SWP_TA_TOTAL/SWP_DELIVERY//1MON//			N		N		CFS2TAF
 "Article 21"				SWPSOD		Average		//SWP_IN_TOTAL/SWP_DELIVERY//1MON//			//SWP_IN_TOTAL/SWP_DELIVERY//1MON//			N		N		CFS2TAF
 "Article 56"				SWPSOD		Average		//SWP_CO_TOTAL/SWP_DELIVERY//1MON//			//SWP_CO_TOTAL/SWP_DELIVERY//1MON//			N		N		CFS2TAF
-"CVP SOD Deliveries"			CVPSOD		Avg_Excd	//CVPTOTALDEL/FLOW-DELIVERY//1MON//			//CVPTOTALDEL/FLOW-DELIVERY//1MON//			B		Y		CFS2TAF
+"CVP SOD Deliveries"			CVPSOD		Avg_Excd	//DEL_CVP_TOTAL_S/DELIVERY-CVP//1MON//			//DEL_CVP_TOTAL_S/DELIVERY-CVP//1MON//			B		Y		CFS2TAF
 "SWP Table A Allocation"		ALLOC		Exceedance	//SWP_PERDELDV/SWP-DELIVERY//1MON//			//SWP_PERDELDV/SWP-DELIVERY//1MON//			B		Y		DEFAULT
 "CVP SOD AG Allocation"			ALLOC		Exceedance	//PERDV_CVPAG_S/PERCENT-DELIVERY//1MON//		//PERDV_CVPAG_S/PERCENT-DELIVERY//1MON//		B		Y		DEFAULT
 "X2 Position"				X2		Timeseries	//X2_PRV/X2-POSITION-PREV//1MON//			//X2_PRV/X2-POSITION-PREV//1MON//			N		Y		DEFAULT
