@@ -1,7 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.utils.DataFileTableModel;
-import gov.ca.water.calgui.utils.FileUtils;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 
@@ -238,9 +237,10 @@ public class HydListener implements ItemListener {
 			if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
 				// Force CVP and SWP tables to be reset from files
-
-				FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString()); // TODO: CONFIRM THIS IS NOW
-				                                                                                        // SUPERFLUOUS
+				// DKR 12Sept2014 commented this call out
+				// FileUtils.copyWSIDItoLookup(hydDSSStrings[7], GUIUtils.defaultLookupDirectoryString()); // TODO: CONFIRM THIS IS
+				// NOW
+				// SUPERFLUOUS
 
 				String fileName = GUIUtils.defaultLookupDirectoryString() + "\\WSIDI\\wsi_di_swp_" + hydDSSStrings[7] + ".table";
 				int tID = Integer.parseInt(gl.tableIDForCtrl("op_btn1"));

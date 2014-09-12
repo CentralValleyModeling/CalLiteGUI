@@ -1,7 +1,6 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.utils.DataFileTableModel;
-import gov.ca.water.calgui.utils.FileUtils;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 
@@ -122,7 +121,8 @@ public class RunListener implements ItemListener {
 							((JTextField) swix.find("hyd_DSS_Init_F")).setText(result[4]);
 
 							// TODO: ? Is this call needed?
-							FileUtils.copyWSIDItoLookup(result[7], GUIUtils.defaultLookupDirectoryString());
+							// DKR 12Sept2014 commented this call out
+							// FileUtils.copyWSIDItoLookup(result[7], GUIUtils.defaultLookupDirectoryString());
 
 							if ((action_WSIDI == 1) && (option == JOptionPane.YES_OPTION)) {
 
