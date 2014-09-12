@@ -189,21 +189,17 @@ public class RegListener implements ItemListener {
 							}
 						}
 
-						String ckbName;
-						String NAFlag;
-						int rID;
-						for (int i = 0; i < lineCount; i++) {
-							ckbName = lookups[i][0];
-							NAFlag = lookups[i][5];
-							rID = Integer.parseInt(gl.RIDForCtrl(ckbName));
-							if (NAFlag.equals("FALSE") || ckbName.equals("ckbReg_TRNTY") || ckbName.equals("ckbReg_PUMP")) {
-
-							} else {
-								RegFlags[rID] = 2;
-							}
-						}
+						/*
+						 * DKR 12Sept2014 Commented out QS default to Reg option 2 String ckbName; String NAFlag; int rID; for (int
+						 * i = 0; i < lineCount; i++) { ckbName = lookups[i][0]; NAFlag = lookups[i][5]; rID =
+						 * Integer.parseInt(gl.RIDForCtrl(ckbName)); if (NAFlag.equals("FALSE") || ckbName.equals("ckbReg_TRNTY") ||
+						 * ckbName.equals("ckbReg_PUMP")) {
+						 * 
+						 * } else { RegFlags[rID] = 2; } }
+						 */
 
 						// Special Handling for Antioch and Chips
+						int rID;
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID] = 3;
 
