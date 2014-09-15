@@ -18,7 +18,7 @@
    enable-background="new 0 0 1852.758 3600"
    xml:space="preserve"
    id="svg2"
-   inkscape:version="0.48.1 "
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="callite_merged.svg"><metadata
    id="metadata2556"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
@@ -7647,14 +7647,14 @@
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
    inkscape:window-width="1920"
-   inkscape:window-height="1180"
+   inkscape:window-height="1138"
    id="namedview2552"
    showgrid="false"
-   inkscape:zoom="0.28315961"
-   inkscape:cx="1284.2472"
-   inkscape:cy="1691.6254"
-   inkscape:window-x="-4"
-   inkscape:window-y="-4"
+   inkscape:zoom="1.6017926"
+   inkscape:cx="969.93405"
+   inkscape:cy="1387.8863"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
    inkscape:window-maximized="1"
    inkscape:current-layer="svg2"
    inkscape:snap-global="false"
@@ -7670,6 +7670,8 @@
    transform="scale(1.1717508,0.85342378)"
    x="1745.9567"
    y="857.68365">Reservoir </text>
+
+
 
 
 
@@ -7699,6 +7701,8 @@
 
 
 
+
+
 <text
    style="font-size:31.6584816px;font-family:TimesNewRomanPSMT"
    id="text11"
@@ -7706,6 +7710,8 @@
    transform="scale(1.1717508,0.85342378)"
    x="1746.8593"
    y="935.68365">Diversion/Depletion</text>
+
+
 
 
 
@@ -7735,6 +7741,8 @@
 
 
 
+
+
 <text
    style="font-size:31.65824699px;font-family:TimesNewRomanPSMT"
    id="text15"
@@ -7753,6 +7761,8 @@
 
 
 
+
+
 <text
    style="font-size:27.85919571px;font-family:ArialMT"
    id="text17"
@@ -7760,6 +7770,8 @@
    transform="scale(1.1717508,0.85342378)"
    x="1712.2863"
    y="775.12115">LEGEND</text>
+
+
 
 
 
@@ -7876,6 +7888,8 @@
 
 
 
+
+
 </g><line
    style="fill:none"
    id="line165"
@@ -7896,6 +7910,8 @@
    font-size="10.561"
    id="text189"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Nimbus</text>
+
+
 
 
 
@@ -7972,6 +7988,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="871.562,568.815 873.257,568.815 873.257,568.815 873.257,820.875 871.562,820.875 "
@@ -8000,6 +8018,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="871.562,855.154 873.257,855.154 873.257,855.154 873.257,984.5 871.562,984.5 "
@@ -8017,6 +8037,8 @@
    font-size="10.561"
    id="text115"
    style="font-size:10.07124043px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Wilkns</text>
+
+
 
 
 
@@ -8076,6 +8098,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1254.968,694.105 1256.461,694.835 1256.461,694.835 1187.53,808.763 1186.144,808.035 "
@@ -8093,6 +8117,8 @@
    font-size="10.2263"
    id="text117"
    style="font-size:10.07116699px;fill:#1c75bc;font-family:MyriadPro-Regular">C_YubFea</text>
+
+
 
 
 
@@ -8132,6 +8158,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1242.693,961.963 1242.693,963.477 1242.693,963.477 1089.292,963.477 1089.292,961.963 "
@@ -8149,6 +8177,8 @@
    font-size="9.6809"
    id="text119"
    style="font-size:9.15604496px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SacFea</text>
+
+
 
 
 
@@ -8200,6 +8230,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="539.168,2197.803 540.864,2197.803 540.864,2197.803 540.864,2256.327 539.168,2256.327 "
@@ -8217,6 +8249,8 @@
    font-size="10.5611"
    id="text305"
    style="font-size:10.07171535px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SBay</text>
+
+
 
 
 
@@ -8252,6 +8286,8 @@
    font-size="9.6045"
    id="text299"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SBay</text>
+
+
 
 
 
@@ -8299,6 +8335,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1339.723,1300.381 1339.723,1300.381 1325.918,1294.51 1339.403,1288.262 "
@@ -8312,6 +8350,8 @@
    font-size="9.6045"
    id="text201"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_HSt</text>
+
+
 
 
 
@@ -8372,6 +8412,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="595.653,505.184 595.653,505.184 588.752,517.303 581.959,505.184 "
@@ -8385,6 +8427,8 @@
    font-size="10.561"
    id="text259"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Trnty</text>
+
+
 
 
 
@@ -8413,6 +8457,8 @@
    font-size="10.5611"
    id="text217"
    style="font-size:9.92669201px;fill:#1c75bc;font-family:MyriadPro-Regular">C_DXC</text>
+
+
 
 
 
@@ -8597,6 +8643,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect617"
@@ -8675,6 +8723,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect641"
@@ -8740,6 +8790,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect661"
@@ -8757,6 +8809,8 @@
    transform="scale(1.0486181,0.95363601)"
    x="673.41046"
    y="597.62939">D_Spring</text>
+
+
 
 
 
@@ -8838,6 +8892,8 @@
 
 
 
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-miterlimit:3;stroke-dasharray:12.5, 2.5, 1, 2.5, 1, 2.5"
    id="line265"
@@ -8859,6 +8915,8 @@
    transform="scale(1.0486181,0.95363601)"
    x="1277.5562"
    y="633.53125">I_Orovl</text>
+
+
 
 
 
@@ -8927,6 +8985,8 @@
 
 
 
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    id="line143"
@@ -8955,6 +9015,8 @@
    transform="matrix(0.76857288,0.65754246,-0.71405079,0.69021599,0,0)"
    x="947.33429"
    y="58.371124">C_Wkytn</text>
+
+
 
 
 
@@ -9013,6 +9075,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect771"
@@ -9038,6 +9102,8 @@
    font-size="19.6953"
    id="text2295"
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">SacSJR</text>
+
+
 
 
 
@@ -9138,6 +9204,8 @@
 
 
 
+
+
 <polygon
    style="fill:none"
    id="polygon843"
@@ -9220,6 +9288,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect899"
@@ -9271,6 +9341,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect913"
@@ -9288,6 +9360,8 @@
    font-size="9.6045"
    id="text185"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Folsm</text>
+
+
 
 
 
@@ -9362,6 +9436,8 @@
      font-size="19.6953"
      id="tspan943"
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">r</tspan></text>
+
+
 
 
 
@@ -9466,6 +9542,8 @@
 
 
 
+
+
 		<polygon
    style="fill:none"
    id="polygon987"
@@ -9521,6 +9599,8 @@
      font-size="19.6953"
      y="2396.7283"
      x="480.85513">y</tspan></text>
+
+
 
 
 
@@ -9632,6 +9712,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1041"
@@ -9696,6 +9778,8 @@
      font-size="19.6953"
      y="2532.7258"
      x="386.44876">SWP</tspan></text>
+
+
 
 
 
@@ -9777,6 +9861,8 @@
 
 
 
+
+
 <rect
    x="735.64001"
    y="2342.406"
@@ -9842,6 +9928,8 @@
 
 
 
+
+
 		<rect
    style="fill:none"
    id="rect1229"
@@ -9875,6 +9963,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="1458.824"
@@ -9895,6 +9985,8 @@
    font-size="9.6045"
    id="text149"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Orovl</text>
+
+
 
 
 
@@ -9949,6 +10041,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="891.19702"
@@ -9969,6 +10063,8 @@
    font-size="10.038"
    id="text111"
    style="font-size:10.07161617px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Wilkns</text>
+
+
 
 
 
@@ -10016,6 +10112,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="784.47198"
@@ -10036,6 +10134,8 @@
    font-size="8.5023"
    id="text125"
    style="font-size:8.3925848px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_SacAme</text>
+
+
 
 
 
@@ -10085,6 +10185,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1073.379,986.951 1073.379,986.951 1071.893,973.411 1084.952,980.512 "
@@ -10105,6 +10207,8 @@
    font-size="10.1702"
    id="text135"
    style="font-size:10.07139587px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_YoloBP</text>
+
+
 
 
 
@@ -10145,6 +10249,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="1256.941"
@@ -10172,6 +10278,8 @@
    font-size="9.6045"
    id="text297"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_UpDMC</text>
+
+
 
 
 
@@ -10242,6 +10350,8 @@
      font-size="19.6953"
      y="2396.9258"
      x="947.87958">C</tspan></text>
+
+
 
 
 
@@ -10329,6 +10439,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1331"
@@ -10395,6 +10507,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1353"
@@ -10411,6 +10525,8 @@
    font-size="9.6045"
    id="text191"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Nimbus</text>
+
+
 
 
 
@@ -10450,6 +10566,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1163.918,833.565 1165.306,834.418 1165.306,834.418 1081.645,945.676 1080.162,944.825 "
@@ -10472,6 +10590,8 @@
    font-size="10.16"
    id="text157"
    style="font-size:10.07151985px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Therm</text>
+
+
 
 
 
@@ -10519,6 +10639,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="1312.995"
@@ -10539,6 +10661,8 @@
    font-size="9.6045"
    id="text113"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Wilkns</text>
+
+
 
 
 
@@ -10581,6 +10705,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="924.12799"
@@ -10601,6 +10727,8 @@
    font-size="9.6045"
    id="text107"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_RedBlf</text>
+
+
 
 
 
@@ -10687,6 +10815,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1399"
@@ -10703,6 +10833,8 @@
    font-size="10.561"
    id="text81"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Lwstn</text>
+
+
 
 
 
@@ -10796,6 +10928,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1433"
@@ -10866,6 +11000,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1455"
@@ -10905,6 +11041,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="1106.172,1269.681 1105.011,1272.014 1100.014,1282.08 1092.67,1269.654 "
@@ -10923,6 +11061,8 @@
    font-size="10.561"
    id="text199"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">D_HSt</text>
+
+
 
 
 
@@ -10965,6 +11105,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="306.57901"
@@ -10985,6 +11127,8 @@
    font-size="10.561"
    id="text97"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Shsta</text>
+
+
 
 
 
@@ -11088,6 +11232,8 @@
 
 
 
+
+
 </g><g
    id="g10548"
    transform="translate(94.075986,-111.68512)"><line
@@ -11108,6 +11254,8 @@
    font-size="9.6045"
    id="text1555"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_DosAmigosSWP</text>
+
+
 
 
 
@@ -11150,6 +11298,8 @@
 
 
 
+
+
 </g><g
    id="g10558"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -11181,6 +11331,8 @@
 
 
 
+
+
 </g><g
    id="g10630"
    transform="translate(94.075986,-111.68512)"><line
@@ -11197,6 +11349,8 @@
    font-size="10.561"
    id="text1583"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_JtUTerm</text>
+
+
 
 
 
@@ -11242,6 +11396,8 @@
 
 
 
+
+
 </g><g
    id="g10694"
    transform="translate(94.075986,-111.68512)"><line
@@ -11262,6 +11418,8 @@
    font-size="9.6045"
    id="text1635"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_KCWA (851)</text>
+
+
 
 
 
@@ -11304,6 +11462,8 @@
 
 
 
+
+
 </g><g
    id="g10709"
    transform="translate(94.075986,-111.68512)"><line
@@ -11324,6 +11484,8 @@
    font-size="9.6045"
    id="text1639"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CVPRfg_854 (854_856)</text>
+
+
 
 
 
@@ -11375,6 +11537,8 @@
 
 
 
+
+
 </g><g
    id="g10726"
    transform="translate(94.075986,-111.68512)"><line
@@ -11395,6 +11559,8 @@
    font-size="9.6045"
    id="text1647"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Kern (Kern River Intertie)</text>
+
+
 
 
 
@@ -11435,6 +11601,8 @@
 
 
 
+
+
 </g><g
    id="g10784"
    transform="translate(94.075986,-111.68512)"><line
@@ -11453,6 +11621,8 @@
    font-size="9.6045"
    id="text1655"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OSO</text>
+
+
 
 
 
@@ -11493,6 +11663,8 @@
 
 
 
+
+
 </g><g
    id="g10776"
    transform="translate(94.075986,-111.68512)"><line
@@ -11511,6 +11683,8 @@
    font-size="10.561"
    id="text1679"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Alamo (877-880)</text>
+
+
 
 
 
@@ -11554,6 +11728,8 @@
 
 
 
+
+
 </g><g
    id="g9837"
    transform="translate(94.075986,-111.68512)"><ellipse
@@ -11575,6 +11751,8 @@
    font-size="19.209"
    id="text1683"
    style="font-size:20.14290619px;font-family:MyriadPro-Regular">Cross Valley Canal (857)</text>
+
+
 
 
 
@@ -11627,6 +11805,8 @@
 
 
 
+
+
 </g><g
    id="g9881"
    transform="translate(94.075986,-111.68512)"><ellipse
@@ -11657,6 +11837,8 @@
      font-size="19.209"
      id="tspan1695"
      style="font-size:20.14290619px;font-family:MyriadPro-Regular">Pumping Plant (880)</tspan></text>
+
+
 
 
 
@@ -11709,6 +11891,8 @@
 
 
 
+
+
 </g><rect
    style="fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:3"
    id="rect1703"
@@ -11731,7 +11915,9 @@
      id="tspan1709"
      font-size="47.8612"
      y="86.672569"
-     x="896.60858">August 30, 2010</tspan></text>
+     x="896.60858">October 2014</tspan></text>
+
+
 
 
 
@@ -11752,6 +11938,8 @@
    font-size="9.931"
    id="text141"
    style="font-size:10.07184219px;fill:#1c75bc;font-family:MyriadPro-Regular">D_YubFea</text>
+
+
 
 
 
@@ -11802,6 +11990,8 @@
 
 
 
+
+
 </g><g
    id="g10851"
    transform="translate(94.075986,-111.68512)"><text
@@ -11811,6 +12001,8 @@
    font-size="9.6045"
    id="text131"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SacWeir</text>
+
+
 
 
 
@@ -11848,6 +12040,8 @@
    font-size="9.9208"
    id="text123"
    style="font-size:10.071311px;fill:#1c75bc;font-family:MyriadPro-Regular">D_FreWeir</text>
+
+
 
 
 
@@ -11911,6 +12105,8 @@
 
 
 
+
+
 </g><g
    id="g10599"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -11924,6 +12120,8 @@
    font-size="9.6045"
    id="text1633"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CoastAqdct (850)</text>
+
+
 
 
 
@@ -11974,6 +12172,8 @@
 
 
 
+
+
 </g><g
    id="g10604"
    transform="translate(94.075986,-111.68512)"><line
@@ -11994,6 +12194,8 @@
    font-size="9.6045"
    id="text1747"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CoastAqdct (850)</text>
+
+
 
 
 
@@ -12037,6 +12239,8 @@
 
 
 
+
+
 </g><g
    id="g10794"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12050,6 +12254,8 @@
    font-size="9.6045"
    id="text1661"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_WarnePP</text>
+
+
 
 
 
@@ -12100,6 +12306,8 @@
 
 
 
+
+
 </g><g
    id="g10814"
    transform="translate(94.075986,-111.68512)"><line
@@ -12118,6 +12326,8 @@
    font-size="9.6045"
    id="text1759"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_WarnePP</text>
+
+
 
 
 
@@ -12170,6 +12380,8 @@
 
 
 
+
+
 </g><g
    id="g10746"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12183,6 +12395,8 @@
    font-size="9.6045"
    id="text1667"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_PearBlPP</text>
+
+
 
 
 
@@ -12221,6 +12435,8 @@
    font-size="9.6045"
    id="text1773"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_PearBlPP</text>
+
+
 
 
 
@@ -12273,6 +12489,8 @@
 
 
 
+
+
 </g><g
    id="g9537"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12305,6 +12523,8 @@
      font-size="19.6953"
      id="tspan1793"
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">P</tspan></text>
+
+
 
 
 
@@ -12374,6 +12594,8 @@
 
 
 
+
+
 </g>
 
 
@@ -12416,6 +12638,8 @@
      font-size="19.6953"
      y="1738.0956"
      x="175.57832">a</tspan></text>
+
+
 
 
 
@@ -12470,6 +12694,8 @@
 
 
 
+
+
 <ellipse
    stroke-miterlimit="10"
    cx="871.39697"
@@ -12491,6 +12717,8 @@
    font-size="10.3644"
    id="text1859"
    style="font-size:10.27642918px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Hood</text>
+
+
 
 
 
@@ -12533,6 +12761,8 @@
    font-size="10.3644"
    id="text1869"
    style="font-size:10.27642918px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Hood</text>
+
+
 
 
 
@@ -12621,6 +12851,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect871"
@@ -12652,6 +12884,8 @@
 
 
 
+
+
 <polygon
    transform="matrix(1.0436676,0,0,0.82156916,-38.096067,233.10643)"
    stroke-miterlimit="10"
@@ -12670,6 +12904,8 @@
    font-size="9.6045"
    id="text1875"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Terminous</text>
+
+
 
 
 
@@ -12714,6 +12950,8 @@
 
 
 
+
+
 <text
    y="1688.7219"
    x="875.06799"
@@ -12721,6 +12959,8 @@
    id="text1893"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Mokelumne River</text>
+
+
 
 
 
@@ -12749,6 +12989,8 @@
    id="text1901"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Terminous</text>
+
+
 
 
 
@@ -12795,6 +13037,8 @@
 
 
 
+
+
 </g><g
    id="g9451"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12808,6 +13052,8 @@
    id="text1941"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Stockton</text>
+
+
 
 
 
@@ -12850,6 +13096,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1949"
@@ -12859,19 +13107,21 @@
    y="1954.515"
    x="990.35602" /></g><g
    id="g9469"
-   transform="translate(94.075986,-111.68512)"><text
-   y="2194.8989"
-   x="738.78668"
+   transform="translate(97.166116,-111.24367)"><text
+   y="2190.2249"
+   x="682.91888"
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
    id="text1953"
    font-size="19.6953"
-   transform="scale(1.0588201,0.94444751)">Vernalis</text>
+   transform="scale(1.0588201,0.94444751)">SJR Old River</text>
+
+
 
 
 
 <polygon
    stroke-miterlimit="10"
-   points="871.346,2037.775 867.098,2040.523 867.312,2040.336 864.34,2044.401 864.446,2044.121 863.383,2049.139 863.383,2048.855 864.446,2053.877 864.34,2053.593 867.312,2057.758 867.098,2057.566 871.346,2060.221 871.027,2060.122 876.334,2061.167 876.018,2061.167 881.326,2060.122 881.006,2060.221 885.359,2057.566 885.146,2057.758 888.012,2053.593 887.907,2053.877 888.967,2048.855 888.967,2049.139 887.907,2044.121 888.012,2044.401 885.146,2040.336 885.359,2040.523 881.006,2037.775 881.326,2037.872 876.018,2036.827 876.334,2036.827 871.027,2037.872 "
+   points="867.098,2040.523 867.312,2040.336 864.34,2044.401 864.446,2044.121 863.383,2049.139 863.383,2048.855 864.446,2053.877 864.34,2053.593 867.312,2057.758 867.098,2057.566 871.346,2060.221 871.027,2060.122 876.334,2061.167 876.018,2061.167 881.326,2060.122 881.006,2060.221 885.359,2057.566 885.146,2057.758 888.012,2053.593 887.907,2053.877 888.967,2048.855 888.967,2049.139 887.907,2044.121 888.012,2044.401 885.146,2040.336 885.359,2040.523 881.006,2037.775 881.326,2037.872 876.018,2036.827 876.334,2036.827 871.027,2037.872 871.346,2037.775 "
    id="polygon1933"
    style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10" />
 
@@ -12907,12 +13157,14 @@
    points="870.229,1995.857 870.229,1995.857 877.129,1983.737 883.923,1995.857 "
    id="polygon1965"
    style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10" /><text
-   y="-845.66949"
-   x="2098.1428"
+   y="-846.86017"
+   x="2083.7402"
    transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    font-size="10.561"
    id="text1969"
-   style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRVer</text>
+   style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJROldR</text>
+
+
 
 
 
@@ -12955,6 +13207,8 @@
 
 
 
+
+
 </g><g
    id="g10313"
    transform="translate(94.075986,-111.68512)"><line
@@ -12975,6 +13229,8 @@
    font-size="9.6045"
    id="text1987"
    style="font-size:10.07116318px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Stockton</text>
+
+
 
 
 
@@ -13019,6 +13275,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect2001"
@@ -13039,6 +13297,8 @@
    id="text2005"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Venice Island</text>
+
+
 
 
 
@@ -13073,6 +13333,8 @@
    font-size="10.5611"
    id="text2017"
    style="font-size:10.07171535px;fill:#1c75bc;font-family:MyriadPro-Regular">I_SacSJR</text>
+
+
 
 
 
@@ -13119,6 +13381,8 @@
 
 
 
+
+
 </g><g
    id="g10119"
    transform="translate(94.075986,-111.68512)"><line
@@ -13150,6 +13414,8 @@
 
 
 
+
+
 </g><g
    id="g10895"
    transform="translate(94.075986,-111.68512)"><line
@@ -13170,6 +13436,8 @@
    font-size="9.6045"
    id="text2051"
    style="font-size:10.07159328px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Vallejo</text>
+
+
 
 
 
@@ -13215,6 +13483,8 @@
 
 
 
+
+
 </g><g
    id="g9262"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -13228,6 +13498,8 @@
    font-size="19.6953"
    id="text2059"
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">Rio Vista</text>
+
+
 
 
 
@@ -13273,6 +13545,8 @@
 
 
 
+
+
 </g><g
    id="g10890"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -13290,6 +13564,8 @@
    font-size="9.6046"
    id="text2071"
    style="font-size:10.0715313px;fill:#1c75bc;font-family:MyriadPro-Regular">C_NBA</text>
+
+
 
 
 
@@ -13325,6 +13601,8 @@
      font-size="19.6953"
      y="1529.271"
      x="794.71594">C</tspan></text>
+
+
 
 
 
@@ -13400,6 +13678,8 @@
 
 
 
+
+
 <polygon
    style="fill:none"
    id="polygon1931"
@@ -13431,6 +13711,8 @@
    font-size="10.5612"
    id="text237"
    style="font-size:10.0715313px;fill:#1c75bc;font-family:MyriadPro-Regular">C_YoloBP</text>
+
+
 
 
 
@@ -13477,6 +13759,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="322.33499"
@@ -13493,6 +13777,8 @@
    font-size="10.5611"
    id="text1855"
    style="font-size:10.07139015px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Hood</text>
+
+
 
 
 
@@ -13533,6 +13819,8 @@
 
 
 
+
+
 <text
    transform="scale(1.0588201,0.94444751)"
    font-size="19.6953"
@@ -13540,6 +13828,8 @@
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
    x="313.91168"
    y="1991.9187">Contra Costa WD</text>
+
+
 
 
 
@@ -13581,6 +13871,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect2125"
@@ -13596,20 +13888,22 @@
    id="g6160"
    transform="translate(94.075986,-111.68512)"><text
    style="font-size:12.70584106px"
-   y="2178.7156"
-   x="428.44293"
+   y="2158.2239"
+   x="409.5751"
    id="text2137"
    transform="scale(1.0588201,0.94444751)"><tspan
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
      id="tspan2139"
      font-size="19.6953"
-     y="2178.7156"
-     x="428.44293">Coney </tspan><tspan
+     y="2158.2239"
+     x="409.5751">Coney </tspan><tspan
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
      id="tspan2141"
      font-size="19.6953"
-     y="2203.741"
-     x="428.44293">Island</tspan></text>
+     y="2183.2493"
+     x="409.5751">Island</tspan></text>
+
+
 
 
 
@@ -13651,6 +13945,8 @@
 
 
 
+
+
 <polyline
    stroke-miterlimit="10"
    points="533.627,2042.972    518.978,2039.657 527.895,2030.471 527.895,2030.471 533.627,2042.972  "
@@ -13665,6 +13961,8 @@
    transform="scale(1.0486181,0.95363601)"
    x="1291.2552"
    y="997.02484">I_Yuba</text>
+
+
 
 
 
@@ -13728,6 +14026,8 @@
 
 
 
+
+
 <rect
    x="1423.416"
    y="921.90997"
@@ -13777,6 +14077,8 @@
 
 
 
+
+
 </g><g
    id="g10900"
    transform="translate(94.075986,-111.68512)"><line
@@ -13793,6 +14095,8 @@
    font-size="9.6045"
    id="text2043"
    style="font-size:10.07142639px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Napa</text>
+
+
 
 
 
@@ -13824,6 +14128,8 @@
    font-size="10.561"
    id="text2173"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">I_BrananIS</text>
+
+
 
 
 
@@ -13870,6 +14176,8 @@
 
 
 
+
+
 </g><g
    id="g5668"
    transform="translate(94.075986,-111.68512)"><g
@@ -13880,6 +14188,8 @@
    transform="matrix(-0.00553101,1.0486035,-0.95362265,-0.0050542,0,0)"
    x="1461.6304"
    y="-217.61165">D_DeltaReqd</text>
+
+
 
 
 
@@ -13899,6 +14209,8 @@
      font-size="19.6953"
      y="1581.3325"
      x="136.15863">Outflow</tspan></text>
+
+
 
 
 
@@ -13941,6 +14253,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="873.875,2182.092 875.573,2182.092 875.573,2182.092 875.573,2265.635 873.875,2265.635 "
@@ -13958,6 +14272,8 @@
    font-size="9.6045"
    id="text79"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Lewiston</text>
+
+
 
 
 
@@ -13989,6 +14305,8 @@
    font-size="9.6045"
    id="text2157"
    style="font-size:10.07145023px;fill:#1c75bc;font-family:MyriadPro-Regular">D_ExpTD</text>
+
+
 
 
 
@@ -14040,6 +14358,8 @@
 
 
 
+
+
 </g><g
    id="g10513"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -14057,6 +14377,8 @@
    font-size="10.561"
    id="text2223"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OFBCVP</text>
+
+
 
 
 
@@ -14096,6 +14418,8 @@
 
 
 
+
+
 </g><g
    id="g10503"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -14113,6 +14437,8 @@
    font-size="9.6045"
    id="text2227"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_OFBCVP</text>
+
+
 
 
 
@@ -14147,6 +14473,8 @@
      font-size="19.6953"
      y="2704.3384"
      x="417.54306">JointUse</tspan></text>
+
+
 
 
 
@@ -14198,6 +14526,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect2265"
@@ -14236,6 +14566,8 @@
 
 
 
+
+
 </g><g
    id="g10371"
    transform="translate(94.075986,-111.68512)"><line
@@ -14255,7 +14587,9 @@
    transform="matrix(0.74147205,0.74147205,-0.67433426,0.67433426,0,0)"
    font-size="9.6045"
    id="text2277"
-   style="font-size:10.07118034px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_SJR</text>
+   style="font-size:10.07118034px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRVer</text>
+
+
 
 
 
@@ -14298,6 +14632,8 @@
 
 
 
+
+
 </g><g
    id="g10578"
    transform="translate(94.075986,-111.68512)"><text
@@ -14306,7 +14642,9 @@
    transform="matrix(0,1.0486181,-0.95363599,0,0,0)"
    font-size="9.6045"
    id="text2285"
-   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_JamesBP</text>
+   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Mdota</text>
+
+
 
 
 
@@ -14356,6 +14694,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="203.947,1610.768 217.641,1604.706 217.641,1616.922 217.641,1616.922 "
@@ -14370,6 +14710,8 @@
    transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    x="370.87885"
    y="-328.3342">I_Trnty</text>
+
+
 
 
 
@@ -14448,6 +14790,8 @@
 
 
 
+
+
 <rect
    x="238.85201"
    y="317.54001"
@@ -14493,6 +14837,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="526.292,2528.085 508.652,2524.175 521.195,2512.238 "
@@ -14513,6 +14859,8 @@
    font-size="9.6045"
    id="text2229"
    style="font-size:10.07172108px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CVPJUSWP</text>
+
+
 
 
 
@@ -14555,6 +14903,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="804.3,2609.146 787.069,2614.579 791.963,2597.969 "
@@ -14574,7 +14924,9 @@
    transform="scale(1.0486181,0.95363599)"
    font-size="9.6045"
    id="text2271"
-   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Vrnlis</text>
+   style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OldRiver</text>
+
+
 
 
 
@@ -14603,6 +14955,8 @@
    font-size="9.6045"
    id="text2161"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_BnkExp</text>
+
+
 
 
 
@@ -14646,6 +15000,8 @@
 
 
 
+
+
 </g><g
    id="g8066"
    transform="translate(94.075986,-111.68512)"><line
@@ -14666,6 +15022,8 @@
    font-size="10.16"
    id="text2317"
    style="font-size:10.07121468px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Therm</text>
+
+
 
 
 
@@ -14708,6 +15066,8 @@
 
 
 
+
+
 </g><g
    id="g10286"
    transform="translate(94.075986,-111.68512)"><line
@@ -14724,6 +15084,8 @@
    font-size="10.561"
    id="text2327"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">I_MedfordIS</text>
+
+
 
 
 
@@ -14755,6 +15117,8 @@
    font-size="10.1702"
    id="text2335"
    style="font-size:10.07152843px;fill:#1c75bc;font-family:MyriadPro-Regular">I_CVCWheel</text>
+
+
 
 
 
@@ -14801,6 +15165,8 @@
 
 
 
+
+
 </g><g
    id="g10318"
    transform="translate(94.075986,-111.68512)"><line
@@ -14821,6 +15187,8 @@
    font-size="10.561"
    id="text2129"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OMR</text>
+
+
 
 
 
@@ -14870,6 +15238,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="543.383"
@@ -14893,6 +15263,8 @@
      font-size="27.0179"
      y="1111.1523"
      x="1742.9037">(Bi-direction)</tspan></text>
+
+
 
 
 
@@ -14954,6 +15326,8 @@
 
 
 
+
+
 </g><g
    id="g10523"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -14974,6 +15348,8 @@
    font-size="10.195"
    id="text2367"
    style="font-size:10.07164097px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CVPJU</text>
+
+
 
 
 
@@ -15021,6 +15397,8 @@
    transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    x="378.97604"
    y="-840.03802">I_Shsta</text>
+
+
 
 
 
@@ -15109,6 +15487,8 @@
 
 
 
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    id="line53"
@@ -15136,6 +15516,8 @@
    font-size="10.561"
    id="text2127"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_IndnSL</text>
+
+
 
 
 
@@ -15189,6 +15571,8 @@
 
 
 
+
+
 </g><g
    id="g10528"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -15209,6 +15593,8 @@
    font-size="10.216"
    id="text2409"
    style="font-size:10.07161617px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CVPDMC</text>
+
+
 
 
 
@@ -15241,6 +15627,8 @@
    font-size="10.561"
    id="text1911"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Trmns</text>
+
+
 
 
 
@@ -15288,6 +15676,8 @@
 
 
 
+
+
 </g><g
    id="g10568"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -15307,7 +15697,9 @@
    transform="matrix(0.92898615,-0.34225805,0.26201913,0.97990895,0,0)"
    font-size="10.216"
    id="text2435"
-   style="font-size:10.07099247px;fill:#1c75bc;font-family:MyriadPro-Regular">C_MPool</text>
+   style="font-size:10.07099247px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Mdota</text>
+
+
 
 
 
@@ -15340,6 +15732,8 @@
    id="text2439"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Mendota Pool</text>
+
+
 
 
 
@@ -15392,6 +15786,8 @@
 
 
 
+
+
 </g><g
    id="g10819"
    transform="translate(94.075986,-111.68512)"><line
@@ -15410,6 +15806,8 @@
    font-size="9.6045"
    id="text2457"
    style="font-size:10.07118034px;fill:#1c75bc;font-family:MyriadPro-Regular">D_WarnePP_spill</text>
+
+
 
 
 
@@ -15457,6 +15855,8 @@
 
 
 
+
+
 </g><g
    id="g10275"
    transform="translate(94.075986,-111.68512)"><line
@@ -15477,6 +15877,8 @@
    font-size="9.6045"
    id="text2471"
    style="font-size:10.0712471px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CCWDINTK</text>
+
+
 
 
 
@@ -15519,6 +15921,8 @@
 
 
 
+
+
 </g><g
    id="g10448"
    transform="translate(94.075986,-111.68512)"><path
@@ -15542,6 +15946,8 @@
    font-size="9.6045"
    id="text2489"
    style="font-size:10.07143497px;fill:#1c75bc;font-family:MyriadPro-Regular">I_DelValle</text>
+
+
 
 
 
@@ -15589,6 +15995,8 @@
 
 
 
+
+
 </g><g
    id="g10829"
    transform="translate(94.075986,-111.68512)"><line
@@ -15607,6 +16015,8 @@
    font-size="9.6045"
    id="text2503"
    style="font-size:10.07132816px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Castaic</text>
+
+
 
 
 
@@ -15649,6 +16059,8 @@
 
 
 
+
+
 </g><g
    id="g10799"
    transform="translate(94.075986,-111.68512)"><line
@@ -15669,6 +16081,8 @@
    font-size="9.6045"
    id="text2515"
    style="font-size:10.07171059px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Pyramid</text>
+
+
 
 
 
@@ -15711,6 +16125,8 @@
 
 
 
+
+
 </g><g
    id="g10766"
    transform="translate(94.075986,-111.68512)"><line
@@ -15731,6 +16147,8 @@
    font-size="9.6045"
    id="text2527"
    style="font-size:10.07161427px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Perris</text>
+
+
 
 
 
@@ -15771,6 +16189,8 @@
 
 
 
+
+
 </g><g
    id="g10756"
    transform="translate(94.075986,-111.68512)"><line
@@ -15789,6 +16209,8 @@
    font-size="9.6045"
    id="text2539"
    style="font-size:10.07142162px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Perris</text>
+
+
 
 
 
@@ -15828,6 +16250,8 @@
      font-size="19.6953"
      id="tspan2547"
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">Dos Amigos</tspan></text>
+
+
 
 
 
@@ -15901,6 +16325,8 @@
 
 
 
+
+
 		<rect
    x="333.97198"
    y="412.98499"
@@ -15921,6 +16347,8 @@
      font-size="9.6045"
      y="468.69748"
      x="293.53879">S_Trnty</tspan></text>
+
+
 
 
 
@@ -15963,6 +16391,8 @@
 
 
 
+
+
 </g></g><g
    id="g7773"
    transform="translate(94.075986,-111.68512)"><text
@@ -15976,6 +16406,8 @@
      font-size="7.2034"
      id="tspan73"
      style="font-size:7.55361605px;fill:#1c75bc;font-family:MyriadPro-Regular">S_Wkytn</tspan></text>
+
+
 
 
 
@@ -16007,6 +16439,8 @@
      font-size="7.2034"
      id="tspan77-6"
      style="font-size:7.55361605px;fill:#1c75bc;font-family:MyriadPro-Regular">A_Wkytn</tspan></text>
+
+
 
 
 
@@ -16062,6 +16496,8 @@
 
 
 
+
+
 		<rect
    x="926.76398"
    y="446.31601"
@@ -16082,6 +16518,8 @@
      font-size="8.8041"
      y="479.35364"
      x="816.46936">S_Shsta</tspan></text>
+
+
 
 
 
@@ -16124,6 +16562,8 @@
 
 
 
+
+
 </g></g><g
    id="g4736"
    transform="translate(94.075986,-111.68512)"><g
@@ -16137,6 +16577,8 @@
      font-size="19.6953"
      id="tspan1235"
      style="font-size:19.69529915px;fill:#010101;font-family:Arial-BoldMT">Oroville</tspan></text>
+
+
 
 
 
@@ -16180,6 +16622,8 @@
 
 
 
+
+
 <polygon
    style="fill:#000000;fill-opacity:0;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
    id="polygon389"
@@ -16200,6 +16644,8 @@
      font-size="8.2659"
      y="-91.108566"
      x="1383.7118">A_Orovl</tspan></text>
+
+
 
 
 
@@ -16255,6 +16701,8 @@
 
 
 
+
+
 		<rect
    x="1387.067"
    y="1208.375"
@@ -16275,6 +16723,8 @@
      font-size="9.6045"
      y="1347.0615"
      x="1352.1101">S_Folsm</tspan></text>
+
+
 
 
 
@@ -16317,6 +16767,8 @@
 
 
 
+
+
 </g></g><g
    id="g7913"
    transform="translate(94.075986,-111.68512)"><text
@@ -16330,6 +16782,8 @@
      font-size="7.2034"
      id="tspan1525"
      style="font-size:7.55361605px;fill:#1c75bc;font-family:MyriadPro-Regular">S_SLCVP</tspan></text>
+
+
 
 
 
@@ -16372,6 +16826,8 @@
 
 
 
+
+
 </g><g
    id="g10915"
    transform="translate(94.075986,-111.68512)"><text
@@ -16381,6 +16837,8 @@
    font-size="9.6045"
    id="text2061"
    style="font-size:10.07181549px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SacND</text>
+
+
 
 
 
@@ -16412,6 +16870,8 @@
    font-size="9.6045"
    id="text2063"
    style="font-size:10.07181549px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SacBI</text>
+
+
 
 
 
@@ -16458,6 +16918,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="327.586"
@@ -16481,6 +16943,8 @@
    font-size="10.1702"
    id="text2011"
    style="font-size:10.071702px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRMI</text>
+
+
 
 
 
@@ -16519,6 +16983,8 @@
    font-size="10.1702"
    id="text2009"
    style="font-size:10.07166004px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRCD</text>
+
+
 
 
 
@@ -16572,6 +17038,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="3"
    x1="795.55402"
@@ -16610,6 +17078,8 @@
 
 
 
+
+
 <polygon
    transform="matrix(1.206372,0,0,0.3499938,-161.14496,1101.006)"
    stroke-miterlimit="10"
@@ -16624,6 +17094,8 @@
    font-size="10.561"
    id="text1585"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_LasPer</text>
+
+
 
 
 
@@ -16654,6 +17126,8 @@
    font-size="10.561"
    id="text1587"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_KCWA</text>
+
+
 
 
 
@@ -16696,6 +17170,8 @@
 
 
 
+
+
 <line
    stroke-miterlimit="10"
    x1="714.25"
@@ -16714,6 +17190,8 @@
    font-size="10.561"
    id="text1651"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_ChrisPP</text>
+
+
 
 
 
@@ -16764,6 +17242,8 @@
 
 
 
+
+
 </g><g
    id="g6265"
    transform="translate(94.075986,-111.68512)"><text
@@ -16773,6 +17253,8 @@
    font-size="9.6045"
    id="text83"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_ClearTu</text>
+
+
 
 
 
@@ -16842,6 +17324,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="553.083,549.121 553.083,549.121 566.672,555.177 553.083,561.334 "
@@ -16872,6 +17356,8 @@
 
 
 
+
+
 <g
    id="g10366"><polygon
    transform="matrix(1.1179572,0,0,0.57239357,-103.44252,828.31702)"
@@ -16889,6 +17375,8 @@
    font-size="10.561"
    id="text1971"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRCal</text>
+
+
 
 
 
@@ -16978,6 +17466,8 @@
 
 
 
+
+
 <polygon
    stroke-miterlimit="10"
    points="104.935,1610.769 118.628,1604.707 118.628,1616.923 118.628,1616.923 "
@@ -17017,6 +17507,8 @@
 
 
 
+
+
 </g><g
    id="g6111"
    transform="translate(94.075986,-111.68512)"><text
@@ -17026,6 +17518,8 @@
    font-size="9.6045"
    id="text2269-4"
    style="font-size:10.07161808px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SLCVP</text>
+
+
 
 
 
@@ -17096,6 +17590,8 @@
 
 
 
+
+
 <rect
    style="fill:none"
    id="rect1069"
@@ -17143,6 +17639,8 @@
 
 
 
+
+
 <text
    id="text1717-2"
    transform="scale(1.0486181,0.95363602)"
@@ -17170,6 +17668,8 @@
 
 
 
+
+
 </g><g
      transform="translate(-939.30281,1833.6911)"
      id="g1231-0"><text
@@ -17185,6 +17685,8 @@
      y="0"
      font-size="19.6953"
      style="font-size:19.69529915px;fill:#010101;font-family:Arial-BoldMT" /></text>
+
+
 
 
 
@@ -17227,6 +17729,8 @@
 
 
 
+
+
 <text
    style="font-size:12.70584106px"
    y="696.2204"
@@ -17256,6 +17760,8 @@
 
 
 
+
+
 </g></g></g><g
    id="g4696"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -17277,6 +17783,8 @@
      y="0"
      font-size="19.6953"
      style="font-size:19.69529915px;fill:#010101;font-family:Arial-BoldMT" /></text>
+
+
 
 
 
@@ -17319,6 +17827,8 @@
 
 
 
+
+
 <text
    style="font-size:12.70584106px"
    y="696.2204"
@@ -17340,6 +17850,8 @@
      y="696.2204"
      x="1090.6923"
      id="tspan4600-7-4" /></text>
+
+
 
 
 
@@ -17385,6 +17897,8 @@
 
 
 
+
+
 </g><g
    id="g5761"
    transform="translate(94.075986,-111.68512)"><text
@@ -17394,6 +17908,8 @@
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
    x="615.34021"
    y="1675.5691">Mokelumne</text>
+
+
 
 
 
@@ -17568,6 +18084,8 @@
      id="tspan70"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -17653,6 +18171,8 @@
      x="4.7241998"
      id="tspan102"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -17770,6 +18290,8 @@
      id="tspan144"
      style="direction:ltr">k</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -17857,6 +18379,8 @@
      id="tspan176"
      style="direction:ltr">l</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -17912,6 +18436,8 @@
      x="4.4186602"
      id="tspan198"
      style="direction:ltr">p</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -17995,6 +18521,8 @@
      x="7.6279998"
      id="tspan230"
      style="direction:ltr">p</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -18132,6 +18660,8 @@
      id="tspan278"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -18226,6 +18756,8 @@
      id="tspan312"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -18278,6 +18810,8 @@
      id="tspan332"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18324,6 +18858,8 @@
      id="tspan350"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18369,6 +18905,8 @@
      x="3.6512101"
      id="tspan368"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -18425,6 +18963,8 @@
      x="4.0517702"
      id="tspan390"
      style="direction:ltr">s</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -18497,6 +19037,8 @@
      id="tspan418"
      style="direction:ltr">s</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18542,6 +19084,8 @@
      x="3.3721299"
      id="tspan436"
      style="direction:ltr">v</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -18594,6 +19138,8 @@
      id="tspan456"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18644,6 +19190,8 @@
      x="4.5116801"
      id="tspan476"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -18742,6 +19290,8 @@
      x="5.3256502"
      id="tspan512"
      style="direction:ltr">L</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -18853,6 +19403,8 @@
      id="tspan552"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18909,6 +19461,8 @@
      id="tspan574"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -18964,6 +19518,8 @@
      x="4.7442398"
      id="tspan596"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -19025,6 +19581,8 @@
      x="4.5116801"
      id="tspan620"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -19101,6 +19659,8 @@
      x="6.0690398"
      id="tspan650"
      style="direction:ltr">s</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -19205,6 +19765,8 @@
      id="tspan688"
      style="direction:ltr">s</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19250,6 +19812,8 @@
      x="3.4419"
      id="tspan706"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -19297,6 +19861,8 @@
      id="tspan724"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19342,6 +19908,8 @@
      x="3.4419"
      id="tspan742"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -19394,6 +19962,8 @@
      x="3.04655"
      id="tspan762"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -19494,6 +20064,8 @@
      id="tspan798"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19560,6 +20132,8 @@
      id="tspan824"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19600,6 +20174,8 @@
      x="2.93027"
      id="tspan840"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -19667,6 +20243,8 @@
      id="tspan866"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19712,6 +20290,8 @@
      x="3.3721299"
      id="tspan884"
      style="direction:ltr">o</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -19759,6 +20339,8 @@
      id="tspan902"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19804,6 +20386,8 @@
      x="3.3721299"
      id="tspan920"
      style="direction:ltr">o</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -19856,6 +20440,8 @@
      x="2.9767799"
      id="tspan940"
      style="direction:ltr">o</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -19951,6 +20537,8 @@
      id="tspan974"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -20019,6 +20607,8 @@
      x="4.1163301"
      id="tspan1000"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -20137,6 +20727,8 @@
      id="tspan1042"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20192,6 +20784,8 @@
      x="3.9535401"
      id="tspan1064"
      style="direction:ltr">p</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -20254,6 +20848,8 @@
      id="tspan1088"
      style="direction:ltr">2</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20299,6 +20895,8 @@
      x="3.4310801"
      id="tspan1106"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -20366,6 +20964,8 @@
      id="tspan1132"
      style="direction:ltr">2</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20411,6 +21011,8 @@
      x="3.88377"
      id="tspan1150"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -20478,6 +21080,8 @@
      id="tspan1176"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20523,6 +21127,8 @@
      x="3.53493"
      id="tspan1194"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -20570,6 +21176,8 @@
      id="tspan1212"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20615,6 +21223,8 @@
      x="3.53493"
      id="tspan1230"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -20667,6 +21277,8 @@
      x="3.13957"
      id="tspan1250"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -20761,6 +21373,8 @@
      x="3.6047001"
      id="tspan1284"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -20878,6 +21492,8 @@
      id="tspan1326"
      style="direction:ltr">f</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -20961,6 +21577,8 @@
      id="tspan1358"
      style="direction:ltr">B</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21006,6 +21624,8 @@
      x="3.79074"
      id="tspan1376"
      style="direction:ltr">p</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -21062,6 +21682,8 @@
      x="4.9070401"
      id="tspan1398"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -21166,6 +21788,8 @@
      id="tspan1436"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -21217,6 +21841,8 @@
      x="3.81039"
      id="tspan1456"
      style="direction:ltr">e</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -21315,6 +21941,8 @@
      id="tspan1492"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21370,6 +21998,8 @@
      x="3.2586601"
      id="tspan1514"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -21431,6 +22061,8 @@
      x="4.3276401"
      id="tspan1538"
      style="direction:ltr">a</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -21498,6 +22130,8 @@
      id="tspan1564"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21543,6 +22177,8 @@
      x="3.48842"
      id="tspan1582"
      style="direction:ltr">f</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -21595,6 +22231,8 @@
      id="tspan1602"
      style="direction:ltr">y</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21625,6 +22263,8 @@
      x="1.51726"
      id="tspan1614"
      style="direction:ltr">d</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -21672,6 +22312,8 @@
      id="tspan1632"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21718,6 +22360,8 @@
      id="tspan1650"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21763,6 +22407,8 @@
      x="2.93027"
      id="tspan1668"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -21815,6 +22461,8 @@
      x="2.53492"
      id="tspan1688"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -21909,6 +22557,8 @@
      x="2.9767799"
      id="tspan1722"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -22020,6 +22670,8 @@
      id="tspan1762"
      style="direction:ltr">t</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22071,6 +22723,8 @@
      id="tspan1782"
      style="direction:ltr">b</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22117,6 +22771,8 @@
      id="tspan1800"
      style="direction:ltr">b</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22162,6 +22818,8 @@
      x="3.09306"
      id="tspan1818"
      style="direction:ltr">a</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -22218,6 +22876,8 @@
      x="4.8140101"
      id="tspan1840"
      style="direction:ltr">C</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -22343,6 +23003,8 @@
      id="tspan1884"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22388,6 +23050,8 @@
      x="2.74422"
      id="tspan1902"
      style="direction:ltr">e</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -22441,6 +23105,8 @@
      id="tspan1922"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22486,6 +23152,8 @@
      x="3.13957"
      id="tspan1940"
      style="direction:ltr">e</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -22533,6 +23201,8 @@
      id="tspan1958"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22578,6 +23248,8 @@
      x="3.3621099"
      id="tspan1976"
      style="direction:ltr">1</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -22635,6 +23307,8 @@
      id="tspan1998"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22691,6 +23365,8 @@
      id="tspan2020"
      style="direction:ltr">2</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22731,6 +23407,8 @@
      x="2.81038"
      id="tspan2036"
      style="direction:ltr">e</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -22777,6 +23455,8 @@
      x="4.0465598"
      id="tspan2054"
      style="direction:ltr">s</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -22902,6 +23582,8 @@
      id="tspan2098"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22958,6 +23640,8 @@
      id="tspan2120"
      style="direction:ltr">p</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23003,6 +23687,8 @@
      x="3.13797"
      id="tspan2138"
      style="direction:ltr">y</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -23065,6 +23751,8 @@
      id="tspan2162"
      style="direction:ltr">a</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23105,6 +23793,8 @@
      x="2.81038"
      id="tspan2178"
      style="direction:ltr">s</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -23152,6 +23842,8 @@
      id="tspan2196"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23192,6 +23884,8 @@
      x="2.5862401"
      id="tspan2212"
      style="direction:ltr">o</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -23239,6 +23933,8 @@
      id="tspan2230"
      style="direction:ltr">y</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23285,6 +23981,8 @@
      id="tspan2248"
      style="direction:ltr">y</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23330,6 +24028,8 @@
      x="3.2558501"
      id="tspan2266"
      style="direction:ltr">y</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -23382,6 +24082,8 @@
      x="2.8605001"
      id="tspan2286"
      style="direction:ltr">y</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -23477,6 +24179,8 @@
      id="tspan2320"
      style="direction:ltr">y</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -23549,6 +24253,8 @@
      id="tspan2346"
      style="direction:ltr">F</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -23616,6 +24322,8 @@
      id="tspan2372"
      style="direction:ltr">t</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23672,6 +24380,8 @@
      id="tspan2394"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23722,6 +24432,8 @@
      x="4.7674999"
      id="tspan2414"
      style="direction:ltr">s</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -23859,6 +24571,8 @@
      id="tspan2462"
      style="direction:ltr">s</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23925,6 +24639,8 @@
      id="tspan2488"
      style="direction:ltr">C</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23985,6 +24701,8 @@
      x="5.6279802"
      id="tspan2512"
      style="direction:ltr">k</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -24050,6 +24768,8 @@
      id="tspan2536"
      style="direction:ltr">k</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24111,6 +24831,8 @@
      id="tspan2560"
      style="direction:ltr">d</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24157,6 +24879,8 @@
      id="tspan2578"
      style="direction:ltr">a</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24202,6 +24926,8 @@
      x="3.5116701"
      id="tspan2596"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -24386,6 +25112,8 @@
      id="tspan2660"
      style="direction:ltr">l</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -24437,6 +25165,8 @@
      x="3.7069399"
      id="tspan2680"
      style="direction:ltr">d</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -24524,6 +25254,8 @@
      id="tspan2712"
      style="direction:ltr">d</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24584,6 +25316,8 @@
      x="5.6977401"
      id="tspan2736"
      style="direction:ltr">p</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -24708,6 +25442,8 @@
      id="tspan2782"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24794,6 +25530,8 @@
      id="tspan2816"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24870,6 +25608,8 @@
      id="tspan2846"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24935,6 +25675,8 @@
      x="5.6724801"
      id="tspan2872"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -25022,6 +25764,8 @@
      id="tspan2906"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25087,6 +25831,8 @@
      x="5.4483399"
      id="tspan2932"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -25174,6 +25920,8 @@
      id="tspan2966"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25224,6 +25972,8 @@
      x="4.6512198"
      id="tspan2986"
      style="direction:ltr">L</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -25336,6 +26086,8 @@
      id="tspan3026"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25381,6 +26133,8 @@
      x="3.3621099"
      id="tspan3044"
      style="direction:ltr">2</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -25468,6 +26222,8 @@
      id="tspan3076"
      style="direction:ltr">R</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25523,6 +26279,8 @@
      x="4.7442398"
      id="tspan3098"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -25628,6 +26386,8 @@
      id="tspan3136"
      style="direction:ltr">R</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -25700,6 +26460,8 @@
      id="tspan3164"
      style="direction:ltr">s</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25750,6 +26512,8 @@
      x="4.58145"
      id="tspan3184"
      style="direction:ltr">R</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -25902,6 +26666,8 @@
      id="tspan3238"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25967,6 +26733,8 @@
      x="5.5000701"
      id="tspan3264"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -26034,6 +26802,8 @@
      id="tspan3290"
      style="direction:ltr">d</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -26095,6 +26865,8 @@
      x="4.2326102"
      id="tspan3314"
      style="direction:ltr">1</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -26254,6 +27026,8 @@
      id="tspan3370"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26300,6 +27074,8 @@
      id="tspan3388"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26335,6 +27111,8 @@
      x="2.06899"
      id="tspan3402"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -26396,6 +27174,8 @@
      x="5.2326198"
      id="tspan3426"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -26506,6 +27286,8 @@
      id="tspan3466"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -26563,6 +27345,8 @@
      id="tspan3488"
      style="direction:ltr">V</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26608,6 +27392,8 @@
      x="3.8605101"
      id="tspan3506"
      style="direction:ltr">V</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -26697,6 +27483,8 @@
      id="tspan3538"
      style="direction:ltr">V</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -26778,6 +27566,8 @@
      x="4.1163301"
      id="tspan3568"
      style="direction:ltr">L</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -26886,6 +27676,8 @@
      id="tspan3606"
      style="direction:ltr">l</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -26974,6 +27766,8 @@
      x="2.58143"
      id="tspan3638"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27083,6 +27877,8 @@
      id="tspan3678"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27143,6 +27939,8 @@
      x="4.5116801"
      id="tspan3702"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27265,6 +28063,8 @@
      x="4.67448"
      id="tspan3746"
      style="direction:ltr">2</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27398,6 +28198,8 @@
      x="5.3488998"
      id="tspan3794"
      style="direction:ltr">2</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27533,6 +28335,8 @@
      id="tspan3842"
      style="direction:ltr">2</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27583,6 +28387,8 @@
      x="4.5581999"
      id="tspan3862"
      style="direction:ltr">2</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27713,6 +28519,8 @@
      id="tspan3908"
      style="direction:ltr">1</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -27800,6 +28608,8 @@
      id="tspan3940"
      style="direction:ltr">o</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -27886,6 +28696,8 @@
      x="4.1628399"
      id="tspan3972"
      style="direction:ltr">f</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -27999,6 +28811,8 @@
      id="tspan4012"
      style="direction:ltr">f</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28087,6 +28901,8 @@
      id="tspan4044"
      style="direction:ltr">a</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28155,6 +28971,8 @@
      id="tspan4070"
      style="direction:ltr">d</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -28185,6 +29003,8 @@
      x="1.86049"
      id="tspan4082"
      style="direction:ltr">9</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -28264,6 +29084,8 @@
      id="tspan4112"
      style="direction:ltr">l</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -28314,6 +29136,8 @@
      x="5.0000601"
      id="tspan4132"
      style="direction:ltr">C</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -28460,6 +29284,8 @@
      id="tspan4184"
      style="direction:ltr">m</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28511,6 +29337,8 @@
      x="3.48842"
      id="tspan4204"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><g
      font-size="1"
@@ -28577,6 +29405,8 @@
      x="5.9303098"
      id="tspan4230"
      style="direction:ltr">n</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -28789,6 +29619,8 @@
      id="tspan4304"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28887,6 +29719,8 @@
      id="tspan4340"
      style="direction:ltr">e</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -28942,6 +29776,8 @@
      x="4.9302902"
      id="tspan4362"
      style="direction:ltr">l</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -29064,6 +29900,8 @@
      id="tspan4406"
      style="direction:ltr">l</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29161,6 +29999,8 @@
      x="5.3256502"
      id="tspan4442"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -29321,6 +30161,8 @@
      id="tspan4498"
      style="direction:ltr">r</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -29371,6 +30213,8 @@
      x="4.2326102"
      id="tspan4518"
      style="direction:ltr">a</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -29607,6 +30451,8 @@
      id="tspan4600-5"
      style="direction:ltr">n</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29725,6 +30571,8 @@
      id="tspan4644"
      style="direction:ltr">s</tspan></text>
 
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -29775,6 +30623,8 @@
      x="4.3721499"
      id="tspan4664"
      style="direction:ltr">r</tspan></text>
+
+
 
 </g><path
      clip-path="url(#SVG_CP_1-8)"
@@ -29987,6 +30837,8 @@
      id="tspan4738"
      style="direction:ltr">p</tspan></text>
 
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -30127,4 +30979,26 @@
    style="fill:none;stroke:#f50000;stroke-width:3.81391311;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:22.88347941, 3.81391318;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Mend)"
    d="m 1632.2173,2978.4547 c -400.7962,-377.1356 -406.176,-380.2521 -406.176,-380.2521"
    id="path21582-1"
-   inkscape:connector-curvature="0" /></svg>
+   inkscape:connector-curvature="0" /><g
+   id="g10341-1"
+   transform="matrix(0.32447222,-0.99877038,0.97385081,0.32655416,-1528.3164,1803.6068)"><line
+   stroke-miterlimit="10"
+   x1="470.37399"
+   y1="1991.4611"
+   x2="528.90198"
+   y2="2040.267"
+   id="line2145-7"
+   style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5" /><text
+   y="1240.8346"
+   x="1753.4146"
+   transform="matrix(0.77411044,0.62455949,-0.70473738,0.72321667,0,0)"
+   font-size="10.1702"
+   id="text2147-4"
+   style="font-size:10.07152843px;fill:#1c75bc;font-family:MyriadPro-Regular">D_ConeyIs</text>
+
+<polyline
+   stroke-miterlimit="10"
+   points="533.627,2042.972    518.978,2039.657 527.895,2030.471 527.895,2030.471 533.627,2042.972  "
+   id="polyline2149-0"
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10"
+   transform="matrix(-0.9990963,0.03488336,-0.03337135,-0.99973936,1061.6491,4007.1738)" /></g></svg>

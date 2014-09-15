@@ -40,7 +40,7 @@ TERMINOUS	I_TERMINOUS_S2D/FLOW-INFLOW,C_MOKLMN/FLOW-CHANNEL,D_TERMINOUS/FLOW-DEL
 CENTRAL DELTA	C_TRMNS/FLOW-CHANNEL,C_SJRCD/FLOW-CHANNEL,C_SJRSTO/FLOW-CHANNEL	null	Flow	Flows at Central Delta	null
 STOCKTON	C_SJRSTO/FLOW-CHANNEL,I_STOCKTON_S2D/FLOW-INFLOW,D_STOCKTON/FLOW-DELIVERY,C_SJRCAL/FLOW-CHANNEL,	null	Flow	Flows at Stockton	null
 CALAVERAS	C_SJRCAL/FLOW-CHANNEL,AD_CALAVERAS_S2D/FLOW-ACCRDEPL,C_SJRVER/FLOW-CHANNEL,	null	Flow	Flows at Calaveras	null
-VERNALIS	C_SJRVER/FLOW-CHANNEL,AD_SJR_V_S2D/FLOW-ACCRDEPL,C_VRNLIS/FLOW-CHANNEL	null	Flow	Flows at Vernalis	null
+SJR OLD RIVER	C_SJROLDR/FLOW-CHANNEL,C_SJRVER/FLOW-CHANNEL,C_OLDRIVER/FLOW-CHANNEL	null	Flow	Flows at Vernalis	null
 ROCK SLOUGH	C_INDNSL/FLOW-CHANNEL,C_OMR/FLOW-CHANNEL,D_CCWDVCOR/FLOW-DELIVERY,C_CONYIS/FLOW-CHANNEL	null	Flow	Flows at Rock Slough	null
 CONEY ISLAND	C_CONYIS/FLOW-CHANNEL,I_CONEYIS_S2D/FLOW-INFLOW,D_CONEYIS/FLOW-DELIVERY,D_EXPTD/FLOW-DELIVERY	null	Flow	Flows at Coney Island	null
 JONES PP	D_EXPTD/FLOW-DELIVERY,C_BNKEXP/FLOW-CHANNEL,D_JONES/FLOW-DELIVERY	null	Flow	Flows at Jones Pumping Plant	null
@@ -72,7 +72,7 @@ I_CVCWHEEL	I_CVCWHEEL/FLOW-INFLOW	null	Flow	Inflows to CVC Wheel	null
 I_DELVALLE	I_DELVALLE/FLOW-INFLOW	null	Flow	Inflows to DelValle 	null
 I_FOLSM	I_FOLSM_S2D/FLOW-INFLOW	null	Flow	Inflows to Folsom Lake	null
 I_HOOD	I_HOOD_S2D/FLOW-INFLOW	null	Flow	Inflows to Hood 	null
-I_JAMESBP	I_JAMESBP_S2D/FLOW-INFLOW	null	Flow	Inflows to James Bifurcation Point	null
+I_MDOTA	I_MDOTA_S2D/FLOW-INFLOW	null	Flow	Inflows to James Bifurcation Point (I_MDOTA_S2D)	null
 I_KELLYRIDGE	I_KELLYRIDGE_S2D/FLOW-INFLOW	null	Flow	Inflows to Kelly Ridge	null
 I_KERN (KERN RIVER INTERTIE)	I_KERN_S2D/FLOW-INFLOW	null	Flow	Inflows to Kern River	null
 I_LEWISTON	I_LEWISTON_S2D/FLOW-INFLOW	null	Flow	Inflows to Lewiston 	null
@@ -113,7 +113,7 @@ C_KSWCK	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River
 C_LASPER	C_LASPER/FLOW-CHANNEL	null	Flow	Flows below Lasper	null
 C_LWSTN	C_LWSTN/FLOW-CHANNEL	null	Flow	Flows below Lewiston	null
 C_MOKLMN	C_MOKLMN/FLOW-CHANNEL	null	Flow	Flows below Mokelumne River	null
-C_MPOOL	C_MPOOL/FLOW-CHANNEL	null	Flow	Flows below Mendota Pool	null
+C_MDOTA	C_MDOTA/FLOW-CHANNEL	null	Flow	Flows below Mendota Pool (C_MDota)	null
 C_NBA	C_NBA/FLOW-CHANNEL	null	Flow	Flows below North Bay Aqueduct	null
 C_NIMBUS	C_NIMBUS/FLOW-CHANNEL	C_NIMBUS_MIF/FLOW-MIN-INSTREAM	Flow	American River at Nimbus	Minimum Instream Flow
 C_OFBCVP	C_OFBCVP/FLOW-CHANNEL	null	Flow	Flows below O'Neil Forebay CVP	null
@@ -136,8 +136,9 @@ C_SHSTA	C_SHSTA/FLOW-CHANNEL	null	Flow	Flows below Shasta Lake	null
 C_SJRCAL	C_SJRCAL/FLOW-CHANNEL	null	Flow	Flows below San Joquin River at Calaveras	null
 C_SJRCD	C_SJRCD/FLOW-CHANNEL	null	Flow	Flows below San Joquin River at Central Delta	null
 C_SJRMI	C_SJRMI/FLOW-CHANNEL	null	Flow	Flows below San Joaquin River at Medford Island	null
+C_SJROLDR	C_SJROLDR/FLOW-CHANNEL	null	Flow	SJR flows at Old River (C_SJROLDR)	null
 C_SJRSTO	C_SJRSTO/FLOW-CHANNEL	null	Flow	Flows below Stockton	null
-C_SJRVER	C_SJRVER/FLOW-CHANNEL	null	Flow	Flows below Vernalis	null
+C_SJRVER	C_SJRVER/FLOW-CHANNEL	null	Flow	Flows below Vernalis (C_SJRVer)	null
 C_SJRVI	C_SJRVI/FLOW-CHANNEL	null	Flow	Flows at San Joaquin River below Venice Island	null
 C_SLCVP	C_SLCVP/FLOW-CHANNEL	null	Flow	Flows below CVP San Luis	null
 C_SLSWP	C_SLSWP/FLOW-CHANNEL	null	Flow	Flows below SWP San Luis	null
@@ -146,7 +147,7 @@ C_THERM	C_THERM/FLOW-CHANNEL	C_THERM_MIF/FLOW-MIN-INSTREAM	Flow	Flows below Ther
 C_TRMNS	C_TRMNS/FLOW-CHANNEL	null	Flow	Flows below Terminous	null
 C_TRNTY	C_TRNTY/FLOW-CHANNEL	null	Flow	Flows below Trinity	null
 C_UPDMC	C_UPDMC/FLOW-CHANNEL	null	Flow	Flows below Upper Mendota Canal	null
-C_VRNLIS	C_VRNLIS/FLOW-CHANNEL	null	Flow	Flows below Vernalis	null
+C_OLDRIVER	C_OLDRIVER/FLOW-CHANNEL	null	Flow	Flows below Vernalis (C_OldRiver)	null
 C_WARNEPP	C_WARNEPP/FLOW-CHANNEL	null	Flow	Flows below Warne Power Plant	null
 C_WILKNS	C_WILKNS/FLOW-CHANNEL	C_WILKNS_MIF/FLOW-MIN-INSTREAM	Flow	Flows below Wilkins Slough	Minimum Instream Flow
 C_WKYTN	C_WKYTN/FLOW-CHANNEL	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Flows below Whiskeytown	Minimum Instream Flow
@@ -160,7 +161,7 @@ D_CASTAIC	D_CASTAIC/FLOW-DELIVERY	null	Deliveries	Deliveries from Castaic	null
 D_CCWDINTK	D_CCWDINTK/FLOW-DELIVERY	null	Deliveries	Deliveries from Contra Costa Water District Intake	null
 D_CCWDVCOR	D_CCWDVCOR/FLOW-DELIVERY	null	Deliveries	Deliveries from Victoria Canal and Old River to Contra Costa Water District	null
 D_COASTAQDCT (850)	D_COASTAQDCT/FLOW-DELIVERY	null	Deliveries	Deliveries from Coastal Aqueduct	null
-D_CONEYIS	D_CONEYIS/FLOW-DELIVERY	null	Deliveries	Deliveries from Coney Island	null
+D_CONEYIS	D_CONEYIS/FLOW-DELIVERY	null	Deliveries	Deliveries from Coney Island (D_ConeyIs)	null
 D_CVC2CHRIS(859_862_863_864)	D_CVC2CHRIS/FLOW-DELIVERY	null	Deliveries	Deliveries from Chrisman Pumping Plant	null
 D_CVP_CVC (855)	D_CVP_CVC/FLOW-DELIVERY	null	Deliveries	Deliveries from Cross Valley Canal	null
 D_CVPJU_LDMC	D_CVPJU_LDMC/FLOW-DELIVERY	null	Deliveries	Deliveries from CVP Joint Use Lower Mendota Canal	null
@@ -225,6 +226,5 @@ AD_YUBFEA	AD_YUBFEA_ACTUAL/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at 
 AD_CALAVERAS	AD_CALAVERAS_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at Calaveras	null
 AD_CASTAIC	AD_CASTAIC_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at Castaic	null
 AD_MOKELUMNE	AD_MOKELUMNE_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at Mokelumne River	null
-AD_SJR	SJR_ANN_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at San Joaquin River	null
-AD_JAMESBP	AD_JAMESBP_S2D/FLOW-ACCRDEPL	null	Deliveries	Accretion/Depletion at James Bifurcation Point	null
 YOLO	D_FREWEIR/FLOW-DELIVERY,D_SACWEIR/FLOW-DELIVERY,AD_YOLOBP_ACTUAL/FLOW-ACCRDEPL,C_YOLOBP/FLOW-CHANNEL	null	Flow	Flows at Yolo Bypass	null
+
