@@ -566,7 +566,7 @@ public class RunUtils {
 	 * @throws IOException
 	 */
 	private static void writeScenarioTables(final String runDir, ArrayList<String> links, Boolean[] UDFlags, SwingEngine swix,
-	        int[] RegFlags, int iCC) throws IOException {
+	        int[] regFlags, int iCC) throws IOException {
 
 		String openFileName = "";
 		File f = null;
@@ -597,7 +597,7 @@ public class RunUtils {
 			if (!tableFileName.equals("n/a")) {
 
 				// ... Get the index (line in table file where the link result is written),
-				// option (0..n for choice indicated through radiobuttons, -1 for values entered as text, -2 for bollean from
+				// option (0..n for choice indicated through radiobuttons, -1 for values entered as text, -2 for boolean from
 				// checkbox)
 				// and descriptive text for link.
 
@@ -714,7 +714,7 @@ public class RunUtils {
 							if (!linkParts[14].trim().equals("n/a")) {
 								String rID = linkParts[14];
 								tID = Integer.parseInt(rID);
-								option = String.valueOf(RegFlags[tID]);
+								option = String.valueOf(regFlags[tID]);
 							}
 
 							/*
