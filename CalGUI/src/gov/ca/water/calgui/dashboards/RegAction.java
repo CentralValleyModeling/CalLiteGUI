@@ -25,7 +25,7 @@ public class RegAction implements ActionListener {
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
 	private final ButtonGroup reg_btng1;
-	private int[] RegFlags;
+	private int[] regFlags;
 
 	public RegAction(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        ButtonGroup reg_btng1, int[] RegFlags) {
@@ -34,7 +34,7 @@ public class RegAction implements ActionListener {
 		this.dTableModels = dTableModels;
 		this.gl = gl;
 		this.reg_btng1 = reg_btng1;
-		this.RegFlags = RegFlags;
+		this.regFlags = RegFlags;
 	}
 
 	@Override
@@ -110,14 +110,14 @@ public class RegAction implements ActionListener {
 				JPanel pan = (JPanel) swix.find("reg_panTab");
 				cName = pan.getToolTipText();
 			}
-			if (RegFlags == null) {
-				RegFlags = new int[40];
+			if (regFlags == null) {
+				regFlags = new int[40];
 			}
 			// String stID = String.valueOf(tID);
 			int rID = Integer.parseInt(gl.RIDForCtrl(cName));
-			RegFlags[rID] = 1;
+			regFlags[rID] = 1;
 
-			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641", RegFlags);
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1641", regFlags);
 
 		} else if (ae.getActionCommand().startsWith("Reg_1485")) {
 
@@ -136,14 +136,14 @@ public class RegAction implements ActionListener {
 
 			}
 
-			if (RegFlags == null) {
-				RegFlags = new int[20];
+			if (regFlags == null) {
+				regFlags = new int[20];
 			}
 			// String stID = String.valueOf(tID);
 			int rID = Integer.parseInt(gl.RIDForCtrl(cName));
-			RegFlags[rID] = 3;
+			regFlags[rID] = 3;
 
-			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485", RegFlags);
+			RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, true, "1485", regFlags);
 
 		} else if (ae.getActionCommand().equals("AC_Help")) {
 
