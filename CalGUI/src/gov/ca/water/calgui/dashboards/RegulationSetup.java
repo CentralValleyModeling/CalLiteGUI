@@ -251,13 +251,18 @@ public class RegulationSetup {
 
 				if (sReset.equals("null")) {
 
-					JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_D1485");
-					Boolean b = btn.isSelected();
-					if (b == true) {
+					// DKR 16Sept2014 comment out block
+					/*
+					 * JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_D1485"); Boolean b = btn.isSelected(); if (b == true) {
+					 * iOpt = 2; } else { iOpt = 1; }
+					 */
+					// DKR 16Sept2014 revert display table back to previous quick select
+					if (RegFlags[tID] == 3) {
 						iOpt = 2;
 					} else {
 						iOpt = 1;
 					}
+
 				} else if (sReset.equals("1641")) {
 					iOpt = 1;
 				} else {
