@@ -60,7 +60,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 315	D_CCWDINTK/FLOW-DELIVERY	null	Flow	CCWD Rock Slough Exports	null
 316	D_CCWDINTK/FLOW-DELIVERY+D_CCWDVCOR/FLOW-DELIVERY	null	Flow	CCWD Total Exports	null
 402	DEL_CVP_TOTAL_N/DELIVERY-CVP	null	Deliveries	CVP North of Delta Deliveries	null
-403	DEL_CVP_TOTAL_S/DELIVERY-CVP	null	Deliveries	CVP South of Delta Deliveries	null
+403	CVPTOTALDEL/FLOW-DELIVERY	null	Deliveries	CVP South of Delta Deliveries (including CVC)	null
 404	SWP_NOD_DEL/DELIVERY-SWP	null	Deliveries	SWP North of Delta Deliveries	null
 405	SWP_TA_TOTAL/SWP_DELIVERY+SWP_CO_TOTAL/SWP_DELIVERY+SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Total Deliveries	null
 406	SWP_IN_TOTAL/SWP_DELIVERY	null	Deliveries	SWP Article 21 (Interruptible) Deliveries	null
@@ -74,67 +74,63 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 416	null	null	null	null	null
 417	null	null	null	null	null
 418	null	null	null	null	null
-502	null	null	null	null	null
-503	null	null	null	null	null
-504	null	null	null	null	null
-505	null	null	null	null	null
-508	null	null	null	null	null
-509	null	null	null	null	null
-510	null	null	null	null	null
-511	null	null	null	null	null
-512	null	null	null	null	null
-513	null	null	null	null	null
-516	null	null	null	null	null
-517	null	null	null	null	null
-518	null	null	null	null	null
-519	null	null	null	null	null
-520	null	null	null	null	null
+508	S422/STORAGE	null	Storage	Los Vaqueros Storage	null
+509	WQ408_OR_/SALINITY	null	Electrical Conductivity	Diversion Salinity - Old River	null
+510	WQ408_VC_/SALINITY	null	Electrical Conductivity	Diversion Salinity - Victoria Canal	null
+511	WQ408_RS_/SALINITY	null	Electrical Conductivity	Diversion Salinity - Rock Slough	null
+512	C422_FILL_CC/FLOW-CHANNEL	null	Flow	Los Vaqueros Fill	null
+513	D420/FLOW-DELIVERY	null	Flow	CCWD Deliveries	null
+514	D408_OR/FLOW-DELIVERY	null	Flow	CCWD Diversions - Old River	null
+515	D408_VC/FLOW-DELIVERY	null	Flow	CCWD Diversions - Victoria Canal	null
+516	D408_RS/FLOW-DELIVERY	null	Flow	CCWD Diversions - Rock Slough	null
+517	WQ420/SALINITY	null	Electrical Conductivity	CCWD Delivery Salinity	null
 600	S_MELON/STORAGE	null	Storage	New Melones Reservoir Storage	null
 601	S_PEDRO/STORAGE	null	Storage	New Don Pedro Reservoir Storage	null
 602	S_MCLRE/STORAGE	null	Storage	Mclure Reservoir Storage	null
 603	S_MLRTN/STORAGE	null	Storage	Millerton Reservoir Storage	null
 604	C_SJRVER/FLOW-CHANNEL	null	Flow	Flow from SJR to Vernalis 	null
-605	C_STANRIPN/FLOW-CHANNEL	null	Flow	Flow of Ripon river to SJR	null
+605	C_STANRIPN/FLOW-CHANNEL	null	Flow	Flow of Stanislaus River to SJR	null
 606	C_TUOL/FLOW-CHANNEL	null	Flow	Flow of Tuolumne River to SJR	null
 607	C_MERCED2/FLOW-CHANNEL	null	Flow	Flow of Merced river to SJR	null
 608	C_SJRMS/FLOW-CHANNEL	null	Flow	Flow of SJR at Mud Slough 	null
-609	C_MDOTA/FLOW-CHANNEL	null	Flow	Flow of Mendota	null
+609	C_MDOTA/FLOW-CHANNEL	null	Flow	Flow below Mendota Pool	null
 610	D_STANRIPN/FLOW-DELIVERY+D_STANGDWN/FLOW-DELIVERY	null	Deliveries	Deliveries of Stanislaus	null
 611	D_TUOL/FLOW-DELIVERY+D_TUOL1B/FLOW-DELIVERY+D_TUOL2/FLOW-DELIVERY	null	Deliveries	Deliveries of Tuolumne	null
 612	D_MERCED1/FLOW-DELIVERY+D_MERCED2/FLOW-DELIVERY	null	Deliveries	Deliveries of Merced	null
 613	D_MDRCNL/FLOW-DELIVERY+D_FKCNL/FLOW-DELIVERY	null	Deliveries	Deliveries of Friant	null
 614	VERNWQFINAL/SALINITY-EC	null	Electrical Conductivity	Vernalis Salinity	Salinity Standard
-801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	SHORT_AD_HST	null
-802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	SHORT_AD_KSWCK	null
-803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_NIMBUS	null
-804	SHORT_AD_REDBLF/SHORTAGE-FLOW	null	Shortage	SHORT_AD_REDBLF	null
-805	SHORT_AD_SACAME/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACAME	null
-806	SHORT_AD_SACFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_SACFEA	null
-807	SHORT_AD_THERM/SHORTAGE-FLOW	null	Shortage	SHORT_AD_THERM	null
-808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	SHORT_AD_WILKNS	null
-809	SHORT_AD_YOLOBP/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YOLOBP	null
-810	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	SHORT_AD_YUBFEA	null
-901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Net_Delta_Outflow	Detla_OutFlow_Criteria
-902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento_River_at_Rio_Vista	Sacramento_River_Flow_Criteria_at_Rio_Vista
-903	C_SJR/FLOW-ACCRDEPL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San_Joaquin_River_at_Vernalis	San_Joaquin_River_Flow_Criteria_at_Vernalis
-904	EXTRAWATER_NDO/EXTRAWATER	null	Extra Water Needed	Net_Delta_Outflow	null
-905	EXTRAWATER_RIOVISTA/EXTRAWATER	null	Extra Water Needed	Sacramento_River_at_Rio_Vista	null
-906	EXTRAWATER_SJR/EXTRAWATER	null	Extra Water Needed	San_Joaquin_River_at_Vernalis	null
-851	SHORT_SWP_PWR/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pwr	null
-853	SHORT_SWP_PAG_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pag_s	null
-854	SHORT_SWP_PAG/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pag	null
-855	SHORT_SWP_PMI_N/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi_n	null
-856	SHORT_SWP_PMI_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi_s	null
-857	SHORT_SWP_PMI/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pmi	null
-858	SHORT_SWP_MWD/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_mwd	null
-859	SHORT_SWP_OTH/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_oth	null
-860	SHORT_SWP_PLS/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_pls	null
-861	SHORT_SWP_TOT_N/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_tot_n	null
-862	SHORT_SWP_TOT_S/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_tot_s	null
-863	SHORT_SWP_TOTAL/DELIVERY-SHORTAGE-SWP	null	Shortage	short_swp_total	null
-881	SHORT_CVP_PAG_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pag_s	null
-882	SHORT_CVP_PMI_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pmi_s	null
-883	SHORT_CVP_PEX_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pex_s	null
-884	SHORT_CVP_PRF_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_prf_s	null
-885	SHORT_CVP_PLS_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_pls_s	null
-886	SHORT_CVP_TOT_S/DELIVERY-SHORTAGE-CVP	null	Shortage	short_cvp_tot_s	null
+801	SHORT_AD_HST/SHORTAGE-FLOW	null	Shortage	Flow Shortage at H St.	null
+802	SHORT_AD_KSWCK/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Keswick	null
+803	SHORT_AD_NIMBUS/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Nimbus	null
+804	SHORT_AD_REDBLF/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Red Bluff	null
+805	SHORT_AD_SACAME/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Sacramento-American Confluence	null
+806	SHORT_AD_SACFEA/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Sacramento-Feather Confluence	null
+807	SHORT_AD_THERM/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Thermalito	null
+808	SHORT_AD_WILKNS/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Wilkins Slough	null
+809	SHORT_AD_YOLOBP/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Yolo Bypass	null
+810	SHORT_AD_YUBFEA/SHORTAGE-FLOW	null	Shortage	Flow Shortage at Feather-Yuba Confluence	null
+901	C_SACSJR/FLOW-CHANNEL	NDO_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Net Delta Outflow	Detla OutFlow Criteria
+902	C_SACRV/FLOW-CHANNEL	RIOVISTA_SWRCB_DV/DELTAFLOWCRITERIA	Flow	Sacramento River at Rio Vista	Sacramento River Flow Criteria at Rio Vista
+903	C_SJR/FLOW-ACCRDEPL	SJR_SWRCB_DV/DELTAFLOWCRITERIA	Flow	San Joaquin River at Vernalis	San Joaquin River Flow Criteria at Vernalis
+904	EXTRAWATER_NDO/EXTRAWATER	null	Extra Water Needed	Net Delta Outflow	null
+905	EXTRAWATER_RIOVISTA/EXTRAWATER	null	Extra Water Needed	Sacramento River at Rio Vista	null
+906	EXTRAWATER_SJR/EXTRAWATER	null	Extra Water Needed	San Joaquin River at Vernalis	null
+851	SHORT_SWP_PWR/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Water Rights Shortages	null
+852	SHORT_SWP_PAG_N/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP North of Delta Ag Shortages	null
+853	SHORT_SWP_PAG_S/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP South of Delta Ag Shortages	null
+854	SHORT_SWP_PAG/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Total Ag Shortages	null
+855	SHORT_SWP_PMI_N/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP North of Delta M&I Demands Shortages	null
+856	SHORT_SWP_PMI_S/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP South of Delta M&I Demands Shortages	null
+857	SHORT_SWP_PMI/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Total M&I Shortages	null
+858	SHORT_SWP_MWD/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP MWD Shortages	null
+859	SHORT_SWP_OTH/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Other Shortages	null
+860	SHORT_SWP_PLS/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Losses Shortages	null
+861	SHORT_SWP_TOT_N/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP North of Delta Total Shortages	null
+862	SHORT_SWP_TOT_S/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP South of Delta Total Shortages	null
+863	SHORT_SWP_TOTAL/DELIVERY-SHORTAGE-SWP	null	Shortage	SWP Total Shortages	null
+881	SHORT_CVP_PAG_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta Ag Shortages	null
+882	SHORT_CVP_PMI_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta M&I Shortages	null
+883	SHORT_CVP_PEX_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta Exchange Shortages	null
+884	SHORT_CVP_PRF_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta Refuge Shortages	null
+885	SHORT_CVP_PLS_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta Losses Shortages	null
+886	SHORT_CVP_TOT_S/DELIVERY-SHORTAGE-CVP	null	Shortage	CVP South of Delta Total Shortages	null
