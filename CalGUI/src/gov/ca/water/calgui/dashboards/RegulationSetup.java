@@ -257,7 +257,9 @@ public class RegulationSetup {
 					 * iOpt = 2; } else { iOpt = 1; }
 					 */
 					// DKR 16Sept2014 revert display table back to previous quick select
-					if (RegFlags[tID] == 3) {
+					if (RegFlags[tID] == 2) {
+						iOpt = 0;
+					} else if (RegFlags[tID] == 3) {
 						iOpt = 2;
 					} else {
 						iOpt = 1;
@@ -271,7 +273,11 @@ public class RegulationSetup {
 
 				// DKR 10Set2014 - commented out if criterion to make table cahnge values
 				// if (dTableModels[tID] == null) {
-				dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+				if (iOpt == 0) {
+					t.setModel(dTableModels[tID]);
+				} else {
+					dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+				}
 				// }
 			}
 
