@@ -5,6 +5,9 @@ import gov.ca.water.calgui.results.ControlFrame;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -35,6 +38,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -905,6 +909,65 @@ public class GUIUtils {
 			}
 		}
 		return null;
+	}
+
+	public static void copyTableValues(JTable table) {
+
+		StringBuffer sbf = new StringBuffer();
+		// Check to ensure we have selected only a contiguous block of
+		// cells
+		int numcols = table.getSelectedColumnCount();
+		int numrows = table.getSelectedRowCount();
+		int[] rowsselected = table.getSelectedRows();
+		int[] colsselected = table.getSelectedColumns();
+		if (!((numrows - 1 == rowsselected[rowsselected.length - 1] - rowsselected[0] && numrows == rowsselected.length) && (numcols - 1 == colsselected[colsselected.length - 1]
+		        - colsselected[0] && numcols == colsselected.length))) {
+			JOptionPane.showMessageDialog(null, "Invalid Copy Selection", "Invalid Copy Selection", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		for (int i = 0; i < numrows; i++) {
+			for (int j = 0; j < numcols; j++) {
+				sbf.append(table.getValueAt(rowsselected[i], colsselected[j]));
+				if (j < numcols - 1)
+					sbf.append("\t");
+			}
+			sbf.append("\n");
+		}
+		StringSelection stsel = new StringSelection(sbf.toString());
+		Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
+		system.setContents(stsel, stsel);
+
+	}
+
+	public static void pasteTableValues(JTable table) {
+
+		int startRow = (table.getSelectedRows())[0];
+		int startCol = (table.getSelectedColumns())[0];
+		try {
+			String trstring = (TextTransfer.getClipboardContents());
+			trstring = trstring.replaceAll("(?sm)\t\t", "\t \t");
+			trstring = trstring.replaceAll("(?sm)\t\n", "\t \n");
+			System.out.println("String is:" + trstring);
+			StringTokenizer st1 = new StringTokenizer(trstring, "\n");
+			for (int i = 0; st1.hasMoreTokens(); i++)
+			// for(int i=0; i < RowCt; i++)
+			{
+				String rowstring = st1.nextToken();
+				StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
+				for (int j = 0; st2.hasMoreTokens(); j++)
+				// for(int j=0;j < ColCt;j++)
+				{
+					String value = st2.nextToken();
+					if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
+						table.setValueAt(value, startRow + i, startCol + j);
+					table.repaint();
+					// System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
+				}
+			}
+		} catch (Exception ex) {
+			log.debug(ex.getMessage());
+		}
+
 	}
 
 	/**
