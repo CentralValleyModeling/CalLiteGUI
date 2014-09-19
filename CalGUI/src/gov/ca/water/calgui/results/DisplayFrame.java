@@ -36,7 +36,10 @@ import calsim.app.MultipleTimeSeries;
  */
 public class DisplayFrame {
 
-	private static int displayLocation = 0;
+	private static int displayLocationN = 0;
+	private static int displayDeltaY = 20;
+	private static int displayDeltaX = 200;
+
 	private static SwingEngine swix = MainMenu.getSwix();
 
 	/**
@@ -314,13 +317,45 @@ public class DisplayFrame {
 
 				frame.setVisible(true);
 				frame.setSize(980, 700);
-				frame.setLocation(displayLocation, displayLocation);
-				displayLocation += 20;
+				frame.setLocation(displayLocationPoint());
 
 			}
 		}
 		return;
 	}
+
+	/**
+	 * Returns coordinates for upper left corner of display frame. Coordinates move diagonally down the page then shift over 20
+	 * pixels, and eventually restart.
+	 * 
+	 * @return
+	 */
+	private static java.awt.Point displayLocationPoint() {
+
+		// Increment frame counter
+
+		displayLocationN++;
+
+		// Calculate number of rows and columns in grid, accounting for bottom and left margin and for diagonal organization
+
+		int verticalSteps = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - displayDeltaY - 200) / displayDeltaY;
+		int horizontalSteps = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width - 20 * verticalSteps) / displayDeltaX;
+
+		// If bottom right of grid is reached, start over
+
+		if (displayLocationN >= verticalSteps * horizontalSteps)
+			displayLocationN = 0;
+
+		int displayLocationColumn = displayLocationN / verticalSteps;
+		int displayLocationRow = displayLocationN - verticalSteps * displayLocationColumn;
+
+		java.awt.Point p = new java.awt.Point();
+		p.y = displayDeltaY * displayLocationRow;
+		p.x = displayDeltaX * displayLocationColumn + p.y;
+
+		return p;
+
+	};
 
 	public static String quickState() {
 
@@ -680,8 +715,7 @@ public class DisplayFrame {
 
 		frame.setVisible(true);
 		frame.setSize(980, 700);
-		frame.setLocation(displayLocation, displayLocation);
-		displayLocation += 20;
+		frame.setLocation(displayLocationPoint());
 
 		return;
 
