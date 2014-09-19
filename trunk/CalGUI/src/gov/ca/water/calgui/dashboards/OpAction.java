@@ -6,11 +6,7 @@ import gov.ca.water.calgui.utils.DataFileTableModel;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.PopulateDTable;
-import gov.ca.water.calgui.utils.TextTransfer;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -94,34 +90,7 @@ public class OpAction implements ActionListener {
 		} else if (ae.getActionCommand().startsWith("Op_Copy")) {
 
 			JTable table = (JTable) swix.find("tblOpValues");
-			StringBuffer sbf = new StringBuffer();
-			// Check to ensure we have selected only a contiguous block of
-			// cells
-			int numcols = table.getSelectedColumnCount();
-			int numrows = table.getSelectedRowCount();
-			int[] rowsselected = table.getSelectedRows();
-			int[] colsselected = table.getSelectedColumns();
-			if (!((numrows - 1 == rowsselected[rowsselected.length - 1] - rowsselected[0] && numrows == rowsselected.length) && (numcols - 1 == colsselected[colsselected.length - 1]
-			        - colsselected[0] && numcols == colsselected.length))) {
-				JOptionPane.showMessageDialog(null, "Invalid Copy Selection", "Invalid Copy Selection", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-			for (int i = 0; i < numrows; i++) {
-				for (int j = 0; j < numcols; j++) {
-					sbf.append(table.getValueAt(rowsselected[i], colsselected[j]));
-					if (j < numcols - 1)
-						sbf.append("\t");
-				}
-				sbf.append("\n");
-			}
-			StringSelection stsel = new StringSelection(sbf.toString());
-			Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
-			system.setContents(stsel, stsel);
-
-			/*
-			 * ActionEvent ae1 = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "copy"); // table.selectAll();
-			 * table.getActionMap().get(ae1.getActionCommand()).actionPerformed(ae);
-			 */
+			GUIUtils.copyTableValues(table);
 
 		} else if (ae.getActionCommand().startsWith("Op_Read")) {
 			JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
@@ -264,37 +233,8 @@ public class OpAction implements ActionListener {
 
 		} else if (ae.getActionCommand().startsWith("Op_Paste")) {
 
-			// System.out.println("Clipboard contains:" +
-			// TextTransfer.getClipboardContents() );
 			JTable table = (JTable) swix.find("tblOpValues");
-			int startRow = (table.getSelectedRows())[0];
-			int startCol = (table.getSelectedColumns())[0];
-			// int RowCt=table.getSelectedRows().length;
-			// int ColCt=table.getSelectedColumns().length;
-			try {
-				String trstring = (TextTransfer.getClipboardContents());
-				trstring = trstring.replaceAll("(?sm)\t\t", "\t \t");
-				trstring = trstring.replaceAll("(?sm)\t\n", "\t \n");
-				System.out.println("String is:" + trstring);
-				StringTokenizer st1 = new StringTokenizer(trstring, "\n");
-				for (int i = 0; st1.hasMoreTokens(); i++)
-				// for(int i=0; i < RowCt; i++)
-				{
-					String rowstring = st1.nextToken();
-					StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
-					for (int j = 0; st2.hasMoreTokens(); j++)
-					// for(int j=0;j < ColCt;j++)
-					{
-						String value = st2.nextToken();
-						if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
-							table.setValueAt(value, startRow + i, startCol + j);
-						table.repaint();
-						System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
-					}
-				}
-			} catch (Exception ex) {
-				log.debug(ex.getMessage());
-			}
+			GUIUtils.pasteTableValues(table);
 		}
 
 		else {
