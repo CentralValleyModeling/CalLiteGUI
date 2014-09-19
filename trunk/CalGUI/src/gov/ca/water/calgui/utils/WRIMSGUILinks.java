@@ -177,9 +177,11 @@ public class WRIMSGUILinks {
 			String svPathString = dvFileName.substring(0, dvFileName.length() - 7); // Strip out "_DV.DSS"
 			int i = svPathString.lastIndexOf("\\"); // find rightmost "/"
 			svFileName = svPathString.substring(0, i) + "\\Run_Details" + svPathString.substring(i) + "\\Run\\DSS\\" + svFileName;
+
 		} else {
 
 			// Not found in CLS: first, check if there's a corresponding SV.DSS
+
 			if (dvFileName.substring(dvFileName.length() - 6, dvFileName.length()).toUpperCase().equals("DV.DSS")) {
 				svFileName = dvFileName.substring(0, dvFileName.length() - 6) + "SV.dss";
 				File svF = new File(svFileName);
