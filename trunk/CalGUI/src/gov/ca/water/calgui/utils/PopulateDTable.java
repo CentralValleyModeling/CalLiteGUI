@@ -158,9 +158,9 @@ public class PopulateDTable {
 
 			}
 
-			t.revalidate();
-
 			ExcelAdapter myAd = new ExcelAdapter(t);
+
+			t.revalidate();
 
 		}
 		return dTableModels;

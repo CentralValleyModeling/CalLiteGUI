@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.utils.DataFileTableModel;
+import gov.ca.water.calgui.utils.ExcelAdapter;
 import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 
@@ -359,10 +360,9 @@ public class RegulationSetup {
 				 */
 
 			}
+			ExcelAdapter myAd = new ExcelAdapter(t);
 
 			t.revalidate();
-
-			// ExcelAdapter myAd = new ExcelAdapter(t);
 
 		}
 		return dTableModels;
