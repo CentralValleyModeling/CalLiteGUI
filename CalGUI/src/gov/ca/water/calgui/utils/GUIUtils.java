@@ -312,8 +312,10 @@ public class GUIUtils {
 		Boolean val = false;
 		String delims = "[|]";
 		final Boolean[] RegUserEdits = new Boolean[20];
+		int tID;
 
 		try {
+
 			fs = new FileInputStream(f);
 			in = new InputStreamReader(fs);
 			br = new BufferedReader(in);
@@ -398,16 +400,18 @@ public class GUIUtils {
 
 				}
 
-				int tID = Integer.parseInt(cID);
+				tID = Integer.parseInt(cID);
 
 				if (dTableModels == null) {
 					dTableModels = new DataFileTableModel[20];
 				}
+				// initialize table structure based on base files
 				if (dTableModels[tID] == null) {
 					dTableModels[tID] = new DataFileTableModel(fileName, tID);
 				}
 
-				// dTableModels[tID].setVectors(tokens[1]);
+				// repopulate tables with user-defined values
+				dTableModels[tID].setVectors(tokens[1]);
 
 				// JTable table = (JTable) swix.find("tblRegValues");
 				// table.setModel(dTableModels[tID]);
@@ -426,7 +430,7 @@ public class GUIUtils {
 					break;
 
 				String[] tokens = textinLine.split(delims);
-				int tID = Integer.parseInt(tokens[0]);
+				tID = Integer.parseInt(tokens[0]);
 				value = tokens[1];
 				if (value.startsWith("true")) {
 					RegUserEdits[tID] = true;
