@@ -8,6 +8,9 @@ import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.PopulateDTable;
 import gov.ca.water.calgui.utils.TextTransfer;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -91,9 +94,34 @@ public class OpAction implements ActionListener {
 		} else if (ae.getActionCommand().startsWith("Op_Copy")) {
 
 			JTable table = (JTable) swix.find("tblOpValues");
-			ActionEvent ae1 = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "copy");
-			// table.selectAll();
-			table.getActionMap().get(ae1.getActionCommand()).actionPerformed(ae);
+			StringBuffer sbf = new StringBuffer();
+			// Check to ensure we have selected only a contiguous block of
+			// cells
+			int numcols = table.getSelectedColumnCount();
+			int numrows = table.getSelectedRowCount();
+			int[] rowsselected = table.getSelectedRows();
+			int[] colsselected = table.getSelectedColumns();
+			if (!((numrows - 1 == rowsselected[rowsselected.length - 1] - rowsselected[0] && numrows == rowsselected.length) && (numcols - 1 == colsselected[colsselected.length - 1]
+			        - colsselected[0] && numcols == colsselected.length))) {
+				JOptionPane.showMessageDialog(null, "Invalid Copy Selection", "Invalid Copy Selection", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			for (int i = 0; i < numrows; i++) {
+				for (int j = 0; j < numcols; j++) {
+					sbf.append(table.getValueAt(rowsselected[i], colsselected[j]));
+					if (j < numcols - 1)
+						sbf.append("\t");
+				}
+				sbf.append("\n");
+			}
+			StringSelection stsel = new StringSelection(sbf.toString());
+			Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
+			system.setContents(stsel, stsel);
+
+			/*
+			 * ActionEvent ae1 = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "copy"); // table.selectAll();
+			 * table.getActionMap().get(ae1.getActionCommand()).actionPerformed(ae);
+			 */
 
 		} else if (ae.getActionCommand().startsWith("Op_Read")) {
 			JLabel lab = (JLabel) swix.find("op_WSIDI_Status");
