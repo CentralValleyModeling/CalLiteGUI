@@ -66,6 +66,7 @@ public class RegListener implements ItemListener {
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), enabled);
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), enabled);
+					GUIUtils.toggleVisComponentAndChildren(swix.find("tblRegValues"), enabled);
 					((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled);
 					((JRadioButton) swix.find("btnReg1485")).setEnabled(enabled);
 					((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
