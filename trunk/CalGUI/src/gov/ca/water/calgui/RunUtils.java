@@ -6,7 +6,6 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
-import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 
 import java.awt.Component;
@@ -34,7 +33,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -195,7 +193,8 @@ public class RunUtils {
 					File f = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen);
 					StringBuffer sbExisting = FileUtils.readScenarioFile(f);
 
-					Boolean okToRun = sb.toString().equals(sbExisting.toString());
+					Boolean okToRun = true;
+					// Boolean okToRun = sb.toString().equals(sbExisting.toString());
 					if (okToRun) {
 						if (!(new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 						        + FilenameUtils.removeExtension(scen))).isDirectory()) {
@@ -215,96 +214,65 @@ public class RunUtils {
 
 						}
 
-					} else {
-
-						// Scenario settings have changed - check if they should be saved before running
-
-						int n = JOptionPane.showConfirmDialog(mainmenu,
-						        "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
-						        JOptionPane.YES_NO_CANCEL_OPTION);
-
-						switch (n) {
-
-						case JOptionPane.CANCEL_OPTION:
-
-							// CANCEL - do not save changes to disk, do not run, return
-
-							okToRun = false;
-							break;
-
-						case JOptionPane.NO_OPTION:
-
-							// NO - do not save changes to disk, check if OK to revert and run
-
-							if (JOptionPane.showConfirmDialog(mainmenu,
-							        "Press OK to run with the last saved version of " + f.getPath()
-							                + "; your changes will be lost.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-								okToRun = true;
-
-								// action_WSIDI = 0;
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
-								// action_WSIDI = 1;
-
-							} else {
-								okToRun = false;
-							}
-							break;
-
-						case JOptionPane.YES_OPTION:
-
-							// YES - get file name
-
-							FileDialog scenFileDialog;
-							scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
-							scenFileDialog.actionPerformed(ae);
-							if (scenFileDialog.dialogRC != 0) {
-								// Cancel?
-								okToRun = false;
-							} else {
-
-								okToRun = true;
-								String scen2 = ((JTextField) swix.find("run_txfScen")).getText();
-								if ((new File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) {
-									if (JOptionPane.showConfirmDialog(mainmenu,
-									        "The scenario file '" + System.getProperty("user.dir") + "\\Scenarios\\" + scen2
-									                + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen2,
-									        JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-										// Existing file, do overwrite
-										okToRun = true;
-
-									} else {
-										// Existing file, do not overwrite -> cancel run
-										okToRun = false;
-									}
-								}
-								if (okToRun) {
-
-									((JTextField) swix.find("run_txfScen")).setText(scen2);
-									setFilenameTooltips();
-									sb = buildScenarioString(swix, regUserEdits, dTableModels, gl, regFlags);
-									saveScenarioFile(sb, System.getProperty("user.dir") + "\\Scenarios\\" + scen2);
-
-									// Force setup of scenario schema because there is a change
-
-									setupScenario(scen2, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags);
-									scen = scen2;
-
-									// Wait two seconds to make sure save has started
-
-									try {
-										Thread.sleep(2000);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								} else {
-									((JTextField) swix.find("run_txfScen")).setText(scen);
-									setFilenameTooltips();
-								}
-							}
-							break;
-						}
 					}
+					/*
+					 * else {
+					 * 
+					 * // Scenario settings have changed - check if they should be saved before running //DKR 19Sept2014 Disable
+					 * warning int n = JOptionPane.showConfirmDialog(mainmenu,
+					 * "Scenario selections have changed. Would you like to save the changes?", "CalLite GUI",
+					 * JOptionPane.YES_NO_CANCEL_OPTION);
+					 * 
+					 * switch (n) {
+					 * 
+					 * case JOptionPane.CANCEL_OPTION:
+					 * 
+					 * // CANCEL - do not save changes to disk, do not run, return
+					 * 
+					 * okToRun = false; break;
+					 * 
+					 * case JOptionPane.NO_OPTION:
+					 * 
+					 * // NO - do not save changes to disk, check if OK to revert and run
+					 * 
+					 * if (JOptionPane.showConfirmDialog(mainmenu, "Press OK to run with the last saved version of " + f.getPath() +
+					 * "; your changes will be lost.", "CalLite GUI", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+					 * okToRun = true;
+					 * 
+					 * // action_WSIDI = 0; regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl); regUserEdits =
+					 * GUIUtils.setControlValues(f, swix, dTableModels, gl); // action_WSIDI = 1;
+					 * 
+					 * } else { okToRun = false; } break;
+					 * 
+					 * case JOptionPane.YES_OPTION:
+					 * 
+					 * // YES - get file name
+					 * 
+					 * FileDialog scenFileDialog; scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"),
+					 * "CLS"); scenFileDialog.actionPerformed(ae); if (scenFileDialog.dialogRC != 0) { // Cancel? okToRun = false; }
+					 * else {
+					 * 
+					 * okToRun = true; String scen2 = ((JTextField) swix.find("run_txfScen")).getText(); if ((new
+					 * File(System.getProperty("user.dir") + "\\Scenarios\\" + scen2)).exists()) { if
+					 * (JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + System.getProperty("user.dir") +
+					 * "\\Scenarios\\" + scen2 + "' already exists. Press OK to overwrite.", "CalLite GUI - " + scen2,
+					 * JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) { // Existing file, do overwrite okToRun = true;
+					 * 
+					 * } else { // Existing file, do not overwrite -> cancel run okToRun = false; } } if (okToRun) {
+					 * 
+					 * ((JTextField) swix.find("run_txfScen")).setText(scen2); setFilenameTooltips(); sb = buildScenarioString(swix,
+					 * regUserEdits, dTableModels, gl, regFlags); saveScenarioFile(sb, System.getProperty("user.dir") +
+					 * "\\Scenarios\\" + scen2);
+					 * 
+					 * // Force setup of scenario schema because there is a change
+					 * 
+					 * setupScenario(scen2, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags); scen = scen2;
+					 * 
+					 * // Wait two seconds to make sure save has started
+					 * 
+					 * try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); } } else { ((JTextField)
+					 * swix.find("run_txfScen")).setText(scen); setFilenameTooltips(); } } break; } }
+					 */
 					if (okToRun) {
 
 						deleteBatchFile();
@@ -1606,60 +1574,39 @@ public class RunUtils {
 			// result = jOpt.showConfirmDialog(mainmenu, "Are you sure you want to exit?", "CalLite Gui", JOptionPane.YES_NO_OPTION)
 			// == JOptionPane.YES_OPTION;
 
-		} else {
-
-			int n = JOptionPane.showConfirmDialog(mainmenu,
-			        "Scenario selections have changed. Would you like to save the changes before exiting?", "CalLite Gui",
-			        JOptionPane.YES_NO_CANCEL_OPTION);
-
-			switch (n) {
-			case JOptionPane.CANCEL_OPTION:
-				result = false;
-				break;
-
-			case JOptionPane.NO_OPTION:
-				result = true;
-				break;
-
-			case JOptionPane.YES_OPTION:
-
-				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new SimpleFileFilter("cls", "CalLite Scenario File (*.cls)"));
-				fc.setCurrentDirectory(new File(".//Scenarios"));
-
-				File file = null;
-				String filename = null;
-				int retval = fc.showSaveDialog(mainmenu);
-				if (retval == JFileChooser.CANCEL_OPTION) {
-					result = false;
-				}
-
-				else {
-					if (retval == JFileChooser.APPROVE_OPTION) {
-
-						file = fc.getSelectedFile();
-						filename = file.toString();
-					}
-
-					if (filename != null) {
-
-						boolean scensave = false;
-						if (new File(filename).exists()) {
-							n = JOptionPane.showConfirmDialog(mainmenu, "The scenario file '" + filename
-							        + "' already exists. Press OK to overwrite and then exit.", "CalLite GUI - " + scen,
-							        JOptionPane.OK_CANCEL_OPTION);
-							scensave = (n == JOptionPane.OK_OPTION);
-							result = scensave;
-						}
-						if (scensave == true) {
-							saveScenarioFile(sbInMemory, filename);
-						}
-					}
-				}
-				break;
-			}
-
 		}
+		/*
+		 * else {
+		 * 
+		 * int n = JOptionPane.showConfirmDialog(mainmenu,
+		 * "Scenario selections have changed. Would you like to save the changes before exiting?", "CalLite Gui",
+		 * JOptionPane.YES_NO_CANCEL_OPTION);
+		 * 
+		 * switch (n) { case JOptionPane.CANCEL_OPTION: result = false; break;
+		 * 
+		 * case JOptionPane.NO_OPTION: result = true; break;
+		 * 
+		 * case JOptionPane.YES_OPTION:
+		 * 
+		 * JFileChooser fc = new JFileChooser(); fc.setFileFilter(new SimpleFileFilter("cls", "CalLite Scenario File (*.cls)"));
+		 * fc.setCurrentDirectory(new File(".//Scenarios"));
+		 * 
+		 * File file = null; String filename = null; int retval = fc.showSaveDialog(mainmenu); if (retval ==
+		 * JFileChooser.CANCEL_OPTION) { result = false; }
+		 * 
+		 * else { if (retval == JFileChooser.APPROVE_OPTION) {
+		 * 
+		 * file = fc.getSelectedFile(); filename = file.toString(); }
+		 * 
+		 * if (filename != null) {
+		 * 
+		 * boolean scensave = false; if (new File(filename).exists()) { n = JOptionPane.showConfirmDialog(mainmenu,
+		 * "The scenario file '" + filename + "' already exists. Press OK to overwrite and then exit.", "CalLite GUI - " + scen,
+		 * JOptionPane.OK_CANCEL_OPTION); scensave = (n == JOptionPane.OK_OPTION); result = scensave; } if (scensave == true) {
+		 * saveScenarioFile(sbInMemory, filename); } } } break; }
+		 * 
+		 * }
+		 */
 		return result;
 	}
 
