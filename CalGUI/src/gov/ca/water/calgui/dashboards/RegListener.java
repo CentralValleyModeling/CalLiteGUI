@@ -230,6 +230,17 @@ public class RegListener implements ItemListener {
 				// if (cName.equals("ckbReg_TRNTY")) {
 				// } else if (cName.equals("ckbReg_PUMP")) {
 				// } else {
+
+				// DKR 19Sept2014 Added logic to only allow Roe trigger when X2 requirements are enabled
+				if (cName.equals("ckbReg_X2")) {
+					JCheckBox jbtn = (JCheckBox) swix.find("ckbReg_X2");
+					boolean b = jbtn.isSelected();
+					jbtn = (JCheckBox) swix.find("ckbReg_X2ROE");
+					jbtn.setSelected(b);
+					jbtn.setEnabled(b);
+
+				}
+
 				RegulationSetup
 				        .SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null", RegFlags);
 				// }
