@@ -27,10 +27,11 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/**
+ * Creates a panel tabulating results by month (column) and year (row)
+ */
 public class MonthlyTablePanel extends JPanel implements ActionListener, ComponentListener {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	JPanel panel;
 	JScrollPane scrollPane;
@@ -128,6 +129,9 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 			mins = new double[13];
 			maxs = new double[13];
 			avgs = new double[13];
+			double minTAFY = 1e10;
+			double maxTAFY = 0;
+			double sumTAFY = 0;
 			int years = 0;
 			int wy = 0;
 			for (int i = first; i < tsc.numberValues; i++) {
@@ -136,9 +140,15 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				int m = ht.month();
 				wy = (m < 10) ? y : y + 1;
 				if ((i - first) % 12 == 0) {
-					if (i != first && isCFS)
-						data.addElement(df1.format(dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy - 1) : dss_Grabber
-						        .getAnnualTAF(s, wy - 1)));
+					if (i != first && isCFS) {
+						double aTAFY = dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy - 1) : dss_Grabber.getAnnualTAF(s,
+						        wy - 1);
+						data.addElement(df1.format(aTAFY));
+						minTAFY = Math.min(minTAFY, aTAFY);
+						maxTAFY = Math.max(maxTAFY, aTAFY);
+						sumTAFY += aTAFY;
+
+					}
 					data.addElement(Integer.toString(wy));
 					years++;
 				}
@@ -150,25 +160,30 @@ public class MonthlyTablePanel extends JPanel implements ActionListener, Compone
 				data.addElement(df1.format(tsc.values[i]));
 			}
 			if (isCFS) {
-				data.addElement(df1.format(dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy) : dss_Grabber.getAnnualTAF(s, wy)));
+				double aTAFY = dss_Grabber == null ? dss_Grabber2.getAnnualTAF(s, wy - 1) : dss_Grabber.getAnnualTAF(s, wy - 1);
+				data.addElement(df1.format(aTAFY));
+				minTAFY = Math.min(minTAFY, aTAFY);
+				maxTAFY = Math.max(maxTAFY, aTAFY);
+				sumTAFY += aTAFY;
 			}
 
 			data.addElement("Min");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(mins[i]));
 			if (isCFS)
-				data.addElement("");
+				data.addElement(df1.format(minTAFY));
 
 			data.addElement("Max");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(maxs[i]));
 			if (isCFS)
-				data.addElement("");
+				data.addElement(df1.format(maxTAFY));
+
 			data.addElement("Avg");
 			for (int i = 0; i < 12; i++)
 				data.addElement(df1.format(avgs[i] / years));
 			if (isCFS)
-				data.addElement("");
+				data.addElement(df1.format(sumTAFY / years));
 
 			SimpleTableModel2 model = new SimpleTableModel2(data, columns);
 			JTable table = new JTable(model);
