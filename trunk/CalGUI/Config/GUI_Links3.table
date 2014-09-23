@@ -68,7 +68,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 410	JP_EC_MONTH/SALINITY	JP_EC_STD/SALINITY(-1)	Electrical Conductivity	Jersey Point Salinity	Salinity Standard
 411	RS_EC_MONTH/SALINITY	RS_EC_STD/SALINITY(-1)	Electrical Conductivity	Rock Slough Salinity	Salinity Standard
 412	EM_EC_MONTH/SALINITY	EM_EC_STD/SALINITY(-1)	Electrical Conductivity	Emmaton Salinity	Salinity Standard
-413	null	null	null	null	null
+413	CO_EC_MONTH/SALINITY	CO_EC_STD/SALINITY(-1)	Electrical Conductivity	Collinsville Salinity	Salinity Standard
 414	null	null	null	null	null
 415	null	null	null	null	null
 416	null	null	null	null	null
