@@ -2617,7 +2617,7 @@
 											anchor="GridBagConstraints.WEST" gridx="1" gridy="28" />
 									</checkbox>
 									<button name="btnpClear_SJR" id="btnpClear_SJR" text="Clear All"
-										ActionCommand="AC_SJRlear">
+										ActionCommand="AC_SJRClear">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="33" />
 									</button>

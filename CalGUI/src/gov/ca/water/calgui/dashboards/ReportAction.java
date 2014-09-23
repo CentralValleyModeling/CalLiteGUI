@@ -40,39 +40,39 @@ public class ReportAction implements ActionListener {
 		lstScenarios = (JList) swix.find("SelectedList");
 	}
 
+	private void clearCheckboxes(String panelName) {
+		JPanel panel = (JPanel) swix.find(panelName);
+		Component[] components = panel.getComponents();
+		for (int i = 0; i < components.length; i++) {
+			if (components[i] instanceof JCheckBox) {
+				JCheckBox c = (JCheckBox) components[i];
+				c.setSelected(false);
+			}
+		}
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().startsWith("AC_PresetClear")) {
 
-			JPanel presets = (JPanel) swix.find("presets");
-			Component[] components = presets.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
-
-			JPanel WMA = (JPanel) swix.find("WMA");
-			components = WMA.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
+			clearCheckboxes("presets");
 
 		} else if (e.getActionCommand().startsWith("AC_ShortageClear")) {
 
-			JPanel shortage = (JPanel) swix.find("shortage");
-			Component[] components = shortage.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					c.setSelected(false);
-				}
-			}
+			clearCheckboxes("shortage");
+
+		} else if (e.getActionCommand().startsWith("AC_SJRClear")) {
+
+			clearCheckboxes("SJR Results");
+
+		} else if (e.getActionCommand().startsWith("AC_WMAClear")) {
+
+			clearCheckboxes("WMA");
+
+		} else if (e.getActionCommand().startsWith("AC_DShortClear")) {
+
+			clearCheckboxes("DShort");
 
 			// / delta flow criteria
 		} else if (e.getActionCommand().startsWith("AC_DfcClear")) {
