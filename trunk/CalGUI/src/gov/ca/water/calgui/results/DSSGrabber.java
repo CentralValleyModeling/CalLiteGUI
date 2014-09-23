@@ -8,9 +8,12 @@ import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Vector;
 
 import javax.swing.JList;
@@ -254,6 +257,36 @@ public class DSSGrabber {
 	}
 
 	/**
+	 * Determines if the cls (CalLite scenario) file associated with a given DV.DSS file shows dynamic SJR on
+	 * 
+	 * @param dvFilename
+	 * @return true if .cls shows dynamic SJR on, false otherwise
+	 */
+	private boolean clsIsDynamicSJR(String dvFilename) {
+		String clsFileName = dvFilename.substring(0, dvFilename.length() - 7) + ".cls";
+		File clsF = new File(clsFileName);
+		String sjrState = "";
+		try {
+			Scanner scanner;
+			scanner = new Scanner(new FileInputStream(clsF.getAbsolutePath()));
+			while (scanner.hasNextLine() && sjrState.equals("")) {
+				String text = scanner.nextLine();
+				if (text.startsWith("Dynamic_SJR|")) {
+
+					String[] texts = text.split("[|]");
+					sjrState = texts[1];
+				}
+			}
+			scanner.close();
+
+		} catch (IOException e) {
+			log.info(clsF.getName() + " not openable - SJR assumed static");
+		}
+
+		return (sjrState.equals("true"));
+	}
+
+	/**
 	 * Reads a specified dataset from a specified HEC DSS file.
 	 * 
 	 * @param dssFilename
@@ -300,8 +333,26 @@ public class DSSGrabber {
 
 			if ((result == null) || (result.numberValues < 1)) {
 
-				JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
-				        JOptionPane.ERROR_MESSAGE);
+				if (!clsIsDynamicSJR(dssFilename)
+				        && ((dssNames[0].equals("S_MELON/STORAGE")) || (dssNames[0].equals("S_PEDRO/STORAGE"))
+				                || (dssNames[0].equals("S_MCLRE/STORAGE")) || (dssNames[0].equals("S_MLRTN/STORAGE"))
+				                || (dssNames[0].equals("C_STANRIPN/FLOW-CHANNEL")) || (dssNames[0].equals("C_TUOL/FLOW-CHANNEL"))
+				                || (dssNames[0].equals("C_MERCED2/FLOW-CHANNEL")) || (dssNames[0].equals("C_SJRMS/FLOW-CHANNEL"))
+				                || (dssNames[0].equals("D_STANRIPN/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D_STANGDWN/FLOW-DELIVERY")) || (dssNames[0].equals("D_TUOL/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D_TUOL1B/FLOW-DELIVERY")) || (dssNames[0].equals("D_TUOL2/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D_MERCED1/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D_MERCED2/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D_MDRCNL/FLOW-DELIVERY")) || (dssNames[0].equals("D_FKCNL/FLOW-DELIVERY")))) {
+
+					result = null;
+					JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename
+					        + ",\n perhaps because Dynamic SJR simulation is turned off.", "Error", JOptionPane.ERROR_MESSAGE);
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
+					        JOptionPane.ERROR_MESSAGE);
+				}
 
 			} else {
 
@@ -694,7 +745,7 @@ public class DSSGrabber {
 	public TimeSeriesContainer[][] getExceedanceSeries(TimeSeriesContainer[] timeSeriesResults) {
 
 		TimeSeriesContainer[][] results;
-		if (timeSeriesResults == null)
+		if (timeSeriesResults == null || timeSeriesResults[0].times == null)
 			results = null;
 		else {
 			results = new TimeSeriesContainer[14][scenarios];
@@ -730,12 +781,14 @@ public class DSSGrabber {
 
 							int[] times = timeSeriesResults[i].times;
 							double[] values = timeSeriesResults[i].values;
+
 							n = 0;
 							for (int j = 0; j < times.length; j++) {
 								ht.set(times[j]);
 								if (ht.month() == month + 1)
 									n = n + 1;
 							}
+
 							times2 = new int[n];
 							values2 = new double[n];
 							n = 0;
