@@ -2493,7 +2493,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="12" />
 									</checkbox>
-									<checkbox name="ckbp413" id="ckbp413" text="Collinsville ">
+									<checkbox name="ckbp413" id="ckbp413" text="Collinsville " enabled = "true">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="13" />
 									</checkbox>
