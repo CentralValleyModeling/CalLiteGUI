@@ -1637,7 +1637,7 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="3"
 									gridy="0" gridheight="1" anchor="GridBagConstraints.NORTHWEST" />
 							</radiobutton>
-							<radiobutton id="btnRegUD" text="User-Defined"
+							<radiobutton id="btnRegUD" name="btnRegUD" text="User-Defined"
 								minimumsize="100,20" enabled="false" ActionCommand="Reg_UD"
 								visible="false">
 								<gridbagconstraints insets="0,0,5,5" gridx="4"
