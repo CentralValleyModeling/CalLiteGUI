@@ -237,6 +237,13 @@ public class RegulationSetup {
 
 			// int tID = Integer.parseInt(cID);
 			// t.setVisible(true);
+			JRadioButton rdbUD = (JRadioButton) swix.find("rdbRegQS_UD");
+			boolean editable = rdbUD.isSelected();
+			rdbUD = (JRadioButton) swix.find("btnRegUD");
+			if (editable == true) {
+				editable = rdbUD.isSelected();
+			}
+
 			final int tID = Integer.parseInt(gl.tableIDForCtrl(cID));
 			if (dTableModels == null) {
 				dTableModels = new DataFileTableModel[20];
@@ -244,7 +251,7 @@ public class RegulationSetup {
 
 			if (iDReg.equals("n/a")) {
 				if (dTableModels[tID] == null) {
-					dTableModels[tID] = new DataFileTableModel(fileName, tID);
+					dTableModels[tID] = new DataFileTableModel(fileName, tID, editable);
 				}
 			} else {
 				int iOpt;
@@ -259,7 +266,8 @@ public class RegulationSetup {
 					 */
 					// DKR 16Sept2014 revert display table back to previous quick select
 					if (RegFlags[tID] == 2) {
-						iOpt = 0;
+						// iOpt = 0;
+						iOpt = dTableModels[tID].iPrevOpt;
 					} else if (RegFlags[tID] == 3) {
 						iOpt = 2;
 					} else {
@@ -277,7 +285,7 @@ public class RegulationSetup {
 				if (iOpt == 0) {
 					t.setModel(dTableModels[tID]);
 				} else {
-					dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt);
+					dTableModels[tID] = new DataFileTableModel(fileName, tID, iOpt, editable);
 				}
 				// }
 			}

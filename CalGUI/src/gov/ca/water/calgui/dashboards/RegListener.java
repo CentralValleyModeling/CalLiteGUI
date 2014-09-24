@@ -157,6 +157,7 @@ public class RegListener implements ItemListener {
 						// Special Handling for Antioch and Chips
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID - 1] = RegFlags[rID];
+
 					} else {
 
 						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
@@ -204,6 +205,13 @@ public class RegListener implements ItemListener {
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID] = 3;
 
+						JTable table = (JTable) swix.find("tblRegValues");
+						DataFileTableModel tm = (DataFileTableModel) table.getModel();
+						int tID = tm.tID;
+						cName = gl.ctrlFortableID(Integer.toString(tID));
+						Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
+						RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null",
+						        RegFlags);
 					}
 
 				}
@@ -222,6 +230,13 @@ public class RegListener implements ItemListener {
 				TitledBorder title = BorderFactory.createTitledBorder("");
 
 				pan.setBorder(title);
+
+			} else if (cName.startsWith("Dynamic_SJR")) {
+				// 'Grey out all radio button options on this SJR panel if Dynamic SJR is OFF'
+				JCheckBox ckb = (JCheckBox) swix.find("Dynamic_SJR");
+				Boolean b = ckb.isSelected();
+				GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), b);
+				ckb.setEnabled(true);
 
 			} else if (cName.startsWith("ckbReg")) {
 				// CheckBox in Regulations panel changed
@@ -277,9 +292,15 @@ public class RegListener implements ItemListener {
 						ckbtext = ckbtext1[0];
 						ckb.setText(ckbtext + " - User Def.");
 
+						int rID = Integer.parseInt(gl.RIDForCtrl(cName1));
+						RegFlags[rID] = 2;
+
 						((JRadioButton) swix.find("btnReg1641")).setEnabled(true);
 						((JRadioButton) swix.find("btnReg1485")).setEnabled(true);
 						((JRadioButton) swix.find("btnRegUD")).setEnabled(true);
+
+						RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName1, true, "null",
+						        RegFlags);
 
 					} else {
 

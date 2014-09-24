@@ -32,6 +32,8 @@ public class DataFileTableModel extends AbstractTableModel {
 	protected StringBuffer[] headers;
 	protected String columnTitle;
 	public int tID;
+	public boolean enabled;
+	public int iPrevOpt;
 	final String NL = System.getProperty("line.separator");
 	protected EventListenerList listenerList = new EventListenerList();
 	private static Logger log = Logger.getLogger(DataFileTableModel.class.getName());
@@ -43,6 +45,8 @@ public class DataFileTableModel extends AbstractTableModel {
 		// check if multiple file names included
 		datafiles = f.split("[|]");
 		int size = datafiles.length;
+		enabled = true;
+		iPrevOpt = 1;
 
 		if (size == 1) {
 			// CASE 1: 1 file specified
@@ -58,12 +62,36 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	}
 
-	public DataFileTableModel(String f, int ID, int iOpt) {
+	public DataFileTableModel(String f, int ID, boolean editable) {
+		tID = ID;
+		// check if multiple file names included
+		datafiles = f.split("[|]");
+		int size = datafiles.length;
+		enabled = editable;
+		iPrevOpt = 1;
+
+		if (size == 1) {
+			// CASE 1: 1 file specified
+			header = new StringBuffer();
+			datafile = f;
+			columnTitle = "NOT HANDLED";
+			initVectors();
+		} else if (size == 2) {
+			// CASE 2: 2 files specified
+			headers = new StringBuffer[2];
+			initVectors2();
+		}
+
+	}
+
+	public DataFileTableModel(String f, int ID, int iOpt, boolean editable) {
 		tID = ID;
 
 		header = new StringBuffer();
 		datafile = f;
 		columnTitle = "NOT HANDLED";
+		enabled = editable;
+		iPrevOpt = iOpt;
 		initVectorsReg(iOpt);
 
 	}
@@ -687,7 +715,8 @@ public class DataFileTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return (columnIndex != 0);
+		// return (columnIndex != 0);
+		return enabled;
 	}
 
 	@Override
