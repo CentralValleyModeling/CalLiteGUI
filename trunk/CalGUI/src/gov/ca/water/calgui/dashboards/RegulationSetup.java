@@ -250,9 +250,9 @@ public class RegulationSetup {
 			}
 
 			if (iDReg.equals("n/a")) {
-				if (dTableModels[tID] == null) {
-					dTableModels[tID] = new DataFileTableModel(fileName, tID, editable);
-				}
+				// if (dTableModels[tID] == null) {
+				dTableModels[tID] = new DataFileTableModel(fileName, tID, editable);
+				// }
 			} else {
 				int iOpt;
 				// String sRegPlan;
