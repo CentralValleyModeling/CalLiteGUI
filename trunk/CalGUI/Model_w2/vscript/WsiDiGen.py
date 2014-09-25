@@ -81,10 +81,10 @@ class WsiDiGenCl:
       gDi = g.clone()
       
       # get data for wsi and di, check for exceptions
-      gWsi.filterBy(True, PathPartPredicate("^"+self.wsiVar+"$",Pathname.B_PART))
+      gWsi.filterBy(PathPartPredicate("^"+self.wsiVar+"$",Pathname.B_PART),True)
       if (gWsi.getNumberOfDataReferences()!=1):
          raise Exception("No WSI Variable '"+ getWsiVariable() +"' in DSS File!")
-      gDi.filterBy(True, PathPartPredicate("^"+self.diVar+"$",Pathname.B_PART))
+      gDi.filterBy(PathPartPredicate("^"+self.diVar+"$",Pathname.B_PART),True)
       if (gDi.getNumberOfDataReferences()!=1):
          raise Exception("No DI Variable '"+ getDiVariable() +"' in DSS File!")
       drWsi = gWsi.getDataReference(0)
