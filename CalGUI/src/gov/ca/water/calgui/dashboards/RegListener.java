@@ -223,12 +223,6 @@ public class RegListener implements ItemListener {
 				jbtn.setEnabled(false);
 				jbtn = (JCheckBox) swix.find("ckbReg_PUMP");
 				jbtn.setEnabled(false);
-				jbtn = (JCheckBox) swix.find("ckbReg12");
-				jbtn.setEnabled(false);
-				jbtn = (JCheckBox) swix.find("ckbReg16");
-				jbtn.setEnabled(false);
-				jbtn = (JCheckBox) swix.find("ckbReg17");
-				jbtn.setEnabled(false);
 
 				JPanel pan = (JPanel) swix.find("reg_panTab");
 				TitledBorder title = BorderFactory.createTitledBorder("");
