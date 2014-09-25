@@ -16,6 +16,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -64,9 +65,10 @@ public class RegListener implements ItemListener {
 
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), enabled);
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
-					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), enabled);
 					GUIUtils.toggleVisComponentAndChildren(swix.find("tblRegValues"), enabled);
+					((JCheckBox) swix.find("Dynamic_SJR")).setEnabled(enabled);
 					((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled);
 					((JRadioButton) swix.find("btnReg1485")).setEnabled(enabled);
 					((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
@@ -158,9 +160,11 @@ public class RegListener implements ItemListener {
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID - 1] = RegFlags[rID];
 
+						((JCheckBox) swix.find("Dynamic_SJR")).setEnabled(enabled);
+
 					} else {
 
-						GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
+						// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), true);
 
 						Scanner input = null;
 						try {
@@ -235,7 +239,11 @@ public class RegListener implements ItemListener {
 				// 'Grey out all radio button options on this SJR panel if Dynamic SJR is OFF'
 				JCheckBox ckb = (JCheckBox) swix.find("Dynamic_SJR");
 				Boolean b = ckb.isSelected();
+				if (b == false) {
+					GUIUtils.toggleSelComponentAndChildren(swix.find("regpan2b"), b, JCheckBox.class);
+				}
 				GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), b);
+				GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2c"), b);
 				ckb.setEnabled(true);
 
 			} else if (cName.startsWith("ckbReg")) {
@@ -317,5 +325,16 @@ public class RegListener implements ItemListener {
 				}
 			}
 		}
+		JLabel lab = (JLabel) swix.find("labDynamic_SJR");
+		lab.setEnabled(true);
+		lab = (JLabel) swix.find("labDynamic_SJR1");
+		lab.setEnabled(true);
+		lab = (JLabel) swix.find("labDynamic_SJR2");
+		lab.setEnabled(true);
+		lab = (JLabel) swix.find("labDynamic_SJR3");
+		lab.setEnabled(true);
+		lab = (JLabel) swix.find("labDynamic_SJR4");
+		lab.setEnabled(true);
+
 	}
 }

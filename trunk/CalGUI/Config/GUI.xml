@@ -1499,31 +1499,61 @@
 									gridy="2" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
 							</checkbox>
+						<label
+							text="Switch settings shown below have no impact on the model" 
+							name="labDynamic_SJR" id="labDynamic_SJR" font="Tahoma-BOLD-13" foreground="CC3333">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
+								gridy="3" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
+						<label
+							text="unless the dynamic SJR is turned on. For default" 
+							name="labDynamic_SJR1" id="labDynamic_SJR1" font="Tahoma-BOLD-13" foreground="CC3333">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
+								gridy="4" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
+						<label
+							text="regulatory settings, grayed out switch settings display" 
+							name="labDynamic_SJR2" id="labDynamic_SJR2" font="Tahoma-BOLD-13" foreground="CC3333">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
+								gridy="5" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
+						<label
+							text="the assumptions in the SV file for the run basis" 
+							name="labDynamic_SJR3" id="labDynamic_SJR3" font="Tahoma-BOLD-13" foreground="CC3333">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
+								gridy="6" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
+						<label
+							text="for that regulatory environment." 
+							name="labDynamic_SJR4" id="labDynamic_SJR4" font="Tahoma-BOLD-13" foreground="CC3333">
+							<gridbagconstraints insets="0,5,5,5" gridx="0"
+								gridy="7" anchor="GridBagConstraints.NORTHWEST" />
+						</label>
 							<checkbox name="D1641_Base" id="D1641_Base"
 								text="Vernalis D-1641 baseflows">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="5" anchor="GridBagConstraints.WEST" />
+									gridy="8" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 							<checkbox name="D1641_SALINITY" id="D1641_SALINITY"
 								text="Vernalis D-1641 salinity criteria">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="6" anchor="GridBagConstraints.WEST" minimumsize="340,20"
+									gridy="9" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
 							</checkbox>
 							<checkbox name="VAMP_Flow" id="VAMP_Flow"
 								text="VAMP pulse flows (Apr 15-May 15)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="7" anchor="GridBagConstraints.WEST" />
+									gridy="10" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 							<checkbox name="Vern_RPA" id="Vern_RPA"
 								text="Vernalis 60-day pulse flow RPA (NMFS Action 4.2.1)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="8" anchor="GridBagConstraints.WEST" />
+									gridy="11" anchor="GridBagConstraints.WEST" />
 							</checkbox>
 							<checkbox name="STAN_RPA" id="STAN_RPA"
 								text="Stanislaus flow RPA (NMFS Action 3.1.3)">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
-									gridy="9" anchor="GridBagConstraints.WEST" minimumsize="340,20"
+									gridy="12" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
 							</checkbox>
 							<panel name="regpan2c" id="regpan2c" border="TitledBorder(San Joaquin River Restoration flows)"
