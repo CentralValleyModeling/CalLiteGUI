@@ -27,14 +27,15 @@ set temp_wrims2=%dirname%run\
 : wrims2 lib jars  :
 :------------------:
 set JarDir=%~dp0\lib
+set VistaLibDir=%~dp0\vscript\lib\vista\lib
 set AppJars=%JarDir%\WRIMSv2.jar
 set AppJars=%AppJars%;%JarDir%\gurobi.jar
-set AppJars=%AppJars%;%JarDir%\heclib.jar
+set AppJars=%AppJars%;%VistaLibDir%\heclib.jar
 set AppJars=%AppJars%;%JarDir%\jnios.jar
 set AppJars=%AppJars%;%JarDir%\jpy.jar
 set AppJars=%AppJars%;%JarDir%\misc.jar
 set AppJars=%AppJars%;%JarDir%\pd.jar
-set AppJars=%AppJars%;%JarDir%\vista.jar
+set AppJars=%AppJars%;%VistaLibDir%\vista.jar
 set AppJars=%AppJars%;%JarDir%\lpsolve55j.jar
 set AppJars=%AppJars%;%JarDir%\commons-io-2.1.jar
 set AppJars=%AppJars%;%JarDir%\javatuples-1.2.jar
@@ -56,13 +57,13 @@ set CLASSPATH=-classpath "%ExternalDir%;%AppJars%"
 :------------:
 : dll path   :
 :------------:
-set PATH=%ExternalDir%;%JarDir%
+set PATH=%ExternalDir%;%JarDir%;%VistaLibDir%
 
 
 :-------------------------------------------------------:
 : call java to run ControllerBatch class                :
 :-------------------------------------------------------:
 
-%temp_wrims2%/../../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% gov.ca.water.calgui.batch.Singleton -config="%configFilePath%"
+start /min "callitewrims2" %temp_wrims2%/../../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% gov.ca.water.calgui.batch.Singleton -config="%configFilePath%"
 
 exit
