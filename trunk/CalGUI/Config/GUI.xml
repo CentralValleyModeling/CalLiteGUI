@@ -1601,7 +1601,7 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="21" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg12" id="ckbReg12" text="B2 Action 2">
+							<checkbox name="ckbReg12" id="ckbReg12" text="B2 Action 2" visible = "false">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="22" anchor="GridBagConstraints.WEST" />
 							</checkbox>
@@ -1617,11 +1617,11 @@
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="25" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg16" id="ckbReg16" text="B2 Action 6">
+							<checkbox name="ckbReg16" id="ckbReg16" text="B2 Action 6" visible = "false">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="26" anchor="GridBagConstraints.WEST" />
 							</checkbox>
-							<checkbox name="ckbReg17" id="ckbReg17" text="B2 Action 7">
+							<checkbox name="ckbReg17" id="ckbReg17" text="B2 Action 7" visible = "false">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="27" anchor="GridBagConstraints.WEST" />
 							</checkbox>
