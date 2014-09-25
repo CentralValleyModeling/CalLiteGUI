@@ -7,7 +7,6 @@ import gov.ca.water.calgui.utils.GUIUtils;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -153,7 +152,7 @@ public class HydListener implements ItemListener {
 
 				int selct = 0;
 				JPanel hyd_CC1 = (JPanel) swix.find("hyd_CC");
-				selct = GUIUtils.countSelectedButtons(hyd_CC1, JCheckBox.class, selct);
+				selct = GUIUtils.countSelectedButtons(hyd_CC1, JRadioButton.class, selct);
 
 				JLabel lab = (JLabel) swix.find("hydlab_selected");
 				if (selct == 0) {
