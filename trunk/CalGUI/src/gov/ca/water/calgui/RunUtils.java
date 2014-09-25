@@ -635,7 +635,7 @@ public class RunUtils {
 					outstring = (index + "\t" + option + "\t" + descr + NL);
 					tableFile_BufferedWriter_.write(outstring);
 
-				} else if (c instanceof JCheckBox && swixControlName.startsWith("hyd_ckb")) {
+				} else if (c instanceof JRadioButton && swixControlName.startsWith("hyd_ckb")) {
 
 					// Component is a checkbox, but special case for multiple climate change realizations. The GUI_Links2.table
 					// file is assumed to have a link entry for *each* climate change checkbox in the group, and should
@@ -951,13 +951,13 @@ public class RunUtils {
 		int scenarioCCCount = 0;
 		boolean[] realizationIsSelected = new boolean[5];
 		for (int i = 1; i <= 5; i++) {
-			realizationIsSelected[i - 1] = ((JCheckBox) swix.find("hyd_ckb" + i)).isSelected();
+			realizationIsSelected[i - 1] = ((JRadioButton) swix.find("hyd_ckb" + i)).isSelected();
 			if (realizationIsSelected[i - 1]) {
 				scenarioCCCount++;
 			}
 		}
 
-		if (((JCheckBox) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount > 1)) {
+		if (((JRadioButton) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount > 1)) {
 
 			// Multiple realizations
 
@@ -966,7 +966,7 @@ public class RunUtils {
 
 					// Set only one realization in scenario
 					for (int j = 1; j <= 5; j++) {
-						((JCheckBox) swix.find("hyd_ckb" + j)).setSelected((i == j));
+						((JRadioButton) swix.find("hyd_ckb" + j)).setSelected((i == j));
 					}
 
 					// save
@@ -983,11 +983,11 @@ public class RunUtils {
 			}
 			// restore current realizations for in-memory scenario
 			for (int i = 1; i <= 5; i++) {
-				((JCheckBox) swix.find("hyd_ckb" + i)).setSelected(realizationIsSelected[i - 1]);
+				((JRadioButton) swix.find("hyd_ckb" + i)).setSelected(realizationIsSelected[i - 1]);
 			}
 		}
 
-		else if (((JCheckBox) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount == 1)) {
+		else if (((JRadioButton) swix.find("hyd_ckb1")).isEnabled() && (scenarioCCCount == 1)) {
 			for (int i = 1; i <= 5; i++) {
 				if (realizationIsSelected[i - 1]) {
 					setup1Scenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags, i);
@@ -1681,7 +1681,7 @@ public class RunUtils {
 
 			int scenarioCCCount = 0;
 			for (int i = 1; i <= 5; i++) {
-				realizationIsSelected[i - 1] = ((JCheckBox) swix.find("hyd_ckb" + i)).isSelected();
+				realizationIsSelected[i - 1] = ((JRadioButton) swix.find("hyd_ckb" + i)).isSelected();
 				if (realizationIsSelected[i - 1]) {
 					scenarioCCCount++;
 				}

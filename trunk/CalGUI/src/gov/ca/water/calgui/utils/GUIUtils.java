@@ -793,19 +793,19 @@ public class GUIUtils {
 			}
 			// Select FIRST available climate change scenario
 
-			if (((JCheckBox) swix.find("hyd_ckb1")).isSelected()) {
+			if (((JRadioButton) swix.find("hyd_ckb1")).isSelected()) {
 				lookup = lookup + "1";
 				label = label + "1";
-			} else if (((JCheckBox) swix.find("hyd_ckb2")).isSelected()) {
+			} else if (((JRadioButton) swix.find("hyd_ckb2")).isSelected()) {
 				lookup = lookup + "2";
 				label = label + "2";
-			} else if (((JCheckBox) swix.find("hyd_ckb3")).isSelected()) {
+			} else if (((JRadioButton) swix.find("hyd_ckb3")).isSelected()) {
 				lookup = lookup + "3";
 				label = label + "3";
-			} else if (((JCheckBox) swix.find("hyd_ckb4")).isSelected()) {
+			} else if (((JRadioButton) swix.find("hyd_ckb4")).isSelected()) {
 				lookup = lookup + "4";
 				label = label + "4";
-			} else if (((JCheckBox) swix.find("hyd_ckb5")).isSelected()) {
+			} else if (((JRadioButton) swix.find("hyd_ckb5")).isSelected()) {
 				lookup = lookup + "5";
 				label = label + "5";
 			} else {
