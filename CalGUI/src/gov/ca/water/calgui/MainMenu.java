@@ -605,6 +605,16 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
+			JLabel lab = (JLabel) swix.find("labDynamic_SJR");
+			lab.setEnabled(true);
+			lab = (JLabel) swix.find("labDynamic_SJR1");
+			lab.setEnabled(true);
+			lab = (JLabel) swix.find("labDynamic_SJR2");
+			lab.setEnabled(true);
+			lab = (JLabel) swix.find("labDynamic_SJR3");
+			lab.setEnabled(true);
+			lab = (JLabel) swix.find("labDynamic_SJR4");
+			lab.setEnabled(true);
 
 			// Count threads and update selector appropriately
 
