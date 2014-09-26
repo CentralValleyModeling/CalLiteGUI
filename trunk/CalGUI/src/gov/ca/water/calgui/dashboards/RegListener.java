@@ -63,16 +63,6 @@ public class RegListener implements ItemListener {
 
 					boolean enabled = (cName.equals("rdbRegQS_UD"));
 
-					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), enabled);
-					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
-					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
-					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), enabled);
-					GUIUtils.toggleVisComponentAndChildren(swix.find("tblRegValues"), enabled);
-					((JCheckBox) swix.find("Dynamic_SJR")).setEnabled(enabled);
-					((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled);
-					((JRadioButton) swix.find("btnReg1485")).setEnabled(enabled);
-					((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
-
 					JButton btn = (JButton) swix.find("btnRegCopy");
 					btn.setEnabled(enabled);
 					btn = (JButton) swix.find("btnRegPaste");
@@ -217,7 +207,16 @@ public class RegListener implements ItemListener {
 						RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null",
 						        RegFlags);
 					}
-
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), enabled);
+					GUIUtils.toggleVisComponentAndChildren(swix.find("tblRegValues"), enabled);
+					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), true, JLabel.class);
+					((JCheckBox) swix.find("Dynamic_SJR")).setEnabled(enabled);
+					((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled);
+					((JRadioButton) swix.find("btnReg1485")).setEnabled(enabled);
+					((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
 				}
 				JCheckBox jbtn = (JCheckBox) swix.find("ckbReg_TRNTY");
 				jbtn.setEnabled(false);
@@ -228,6 +227,7 @@ public class RegListener implements ItemListener {
 				TitledBorder title = BorderFactory.createTitledBorder("");
 
 				pan.setBorder(title);
+				GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), true, JLabel.class);
 
 			} else if (cName.startsWith("Dynamic_SJR")) {
 				// 'Grey out all radio button options on this SJR panel if Dynamic SJR is OFF'
@@ -319,16 +319,7 @@ public class RegListener implements ItemListener {
 				}
 			}
 		}
-		JLabel lab = (JLabel) swix.find("labDynamic_SJR");
-		lab.setEnabled(true);
-		lab = (JLabel) swix.find("labDynamic_SJR1");
-		lab.setEnabled(true);
-		lab = (JLabel) swix.find("labDynamic_SJR2");
-		lab.setEnabled(true);
-		lab = (JLabel) swix.find("labDynamic_SJR3");
-		lab.setEnabled(true);
-		lab = (JLabel) swix.find("labDynamic_SJR4");
-		lab.setEnabled(true);
+		GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), true, JLabel.class);
 
 	}
 }
