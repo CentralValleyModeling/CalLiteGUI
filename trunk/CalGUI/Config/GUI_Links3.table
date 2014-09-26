@@ -69,11 +69,13 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 411	RS_CL_MONTH/SALINITY	RS_CL_STD/SALINITY(-1)	Chloride Concentration	Rock Slough Salinity	Salinity Standard
 412	EM_EC_MONTH/SALINITY	EM_EC_STD/SALINITY(-1)	Electrical Conductivity	Emmaton Salinity	Salinity Standard
 413	CO_EC_MONTH/SALINITY	CO_EC_STD/SALINITY(-1)	Electrical Conductivity	Collinsville Salinity	Salinity Standard
-414	null	null	null	null	null
-415	null	null	null	null	null
+414	AN_EC_MONTH/SALINITY	AN_EC_STD/SALINITY(-1)	Electrical Conductivity	Antioch Salinity	Salinity Standard
+415	CH_EC_MONTH/SALINITY	CH_EC_STD/SALINITY(-1)	Electrical Conductivity	Chipps Salinity	Salinity Standard
 416	null	null	null	null	null
 417	null	null	null	null	null
 418	null	null	null	null	null
+419	null	null	null	null	null
+420	null	null	null	null	null
 508	S422/STORAGE	null	Storage	Los Vaqueros Storage	null
 509	WQ408_OR_/SALINITY	null	Electrical Conductivity	Diversion Salinity - Old River	null
 510	WQ408_VC_/SALINITY	null	Electrical Conductivity	Diversion Salinity - Victoria Canal	null

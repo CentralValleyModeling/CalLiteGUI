@@ -2508,46 +2508,54 @@
 									<label text="Salinity" font="Tahoma-BOLD-14" foreground="3366FF">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="8" />
-									</label>
-									<checkbox name="ckbp409" id="ckbp409" text="All Delta">
+									</label>									 
+									<checkbox name="ckbp409" id="ckbp409" text="All Delta" visible ="false">
 										<gridbagconstraints weightx="0.5"
-											anchor="GridBagConstraints.WEST" gridx="7" gridy="9" />
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="8" />
 									</checkbox>
 									<checkbox name="ckbp410" id="ckbp410" text="Jersey Point">
 										<gridbagconstraints weightx="0.5"
-											anchor="GridBagConstraints.WEST" gridx="7" gridy="10" />
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="9" />
 									</checkbox>
 									<checkbox name="ckbp411" id="ckbp411" text="Rock Slough ">
 										<gridbagconstraints weightx="0.5"
-											anchor="GridBagConstraints.WEST" gridx="7" gridy="11" />
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="10" />
 									</checkbox>
 									<checkbox name="ckbp412" id="ckbp412" text="Emmaton ">
 										<gridbagconstraints weightx="0.5"
-											anchor="GridBagConstraints.WEST" gridx="7" gridy="12" />
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="11" />
 									</checkbox>
 									<checkbox name="ckbp413" id="ckbp413" text="Collinsville " enabled = "true">
 										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="12" />
+									</checkbox>
+									<checkbox name="ckbp414" id="ckbp414" text="Antioch " enabled = "true">
+										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="13" />
 									</checkbox>
-									<checkbox name="ckbp414" id="ckbp414" text="Victoria Intake  ">
+									<checkbox name="ckbp415" id="ckbp415" text="Chipps " enabled = "true">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="14" />
 									</checkbox>
-									<checkbox name="ckbp415" id="ckbp415" text="CVP Intake  ">
+									<checkbox name="ckbp416" id="ckbp416" text="Victoria Intake  " visible = "false">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="15" />
 									</checkbox>
-									<checkbox name="ckbp416" id="ckbp416" text="CCFB Intake ">
+									<checkbox name="ckbp417" id="ckbp417" text="CVP Intake  " visible = "false">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="16" />
 									</checkbox>
-									<checkbox name="ckbp417" id="ckbp417" text="Banks EC ">
+									<checkbox name="ckbp418" id="ckbp418" text="CCFB Intake " visible = "false">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="17" />
 									</checkbox>
-									<checkbox name="ckbp418" id="ckbp418" text="Jones EC ">
+									<checkbox name="ckbp419" id="ckbp419" text="Banks EC " visible = "false">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="7" gridy="18" />
+									</checkbox>
+									<checkbox name="ckbp420" id="ckbp420" text="Jones EC " visible = "false">
+										<gridbagconstraints weightx="0.5"
+											anchor="GridBagConstraints.WEST" gridx="7" gridy="19" />
 									</checkbox>
 									<label text="    ">
 										<gridbagconstraints anchor="GridBagConstraints.WEST"
