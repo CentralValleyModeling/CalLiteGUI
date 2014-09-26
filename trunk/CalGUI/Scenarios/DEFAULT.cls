@@ -150,6 +150,7 @@ ckbReg15|false
 ckbReg16|false
 ckbReg17|false
 ckbReg18|false
+btnRegUD|false
 op_rdb9|false
 op_rdb6|true
 op_rdb7|true
@@ -172,6 +173,7 @@ USERDEFINEDFLAGS
 2|true
 5|true
 9|true
+10|true
 END USERDEFINEDFLAGS
 REGULATIONOPTIONS
 0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|1|0|0|0|0|0|0|0
