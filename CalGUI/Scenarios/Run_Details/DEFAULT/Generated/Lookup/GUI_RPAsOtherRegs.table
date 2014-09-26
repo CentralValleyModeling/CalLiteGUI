@@ -25,9 +25,9 @@ Index	Option
 7	0	!QWEST_DLTSW
 8	0	!EISJR_DLTSW
 9	1	!B2Action1
-10	1	!B2Action2
+10	0	!B2Action2
 11	1	!B2Action3
-12	1	!B2Action4
-13	1	!B2Action5
-14	1	!B2Action6
-15	1	!B2Action7
+12	0	!B2Action4
+13	0	!B2Action5
+14	0	!B2Action6
+15	0	!B2Action7
