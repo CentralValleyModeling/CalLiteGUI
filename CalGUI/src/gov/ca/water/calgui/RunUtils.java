@@ -816,7 +816,7 @@ public class RunUtils {
 		try {
 
 			Runtime rt = Runtime.getRuntime();
-			Process proc = rt.exec("cmd /c start /min " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
+			Process proc = rt.exec("cmd /c start /min \"CalLiteRun\" " + System.getProperty("user.dir") + "\\CalLite_w2.bat");
 			int exitVal = proc.waitFor();
 			log.debug("Return from batch run " + exitVal);
 		} catch (Throwable t) {
