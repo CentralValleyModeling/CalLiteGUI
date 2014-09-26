@@ -73,14 +73,9 @@ public class RunListener implements ItemListener {
 						// Prompt is needed only in "regular" processing
 						// (action_WSIDI = 1) with non-default table
 
-						option = JOptionPane
-						        .showConfirmDialog(
-						                desktop,
-						                "You have made changes to the SWP and/or CVP WSI/DI curves. \n"
-						                        + "Do you want to overwrite these changes with the default values for the configuration ("
-						                        + ((JRadioButton) component).getText()
-						                        + " ) you have selected?\n\n"
-						                        + "Press YES to overwrite, NO to use these values in the selected configuration, or Cancel to revert");
+						option = JOptionPane.showConfirmDialog(desktop,
+						        "You have  chosen the " + ((JRadioButton) component).getText()
+						                + " run basis. \n Do you wish to use the WSI/DI curves for this configuration?");
 
 					// Once option is determined, process ...
 
@@ -93,6 +88,8 @@ public class RunListener implements ItemListener {
 							newcName = "run_rdbBO";
 						else if (cName.equals("run_rdbBO"))
 							newcName = "run_rdbD1641";
+						else if (cName.equals("run_rdbD1485"))
+							newcName = "run_rdbBO";
 
 						action_WSIDI = 2; // Skip all actions on update
 
