@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -32,8 +34,8 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		super();
 
 		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-		setPreferredSize(new Dimension(400, 200));
-		setMinimumSize(new Dimension(400, 200));
+		setPreferredSize(new Dimension(400, 220));
+		setMinimumSize(new Dimension(400, 220));
 		setLayout(new BorderLayout(5, 5));
 
 		setTitle(title);
@@ -61,6 +63,13 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		// btnClose.setActionCommand("Go");
 		// add(BorderLayout.PAGE_END, btnClose);
 
+		JButton btnClose = new JButton("Stop");
+		btnClose.setPreferredSize(new Dimension(100, 25));
+		btnClose.setMinimumSize(new Dimension(100, 25));
+		btnClose.addActionListener(this);
+		btnClose.setActionCommand("Stop");
+		add(BorderLayout.PAGE_END, btnClose);
+
 		pack();
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -74,8 +83,19 @@ public class ProgressDialog extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if ("Go".equals(e.getActionCommand()))
+		if ("Go".equals(e.getActionCommand())) {
 			this.setVisible(false);
+		} else if ("Stop".equals(e.getActionCommand())) {
+			Runtime rt = Runtime.getRuntime();
+			Process proc;
+			try {
+				proc = rt.exec("taskkill /f /t /fi \"WINDOWTITLE eq CalLiteRun*\" ");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		}
 	}
 
 	public void setList(String[] listData) {
