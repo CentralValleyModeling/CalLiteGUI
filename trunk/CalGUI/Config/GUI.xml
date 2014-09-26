@@ -2573,7 +2573,7 @@
 									<button name="btnpClear" id="btnpClear" text="Clear All"
 										ActionCommand="AC_PresetClear">
 										<gridbagconstraints weightx="0.5"
-											anchor="GridBagConstraints.WEST" gridx="1" gridy="19" />
+											anchor="GridBagConstraints.WEST" gridx="1" gridy="18" />
 									</button>
 									<label font="Tahoma-BOLD-13" foreground="CC3333"
 										text="Double-click item to display  ">

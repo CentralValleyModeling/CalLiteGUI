@@ -287,6 +287,38 @@ public class DSSGrabber {
 	}
 
 	/**
+	 * Determines if the cls (CalLite scenario) file associated with a given DV.DSS file shows D1485 Fish and Wildlife
+	 * (Antioch+Chipps) on
+	 * 
+	 * @param dvFilename
+	 * @return true if .cls shows Antioch/Chipps on, false otherwise
+	 */
+
+	private boolean clsAntiochChipps(String dvFilename) {
+		String clsFileName = dvFilename.substring(0, dvFilename.length() - 7) + ".cls";
+		File clsF = new File(clsFileName);
+		String AN_CHstate = "";
+		try {
+			Scanner scanner;
+			scanner = new Scanner(new FileInputStream(clsF.getAbsolutePath()));
+			while (scanner.hasNextLine() && AN_CHstate.equals("")) {
+				String text = scanner.nextLine();
+				if (text.startsWith("CkbReg_AN|")) {
+
+					String[] texts = text.split("[|]");
+					AN_CHstate = texts[1];
+				}
+			}
+			scanner.close();
+
+		} catch (IOException e) {
+			log.info(clsF.getName() + " not openable - Antioch/Chipps assumed off");
+		}
+
+		return (AN_CHstate.equals("false"));
+	}
+
+	/**
 	 * Reads a specified dataset from a specified HEC DSS file.
 	 * 
 	 * @param dssFilename
@@ -346,10 +378,27 @@ public class DSSGrabber {
 				                || (dssNames[0].equals("D_MDRCNL/FLOW-DELIVERY")) || (dssNames[0].equals("D_FKCNL/FLOW-DELIVERY")))) {
 
 					result = null;
-					JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename
-					        + ",\n perhaps because Dynamic SJR simulation is turned off.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, " Could not find " + dssNames[0] + " in " + dssFilename
+					        + ".\n The selected scenario was not run using dynamic SJR simulation.", "Error",
+					        JOptionPane.ERROR_MESSAGE);
+				}
 
-				} else {
+				else if (!clsAntiochChipps(dssFilename)
+				        && ((dssNames[0].equals("AN_EC_STD/SALINITY")) || (dssNames[0].equals("CH_EC_STD/SALINITY")))) {
+
+					result = null;
+					JOptionPane
+					        .showMessageDialog(
+					                null,
+					                " Could not find "
+					                        + dssNames[0]
+					                        + " in "
+					                        + dssFilename
+					                        + ".\n The selected scenario was run with D-1485 Fish and Wildlife (at Antioch and Chipps) regulations turned off.",
+					                "Error", JOptionPane.ERROR_MESSAGE);
+				}
+
+				else {
 					JOptionPane.showMessageDialog(null, "Could not find " + dssNames[0] + " in " + dssFilename, "Error",
 					        JOptionPane.ERROR_MESSAGE);
 				}
