@@ -195,45 +195,30 @@ public class ReportAction implements ActionListener {
 
 			String cSTOR = ";Locs-";
 			String cSTORIdx = ";Index-";
-			JPanel presets = (JPanel) swix.find("presets");
-			Component[] components = presets.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
+
+			// TODO: replace with iterator over panel components of tabbedpane "variables"
+
+			String[] panelIDs = { "presets", "SJR Results", "shortage", "WMA", "DShort" };
+			for (String panelID : panelIDs) {
+				JPanel panel = (JPanel) swix.find(panelID);
+				Component[] components = panel.getComponents();
+				for (int i = 0; i < components.length; i++) {
+					if (components[i] instanceof JCheckBox) {
+						JCheckBox c = (JCheckBox) components[i];
+						String cName = c.getName();
+						if (cName.startsWith("ckbp")) {
+							if (c.isSelected()) {
+								cSTOR = cSTOR + c.getText().trim() + ",";
+								cSTORIdx = cSTORIdx + cName + ",";
+							}
 						}
 					}
+
+					lstArray1[n] = DisplayFrame.quickState() + cSTOR + cSTORIdx;
+
+					// String[] reportNamesEG = {cDate};
+					lstReports.setListData(lstArray1);
 				}
-
-				lstArray1[n] = DisplayFrame.quickState() + cSTOR + cSTORIdx;
-
-				// String[] reportNamesEG = {cDate};
-				lstReports.setListData(lstArray1);
-			}
-			JPanel shortage = (JPanel) swix.find("shortage");
-			components = shortage.getComponents();
-			for (int i = 0; i < components.length; i++) {
-				if (components[i] instanceof JCheckBox) {
-					JCheckBox c = (JCheckBox) components[i];
-					String cName = c.getName();
-					if (cName.startsWith("ckbp")) {
-						boolean b = c.isSelected();
-						if (b == true) {
-							cSTOR = cSTOR + c.getText().trim() + ",";
-							cSTORIdx = cSTORIdx + cName + ",";
-						}
-					}
-				}
-
-				lstArray1[n] = DisplayFrame.quickState() + cSTOR + cSTORIdx;
-
-				// String[] reportNamesEG = {cDate};
-				lstReports.setListData(lstArray1);
 			}
 
 		}
