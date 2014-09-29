@@ -224,7 +224,9 @@ public class GUIUtils {
 		if (component instanceof JTextField || component instanceof NumericTextField || component instanceof JTextArea) {
 			comp = component.getName();
 			value = ((JTextComponent) component).getText();
+
 			if (comp != null) {
+				value = value.replaceAll("\n", "~~");
 				sb.append(comp + "|" + value + NL);
 			}
 		} else if (component instanceof JSpinner) {
@@ -363,7 +365,8 @@ public class GUIUtils {
 
 					} else {
 						if (component != null) {
-							((JTextComponent) component).setText(value);
+							System.out.println(component.getName() + ": " + value);
+							((JTextComponent) component).setText(value.replace("~~", "\n"));
 						}
 					}
 				}
@@ -639,7 +642,7 @@ public class GUIUtils {
 		if (component instanceof JTextField || component instanceof NumericTextField || component instanceof JTextArea) {
 			comp = component.getName();
 			type = "Text";
-			value = ((JTextComponent) component).getText();
+			value = ((JTextComponent) component).getText().replace("~~", NL);
 		} else if (component instanceof JSpinner) {
 			comp = component.getName();
 			type = "Spinner";
