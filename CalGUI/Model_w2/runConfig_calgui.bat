@@ -7,7 +7,8 @@ IF [%1]==[] (
 	pause
 	exit
 	)
-	
+
+set ScenarioName=%2
 set ConfigFilePath=%1
 set ConfigFilePath=%ConfigFilePath:/=\%
 
@@ -64,6 +65,6 @@ set PATH=%ExternalDir%;%JarDir%;%VistaLibDir%
 : call java to run ControllerBatch class                :
 :-------------------------------------------------------:
 
-start /min "CalLiteRun" %temp_wrims2%/../../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% gov.ca.water.calgui.batch.Singleton -config="%configFilePath%"
+start /min "CalLiteRun%ScenarioName%" %temp_wrims2%/../../../../jre6/bin/java -Xmx1000m -Xss1280K -Djava.library.path=%PATH% %CLASSPATH% gov.ca.water.calgui.batch.Singleton -config="%configFilePath%"
 
 exit

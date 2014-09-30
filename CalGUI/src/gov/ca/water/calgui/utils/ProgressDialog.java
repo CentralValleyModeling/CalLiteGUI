@@ -1,10 +1,15 @@
 package gov.ca.water.calgui.utils;
 
+import gov.ca.water.calgui.ScenarioMonitor;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -45,6 +50,30 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		list.setVisibleRowCount(-1);
+		list.setDragEnabled(true);
+		MouseListener mouseListener = new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					String selectedItem = (String) list.getSelectedValue();
+					// System.out.println(selectedItem);
+					int spacePos = selectedItem.indexOf(" ");
+					String scn = selectedItem.substring(0, spacePos);
+					// System.out.println(scn + "@");
+					Runtime rt = Runtime.getRuntime();
+					try {
+						String cancelRun = "taskkill /f /t /fi \"WINDOWTITLE eq CalLiteRun" + scn + "\" ";
+						// System.out.println(cancelRun);
+						rt.exec(cancelRun);
+						ScenarioMonitor.scenarioListRemove(scn);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		};
+		list.addMouseListener(mouseListener);
 
 		listScroller = new JScrollPane(list);
 		listScroller.setPreferredSize(new Dimension(350, 150));
@@ -63,7 +92,7 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		// btnClose.setActionCommand("Go");
 		// add(BorderLayout.PAGE_END, btnClose);
 
-		JButton btnClose = new JButton("Stop");
+		JButton btnClose = new JButton("Stop all runs");
 		btnClose.setPreferredSize(new Dimension(100, 25));
 		btnClose.setMinimumSize(new Dimension(100, 25));
 		btnClose.addActionListener(this);
@@ -90,6 +119,7 @@ public class ProgressDialog extends JDialog implements ActionListener {
 			Process proc;
 			try {
 				proc = rt.exec("taskkill /f /t /fi \"WINDOWTITLE eq CalLiteRun*\" ");
+				ScenarioMonitor.scenarioListClear();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

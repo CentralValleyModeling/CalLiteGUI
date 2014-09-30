@@ -83,6 +83,8 @@ public class ScenarioMonitor {
 					} else {
 						scenarioList.remove(entry.getKey());
 					}
+					// check for always on top
+					progressDialog.setAlwaysOnTop(true);
 				}
 			}
 			progressDialog.setList(listData);
@@ -137,6 +139,14 @@ public class ScenarioMonitor {
 
 	public static void setPDFStatus(String status) {
 		pdfStatus = status;
+	}
+
+	public static void scenarioListRemove(String scn) {
+		scenarioList.remove(scn);
+	}
+
+	public static void scenarioListClear() {
+		scenarioList.clear();
 	}
 
 	/**

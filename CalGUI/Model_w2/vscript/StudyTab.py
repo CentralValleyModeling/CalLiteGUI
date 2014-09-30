@@ -8,7 +8,7 @@
 # python modules
 import shutil
 import os
-
+from os.path import basename
 #CalsimWsiDi class imports
 from WsiDiGen import *
 from vista.gui import *
@@ -52,7 +52,7 @@ class StudyTabCl:
 
       self.f=open(os.path.join(thisFileDir, "_wsidi_study.bat"),'w')
 
-      self.f.write(r'%~dp0..\runConfig_calgui '+self.configPath+'\n')
+      self.f.write(r'%~dp0..\runConfig_calgui '+self.configPath+' '+os.path.splitext(basename(self.configPath))[0][0:-6]+'\n')
       self.f.close()
             
 
