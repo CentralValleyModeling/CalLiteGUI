@@ -852,7 +852,7 @@ public class RunUtils {
 
 				String configFilePath = new File(scenarioPath, scenarioName + ".config").getAbsolutePath();
 
-				String batchText = "%~dp0\\Model_w2\\runConfig_calgui " + configFilePath;
+				String batchText = "%~dp0\\Model_w2\\runConfig_calgui " + configFilePath + " " + scenarioName;
 
 				if (isParallel && i < scenList.size() - 1) {
 					batchFilePW.println("start /min " + batchText);
@@ -911,6 +911,7 @@ public class RunUtils {
 		try {
 			batchFilePW = new PrintWriter(new BufferedWriter(new FileWriter(batchFile)));
 
+			batchFilePW.println("@title=CalLiteRun" + scenarioName);
 			batchFilePW.println(del);
 			batchFilePW.println();
 			batchFilePW.println(cmd);
@@ -962,6 +963,7 @@ public class RunUtils {
 			// // batchFilePW.println("del /F /Q " + subBat);
 			// batchFilePW.println();
 			// }
+			batchFilePW.println("exit\n");
 			batchFilePW.flush();
 			batchFilePW.close();
 
