@@ -14,7 +14,7 @@ define I_Trnty_S2D {alias I_Trnty kind 'FLOW-INFLOW' units 'CFS'} !Trinity Lake 
 define I_Lewiston_S2D {alias I_Lewiston kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Lewiston node
 define I_Wkytn_S2D {alias I_Wkytn kind 'FLOW-INFLOW' units 'CFS'} !Wiskeytown Lake Infolw
 define I_Shsta_S2D {alias I_Shsta kind 'FLOW-INFLOW' units 'CFS'} !Shasta Lake Inflow
-define I_Orovl_S2D {alias I_Shsta kind 'FLOW-INFLOW' units 'CFS'} !Oroville Lake Inflow
+define I_Orovl_S2D {alias I_Orovl kind 'FLOW-INFLOW' units 'CFS'} !Oroville Lake Inflow
 define I_Yuba_S2D {alias I_Yuba kind 'FLOW-INFLOW' units 'CFS'} !Engle Bright flow
 define I_Folsm_S2D {alias I_Folsm kind 'FLOW-INFLOW' units 'CFS'} !Folsom Lake inflow
 define I_Hood_S2D {alias I_Hood kind 'FLOW-INFLOW' units 'CFS'} !Local Accretion at Hood (I400)
@@ -29,10 +29,28 @@ define I_Kern_S2D {alias I_Kern kind 'FLOW-INFLOW' units 'CFS'} !Kern River Inte
 define I_Nimbus_S2D {alias I_Nimbus kind 'FLOW-INFLOW' units 'CFS'} !Local inflow into Nimbus (I9), NEEDED FOR COA ONLY
 define I_KellyRidge_S2D {alias I_KellyRidge kind 'FLOW-INFLOW' units 'CFS'} !Local inflow at Kelly Ridge (I200), NEEDED FOR COA ONLY
 define I_MDOTA_S2D {alias I_MDOTA kind 'FLOW-INFLOW' units 'CFS'} !James Bypass flows into the Mendota Pool
+define I_Nhgan_S2D {alias I_Nhgan kind 'FLOW-INFLOW' units 'CFS'} !New Hogan Inflow
+define I_Melon_S2D {alias I_Melon kind 'FLOW-INFLOW' units 'CFS'} !New Melones Inflow
+define I_Pedro_S2D {alias I_Pedro kind 'FLOW-INFLOW' units 'CFS'} !New Don Pedro Inflow
+define I_Mclre_S2D {alias I_Mclre kind 'FLOW-INFLOW' units 'CFS'} !McLure Inflow
+define I_Estmn_S2D {alias I_Estmn kind 'FLOW-INFLOW' units 'CFS'} !Eastman Inflow
+define I_Hnsly_S2D {alias I_Hnsly kind 'FLOW-INFLOW' units 'CFS'} !Hensley Inflow
+define I_Mlrtn_S2D {alias I_Mlrtn kind 'FLOW-INFLOW' units 'CFS'} !Millerton Inflow
+define I_Calav_S2D {alias I_Calav kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Calaveras
+define I_SJRStan_S2D {alias I_SJRStan kind 'FLOW-INFLOW' units 'CFS'} !Inflow to SJRStanislaus
+define I_Stanripn_S2D {alias I_Stanripn kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Ripon
+define I_Stangdwn_S2D {alias I_Stangdwn kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Goodwin
+define I_SJRMaze_S2D {alias I_SJRMaze kind 'FLOW-INFLOW' units 'CFS'} !Inflow to SJRMaze
+define I_Tuol_S2D {alias I_Tuol kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Tuolumne
+define I_Merced2_S2D {alias I_Merced2 kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Merced2
+define I_Merced1_S2D {alias I_Merced1B+I_Merced1C kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Merced1
+define I_SJRMs_S2D {alias I_SJRMs kind 'FLOW-INFLOW' units 'CFS'} !Inflow to SJRMudSalt
+define I_Eastbyp_S2D {alias I_Eastbyp kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Chowchilla2
 define AD_CALAVERAS_S2D {alias AD_SJRCalALL kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_CASTAIC {timeseries kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_CASTAIC_S2D {alias AD_CASTAIC kind 'FLOW-ACCRDEPL' units 'CFS'}
 define AD_MOKELUMNE_S2D {alias AD_MOKELUMNE kind 'FLOW-ACCRDEPL' units 'CFS'}
+define AD_STANGDWN_S2D {alias AD_STANGDWN kind 'FLOW-ACCRDEPL' units 'CFS'}
 define I_CVCWHEEL {std kind 'FLOW-INFLOW' units 'CFS'} 
 goal set_CVCWHEEL_0 {I_CVCWHEEL = 0}
 !define SJR_ANN_S2D {alias SJR_ANNsv kind 'FLOW-ACCRDEPL' units 'CFS'}
