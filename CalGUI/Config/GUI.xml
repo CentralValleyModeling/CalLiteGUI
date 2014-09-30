@@ -2444,7 +2444,7 @@
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="6" />
 									</checkbox>
-									<checkbox name="ckbp307" id="ckbp307" text="Mass Balance ">
+									<checkbox name="ckbp307" id="ckbp307" text="Mass Balance " visible ="false">
 										<gridbagconstraints weightx="0.5"
 											anchor="GridBagConstraints.WEST" gridx="5" gridy="7" />
 									</checkbox>
