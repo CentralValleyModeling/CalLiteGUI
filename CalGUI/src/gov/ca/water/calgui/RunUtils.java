@@ -893,11 +893,13 @@ public class RunUtils {
 
 		String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
 		String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
-		String wsidiIterationLogPath = new File(scenarioPath, "run\\wsidi.log").getAbsolutePath();
+		String wreslCheckWsidiFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main_wsidi=.log\"").getAbsolutePath();
+		String wsidiIterationLogPath = new File(scenarioPath, "run\\wsidi_iteration.log").getAbsolutePath();
 		// String wsidiGeneratedTablesPath = new File(scenarioPath, "run\\lookup\\wsi_di_???_sys_*.table").getAbsolutePath();
 
 		del = del + "del /F /Q " + progressFilePath + "\r\n";
 		del = del + "del /F /Q " + wreslCheckFilePath + "\r\n";
+		del = del + "del /F /Q " + wreslCheckWsidiFilePath + "\r\n";
 		del = del + "del /F /Q " + wsidiIterationLogPath + "\r\n";
 		// del = del + "del /F /Q " + wsidiGeneratedTablesPath + "\r\n";
 
@@ -938,11 +940,15 @@ public class RunUtils {
 			String scenarioPath = new File(System.getProperty("user.dir") + "\\Scenarios\\" + runRecordFolderName + "\\"
 			        + scenarioName).getAbsolutePath();
 
+			String wsidilogFilePath = new File(scenarioPath, "run\\wsidi_iteration.log").getAbsolutePath();
 			String progressFilePath = new File(scenarioPath, "run\\progress.txt").getAbsolutePath();
 			String wreslCheckFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main=.log\"").getAbsolutePath();
+			String wreslCheckWsidiFilePath = new File(scenarioPath, "run\\\"=WreslCheck_main_wsidi=.log\"").getAbsolutePath();
 
-			del = del + "del /F /Q " + progressFilePath + "\n";
-			del = del + "del /F /Q " + wreslCheckFilePath + "\n";
+			del = del + "del /F /Q " + wsidilogFilePath + "\r\n";
+			del = del + "del /F /Q " + progressFilePath + "\r\n";
+			del = del + "del /F /Q " + wreslCheckFilePath + "\r\n";
+			del = del + "del /F /Q " + wreslCheckWsidiFilePath + "\r\n";
 		}
 
 		File batchFile = null;
