@@ -185,19 +185,33 @@ public class RegListener implements ItemListener {
 							}
 						}
 
-						/*
-						 * DKR 12Sept2014 Commented out QS default to Reg option 2 String ckbName; String NAFlag; int rID; for (int
-						 * i = 0; i < lineCount; i++) { ckbName = lookups[i][0]; NAFlag = lookups[i][5]; rID =
-						 * Integer.parseInt(gl.RIDForCtrl(ckbName)); if (NAFlag.equals("FALSE") || ckbName.equals("ckbReg_TRNTY") ||
-						 * ckbName.equals("ckbReg_PUMP")) {
-						 * 
-						 * } else { RegFlags[rID] = 2; } }
-						 */
+						String ckbName;
+						int rID;
+						for (int i = 0; i < lineCount; i++) {
+							ckbName = lookups[i][0];
+							rID = Integer.parseInt(gl.RIDForCtrl(ckbName));
+
+							if (RegFlags[rID] == 1) {
+								String D1641 = lookups[i][2];
+								// check if option is not a valid option
+								if (D1641.equals("FALSE")) {
+									RegFlags[rID] = 3;
+								}
+							} else if (RegFlags[rID] == 3) {
+								String D1485 = lookups[i][4];
+								// check if option is not a valid option
+								if (D1485.equals("FALSE")) {
+									RegFlags[rID] = 1;
+								}
+							} else {
+								RegFlags[rID] = RegFlags[rID];
+							}
+						}
 
 						// Special Handling for Antioch and Chips
-						int rID;
 						rID = Integer.parseInt(gl.RIDForCtrl("ckbReg_AN"));
 						RegFlags[rID] = 3;
+						RegFlags[rID - 1] = 3;
 
 						JTable table = (JTable) swix.find("tblRegValues");
 						Object obj = table.getModel();
