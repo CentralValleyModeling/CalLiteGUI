@@ -48,7 +48,7 @@ No longer providing these flows since BOR and SJRGA have no agreement on where t
 /* RPA 60-day pulse flow (April-May).  Turn on or off  */
 define NOAAVernMin_req {  
      case AprORMay {
-          condition month == apr .or. month == may .and. Vern_RPA == 1 
+          condition (month == apr .or. month == may) .and. Vern_RPA == 1 
           select NOAAmin from NOAAVern60dayMin where WYT = wyt_SJR }
      case otherwise {
           condition always
