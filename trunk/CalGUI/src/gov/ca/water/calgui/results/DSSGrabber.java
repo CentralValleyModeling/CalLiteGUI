@@ -293,7 +293,8 @@ public class DSSGrabber {
 	 * @param dvFilename
 	 * @return true if .cls shows Antioch/Chipps on, false otherwise
 	 */
-
+	// Logic to display error message if a user is trying access Antioch/Chipps quick results and the selected scenario was not run
+	// with Antioch/Chipps
 	private boolean clsAntiochChipps(String dvFilename) {
 		String clsFileName = dvFilename.substring(0, dvFilename.length() - 7) + ".cls";
 		File clsF = new File(clsFileName);
@@ -315,7 +316,39 @@ public class DSSGrabber {
 			log.info(clsF.getName() + " not openable - Antioch/Chipps assumed off");
 		}
 
-		return (AN_CHstate.equals("false"));
+		return (AN_CHstate.equals("true"));
+	}
+
+	// Logic to display error message if a user is trying access LVE quick results and the selected scenario was not run with LVE RH
+	// 10/2/2014
+	/**
+	 * Determines if the cls (CalLite scenario) file associated with a given DV.DSS file shows Los Vaqueros Enlargement on
+	 * 
+	 * @param dvFilename
+	 * @return true if .cls shows Antioch/Chipps on, false otherwise
+	 */
+	private boolean clsLVE(String dvFilename) {
+		String clsFileName = dvFilename.substring(0, dvFilename.length() - 7) + ".cls";
+		File clsF = new File(clsFileName);
+		String LVE_State = "";
+		try {
+			Scanner scanner;
+			scanner = new Scanner(new FileInputStream(clsF.getAbsolutePath()));
+			while (scanner.hasNextLine() && LVE_State.equals("")) {
+				String text = scanner.nextLine();
+				if (text.startsWith("fac_ckb3|")) {
+
+					String[] texts = text.split("[|]");
+					LVE_State = texts[1];
+				}
+			}
+			scanner.close();
+
+		} catch (IOException e) {
+			log.info(clsF.getName() + " not openable - LVE assumed off");
+		}
+
+		return (LVE_State.equals("true"));
 	}
 
 	/**
@@ -394,8 +427,21 @@ public class DSSGrabber {
 					                        + dssNames[0]
 					                        + " in "
 					                        + dssFilename
-					                        + ".\n The selected scenario was run with D-1485 Fish and Wildlife (at Antioch and Chipps) regulations turned off.",
+					                        + ".\n The selected scenario was not run with D-1485 Fish and Wildlife (at Antioch and Chipps) regulations.",
 					                "Error", JOptionPane.ERROR_MESSAGE);
+				}
+
+				else if (!clsLVE(dssFilename)
+				        && ((dssNames[0].equals("S422/STORAGE")) || (dssNames[0].equals("WQ408_OR_/SALINITY"))
+				                || (dssNames[0].equals("WQ408_VC_/SALINITY")) || (dssNames[0].equals("WQ408_RS_/SALINITY"))
+				                || (dssNames[0].equals("C422_FILL_CC/FLOW-CHANNEL")) || (dssNames[0].equals("D420/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D408_OR/FLOW-DELIVERY")) || (dssNames[0].equals("D408_VC/FLOW-DELIVERY"))
+				                || (dssNames[0].equals("D408_RS/FLOW-DELIVERY")) || (dssNames[0].equals("WQ420/SALINITY")))) {
+
+					result = null;
+					JOptionPane.showMessageDialog(null, " Could not find " + dssNames[0] + " in " + dssFilename
+					        + ".\n The selected scenario was not run with Los Vaqueros Enlargement.", "Error",
+					        JOptionPane.ERROR_MESSAGE);
 				}
 
 				else {
