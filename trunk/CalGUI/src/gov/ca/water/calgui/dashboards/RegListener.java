@@ -200,12 +200,16 @@ public class RegListener implements ItemListener {
 						RegFlags[rID] = 3;
 
 						JTable table = (JTable) swix.find("tblRegValues");
-						DataFileTableModel tm = (DataFileTableModel) table.getModel();
-						int tID = tm.tID;
-						cName = gl.ctrlFortableID(Integer.toString(tID));
-						Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
-						RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect, "null",
-						        RegFlags);
+						Object obj = table.getModel();
+						if (obj == DataFileTableModel.class) {
+
+							DataFileTableModel tm = (DataFileTableModel) table.getModel();
+							int tID = tm.tID;
+							cName = gl.ctrlFortableID(Integer.toString(tID));
+							Boolean isSelect = ie.getStateChange() == ItemEvent.SELECTED;
+							RegulationSetup.SetRegCheckBoxes(swix, RegUserEdits, dTableModels, gl, reg_btng1, cName, isSelect,
+							        "null", RegFlags);
+						}
 					}
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), enabled);
 					GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), enabled);
