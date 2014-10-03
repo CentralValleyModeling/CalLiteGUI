@@ -39,8 +39,8 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		super();
 
 		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-		setPreferredSize(new Dimension(400, 220));
-		setMinimumSize(new Dimension(400, 220));
+		setPreferredSize(new Dimension(400, 210));
+		setMinimumSize(new Dimension(400, 210));
 		setLayout(new BorderLayout(5, 5));
 
 		setTitle(title);
@@ -93,8 +93,8 @@ public class ProgressDialog extends JDialog implements ActionListener {
 		// add(BorderLayout.PAGE_END, btnClose);
 
 		JButton btnClose = new JButton("Stop all runs");
-		btnClose.setPreferredSize(new Dimension(100, 25));
-		btnClose.setMinimumSize(new Dimension(100, 25));
+		btnClose.setPreferredSize(new Dimension(50, 20));
+		btnClose.setMinimumSize(new Dimension(50, 20));
 		btnClose.addActionListener(this);
 		btnClose.setActionCommand("Stop");
 		add(BorderLayout.PAGE_END, btnClose);
