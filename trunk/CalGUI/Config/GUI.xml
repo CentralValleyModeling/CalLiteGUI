@@ -2984,6 +2984,8 @@
 						</button>
 						<button text="Save List/Tree" ActionCommand="CR_SaveList" enabled="true">
 						</button>
+						<button text="Clear Tree" ActionCommand="CR_ClearTree" enabled="true">
+						</button>
 					</hbox>
 					<panel name="WRIMS" id="WRIMS" layout="BorderLayout"
 						preferredsize="900,600">

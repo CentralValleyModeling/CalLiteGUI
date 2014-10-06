@@ -1,6 +1,7 @@
 package gov.ca.water.calgui.dashboards;
 
 import gov.ca.water.calgui.CalLiteHelp;
+import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.results.ControlFrame;
 import gov.ca.water.calgui.utils.GUIUtils;
 
@@ -12,6 +13,11 @@ import javax.swing.JTabbedPane;
 
 import org.swixml.SwingEngine;
 
+import calsim.app.Project;
+import calsim.gui.DtsTreeModel;
+import calsim.gui.DtsTreePanel;
+import calsim.gui.GuiUtils;
+
 public class CustomResultsAction implements ActionListener {
 	private final SwingEngine SWIX;
 
@@ -20,6 +26,7 @@ public class CustomResultsAction implements ActionListener {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 
@@ -45,7 +52,20 @@ public class CustomResultsAction implements ActionListener {
 
 			GUIUtils.writeCGR();
 
+		} else if (actionEvent.getActionCommand().equals("CR_ClearTree")) {
+
+			Project p = MainMenu.getProject();
+			p.clearMTSList();
+			p.clearDTSList();
+
+			DtsTreePanel dtp = GuiUtils.getCLGPanel().getDtsTreePanel();
+			DtsTreeModel dtm = dtp.getCurrentModel();
+			dtm.clearVectors();
+			dtm.createTreeFromPrj(null, null, "");
+
+			GuiUtils.getCLGPanel().repaint();
 		}
+
 	}
 
 }
