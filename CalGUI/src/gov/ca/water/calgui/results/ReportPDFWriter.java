@@ -87,7 +87,7 @@ public class ReportPDFWriter implements Writer {
 
 		// Check if file is already open
 
-		bigFont = FontFactory.getFont("Arial", 14);
+		bigFont = FontFactory.getFont("Arial", 12);
 		smallBoldFont = FontFactory.getFont("Arial", 10);
 		smallBoldFont.setStyle(Font.BOLD);
 		subtitleFont = FontFactory.getFont("Arial", 10);
