@@ -252,7 +252,7 @@ MODEL block4 {
     INCLUDE 'hydrology\demands\demands_defs.wresl'
     INCLUDE 'cvp_dellogic\CVP_delivery_Logic_system.wresl'
     INCLUDE 'cvp_dellogic\CVP_delivery_Logic_south.wresl' 
-    INCLUDE 'swp_dellogic\SwpDeliveryLogic.wresl'
+    INCLUDE 'swp_dellogic\SwpDeliveryLogic_WSIDI.wresl'
     INCLUDE 'swp_dellogic\conveyance_limits.wresl'
     INCLUDE 'hydrology\demands\demands.wresl'
     INCLUDE 'NorthofDelta\NOD.wresl'
