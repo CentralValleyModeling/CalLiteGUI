@@ -14,7 +14,7 @@ define I_Trnty_S2D {alias I_Trnty kind 'FLOW-INFLOW' units 'CFS'} !Trinity Lake 
 define I_Lewiston_S2D {alias I_Lewiston kind 'FLOW-INFLOW' units 'CFS'} !Inflow to Lewiston node
 define I_Wkytn_S2D {alias I_Wkytn kind 'FLOW-INFLOW' units 'CFS'} !Wiskeytown Lake Infolw
 define I_Shsta_S2D {alias I_Shsta kind 'FLOW-INFLOW' units 'CFS'} !Shasta Lake Inflow
-define I_Orovl_S2D {alias I_Shsta kind 'FLOW-INFLOW' units 'CFS'} !Oroville Lake Inflow
+define I_Orovl_S2D {alias I_Orovl kind 'FLOW-INFLOW' units 'CFS'} !Oroville Lake Inflow
 define I_Yuba_S2D {alias I_Yuba kind 'FLOW-INFLOW' units 'CFS'} !Engle Bright flow
 define I_Folsm_S2D {alias I_Folsm kind 'FLOW-INFLOW' units 'CFS'} !Folsom Lake inflow
 define I_Hood_S2D {alias I_Hood kind 'FLOW-INFLOW' units 'CFS'} !Local Accretion at Hood (I400)

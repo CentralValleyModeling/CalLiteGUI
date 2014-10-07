@@ -556,7 +556,7 @@ INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
 
-!INCLUDE 'output\DV_ouput.wresl'
+!INCLUDE 'output\DV_output.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
 
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
@@ -627,7 +627,7 @@ INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'	
 
-INCLUDE [LOCAL] 'output\DV_ouput.wresl'
+INCLUDE [LOCAL] 'output\DV_output.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_AUG_PREFER_TD_EXP_BASE.wresl'
 
 INCLUDE [LOCAL] 'Shortage\shortage.wresl'
