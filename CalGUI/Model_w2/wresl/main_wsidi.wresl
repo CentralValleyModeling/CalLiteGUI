@@ -434,6 +434,7 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl'
 INCLUDE [LOCAL] 'COA\coa_Up.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_up.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates_D1485_Up.wresl'}
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 
@@ -441,7 +442,6 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 !INCLUDE [LOCAL] 'Delta\IsolatedFacility\IFDiversionCriteria.wresl'
@@ -479,6 +479,7 @@ INCLUDE [LOCAL] 'Wheeling\WheelzeroJPOD.wresl'
 INCLUDE [LOCAL] 'COA\coa.wresl'
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1.wresl'
 if int(DCC_DLTSW)==3 {INCLUDE 'Delta\xc-gates.wresl'}
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'Delta\Delta.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 
@@ -486,7 +487,6 @@ if LVEM_switch > 0.5 {
 	INCLUDE 'CCWD\LVM_Ops1.wresl'
 }
 
-INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 
@@ -527,6 +527,7 @@ INCLUDE [LOCAL] 'B2Actions\B2SetBaseline.wresl'
 INCLUDE [LOCAL] 'B2Actions\B2ActionsDeltaRepeat.wresl'      
 INCLUDE [LOCAL] 'B2Actions\B2BanksFix.wresl' 
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_B2.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'Delta\Delta_reduced_calls.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 
@@ -551,7 +552,6 @@ INCLUDE [LOCAL] 'Delta\xc-gates.wresl'
 !INCLUDE[LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
 
 INCLUDE [LOCAL] 'Delta\IF_off.wresl'   
@@ -588,6 +588,7 @@ INCLUDE [LOCAL] 'B2Actions\B2SetBaseline.wresl'
 INCLUDE [LOCAL] 'B2Actions\B2ActionsDeltaRepeat.wresl'      
 INCLUDE [LOCAL] 'B2Actions\B2BanksFix.wresl' 
 INCLUDE [LOCAL] 'Delta\Ann\ExportEstimate1_B2.wresl'
+INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 INCLUDE [LOCAL] 'Delta\Delta_reduced_calls.wresl'
 INCLUDE [LOCAL] 'Delta\X2_BO_WQ.wresl'
 
@@ -621,7 +622,6 @@ else{INCLUDE 'Wheeling\wheelfixes.wresl'}
 !INCLUDE [LOCAL] 'Shortage\ShortWarning.wresl'
 INCLUDE [LOCAL] 'FlowCriteria\FlowCriteria.wresl'
 
-INCLUDE [LOCAL] 'Delta\Split_IFTD.wresl'
 !INCLUDE [LOCAL] 'Export_Ops\JUL_NOV_PREFER_TD_EXP.wresl'
                                                   
 INCLUDE [LOCAL] 'output\cycle_output.wresl'
