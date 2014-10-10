@@ -1720,7 +1720,7 @@
 								anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="30" />
 						</checkbox>
 					</panel>
-					<panel border="TitledBorder(CVP/SVP Allocation Methods)"
+					<panel border="TitledBorder(CVP/SWP Allocation Methods)"
 						layout="GridBagLayout">
 						<gridbagconstraints insets="0,0,5,5"
 							anchor="GridBagConstraints.NORTHWEST" gridx="0" gridy="1"
@@ -3012,10 +3012,10 @@
 						<panel layout="FlowLayout(FlowLayout.Left)">
 							<vbox>
 								<label
-									text="Click: on an element for data; shift+click: then drag to pan; ctrl+click: then drag to zoom in"
+									text="Click on an arc or node for data; shift+click, then drag to pan;"
 									font="Tahoma-BOLD-13" foreground="CC3333" />
 								<label
-									text="Shift+right click: then move mouse up and down to zoom in/out;  ctrl+right click: to rotate schematic"
+									text="Shift+right click, then move mouse down/up to zoom in/out; ctrl+click, then select an area to zoom to it"
 									font="Tahoma-BOLD-13" foreground="CC3333" />
 							</vbox>
 						</panel>
