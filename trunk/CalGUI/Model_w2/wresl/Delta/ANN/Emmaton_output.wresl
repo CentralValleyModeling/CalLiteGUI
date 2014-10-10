@@ -55,7 +55,7 @@ goal setEMmrdo {
     rhs 999999.}*/
   case Normal {
     condition always
-    rhs ((1-EM_m_sv)/EM_m_sv)*D_ExpTD - EM_b_sv/EM_m_sv + netDeltaInflow}
+    rhs ((1-EM_m_sv)/EM_m_sv)*D_ExpNoWhlTD - EM_b_sv/EM_m_sv + netDeltaInflow}
 }
 
 !****************************************************************************************

@@ -55,7 +55,7 @@ goal setCOmrdo {
     rhs 0.}
   case Normal {
     condition always
-    rhs ((1-CO_m_sv)/CO_m_sv)*D_ExpTD - CO_b_sv/CO_m_sv + netDeltaInflow}
+    rhs ((1-CO_m_sv)/CO_m_sv)*D_ExpNoWhlTD - CO_b_sv/CO_m_sv + netDeltaInflow}
 }
 
 !****************************************************************************************

@@ -59,7 +59,7 @@ goal setJPmrdo {
     rhs 0.}
   case Normal {
     condition always
-    rhs ((1-JP_m_sv)/JP_m_sv)*D_ExpTD - JP_b_sv/JP_m_sv + netDeltaInflow }
+    rhs ((1-JP_m_sv)/JP_m_sv)*D_ExpNoWhlTD - JP_b_sv/JP_m_sv + netDeltaInflow }
 }
 
 !****************************************************************************************

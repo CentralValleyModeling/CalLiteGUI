@@ -142,6 +142,9 @@ define D_JonesWTS_IF {std kind 'FLOW-DELIVERY' UNITS 'CFS'}
 goal setD_JonesWTS { D_JonesWTS = D_JonesWTS_TD + D_JonesWTS_IF }
 ***/
 
+define D_ExpNoWhlTD {std kind 'flow-delivery' units 'cfs'}
+goal set_Exp_NoWhl_TD {D_ExpNoWhlTD = D_Banks_SWP_TD + D_Jones_CVP_TD}
+
 define C_Hood_whlcv {std kind 'FLOW-CHANNEL' UNITS 'CFS'}
 define C_Hood_whljp {std kind 'FLOW-CHANNEL' UNITS 'CFS'}
 !define C_Hood_WTS   {std kind 'FLOW-CHANNEL' UNITS 'CFS'}
