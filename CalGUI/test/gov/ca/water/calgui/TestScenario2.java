@@ -64,8 +64,8 @@ public class TestScenario2 {
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\" + scenarioName + ".cls");
 
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl, mm.regUserEditFlags);
+		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl, mm.regFlags);
 
 		RunUtils.setupScenario(scenarioName + ".cls", "", MainMenu.desktop, MainMenu.getSwix(), mm.regUserEditFlags,
 		        mm.dTableModels, mm.gl, mm.regFlags);
