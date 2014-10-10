@@ -24,6 +24,26 @@
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
    id="defs2554"><marker
+   inkscape:stockid="DiamondL"
+   orient="auto"
+   refY="0.0"
+   refX="0.0"
+   id="DiamondL"
+   style="overflow:visible"><path
+     id="path11891"
+     d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+     style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
+     transform="scale(0.8)" /></marker><marker
+   inkscape:stockid="Arrow2Lstart"
+   orient="auto"
+   refY="0.0"
+   refX="0.0"
+   id="Arrow2Lstart"
+   style="overflow:visible"><path
+     id="path11830"
+     style="fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+     d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+     transform="scale(1.1) translate(1,0)" /></marker><marker
    inkscape:stockid="Arrow1Mend"
    orient="auto"
    refY="0"
@@ -7650,13 +7670,13 @@
    inkscape:window-height="1138"
    id="namedview2552"
    showgrid="false"
-   inkscape:zoom="0.8008963"
-   inkscape:cx="1209.0201"
-   inkscape:cy="1993.3929"
+   inkscape:zoom="0.28315961"
+   inkscape:cx="1353.4111"
+   inkscape:cy="2297.3306"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
-   inkscape:current-layer="layer1"
+   inkscape:current-layer="svg2"
    inkscape:snap-global="false"
    fit-margin-top="0"
    fit-margin-left="0"
@@ -7670,6 +7690,11 @@
    transform="scale(1.1717508,0.85342378)"
    x="1745.9567"
    y="857.68365">Reservoir </text>
+
+
+
+
+
 
 
 
@@ -7711,6 +7736,11 @@
 
 
 
+
+
+
+
+
 <text
    style="font-size:31.6584816px;font-family:TimesNewRomanPSMT"
    id="text11"
@@ -7718,6 +7748,11 @@
    transform="scale(1.1717508,0.85342378)"
    x="1746.8593"
    y="935.68365">Diversion/Depletion</text>
+
+
+
+
+
 
 
 
@@ -7759,6 +7794,11 @@
 
 
 
+
+
+
+
+
 <text
    style="font-size:31.65824699px;font-family:TimesNewRomanPSMT"
    id="text15"
@@ -7783,6 +7823,11 @@
 
 
 
+
+
+
+
+
 <text
    style="font-size:27.85919571px;font-family:ArialMT"
    id="text17"
@@ -7790,6 +7835,11 @@
    transform="scale(1.1717508,0.85342378)"
    x="1712.2863"
    y="775.12115">LEGEND</text>
+
+
+
+
+
 
 
 
@@ -7918,6 +7968,11 @@
 
 
 
+
+
+
+
+
 </g><line
    style="fill:none"
    id="line165"
@@ -7938,6 +7993,11 @@
    font-size="10.561"
    id="text189"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Nimbus</text>
+
+
+
+
+
 
 
 
@@ -8026,6 +8086,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="871.562,568.815 873.257,568.815 873.257,568.815 873.257,820.875 871.562,820.875 "
@@ -8060,6 +8125,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="871.562,855.154 873.257,855.154 873.257,855.154 873.257,984.5 871.562,984.5 "
@@ -8077,6 +8147,11 @@
    font-size="10.561"
    id="text115"
    style="font-size:10.07124043px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Wilkns</text>
+
+
+
+
+
 
 
 
@@ -8148,6 +8223,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1254.968,694.105 1256.461,694.835 1256.461,694.835 1187.53,808.763 1186.144,808.035 "
@@ -8165,6 +8245,11 @@
    font-size="10.2263"
    id="text117"
    style="font-size:10.07116699px;fill:#1c75bc;font-family:MyriadPro-Regular">C_YubFea</text>
+
+
+
+
+
 
 
 
@@ -8216,6 +8301,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1242.693,961.963 1242.693,963.477 1242.693,963.477 1089.292,963.477 1089.292,961.963 "
@@ -8233,6 +8323,11 @@
    font-size="9.6809"
    id="text119"
    style="font-size:9.15604496px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SacFea</text>
+
+
+
+
+
 
 
 
@@ -8296,6 +8391,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="539.168,2197.803 540.864,2197.803 540.864,2197.803 540.864,2256.327 539.168,2256.327 "
@@ -8313,6 +8413,11 @@
    font-size="10.5611"
    id="text305"
    style="font-size:10.07171535px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SBay</text>
+
+
+
+
+
 
 
 
@@ -8354,6 +8459,11 @@
    font-size="9.6045"
    id="text299"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SBay</text>
+
+
+
+
+
 
 
 
@@ -8413,6 +8523,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1339.723,1300.381 1339.723,1300.381 1325.918,1294.51 1339.403,1288.262 "
@@ -8426,6 +8541,11 @@
    font-size="9.6045"
    id="text201"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_HSt</text>
+
+
+
+
+
 
 
 
@@ -8498,6 +8618,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="595.653,505.184 595.653,505.184 588.752,517.303 581.959,505.184 "
@@ -8511,6 +8636,11 @@
    font-size="10.561"
    id="text259"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Trnty</text>
+
+
+
+
+
 
 
 
@@ -8545,6 +8675,11 @@
    font-size="10.5611"
    id="text217"
    style="font-size:9.92669201px;fill:#1c75bc;font-family:MyriadPro-Regular">C_DXC</text>
+
+
+
+
+
 
 
 
@@ -8741,6 +8876,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect617"
@@ -8808,6 +8948,11 @@
      font-size="19.6953"
      y="909.54407"
      x="934.4657">f</tspan></text>
+
+
+
+
+
 
 
 
@@ -8896,6 +9041,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect661"
@@ -8913,6 +9063,11 @@
    transform="scale(1.0486181,0.95363601)"
    x="673.41046"
    y="597.62939">D_Spring</text>
+
+
+
+
+
 
 
 
@@ -9006,6 +9161,11 @@
 
 
 
+
+
+
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-miterlimit:3;stroke-dasharray:12.5, 2.5, 1, 2.5, 1, 2.5"
    id="line265"
@@ -9027,6 +9187,11 @@
    transform="scale(1.0486181,0.95363601)"
    x="1277.5562"
    y="633.53125">I_Orovl</text>
+
+
+
+
+
 
 
 
@@ -9107,6 +9272,11 @@
 
 
 
+
+
+
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    id="line143"
@@ -9135,6 +9305,11 @@
    transform="matrix(0.76857288,0.65754246,-0.71405079,0.69021599,0,0)"
    x="947.33429"
    y="58.371124">C_Wkytn</text>
+
+
+
+
+
 
 
 
@@ -9205,6 +9380,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect771"
@@ -9230,6 +9410,11 @@
    font-size="19.6953"
    id="text2295"
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">SacSJR</text>
+
+
+
+
+
 
 
 
@@ -9342,6 +9527,11 @@
 
 
 
+
+
+
+
+
 <polygon
    style="fill:none"
    id="polygon843"
@@ -9430,6 +9620,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect899"
@@ -9487,6 +9682,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect913"
@@ -9504,6 +9704,11 @@
    font-size="9.6045"
    id="text185"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Folsm</text>
+
+
+
+
+
 
 
 
@@ -9584,6 +9789,11 @@
      font-size="19.6953"
      id="tspan943"
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -9700,6 +9910,11 @@
 
 
 
+
+
+
+
+
 		<polygon
    style="fill:none"
    id="polygon987"
@@ -9755,6 +9970,11 @@
      font-size="19.6953"
      y="2396.7283"
      x="480.85513">y</tspan></text>
+
+
+
+
+
 
 
 
@@ -9878,6 +10098,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1041"
@@ -9942,6 +10167,11 @@
      font-size="19.6953"
      y="2532.7258"
      x="386.44876">SWP</tspan></text>
+
+
+
+
+
 
 
 
@@ -10035,6 +10265,11 @@
 
 
 
+
+
+
+
+
 <rect
    x="735.64001"
    y="2342.406"
@@ -10106,6 +10341,11 @@
 
 
 
+
+
+
+
+
 		<rect
    style="fill:none"
    id="rect1229"
@@ -10145,6 +10385,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="1458.824"
@@ -10165,6 +10410,11 @@
    font-size="9.6045"
    id="text149"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Orovl</text>
+
+
+
+
+
 
 
 
@@ -10231,6 +10481,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="891.19702"
@@ -10251,6 +10506,11 @@
    font-size="10.038"
    id="text111"
    style="font-size:10.07161617px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Wilkns</text>
+
+
+
+
+
 
 
 
@@ -10310,6 +10570,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="784.47198"
@@ -10330,6 +10595,11 @@
    font-size="8.5023"
    id="text125"
    style="font-size:8.3925848px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_SacAme</text>
+
+
+
+
+
 
 
 
@@ -10391,6 +10661,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1073.379,986.951 1073.379,986.951 1071.893,973.411 1084.952,980.512 "
@@ -10411,6 +10686,11 @@
    font-size="10.1702"
    id="text135"
    style="font-size:10.07139587px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_YoloBP</text>
+
+
+
+
+
 
 
 
@@ -10463,6 +10743,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="1256.941"
@@ -10490,6 +10775,11 @@
    font-size="9.6045"
    id="text297"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_UpDMC</text>
+
+
+
+
+
 
 
 
@@ -10566,6 +10856,11 @@
      font-size="19.6953"
      y="2396.9258"
      x="947.87958">C</tspan></text>
+
+
+
+
+
 
 
 
@@ -10665,6 +10960,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1331"
@@ -10737,6 +11037,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1353"
@@ -10753,6 +11058,11 @@
    font-size="9.6045"
    id="text191"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Nimbus</text>
+
+
+
+
+
 
 
 
@@ -10804,6 +11114,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1163.918,833.565 1165.306,834.418 1165.306,834.418 1081.645,945.676 1080.162,944.825 "
@@ -10826,6 +11141,11 @@
    font-size="10.16"
    id="text157"
    style="font-size:10.07151985px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Therm</text>
+
+
+
+
+
 
 
 
@@ -10885,6 +11205,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="1312.995"
@@ -10905,6 +11230,11 @@
    font-size="9.6045"
    id="text113"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Wilkns</text>
+
+
+
+
+
 
 
 
@@ -10959,6 +11289,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="924.12799"
@@ -10979,6 +11314,11 @@
    font-size="9.6045"
    id="text107"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_RedBlf</text>
+
+
+
+
+
 
 
 
@@ -11077,6 +11417,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1399"
@@ -11093,6 +11438,11 @@
    font-size="10.561"
    id="text81"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Lwstn</text>
+
+
+
+
+
 
 
 
@@ -11198,6 +11548,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1433"
@@ -11274,6 +11629,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1455"
@@ -11319,6 +11679,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1106.172,1269.681 1105.011,1272.014 1100.014,1282.08 1092.67,1269.654 "
@@ -11337,6 +11702,11 @@
    font-size="10.561"
    id="text199"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">D_HSt</text>
+
+
+
+
+
 
 
 
@@ -11391,6 +11761,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="306.57901"
@@ -11411,6 +11786,11 @@
    font-size="10.561"
    id="text97"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Shsta</text>
+
+
+
+
+
 
 
 
@@ -11526,6 +11906,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10548"
    transform="translate(94.075986,-111.68512)"><line
@@ -11546,6 +11931,11 @@
    font-size="9.6045"
    id="text1555"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_DosAmigosSWP</text>
+
+
+
+
+
 
 
 
@@ -11600,6 +11990,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10558"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -11637,6 +12032,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10630"
    transform="translate(94.075986,-111.68512)"><line
@@ -11653,6 +12053,11 @@
    font-size="10.561"
    id="text1583"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_JtUTerm</text>
+
+
+
+
+
 
 
 
@@ -11710,6 +12115,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10694"
    transform="translate(94.075986,-111.68512)"><line
@@ -11730,6 +12140,11 @@
    font-size="9.6045"
    id="text1635"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_KCWA (851)</text>
+
+
+
+
+
 
 
 
@@ -11784,6 +12199,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10709"
    transform="translate(94.075986,-111.68512)"><line
@@ -11804,6 +12224,11 @@
    font-size="9.6045"
    id="text1639"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CVPRfg_854 (854_856)</text>
+
+
+
+
+
 
 
 
@@ -11867,6 +12292,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10726"
    transform="translate(94.075986,-111.68512)"><line
@@ -11887,6 +12317,11 @@
    font-size="9.6045"
    id="text1647"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Kern (Kern River Intertie)</text>
+
+
+
+
+
 
 
 
@@ -11939,6 +12374,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10784"
    transform="translate(94.075986,-111.68512)"><line
@@ -11957,6 +12397,11 @@
    font-size="9.6045"
    id="text1655"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OSO</text>
+
+
+
+
+
 
 
 
@@ -12009,6 +12454,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10776"
    transform="translate(94.075986,-111.68512)"><line
@@ -12027,6 +12477,11 @@
    font-size="10.561"
    id="text1679"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Alamo (877-880)</text>
+
+
+
+
+
 
 
 
@@ -12082,6 +12537,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g9837"
    transform="translate(94.075986,-111.68512)"><ellipse
@@ -12103,6 +12563,11 @@
    font-size="19.209"
    id="text1683"
    style="font-size:20.14290619px;font-family:MyriadPro-Regular">Cross Valley Canal (857)</text>
+
+
+
+
+
 
 
 
@@ -12167,6 +12632,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g9881"
    transform="translate(94.075986,-111.68512)"><ellipse
@@ -12197,6 +12667,11 @@
      font-size="19.209"
      id="tspan1695"
      style="font-size:20.14290619px;font-family:MyriadPro-Regular">Pumping Plant (880)</tspan></text>
+
+
+
+
+
 
 
 
@@ -12261,6 +12736,11 @@
 
 
 
+
+
+
+
+
 </g><rect
    style="fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:3"
    id="rect1703"
@@ -12301,6 +12781,11 @@
 
 
 
+
+
+
+
+
 <g
    id="g8041"
    transform="translate(94.075986,-111.68512)"><text
@@ -12310,6 +12795,11 @@
    font-size="9.931"
    id="text141"
    style="font-size:10.07184219px;fill:#1c75bc;font-family:MyriadPro-Regular">D_YubFea</text>
+
+
+
+
+
 
 
 
@@ -12372,6 +12862,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10851"
    transform="translate(94.075986,-111.68512)"><text
@@ -12381,6 +12876,11 @@
    font-size="9.6045"
    id="text131"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SacWeir</text>
+
+
+
+
+
 
 
 
@@ -12424,6 +12924,11 @@
    font-size="9.9208"
    id="text123"
    style="font-size:10.071311px;fill:#1c75bc;font-family:MyriadPro-Regular">D_FreWeir</text>
+
+
+
+
+
 
 
 
@@ -12499,6 +13004,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10599"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12512,6 +13022,11 @@
    font-size="9.6045"
    id="text1633"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CoastAqdct (850)</text>
+
+
+
+
+
 
 
 
@@ -12574,6 +13089,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10604"
    transform="translate(94.075986,-111.68512)"><line
@@ -12594,6 +13114,11 @@
    font-size="9.6045"
    id="text1747"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CoastAqdct (850)</text>
+
+
+
+
+
 
 
 
@@ -12649,6 +13174,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10794"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12662,6 +13192,11 @@
    font-size="9.6045"
    id="text1661"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_WarnePP</text>
+
+
+
+
+
 
 
 
@@ -12724,6 +13259,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10814"
    transform="translate(94.075986,-111.68512)"><line
@@ -12742,6 +13282,11 @@
    font-size="9.6045"
    id="text1759"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_WarnePP</text>
+
+
+
+
+
 
 
 
@@ -12806,6 +13351,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10746"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12819,6 +13369,11 @@
    font-size="9.6045"
    id="text1667"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_PearBlPP</text>
+
+
+
+
+
 
 
 
@@ -12863,6 +13418,11 @@
    font-size="9.6045"
    id="text1773"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_PearBlPP</text>
+
+
+
+
+
 
 
 
@@ -12927,6 +13487,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g9537"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -12959,6 +13524,11 @@
      font-size="19.6953"
      id="tspan1793"
      style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">P</tspan></text>
+
+
+
+
+
 
 
 
@@ -13040,6 +13610,11 @@
 
 
 
+
+
+
+
+
 </g>
 
 
@@ -13082,6 +13657,11 @@
      font-size="19.6953"
      y="1738.0956"
      x="175.57832">a</tspan></text>
+
+
+
+
+
 
 
 
@@ -13148,6 +13728,11 @@
 
 
 
+
+
+
+
+
 <ellipse
    stroke-miterlimit="10"
    cx="871.39697"
@@ -13169,6 +13754,11 @@
    font-size="10.3644"
    id="text1859"
    style="font-size:10.27642918px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Hood</text>
+
+
+
+
+
 
 
 
@@ -13217,6 +13807,11 @@
    font-size="10.3644"
    id="text1869"
    style="font-size:10.27642918px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Hood</text>
+
+
+
+
+
 
 
 
@@ -13317,6 +13912,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect871"
@@ -13354,6 +13954,11 @@
 
 
 
+
+
+
+
+
 <polygon
    transform="matrix(1.0436676,0,0,0.82156916,-38.096067,233.10643)"
    stroke-miterlimit="10"
@@ -13372,6 +13977,11 @@
    font-size="9.6045"
    id="text1875"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Terminous</text>
+
+
+
+
+
 
 
 
@@ -13428,6 +14038,11 @@
 
 
 
+
+
+
+
+
 <text
    y="1688.7219"
    x="875.06799"
@@ -13435,6 +14050,11 @@
    id="text1893"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Mokelumne River</text>
+
+
+
+
+
 
 
 
@@ -13469,6 +14089,11 @@
    id="text1901"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Terminous</text>
+
+
+
+
+
 
 
 
@@ -13527,6 +14152,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g9451"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -13540,6 +14170,11 @@
    id="text1941"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">Stockton</text>
+
+
+
+
+
 
 
 
@@ -13576,7 +14211,14 @@
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
    id="text1947"
    font-size="19.6953"
-   transform="scale(1.0588201,0.94444751)">SJRCalaveras</text>
+   transform="scale(1.0588201,0.94444751)"><tspan
+     style="fill:#000000"
+     id="tspan10641">SJRCalaveras</tspan></text>
+
+
+
+
+
 
 
 
@@ -13610,6 +14252,11 @@
    id="text1953"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">SJROldRiver</text>
+
+
+
+
+
 
 
 
@@ -13680,6 +14327,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10308"
    transform="translate(94.075986,-111.68512)"><line
@@ -13700,6 +14352,11 @@
    font-size="9.6045"
    id="text1979"
    style="font-size:10.07145596px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Stockton</text>
+
+
+
+
+
 
 
 
@@ -13754,7 +14411,17 @@
 
 
 
-</g><g
+
+
+
+
+
+<polygon
+   transform="matrix(0.89057388,-0.45483861,0.45483861,0.89057388,-462.76152,578.56568)"
+   stroke-miterlimit="10"
+   points="773.998,1932.352 773.998,1932.352 758.989,1929.594 770.364,1919.49 "
+   id="polygon1983-5"
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10" /></g><g
    id="g9504"
    transform="translate(94.075986,-111.68512)"><polygon
    stroke-miterlimit="10"
@@ -13776,6 +14443,11 @@
      font-size="19.6953"
      y="1982.7928"
      x="627.67804">Island</tspan></text>
+
+
+
+
+
 
 
 
@@ -13830,6 +14502,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect2007"
@@ -13853,6 +14530,11 @@
    font-size="10.5611"
    id="text2017"
    style="font-size:10.07171535px;fill:#1c75bc;font-family:MyriadPro-Regular">I_SacSJR</text>
+
+
+
+
+
 
 
 
@@ -13911,6 +14593,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10119"
    transform="translate(94.075986,-111.68512)"><line
@@ -13948,6 +14635,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10895"
    transform="translate(94.075986,-111.68512)"><line
@@ -13968,6 +14660,11 @@
    font-size="9.6045"
    id="text2051"
    style="font-size:10.07159328px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Vallejo</text>
+
+
+
+
+
 
 
 
@@ -14025,6 +14722,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g9262"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -14038,6 +14740,11 @@
    font-size="19.6953"
    id="text2059"
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT">Rio Vista</text>
+
+
+
+
+
 
 
 
@@ -14095,6 +14802,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10890"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -14112,6 +14824,11 @@
    font-size="9.6046"
    id="text2071"
    style="font-size:10.0715313px;fill:#1c75bc;font-family:MyriadPro-Regular">C_NBA</text>
+
+
+
+
+
 
 
 
@@ -14153,6 +14870,11 @@
      font-size="19.6953"
      y="1529.271"
      x="794.71594">C</tspan></text>
+
+
+
+
+
 
 
 
@@ -14240,6 +14962,11 @@
 
 
 
+
+
+
+
+
 <polygon
    style="fill:none"
    id="polygon1931"
@@ -14271,6 +14998,11 @@
    font-size="10.5612"
    id="text237"
    style="font-size:10.0715313px;fill:#1c75bc;font-family:MyriadPro-Regular">C_YoloBP</text>
+
+
+
+
+
 
 
 
@@ -14329,6 +15061,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="322.33499"
@@ -14345,6 +15082,11 @@
    font-size="10.5611"
    id="text1855"
    style="font-size:10.07139015px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Hood</text>
+
+
+
+
+
 
 
 
@@ -14397,6 +15139,11 @@
 
 
 
+
+
+
+
+
 <text
    transform="scale(1.0588201,0.94444751)"
    font-size="19.6953"
@@ -14404,6 +15151,11 @@
    style="font-size:20.85377884px;fill:#010101;font-family:ArialMT"
    x="313.91168"
    y="1991.9187">Contra Costa WD</text>
+
+
+
+
+
 
 
 
@@ -14457,6 +15209,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect2125"
@@ -14481,6 +15238,11 @@
      font-size="19.6953"
      y="2172.3425"
      x="364.76407">ConeyIsland</tspan></text>
+
+
+
+
+
 
 
 
@@ -14534,6 +15296,11 @@
 
 
 
+
+
+
+
+
 <polyline
    stroke-miterlimit="10"
    points="533.627,2042.972    518.978,2039.657 527.895,2030.471 527.895,2030.471 533.627,2042.972  "
@@ -14548,6 +15315,11 @@
    transform="scale(1.0486181,0.95363601)"
    x="1291.2552"
    y="997.02484">I_Yuba</text>
+
+
+
+
+
 
 
 
@@ -14623,6 +15395,11 @@
 
 
 
+
+
+
+
+
 <rect
    x="1423.416"
    y="921.90997"
@@ -14678,6 +15455,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10900"
    transform="translate(94.075986,-111.68512)"><line
@@ -14694,6 +15476,11 @@
    font-size="9.6045"
    id="text2043"
    style="font-size:10.07142639px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Napa</text>
+
+
+
+
+
 
 
 
@@ -14731,6 +15518,11 @@
    font-size="10.561"
    id="text2173"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">I_BrananIS</text>
+
+
+
+
+
 
 
 
@@ -14789,6 +15581,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g5668"
    transform="translate(94.075986,-111.68512)"><g
@@ -14799,6 +15596,11 @@
    transform="matrix(-0.00553101,1.0486035,-0.95362265,-0.0050542,0,0)"
    x="1461.6304"
    y="-217.61165">D_DeltaReqd</text>
+
+
+
+
+
 
 
 
@@ -14824,6 +15626,11 @@
      font-size="19.6953"
      y="1581.3325"
      x="136.15863">Outflow</tspan></text>
+
+
+
+
+
 
 
 
@@ -14878,6 +15685,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="873.875,2182.092 875.573,2182.092 875.573,2182.092 875.573,2265.635 873.875,2265.635 "
@@ -14895,6 +15707,11 @@
    font-size="9.6045"
    id="text79"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Lewiston</text>
+
+
+
+
+
 
 
 
@@ -14932,6 +15749,11 @@
    font-size="9.6045"
    id="text2157"
    style="font-size:10.07145023px;fill:#1c75bc;font-family:MyriadPro-Regular">D_ExpTD</text>
+
+
+
+
+
 
 
 
@@ -14995,6 +15817,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10513"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -15012,6 +15839,11 @@
    font-size="10.561"
    id="text2223"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OFBCVP</text>
+
+
+
+
+
 
 
 
@@ -15063,6 +15895,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10503"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -15080,6 +15917,11 @@
    font-size="9.6045"
    id="text2227"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_OFBCVP</text>
+
+
+
+
+
 
 
 
@@ -15120,6 +15962,11 @@
      font-size="19.6953"
      y="2704.3384"
      x="417.54306">JointUse</tspan></text>
+
+
+
+
+
 
 
 
@@ -15183,6 +16030,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect2265"
@@ -15210,6 +16062,11 @@
    font-size="9.6045"
    id="text2269"
    style="font-size:10.07161808px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SLCVP</text>
+
+
+
+
+
 
 
 
@@ -15264,6 +16121,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10518"
    transform="translate(94.075986,-111.68512)"><line
@@ -15301,6 +16163,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10578"
    transform="translate(94.075986,-111.68512)"><text
@@ -15310,6 +16177,11 @@
    font-size="9.6045"
    id="text2285"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Mdota</text>
+
+
+
+
+
 
 
 
@@ -15371,6 +16243,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="203.947,1610.768 217.641,1604.706 217.641,1616.922 217.641,1616.922 "
@@ -15385,6 +16262,11 @@
    transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    x="370.87885"
    y="-328.3342">I_Trnty</text>
+
+
+
+
+
 
 
 
@@ -15475,6 +16357,11 @@
 
 
 
+
+
+
+
+
 <rect
    x="238.85201"
    y="317.54001"
@@ -15509,6 +16396,11 @@
    font-size="9.6046"
    id="text2267"
    style="font-size:10.07122612px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SLSWP</text>
+
+
+
+
+
 
 
 
@@ -15563,6 +16455,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="637.819,2618.944 621.038,2614.001 632.57,2602.729 "
@@ -15583,6 +16480,11 @@
    font-size="9.6045"
    id="text2231"
    style="font-size:10.07125187px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SWPJUCVP</text>
+
+
+
+
+
 
 
 
@@ -15637,6 +16539,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="569.185,2056.553 569.185,2056.553 551.935,2050.681 568.868,2044.431 "
@@ -15654,6 +16561,11 @@
    font-size="9.6045"
    id="text2161"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">C_BnkExp</text>
+
+
+
+
+
 
 
 
@@ -15709,6 +16621,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g8066"
    transform="translate(94.075986,-111.68512)"><line
@@ -15729,6 +16646,11 @@
    font-size="10.16"
    id="text2317"
    style="font-size:10.07121468px;fill:#1c75bc;font-family:MyriadPro-Regular">AD_Therm</text>
+
+
+
+
+
 
 
 
@@ -15783,6 +16705,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10286"
    transform="translate(94.075986,-111.68512)"><line
@@ -15799,6 +16726,11 @@
    font-size="10.561"
    id="text2327"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">I_MedfordIS</text>
+
+
+
+
+
 
 
 
@@ -15836,6 +16768,11 @@
    font-size="10.1702"
    id="text2335"
    style="font-size:10.07152843px;fill:#1c75bc;font-family:MyriadPro-Regular">I_CVCWheel</text>
+
+
+
+
+
 
 
 
@@ -15894,6 +16831,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10318"
    transform="translate(94.075986,-111.68512)"><line
@@ -15914,6 +16856,11 @@
    font-size="10.561"
    id="text2129"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_OMR</text>
+
+
+
+
+
 
 
 
@@ -15975,6 +16922,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="543.383"
@@ -15998,6 +16950,11 @@
      font-size="27.0179"
      y="1111.1523"
      x="1742.9037">(Bi-direction)</tspan></text>
+
+
+
+
+
 
 
 
@@ -16071,6 +17028,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10523"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -16091,6 +17053,11 @@
    font-size="10.195"
    id="text2367"
    style="font-size:10.07164097px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CVPJU</text>
+
+
+
+
+
 
 
 
@@ -16144,6 +17111,11 @@
    transform="matrix(0,0.95362466,-1.0486306,0,0,0)"
    x="378.97604"
    y="-840.03802">I_Shsta</text>
+
+
+
+
+
 
 
 
@@ -16244,6 +17216,11 @@
 
 
 
+
+
+
+
+
 <line
    style="fill:none;stroke:#010101;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12, 2.5"
    id="line53"
@@ -16271,6 +17248,11 @@
    font-size="10.561"
    id="text2127"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_IndnSL</text>
+
+
+
+
+
 
 
 
@@ -16336,6 +17318,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10528"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -16356,6 +17343,11 @@
    font-size="10.216"
    id="text2409"
    style="font-size:10.07161617px;fill:#1c75bc;font-family:MyriadPro-Regular">C_CVPDMC</text>
+
+
+
+
+
 
 
 
@@ -16394,6 +17386,11 @@
    font-size="10.561"
    id="text1911"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Trmns</text>
+
+
+
+
+
 
 
 
@@ -16453,6 +17450,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10568"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -16473,6 +17475,11 @@
    font-size="10.216"
    id="text2435"
    style="font-size:10.07099247px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Mdota</text>
+
+
+
+
+
 
 
 
@@ -16511,6 +17518,11 @@
    id="text2439"
    font-size="19.6953"
    transform="scale(1.0588201,0.94444751)">MendotaPool</text>
+
+
+
+
+
 
 
 
@@ -16575,6 +17587,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10819"
    transform="translate(94.075986,-111.68512)"><line
@@ -16593,6 +17610,11 @@
    font-size="9.6045"
    id="text2457"
    style="font-size:10.07118034px;fill:#1c75bc;font-family:MyriadPro-Regular">D_WarnePP_spill</text>
+
+
+
+
+
 
 
 
@@ -16652,6 +17674,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10275"
    transform="translate(94.075986,-111.68512)"><line
@@ -16672,6 +17699,11 @@
    font-size="9.6045"
    id="text2471"
    style="font-size:10.0712471px;fill:#1c75bc;font-family:MyriadPro-Regular">D_CCWDINTK</text>
+
+
+
+
+
 
 
 
@@ -16726,6 +17758,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10448"
    transform="translate(94.075986,-111.68512)"><path
@@ -16749,6 +17786,11 @@
    font-size="9.6045"
    id="text2489"
    style="font-size:10.07143497px;fill:#1c75bc;font-family:MyriadPro-Regular">I_DelValle</text>
+
+
+
+
+
 
 
 
@@ -16808,6 +17850,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10829"
    transform="translate(94.075986,-111.68512)"><line
@@ -16826,6 +17873,11 @@
    font-size="9.6045"
    id="text2503"
    style="font-size:10.07132816px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Castaic</text>
+
+
+
+
+
 
 
 
@@ -16880,6 +17932,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10799"
    transform="translate(94.075986,-111.68512)"><line
@@ -16900,6 +17957,11 @@
    font-size="9.6045"
    id="text2515"
    style="font-size:10.07171059px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Pyramid</text>
+
+
+
+
+
 
 
 
@@ -16954,6 +18016,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10766"
    transform="translate(94.075986,-111.68512)"><line
@@ -16974,6 +18041,11 @@
    font-size="9.6045"
    id="text2527"
    style="font-size:10.07161427px;fill:#1c75bc;font-family:MyriadPro-Regular">D_Perris</text>
+
+
+
+
+
 
 
 
@@ -17026,6 +18098,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g10756"
    transform="translate(94.075986,-111.68512)"><line
@@ -17044,6 +18121,11 @@
    font-size="9.6045"
    id="text2539"
    style="font-size:10.07142162px;fill:#1c75bc;font-family:MyriadPro-Regular">I_Perris</text>
+
+
+
+
+
 
 
 
@@ -17144,6 +18226,11 @@
 
 
 
+
+
+
+
+
 		<rect
    x="333.97198"
    y="412.98499"
@@ -17164,6 +18251,11 @@
      font-size="9.6045"
      y="478.88147"
      x="290.59192">S_Trnty</tspan></text>
+
+
+
+
+
 
 
 
@@ -17214,6 +18306,11 @@
      font-size="7.2034"
      id="tspan73"
      style="font-size:9.64606476px;fill:#1c75bc;font-family:MyriadPro-Regular">S_Wkytn</tspan></text>
+
+
+
+
+
 
 
 
@@ -17301,6 +18398,11 @@
 
 
 
+
+
+
+
+
 		<rect
    x="926.76398"
    y="446.31601"
@@ -17321,6 +18423,11 @@
      font-size="8.8041"
      y="452.9158"
      x="882.89063">S_Shsta</tspan></text>
+
+
+
+
+
 
 
 
@@ -17389,6 +18496,11 @@
 
 
 
+
+
+
+
+
 		<rect
    x="1140.78"
    y="611.45398"
@@ -17409,6 +18521,11 @@
      font-size="8.2659"
      y="-152.12016"
      x="1405.1748">S_Orovl</tspan></text>
+
+
+
+
+
 
 
 
@@ -17496,6 +18613,11 @@
 
 
 
+
+
+
+
+
 		<rect
    x="1387.067"
    y="1208.375"
@@ -17516,6 +18638,11 @@
      font-size="9.6045"
      y="1303.6399"
      x="1410.5924">S_Folsm</tspan></text>
+
+
+
+
+
 
 
 
@@ -17583,6 +18710,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="1033.74,2375.191 1033.74,2375.191 1112.95,2414.187 1033.74,2453.269 "
@@ -17629,6 +18761,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="544.415,1533.979 544.415,1533.979 527.888,1531.078 538.61,1518.255 "
@@ -17649,6 +18786,11 @@
    font-size="9.6045"
    id="text2063"
    style="font-size:10.07181549px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SacBI</text>
+
+
+
+
+
 
 
 
@@ -17707,6 +18849,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="327.586"
@@ -17730,6 +18877,11 @@
    font-size="10.1702"
    id="text2011"
    style="font-size:10.071702px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRMI</text>
+
+
+
+
+
 
 
 
@@ -17774,6 +18926,11 @@
    font-size="10.1702"
    id="text2009"
    style="font-size:10.07166004px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRCD</text>
+
+
+
+
+
 
 
 
@@ -17839,6 +18996,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="3"
    x1="795.55402"
@@ -17866,6 +19028,11 @@
    font-size="10.561"
    id="text1725"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_Moklmn</text>
+
+
+
+
+
 
 
 
@@ -17914,6 +19081,11 @@
 
 
 
+
+
+
+
+
 <polygon
    transform="translate(-0.5,0)"
    points="713.499,2977.468 704.786,2963.743 722.211,2963.743 "
@@ -17933,6 +19105,11 @@
    font-size="10.561"
    id="text1587"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_KCWA</text>
+
+
+
+
+
 
 
 
@@ -17987,6 +19164,11 @@
 
 
 
+
+
+
+
+
 <line
    stroke-miterlimit="10"
    x1="714.25"
@@ -18005,6 +19187,11 @@
    font-size="10.561"
    id="text1651"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_ChrisPP</text>
+
+
+
+
+
 
 
 
@@ -18067,6 +19254,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g6265"
    transform="translate(94.075986,-111.68512)"><text
@@ -18076,6 +19268,11 @@
    font-size="9.6045"
    id="text83"
    style="font-size:10.07145309px;fill:#1c75bc;font-family:MyriadPro-Regular">D_ClearTu</text>
+
+
+
+
+
 
 
 
@@ -18157,6 +19354,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="553.083,549.121 553.083,549.121 566.672,555.177 553.083,561.334 "
@@ -18193,6 +19395,11 @@
 
 
 
+
+
+
+
+
 <g
    id="g10366"><polygon
    transform="matrix(1.1179572,0,0,0.57239357,-103.44252,828.31702)"
@@ -18210,6 +19417,11 @@
    font-size="10.561"
    id="text1971"
    style="font-size:10.07122993px;fill:#1c75bc;font-family:MyriadPro-Regular">C_SJRCal</text>
+
+
+
+
+
 
 
 
@@ -18311,6 +19523,11 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="104.935,1610.769 118.628,1604.707 118.628,1616.923 118.628,1616.923 "
@@ -18356,6 +19573,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g6111"
    transform="translate(94.075986,-111.68512)"><text
@@ -18365,6 +19587,11 @@
    font-size="9.6045"
    id="text2269-4"
    style="font-size:10.07161808px;fill:#1c75bc;font-family:MyriadPro-Regular">D_SLCVP</text>
+
+
+
+
+
 
 
 
@@ -18447,6 +19674,11 @@
 
 
 
+
+
+
+
+
 <rect
    style="fill:none"
    id="rect1069"
@@ -18516,6 +19748,11 @@
 
 
 
+
+
+
+
+
 </g><g
      transform="translate(-939.30281,1833.6911)"
      id="g1231-0"><text
@@ -18531,6 +19768,11 @@
      y="0"
      font-size="19.6953"
      style="font-size:19.69529915px;fill:#010101;font-family:Arial-BoldMT" /></text>
+
+
+
+
+
 
 
 
@@ -18585,6 +19827,11 @@
 
 
 
+
+
+
+
+
 <text
    style="font-size:12.70584106px"
    y="696.2204"
@@ -18620,6 +19867,11 @@
 
 
 
+
+
+
+
+
 </g></g></g><g
    id="g4696"
    transform="translate(94.075986,-111.68512)"><polygon
@@ -18641,6 +19893,11 @@
      y="0"
      font-size="19.6953"
      style="font-size:19.69529915px;fill:#010101;font-family:Arial-BoldMT" /></text>
+
+
+
+
+
 
 
 
@@ -18695,6 +19952,11 @@
 
 
 
+
+
+
+
+
 <text
    style="font-size:12.70584106px"
    y="696.2204"
@@ -18716,6 +19978,11 @@
      y="696.2204"
      x="1090.6923"
      id="tspan4600-7-4" /></text>
+
+
+
+
+
 
 
 
@@ -18773,6 +20040,11 @@
 
 
 
+
+
+
+
+
 </g><g
    transform="translate(406.22627,-59.868173)"
    id="g9921"><ellipse
@@ -18817,6 +20089,11 @@
 
 
 
+
+
+
+
+
 </g><g
    id="g5761"
    transform="translate(94.075986,-111.68512)"><text
@@ -18835,13 +20112,18 @@
 
 
 
+
+
+
+
+
 <polygon
    stroke-miterlimit="10"
    points="773.898,1580.566 770.927,1584.638 771.033,1584.352 769.971,1589.372 769.971,1589.087 771.033,1594.107 770.927,1593.822 773.898,1597.988 773.686,1597.804 777.933,1600.452 777.614,1600.356 782.921,1601.396 782.604,1601.396 787.912,1600.356 787.594,1600.452 791.945,1597.804 791.732,1597.988 794.599,1593.822 794.494,1594.107 795.554,1589.087 795.554,1589.372 794.494,1584.352 794.599,1584.638 791.732,1580.566 791.945,1580.758 787.594,1578.009 787.912,1578.105 782.604,1577.062 782.921,1577.062 777.614,1578.105 777.933,1578.009 773.686,1580.758 "
    id="polygon533"
    style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10" /></g><g
    id="Other"
-   transform="matrix(0.9375,0,0,0.9375,1071.1509,1186.4375)"><clipPath
+   transform="matrix(0.9375,0,0,0.9375,1161.0502,1116.5159)"><clipPath
      id="clipPath16351"><path
        d="M 0,2304 0,0 l 1872,0 0,2304 -1872,0 z"
        id="path16353"
@@ -19012,6 +20294,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -19097,6 +20384,11 @@
      x="4.7241998"
      id="tspan102"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -19226,6 +20518,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -19319,6 +20616,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19374,6 +20676,11 @@
      x="4.4186602"
      id="tspan198"
      style="direction:ltr">p</tspan></text>
+
+
+
+
+
 
 
 
@@ -19463,6 +20770,11 @@
      x="7.6279998"
      id="tspan230"
      style="direction:ltr">p</tspan></text>
+
+
+
+
+
 
 
 
@@ -19612,6 +20924,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -19712,6 +21029,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -19728,42 +21050,47 @@
      transform="matrix(1.2229281,0,0,1.3889561,-272.853,-136.49855)"><text
    transform="matrix(10.31972,0,0,10.31985,1223.4869,394.76723)"
    id="text318"
-   style="text-anchor:start;font-size:0.95168803px"><tspan
+   style="font-size:0.95168805px;text-anchor:start"><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="0"
      id="tspan320"
-     style="direction:ltr;font-size:0.95168803px">S</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">S</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="0.67443001"
      id="tspan322"
-     style="direction:ltr;font-size:0.95168803px">_</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">_</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="1.2325701"
      id="tspan324"
-     style="direction:ltr;font-size:0.95168803px">N</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">N</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="1.97677"
      id="tspan326"
-     style="direction:ltr;font-size:0.95168803px">h</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">h</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="2.53492"
      id="tspan328"
-     style="direction:ltr;font-size:0.95168803px">g</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">g</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="3.09306"
      id="tspan330"
-     style="direction:ltr;font-size:0.95168803px">a</tspan><tspan
+     style="font-size:0.95168805px;direction:ltr">a</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="3.6512101"
      id="tspan332"
-     style="direction:ltr;font-size:0.95168803px">n</tspan></text>
+     style="font-size:0.95168805px;direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -19833,6 +21160,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -19840,69 +21172,21 @@
      clip-path="url(#SVG_CP_1-8)"
      id="g392"
      style="font-size:1px;font-weight:400;fill:#000000;font-family:Arial"><text
-   transform="matrix(13.91962,0,0,13.9198,441.82805,422.39377)"
+   transform="scale(0.99999353,1.0000065)"
    id="text394"
-   style="text-anchor:start"><tspan
+   style="font-size:13.91971016px;text-anchor:start"
+   x="389.09235"
+   y="412.0318"><tspan
      direction="ltr"
      unicode-bidi="embed"
-     x="0"
+     x="389.09235"
      id="tspan396"
-     style="direction:ltr">S</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="0.67242002"
-     id="tspan398"
-     style="direction:ltr">J</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="1.17243"
-     id="tspan400"
-     style="direction:ltr">R</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="1.89658"
-     id="tspan402"
-     style="direction:ltr">C</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="2.63796"
-     id="tspan404"
-     style="direction:ltr">a</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="3.1896901"
-     id="tspan406"
-     style="direction:ltr">l</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="3.4310801"
-     id="tspan408"
-     style="direction:ltr">a</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="3.98281"
-     id="tspan410"
-     style="direction:ltr">v</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="4.5000601"
-     id="tspan412"
-     style="direction:ltr">e</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="5.0517902"
-     id="tspan414"
-     style="direction:ltr">r</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="5.3966198"
-     id="tspan416"
-     style="direction:ltr">a</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="5.96559"
-     id="tspan418"
-     style="direction:ltr">s</tspan></text>
+     style="font-size:21.33333397px;direction:ltr">SJRCalaveras</tspan></text>
+
+
+
+
+
 
 
 
@@ -19955,6 +21239,11 @@
      x="3.3721299"
      id="tspan436"
      style="direction:ltr">v</tspan></text>
+
+
+
+
+
 
 
 
@@ -20019,6 +21308,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20069,6 +21363,11 @@
      x="4.5116801"
      id="tspan476"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -20173,6 +21472,11 @@
      x="5.3256502"
      id="tspan512"
      style="direction:ltr">L</tspan></text>
+
+
+
+
+
 
 
 
@@ -20296,6 +21600,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20351,6 +21660,11 @@
      x="5.1163402"
      id="tspan574"
      style="direction:ltr">e</tspan></text>
+
+
+
+
+
 
 
 
@@ -20420,6 +21734,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20480,6 +21799,11 @@
      x="4.5116801"
      id="tspan620"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -20562,6 +21886,11 @@
      x="6.0690398"
      id="tspan650"
      style="direction:ltr">s</tspan></text>
+
+
+
+
+
 
 
 
@@ -20678,6 +22007,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20726,6 +22060,11 @@
      x="1265.1084"
      id="tspan742"
      style="font-size:12.80000019px;direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -20784,6 +22123,11 @@
      x="3.04655"
      id="tspan762"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -20896,6 +22240,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -20968,6 +22317,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21008,6 +22362,11 @@
      x="2.93027"
      id="tspan840"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -21087,6 +22446,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21097,42 +22461,47 @@
      transform="translate(3.7670157,13.184555)"><text
    transform="matrix(10.31972,0,0,10.31985,1223.4869,1057.6375)"
    id="text906"
-   style="text-anchor:start;font-size:1.24033594px"><tspan
+   style="font-size:1.24033594px;text-anchor:start"><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="0"
      id="tspan908"
-     style="direction:ltr;font-size:1.24033594px">S</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">S</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="0.67443001"
      id="tspan910"
-     style="direction:ltr;font-size:1.24033594px">_</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">_</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="1.2325701"
      id="tspan912"
-     style="direction:ltr;font-size:1.24033594px">P</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">P</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="1.9069999"
      id="tspan914"
-     style="direction:ltr;font-size:1.24033594px">e</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">e</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="2.4651501"
      id="tspan916"
-     style="direction:ltr;font-size:1.24033594px">d</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">d</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="3.04655"
      id="tspan918"
-     style="direction:ltr;font-size:1.24033594px">r</tspan><tspan
+     style="font-size:1.24033594px;direction:ltr">r</tspan><tspan
      direction="ltr"
      unicode-bidi="embed"
      x="3.3721299"
      id="tspan920"
-     style="direction:ltr;font-size:1.24033594px">o</tspan></text>
+     style="font-size:1.24033594px;direction:ltr">o</tspan></text>
+
+
+
+
+
 
 
 
@@ -21191,6 +22560,11 @@
      x="2.9767799"
      id="tspan940"
      style="direction:ltr">o</tspan></text>
+
+
+
+
+
 
 
 
@@ -21298,6 +22672,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -21366,6 +22745,11 @@
      x="4.1163301"
      id="tspan1000"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -21496,6 +22880,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21551,6 +22940,11 @@
      x="3.9535401"
      id="tspan1064"
      style="direction:ltr">p</tspan></text>
+
+
+
+
+
 
 
 
@@ -21625,6 +23019,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21670,6 +23069,11 @@
      x="3.4310801"
      id="tspan1106"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -21749,6 +23153,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21794,6 +23203,11 @@
      x="3.88377"
      id="tspan1150"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -21873,6 +23287,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -21889,6 +23308,11 @@
      x="0"
      id="tspan1218"
      style="font-size:0.84503824px;direction:ltr">S_Estmn</tspan></text>
+
+
+
+
+
 
 
 
@@ -21947,6 +23371,11 @@
      x="3.13957"
      id="tspan1250"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -22047,6 +23476,11 @@
      x="3.6047001"
      id="tspan1284"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -22176,6 +23610,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -22265,6 +23704,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22310,6 +23754,11 @@
      x="3.79074"
      id="tspan1376"
      style="direction:ltr">p</tspan></text>
+
+
+
+
+
 
 
 
@@ -22372,6 +23821,11 @@
      x="4.9070401"
      id="tspan1398"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -22488,6 +23942,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -22539,6 +23998,11 @@
      x="3.81039"
      id="tspan1456"
      style="direction:ltr">e</tspan></text>
+
+
+
+
+
 
 
 
@@ -22649,6 +24113,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22705,6 +24174,11 @@
      x="3.2586601"
      id="tspan1514"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -22772,6 +24246,11 @@
      x="4.3276401"
      id="tspan1538"
      style="direction:ltr">a</tspan></text>
+
+
+
+
+
 
 
 
@@ -22851,6 +24330,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22896,6 +24380,11 @@
      x="3.48842"
      id="tspan1582"
      style="direction:ltr">f</tspan></text>
+
+
+
+
+
 
 
 
@@ -22960,6 +24449,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -22997,6 +24491,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23013,6 +24512,11 @@
      x="0"
      id="tspan1656"
      style="font-size:1.24033594px;direction:ltr">S_Mlrtn</tspan></text>
+
+
+
+
+
 
 
 
@@ -23071,6 +24575,11 @@
      x="2.53492"
      id="tspan1688"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -23171,6 +24680,11 @@
      x="2.9767799"
      id="tspan1722"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -23294,6 +24808,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23344,6 +24863,11 @@
      x="4.6512198"
      id="tspan1782"
      style="direction:ltr">b</tspan></text>
+
+
+
+
+
 
 
 
@@ -23403,6 +24927,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23448,6 +24977,11 @@
      x="3.09306"
      id="tspan1818"
      style="direction:ltr">a</tspan></text>
+
+
+
+
+
 
 
 
@@ -23510,6 +25044,11 @@
      x="4.8140101"
      id="tspan1840"
      style="direction:ltr">C</tspan></text>
+
+
+
+
+
 
 
 
@@ -23647,6 +25186,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23692,6 +25236,11 @@
      x="2.74422"
      id="tspan1902"
      style="direction:ltr">e</tspan></text>
+
+
+
+
+
 
 
 
@@ -23758,6 +25307,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23803,6 +25357,11 @@
      x="3.3621099"
      id="tspan1976"
      style="direction:ltr">1</tspan></text>
+
+
+
+
+
 
 
 
@@ -23872,6 +25431,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23934,6 +25498,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -23974,6 +25543,11 @@
      x="2.81038"
      id="tspan2036"
      style="direction:ltr">e</tspan></text>
+
+
+
+
+
 
 
 
@@ -24026,6 +25600,11 @@
      x="4.0465598"
      id="tspan2054"
      style="direction:ltr">s</tspan></text>
+
+
+
+
+
 
 
 
@@ -24163,6 +25742,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24225,6 +25809,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24270,6 +25859,11 @@
      x="3.13797"
      id="tspan2138"
      style="direction:ltr">y</tspan></text>
+
+
+
+
+
 
 
 
@@ -24344,6 +25938,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24384,6 +25983,11 @@
      x="2.81038"
      id="tspan2178"
      style="direction:ltr">s</tspan></text>
+
+
+
+
+
 
 
 
@@ -24443,6 +26047,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24490,6 +26099,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24506,6 +26120,11 @@
      x="0"
      id="tspan2254"
      style="font-size:1.24033594px;direction:ltr">S_Hnsly</tspan></text>
+
+
+
+
+
 
 
 
@@ -24564,6 +26183,11 @@
      x="2.8605001"
      id="tspan2286"
      style="direction:ltr">y</tspan></text>
+
+
+
+
+
 
 
 
@@ -24671,6 +26295,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -24742,6 +26371,11 @@
      x="2.44189"
      id="tspan2346"
      style="direction:ltr">F</tspan></text>
+
+
+
+
+
 
 
 
@@ -24822,6 +26456,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24884,6 +26523,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -24934,6 +26578,11 @@
      x="4.7674999"
      id="tspan2414"
      style="direction:ltr">s</tspan></text>
+
+
+
+
+
 
 
 
@@ -25083,6 +26732,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25155,6 +26809,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25215,6 +26874,11 @@
      x="5.6279802"
      id="tspan2512"
      style="direction:ltr">k</tspan></text>
+
+
+
+
+
 
 
 
@@ -25292,6 +26956,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25359,6 +27028,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25404,6 +27078,11 @@
      x="3.5581801"
      id="tspan2578"
      style="direction:ltr">a</tspan></text>
+
+
+
+
+
 
 
 
@@ -25459,6 +27138,11 @@
      x="3.5116701"
      id="tspan2596"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -25652,6 +27336,11 @@
 
 
 
+
+
+
+
+
 </g></g></g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -25703,6 +27392,11 @@
      x="3.7069399"
      id="tspan2680"
      style="direction:ltr">d</tspan></text>
+
+
+
+
+
 
 
 
@@ -25802,6 +27496,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -25862,6 +27561,11 @@
      x="5.6977401"
      id="tspan2736"
      style="direction:ltr">p</tspan></text>
+
+
+
+
+
 
 
 
@@ -25998,6 +27702,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26090,6 +27799,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26172,6 +27886,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26237,6 +27956,11 @@
      x="5.6724801"
      id="tspan2872"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -26336,6 +28060,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26401,6 +28130,11 @@
      x="5.4483399"
      id="tspan2932"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -26500,6 +28234,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26550,6 +28289,11 @@
      x="4.6512198"
      id="tspan2986"
      style="direction:ltr">L</tspan></text>
+
+
+
+
+
 
 
 
@@ -26674,6 +28418,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26719,6 +28468,11 @@
      x="3.3621099"
      id="tspan3044"
      style="direction:ltr">2</tspan></text>
+
+
+
+
+
 
 
 
@@ -26818,6 +28572,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -26873,6 +28632,11 @@
      x="4.7442398"
      id="tspan3098"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -26990,6 +28754,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -27068,6 +28837,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27118,6 +28892,11 @@
      x="4.58145"
      id="tspan3184"
      style="direction:ltr">R</tspan></text>
+
+
+
+
+
 
 
 
@@ -27282,6 +29061,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27347,6 +29131,11 @@
      x="5.5000701"
      id="tspan3264"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -27426,6 +29215,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -27487,6 +29281,11 @@
      x="4.2326102"
      id="tspan3314"
      style="direction:ltr">1</tspan></text>
+
+
+
+
+
 
 
 
@@ -27658,6 +29457,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27710,6 +29514,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -27745,6 +29554,11 @@
      x="2.06899"
      id="tspan3402"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -27812,6 +29626,11 @@
      x="5.2326198"
      id="tspan3426"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -27934,6 +29753,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -27997,6 +29821,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -28042,6 +29871,11 @@
      x="3.8605101"
      id="tspan3506"
      style="direction:ltr">V</tspan></text>
+
+
+
+
+
 
 
 
@@ -28143,6 +29977,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28224,6 +30063,11 @@
      x="4.1163301"
      id="tspan3568"
      style="direction:ltr">L</tspan></text>
+
+
+
+
+
 
 
 
@@ -28344,6 +30188,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -28432,6 +30281,11 @@
      x="2.58143"
      id="tspan3638"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -28553,6 +30407,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -28613,6 +30472,11 @@
      x="4.5116801"
      id="tspan3702"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -28741,6 +30605,11 @@
      x="4.67448"
      id="tspan3746"
      style="direction:ltr">2</tspan></text>
+
+
+
+
+
 
 
 
@@ -28880,6 +30749,11 @@
      x="5.3488998"
      id="tspan3794"
      style="direction:ltr">2</tspan></text>
+
+
+
+
+
 
 
 
@@ -29027,6 +30901,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -29077,6 +30956,11 @@
      x="4.5581999"
      id="tspan3862"
      style="direction:ltr">2</tspan></text>
+
+
+
+
+
 
 
 
@@ -29184,6 +31068,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29277,6 +31166,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29363,6 +31257,11 @@
      x="4.1628399"
      id="tspan3972"
      style="direction:ltr">f</tspan></text>
+
+
+
+
+
 
 
 
@@ -29488,6 +31387,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29582,6 +31486,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29656,6 +31565,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -29693,6 +31607,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -29712,64 +31631,21 @@
      clip-path="url(#SVG_CP_1-8)"
      id="g4088"
      style="font-size:1px;font-weight:400;fill:#000000;font-family:Arial"><text
-   transform="matrix(13.91962,0,0,13.9198,440.38809,1975.6509)"
+   transform="scale(0.99999353,1.0000065)"
    id="text4090"
-   style="text-anchor:start"><tspan
+   style="font-size:13.91971016px;text-anchor:start"
+   x="400.83701"
+   y="1976.5798"><tspan
      direction="ltr"
      unicode-bidi="embed"
-     x="0"
+     x="400.83701"
      id="tspan4092"
-     style="direction:ltr">M</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="0.8276"
-     id="tspan4094"
-     style="direction:ltr">e</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="1.39657"
-     id="tspan4096"
-     style="direction:ltr">n</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="1.9655401"
-     id="tspan4098"
-     style="direction:ltr">d</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="2.5172701"
-     id="tspan4100"
-     style="direction:ltr">o</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="3.0862501"
-     id="tspan4102"
-     style="direction:ltr">t</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="3.3621099"
-     id="tspan4104"
-     style="direction:ltr">a</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="4.2069502"
-     id="tspan4106"
-     style="direction:ltr">P</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="4.8966098"
-     id="tspan4108"
-     style="direction:ltr">o</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="5.4483399"
-     id="tspan4110"
-     style="direction:ltr">o</tspan><tspan
-     direction="ltr"
-     unicode-bidi="embed"
-     x="6.0173202"
-     id="tspan4112"
-     style="direction:ltr">l</tspan></text>
+     style="font-size:21.33333397px;direction:ltr">MendotaPool</tspan></text>
+
+
+
+
+
 
 
 
@@ -29827,6 +31703,11 @@
      x="5.0000601"
      id="tspan4132"
      style="direction:ltr">C</tspan></text>
+
+
+
+
+
 
 
 
@@ -29985,6 +31866,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -30036,6 +31922,11 @@
      x="3.48842"
      id="tspan4204"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -30108,6 +31999,11 @@
      x="5.9303098"
      id="tspan4230"
      style="direction:ltr">n</tspan></text>
+
+
+
+
+
 
 
 
@@ -30332,6 +32228,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -30436,6 +32337,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -30491,6 +32397,11 @@
      x="4.9302902"
      id="tspan4362"
      style="direction:ltr">l</tspan></text>
+
+
+
+
+
 
 
 
@@ -30625,6 +32536,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -30722,6 +32638,11 @@
      x="5.3256502"
      id="tspan4442"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -30894,6 +32815,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -30944,6 +32870,11 @@
      x="4.2326102"
      id="tspan4518"
      style="direction:ltr">a</tspan></text>
+
+
+
+
+
 
 
 
@@ -31192,6 +33123,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -31316,6 +33252,11 @@
 
 
 
+
+
+
+
+
 </g><g
      font-size="1"
      kerning="0"
@@ -31366,6 +33307,11 @@
      x="4.3721499"
      id="tspan4664"
      style="direction:ltr">r</tspan></text>
+
+
+
+
+
 
 
 
@@ -31590,6 +33536,11 @@
 
 
 
+
+
+
+
+
 </g><path
      clip-path="url(#SVG_CP_1-8)"
      stroke-miterlimit="10"
@@ -31722,15 +33673,7 @@
      d="m 1095.8104,1785.0937 4.3199,12.9598 -12.9597,-4.3199 8.6398,-8.6399 z"
      id="path4782"
      inkscape:connector-curvature="0"
-     style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.01389;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" /></g><path
-   style="fill:none;stroke:#f50000;stroke-width:1.68970191;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:10.13821126, 1.68970188;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Mend)"
-   d="m 1434.8587,1695.6947 c -185.6794,159.7851 -188.1717,161.1056 -188.1717,161.1056"
-   id="path21582"
-   inkscape:connector-curvature="0" /><path
-   style="fill:none;stroke:#f50000;stroke-width:2.34350538;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:14.06103208, 2.34350531;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Mend)"
-   d="M 1450.6567,2859.3242 C 1208.1696,2623.9695 1204.9148,2622.0247 1204.9148,2622.0247"
-   id="path21582-1"
-   inkscape:connector-curvature="0" /><g
+     style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.01389;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" /></g><g
    id="g10341-1"
    transform="matrix(0.32447222,-0.99877038,0.97385081,0.32655416,-1528.3164,1803.6068)"><line
    stroke-miterlimit="10"
@@ -31751,6 +33694,11 @@
 
 
 
+
+
+
+
+
 <polyline
    stroke-miterlimit="10"
    points="533.627,2042.972    518.978,2039.657 527.895,2030.471 527.895,2030.471 533.627,2042.972  "
@@ -31760,242 +33708,320 @@
    inkscape:groupmode="layer"
    id="layer1"
    inkscape:label="TransparentMask"
-   style="display:inline;opacity:0"><rect
+   style="opacity:0.01769912;display:inline"><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      id="rect9759"
      width="116.6642"
      height="24.267717"
-     x="2294.6565"
-     y="2209.2935"
+     x="2383.8289"
+     y="2139.5449"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-1"
      width="116.6642"
      height="24.267717"
-     x="2289.0378"
-     y="1899.0162"
+     x="2375.5615"
+     y="1828.3846"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-7"
      width="116.6642"
      height="24.267717"
-     x="2294.0325"
-     y="1583.1201"
+     x="2380.5562"
+     y="1512.4885"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-4"
      width="116.6642"
      height="24.267717"
-     x="2294.0322"
-     y="2409.6941"
+     x="2381.4387"
+     y="2344.3599"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-0"
      width="116.6642"
      height="24.267717"
-     x="2280.2976"
-     y="2618.2104"
+     x="2380.0647"
+     y="2544.9302"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-9"
      width="116.6642"
      height="24.267717"
-     x="2282.7949"
-     y="3029.0002"
+     x="2378.1475"
+     y="2960.1345"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-48"
      width="116.6642"
      height="24.267717"
-     x="1909.4633"
-     y="3029.0002"
+     x="1994.2211"
+     y="2957.4858"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-8"
      width="116.6642"
      height="24.267717"
-     x="1718.4272"
-     y="3015.2656"
+     x="1809.3654"
+     y="2946.3999"
      ry="4.8535438" /><rect
-     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.47882035000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-2"
-     width="116.6642"
-     height="24.267717"
-     x="1453.7238"
-     y="3025.2544"
-     ry="4.8535438" /><rect
+     width="120.17266"
+     height="26.010386"
+     x="1536.7273"
+     y="2954.6345"
+     ry="5.2020774" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-45"
      width="116.6642"
      height="24.267717"
-     x="1456.2211"
-     y="2909.1345"
+     x="1545.3934"
+     y="2842.0347"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-5"
      width="116.6642"
      height="24.267717"
-     x="1452.4752"
-     y="2803.0034"
+     x="1540.7646"
+     y="2732.3718"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-17"
      width="116.6642"
      height="24.267717"
-     x="1452.4752"
-     y="2708.1096"
+     x="1546.062"
+     y="2634.8293"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-11"
      width="116.6642"
      height="24.267717"
-     x="1456.2211"
-     y="2626.9507"
+     x="1547.1592"
+     y="2557.2021"
      ry="4.8535438" /><rect
-     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.40676784999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-52"
-     width="116.6642"
-     height="24.267717"
-     x="1719.6758"
-     y="2810.4951"
-     ry="4.8535438" /><rect
-     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+     width="69.919731"
+     height="32.262699"
+     x="1852.0854"
+     y="2738.0735"
+     ry="6.4525404" /><rect
+     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.26645467000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-76"
-     width="116.6642"
-     height="24.267717"
-     x="1901.9716"
-     y="2807.9978"
-     ry="4.8535438" /><rect
+     width="65.645576"
+     height="14.745126"
+     x="2039.6085"
+     y="2743.4519"
+     ry="2.9490254" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.33500271999999998px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-14"
      width="84.321266"
      height="18.145411"
-     x="1758.3223"
-     y="2615.6531"
+     x="1840.4314"
+     y="2541.49"
      ry="3.6290822" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.33502471000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-23"
      width="90.564255"
      height="16.896786"
-     x="1916.8945"
-     y="2603.167"
+     x="2007.8326"
+     y="2531.6526"
      ry="3.3793576" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-22"
      width="116.6642"
      height="24.267717"
-     x="1667.2346"
-     y="2403.4512"
+     x="1759.0557"
+     y="2328.4053"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-16"
      width="116.6642"
      height="24.267717"
-     x="1879.4968"
-     y="2407.1968"
+     x="1963.3718"
+     y="2330.385"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-85"
      width="116.6642"
      height="24.267717"
-     x="1783.3544"
-     y="2203.6748"
+     x="1872.5267"
+     y="2130.3945"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-761"
      width="116.6642"
      height="24.267717"
-     x="1456.2209"
-     y="2023.8762"
+     x="1546.2761"
+     y="1952.3618"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-89"
      width="116.6642"
      height="24.267717"
-     x="1454.9723"
-     y="2178.7029"
+     x="1537.9644"
+     y="2107.1885"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-27"
      width="116.6642"
      height="24.267717"
-     x="1457.4696"
-     y="2400.9539"
+     x="1546.642"
+     y="2329.4395"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.30320489000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-95"
      width="86.850273"
      height="14.431404"
-     x="1476.1223"
-     y="2530.7319"
+     x="1562.646"
+     y="2459.2175"
      ry="2.886281" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-43"
      width="116.6642"
      height="24.267717"
-     x="1879.4967"
-     y="1890.276"
+     x="1966.0204"
+     y="1817.8787"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-12"
      width="116.6642"
      height="24.267717"
-     x="1667.2345"
-     y="1887.7788"
+     x="1755.5239"
+     y="1820.6788"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-3"
      width="116.6642"
      height="24.267717"
-     x="1454.9724"
-     y="1874.0442"
+     x="1546.7935"
+     y="1805.1785"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-34"
      width="116.6642"
      height="24.267717"
-     x="1775.8629"
-     y="1575.6285"
+     x="1862.3866"
+     y="1501.4655"
      ry="4.8535438" /><rect
-     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+     style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.49568047999999998px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-113"
-     width="116.6642"
-     height="24.267717"
-     x="1453.7238"
-     y="1563.1426"
-     ry="4.8535438" /><rect
+     width="133.39922"
+     height="25.110632"
+     x="1521.7267"
+     y="1488.1166"
+     ry="5.0221267" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-87"
      width="116.6642"
      height="24.267717"
-     x="1451.2267"
-     y="1754.1785"
+     x="1538.6332"
+     y="1604.9694"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-42"
      width="116.6642"
      height="24.267717"
-     x="1606.0532"
-     y="1649.296"
+     x="1697.8743"
+     y="1582.196"
      ry="4.8535438" /><rect
      style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.45570063999999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-77"
      width="116.6642"
      height="24.267717"
-     x="1451.2266"
-     y="1671.7709"
+     x="1541.2817"
+     y="1679.7169"
      ry="4.8535438" /><rect
-     style="opacity:0.31944442000000001;fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:1.47893882000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+     style="opacity:0.31944442000000001;fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:1.75707400000000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-34-9"
-     width="573.87756"
-     height="51.962303"
-     x="1627.7909"
-     y="1373.8667"
-     ry="10.392462" /><rect
+     width="608.5603"
+     height="69.164581"
+     x="1708.0331"
+     y="1299.8427"
+     ry="13.832919" /><rect
      style="opacity:0.31944442000000001;fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:4.27469110000000010px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline"
      id="rect9759-34-9-3"
      width="571.08179"
      height="436.23291"
      x="1820.849"
      y="595.51324"
-     ry="87.24659" /></g></svg>
+     ry="87.24659" /></g><text
+   id="text1705-5"
+   transform="scale(0.94590708,1.0571863)"
+   x="1887.0474"
+   y="1291.9576"
+   style="font-size:24.3495121px"><tspan
+     style="font-size:25.91840744px;font-family:MyriadPro-Semibold"
+     id="tspan1707-5"
+     font-size="47.8612"
+     y="1291.9576"
+     x="1887.0474">Simulated if Dynamic SJR is turned ON</tspan></text>
+
+
+
+
+<g
+   id="g10313-1"
+   transform="matrix(1.2846917,-0.10813727,0.13493608,1.0295472,-13.802353,-213.425)"><line
+     stroke-miterlimit="3"
+     x1="999.53113"
+     y1="1791.6064"
+     x2="725.98254"
+     y2="2060.2573"
+     id="line1981-7"
+     style="fill:none;stroke:#010101;stroke-width:2.83843257;stroke-linecap:round;stroke-miterlimit:3;stroke-dasharray:17.03059538,5.67686513;stroke-dashoffset:0" /><text
+     y="2151.7185"
+     x="253.82057"
+     transform="matrix(1.0128859,-0.27141259,0.24680808,0.92114345,0,0)"
+     font-size="9.6045"
+     id="text1987-0"
+     style="font-size:10.07116318px;fill:#1c75bc;font-family:MyriadPro-Regular" />
+</g><g
+   id="g10313-1-9"
+   transform="matrix(0.56242363,1.1620387,-1.480753,0.42446883,3608.0083,1012.8524)"><line
+     stroke-miterlimit="3"
+     x1="1016.4347"
+     y1="1798.6796"
+     x2="652.25189"
+     y2="1857.5358"
+     id="line1981-7-4"
+     style="fill:none;stroke:#010101;stroke-width:2.04842782;stroke-linecap:round;stroke-miterlimit:3;stroke-dasharray:12.29056648, 4.0968555;stroke-dashoffset:0" /><text
+     y="2151.7185"
+     x="253.82057"
+     transform="matrix(1.0128859,-0.27141259,0.24680808,0.92114345,0,0)"
+     font-size="9.6045"
+     id="text1987-0-8"
+     style="font-size:10.07116318px;fill:#1c75bc;font-family:MyriadPro-Regular" />
+</g><polygon
+   transform="matrix(0.32755923,0.94483065,-0.94483065,0.32755923,2789.5113,1196.5954)"
+   stroke-miterlimit="10"
+   points="758.989,1929.594 770.364,1919.49 773.998,1932.352 773.998,1932.352 "
+   id="polygon1983-51"
+   style="fill:#010101;stroke:#010101;stroke-linejoin:round;stroke-miterlimit:10" /><text
+   xml:space="preserve"
+   style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+   x="-235.14186"
+   y="2142.4304"
+   id="text12720"
+   sodipodi:linespacing="125%"
+   transform="matrix(0.73206256,-0.68123741,0.68123741,0.73206256,0,0)"><tspan
+     sodipodi:role="line"
+     id="tspan12722"
+     x="-235.14186"
+     y="2142.4304"
+     style="font-size:18px">Dynamic SJR Link</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:24px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+   x="2969.1426"
+   y="522.74701"
+   id="text12724"
+   sodipodi:linespacing="125%"
+   transform="matrix(0.59322911,0.80503367,-0.80503367,0.59322911,0,0)"><tspan
+     sodipodi:role="line"
+     id="tspan12726"
+     x="2969.1426"
+     y="522.74701"
+     style="font-size:20px">Dynamic SJR Link</tspan></text>
+</svg>
