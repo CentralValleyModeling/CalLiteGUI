@@ -424,8 +424,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			}
 			action_WSIDI = 0;
-			regUserEditFlags = GUIUtils.setControlValues(file, swix, dTableModels, gl);
-			regFlags = GUIUtils.setControlValues(file, swix, gl);
+			regUserEditFlags = GUIUtils.setControlValues(file, swix, dTableModels, gl, regUserEditFlags);
+			regFlags = GUIUtils.setControlValues(file, swix, gl, regFlags);
 			action_WSIDI = 1;
 
 			JComponent component1 = (JComponent) swix.find("scrOpValues");

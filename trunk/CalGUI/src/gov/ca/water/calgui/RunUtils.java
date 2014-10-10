@@ -250,8 +250,8 @@ public class RunUtils {
 								okToRun = true;
 
 								// action_WSIDI = 0;
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
-								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl);
+								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl, regUserEdits);
+								regUserEdits = GUIUtils.setControlValues(f, swix, dTableModels, gl, regUserEdits);
 								// action_WSIDI = 1;
 
 							} else {
@@ -1722,7 +1722,7 @@ public class RunUtils {
 		for (File sf : scenFiles) {
 
 			// action_WSIDI = 0;
-			regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl);
+			regUserEdits = GUIUtils.setControlValues(sf, swix, dTableModels, gl, regUserEdits);
 			boolean[] realizationIsSelected = new boolean[5];
 
 			// Count selected climate change realizations

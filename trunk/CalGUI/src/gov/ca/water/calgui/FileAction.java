@@ -39,7 +39,7 @@ public class FileAction implements ActionListener {
 	private Boolean[] regUserEdits;
 	private final DataFileTableModel[] dTableModels;
 	private final GUILinks gl;
-	private int[] regFlags;
+	private int[] RegFlags;
 	private static Logger log = Logger.getLogger(FileAction.class.getName());
 	private static Properties properties = new Properties();
 
@@ -60,7 +60,7 @@ public class FileAction implements ActionListener {
 		this.regUserEdits = regUserEdits;
 		this.dTableModels = dTableModels;
 		this.gl = gl;
-		this.regFlags = regFlags;
+		this.RegFlags = regFlags;
 
 		// create and load default properties
 		try {
@@ -113,7 +113,7 @@ public class FileAction implements ActionListener {
 
 				if (proceed) {
 					RunUtils.saveFile(scen, swix, regUserEdits, dTableModels, gl);
-					RunUtils.setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, regFlags);
+					RunUtils.setupScenario(scen, "", desktop, swix, regUserEdits, dTableModels, gl, RegFlags);
 				} else {
 					JFrame frame = new JFrame("Error");
 					JOptionPane.showMessageDialog(frame, "You must specify a scenario name.");
@@ -135,9 +135,9 @@ public class FileAction implements ActionListener {
 				scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
 				scenFileDialog.fc.setSelectedFile(file); // Use this name for next Save As
 
-				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
+				regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl, regUserEdits);
 				// regUserEdits = GUIUtils.setControlValues(file, swix, dTableModels, gl);
-				regFlags = GUIUtils.setControlValues(file, swix, gl);
+				RegFlags = GUIUtils.setControlValues(file, swix, gl, RegFlags);
 				RunUtils.setFilenameTooltips();
 			}
 

@@ -305,7 +305,8 @@ public class GUIUtils {
 		return sb;
 	}
 
-	public static Boolean[] setControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl) {
+	public static Boolean[] setControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl,
+	        Boolean[] RegUserEdits) {
 
 		FileInputStream fs = null;
 		InputStreamReader in = null;
@@ -317,7 +318,12 @@ public class GUIUtils {
 		Integer val1;
 		Boolean val = false;
 		String delims = "[|]";
-		final Boolean[] RegUserEdits = new Boolean[20];
+
+		// final Boolean[] RegUserEdits = new Boolean[20];
+		if (RegUserEdits == null) {
+			RegUserEdits = new Boolean[20];
+		}
+
 		int tID;
 
 		try {
@@ -465,9 +471,10 @@ public class GUIUtils {
 	 * @param f
 	 * @param swix
 	 * @param gl
+	 * @param regFlags2
 	 * @return
 	 */
-	public static int[] setControlValues(File f, SwingEngine swix, GUILinks gl) {
+	public static int[] setControlValues(File f, SwingEngine swix, GUILinks gl, int[] RegFlags) {
 
 		FileInputStream fs = null;
 		InputStreamReader in = null;
@@ -505,7 +512,10 @@ public class GUIUtils {
 
 		QSel = 1;
 		// final int[] RegFlags = new int[40];
-		final int[] RegFlags = new int[50];
+		if (RegFlags == null) {
+			RegFlags = new int[50];
+		}
+		// final int[] RegFlags = new int[50];
 
 		try {
 			fs = new FileInputStream(f);
