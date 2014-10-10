@@ -63,8 +63,8 @@ public class TestScenario {
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\default.cls");
 
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl, mm.regUserEditFlags);
+		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl, mm.regFlags);
 
 		// 3. Generate
 
@@ -104,8 +104,8 @@ public class TestScenario {
 		// 2. Load default scenario
 
 		File file = new File(System.getProperty("user.dir") + "\\Scenarios\\default.cls");
-		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl);
-		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl);
+		mm.regUserEditFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.dTableModels, mm.gl, mm.regUserEditFlags);
+		mm.regFlags = GUIUtils.setControlValues(file, MainMenu.getSwix(), mm.gl, mm.regFlags);
 
 		// 3. Set to D1641 by simulating quick-select of rdbRegQS_D1641
 
