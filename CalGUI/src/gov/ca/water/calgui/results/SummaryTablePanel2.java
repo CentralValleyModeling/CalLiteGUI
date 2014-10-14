@@ -280,10 +280,10 @@ public class SummaryTablePanel2 extends JPanel implements ActionListener, Compon
 						// Calculate values based on annual totals
 						double value;
 						if (title.contains("Difference"))
-							value = dss_Grabber == null ? dss_Grabber2.getAnnualTAFDiff(t, wy) : dss_Grabber
+							value = dss_Grabber == null ? dss_Grabber2.getAnnualTAFDiff2(mtsI, t, wy) : dss_Grabber
 							        .getAnnualTAFDiff(t, wy);
 						else
-							value = dss_Grabber == null ? dss_Grabber2.getAnnualTAF(t, wy) : dss_Grabber.getAnnualTAF(t, wy);
+							value = dss_Grabber == null ? dss_Grabber2.getAnnualTAF2(mtsI, t, wy) : dss_Grabber.getAnnualTAF(t, wy);
 
 						update2(0, 0, value, m);
 						update2(1, ylt[ySac403030 - 1920][1], value, m);
@@ -431,29 +431,7 @@ public class SummaryTablePanel2 extends JPanel implements ActionListener, Compon
 
 				String labelText = (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI) : mts
 				        .getDTSNameAt(mtsI));
-				// if (isBase) {
-				// if (t == 0)
-				// labelText = title;
-				// else {
-				// if (!sName.equals(""))
-				// labelText = sName;
-				// else {
-				// String[] parts = tsc.fullName.split("/");
-				// labelText = parts[2] + "/" + parts[3];
-				// }
-				// }
-				// } else {
-				// if (t < tscs.length)
-				// labelText = title;
-				// else {
-				// if (!sName.equals(""))
-				// labelText = sName;
-				// else {
-				// String[] parts = tsc.fullName.split("/");
-				// labelText = parts[2] + "/" + parts[3];
-				// }
-				// }
-				// }
+
 				JLabel label = new JLabel();
 				label.setText(labelText + " (" + tsc.units + ") - " + tsc.fileName);
 				label.setPreferredSize(new Dimension(500, 30));
