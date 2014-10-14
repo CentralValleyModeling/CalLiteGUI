@@ -214,7 +214,7 @@ public class GUIUtils {
 	}
 
 	public static StringBuffer setControlValues(Component component, StringBuffer sb) {
-		// System.out.println(component.getName());
+
 		String comp = "";
 		String value = "";
 		Boolean val;
@@ -265,7 +265,6 @@ public class GUIUtils {
 			for (int i = 0; i < GUITables.size(); i++) {
 				String[] parts = GUITables.get(i).toString().split("[|]");
 				String cName = parts[0].trim();
-				// System.out.println("Table not initialized: " + cName);
 				String switchID = gl.switchIDForCtrl(cName);
 				int tID;
 				if (switchID.equals("n/a")) {
@@ -275,7 +274,6 @@ public class GUIUtils {
 					ckb = (AbstractButton) swix.find(cName);
 				}
 
-				// int tID = Integer.parseInt(cID);
 				if (dTableModels[tID] == null) {
 					// System.out.println("Table not initialized: " + cName);
 				} else if (!ckb.isSelected() && !cName.startsWith("op_btn") && !cName.startsWith("btnFac")) { // option checked off
@@ -371,7 +369,6 @@ public class GUIUtils {
 
 					} else {
 						if (component != null) {
-							System.out.println(component.getName() + ": " + value);
 							((JTextComponent) component).setText(value.replace("~~", "\n"));
 						}
 					}
@@ -391,7 +388,6 @@ public class GUIUtils {
 				String cID = tokens[0];
 				String cName = gl.ctrlFortableID(cID);
 				String fileName = gl.tableNameForCtrl(cName);
-				// System.out.println(cName + ":" + fileName);
 				if (fileName != null) {
 
 					String[] files = fileName.split("[|]");
@@ -641,7 +637,7 @@ public class GUIUtils {
 	}
 
 	public static String getControls(Component component, String str) {
-		// System.out.println(component.getName());
+
 		String comp = "";
 		String type = "";
 		String value = "";
@@ -906,9 +902,8 @@ public class GUIUtils {
 	 */
 
 	public static Component findFirstButtonWithLabel(Component comp, String l) {
-		// System.out.println(comp.getClass().toString());
+
 		if ((comp instanceof JButton)) {
-			// System.out.println(((JButton) comp).getText());
 			if (((JButton) comp).getText().equals(l))
 				return comp;
 		}
@@ -960,21 +955,15 @@ public class GUIUtils {
 			String trstring = (TextTransfer.getClipboardContents());
 			trstring = trstring.replaceAll("(?sm)\t\t", "\t \t");
 			trstring = trstring.replaceAll("(?sm)\t\n", "\t \n");
-			System.out.println("String is:" + trstring);
 			StringTokenizer st1 = new StringTokenizer(trstring, "\n");
-			for (int i = 0; st1.hasMoreTokens(); i++)
-			// for(int i=0; i < RowCt; i++)
-			{
+			for (int i = 0; st1.hasMoreTokens(); i++) {
 				String rowstring = st1.nextToken();
 				StringTokenizer st2 = new StringTokenizer(rowstring, "\t");
-				for (int j = 0; st2.hasMoreTokens(); j++)
-				// for(int j=0;j < ColCt;j++)
-				{
+				for (int j = 0; st2.hasMoreTokens(); j++) {
 					String value = st2.nextToken();
 					if (startRow + i < table.getRowCount() && startCol + j < table.getColumnCount())
 						table.setValueAt(value, startRow + i, startCol + j);
 					table.repaint();
-					// System.out.println("Putting " + value + " at row = " + startRow + i + ", column = " + startCol + j);
 				}
 			}
 		} catch (Exception ex) {
@@ -1027,44 +1016,9 @@ public class GUIUtils {
 					for (int i = 0; i < mts.size(); i++)
 						p.add(mts.get(i));
 
-					// int mtsCount = Integer.valueOf(br.readLine());
-					// for (int i = 0; i < mtsCount; i++) {
-					// MultipleTimeSeries mts = new MultipleTimeSeries();
-					// mts.setName(br.readLine());
-					// int dataCount = Integer.valueOf(br.readLine());
-					// for (int j = 0; j < dataCount; j++) {
-					// mts.insertAt(j);
-					// String dataParts[] = (br.readLine()).split(";");
-					// mts.setBPartAt(j, dataParts[0]);
-					// mts.setCPartAt(j, dataParts[1]);
-					// mts.setVarTypeAt(j, dataParts[2]);
-					// if (dataParts.length > 3)
-					// mts.setDTSNameAt(j, dataParts[3]);
-					// }
-					// // p.add(mts);
-					// }
-
 					p.clearDTSList();
 					for (int i = 0; i < dts.size(); i++)
 						p.add(dts.get(i));
-					// int dtsCount = Integer.valueOf(br.readLine());
-					// for (int i = 0; i < dtsCount; i++) {
-					// DerivedTimeSeries dts = new DerivedTimeSeries();
-					// dts.setName(br.readLine());
-					// int dataCount = Integer.valueOf(br.readLine());
-					// for (int j = 0; j < dataCount; j++) {
-					// dts.insertAt(j);
-					// String dataParts[] = (br.readLine()).split(";");
-					// dts.setBPartAt(j, dataParts[0]);
-					// dts.setCPartAt(j, dataParts[1]);
-					// dts.setVarTypeAt(j, dataParts[2]);
-					// dts.setOperationIdAt(j, Integer.valueOf(dataParts[3]));
-					// if (dataParts.length > 4)
-					// dts.setDTSNameAt(j, dataParts[4]);
-					// }
-					// p.add(dts);
-					// }
-					System.out.println(p.getNumberOfDTS() + "  " + p.getNumberOfMTS());
 
 				}
 
