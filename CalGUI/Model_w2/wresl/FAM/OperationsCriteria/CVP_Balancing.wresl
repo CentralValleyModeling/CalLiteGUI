@@ -269,7 +269,7 @@ define D1_total {/*!data from ryan's first attempt:
                          I1_Nov +
                          I1_Dec)*0.26}
 
-!goal setD1 {(sum(i= monthFromJan, fm, 1) D1_fm(i)) = D1_total}
+goal setD1 {(sum(i= 0, fm, 1) D1_fm(i)) = max(0, D1_total-(sum(i= monthFromJan, -1, 1) D1_fm(i)))}
 
 /*goal setCCT_Jan {D1_Jan <  250.*cfs_taf( 4-month)}	    
 goal setCCT_Feb {D1_Feb <  250.*cfs_taf( 5-month)}
