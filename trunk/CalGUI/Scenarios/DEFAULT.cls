@@ -30,7 +30,7 @@ txf_Manual_SV|CL_FUTURE_BO_20140827_SV.DSS
 txf_Manual_SV_F|2020D09E
 txf_Manual_Init|CL_INIT.dss
 txf_Manual_Init_F|INITIAL
-hyd_ckb1|false
+hyd_ckb1|true
 hyd_ckb2|false
 hyd_ckb3|false
 hyd_ckb4|false
