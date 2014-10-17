@@ -46,6 +46,8 @@ import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import calsim.app.MultipleTimeSeries;
 
@@ -80,59 +82,95 @@ public class ChartPanel2 extends JPanel implements Printable {
 		double ymax = -1e20;
 		double ymin = 1e20;
 
-		JFreeChart chart;
+		JFreeChart chart = null;
 
 		int primaries = 0;
 
-		TimeSeriesCollection dataset = new TimeSeriesCollection();
 		TimeSeriesCollection dataset2 = new TimeSeriesCollection();
+		int seriesI = 0;
+		if (isExceed) {
 
-		for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
+			XYSeriesCollection dataset = new XYSeriesCollection();
+			for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
 
-			TimeSeriesContainer[] tscs = mtscs[mtsI];
+				TimeSeriesContainer[] tscs = mtscs[mtsI];
 
-			TimeSeries[] series = new TimeSeries[tscs.length];
-			HecTime ht = new HecTime();
-
-			for (int i = 0; i < tscs.length; i++) {
-
-				series[i] = new TimeSeries(tscs[i].fileName
-				        + ": "
-				        + (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
-				                : mts.getDTSNameAt(mtsI)));
-
-				primaries++;
-				for (int j = 0; j < tscs[i].numberValues; j++) {
-					ht.set(tscs[i].times[j]);
-					series[i].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
-				}
-
-				if (tscs[i].maxmimumValue() == 9876.5) {
-
-					// If max value is 9876.5, it's a control data series to be shown as an XYArea
-
-					series[i].setKey(mts.getDTSNameAt(mtsI));
-					dataset2.addSeries(series[i]);
-				} else {
-
-					// Otherwise it's just a regular time series
-
-					dataset.addSeries(series[i]);
+				XYSeries[] series = new XYSeries[(isBase ? 1 : tscs.length * mtscs.length)];
+				for (int i = 0; i < (isBase ? 1 : tscs.length); i++) {
+					series[seriesI] = new XYSeries(tscs[i].fileName
+					        + ": "
+					        + (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
+					                : mts.getDTSNameAt(mtsI)));
+					primaries++;
+					for (int j = 0; j < tscs[i].numberValues; j++) {
+						series[seriesI].add(100.0 - 100.0 * j / (tscs[i].numberValues - 1), tscs[i].values[j]);
+					}
+					dataset.addSeries(series[seriesI]);
 					if (ymin > tscs[i].minimumValue())
 						ymin = tscs[i].minimumValue();
 					if (ymax < tscs[i].maxmimumValue())
 						ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+					seriesI++;
 				}
+
+				chart = ChartFactory.createXYLineChart(title.replace(";", "+"), // title
+				        "Percent", // x-axis label
+				        yLabel + ((yLabel.endsWith("(TAF)") ? "" : "(" + tscs[0].units + ")")), // y-axis label
+				        dataset, // data
+				        true); // create and display a frame...
 			}
+		} else {
 
+			TimeSeriesCollection dataset = new TimeSeriesCollection();
+			for (int mtsI = 0; mtsI < mtscs.length; mtsI++) {
+
+				TimeSeriesContainer[] tscs = mtscs[mtsI];
+
+				TimeSeries[] series = new TimeSeries[tscs.length * mtscs.length];
+				HecTime ht = new HecTime();
+
+				for (int i = 0; i < tscs.length; i++) {
+
+					series[seriesI] = new TimeSeries(tscs[i].fileName
+					        + ": "
+					        + (mts.getDTSNameAt(mtsI).equals("") ? mts.getBPartAt(mtsI) + "/" + mts.getCPartAt(mtsI)
+					                : mts.getDTSNameAt(mtsI)));
+
+					for (int j = 0; j < tscs[i].numberValues; j++) {
+						ht.set(tscs[i].times[j]);
+						series[seriesI].addOrUpdate(new Month(ht.month(), ht.year()), tscs[i].values[j]);
+					}
+
+					if (tscs[i].maxmimumValue() == 9876.5) {
+
+						// If max value is 9876.5, it's a control data series to be shown as an XYArea
+
+						series[seriesI].setKey(mts.getDTSNameAt(mtsI));
+						dataset2.addSeries(series[seriesI]);
+
+					} else {
+
+						// Otherwise it's just a regular time series
+
+						dataset.addSeries(series[seriesI]);
+						if (ymin > tscs[i].minimumValue())
+							ymin = tscs[i].minimumValue();
+						if (ymax < tscs[i].maxmimumValue())
+							ymax = tscs[i].maxmimumValue(); // typo in HEC DSS classes?
+					}
+					seriesI++;
+					primaries++;
+
+				}
+				chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
+				        "Time (1MON)", // x-axis label //TODO - Hard-coded to
+				                       // monthly!
+				        yLabel + " (" + mtscs[0][0].units + ")", // y-axis label
+				        dataset, // data
+				        true); // create and display a frame...
+
+			}
 		}
-
-		chart = ChartFactory.createTimeSeriesChart(title.replace(";", "+"), // title
-		        "Time (1MON)", // x-axis label //TODO - Hard-coded to
-		                       // monthly!
-		        yLabel + " (" + mtscs[0][0].units + ")", // y-axis label
-		        dataset, // data
-		        true); // create and display a frame...
 
 		setChartOptions(chart, null, isExceed, isBase, ymax, ymin, primaries);
 		XYPlot plot = (XYPlot) chart.getPlot();
@@ -228,6 +266,7 @@ public class ChartPanel2 extends JPanel implements Printable {
 				buffer = buffer + "\n";
 			}
 		}
+
 	}
 
 	/**

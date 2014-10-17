@@ -116,10 +116,6 @@ public class DisplayFrame {
 		}
 
 		dssGrabber.setIsCFS(isCFS);
-		// System.out.println(displayGroup);
-		// System.out.println(names + "!");
-		// System.out.println(locations + "!");
-		// System.out.println(filename);
 
 		if (!filename.equals(""))
 			dssGrabber.setBase(filename);
@@ -171,7 +167,7 @@ public class DisplayFrame {
 				TimeSeriesContainer[] diff_Results = dssGrabber.getDifferenceSeries(primary_Results);
 				TimeSeriesContainer[][] exc_Results = dssGrabber.getExceedanceSeries(primary_Results);
 				TimeSeriesContainer[][] sexc_Results = dssGrabber.getExceedanceSeries(secondary_Results);
-				TimeSeriesContainer[][] dexc_Results = dssGrabber.getExceedanceSeries2(primary_Results);
+				TimeSeriesContainer[][] dexc_Results = dssGrabber.getExceedanceSeriesD(primary_Results);
 
 				JTabbedPane tabbedpane = new JTabbedPane();
 
