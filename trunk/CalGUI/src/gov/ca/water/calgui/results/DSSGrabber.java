@@ -914,7 +914,7 @@ public class DSSGrabber {
 		return results;
 	}
 
-	public TimeSeriesContainer[][] getExceedanceSeries2(TimeSeriesContainer[] timeSeriesResults) {
+	public TimeSeriesContainer[][] getExceedanceSeriesD(TimeSeriesContainer[] timeSeriesResults) {
 
 		/*
 		 * Copy of getExceedanceSeries to handle "exceedance of differences"
