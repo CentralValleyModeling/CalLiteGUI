@@ -40,8 +40,8 @@ public class WRIMSGUILinks {
 
 	public static void setStatus(String text) {
 		System.out.println(">>>" + text);
-		statusLabel.setText(text);
-		statusLabel.invalidate();
+		// statusLabel.setText(text);
+		// statusLabel.invalidate();
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class WRIMSGUILinks {
 		p.add(statusPanel, BorderLayout.CENTER);
 		GuiUtils.setStatus("Initialized.");
 
-		statusLabel = (JLabel) statusPanel.getComponent(2);
+		// statusLabel = (JLabel) statusPanel.getComponent(2);
 	}
 
 	/**
