@@ -97,7 +97,6 @@ import javax.swing.event.TableModelListener;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
-import vista.gui.VistaUtils;
 import vista.set.DataReference;
 import vista.set.Group;
 import calsim.app.AppUtils;
@@ -1329,7 +1328,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				}
 			}
 		} catch (Exception e) {
-			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+
+			// VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+			log.debug("Error in retrieve() -", e);
 		}
 		WRIMSGUILinks.setStatus("Well??");
 	}
@@ -1363,7 +1364,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			DisplayFrame.showDisplayFrames_WRIMS(DisplayFrame.quickState() + ";Locs-;Index-;File-", lstScenarios, dts, mts);
 
 		} catch (Exception e) {
-			VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+			// VistaUtils.displayException(GuiUtils.getCLGPanel(), e);
+			log.debug("Error in retrieve2() -", e);
+
 		}
 		WRIMSGUILinks.setStatus("Done??");
 	}

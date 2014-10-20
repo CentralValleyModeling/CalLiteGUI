@@ -3,7 +3,6 @@ package gov.ca.water.calgui.results;
 import gov.ca.water.calgui.MainMenu;
 import gov.ca.water.calgui.utils.Prefix;
 import gov.ca.water.calgui.utils.Utils;
-import gov.ca.water.calgui.utils.WRIMSGUILinks;
 import hec.heclib.dss.HecDss;
 import hec.heclib.util.HecTime;
 import hec.io.TimeSeriesContainer;
@@ -12,13 +11,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.ExecutionException;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.SwingWorker;
 
 import org.apache.log4j.Logger;
 
@@ -401,49 +397,52 @@ public class DSSGrabber2 {
 	}
 
 	private TimeSeriesContainer getOneSeries(String filename, String dssname) {
-		GetOneSeriesSW g = new GetOneSeriesSW(filename, dssname);
-		g.execute();
-		TimeSeriesContainer result = null;
-		try {
-			result = g.get();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			log.debug("Interrupted during GetOneSeries");
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			log.debug("Execution error during GetOneSeries");
-		}
-		return (result);
+
+		return getOneSeries_(filename, dssname);
+
+		// GetOneSeriesSW g = new GetOneSeriesSW(filename, dssname);
+		// g.execute();
+		// TimeSeriesContainer result = null;
+		// try {
+		// result = g.get();
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// log.debug("Interrupted during GetOneSeries");
+		// } catch (ExecutionException e) {
+		// // TODO Auto-generated catch block
+		// log.debug("Execution error during GetOneSeries");
+		// }
+		// return (result);
 	}
 
-	private class GetOneSeriesSW extends SwingWorker<TimeSeriesContainer, String> {
-
-		private String filename;
-		private String dssname;
-
-		private GetOneSeriesSW(String filename, String dssname) {
-			WRIMSGUILinks.setStatus("STARTING!");
-			this.filename = filename;
-			this.dssname = dssname;
-		}
-
-		@Override
-		protected TimeSeriesContainer doInBackground() throws Exception {
-			publish("Reading " + dssname + " from " + filename + ".");
-			return getOneSeries_(filename, dssname);
-		}
-
-		@Override
-		protected void process(final List<String> chunks) {
-			WRIMSGUILinks.setStatus(chunks.get(chunks.size() - 1));
-
-		}
-
-		@Override
-		protected void done() {
-			WRIMSGUILinks.setStatus("Done reading " + dssname + " from " + filename + ".");
-		}
-	}
+	// private class GetOneSeriesSW extends SwingWorker<TimeSeriesContainer, String> {
+	//
+	// private String filename;
+	// private String dssname;
+	//
+	// private GetOneSeriesSW(String filename, String dssname) {
+	// WRIMSGUILinks.setStatus("STARTING!");
+	// this.filename = filename;
+	// this.dssname = dssname;
+	// }
+	//
+	// @Override
+	// protected TimeSeriesContainer doInBackground() throws Exception {
+	// publish("Reading " + dssname + " from " + filename + ".");
+	// return getOneSeries_(filename, dssname);
+	// }
+	//
+	// @Override
+	// protected void process(final List<String> chunks) {
+	// WRIMSGUILinks.setStatus(chunks.get(chunks.size() - 1));
+	//
+	// }
+	//
+	// @Override
+	// protected void done() {
+	// WRIMSGUILinks.setStatus("Done reading " + dssname + " from " + filename + ".");
+	// }
+	// }
 
 	/**
 	 * Reads the DSS results for the primary series for each scenario. Also stores for reference the units of measure for the
