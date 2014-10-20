@@ -1261,13 +1261,13 @@
 						<gridbagconstraints insets="5,5,25,5" gridx="0"
 							gridy="0" gridwidth="2" anchor="GridBagConstraints.NORTHWEST" />
 						<Label
-							text="Select a regulation basis below to run with a default regulatory environment."
+							text="Select a regulation basis below to run with its default regulatory settings."
 							enabled="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="0" gridwidth="4" />
 						</Label>
 						<Label
-							text="Select User Defined to enable selection of regulations on the tabs below."
+							text="Select User Defined to enable modification of regulations on the tabs below."
 							enabled="false">
 							<gridbagconstraints insets="0,0,5,5"
 								anchor="GridBagConstraints.WEST" gridx="0" gridy="10" gridwidth="4" />
@@ -1494,7 +1494,7 @@
 							<gridbagconstraints insets="0,0,5,5" gridx="0"
 								gridy="10" anchor="GridBagConstraints.WEST" />
 							<checkbox name="Dynamic_SJR" id="Dynamic_SJR"
-								text="Turns on dynamic SJR (0=timeseries, 1=dynamic)">
+								text="Turn on dynamic SJR">
 								<gridbagconstraints insets="0,0,5,5" gridx="0"
 									gridy="2" anchor="GridBagConstraints.WEST" minimumsize="340,20"
 									preferredsize="340,20" />
@@ -1506,28 +1506,22 @@
 								gridy="3" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 						<label
-							text="unless the dynamic SJR is turned on. For default" 
+							text="unless the dynamic SJR is turned on." 
 							name="labDynamic_SJR1" id="labDynamic_SJR1" font="Tahoma-BOLD-13" foreground="CC3333">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="4" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 						<label
-							text="regulatory settings, grayed out switch settings display" 
+							text="Grayed out switch settings represent the assumptions " 
 							name="labDynamic_SJR2" id="labDynamic_SJR2" font="Tahoma-BOLD-13" foreground="CC3333">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="5" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 						<label
-							text="the assumptions in the SV file for the run basis" 
+							text="in the SV file for the selected run basis." 
 							name="labDynamic_SJR3" id="labDynamic_SJR3" font="Tahoma-BOLD-13" foreground="CC3333">
 							<gridbagconstraints insets="0,5,5,5" gridx="0"
 								gridy="6" anchor="GridBagConstraints.NORTHWEST" />
-						</label>
-						<label
-							text="for that regulatory environment." 
-							name="labDynamic_SJR4" id="labDynamic_SJR4" font="Tahoma-BOLD-13" foreground="CC3333">
-							<gridbagconstraints insets="0,5,5,5" gridx="0"
-								gridy="7" anchor="GridBagConstraints.NORTHWEST" />
 						</label>
 							<checkbox name="D1641_Base" id="D1641_Base"
 								text="Vernalis D-1641 baseflows">
