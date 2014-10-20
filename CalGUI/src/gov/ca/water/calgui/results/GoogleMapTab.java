@@ -25,17 +25,16 @@ import javax.swing.SwingUtilities;
 import org.apache.log4j.Logger;
 import org.swixml.SwingEngine;
 
-import com.teamdev.jxbrowser.Browser;
-import com.teamdev.jxbrowser.BrowserFactory;
-import com.teamdev.jxbrowser.BrowserType;
-import com.teamdev.jxbrowser.events.TitleChangedEvent;
-import com.teamdev.jxbrowser.events.TitleListener;
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.BrowserFactory;
+import com.teamdev.jxbrowser.chromium.events.TitleEvent;
+import com.teamdev.jxbrowser.chromium.events.TitleListener;
 
 public class GoogleMapTab {
 
 	private static Logger log = Logger.getLogger(GoogleMapTab.class.getName());
 	private String urlString = "http://callitewebapp.appspot.com";
-	private Browser browser = BrowserFactory.createBrowser(BrowserType.Mozilla);
+	private Browser browser = BrowserFactory.create();
 	private static SwingEngine swix = MainMenu.getSwix();
 
 	private Component bc;
@@ -66,12 +65,12 @@ public class GoogleMapTab {
 
 		}
 
-		browser.navigate(urlString);
+		browser.loadURL(urlString);
 
 		browser.addTitleListener(new TitleListener() {
-			@Override
-			public void titleChanged(TitleChangedEvent arg0) {
 
+			@Override
+			public void onTitleChange(TitleEvent arg0) {
 				String title = browser.getTitle();
 				if (title.contains(":")) {
 					String[] subtitles = title.split(":");
@@ -98,6 +97,7 @@ public class GoogleMapTab {
 						}
 					}
 				}
+
 			}
 		});
 
@@ -112,7 +112,7 @@ public class GoogleMapTab {
 
 		// Browser window
 
-		bc = browser.getComponent();
+		bc = browser.getView().getComponent();
 		setSizes(1000, 660);
 
 		GridBagConstraints c = new GridBagConstraints();
