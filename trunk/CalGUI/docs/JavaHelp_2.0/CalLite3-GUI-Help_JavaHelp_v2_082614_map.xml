@@ -24,9 +24,8 @@
 	<mapID target="Other regulations" url="3_5_5_Other_Regulations_Panel.htm"/>
 	<mapID target="imagembuhbedf679719990681748443" url="Images/imagembuhbedf679719990681748443.jpg"/>
 	<mapID target="Tutorial" url="5_Tutorial.htm"/>
-	<mapID target="Tutorial Exercise" url="5_2_Tutorial_Exercise.htm"/>
-	<mapID target="Creating Scenarios" url="5_2_1_Creating_scenarios.htm"/>
-	<mapID target="Viewing Results" url="5_2_2_Viewing_Results.htm"/>
+	<mapID target="Creating Scenarios" url="5_1_Creating_scenarios.htm"/>
+	<mapID target="Viewing Results" url="5_2_Viewing_Results.htm"/>
 	
 	<mapID target="toc" url="toc.htm" />
   <mapID target="Cover_page" url="Cover_Page.htm" />
