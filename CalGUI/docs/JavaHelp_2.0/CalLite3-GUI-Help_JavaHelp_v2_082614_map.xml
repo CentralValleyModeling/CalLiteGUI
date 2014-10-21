@@ -13,7 +13,7 @@
 	<mapID target="Results" url="4_Results_Dashboards.htm"/>
 	<mapID target="Quick Results" url="4_1_Quick_Results.htm"/>
 	<mapID target="Custom Results" url="4_2_Custom_Results.htm"/>
-	<mapID target="Schematic" url="4_3_Map_View.htm"/>
+	<mapID target="Map View" url="4_3_Map_View.htm"/>
 	<mapID target="External PDF" url="4_4_External_PDF.htm"/>
 	<mapID target="Web Map" url="4_5_Web_Map.htm" />
 	<mapID target="Demands" url="3_3_Demands.htm"/>
