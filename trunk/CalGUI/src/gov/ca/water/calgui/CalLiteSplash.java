@@ -30,9 +30,9 @@ public class CalLiteSplash {
 		}
 
 		Graphics2D g = splash.createGraphics();
-		g.setColor(new Color(255, 255, 204));
-		g.drawString(versionId, 25, 110);
-		g.drawString(buildDate, 25, 130);
+		g.setColor(new Color(000, 000, 000));
+		g.drawString(versionId, 25, 150);
+		g.drawString(buildDate, 25, 170);
 		splash.update();
 
 	}
