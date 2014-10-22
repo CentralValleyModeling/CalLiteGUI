@@ -15,7 +15,7 @@
 	<mapID target="Custom Results" url="4_2_Custom_Results.htm"/>
 	<mapID target="Map View" url="4_3_Map_View.htm"/>
 	<mapID target="External PDF" url="4_4_External_PDF.htm"/>
-	<mapID target="Web Map" url="4_5_Web_Map.htm" />
+	<mapID target="Web Map (Beta)" url="4_5_Web_Map.htm" />
 	<mapID target="Demands" url="3_3_Demands.htm"/>
 	<mapID target="Quick Select" url="3_5_1_Quick_Select.htm"/>
 	<mapID target="D1641/D1485 Regulations" url="3_5_2_D-1641_D-1485_Regulations_Panel.htm"/>

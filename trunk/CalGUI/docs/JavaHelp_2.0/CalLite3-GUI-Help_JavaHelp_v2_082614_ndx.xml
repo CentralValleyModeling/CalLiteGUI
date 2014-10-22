@@ -2,7 +2,7 @@
 <!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 2.0//EN" "http://java.sun.com/products/javahelp/index_2_0.dtd">
 <index version="2.0">
  <indexitem text="Accretion/depletion" target="Run Settings" />
- <indexitem text="Map Display" target="Web Map" />
+ <indexitem text="Map Display" target="Web Map (Beta)" />
  <indexitem text="Run Settings" target="Run Settings" />
  <indexitem text="ANN X2" target="Hydroclimate" />
  <indexitem text="Article 21" target="Demands" />
@@ -12,7 +12,7 @@
  <indexitem text="BO" target="D1641/D1485 Regulations" />
  <indexitem text="BO RPA" target="D1641/D1485 Regulations" />
  <indexitem text="California Aqueduct" target="Operations" />
- <indexitem text="CalLite Google Map" target="Web Map" />
+ <indexitem text="CalLite Google Map" target="Web Map (Beta)" />
  <indexitem text="CalLite GUI:1. Introduction" target="Introduction" />
  <indexitem text="CalLite Results window" target="Tutorial" />
  <indexitem text="CalLite Scenario" target="Run Settings" />
@@ -63,7 +63,7 @@
  <indexitem text="Vernalis" target="SJR Controls" />
  <indexitem text="View Scenario Settings" target="Run Settings" />
  <indexitem text="Water Supply Index" target="Operations" />
- <indexitem text="Web Map" target="Web Map" />
+ <indexitem text="Web Map" target="Web Map (Beta)" />
  <indexitem text="WRIMS" target="Introduction" />
  <indexitem text="WRIMS II" target="Introduction" />
  <indexitem text="X2" target="Hydroclimate" />

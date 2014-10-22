@@ -107,12 +107,12 @@ import calsim.gui.GuiUtils;
 
 /**
  * Main class for CalLite GUI
- * 
+ *
  * @author tslawecki
- * 
+ *
  */
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
-        ComponentListener, KeyEventDispatcher {
+ComponentListener, KeyEventDispatcher {
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
@@ -174,7 +174,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	/**
 	 * Main constructor for CalLite GUI
-	 * 
+	 *
 	 * @param makeVisible
 	 *            - set to true if UI should be visible, false to keep hidden (for use in unit tests)
 	 * @throws Exception
@@ -221,10 +221,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			// Set initial Tooltips with scenario directory
 			((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-			        + ((JTextField) swix.find("run_txfoDSS")).getText());
+					+ ((JTextField) swix.find("run_txfoDSS")).getText());
 
 			((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-			        + ((JTextField) swix.find("run_txfScen")).getText());
+					+ ((JTextField) swix.find("run_txfScen")).getText());
 
 			// Help hotkey
 			KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -248,7 +248,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			googleMapTab = new GoogleMapTab();
 			JPanel googleMapPanel = googleMapTab.getWebTab();
-			jtp.add("Web Map", googleMapPanel);
+			jtp.add("Web Map (Beta)", googleMapPanel);
 			jtp.setForegroundAt(jtp.getTabCount() - 1, Color.blue);
 			jtp.setBackgroundAt(jtp.getTabCount() - 1, Color.WHITE);
 
@@ -408,8 +408,8 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
 			if (!file.exists()) {
 				if (JOptionPane.CANCEL_OPTION == JOptionPane.showConfirmDialog(null, "Default scenario \"" + scen
-				        + "\" not found. Press OK to select a scenario to load or Cancel to exit", "Default Scenario Not Found!",
-				        JOptionPane.OK_CANCEL_OPTION)) {
+						+ "\" not found. Press OK to select a scenario to load or Cancel to exit", "Default Scenario Not Found!",
+						JOptionPane.OK_CANCEL_OPTION)) {
 					return;
 				}
 				FileDialog scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
@@ -433,9 +433,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			component1.setVisible(true);
 			component1.setEnabled(true);
 			dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, regUserEditFlags, dTableModels, gl,
-			        regFlags);
+					regFlags);
 			dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, regUserEditFlags, dTableModels, gl,
-			        regFlags);
+					regFlags);
 
 			// pan.setBorder(title);
 			component1.setVisible(false);
@@ -489,9 +489,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 
 			new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
-			        + "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
+					+ "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
 			new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
-			        + "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2, 21.0, 15.0);
+					+ "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2, 21.0, 15.0);
 		} catch (Exception e) {
 			log.debug("Could not load schematic views. " + e);
 		}
@@ -501,13 +501,13 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		try {
 
 			((JButton) swix.find("btnGetTemplateFile")).addActionListener(new FileDialog(null, (JTextField) swix
-			        .find("tfTemplateFILE"), "inp"));
+					.find("tfTemplateFILE"), "inp"));
 			((JButton) swix.find("btnGetReportFile1")).addActionListener(new FileDialog(null, (JTextField) swix
-			        .find("tfReportFILE1")));
+					.find("tfReportFILE1")));
 			((JButton) swix.find("btnGetReportFile2")).addActionListener(new FileDialog(null, (JTextField) swix
-			        .find("tfReportFILE2")));
+					.find("tfReportFILE2")));
 			((JButton) swix.find("btnGetReportFile3")).addActionListener(new FileDialog(null, (JTextField) swix
-			        .find("tfReportFILE3"), "PDF"));
+					.find("tfReportFILE3"), "PDF"));
 		} catch (Exception e) {
 			log.debug("Could not load report controls." + e);
 		}
@@ -525,7 +525,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.setActionListener(regulations, new RegAction(swix, regUserEditFlags, dTableModels, gl, reg_btng1, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, regUserEditFlags, dTableModels, gl,
-			        reg_btng1, regFlags));
+					reg_btng1, regFlags));
 			GUIUtils.setMouseListener(regulations, this);
 			GUIUtils.setChangeListener(regulations, this);
 
@@ -534,7 +534,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 			swix.setActionListener(hydroclimate, new HydAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, regUserEditFlags,
-			        dTableModels, gl, action_WSIDI));
+					dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(operations, new OpAction(desktop, swix, regUserEditFlags, dTableModels, gl, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
@@ -566,10 +566,10 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			swix.setActionListener(swix.find("Custom"), new CustomResultsAction(swix));
 
 			swix.setActionListener(swix.find("runsettings"), new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl,
-			        action_WSIDI, regFlags));
+					action_WSIDI, regFlags));
 			((JSlider) swix.find("run_sldThreads")).addChangeListener(this);
 			GUIUtils.setCheckBoxorRadioButtonItemListener(swix.find("runsettings"), new RunListener(desktop, swix,
-			        regUserEditFlags, dTableModels, gl, action_WSIDI));
+					regUserEditFlags, dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(schematics, new SchematicAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
@@ -579,7 +579,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			JButton btnScenarioComp = (JButton) swix.find("btnCompareScenarios");
 			// btnScenarioComp.addActionListener(this);
 			swix.setActionListener(btnScenarioComp, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
-			        regFlags));
+					regFlags));
 
 			// JComboBox cbotimeQS = (JComboBox) swix.find("cbotimeQS");
 			// swix.setActionListener(cbotimeQS, new ReportAction(desktop, swix));
@@ -625,7 +625,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			((JSlider) swix.find("run_sldThreads")).setMaximum(maxThreads);
 			((JLabel) swix.find("run_lblThreads")).setText(" " + maxThreads + ((maxThreads > 1) ? " runs" : " run"));
 			((JLabel) swix.find("run_lblThreadsInfo")).setText("Simultaneous runs "
-			        + ((maxThreads > 1) ? "(1-" + maxThreads + ")" : "(1)"));
+					+ ((maxThreads > 1) ? "(1-" + maxThreads + ")" : "(1)"));
 
 			ScenarioMonitor.start();
 
@@ -660,7 +660,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	public Action Time_SELECT = new AbstractAction() {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = -4407276439543982958L;
 
@@ -765,7 +765,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 					 * i++) { RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i); if (item.isSelected())
 					 * scenlist[0] = item.toString2().replace("_DV.DSS", ".cls"); else { j++; scenlist[j] =
 					 * item.toString2().replace("_DV.DSS",".cls"); }
-					 * 
+					 *
 					 * } // Show frame ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix); java.net.URL imgURL =
 					 * getClass().getResource("/images/CalLiteIcon.png"); sTableFrame
 					 * .setIconImage(Toolkit.getDefaultToolkit().getImage (imgURL)); sTableFrame.setVisible(true);
@@ -829,7 +829,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
 					Boolean isSelect = selcomp.isSelected();
 					RegulationSetup.SetRegCheckBoxes(swix, regUserEditFlags, dTableModels, gl, reg_btng1, cName, isSelect, "null",
-					        regFlags);
+							regFlags);
 
 					// JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
 					// boolean enabled = btn.isEnabled();
@@ -906,7 +906,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 						lstScenarios = (JList) swix.find("SelectedList");
 						JCheckBox chk = (JCheckBox) component;
 						DisplayFrame.showDisplayFrames(
-						        DisplayFrame.quickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), lstScenarios);
+								DisplayFrame.quickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), lstScenarios);
 						menu.setCursor(normalCursor);
 					}
 					// Placeholder for future handling of double-clicks
@@ -974,7 +974,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		if (lcName.equals("run_sldthreads")) {
 			GUIUtils.simultaneousRuns = ((JSlider) c).getValue();
 			((JLabel) swix.find("run_lblThreads")).setText(" " + GUIUtils.simultaneousRuns + " run"
-			        + ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
+					+ ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
 		}
 		if (lcName.equals("reg_tabbedpane")) {
 			// Hide table on Regulations dashboard when moving between tabbed panes on Regulation dashboard
@@ -1102,16 +1102,16 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				lookups[i][j] = parts[j];
 			}
 			if (lookups[i][1].equals("") && !lookups[i][0].startsWith("0")) { // additional
-				                                                              // condition
-				                                                              // added
-				                                                              // to
-				                                                              // handle
-				                                                              // "0xx"
-				                                                              // -
-				                                                              // these
-				                                                              // have
-				                                                              // no
-				                                                              // checkbox
+				// condition
+				// added
+				// to
+				// handle
+				// "0xx"
+				// -
+				// these
+				// have
+				// no
+				// checkbox
 				JCheckBox cb = (JCheckBox) swix.find("ckbp" + lookups[i][0]);
 				cb.setEnabled(false);
 			}
@@ -1268,7 +1268,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	/**
 	 * Getter for access to application-wide GUI WRIMS project
-	 * 
+	 *
 	 * @return
 	 */
 	public static Project getProject() {
@@ -1277,7 +1277,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	/**
 	 * Getter for access to application-wide SwiXml engine
-	 * 
+	 *
 	 * @return
 	 */
 	public static SwingEngine getSwix() {
@@ -1287,12 +1287,12 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	/**
 	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
-	 * 
+	 *
 	 */
 	void retrieve() {
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
-			        JOptionPane.WARNING_MESSAGE);
+					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		try {
@@ -1303,7 +1303,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
 			if (_group == null || _table.getSelectedRowCount() == 0) {
 				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
-				        JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
 			int[] rows = _table.getSelectedRows(); // checked if count > 0 above
@@ -1317,14 +1317,14 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 				String[] parts = array[i].getName().split("::");
 				String[] parts2 = parts[2].split("/");
 				parts[2] = "/" + parts2[1] + "/" + parts2[2] + "/" + parts2[3] + "/" + parts[3] + "/" + parts2[5] + "/" + parts2[6]
-				        + "/";
+						+ "/";
 
 				if (parts[1].toUpperCase().contains(("_SV.DSS"))) {
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
-					        + ";File-" + parts[1], lstScenarios);
+							+ ";File-" + parts[1], lstScenarios);
 				} else {
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2],
-					        lstScenarios);
+							lstScenarios);
 				}
 			}
 		} catch (Exception e) {
@@ -1337,7 +1337,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 	/**
 	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
-	 * 
+	 *
 	 */
 
 	void retrieve2() {
@@ -1346,7 +1346,7 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
-			        JOptionPane.WARNING_MESSAGE);
+					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -1354,9 +1354,9 @@ public class MainMenu implements ActionListener, MouseListener, TableModelListen
 		MultipleTimeSeries mts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getMTS();
 
 		if (((mts == null) && (dts == null)) || ((dts != null) && (dts.getBParts().size() < 1))
-		        || ((mts != null) && (mts.getNumberOfDataReferences() < 1))) {
+				|| ((mts != null) && (mts.getNumberOfDataReferences() < 1))) {
 			JOptionPane.showMessageDialog(null, "Specify DTS or MTS data references", "Nothing to Display",
-			        JOptionPane.WARNING_MESSAGE);
+					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
