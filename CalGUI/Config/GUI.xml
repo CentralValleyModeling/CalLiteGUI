@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <frame id="desktop" name="desktop" size="1024,768"
-	title="CalLite 3.0 -  The Central Valley Water Management Screening Model"
+	title="CalLite 3.00 -  The Central Valley Water Management Screening Model"
 	CloseOperation="JFrame.EXIT_ON_CLOSE" frameResizable="false" layout='BorderLayout'>
 	<menubar id="menu">
 		<menu text="File" mnemonic="VK_F">
