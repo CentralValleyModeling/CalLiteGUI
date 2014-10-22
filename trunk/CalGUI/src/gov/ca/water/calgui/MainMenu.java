@@ -217,7 +217,7 @@ ComponentListener, KeyEventDispatcher {
 
 			// Title
 			scenFilename = ((JTextField) swix.find("run_txfScen")).getText();
-			desktop.setTitle(desktopTitle + " - " + scenFilename);
+			desktop.setTitle(desktopTitle);
 
 			// Set initial Tooltips with scenario directory
 			((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
