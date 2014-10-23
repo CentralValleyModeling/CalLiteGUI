@@ -9,7 +9,7 @@ SWP SL	S_SLSWP/STORAGE,E_SLSWP/EVAPORATION,A_SLSWP/SURFACE-AREA,C_SLSWP/FLOW-CHA
 NEWHOGAN	S_NHGAN/STORAGE,E_NHGAN/EVAPORATION,A_NHGAN/SURFACE-AREA,C_NHGAN/FLOW-CHANNEL,I_NHGAN_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at New Hogan	null
 NEWMELONES	S_MELON/STORAGE,E_MELON/EVAPORATION,A_MELON/SURFACE-AREA,C_MELON/FLOW-CHANNEL,I_MELON_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at New Melones	null
 NEWDONPEDRO	S_PEDRO/STORAGE,E_PEDRO/EVAPORATION,A_PEDRO/SURFACE-AREA,C_PEDRO/FLOW-CHANNEL,I_PEDRO_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at New Don Pedro	null
-MCLURE	S_MCLRE/STORAGE,E_MCLRE/EVAPORATION,A_MCLRE/SURFACE-AREA,C_MCLRE/FLOW-CHANNEL,I_MCLRE_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at McLure	null
+MCCLURE	S_MCLRE/STORAGE,E_MCLRE/EVAPORATION,A_MCLRE/SURFACE-AREA,C_MCLRE/FLOW-CHANNEL,I_MCLRE_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at McClure	null
 EASTMAN	S_ESTMN/STORAGE,E_ESTMN/EVAPORATION,A_ESTMN/SURFACE-AREA,C_ESTMN/FLOW-CHANNEL,I_ESTMN_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at Eastman	null
 HENSLEY	S_HNSLY/STORAGE,E_HNSLY/EVAPORATION,A_HNSLY/SURFACE-AREA,C_HNSLY/FLOW-CHANNEL,I_HNSLY_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at Hensley	null
 MILLERTON	S_MLRTN/STORAGE,E_MLRTN/EVAPORATION,A_MLRTN/SURFACE-AREA,C_MLRTN/FLOW-CHANNEL,I_MLRTN_S2D/FLOW-INFLOW	null	Storage	Storage, Evaporation, Area, and Flows at Millerton	null
@@ -23,7 +23,7 @@ S_SLSWP	S_SLSWP/STORAGE	null	Storage	Storage at SWP San Luis	null
 S_NHGAN	S_NHGAN/STORAGE	null	Storage	Storage at New Hogan	null
 S_MELON	S_MELON/STORAGE	null	Storage	Storage at New Melones	null
 S_PEDRO	S_PEDRO/STORAGE	null	Storage	Storage at New Don Pedro	null
-S_MCLRE	S_MCLRE/STORAGE	null	Storage	Storage at McLure	null
+S_MCLRE	S_MCLRE/STORAGE	null	Storage	Storage at McClure	null
 S_ESTMN	S_ESTMN/STORAGE	null	Storage	Storage at Eastman	null
 S_HNSLY	S_HNSLY/STORAGE	null	Storage	Storage at Hensley	null
 S_MLRTN	S_MLRTN/STORAGE	null	Storage	Storage at Millerton	null
@@ -129,7 +129,7 @@ I_TUOL	I_TUOL_S2D/FLOW-INFLOW	null	Flow	Inflows to Tuolumne	null
 I_PEDRO	I_PEDRO_S2D/FLOW-INFLOW	null	Flow	Inflows to New Don Pedro	null
 I_MERCED2	I_MERCED2_S2D/FLOW-INFLOW	null	Flow	Inflows to Merced2	null
 I_MERCED1	I_MERCED1_S2D/FLOW-INFLOW	null	Flow	Inflows to Merced1	null
-I_MCLRE	I_MCLRE_S2D/FLOW-INFLOW	null	Flow	Inflows to McLure	null
+I_MCLRE	I_MCLRE_S2D/FLOW-INFLOW	null	Flow	Inflows to McClure	null
 I_SJRMS	I_SJRMS_S2D/FLOW-INFLOW	null	Flow	Inflows to SJRMudSalt	null
 I_EASTBYP	I_EASTBYP_S2D/FLOW-INFLOW	null	Flow	Inflows to Chowchilla2	null
 I_ESTMN	I_ESTMN_S2D/FLOW-INFLOW	null	Flow	Inflows to Eastman	null
@@ -214,7 +214,7 @@ C619	C619/FLOW-CHANNEL	null	Flow	Westside Return Flows to SJRMerced	null
 C_MERCED2	C_MERCED2/FLOW-CHANNEL	null	Flow	Flows on Merced River below Merced2	null
 C_SJRMS	C_SJRMS/FLOW-CHANNEL	null	Flow	Flows on San Joaquin River below SJRMudSalt	null
 C_MERCED1	C_MERCED1/FLOW-CHANNEL	null	Flow	Flows on Merced River below Merced1	null
-C_MCLRE	C_MCLRE/FLOW-CHANNEL	null	Flow	Flows on Merced River below McLure	null
+C_MCLRE	C_MCLRE/FLOW-CHANNEL	null	Flow	Flows on Merced River below McClure	null
 C_SJRLNDR	C_SJRLNDR/FLOW-CHANNEL	null	Flow	Flows on San Joaquin River below SJRLander	null
 C_MDOTABVAMP	C_MDOTABVAMP/FLOW-CHANNEL	null	Flow	Westside Return Flows to SJRMudSalt	null
 C_EASTBYP	C_EASTBYP/FLOW-CHANNEL	null	Flow	Flows through Eastside Bypass	null

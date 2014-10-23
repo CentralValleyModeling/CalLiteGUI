@@ -110,7 +110,7 @@ define D_CALAV {std kind 'flow-delivery' units 'cfs'}
 goal setDVNCALAV { D_CALAV = D_CALAVA + D_CALAVB + D_CALAVC + D_CALAVD }
 
 define  D_TUOL {std kind 'flow-delivery' units 'cfs'}
-goal setDVNTUOL { D_TUOL = D_TUOLA + D_TUOLB + D_TUOLB}
+goal setDVNTUOL { D_TUOL = D_TUOLA + D_TUOLB + D_TUOLC}
 
 define  D_SJRTUOL {std kind 'flow-delivery' units 'cfs'}
 goal setDVNSJRTUOL { D_SJRTUOL = D_SJRTUOLA + D_SJRTUOLB }
