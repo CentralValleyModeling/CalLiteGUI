@@ -2005,7 +2005,7 @@
 								<buttongroup id="rep4">
 									<radiobutton id="rdbCFS" name="rdbCFS" text="CFS"
 										selected="true" />
-									<radiobutton id="rdbTAF" name="rdbTAF" text="TAFY" />
+									<radiobutton id="rdbTAF" name="rdbTAF" text="TAF/yr" />
 								</buttongroup>
 							</hbox>
 							<checkbox name="RepckbTimeSeriesPlot" id="RepckbTimeSeriesPlot"
