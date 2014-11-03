@@ -57,6 +57,9 @@ define PulseExpResSV {
     case OCT_MAR {
         condition month>=OCT .and. month<=MAR
         value 0. }
+    case APRNoVAMPpulse {
+        condition month == APR .and. VAMP_reqdv_VAMP_set <.1  !In case user has turned on export cap while pulse is turned off, make sure export cap is not activated.
+        value 99999.0 }
     case APRlo1 {
         condition month == APR .and. abs(VAMP_reqdv_VAMP_set - 5700.0)<.1
         value 2250. }
