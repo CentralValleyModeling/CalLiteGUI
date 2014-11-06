@@ -193,8 +193,9 @@ public class RegListener implements ItemListener {
 
 							if (RegFlags[rID] == 1) {
 								String D1641 = lookups[i][2];
+								String D1641BO = lookups[i][3];
 								// check if option is not a valid option
-								if (D1641.equals("FALSE")) {
+								if (D1641.equals("FALSE") && D1641BO.equals("FALSE")) {
 									RegFlags[rID] = 3;
 								}
 							} else if (RegFlags[rID] == 3) {
