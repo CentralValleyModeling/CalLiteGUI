@@ -1,0 +1,24 @@
+#summary This page consists of notes made to support Tad's briefing of Reclamation on the GUI's code structure and configuration.
+
+= Introduction =
+
+Add your content here.
+
+
+= GUI specification =
+
+  # The CalLite GUI is implemented as a desktop Java application.
+  # The Swing UI layout is mostly defined in the file [https://code.google.com/p/callitegui/source/browse/trunk/CalGUI/Config/GUI.xml Config/GUI.xml].
+  # The layout in GUI.xml is realized as a Swing GUI using the [http://www.swixml.org SwiXml] library.
+  # Low-level GUI behavior is encapsulated in SwiXml.
+  # GUI.xml allows Swing Actions to be associated with components whose ActionListeners can be defined in the Java code.
+  # Other Listeners can be defined in the code.
+  # Basic code access to GUI components is through SwiXml's SwingEngine object. The main instance is defined in the GUI app's main class, which is [https://code.google.com/p/callitegui/source/browse/trunk/CalGUI/src/gov/ca/water/calgui/MainMenu.java MainMenu].
+  # The main SwingEngine instance - currently named "swix" - can be used to access components defined in GUI.xml. For example, the textfield "run_txfoDSS" can be accessed as follows:
+{{{(JTextField) swix.find("run_txfoDSS"))}}} 
+
+= Linking GUI components to CalLite model inputs =
+
+The values of textfield, checkbox, and radiobutton components in the GUI can be linked directly to CalLite model inputs specified in GUI-generated .table files. The linkage is specified in 
+
+, which is first defined 
