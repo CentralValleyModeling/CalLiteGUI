@@ -28,4 +28,4 @@ New comments:
 
 == Additional information ==
 
-  * [GUI Design Notes]
+  * [GUI_Design_Notes GUI Design Notes]
