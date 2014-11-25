@@ -19,6 +19,10 @@ Add your content here.
 
 = Linking GUI components to CalLite model inputs =
 
-The values of textfield, checkbox, and radiobutton components in the GUI can be linked directly to CalLite model inputs specified in GUI-generated .table files. The linkage is specified in 
+The values of textfield, checkbox, and radiobutton components in the GUI can be linked directly to CalLite model inputs specified in GUI-generated .table files. The linkage is specified in the file [https://code.google.com/p/callitegui/source/browse/trunk/CalGUI/Config/GUI_Links2.table GUI_Links2.table]. 
 
-, which is first defined 
+For a textfield, the fields GUIid, Table name, Index, Option and description are needed. The Option should be -1 to indicate a textfield; the value to be written is retrieved from the component named "GUIid" and then placed in the GUI-generated .table file named "Table name" in data row "Index". 
+
+For a checkbox, the same fields are used except that Option should be set to a value of -2. A value of "1" will be plin the SwiXml-defined GUI
+
+== Scenario management ==
