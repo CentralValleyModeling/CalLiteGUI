@@ -81,12 +81,13 @@ public class RunUtils {
 	/**
 	 * Initializer for RunUtils
 	 * 
-	 * @param desktop
-	 * @param swix
-	 * @param regUserEdits
-	 * @param dTableModels
-	 * @param gl
-	 * @param action_WSIDI
+	 * @param _desktop
+	 * @param _swix
+	 * @param _regUserEdits
+	 * @param _dTableModels
+	 * @param _gl
+	 * @param _action_WSIDI
+	 * @param _regFlags
 	 */
 
 	public static void initRunUtils(JFrame _desktop, SwingEngine _swix, Boolean[] _regUserEdits,
@@ -146,16 +147,6 @@ public class RunUtils {
 	/**
 	 * Validates, then runs either a regular scenario or a WSI-DI generation run depending on value of RunUtils.isWSIDI falg.
 	 * 
-	 * @param ae
-	 * @param mainmenu
-	 * @param scen
-	 */
-	/**
-	 * @param ae
-	 * @param mainmenu
-	 * @param scen
-	 */
-	/**
 	 * @param ae
 	 * @param mainmenu
 	 * @param scen
@@ -877,8 +868,8 @@ public class RunUtils {
 	 * Sets up CalLite_w2.bat file to run WSI-DI
 	 * 
 	 * @param batFileName
-	 * @param ScenarioName
-	 * @param noIterations
+	 * @param scenarioFileName
+	 * @param iterations
 	 */
 	public static void setupMainBatchFile_WSIDI(String batFileName, String scenarioFileName, final int iterations) {
 
@@ -1520,7 +1511,7 @@ public class RunUtils {
 	 * @param RegUserEdits
 	 * @param dTableModels
 	 * @param gl
-	 * @return
+	 * @return sb
 	 */
 	public static StringBuffer buildScenarioString(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels,
 	        GUILinks gl, int[] RegFlags) {

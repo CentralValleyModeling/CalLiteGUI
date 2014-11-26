@@ -8,10 +8,36 @@ import javax.swing.event.ChangeListener;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Sets up Spinner models for number range, months
+ * 
+ * @author tslawecki
+ * 
+ */
 public class SpinnerSetup {
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
+	/**
+	 * Sets up a spinner for a numeric range
+	 * 
+	 * @param jspn
+	 *            - Swing spinner component
+	 * @param val
+	 *            - Initial value
+	 * @param min
+	 *            - Minimum value
+	 * @param max
+	 *            - Maximum value
+	 * @param step
+	 *            - Increment between values
+	 * @param format
+	 *            - Format for display
+	 * @param obj
+	 *            - ChangeListener
+	 * @param changelistener
+	 *            - True is a ChangeListener is to be assigned
+	 */
 	public static void SetNumberModelAndIndex(JSpinner jspn, int val, int min, int max, int step, String format, Object obj,
 	        boolean changelistener) {
 
@@ -23,6 +49,17 @@ public class SpinnerSetup {
 		}
 	}
 
+	/**
+	 * 
+	 * @param jspn
+	 *            - Swing spinner component
+	 * @param idx
+	 * @param obj
+	 *            - ChangeListener
+	 * @param changelistener
+	 *            - True is a ChangeListener is to be assigned
+	 * 
+	 */
 	public static void SetMonthModelAndIndex(JSpinner jspn, int idx, Object obj, boolean changelistener) {
 		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 

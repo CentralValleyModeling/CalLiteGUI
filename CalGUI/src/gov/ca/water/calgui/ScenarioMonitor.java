@@ -153,7 +153,7 @@ public class ScenarioMonitor {
 	 * Returns status of scenario - Saved, Parsing, Running, Done
 	 * 
 	 * @param scenarioName
-	 * @return
+	 * @return string
 	 */
 	public static String getStatus(String scenarioName) {
 
