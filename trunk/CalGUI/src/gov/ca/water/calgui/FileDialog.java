@@ -35,11 +35,10 @@ import javax.swing.event.ListDataListener;
 import org.apache.log4j.Logger;
 
 /**
- * *
+ * Supports selection of different types of CalLite files from customized JFileChoosers.
  * 
  * @author tslawecki
  * 
- *         Supports selection of different types of CalLite files from customized JFileChoosers.
  * 
  */
 public class FileDialog implements ActionListener {

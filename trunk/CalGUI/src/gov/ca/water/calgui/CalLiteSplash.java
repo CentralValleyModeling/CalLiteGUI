@@ -8,6 +8,12 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Loads custom splash screen for CalLite GUI
+ * 
+ * @author tslawecki
+ * 
+ */
 public class CalLiteSplash {
 
 	private static final SplashScreen splash = SplashScreen.getSplashScreen();

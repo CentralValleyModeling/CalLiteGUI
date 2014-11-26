@@ -213,6 +213,12 @@ public class GUIUtils {
 		return ct;
 	}
 
+	/**
+	 * 
+	 * @param component
+	 * @param sb
+	 * @return
+	 */
 	public static StringBuffer setControlValues(Component component, StringBuffer sb) {
 
 		String comp = "";
@@ -254,6 +260,15 @@ public class GUIUtils {
 		return sb;
 	}
 
+	/**
+	 * 
+	 * @param dTableModels
+	 * @param GUITables
+	 * @param gl
+	 * @param sb
+	 * @param swix
+	 * @return
+	 */
 	public static StringBuffer getTableModelData(DataFileTableModel[] dTableModels, ArrayList<String> GUITables, GUILinks gl,
 	        StringBuffer sb, SwingEngine swix) {
 		final String NL = System.getProperty("line.separator");
@@ -303,6 +318,15 @@ public class GUIUtils {
 		return sb;
 	}
 
+	/**
+	 * 
+	 * @param f
+	 * @param swix
+	 * @param dTableModels
+	 * @param gl
+	 * @param RegUserEdits
+	 * @return
+	 */
 	public static Boolean[] setControlValues(File f, SwingEngine swix, DataFileTableModel[] dTableModels, GUILinks gl,
 	        Boolean[] RegUserEdits) {
 
@@ -481,37 +505,10 @@ public class GUIUtils {
 		String delims = "[|]";
 		int QSel = 0;
 
-		/*
-		 * try { fs = new FileInputStream(f); in = new InputStreamReader(fs); br = new BufferedReader(in);
-		 * 
-		 * while (true) { textinLine = br.readLine(); if (textinLine == null) break; if (textinLine.equals("DATATABLEMODELS"))
-		 * break; String[] tokens = textinLine.split(delims);
-		 * 
-		 * comp = tokens[0]; if (tokens.length > 1) value = tokens[1]; else value = null;
-		 * 
-		 * if (comp.startsWith("rdbRegQS")) {
-		 * 
-		 * // final int tID = Integer.parseInt(gl.tableIDForCtrl(comp)); // String stID = String.valueOf(tID); // int rID =
-		 * Integer.parseInt(gl.RIDForCtrl(comp));
-		 * 
-		 * if (comp.startsWith("rdbRegQS_D1641") && value.startsWith("true")) { QSel = 1; // for (int i = 0; i < RegFlags.length;
-		 * i++) { // RegFlags[rID] = 1; // } } else if (comp.startsWith("rdbRegQS_1641") && value.startsWith("true")) { QSel = 1; //
-		 * for (int i = 0; i < RegFlags.length; i++) { // RegFlags[rID] = 1; // } } else if (comp.startsWith("rdbRegQS_D1485") &&
-		 * value.startsWith("true")) { // for (int i = 0; i < RegFlags.length; i++) { // RegFlags[rID] = 3; // } QSel = 3; } else if
-		 * (comp.startsWith("rdbRegQS_UD") && value.startsWith("true")) { // if (comp.equals("ckbReg_TRNTY")) { // } else if
-		 * (comp.equals("ckbReg_PUMP")) { // } else { // RegFlags[rID] = 2; // } // RegFlags[rID] = 1; QSel = 2; } } }
-		 * 
-		 * fs.close(); in.close(); br.close();
-		 * 
-		 * } catch (FileNotFoundException e) { log.debug(e.getMessage()); } catch (IOException e) { log.debug(e.getMessage()); }
-		 */
-
 		QSel = 1;
-		// final int[] RegFlags = new int[40];
 		if (RegFlags == null) {
 			RegFlags = new int[50];
 		}
-		// final int[] RegFlags = new int[50];
 
 		try {
 			fs = new FileInputStream(f);
@@ -552,8 +549,6 @@ public class GUIUtils {
 		} catch (IOException e) {
 			log.debug(e.getMessage());
 		}
-
-		// final int[] RegFlags = new int[40];
 
 		try {
 			fs = new FileInputStream(f);
