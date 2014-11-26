@@ -27,7 +27,6 @@ import gov.ca.water.calgui.utils.GUILinks;
 import gov.ca.water.calgui.utils.GUIUtils;
 import gov.ca.water.calgui.utils.NumericTextField;
 import gov.ca.water.calgui.utils.PopulateDTable;
-import gov.ca.water.calgui.utils.SimpleFileFilter;
 import gov.ca.water.calgui.utils.Utils;
 import gov.ca.water.calgui.utils.WRIMSGUILinks;
 
@@ -53,25 +52,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.Vector;
 
 import javax.help.JHelp;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -106,13 +99,15 @@ import calsim.app.Project;
 import calsim.gui.GuiUtils;
 
 /**
- * Main class for CalLite GUI
- *
+ * Main class for CalLite GUI.
+ * 
+ * 
+ * 
  * @author tslawecki
- *
+ * 
  */
 public class MainMenu implements ActionListener, MouseListener, TableModelListener, MenuListener, ChangeListener, ListDataListener,
-ComponentListener, KeyEventDispatcher {
+        ComponentListener, KeyEventDispatcher {
 
 	private static Logger log = Logger.getLogger(MainMenu.class.getName());
 
@@ -156,7 +151,6 @@ ComponentListener, KeyEventDispatcher {
 	static FileDialog fdDSSFiles;
 
 	static public String lookups[][];
-	// static String table4[][]; // Holds GUI_links4.table values that control selection of SV and Init DSS as well as WSI_DI files
 	static String table5[][]; // Holds DSS Schematic link values
 
 	int action_WSIDI = 0; // 0 = NO PROMPT, 1 = NORMAL, 2 = UNDO configuration. Set False initially
@@ -174,7 +168,7 @@ ComponentListener, KeyEventDispatcher {
 
 	/**
 	 * Main constructor for CalLite GUI
-	 *
+	 * 
 	 * @param makeVisible
 	 *            - set to true if UI should be visible, false to keep hidden (for use in unit tests)
 	 * @throws Exception
@@ -221,10 +215,10 @@ ComponentListener, KeyEventDispatcher {
 
 			// Set initial Tooltips with scenario directory
 			((JTextField) swix.find("run_txfoDSS")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-					+ ((JTextField) swix.find("run_txfoDSS")).getText());
+			        + ((JTextField) swix.find("run_txfoDSS")).getText());
 
 			((JTextField) swix.find("run_txfScen")).setToolTipText(System.getProperty("user.dir") + "\\Scenarios\\"
-					+ ((JTextField) swix.find("run_txfScen")).getText());
+			        + ((JTextField) swix.find("run_txfScen")).getText());
 
 			// Help hotkey
 			KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -325,20 +319,6 @@ ComponentListener, KeyEventDispatcher {
 				table5[i][5] = tokens[5];
 			}
 
-			// // Read Schematic_DSS_link4.table and place in Table4 (for assigning SV,
-			// // init file, etc.)
-			// ArrayList<String> guiLinks4 = new ArrayList<String>();
-			// guiLinks4 = GUIUtils.getGUILinks("Config/GUI_Links4.table");
-			// table4 = new String[guiLinks4.size()][5];
-			// for (int i = 0; i < guiLinks4.size(); i++) {
-			// String tokens[] = guiLinks4.get(i).split("\t");
-			// table4[i][0] = tokens[0] + tokens[1] + tokens[2] + tokens[3];
-			// table4[i][1] = tokens[4];
-			// table4[i][2] = tokens[5];
-			// table4[i][3] = tokens[6];
-			// table4[i][4] = tokens[7];
-			// }
-
 			// Set up month spinners
 			JSpinner spnSM1 = (JSpinner) swix.find("spnRunStartMonth");
 			SpinnerSetup.SetMonthModelAndIndex(spnSM1, 9, this, true);
@@ -408,8 +388,8 @@ ComponentListener, KeyEventDispatcher {
 			File file = new File(System.getProperty("user.dir") + "/Scenarios/" + scen);
 			if (!file.exists()) {
 				if (JOptionPane.CANCEL_OPTION == JOptionPane.showConfirmDialog(null, "Default scenario \"" + scen
-						+ "\" not found. Press OK to select a scenario to load or Cancel to exit", "Default Scenario Not Found!",
-						JOptionPane.OK_CANCEL_OPTION)) {
+				        + "\" not found. Press OK to select a scenario to load or Cancel to exit", "Default Scenario Not Found!",
+				        JOptionPane.OK_CANCEL_OPTION)) {
 					return;
 				}
 				FileDialog scenFileDialog = new FileDialog(null, (JTextField) swix.find("run_txfScen"), "CLS");
@@ -433,11 +413,10 @@ ComponentListener, KeyEventDispatcher {
 			component1.setVisible(true);
 			component1.setEnabled(true);
 			dTableModels = PopulateDTable.populate("op_btn1", table1, component1, swix, regUserEditFlags, dTableModels, gl,
-					regFlags);
+			        regFlags);
 			dTableModels = PopulateDTable.populate("op_btn2", table1, component1, swix, regUserEditFlags, dTableModels, gl,
-					regFlags);
+			        regFlags);
 
-			// pan.setBorder(title);
 			component1.setVisible(false);
 			table1.setVisible(false);
 
@@ -489,9 +468,9 @@ ComponentListener, KeyEventDispatcher {
 		try {
 
 			new SchematicMain((JPanel) swix.find("schematic_holder"), "file:///" + System.getProperty("user.dir")
-					+ "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
+			        + "/Config/callite_merged.svg", this, swix, 1.19, 0.0, 0.0, 1.19, -8.0, 5.0);
 			new SchematicMain((JPanel) swix.find("schematic_holder2"), "file:///" + System.getProperty("user.dir")
-					+ "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2, 21.0, 15.0);
+			        + "/Config/callite-massbalance_working.svg", this, swix, 1.2, 0, 0.0, 1.2, 21.0, 15.0);
 		} catch (Exception e) {
 			log.debug("Could not load schematic views. " + e);
 		}
@@ -501,13 +480,13 @@ ComponentListener, KeyEventDispatcher {
 		try {
 
 			((JButton) swix.find("btnGetTemplateFile")).addActionListener(new FileDialog(null, (JTextField) swix
-					.find("tfTemplateFILE"), "inp"));
+			        .find("tfTemplateFILE"), "inp"));
 			((JButton) swix.find("btnGetReportFile1")).addActionListener(new FileDialog(null, (JTextField) swix
-					.find("tfReportFILE1")));
+			        .find("tfReportFILE1")));
 			((JButton) swix.find("btnGetReportFile2")).addActionListener(new FileDialog(null, (JTextField) swix
-					.find("tfReportFILE2")));
+			        .find("tfReportFILE2")));
 			((JButton) swix.find("btnGetReportFile3")).addActionListener(new FileDialog(null, (JTextField) swix
-					.find("tfReportFILE3"), "PDF"));
+			        .find("tfReportFILE3"), "PDF"));
 		} catch (Exception e) {
 			log.debug("Could not load report controls." + e);
 		}
@@ -525,7 +504,7 @@ ComponentListener, KeyEventDispatcher {
 
 			swix.setActionListener(regulations, new RegAction(swix, regUserEditFlags, dTableModels, gl, reg_btng1, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(regulations, new RegListener(swix, regUserEditFlags, dTableModels, gl,
-					reg_btng1, regFlags));
+			        reg_btng1, regFlags));
 			GUIUtils.setMouseListener(regulations, this);
 			GUIUtils.setChangeListener(regulations, this);
 
@@ -534,7 +513,7 @@ ComponentListener, KeyEventDispatcher {
 
 			swix.setActionListener(hydroclimate, new HydAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(hydroclimate, new HydListener(desktop, swix, regUserEditFlags,
-					dTableModels, gl, action_WSIDI));
+			        dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(operations, new OpAction(desktop, swix, regUserEditFlags, dTableModels, gl, regFlags));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(operations, new OpListener(swix));
@@ -566,10 +545,10 @@ ComponentListener, KeyEventDispatcher {
 			swix.setActionListener(swix.find("Custom"), new CustomResultsAction(swix));
 
 			swix.setActionListener(swix.find("runsettings"), new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl,
-					action_WSIDI, regFlags));
+			        action_WSIDI, regFlags));
 			((JSlider) swix.find("run_sldThreads")).addChangeListener(this);
 			GUIUtils.setCheckBoxorRadioButtonItemListener(swix.find("runsettings"), new RunListener(desktop, swix,
-					regUserEditFlags, dTableModels, gl, action_WSIDI));
+			        regUserEditFlags, dTableModels, gl, action_WSIDI));
 
 			swix.setActionListener(schematics, new SchematicAction(swix));
 			GUIUtils.setCheckBoxorRadioButtonItemListener(schematics, new SchematicListener(swix));
@@ -579,7 +558,7 @@ ComponentListener, KeyEventDispatcher {
 			JButton btnScenarioComp = (JButton) swix.find("btnCompareScenarios");
 			// btnScenarioComp.addActionListener(this);
 			swix.setActionListener(btnScenarioComp, new FileAction(desktop, swix, regUserEditFlags, dTableModels, gl, action_WSIDI,
-					regFlags));
+			        regFlags));
 
 			// JComboBox cbotimeQS = (JComboBox) swix.find("cbotimeQS");
 			// swix.setActionListener(cbotimeQS, new ReportAction(desktop, swix));
@@ -605,16 +584,6 @@ ComponentListener, KeyEventDispatcher {
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 			GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2b"), true, JLabel.class);
-			// JLabel lab = (JLabel) swix.find("labDynamic_SJR");
-			// lab.setEnabled(true);
-			// lab = (JLabel) swix.find("labDynamic_SJR1");
-			// lab.setEnabled(true);
-			// lab = (JLabel) swix.find("labDynamic_SJR2");
-			// lab.setEnabled(true);
-			// lab = (JLabel) swix.find("labDynamic_SJR3");
-			// lab.setEnabled(true);
-			// lab = (JLabel) swix.find("labDynamic_SJR4");
-			// lab.setEnabled(true);
 
 			// Count threads and update selector appropriately
 
@@ -625,7 +594,7 @@ ComponentListener, KeyEventDispatcher {
 			((JSlider) swix.find("run_sldThreads")).setMaximum(maxThreads);
 			((JLabel) swix.find("run_lblThreads")).setText(" " + maxThreads + ((maxThreads > 1) ? " runs" : " run"));
 			((JLabel) swix.find("run_lblThreadsInfo")).setText("Simultaneous runs "
-					+ ((maxThreads > 1) ? "(1-" + maxThreads + ")" : "(1)"));
+			        + ((maxThreads > 1) ? "(1-" + maxThreads + ")" : "(1)"));
 
 			ScenarioMonitor.start();
 
@@ -643,7 +612,7 @@ ComponentListener, KeyEventDispatcher {
 	}
 
 	/**
-	 * @wbp.parser.entryPoint
+	 * main routine for CalLite GUI
 	 */
 	public static void main(String[] args) {
 
@@ -658,170 +627,65 @@ ComponentListener, KeyEventDispatcher {
 
 	}
 
-	public Action Time_SELECT = new AbstractAction() {
-		/**
-		 *
-		 */
-		private static final long serialVersionUID = -4407276439543982958L;
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JSpinner spnSM = (JSpinner) swix.find("spnStartMonth");
-			JSpinner spnEM = (JSpinner) swix.find("spnEndMonth");
-			JSpinner spnSY = (JSpinner) swix.find("spnStartYear");
-			JSpinner spnEY = (JSpinner) swix.find("spnEndYear");
-
-			JComboBox cbotimeQS = (JComboBox) swix.find("cbotimeQS");
-			String strSel = cbotimeQS.getSelectedItem().toString();
-			if (strSel.equals("Custom")) {
-				spnSM.setEnabled(true);
-				spnEM.setEnabled(true);
-				spnSY.setEnabled(true);
-				spnEY.setEnabled(true);
-			} else {
-
-				String delims = " - ";
-				String[] tokens = strSel.split(delims);
-				delims = " ";
-				String[] tokensStart = tokens[0].split(delims);
-				String[] tokensEnd = tokens[1].split(delims);
-				String sMonth = tokensStart[0];
-				int sYear = Integer.parseInt(tokensStart[1]);
-				String eMonth = tokensEnd[0];
-				int eYear = Integer.parseInt(tokensEnd[1]);
-
-				spnSM.setValue(sMonth);
-				spnSY.setValue(sYear);
-				spnEM.setValue(eMonth);
-				spnEY.setValue(eYear);
-
-				spnSM.setEnabled(false);
-				spnEM.setEnabled(false);
-				spnSY.setEnabled(false);
-				spnEY.setEnabled(false);
-
-			}
-		}
-	};
-
-	// React to menu selections.
+	/**
+	 * Handles clicks for btnClearScenario, btnFacLimits, btnFacHood, btnFacPulse. Does not use actions, instead determines name of
+	 * component that is the source of the event.
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand().startsWith("UD_Table")) {
+		JComponent component = (JComponent) e.getSource();
+		String cName = component.getName();
+		if (cName != null) {
+			if (component.getName().equals("btnClearScenario")) {
+				((DefaultListModel) lstScenarios.getModel()).clear();
+				lstScenarios.repaint();
 
-			// Actions.UD_Table(e);
+			} else if (component.getName().equals("btnFacLimits")) {
+				JScrollPane scr = (JScrollPane) swix.find("fac_scr1");
+				scr.setVisible(true);
+				scr = (JScrollPane) swix.find("fac_scr2");
+				scr.setVisible(false);
+				scr = (JScrollPane) swix.find("fac_scr3");
+				scr.setVisible(false);
 
-		} else if (e.getActionCommand().startsWith("Sch_Load")) {
+			} else if (component.getName().equals("btnFacHood")) {
+				JScrollPane scr = (JScrollPane) swix.find("fac_scr2");
+				scr.setVisible(true);
+				scr = (JScrollPane) swix.find("fac_scr1");
+				scr.setVisible(false);
+				scr = (JScrollPane) swix.find("fac_scr3");
+				scr.setVisible(false);
 
-			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new SimpleFileFilter(".dss.", "DSS File (*.dss)"));
-			fc.setCurrentDirectory(new File(".//Scenarios"));
-
-			int retval = fc.showOpenDialog(mainmenu);
-			if (retval == JFileChooser.APPROVE_OPTION) {
-				// ... The user selected a file, get it, use it.
-				File file = fc.getSelectedFile();
-
-				JTextField tf = (JTextField) swix.find("schem_tfload");
-				tf.setText(file.toString());
-
-			}
-
-		} else if (e.getActionCommand().startsWith("Sch_NOD")) {
-			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			// verticalScrollBar.setValue(verticalScrollBar.getMinimum());
-
-		} else if (e.getActionCommand().startsWith("Sch_Delta")) {
-			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			// verticalScrollBar.setValue((int) ((verticalScrollBar.getMaximum()
-			// - verticalScrollBar.getMinimum()) *
-			// 0.25));
-
-		} else if (e.getActionCommand().startsWith("Sch_SOD")) {
-			// JScrollPane scr = (JScrollPane) swix.find("schem_scr");
-			// JScrollBar verticalScrollBar = scr.getVerticalScrollBar();
-			// verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-
-		} else {
-			JComponent component = (JComponent) e.getSource();
-			String cName = component.getName();
-			if (cName != null) {
-				if (component.getName().equals("btnSetBase")) {
-					if (lstScenarios.getSelectedIndex() >= 0) {
-						JLabel label = (JLabel) swix.find("lblBase");
-						label.setText(new File((String) lstScenarios.getSelectedValue()).getName());
-						label.setToolTipText((String) lstScenarios.getSelectedValue());
-					}
-
-				} else if (component.getName().equals("btnClearScenario")) {
-					((DefaultListModel) lstScenarios.getModel()).clear();
-					lstScenarios.repaint();
-					/*
-					 * } else if (component.getName().equals("btnCompareScenarios")) { Object scenlist[] = new
-					 * Object[lstScenarios.getModel().getSize()]; int j=0; for (int i = 0; i < lstScenarios.getModel().getSize();
-					 * i++) { RBListItem item = (RBListItem) lstScenarios.getModel().getElementAt(i); if (item.isSelected())
-					 * scenlist[0] = item.toString2().replace("_DV.DSS", ".cls"); else { j++; scenlist[j] =
-					 * item.toString2().replace("_DV.DSS",".cls"); }
-					 *
-					 * } // Show frame ScenarioTable sTableFrame = new ScenarioTable(scenlist, swix); java.net.URL imgURL =
-					 * getClass().getResource("/images/CalLiteIcon.png"); sTableFrame
-					 * .setIconImage(Toolkit.getDefaultToolkit().getImage (imgURL)); sTableFrame.setVisible(true);
-					 */
-				} else if (component.getName().equals("btnFacLimits")) {
-					JScrollPane scr = (JScrollPane) swix.find("fac_scr1");
-					scr.setVisible(true);
-					scr = (JScrollPane) swix.find("fac_scr2");
-					scr.setVisible(false);
-					scr = (JScrollPane) swix.find("fac_scr3");
-					scr.setVisible(false);
-				} else if (component.getName().equals("btnFacHood")) {
-					JScrollPane scr = (JScrollPane) swix.find("fac_scr2");
-					scr.setVisible(true);
-					scr = (JScrollPane) swix.find("fac_scr1");
-					scr.setVisible(false);
-					scr = (JScrollPane) swix.find("fac_scr3");
-					scr.setVisible(false);
-				} else if (component.getName().equals("btnFacPulse")) {
-					JScrollPane scr = (JScrollPane) swix.find("fac_scr3");
-					scr.setVisible(true);
-					scr = (JScrollPane) swix.find("fac_scr1");
-					scr.setVisible(false);
-					scr = (JScrollPane) swix.find("fac_scr2");
-					scr.setVisible(false);
-				}
+			} else if (component.getName().equals("btnFacPulse")) {
+				JScrollPane scr = (JScrollPane) swix.find("fac_scr3");
+				scr.setVisible(true);
+				scr = (JScrollPane) swix.find("fac_scr1");
+				scr.setVisible(false);
+				scr = (JScrollPane) swix.find("fac_scr2");
+				scr.setVisible(false);
 			}
 
 		}
 
 	}
 
-	// This method returns the selected radio button in a button group
 	/**
-	 * @wbp.parser.entryPoint
+	 * Handler for certain mouse clicks: <br>
+	 * <br>
+	 * 
+	 * Right-click on checkboxes in Regulations dashboard <br>
+	 * Right-click on a checkbox in Facility dashboard
+	 * 
 	 */
-	public static JRadioButton getSelection(ButtonGroup group) {
-		for (Enumeration<?> e = group.getElements(); e.hasMoreElements();) {
-			JRadioButton b = (JRadioButton) e.nextElement();
-			if (b.getModel() == group.getSelection()) {
-				return b;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * @wbp.parser.entryPoint
-	 */
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
 		JComponent component = (JComponent) e.getComponent();
 		String cName = component.getName();
 		if (cName != null) {
+
 			if (cName.startsWith("ckbReg")) {
 				// Right Click only
 				if (e.getButton() == MouseEvent.BUTTON3) {
@@ -829,24 +693,17 @@ ComponentListener, KeyEventDispatcher {
 					JCheckBox selcomp = (JCheckBox) e.getComponent();
 					Boolean isSelect = selcomp.isSelected();
 					RegulationSetup.SetRegCheckBoxes(swix, regUserEditFlags, dTableModels, gl, reg_btng1, cName, isSelect, "null",
-							regFlags);
-
-					// JRadioButton btn = (JRadioButton) swix.find("rdbRegQS_UD");
-					// boolean enabled = btn.isEnabled();
-
-					/*
-					 * ((JRadioButton) swix.find("btnReg1641")).setEnabled(enabled); ((JRadioButton)
-					 * swix.find("btnReg1485")).setEnabled(enabled); ((JRadioButton) swix.find("btnRegUD")).setEnabled(enabled);
-					 * ((JRadioButton) swix.find("btnReg1641")).setVisible(enabled); ((JRadioButton)
-					 * swix.find("btnReg1485")).setVisible(enabled); ((JRadioButton) swix.find("btnRegUD")).setVisible(enabled);
-					 */
+					        regFlags);
 				}
+
 			} else if (cName.startsWith("fac_ckb")) {
 				// Right click on a facility checkbox makes a subpanel visible
 				if (e.getButton() == MouseEvent.BUTTON3) {
 					JPanel panel = (JPanel) swix.find("fac_pan" + cName.substring(7));
+
 					// set all "data" panels to invisible
 					GUIUtils.toggleVisComponentAndChildrenCrit(facilities, "fac_pan", false);
+
 					// set specified "data" panel to active
 					GUIUtils.toggleVisComponent(panel, true);
 
@@ -859,18 +716,13 @@ ComponentListener, KeyEventDispatcher {
 
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/**
+	 * Handler for certain mousepresses: <br>
+	 * <br>
+	 * 
+	 * Double-click on an entry in Quick Results dashboard to display
+	 * 
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 
@@ -882,12 +734,10 @@ ComponentListener, KeyEventDispatcher {
 		int button = e.getButton();
 		Integer iClickCount = e.getClickCount();
 
-		// Right click
-
 		if (button != MouseEvent.NOBUTTON && button != MouseEvent.BUTTON1) {
 
-			if (cName != null) {
-			}
+			// Nothing for right mousepress
+
 		} else {
 
 			// Double Click
@@ -906,7 +756,7 @@ ComponentListener, KeyEventDispatcher {
 						lstScenarios = (JList) swix.find("SelectedList");
 						JCheckBox chk = (JCheckBox) component;
 						DisplayFrame.showDisplayFrames(
-								DisplayFrame.quickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), lstScenarios);
+						        DisplayFrame.quickState() + ";Locs-" + chk.getText() + ";Index-" + chk.getName(), lstScenarios);
 						menu.setCursor(normalCursor);
 					}
 					// Placeholder for future handling of double-clicks
@@ -941,30 +791,18 @@ ComponentListener, KeyEventDispatcher {
 
 	}
 
-	@Override
-	public void menuSelected(MenuEvent e) {
-		String cName = ((JMenu) e.getSource()).getName();
-		if (cName != null) {
-			if (cName.startsWith("menuR")) {
-				JPanel p = (JPanel) swix.find("settings");
-				p.setVisible(false);
-
-				p = (JPanel) swix.find("results");
-				p.setVisible(true);
-
-			} else if (cName.startsWith("menuS")) {
-				JPanel p = (JPanel) swix.find("results");
-				p.setVisible(false);
-
-				p = (JPanel) swix.find("settings");
-				p.setVisible(true);
-			}
-		}
-	}
-
 	int lastHeight = 768;
 	int lastWidth = 1024;
 
+	/**
+	 * Handles selected state changes: <br>
+	 * <br>
+	 * <li>Updates label associated with Slider setting for number of simultaneous runs <li>Hides current grid when switching
+	 * between subpanes ion Regulation dashboard <li>Adjusts application window size dynamically when switching to and from shematic
+	 * and map views <li>Updates labels associated with Spinner settings for dates <br>
+	 * <br>
+	 * 
+	 */
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 
@@ -974,7 +812,7 @@ ComponentListener, KeyEventDispatcher {
 		if (lcName.equals("run_sldthreads")) {
 			GUIUtils.simultaneousRuns = ((JSlider) c).getValue();
 			((JLabel) swix.find("run_lblThreads")).setText(" " + GUIUtils.simultaneousRuns + " run"
-					+ ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
+			        + ((GUIUtils.simultaneousRuns > 1) ? "s" : ""));
 		}
 		if (lcName.equals("reg_tabbedpane")) {
 			// Hide table on Regulations dashboard when moving between tabbed panes on Regulation dashboard
@@ -990,12 +828,6 @@ ComponentListener, KeyEventDispatcher {
 		if (lcName.equals("tabbedpane1")) {
 
 			menu.setSize(150, 20);
-
-			// System.out.println(menu.getLocation());
-			// System.out.println(menu.getHeight());
-			// System.out.println(menu.getWidth());
-			// System.out.println(menu.getComponent(0).getName());
-			// System.out.println(menu.isVisible());
 
 			// Allow larger windows when Web Map or Custom View selected
 			if (((JTabbedPane) c).getSelectedIndex() == 8 || ((JTabbedPane) c).getSelectedIndex() == 10) {
@@ -1071,6 +903,11 @@ ComponentListener, KeyEventDispatcher {
 		}
 	}
 
+	/**
+	 * Reads GUI_Links3.table into the String array lookups[][] (controls Quick Results display)
+	 * 
+	 * @return
+	 */
 	private int readInLookups() {
 
 		// Open input file
@@ -1102,16 +939,6 @@ ComponentListener, KeyEventDispatcher {
 				lookups[i][j] = parts[j];
 			}
 			if (lookups[i][1].equals("") && !lookups[i][0].startsWith("0")) { // additional
-				// condition
-				// added
-				// to
-				// handle
-				// "0xx"
-				// -
-				// these
-				// have
-				// no
-				// checkbox
 				JCheckBox cb = (JCheckBox) swix.find("ckbp" + lookups[i][0]);
 				cb.setEnabled(false);
 			}
@@ -1136,28 +963,9 @@ ComponentListener, KeyEventDispatcher {
 		return table5.length;
 	}
 
-	/*
-	 * setupAndRun - method to do setup in alternate thread
+	/**
+	 * Handles F1 keypress
 	 */
-
-	@Override
-	public void contentsChanged(ListDataEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Changed");
-	}
-
-	@Override
-	public void intervalAdded(ListDataEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Added");
-	}
-
-	@Override
-	public void intervalRemoved(ListDataEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Removed");
-	}
-
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent arg0) {
 		if (arg0.getID() == KeyEvent.KEY_PRESSED) {
@@ -1182,6 +990,9 @@ ComponentListener, KeyEventDispatcher {
 
 	}
 
+	/**
+	 * Constrains resizing of main app frame "desktop"
+	 */
 	@Override
 	public void componentResized(ComponentEvent e) {
 
@@ -1211,6 +1022,8 @@ ComponentListener, KeyEventDispatcher {
 	}
 
 	/**
+	 * Constrains size of Schematic panel to fit in current frame
+	 * 
 	 * @param d
 	 */
 	private void updateSchematicLayout(Dimension d) {
@@ -1268,8 +1081,8 @@ ComponentListener, KeyEventDispatcher {
 
 	/**
 	 * Getter for access to application-wide GUI WRIMS project
-	 *
-	 * @return
+	 * 
+	 * @return project
 	 */
 	public static Project getProject() {
 		return project;
@@ -1277,8 +1090,8 @@ ComponentListener, KeyEventDispatcher {
 
 	/**
 	 * Getter for access to application-wide SwiXml engine
-	 *
-	 * @return
+	 * 
+	 * @return swix
 	 */
 	public static SwingEngine getSwix() {
 
@@ -1286,13 +1099,13 @@ ComponentListener, KeyEventDispatcher {
 	}
 
 	/**
-	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
-	 *
+	 * Data retrieval for single DSS from Custom Results dashboard; modeled on calsim.gui.GeneralRetrievePanel.retrieve()
+	 * 
 	 */
 	void retrieve() {
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
-					JOptionPane.WARNING_MESSAGE);
+			        JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		try {
@@ -1303,7 +1116,7 @@ ComponentListener, KeyEventDispatcher {
 			Group _group = GuiUtils.getCLGPanel().getRetrievePanel().getGroup();
 			if (_group == null || _table.getSelectedRowCount() == 0) {
 				JOptionPane.showMessageDialog(null, "Select one or more variables" + noRowsString, "Variable(s) Not Selected",
-						JOptionPane.INFORMATION_MESSAGE);
+				        JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
 			int[] rows = _table.getSelectedRows(); // checked if count > 0 above
@@ -1317,14 +1130,14 @@ ComponentListener, KeyEventDispatcher {
 				String[] parts = array[i].getName().split("::");
 				String[] parts2 = parts[2].split("/");
 				parts[2] = "/" + parts2[1] + "/" + parts2[2] + "/" + parts2[3] + "/" + parts[3] + "/" + parts2[5] + "/" + parts2[6]
-						+ "/";
+				        + "/";
 
 				if (parts[1].toUpperCase().contains(("_SV.DSS"))) {
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2]
-							+ ";File-" + parts[1], lstScenarios);
+					        + ";File-" + parts[1], lstScenarios);
 				} else {
 					DisplayFrame.showDisplayFrames(DisplayFrame.quickState() + ";Locs-" + parts[2] + ";Index-" + parts[2],
-							lstScenarios);
+					        lstScenarios);
 				}
 			}
 		} catch (Exception e) {
@@ -1336,8 +1149,8 @@ ComponentListener, KeyEventDispatcher {
 	}
 
 	/**
-	 * Data retrieval modeled on calsim.gui.GeneratlRetrievePanel.retrieve()
-	 *
+	 * Data retrieval for DTS/MTS from Custom Results dashboard; modeled on calsim.gui.GeneralRetrievePanel.retrieve()
+	 * 
 	 */
 
 	void retrieve2() {
@@ -1346,7 +1159,7 @@ ComponentListener, KeyEventDispatcher {
 
 		if (!AppUtils.baseOn) {
 			JOptionPane.showMessageDialog(null, "The Base DSS files need to be selected", "DSS Not Selected",
-					JOptionPane.WARNING_MESSAGE);
+			        JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -1354,9 +1167,9 @@ ComponentListener, KeyEventDispatcher {
 		MultipleTimeSeries mts = GuiUtils.getCLGPanel().getDtsTreePanel().getTable().getMTS();
 
 		if (((mts == null) && (dts == null)) || ((dts != null) && (dts.getBParts().size() < 1))
-				|| ((mts != null) && (mts.getNumberOfDataReferences() < 1))) {
+		        || ((mts != null) && (mts.getNumberOfDataReferences() < 1))) {
 			JOptionPane.showMessageDialog(null, "Specify DTS or MTS data references", "Nothing to Display",
-					JOptionPane.WARNING_MESSAGE);
+			        JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
@@ -1369,5 +1182,41 @@ ComponentListener, KeyEventDispatcher {
 
 		}
 		WRIMSGUILinks.setStatus("Done??");
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void contentsChanged(ListDataEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void intervalAdded(ListDataEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void intervalRemoved(ListDataEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void menuSelected(MenuEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -25,6 +25,20 @@ import javax.swing.event.TableModelListener;
 import org.swixml.SwingEngine;
 
 public class RegulationSetup {
+
+	/**
+	 * Updates visibility of grid entry panels in Regulations dashboard depending on other UI settings
+	 * 
+	 * @param swix
+	 * @param RegUserEdits
+	 * @param dTableModels
+	 * @param gl
+	 * @param reg_btng1
+	 * @param cName
+	 * @param isSelect
+	 * @param sReset
+	 * @param RegFlags
+	 */
 	public static void SetRegCheckBoxes(SwingEngine swix, Boolean[] RegUserEdits, DataFileTableModel[] dTableModels, GUILinks gl,
 	        ButtonGroup reg_btng1, String cName, Boolean isSelect, String sReset, int[] RegFlags) {
 
@@ -37,7 +51,7 @@ public class RegulationSetup {
 
 		JCheckBox selcomp = (JCheckBox) swix.find(cName);
 
-		// Togle radio buttons above tables
+		// Toggle radio buttons above tables
 		String D1641 = gl.D1641ForCtrl(cName);
 		String D1485 = gl.D1485ForCtrl(cName);
 		String UD = gl.UDForCtrl(cName);
@@ -94,35 +108,16 @@ public class RegulationSetup {
 			Boolean b = btn.isSelected();
 			if (b == true) {
 				GUIUtils.toggleEnComponentAndChildren(pan, true);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), true);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), true);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), true);
 			} else {
 				GUIUtils.toggleEnComponentAndChildren(pan, false);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan1"), false);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan2"), false);
-				// GUIUtils.toggleEnComponentAndChildren(swix.find("regpan3"), false);
 			}
 
-			// GUIUtils.toggleEnComponentAndChildren(pan, true);
 			scr.setVisible(true);
 			scr.setEnabled(true);
 			String cID = cName;
 			dTableModels = populateRegDTable(cID, table, scr, swix, RegUserEdits, dTableModels, gl, sReset, RegFlags);
 
-			// JButton btn = (JButton) swix.find("btnRegDef");
-			// btn.setEnabled(false);
-
 			if (scr.isVisible()) {
-				/*
-				 * JRadioButton rdb = (JRadioButton) swix.find("reg_rdbD1641"); if (rdb.isVisible()) { if (RegUserEdits != null &&
-				 * dTableModels != null) { DataFileTableModel tm = (DataFileTableModel) table.getModel(); int tID = tm.tID; if
-				 * (RegUserEdits[tID] != null) { reg_btng1.clearSelection(); if (RegUserEdits[tID] == true) { rdb = (JRadioButton)
-				 * swix.find("reg_rdbUD"); rdb.setSelected(true); } else { rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				 * rdb.setSelected(true); } } else { reg_btng1.clearSelection(); rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				 * rdb.setSelected(true); } } else { reg_btng1.clearSelection(); rdb = (JRadioButton) swix.find("reg_rdbD1641");
-				 * rdb.setSelected(true); } } else {
-				 */
 				if (RegUserEdits == null) {
 					RegUserEdits = new Boolean[20];
 				}
@@ -134,7 +129,6 @@ public class RegulationSetup {
 
 				table.setCellSelectionEnabled(true);
 				table.setEnabled(true);
-				// }
 			}
 
 			String ckbtext = selcomp.getText();
