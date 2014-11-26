@@ -1,5 +1,5 @@
 /**
-* Main package for CalLite 2.0 GUI 
-* 
-*/
+ * Main package for CalLite GUI. See MainMenu.main() for main routine.
+ * 
+ */
 package gov.ca.water.calgui;
