@@ -7,7 +7,7 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 6	D_SPRING/FLOW-TUNNEL	null	Flow	Spring Creek Tunnel	null
 7	C_WKYTN_M/FLOW	C_WKYTN_MIF/FLOW-MIN-INSTREAM	Flow	Clear Creek	Minimum Instream Flow
 8	I_SHSTA/STORAGE	null	Flow	Sacramento River Inflow	null
-9	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
+9	S_SHSTA/STORAGE+S_SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
 10	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
 11	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
 12	AD_RedBlf	null	null	Accretion/Depletion at Red Bluff	null
@@ -16,14 +16,14 @@ ID	Primary	Secondary	Ytitle	Title	Slegend
 15	C_KSWCK/FLOW-CHANNEL	C_KSWCK_MIF/FLOW-MIN-INSTREAM	Flow	Sacramento River at Keswick	Minimum Instream Flow
 16	C_SHSTA/FLOW-CHANNEL	null	Flow	Sacramento River at Shasta	null
 102	S_TRNTY/STORAGE	null	Storage	Trinity Reservoir Storage	null
-103	S_SHSTA/STORAGE+SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
+103	S_SHSTA/STORAGE+S_SHSTAE/STORAGE	null	Storage	Shasta Reservoir Storage	null
 104	S_FOLSM/STORAGE	null	Storage	Folsom Reservoir Storage	null
-105	S_TRNTY/STORAGE+S_SHSTA/STORAGE+S_FOLSM/STORAGE	null	Storage	CVP North of Delta Storage	null
+105	S_TRNTY/STORAGE+S_SHSTA/STORAGE+S_SHSTAE/STORAGE+S_FOLSM/STORAGE	null	Storage	CVP North of Delta Storage	null
 106	S_SLCVP/STORAGE	null	Storage	CVP San Luis Reservoir Storage	null
 107	S_OROVL/STORAGE	null	Storage	Oroville Reservoir Storage	null
 108	S_SLSWP/STORAGE	null	Storage	SWP San Luis Reservoir Storage	null
 111	S_TRNTY/STORAGE	S_TRNTYLEVEL4DV/STORAGE-LEVEL	Storage	Trinity Reservoir Operations	Flood Pool Target
-112	S_SHSTA/STORAGE+SHSTAE/STORAGE	S_SHSTALEVEL5DV/STORAGE-LEVEL	Storage	Shasta Reservoir Operations	Flood Pool Target
+112	S_SHSTA/STORAGE+S_SHSTAE/STORAGE	S_SHSTALEVEL5DV/STORAGE-LEVEL	Storage	Shasta Reservoir Operations	Flood Pool Target
 113	S_FOLSM/STORAGE	S_FOLSMLEVEL5DV/STORAGE-LEVEL	Storage	Folsom Reservoir Operations	Flood Pool Target
 114	S_SLCVP/STORAGE	CVPRULECV/RULECURVE	Storage	CVP San Luis Reservoir Operations	Rule Curve
 115	S_OROVL/STORAGE	S_OROVLLEVEL5DV/STORAGE-LEVEL	Storage	Oroville Reservoir Operations	Flood Pool Target
