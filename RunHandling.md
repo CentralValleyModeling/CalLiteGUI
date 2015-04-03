@@ -1,0 +1,98 @@
+# States #
+
+  * [[to parse - possible jvm error](Ready.md)] - no PROGRESS.TXT or WRESLCHECK.log
+
+
+  * Parsing - NO PROGRESS.TXT, WRESLCHECK.log file is open, or does not contain "COMPLETED" string
+
+
+  * Done parsing - NO PROGRESS.TXT, WRESLCHECK.log file is closed and contains "COMPLETED" string. Check for "TOTAL ERRORS" to determine success.
+
+
+  * Running - year xxxx of yyyy - PROGRESS.TXT exists [, no WRIMS run error file(s)]
+
+
+  * Done running, error - PROGRESS.TXT exists, last line "RUN STOPPED - ERROR" [, WRIMS run error file(s) exist]
+
+
+  * Done running, success: PROGRESS.TXT exists, last line "RUN COMPLETED" [, no WRIMS run error file(s)]
+
+
+# Hydroclimate #
+
+  * countHydroClimateRuns(scenario) -> 1-5
+
+  * >1 : scenario\_q1.cls, ... scenario\_q5.cls -> RunDetail\scenario\_q1, ...; Scenarios\scenario\_q1\_DV.dss
+
+  * : scenario.cls -> RunDetail\scenario\_q1, RunDetail\scenario\_q2
+
+  * : scenario.cls -> RunDetail\scenario w/5 config files
+
+---
+
+Run\_1\_Scenario method
+
+Batch\_Scenario method
+
+mapOfSVNames(scenario) -> map: ("q1",first\_svfilename) ("q2",
+
+
+D1641@5realizations
+
+D1641\_q1.cls
+
+---
+
+# Requirement for run/batch run #
+
+  * Run: starts a run for the scenario currently in memory, forcing a save first if the scenario in memory does not match the saved scenario of the same name.
+    * If the scenario has a single realization (no CC, or just one CC choice on hydroclimate page, just run the scenario.
+    * If the scenario includes multiple realizations, create a scenario subdirectory for each realization by programmatically creating and saving new scenario files for each realization, then running each of the realization scenarios (named scenario\_ccc1, scenario cc2, etc.)
+
+  * Batch run: Starts runs for each scenario selected by the user and passed as a list of filenames. For each scenario,
+    * If the scenario has a single realization (no CC, or just one CC choice on hydroclimate page, just run the scenario.
+    * If the scenario includes multiple realizations, create a scenario subdirectory for each realization by programmatically creating and saving new scenario files for each realization, then running each of the realization scenarios (named scenario\_ccc1, scenario cc2, etc.)
+
+Suggested approach: Add a method that takes a scenario name and:
+
+  1. Checks for multiple realizations, then
+  1. Creates and saves realization scenarios
+  1. Loops through list of realizations for scenario,
+    * Runs each realization
+    * Adds realization scenario to run monitor list (new class)
+
+New method will be called from FileAction.actionPerformed.
+
+### Q (Mike) & A (Tad) ###
+
+Posit: Each "Climate Change Scenario" e.g., Q1, Q2...Q5, references a set of boundary conditions in some dss file (the SV file?).
+
+_Correct_
+
+If the user selects one or more realizations, then runs Cal-Lite:
+
+1. Does Cal-Lite do a single simulation for each realization?
+
+_Yes_
+
+2. Are simulations done in sequence or in parallel, the latter on different threads.
+
+_TBD_
+
+3. Are the simulation results post-processed in any way, e.g., assigned probability of occurrence? (I'm trying to figure out what the "probabilistic mode"  is doing here).
+
+_TBD - but probably analyzed to identify min max ave._
+
+4. Can the user save this as a single scenario that contains multiple runs, e.g., the cls file contains metadata for each run?
+
+_The current intent is to have a single scenario corresponding to 2-5 runs._
+
+5. Related to (4), is this using batch processing functionality Kevin has built?
+
+_Yes_
+
+6. Any thought given to just having one cls file per run then just queuing these up in a list?
+
+_As implemented, what we're doing is creating one run directory per realization by creating the appropriate .cls file and saving it, which also creates the directory - and then running it. However we only keep the original .cls file._
+
+

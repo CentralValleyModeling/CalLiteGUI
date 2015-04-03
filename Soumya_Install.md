@@ -1,0 +1,59 @@
+# Details #
+
+From: Sengupta, Soumya [SSengupta@mbakercorp.com]
+
+Sent: Tuesday, November 06, 2012 9:12 AM
+
+The following contains information on: (1) importing the formatting standards file into your IDE and (2) configuring the save actions that will make sure that the formatting is enforced every time a developer saves a Java file. I am sending it to you only as I want you to test out the process and let me know if there is anything else that I need to provide. If you run into problems then maybe you and I can spend time in a WebEx session. Once the process has been polished for you, you can share it with the other team members.
+
+As you read through this, you will see there is a reason that some of the choices are stored in a file and some are manual steps. Because of this, the following instructions need to go into the developer’s manual.
+
+### Importing the formatting standards file ###
+
+The XML file containing the formatting information is attached with this email (CalLiteGUIFormat.xml). One of the developers must check that in to SVN. It can be put anywhere within the project tree, I would recommend putting it in the project root. (This should be a one-time task.)
+
+_Note: CalLiteGUIFormat.xml has been placed in the project root in version 338_
+
+Once the file has been stored in the right place, each developer should perform the following steps to include it in their IDE.
+
+  1. In the IDE, click on Project (from the IDE menu bar) -> Properties -> Java Code Style -> Formatter.
+  1. Click the check box beside ‘Enable project specific settings’. This will activate the UI elements in the Active Profile below.
+  1. Click on Import. Navigate to the project root directory. Select the CalLiteGUIFormat.xml file. Back in the Formatter window, click on Apply and then OK. Nothing much will change at this point.
+
+### Configuring the save actions ###
+
+Each developer needs to perform the following steps manually. The following cannot be exported to a file (anymore) and hence cannot be shared. (See the section Settings File in SVN (or not) for details.)
+
+  1. In the IDE, click on Project (from the IDE menu bar) -> Properties -> Java Editor -> Save Actions.
+  1. Click the check box beside ‘Enable project specific settings’. This will activate the UI elements below.
+  1. Click the check box beside ‘Perform the selected actions on save’. Make sure the following choices are made:
+
+  * Format source code.
+  * Format all lines.
+  * Organize imports.
+  * Additional actions. (Hit Configure to select the following, click OK after all of the following are completed.)
+
+> i.      Code Organizing tab:
+
+  1. Remove trailing whitespace
+  1. Correct indentation
+
+> ii.      Missing Code tab:
+
+  1. Add missing Annotations
+  1. @Override
+  1. Implementations of interface methods (1.6 or higher0
+  1. @Deprecated
+
+> iii.      Unnecessary Code tab:
+
+  1. Remove unused imports
+  1. Remove unnecessary casts
+  1. Remove unnecessary $NON-NLS$ tags
+  1. Back in the Save Actions window Click Apply and then OK. Nothing will change at this point.
+
+To test, make some simple change in any Java file. All of the above save actions will be performed. Code will be formatted as per the formatting instructions.
+
+### Settings File in SVN (or not) ###
+
+All of the above formatting instructions and save actions are actually persisted by Eclipse in a couple of files (org.eclipse.jdt.core.prefs and org.eclipse.jdt.ui.prefs) in the .settings folder. So an argument can be made that once one of the developers performs all the actions as described above, he can check in the .settings folder in to SVN; other developers will then obtain these settings automatically. However, checking in the .settings folder can be somewhat risky as there might be other settings (not related to the above) in a developer’s workspace that might leak in. These settings might be conflicting for other developers and there is a chance that developers would waste quite a bit of time sorting such things out. In light of this fact, I would recommend not checking in the .settings folder. The above actions are a one-time thing and takes no more than 10 minutes. The existence of CalLiteGUIFormat.xml standardizes the formatting guidelines and simplifies the process of its induction into the IDE.

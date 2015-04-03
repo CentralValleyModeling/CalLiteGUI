@@ -1,0 +1,3 @@
+The CalLite screening model simulates the hydrology of the Central Valley, reservoir operations, project operations and delivery allocation decisions, delta salinity responses to river flow and export changes, and habitat-ecosystem flow indices. Developed by California Department of Water Resources and the US Bureau of Reclamation Mid-Pacific Region, CalLite is being transitioned from a proprietary platform to open-source.
+
+The overall effort is separated into this user interface project and the [model engine project](http://code.google.com/p/callite/).

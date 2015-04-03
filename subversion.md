@@ -1,0 +1,5 @@
+Reclamation-DWR developers merged 2012 review branch into trunk.
+
+- Deleted old com.limnotech packages
+- Identified need to rename new packages using java convention: all lower case.
+- Identified need to remove code from trunk that should have been deleted from the branch.

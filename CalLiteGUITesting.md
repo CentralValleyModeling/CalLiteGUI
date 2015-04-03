@@ -1,0 +1,22 @@
+# Introduction #
+
+There is a project called CalLite-Tester that has the testing harness. The strategy would be to have this harness load and run scenarios. Once the scenario is run, a set of files are generated. These would then be compared to the baseline run previously run.
+
+This is a form of system level regression testing.
+
+
+# Details #
+
+The project containing the testing harness is [CalLite-Tester](https://code.google.com/p/callitegui/source/browse/#svn%2Ftrunk%2FCalLite-Tester). Checkout this project. The main harness is documented in [BaseLoadAndRunScenarioTest.java](https://code.google.com/p/callitegui/source/browse/trunk/CalLite-Tester/src/gov/ca/dwr/callite/tester/BaseLoadAndRunScenarioTest.java)
+
+The scenario file that is the input is defined in the class as a variable scenarioFile.
+
+The setup loads and runs the scenario. Add your assertions to testScenarioOutput. There is a few basic assertions there now, add more as makes sense for your scenario.
+
+Finally the windows are closed and the test exits.
+
+
+# Limitations #
+This test is sensitive to user actions so don't use the mouse and keyboard when this test is running.
+
+There is nothing in the GUI that indicates that a scenario is running. So the test for right now just waits for 8 minutes. This will have to be improved.
